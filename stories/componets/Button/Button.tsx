@@ -1,4 +1,9 @@
-import React, {cloneElement, ElementType, isValidElement, ReactElement} from "react";
+import React, {
+  cloneElement,
+  ElementType,
+  isValidElement,
+  ReactElement,
+} from "react";
 import styled, { keyframes } from "styled-components";
 import getExternalLinkProps from "../../util/getExternalLinkProps";
 import StyledButton from "./StyledButton";
@@ -7,68 +12,68 @@ import { AutoRenewAnimateIcon } from "../Svg";
 import { MarkerType } from "../../theme";
 
 const PULSE_SUCCESS = keyframes`
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(29, 200, 124, 0.7);
-  }
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(29, 200, 124, 0.7);
+    }
 
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 4px rgba(29, 200, 124, 0);
-  }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 4px rgba(29, 200, 124, 0);
+    }
 
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(29, 200, 124, 0);
-  }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(29, 200, 124, 0);
+    }
 `;
 const PULSE_WARNING = keyframes`
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 219, 28, 0.7);
-  }
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 219, 28, 0.7);
+    }
 
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 4px rgba(255, 219, 28, 0);
-  }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 4px rgba(255, 219, 28, 0);
+    }
 
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 219, 28, 0);
-  }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 219, 28, 0);
+    }
 `;
 const PULSE_PRIMARY = keyframes`
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(18, 99, 241, 0.7);
-  }
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(18, 99, 241, 0.7);
+    }
 
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 4px rgba(18, 99, 241, 0);
-  }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 4px rgba(18, 99, 241, 0);
+    }
 
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(18, 99, 241, 0);
-  }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(18, 99, 241, 0);
+    }
 `;
 const PULSE_SECONDARY = keyframes`
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(249, 59, 93, 0.7);
-  }
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(249, 59, 93, 0.7);
+    }
 
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 4px rgba(249, 59, 93, 0);
-  }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 4px rgba(249, 59, 93, 0);
+    }
 
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(249, 59, 93, 0);
-  }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(249, 59, 93, 0);
+    }
 `;
 
 const PULSES: any = {
@@ -79,30 +84,30 @@ const PULSES: any = {
 } as const;
 
 const Bubble = styled.span<{ bubbleColor?: keyof MarkerType }>`
-  position: absolute;
-  top: 14%;
-  right: 11%;
-  width: 6px;
-  height: 6px;
-  transform: translateX(100%);
-  border-radius: 50%;
-  background-color: ${({ theme, bubbleColor }) =>
-    !bubbleColor ? theme.colors.success : theme.colors[bubbleColor]};
-
-  &:before {
-    display: block;
-    content: "";
     position: absolute;
-    width: 10px;
-    height: 10px;
+    top: 14%;
+    right: 11%;
+    width: 6px;
+    height: 6px;
+    transform: translateX(100%);
     border-radius: 50%;
-    top: -2px;
-    left: -2px;
-    z-index: 1;
-    animation: ${({ color }) =>
-        color ? PULSES[color.toUpperCase()] : PULSE_SUCCESS}
-      2s infinite;
-  }
+    background-color: ${({ theme, bubbleColor }) =>
+            !bubbleColor ? theme.colors.success : theme.colors[bubbleColor]};
+
+    &:before {
+        display: block;
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        top: -2px;
+        left: -2px;
+        z-index: 1;
+        animation: ${({ color }) =>
+                color ? PULSES[color.toUpperCase()] : PULSE_SUCCESS}
+        2s infinite;
+    }
 `;
 
 const Button = <E extends ElementType = "button">(
@@ -113,12 +118,14 @@ const Button = <E extends ElementType = "button">(
     bubbleColor,
     startIcon,
     endIcon,
-    external,
+    external = false,
     className,
-    isLoading,
-    disabled,
+    isLoading = false,
+    disabled = false,
     children,
     loadingTitle,
+    variant = variants.PRIMARY,
+    scale = scales.MD,
     ...rest
   } = props;
 
@@ -144,6 +151,8 @@ const Button = <E extends ElementType = "button">(
       $isLoading={isLoading}
       className={classNames.join(" ")}
       disabled={isDisabled}
+      variant={variant}
+      scale={scale}
       {...internalProps}
       {...rest}
     >
@@ -163,14 +172,6 @@ const Button = <E extends ElementType = "button">(
       </>
     </StyledButton>
   );
-};
-
-Button.defaultProps = {
-  isLoading: false,
-  external: false,
-  variant: variants.PRIMARY,
-  scale: scales.MD,
-  disabled: false,
 };
 
 export default Button;
