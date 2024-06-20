@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Text from "../Text/Text";
-import { tags, scales, HeadTextProps } from "./typesHeadText";
+import { scales, HeadTextProps } from "./typesHeadText";
 
 export const headTextScaleMap = {
   [scales.SIZE40]: {
@@ -37,7 +37,7 @@ export const headTextScaleMap = {
   },
 };
 
-export const HeadText = styled(Text).attrs({ bold: true })<HeadTextProps>`
+export const HeadText = styled(Text).attrs({ tags: 'h2', bold: true })<HeadTextProps>`
   font-size: ${({ scale }) =>
     headTextScaleMap[scale || scales.SIZE32].fontSize};
   line-height: ${({ scale }) =>
@@ -45,7 +45,3 @@ export const HeadText = styled(Text).attrs({ bold: true })<HeadTextProps>`
   font-weight: 600;
   white-space: ${({ nowrap }) => (nowrap ? "nowrap" : "normal")};
 `;
-
-HeadText.defaultProps = {
-  as: tags.H2,
-};
