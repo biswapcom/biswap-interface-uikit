@@ -68,7 +68,7 @@ const getScalesAttributes = ({ scale }: BodyTextProps) => {
     : { fontSize: [], lineHeight: [] };
 };
 
-export const BodyText = styled(Text).attrs(getScalesAttributes)<BodyTextProps>`
+export const BodyText = styled(Text).attrs({...getScalesAttributes})<BodyTextProps>`
   font-weight: ${({ bold }) => (bold ? 600 : 400)};
   white-space: ${({ nowrap }) => (nowrap ? "nowrap" : "normal")};
 `;

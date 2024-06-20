@@ -31,9 +31,7 @@ export interface ScalesObj {
 }
 
 export interface BodyTextProps
-  extends SpaceProps,
-    TypographyProps,
-    LayoutProps {
+   {
   color?: string;
   nowrap?: boolean;
   scale?: Scales | ScalesObj | undefined;
