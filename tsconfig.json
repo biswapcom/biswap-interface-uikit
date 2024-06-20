@@ -8,8 +8,8 @@
     "sourceMap": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "jsx": "react",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "jsx": "react"
   },
   "include": [
     "stories/src"

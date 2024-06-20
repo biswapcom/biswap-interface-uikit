@@ -1,4 +1,4 @@
-import React, { cloneElement, ElementType, isValidElement } from "react";
+import React, {cloneElement, ElementType, isValidElement, ReactElement} from "react";
 import styled, { keyframes } from "styled-components";
 import getExternalLinkProps from "../../util/getExternalLinkProps";
 import StyledButton from "./StyledButton";
@@ -107,7 +107,7 @@ const Bubble = styled.span<{ bubbleColor?: keyof MarkerType }>`
 
 const Button = <E extends ElementType = "button">(
   props: ButtonProps<E>
-): JSX.Element => {
+): ReactElement => {
   const {
     addBubble,
     bubbleColor,
@@ -151,11 +151,13 @@ const Button = <E extends ElementType = "button">(
         {addBubble && <Bubble />}
         {isValidElement(startIcon) &&
           cloneElement(startIcon, {
+            // @ts-ignore
             mr: "0.5rem",
           })}
         {isLoading ? loadingText : children}
         {isValidElement(endIconElement) &&
           cloneElement(endIconElement, {
+            // @ts-ignore
             ml: "0.5rem",
           })}
       </>
