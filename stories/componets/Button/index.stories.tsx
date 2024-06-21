@@ -37,7 +37,7 @@ const BswIcon = styled.img.attrs({
   width: 24px;
 `;
 
-export const Default: React.FC = () => {
+export const ButtonDefault: React.FC = () => {
   const baseBtn = {
     PRIMARY: "primary",
     DANGER: "danger",
@@ -203,6 +203,7 @@ export const Default: React.FC = () => {
           })}
         </Box>
       </Flex>
+
       <Box>
         <BodyText mb="16px">Text buttons dark</BodyText>
         <Button key="md" variant="textDark" scale="lg" mr="8px" mb="8px">
