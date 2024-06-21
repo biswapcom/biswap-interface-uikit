@@ -1,4 +1,4 @@
-// import { AlertTheme } from "../components/Alert/types";
+import { AlertTheme } from "../components/Alert/types";
 // import { RadioTheme } from "../components/Radio/types";
 // import { ToggleTheme } from "../components/Toggle/theme";
 // import { TooltipTheme } from "../components/Tooltip/types";
@@ -19,7 +19,7 @@ export interface BiswapTheme {
   siteWidth: number;
   isDark: boolean;
   colors: Colors;
-  // alert: AlertTheme;
+  alert: AlertTheme;
   // nav: NavThemeType;
   // modal: ModalTheme;
   // radio: RadioTheme;

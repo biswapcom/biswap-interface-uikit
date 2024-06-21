@@ -1,5 +1,5 @@
 import { DefaultTheme } from "styled-components";
-// import { light as lightAlert } from "../components/Alert/theme";
+import { light as lightAlert } from "../components/Alert/theme";
 // import { light as lightRadio } from "../components/Radio/theme";
 // import { light as lightToggle } from "../components/Toggle/theme";
 // import { light as lightTooltip } from "../components/Tooltip/theme";
@@ -12,7 +12,7 @@ const lightTheme: DefaultTheme = {
   ...base,
   isDark: false,
   colors: lightColors,
-  // alert: lightAlert,
+  alert: lightAlert,
   // toggle: lightToggle,
   // nav: lightNav,
   // modal: lightModal,
