@@ -12,9 +12,9 @@
     "jsx": "react"
   },
   "include": [
-    "stories/src"
+    "src"
   ],
   "exclude": ["node_modules",
-    "stories/src/**/*.stories.tsx"
+    "src/**/*.stories.tsx"
   ]
 }
