@@ -36,4 +36,5 @@ export interface BiswapTheme {
 export { darkColors, lightColors } from "./colors";
 export { default as dark } from "./dark";
 export { default as light } from "./light";
+export { default as ResetCSS } from './resetCSS';
 export * from "./types";
