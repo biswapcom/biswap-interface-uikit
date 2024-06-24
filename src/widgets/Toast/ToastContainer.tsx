@@ -1,13 +1,18 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {FC, useCallback, useEffect, useRef, useState} from "react";
 import { TransitionGroup } from "react-transition-group";
 import styled from "styled-components";
+
+// components
 import Toast from "./Toast";
+import { Box } from "../../components/Box";
+
+// types
 import { ToastContainerProps } from "./types";
 
 const ZINDEX = 1000;
 const BOTTOM_POSITION = 120; // Initial position from the bottom
 
-const StyledToastContainer = styled.div`
+const StyledToastContainer = styled(Box)`
   .enter,
   .appear {
     opacity: 0.01;
@@ -29,7 +34,7 @@ const StyledToastContainer = styled.div`
   }
 `;
 
-const ToastContainer: React.FC<ToastContainerProps> = ({
+const ToastContainer: FC<ToastContainerProps> = ({
   clearAll,
   toasts,
   onRemove,
@@ -39,8 +44,8 @@ const ToastContainer: React.FC<ToastContainerProps> = ({
   viewBscScanLabel = "View on bscscan",
 }) => {
   const [progress, setProgress] = useState<number>(100);
-  const [progressRun, setProgressRun] = useState(true);
-  const [currentTime, setCurrentTime] = useState(ttl);
+  const [progressRun, setProgressRun] = useState<boolean>(true);
+  const [currentTime, setCurrentTime] = useState<number>(ttl);
 
   // for update timer for new toast
   const updateTimerRef = useRef<number>(1);
@@ -72,6 +77,7 @@ const ToastContainer: React.FC<ToastContainerProps> = ({
         }
       }, 100);
     }
+
     if (toasts.length && progressRun) {
       intervalRef.current = window.setTimeout(() => {
         const timeToRemove = (ttl * progress) / 100;
@@ -114,6 +120,7 @@ const ToastContainer: React.FC<ToastContainerProps> = ({
 
   const handleMouseLeave = () => {
     setProgressRun(true);
+
     if (timer.current) {
       clearTimeout(timer.current);
     }
@@ -153,6 +160,7 @@ const ToastContainer: React.FC<ToastContainerProps> = ({
           const zIndex = (ZINDEX - index).toString();
           const bottom = BOTTOM_POSITION + index * stackSpacing;
           const removeButtonPosition = stackSpacing * toasts.length + 40;
+
           if (index === 0)
             return (
               <Toast

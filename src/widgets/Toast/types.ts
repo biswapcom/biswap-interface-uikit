@@ -1,21 +1,17 @@
-import React from "react";
 import { ColoredVariants } from "../../components/Alert";
 
-export const types = {
-  SUCCESS: "success",
-  DANGER: "danger",
-  WARNING: "warning",
-  INFO: "info",
+export enum Types {
+  SUCCESS = "success",
+  DANGER = "danger",
+  WARNING = "warning",
+  INFO = "info",
 };
-
-export type Types = typeof types[keyof typeof types];
 
 export interface Toast {
   id: string;
   type: Types;
   title: string;
   description?: any;
-  telegramDescription?: string;
   tweeterDescription?: string;
   hash?: string;
   url?: string;

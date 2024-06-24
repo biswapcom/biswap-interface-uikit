@@ -1,61 +1,59 @@
-import React from "react";
+import React, { FC } from "react";
 import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
-import { Alert, alertVariants } from "../../components/Alert";
+
+// components
+import { Alert, AlertVariants } from "../../components/Alert";
 import { Text } from "../../components/Text";
-import ToastAction from "./ToastAction";
-import { ToastProps, types } from "./types";
 import { Button } from "../../components/Button";
 import { ArrowUpForwardIcon } from "../../components/Svg";
+import { Box, Flex } from "../../components/Box";
+
+// widgets
+import ToastAction from "./ToastAction";
+
+// types
+import { ToastProps, Types } from "./types";
 
 const alertTypeMap = {
-  [types.INFO]: alertVariants.INFO,
-  [types.SUCCESS]: alertVariants.SUCCESS,
-  [types.DANGER]: alertVariants.DANGER,
-  [types.WARNING]: alertVariants.WARNING,
+  [Types.INFO]: AlertVariants.INFO,
+  [Types.SUCCESS]: AlertVariants.SUCCESS,
+  [Types.DANGER]: AlertVariants.DANGER,
+  [Types.WARNING]: AlertVariants.WARNING,
 };
 
-interface ClearButtonProps {
-  top: number;
-}
-
-const ClearAllButton = styled(Button)<ClearButtonProps>`
+const ClearAllButton = styled(Button)<{ top: number }>`
   position: absolute;
+  top: ${({ top }) => `${-top}px`};
   right: 0;
-  background-color: ${({ theme }) => theme.colors.white};
+  margin: 0;
+  padding: 0;
   border: ${({ theme }) => `1px solid ${theme.colors.dark800}`};
   border-radius: 16px;
-  top: ${({ top }) => `${-top}px`};
+  background-color: ${({ theme }) => theme.colors.white};
   transform: translateY(50%);
-  padding: 0;
-  margin: 0;
 `;
 
-const StyledToast = styled.div`
-  left: 50%;
-  transform: translate(-50%, 0);
+const StyledToast = styled(Box)`
   position: fixed;
-  max-width: calc(100% - 12px);
-  transition: all 250ms ease-in;
+  left: 50%;
   width: 100%;
-
-  box-shadow: 0px -4px 11px rgba(0, 0, 0, 0.1),
-    0px 20px 36px -8px rgba(14, 14, 44, 0.32), 0px 1px 1px rgba(0, 0, 0, 0.16);
+  max-width: calc(100% - 12px);
   border-radius: 16px;
+  transform: translate(-50%, 0);
+  transition: all 250ms ease-in;
+  box-shadow: 0 -4px 11px rgba(0, 0, 0, 0.1),
+    0 20px 36px -8px rgba(14, 14, 44, 0.32), 0 1px 1px rgba(0, 0, 0, 0.16);
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    transform: none;
     left: auto;
     right: 35px;
     max-width: 352px;
+    transform: none;
   }
 `;
 
-const LinkWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 6px 0;
-`;
+const LinkWrapper = styled(Flex).attrs({ alignItems: 'center', my: '6px' })``;
 
 const LinkStyles = styled.a`
   color: ${({ theme }) => theme.colors.primary};
@@ -64,16 +62,9 @@ const LinkStyles = styled.a`
   line-height: 16px;
 `;
 
-const SharingText = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+const ActionContainer = styled(Box).attrs({ width: '100%' })``;
 
-const ActionContainer = styled.div`
-  width: 100%;
-`;
-
-const Toast: React.FC<ToastProps> = ({
+const Toast: FC<ToastProps> = ({
   removeButtonPosition = 60,
   clearAll,
   toast,
@@ -90,7 +81,6 @@ const Toast: React.FC<ToastProps> = ({
     description,
     type,
     title,
-    telegramDescription,
     tweeterDescription,
     hash,
     url,
@@ -108,7 +98,7 @@ const Toast: React.FC<ToastProps> = ({
             scale="sm"
             variant="text"
             top={removeButtonPosition}
-            onClick={() => clearAll()}
+            onClick={clearAll}
           >
             <Text p="0 8px" fontSize="12px" color="dark">
               {clearAllLabel}
@@ -121,7 +111,7 @@ const Toast: React.FC<ToastProps> = ({
           variant={alertTypeMap[type]}
           onClick={handleRemove}
         >
-          <div>
+          <Box>
             {hash && (
               <LinkWrapper>
                 <LinkStyles
@@ -131,47 +121,33 @@ const Toast: React.FC<ToastProps> = ({
                   {viewBscScanLabel}
                 </LinkStyles>
                 <ArrowUpForwardIcon
-                  ml="6px"
                   width="18px"
                   height="18px"
+                  ml="6px"
                   color="primary"
                 />
               </LinkWrapper>
             )}
-            {description ? (
+            {description && (
               <Text
+                mb="8px"
                 color="#6B7D98"
                 fontSize="12px"
                 as="p"
-                mb="8px"
-                // dangerouslySetInnerHTML={{ __html: description }}
               >
                 {description}
               </Text>
-            ) : (
-              <></>
             )}
-            {telegramDescription && tweeterDescription && (
+            {tweeterDescription && (
               <ActionContainer>
                 <ToastAction
                   withGift={withGift}
-                  telegramDescription={telegramDescription}
                   tweeterDescription={tweeterDescription}
-                  title={title}
                   url={url}
-                  thx={`https://bscscan.com/tx/${hash}`}
                 />
               </ActionContainer>
             )}
-          </div>
-          {/*<div style={{width: '100%'}}>*/}
-          {/*  <ProgressWrapper  style={{width: '100%'}}>*/}
-          {/*    {*/}
-          {/*      progress ?  <ProgressLine style={{width: `${100 - progress}%`}}/> : null*/}
-          {/*    }*/}
-
-          {/*  </ProgressWrapper>*/}
-          {/*</div>*/}
+          </Box>
         </Alert>
       </StyledToast>
     </CSSTransition>
