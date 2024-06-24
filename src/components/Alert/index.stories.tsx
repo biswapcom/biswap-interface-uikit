@@ -17,6 +17,7 @@ const Wrapper = styled(Box)`
 `
 
 const Row = styled(Box)`
+  position: relative;
   margin-bottom: 32px;
 `;
 
