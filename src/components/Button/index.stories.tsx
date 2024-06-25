@@ -1,16 +1,18 @@
-import React from "react";
-import { camelCase } from "lodash";
-import { useState } from "react";
-import { BrowserRouter, Link } from "react-router-dom";
+import React, { FC, useState } from "react";
+import {camelCase} from "lodash";
+import {BrowserRouter, Link} from "react-router-dom";
 import styled from "styled-components";
-import Box from "../Box/Box";
-import Flex from "../Box/Flex";
+
+// components
+import { Box, Flex } from "../Box";
 import {BodyText} from "../Typography";
-import { PlusIcon, AutoRenewIcon, ChevronRightCircleSolidIcon } from "../Svg";
+import {AutoRenewIcon, ChevronRightCircleSolidIcon, PlusIcon} from "../Svg";
 import IconButton from "./IconButton";
 import Button from "./Button";
-import { ExpandableButton, ExpandableLabel } from "./ExpandableButton";
-import { scales, variants } from "./types";
+import {ExpandableButton, ExpandableLabel} from "./ExpandableButton";
+
+// types
+import {Scales, Variants as ButtonVariants} from "./types";
 
 export default {
   title: "Components/Button",
@@ -18,13 +20,14 @@ export default {
   argTypes: {},
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(Box)`
   padding: 32px 24px;
-  background: #07162d;
+  background: ${({ theme }) => theme.colors.dark800};
 `;
 
 const Row = styled(Flex)`
   margin-bottom: 32px;
+
   & > button + button,
   & > a + a {
     margin-left: 16px;
@@ -37,23 +40,23 @@ const BswIcon = styled.img.attrs({
   width: 24px;
 `;
 
-export const ButtonDefault: React.FC = () => {
+export const ButtonDefault: FC = () => {
   const baseBtn = {
-    PRIMARY: "primary",
-    DANGER: "danger",
-    SUCCESS: "success",
-    WARNING: "warning",
-    BOOST: "boost",
+    PRIMARY: ButtonVariants.PRIMARY,
+    DANGER: ButtonVariants.DANGER,
+    SUCCESS: ButtonVariants.SUCCESS,
+    WARNING: ButtonVariants.WARNING,
+    BOOST: ButtonVariants.BOOST,
   } as const;
 
   const darkBgBtn = {
-    LIGHT_OUT: "lightOut",
-    LIGHT: "light",
+    LIGHT_OUT: ButtonVariants.LIGHT_OUT,
+    LIGHT: ButtonVariants.LIGHT,
   } as const;
 
   const lightBgBtn = {
-    TERTIARY: "tertiary",
-    TERTIARY_OUT: "tertiaryOut",
+    TERTIARY: ButtonVariants.TERTIARY,
+    TERTIARY_OUT: ButtonVariants.TERTIARY_OUT,
   } as const;
 
   return (
@@ -62,13 +65,13 @@ export const ButtonDefault: React.FC = () => {
         <BodyText color="white" mb="24px" bold>
           Scales
         </BodyText>
-        {Object.values(scales).map((scale) => {
+        {Object.values(Scales).map((scale) => {
           return (
             <Button
               addBubble
               bubbleColor="primary"
               key="md"
-              variant="primary"
+              variant={ButtonVariants.PRIMARY}
               scale={scale}
               mr="8px"
               mb="8px"
@@ -85,7 +88,7 @@ export const ButtonDefault: React.FC = () => {
         </BodyText>
         {Object.values(baseBtn).map((variant) => {
           return (
-            <Button key={variant} variant={variant} scale="lg" mr="8px">
+            <Button key={variant} variant={variant} scale={Scales.LG} mr="8px">
               {`${camelCase(variant)}`}
             </Button>
           );
@@ -102,7 +105,7 @@ export const ButtonDefault: React.FC = () => {
               isLoading
               key={variant}
               variant={variant}
-              scale="lg"
+              scale={Scales.LG}
               mr="8px"
             >
               {`${camelCase(variant)}`}
@@ -120,7 +123,7 @@ export const ButtonDefault: React.FC = () => {
             <Button
               key={variant}
               variant={variant}
-              scale="lg"
+              scale={Scales.LG}
               mr="8px"
               disabled
             >
@@ -137,7 +140,7 @@ export const ButtonDefault: React.FC = () => {
           </BodyText>
           {Object.values(darkBgBtn).map((variant) => {
             return (
-              <Button key="md" variant={variant} scale="lg" mr="8px" mb="8px">
+              <Button key="md" variant={variant} scale={Scales.LG} mr="8px" mb="8px">
                 {`${camelCase(variant)}`}
               </Button>
             );
@@ -152,7 +155,7 @@ export const ButtonDefault: React.FC = () => {
               <Button
                 key="md"
                 variant={variant}
-                scale="lg"
+                scale={Scales.LG}
                 mr="8px"
                 mb="8px"
                 disabled
@@ -169,7 +172,7 @@ export const ButtonDefault: React.FC = () => {
         mx="-24px"
         py="24px"
         px="24px"
-        background="#F9FAFD"
+        background="gray100"
       >
         <Box mb="48px">
           <BodyText color="backgroundDark" mb="16px" bold>
@@ -177,7 +180,7 @@ export const ButtonDefault: React.FC = () => {
           </BodyText>
           {Object.values(lightBgBtn).map((variant) => {
             return (
-              <Button key="md" variant={variant} scale="lg" mr="8px" mb="8px">
+              <Button key="md" variant={variant} scale={Scales.LG} mr="8px" mb="8px">
                 {`${camelCase(variant)}`}
               </Button>
             );
@@ -192,7 +195,7 @@ export const ButtonDefault: React.FC = () => {
               <Button
                 key="md"
                 variant={variant}
-                scale="lg"
+                scale={Scales.LG}
                 mr="8px"
                 mb="8px"
                 disabled
@@ -206,16 +209,16 @@ export const ButtonDefault: React.FC = () => {
 
       <Box>
         <BodyText mb="16px">Text buttons dark</BodyText>
-        <Button key="md" variant="textDark" scale="lg" mr="8px" mb="8px">
+        <Button key="md" variant={ButtonVariants.TEXT_DARK} scale={Scales.LG} mr="8px" mb="8px">
           text
           <ChevronRightCircleSolidIcon width="24px" ml="8px" />
         </Button>
       </Box>
-      <Box background="#F9FAFD">
+      <Box background="gray100">
         <BodyText color="backgroundDark" mb="16px">
           Text buttons light
         </BodyText>
-        <Button key="md" variant="text" scale="lg" mr="8px" mb="8px">
+        <Button key="md" variant={ButtonVariants.TEXT} scale={Scales.LG} mr="8px" mb="8px">
           text
           <ChevronRightCircleSolidIcon width="24px" ml="8px" />
         </Button>
@@ -225,14 +228,14 @@ export const ButtonDefault: React.FC = () => {
 };
 
 //-----------------------
-export const Anchors: React.FC = () => {
+export const Anchors: FC = () => {
   return (
     <>
       <Box mb="32px">
-        {Object.values(variants).map((variant) => {
+        {Object.values(Variants).map((variant) => {
           return (
             <Box key={variant} mb="32px">
-              {Object.values(scales).map((scale) => {
+              {Object.values(Scales).map((scale) => {
                 return (
                   <Button
                     as="a"
@@ -264,7 +267,7 @@ export const Anchors: React.FC = () => {
         <Button
           as="a"
           href="https://pancakeswap.finance"
-          variant="primary"
+          variant={ButtonVariants.PRIMARY}
           external
           disabled
         >
@@ -275,12 +278,12 @@ export const Anchors: React.FC = () => {
   );
 };
 
-export const Variants: React.FC = () => {
+export const Variants: FC = () => {
   return (
     <Box width="640px">
       <BrowserRouter>
         <Row>
-          <Button as={Link} to="/router-link" variant="primary">
+          <Button as={Link} to="/router-link" variant={ButtonVariants.PRIMARY}>
             As an React Router link
           </Button>
         </Row>
@@ -294,7 +297,7 @@ export const Variants: React.FC = () => {
           >
             Approving
           </Button>
-          <Button isLoading variant="success">
+          <Button isLoading variant={ButtonVariants.SUCCESS}>
             Approving
           </Button>
         </Row>
@@ -309,15 +312,15 @@ export const Variants: React.FC = () => {
           <IconButton>
             <BswIcon />
           </IconButton>
-          <IconButton variant="primary">
+          <IconButton variant={ButtonVariants.PRIMARY}>
             <PlusIcon />
           </IconButton>
         </Row>
         <Row>
-          <IconButton scale="sm" variant="danger">
+          <IconButton scale={Scales.SM} variant={ButtonVariants.DANGER}>
             <BswIcon />
           </IconButton>
-          <IconButton scale="sm" variant="success">
+          <IconButton scale={Scales.SM} variant={ButtonVariants.SUCCESS}>
             <PlusIcon color="currentColor" />
           </IconButton>
         </Row>
@@ -326,8 +329,9 @@ export const Variants: React.FC = () => {
   );
 };
 
-export const Expandable: React.FC = () => {
-  const [expanded, setExpanded] = useState(false);
+export const Expandable: FC = () => {
+  const [expanded, setExpanded] = useState<Boolean>(false);
+
   return (
     <Box width="640px">
       <BrowserRouter>

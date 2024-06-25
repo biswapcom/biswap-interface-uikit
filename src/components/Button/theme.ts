@@ -1,31 +1,31 @@
-import { scales, variants } from "./types";
+import { Scales, Variants } from "./types";
 
 export const scaleVariants = {
-  [scales.XL]: {
+  [Scales.XL]: {
     height: "48px",
     fontSize: "16px",
     padding: "0 24px",
     borderRadius: "10px",
   },
-  [scales.LG]: {
+  [Scales.LG]: {
     height: "40px",
     padding: "0 16px",
     fontSize: "14px",
     borderRadius: "8px",
   },
-  [scales.MD]: {
+  [Scales.MD]: {
     height: "32px",
     padding: "0 12px",
     fontSize: "12px",
     borderRadius: "8px",
   },
-  [scales.SM]: {
+  [Scales.SM]: {
     height: "24px",
     padding: "0 8px",
     fontSize: "12px",
     borderRadius: "6px",
   },
-  [scales.XS]: {
+  [Scales.XS]: {
     height: "20px",
     padding: "0 8px",
     fontSize: "12px",
@@ -34,7 +34,7 @@ export const scaleVariants = {
 };
 
 export const styleVariants = {
-  [variants.PRIMARY]: {
+  [Variants.PRIMARY]: {
     backgroundColor: "primary",
     color: "white",
 
@@ -44,12 +44,8 @@ export const styleVariants = {
     ":active:not(:disabled)": {
       backgroundColor: "primaryPress",
     },
-    // ":disabled": {
-    //   backgroundColor: "primaryPress",
-    //   color: "white"
-    // },
   },
-  [variants.DANGER]: {
+  [Variants.DANGER]: {
     backgroundColor: "secondary",
     color: "white",
 
@@ -60,7 +56,7 @@ export const styleVariants = {
       backgroundColor: "secondaryPress",
     },
   },
-  [variants.SUCCESS]: {
+  [Variants.SUCCESS]: {
     backgroundColor: "success",
     color: "white",
 
@@ -71,7 +67,7 @@ export const styleVariants = {
       backgroundColor: "successPress",
     },
   },
-  [variants.WARNING]: {
+  [Variants.WARNING]: {
     backgroundColor: "warning",
     color: "dark800",
 
@@ -82,7 +78,7 @@ export const styleVariants = {
       backgroundColor: "warningPress",
     },
   },
-  [variants.BOOST]: {
+  [Variants.BOOST]: {
     backgroundColor: "boost",
     color: "white",
 
@@ -94,7 +90,7 @@ export const styleVariants = {
     },
   },
 
-  [variants.TERTIARY]: {
+  [Variants.TERTIARY]: {
     backgroundColor: "btnTertiary",
     color: "primary",
     border: "1px solid transparent",
@@ -108,7 +104,7 @@ export const styleVariants = {
       borderColor: "primary",
     },
   },
-  [variants.TERTIARY_OUT]: {
+  [Variants.TERTIARY_OUT]: {
     color: "primary",
     backgroundColor: "transparent",
     border: "1px solid",
@@ -123,7 +119,7 @@ export const styleVariants = {
       borderColor: "transparent",
     },
   },
-  [variants.LIGHT_OUT]: {
+  [Variants.LIGHT_OUT]: {
     color: "white",
     border: "1px solid",
     borderColor: "btnLightOutBorder",
@@ -138,7 +134,7 @@ export const styleVariants = {
       borderColor: "transparent",
     },
   },
-  [variants.LIGHT]: {
+  [Variants.LIGHT]: {
     backgroundColor: "btnLight",
     color: "white",
     border: "1px solid transparent",
@@ -152,7 +148,7 @@ export const styleVariants = {
       borderColor: "white",
     },
   },
-  [variants.TEXT]: {
+  [Variants.TEXT]: {
     backgroundColor: "transparent",
     color: "primary",
     boxShadow: "none",
@@ -164,7 +160,7 @@ export const styleVariants = {
       color: "primaryPress",
     },
   },
-  [variants.TEXT_DARK]: {
+  [Variants.TEXT_DARK]: {
     backgroundColor: "transparent",
     color: "primaryHover",
     boxShadow: "none",

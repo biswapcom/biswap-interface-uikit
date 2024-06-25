@@ -1,19 +1,24 @@
-import React, { ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
+
+//components
 import { ChevronDownIcon, ChevronUpIcon } from "../Svg";
 import Button from "./Button";
 import IconButton from "./IconButton";
 
+// types
+import { Variants } from "./types";
+
 interface Props {
   onClick?: () => void;
-  expanded?: boolean;
+  expanded?: Boolean;
   children?: ReactNode;
 }
 
-export const ExpandableButton: React.FC<Props> = ({
-                                                    onClick,
-                                                    expanded = false,
-                                                    children,
-                                                  }) => {
+export const ExpandableButton: FC<Props> = ({
+  onClick,
+  expanded = false,
+  children,
+}) => {
   return (
     <IconButton aria-label="Hide or show expandable content" onClick={onClick}>
       {children}
@@ -26,14 +31,14 @@ export const ExpandableButton: React.FC<Props> = ({
   );
 };
 
-export const ExpandableLabel: React.FC<Props> = ({
-                                                   onClick,
-                                                   expanded = false,
-                                                   children,
-                                                 }) => {
+export const ExpandableLabel: FC<Props> = ({
+  onClick,
+  expanded = false,
+  children,
+}) => {
   return (
     <Button
-      variant="text"
+      variant={Variants.TEXT}
       aria-label="Hide or show expandable content"
       onClick={onClick}
       endIcon={
