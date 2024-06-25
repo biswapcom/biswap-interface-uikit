@@ -1,7 +1,6 @@
 import React from "react";
 import Text from "./Text";
 import TooltipText from "./TooltipText";
-import { Box } from "../Box";
 
 export default {
   title: "Components/Text",
@@ -75,10 +74,7 @@ export const Default: React.FC = () => {
 export const TooltipTextVariant: React.FC = () => {
   return (
     <div>
-      <Text>
-        Use TooltipText for text that has tooltip, it accepts the same props as
-        normal Text component
-      </Text>
+      <Text>Use TooltipText for text that has tooltip, it accepts the same props as normal Text component</Text>
       <TooltipText>Example</TooltipText>
     </div>
   );

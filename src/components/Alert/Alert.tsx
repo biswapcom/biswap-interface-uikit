@@ -2,13 +2,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 // components
-import {
-  CheckSolidIcon,
-  WarningSolidIcon,
-  CloseCircleSolidIcon,
-  InfoSolidIcon,
-  type SvgProps,
-} from "../Svg";
+import { CheckSolidIcon, WarningSolidIcon, CloseCircleSolidIcon, InfoSolidIcon, type SvgProps } from "../Svg";
 import { Text } from "../Text";
 import { Flex, Box } from "../Box";
 
@@ -60,7 +54,7 @@ const getIconColor = (variant: Variants = Variants.INFO): string => {
   }
 };
 
-const IconLabel = styled(Flex)<{variant: Variants}>`
+const IconLabel = styled(Flex)<{ variant: Variants }>`
   justify-content: center;
   align-items: center;
   padding: 12px;
@@ -72,7 +66,8 @@ const IconLabel = styled(Flex)<{variant: Variants}>`
 const StyledAlert = styled(Flex)`
   padding: 12px 60px 12px 12px;
   border-radius: 16px;
-  box-shadow: 0 20px 36px -8px rgba(14, 14, 44, 0.1),
+  box-shadow:
+    0 20px 36px -8px rgba(14, 14, 44, 0.1),
     0 1px 1px rgba(0, 0, 0, 0.05);
   background-color: ${({ theme }) => theme.alert.background};
 `;
@@ -82,13 +77,7 @@ const StyledBox = styled(Box)`
   right: 8px;
 `;
 
-const Alert: FC<AlertProps> = ({
-  title,
-  children,
-  variant,
-  onClick,
-  progress,
-}) => {
+const Alert: FC<AlertProps> = ({ title, children, variant, onClick, progress }) => {
   const Icon = getIcon(variant);
   const IconColor = getIconColor(variant);
 
@@ -104,18 +93,10 @@ const Alert: FC<AlertProps> = ({
           <Text fontSize="16px" color="dark" bold>
             {title}
           </Text>
-          {typeof children === "string" ? (
-            <Text as="p">{children}</Text>
-          ) : (
-            children
-          )}
+          {typeof children === "string" ? <Text as="p">{children}</Text> : children}
         </Box>
         <StyledBox>
-          <ProgressCircle
-            onClick={onClick}
-            filled={progress}
-            notFilled={progress ? 100 - progress : 0}
-          />
+          <ProgressCircle onClick={onClick} filled={progress} notFilled={progress ? 100 - progress : 0} />
         </StyledBox>
       </Flex>
     </StyledAlert>

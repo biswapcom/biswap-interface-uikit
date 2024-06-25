@@ -5,15 +5,7 @@ import { AlertTheme } from "../components/Alert/types";
 // import { NavThemeType } from "../widgets/Menu/theme";
 // import { ModalTheme } from "../widgets/Modal/types";
 
-import {
-  Breakpoints,
-  Colors,
-  MediaQueries,
-  Radii,
-  Shadows,
-  Spacing,
-  ZIndices,
-} from "./types";
+import { Breakpoints, Colors, MediaQueries, Radii, Shadows, Spacing, ZIndices } from "./types";
 
 export interface BiswapTheme {
   siteWidth: number;
@@ -36,5 +28,5 @@ export interface BiswapTheme {
 export { darkColors, lightColors } from "./colors";
 export { default as dark } from "./dark";
 export { default as light } from "./light";
-export { default as ResetCSS } from './resetCSS';
+export { default as ResetCSS } from "./resetCSS";
 export * from "./types";

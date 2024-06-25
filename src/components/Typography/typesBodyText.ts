@@ -1,5 +1,4 @@
 import React from "react";
-import { LayoutProps, SpaceProps, TypographyProps } from "styled-system";
 
 export const tags = {
   P: "p",
@@ -18,8 +17,8 @@ export const scales = {
   SIZE10: "size10",
 } as const;
 
-export type Tags = typeof tags[keyof typeof tags];
-export type Scales = typeof scales[keyof typeof scales];
+export type Tags = (typeof tags)[keyof typeof tags];
+export type Scales = (typeof scales)[keyof typeof scales];
 export interface ScalesObj {
   xs?: Scales;
   sm?: Scales;
@@ -30,8 +29,7 @@ export interface ScalesObj {
   xxl?: Scales;
 }
 
-export interface BodyTextProps
-   {
+export interface BodyTextProps {
   color?: string;
   nowrap?: boolean;
   scale?: Scales | ScalesObj | undefined;

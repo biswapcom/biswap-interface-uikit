@@ -10,11 +10,7 @@ interface ToastActionProps {
   withGift?: boolean;
 }
 
-const ToastAction: FC<ToastActionProps> = ({
-  tweeterDescription,
-  url,
-  withGift,
-}) => {
+const ToastAction: FC<ToastActionProps> = ({ tweeterDescription, url, withGift }) => {
   return (
     <Flex>
       <SocialShareButton

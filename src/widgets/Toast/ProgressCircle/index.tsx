@@ -28,17 +28,11 @@ const StyledButton = styled.button`
   cursor: pointer;
 `;
 
-const ProgressCircle: FC<IProps> = ({
-  filled = 0,
-  notFilled = 100,
-  onClick,
-}) => {
+const ProgressCircle: FC<IProps> = ({ filled = 0, notFilled = 100, onClick }) => {
   const [percentToDisplay, setPercentToDisplay] = useState<string>("0 100");
 
   useEffect(() => {
-    setPercentToDisplay(
-      `${Number(filled).toFixed()} ${Number(notFilled).toFixed()}`
-    );
+    setPercentToDisplay(`${Number(filled).toFixed()} ${Number(notFilled).toFixed()}`);
   }, [filled, notFilled]);
 
   return (
@@ -68,14 +62,7 @@ const ProgressCircle: FC<IProps> = ({
           strokeLinecap="round"
         />
         <defs>
-          <linearGradient
-            id="diag-color"
-            x1="4.653"
-            y1="13.461"
-            x2="13.086"
-            y2="0.7"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="diag-color" x1="4.653" y1="13.461" x2="13.086" y2="0.7" gradientUnits="userSpaceOnUse">
             <stop stopColor="rgba(196, 196, 196, 0.3)" />
           </linearGradient>
         </defs>

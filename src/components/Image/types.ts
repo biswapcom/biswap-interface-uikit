@@ -2,16 +2,12 @@ import { HTMLAttributes, ImgHTMLAttributes, ReactElement } from "react";
 import { SpaceProps } from "styled-system";
 import { BoxProps } from "../Box";
 
-export interface WrapperProps
-  extends SpaceProps,
-    HTMLAttributes<HTMLDivElement> {
+export interface WrapperProps extends SpaceProps, HTMLAttributes<HTMLDivElement> {
   width: number;
   height: number;
 }
 
-export interface ImageProps
-  extends ImgHTMLAttributes<HTMLImageElement>,
-    SpaceProps {
+export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement>, SpaceProps {
   width: number;
   height: number;
   wrapperProps?: WrapperProps;
@@ -26,7 +22,7 @@ export const variants = {
   INVERTED: "inverted",
 } as const;
 
-export type Variant = typeof variants[keyof typeof variants];
+export type Variant = (typeof variants)[keyof typeof variants];
 
 export interface TokenPairImageProps extends BoxProps {
   primarySrc: string;

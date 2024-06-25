@@ -1,6 +1,10 @@
 import styled, { DefaultTheme } from "styled-components";
 import { space, layout, variant } from "styled-system";
+
+// theme
 import { scaleVariants, styleVariants } from "./theme";
+
+// types
 import { BaseButtonProps } from "./types";
 
 interface ThemedButtonProps extends BaseButtonProps {
@@ -11,7 +15,7 @@ interface TransientButtonProps extends ThemedButtonProps {
   $isLoading?: boolean;
 }
 
-const getDisabledStyles = ({ $isLoading, theme }: TransientButtonProps) => {
+const getDisabledStyles = ({ $isLoading }: TransientButtonProps) => {
   if ($isLoading === true) {
     return `
       &:disabled,
@@ -40,23 +44,21 @@ const getOpacity = ({ $isLoading = false }: TransientButtonProps) => {
   return $isLoading ? ".5" : "1";
 };
 
-const getFlat = ({
-  flatBottom = false,
-  flatTop = false,
-  flat = false,
-}: BaseButtonProps) => {
+const getFlat = ({ flatBottom = false, flatTop = false, flat = false }: BaseButtonProps) => {
   if (flatBottom) {
     return `
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
     `;
   }
+
   if (flatTop) {
     return `
       border-top-right-radius: 0;
       border-top-left-radius: 0;
     `;
   }
+
   if (flat) {
     return `
       border-radius: 0;
@@ -65,24 +67,23 @@ const getFlat = ({
 };
 
 const StyledButton = styled.button<BaseButtonProps>`
-  align-items: center;
-  border: 0;
-  cursor: pointer;
+  position: relative;
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
   font-family: inherit;
   font-size: 16px;
   font-weight: 600;
-  justify-content: center;
   line-height: 1;
   opacity: ${getOpacity};
   outline: 0;
-  transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out,
+  transition:
+    background-color 0.3s ease-in-out,
+    opacity 0.3s ease-in-out,
     color 0.3s ease-in-out;
   white-space: nowrap;
-  position: relative;
-
-  &:active:not(:disabled):not(.button--disabled):not(.button--disabled) {
-  }
+  cursor: pointer;
 
   ${getDisabledStyles}
   ${variant({
