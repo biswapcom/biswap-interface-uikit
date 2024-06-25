@@ -44,8 +44,7 @@ const mediaQueries: MediaQueries = (() => {
   }, {});
 })();
 
-const getKey = (size: string) =>
-  `is${size.charAt(0).toUpperCase()}${size.slice(1)}`;
+const getKey = (size: string) => `is${size.charAt(0).toUpperCase()}${size.slice(1)}`;
 
 const getState = () =>
   Object.keys(mediaQueries).reduce((accum, size) => {
@@ -75,12 +74,8 @@ export const getBreakpointChecks = (state: State): BreakpointChecks => {
   };
 };
 
-export const MatchBreakpointsProvider: FC<PropsWithChildren> = ({
-  children,
-}) => {
-  const [state, setState] = useState<BreakpointChecks>(() =>
-    getBreakpointChecks(getState())
-  );
+export const MatchBreakpointsProvider: FC<PropsWithChildren> = ({ children }) => {
+  const [state, setState] = useState<BreakpointChecks>(() => getBreakpointChecks(getState()));
 
   useIsomorphicEffect(() => {
     // Create listeners for each media query returning a function to unsubscribe
@@ -125,9 +120,5 @@ export const MatchBreakpointsProvider: FC<PropsWithChildren> = ({
     };
   }, []);
 
-  return (
-    <MatchBreakpointsContext.Provider value={state}>
-      {children}
-    </MatchBreakpointsContext.Provider>
-  );
+  return <MatchBreakpointsContext.Provider value={state}>{children}</MatchBreakpointsContext.Provider>;
 };

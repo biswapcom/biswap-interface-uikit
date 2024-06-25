@@ -5,18 +5,9 @@ import { SvgProps } from "../../../types";
 const Icon: React.FC<SvgProps> = (props) => {
   return (
     <Svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path
-        opacity="0.48"
-        d="M17 3H21C22.1046 3 23 3.89543 23 5V19C23 20.1046 22.1046 21 21 21H17V3Z"
-      />
-      <path
-        opacity="0.48"
-        d="M3 21H7V22C7 22.5523 6.55228 23 6 23H4C3.44772 23 3 22.5523 3 22V21Z"
-      />
-      <path
-        opacity="0.48"
-        d="M17 21H21V22C21 22.5523 20.5523 23 20 23H18C17.4477 23 17 22.5523 17 22V21Z"
-      />
+      <path opacity="0.48" d="M17 3H21C22.1046 3 23 3.89543 23 5V19C23 20.1046 22.1046 21 21 21H17V3Z" />
+      <path opacity="0.48" d="M3 21H7V22C7 22.5523 6.55228 23 6 23H4C3.44772 23 3 22.5523 3 22V21Z" />
+      <path opacity="0.48" d="M17 21H21V22C21 22.5523 20.5523 23 20 23H18C17.4477 23 17 22.5523 17 22V21Z" />
       <path
         fillRule="evenodd"
         clipRule="evenodd"

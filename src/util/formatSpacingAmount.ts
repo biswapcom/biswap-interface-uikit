@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const formatSpacingAmount = (x: any) => {
   if (x) {
     const parts = x.toString().split(".");

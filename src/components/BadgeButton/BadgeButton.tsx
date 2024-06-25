@@ -9,18 +9,16 @@ const Wrapper = styled.button<BadgeButtonProps>`
   justify-content: center;
   align-items: center;
   padding: ${({ isIcon }) =>
-    isIcon === "left"
-      ? "4px 8px 4px 4px"
-      : isIcon === "right"
-      ? "4px 4px 4px 8px"
-      : "4px 8px"};
+    isIcon === "left" ? "4px 8px 4px 4px" : isIcon === "right" ? "4px 4px 4px 8px" : "4px 8px"};
   border-radius: 16px;
   height: 20px;
   font-size: 10px;
   font-weight: 600;
   outline: none;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out,
     border-color 0.1s ease-in-out;
 
   ${space}
@@ -31,15 +29,7 @@ const Wrapper = styled.button<BadgeButtonProps>`
   })}
 `;
 
-const Badge: FC<BadgeButtonProps> = ({
-  children,
-  badgeType,
-  fontSize,
-  fontWeight,
-  isIcon,
-  isActive,
-  ...props
-}) => {
+const Badge: FC<BadgeButtonProps> = ({ children, badgeType, fontSize, fontWeight, isIcon, isActive, ...props }) => {
   return (
     <Wrapper
       badgeType={badgeType}

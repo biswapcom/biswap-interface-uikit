@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import noop from "lodash/noop";
 import { Meta } from "@storybook/react/types-6-0";
@@ -12,9 +12,9 @@ import { Box } from "../Box";
 import { Variants } from "./types";
 
 const Wrapper = styled(Box)`
-    width: 400px;
-    padding: 32px;
-`
+  width: 400px;
+  padding: 32px;
+`;
 
 const Row = styled(Box)`
   position: relative;
@@ -68,12 +68,7 @@ export const WithHandler: FC = () => {
         </Alert>
       </Row>
       <Row>
-        <Alert
-          onClick={handleClick}
-          title="Danger A Long Title"
-          variant={Variants.DANGER}
-          progress={50}
-        />
+        <Alert onClick={handleClick} title="Danger A Long Title" variant={Variants.DANGER} progress={50} />
       </Row>
       <Row>
         <Alert onClick={handleClick} title="Warning" variant={Variants.DANGER} progress={75} />

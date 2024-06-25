@@ -1,5 +1,4 @@
 import React from "react";
-/* eslint-disable import/no-unresolved */
 import { Meta } from "@storybook/react/types-6-0";
 import Badge from "./Badge";
 import Text from "../Text/Text";
@@ -23,7 +22,9 @@ const BadgeWrapper = styled.div`
 export const Default: React.FC = () => {
   return (
     <Wrapper>
-      <Text fontSize="32px" mb={20}>Badges</Text>
+      <Text fontSize="32px" mb={20}>
+        Badges
+      </Text>
       <BadgeWrapper>
         <Badge isLarge badgeType="notActive">
           notActive

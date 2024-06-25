@@ -21,8 +21,8 @@ export const scales = {
   SIZE10: "size10",
 } as const;
 
-export type Tags = typeof tags[keyof typeof tags];
-export type Scales = typeof scales[keyof typeof scales];
+export type Tags = (typeof tags)[keyof typeof tags];
+export type Scales = (typeof scales)[keyof typeof scales];
 
 export interface HeadTextProps {
   as?: Tags;

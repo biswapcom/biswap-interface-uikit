@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useEffect, useRef, useState} from "react";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import { TransitionGroup } from "react-transition-group";
 import styled from "styled-components";
 
@@ -129,6 +129,7 @@ const ToastContainer: FC<ToastContainerProps> = ({
       clearTimeout(intervalRef.current);
     }
 
+    // eslint-disable-next-line lodash/prefer-noop
     timer.current = window.setTimeout(() => {}, currentTime);
   };
 
