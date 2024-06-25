@@ -1,52 +1,52 @@
-import { badgeTypes } from "./types";
+import { BadgeTypes } from "./types";
 
 export const BadgeTypesContainer = {
-  [badgeTypes.SUCCESS]: {
+  [BadgeTypes.SUCCESS]: {
     backgroundColor: "success",
     color: "white",
     border: "0",
   },
-  [badgeTypes.ERROR]: {
+  [BadgeTypes.ERROR]: {
     backgroundColor: "secondary",
     color: "white",
     border: "0",
   },
-  [badgeTypes.WARNING]: {
+  [BadgeTypes.WARNING]: {
     backgroundColor: "warning",
     color: "dark800",
     border: "0",
   },
-  [badgeTypes.PRIMARY]: {
+  [BadgeTypes.PRIMARY]: {
     backgroundColor: "primary",
     color: "white",
     border: "0",
   },
-  [badgeTypes.BOOST]: {
+  [BadgeTypes.BOOST]: {
     backgroundColor: "boost",
     color: "white",
     border: "0",
   },
-  [badgeTypes.ACTIVE]: {
+  [BadgeTypes.ACTIVE]: {
     backgroundColor: "successOpacity",
     color: "success",
     border: "1px solid transparent",
   },
-  [badgeTypes.NOT_ACTIVE]: {
+  [BadgeTypes.NOT_ACTIVE]: {
     backgroundColor: "secondaryOpacity",
     color: "secondary",
     border: "1px solid transparent",
   },
-  [badgeTypes.CORE]: {
+  [BadgeTypes.CORE]: {
     backgroundColor: "primaryOpacity",
     color: "primary",
     border: "1px solid transparent",
   },
-  [badgeTypes.WARNING_OPACITY]: {
+  [BadgeTypes.WARNING_OPACITY]: {
     backgroundColor: "warningOpacity",
     color: "warning",
     border: "1px solid transparent",
   },
-  [badgeTypes.LIGHT]: {
+  [BadgeTypes.LIGHT]: {
     backgroundColor: "gray200",
     color: "dark800",
     border: "0",
