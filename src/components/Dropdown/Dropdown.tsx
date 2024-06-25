@@ -1,0 +1,257 @@
+import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import styled, { css } from "styled-components";
+import { variant, space } from "styled-system";
+import { DropdownProps, Position, PositionProps, OptionProps } from "./types";
+import IconComponent from "../Svg/IconComponent";
+import {
+  scaleVariantsContainer,
+  scaleVariantsTop,
+  scaleVariantsContent,
+  styleVariantsTop,
+  scaleVariantItem,
+} from "./theme";
+import ChevronDown from "../Svg/Icons/Arrows/ChevronDown";
+import { Scale, scales } from "./types";
+
+const getBottom = ({ position }: PositionProps) => {
+  if (position === "top") {
+    return "calc(100% + 8px)";
+  }
+  return "-8px";
+};
+
+const Container = styled.div<{
+  maxWidth?: string;
+  minWidth?: string;
+  scale?: string;
+}>`
+  position: relative;
+  width: 100%;
+  max-width: ${({ maxWidth }) => maxWidth || "none"};
+  min-width: ${({ minWidth }) => minWidth || "0"};
+
+  ${variant({
+    prop: "scale",
+    variants: scaleVariantsContainer,
+  })}
+
+  ${space}
+`;
+const DropdownTop = styled.div<{
+  disabled?: boolean;
+  scale?: string;
+  variant?: string;
+}>`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: 1px solid;
+  font-weight: 600;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  transition: all 0.4s ease-in-out;
+  opacity: ${({ disabled }) => (disabled ? ".56" : "1")};
+
+  ${variant({
+    prop: "scale",
+    variants: scaleVariantsTop,
+  })}
+  ${variant({
+    variants: styleVariantsTop,
+  })}
+
+  ${(props) =>
+    props.disabled &&
+    props.variant === "light" &&
+    css`
+      border-color: ${({ theme }) => theme.colors.gray300} !important;
+      color: ${({ theme }) => theme.colors.gray900} !important;
+    `}
+  ${(props) =>
+    props.disabled &&
+    props.variant === "dark" &&
+    css`
+      border-color: ${({ theme }) => theme.colors.dark500} !important;
+      color: ${({ theme }) => theme.colors.pastelBlue} !important;
+    `}
+`;
+const Label = styled.span`
+  flex-grow: 1;
+`;
+const StyledArrow = styled(ChevronDown)<{ isOpen: boolean; variant?: string }>`
+  transition: transform 0.4s ease-in-out;
+  transform: ${({ isOpen }) => (isOpen ? "scale(1,-1)" : "scale(1,1)")};
+`;
+const DropdownContent = styled.div<{ position?: Position; scale?: string }>`
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: ${getBottom};
+  z-index: 101;
+  box-shadow: ${({ position }) =>
+    position === "bottom"
+      ? "0px 16px 32px rgba(0, 26, 67, 0.24)"
+      : "box-shadow: 0px -16px 32px rgba(0, 26, 67, 0.24);"};
+  background: ${({ theme }) => theme.colors.white};
+  overflow: hidden;
+  transform: ${({ position }) =>
+    position === "bottom" ? "translateY(100%)" : "translateY(0)"};
+
+  ${variant({
+    prop: "scale",
+    variants: scaleVariantsContent,
+  })}
+`;
+const DropdownItem = styled.div<{ scale?: string; selected?: boolean }>`
+  display: flex;
+  align-items: center;
+  color: ${({ theme, selected }) =>
+    selected ? theme.colors.primary : theme.colors.dark800};
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.4s ease-out;
+
+  ${variant({
+    prop: "scale",
+    variants: scaleVariantItem,
+  })}
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.gray200};
+  }
+`;
+
+const Dropdown: React.FC<DropdownProps> = ({
+  position = "bottom",
+  children,
+  maxWidth,
+  minWidth,
+  scale,
+  variant,
+  disabled,
+  options,
+  onChange,
+  selectedItem,
+  ...props
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const wrapperRef = useRef(null);
+  const [selectedOption, setSelectedOption] = useState(
+    selectedItem || options[0]
+  );
+
+  useEffect(() => {
+    if (selectedItem && selectedItem?.value !== selectedOption?.value)
+      setSelectedOption(selectedItem);
+  }, [selectedItem]);
+
+  const toggling = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!disabled) {
+      setIsOpen(!isOpen);
+      event.stopPropagation();
+    }
+    return;
+  };
+  const onOptionClicked = (option: OptionProps) => () => {
+    setIsOpen(false);
+    setSelectedOption(options[options.indexOf(option)]);
+    if (onChange) {
+      onChange(option);
+    }
+  };
+  const scaleVariantsImage = (scale: Scale): number => {
+    switch (scale) {
+      case scales.LG:
+        return 24;
+      case scales.MD:
+        return 20;
+      case scales.SM:
+      default:
+        return 16;
+    }
+  };
+  useEffect(() => {
+    function handleClickOutside(event: { target: any }) {
+      if (
+        wrapperRef.current &&
+        !(wrapperRef.current as HTMLElement).contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside, {
+      passive: true,
+    });
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [wrapperRef]);
+
+  return (
+    <Container
+      maxWidth={maxWidth}
+      minWidth={minWidth}
+      ref={wrapperRef}
+      scale={scale}
+      {...props}
+    >
+      <DropdownTop
+        scale={scale}
+        variant={variant}
+        onClick={toggling}
+        disabled={disabled}
+        className={isOpen ? "open" : disabled ? "disabled" : ""}
+      >
+        {selectedOption.icon &&
+          (selectedOption.icon.isAws ? (
+            <Image
+              src={selectedOption.icon.name}
+              width={scaleVariantsImage(scale)}
+              height={scaleVariantsImage(scale)}
+              quality={90}
+              alt="icon"
+            />
+          ) : (
+            <IconComponent
+              iconName={selectedOption.icon.name}
+              color={selectedOption.icon.color}
+            />
+          ))}
+        <Label>{selectedOption.label}</Label>
+        <StyledArrow className="arrow" isOpen={isOpen} />
+      </DropdownTop>
+      {isOpen && (
+        <DropdownContent position={position} scale={scale}>
+          {options.map((option) => (
+            <DropdownItem
+              scale={scale}
+              selected={option.label === selectedOption.label}
+              onClick={onOptionClicked(option)}
+              key={option.label}
+            >
+              {option.icon &&
+                (option.icon.isAws ? (
+                  <Image
+                    src={option.icon.name}
+                    width={scaleVariantsImage(scale)}
+                    height={scaleVariantsImage(scale)}
+                    quality={90}
+                    alt="icon"
+                  />
+                ) : (
+                  <IconComponent
+                    iconName={option.icon.name}
+                    color={option.icon.color}
+                  />
+                ))}
+              <span>{option.label}</span>
+            </DropdownItem>
+          ))}
+        </DropdownContent>
+      )}
+    </Container>
+  );
+};
+
+export default Dropdown;
