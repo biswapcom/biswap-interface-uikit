@@ -1,3 +1,3 @@
 export { default as Image } from "./Image";
 
-export type { ImageProps, TokenPairImageProps, Variants } from "./types";
+export { type ImageProps, type TokenPairImageProps, Variants as ImageVariants } from "./types";

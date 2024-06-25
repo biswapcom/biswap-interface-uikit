@@ -1,27 +1,26 @@
-import React from "react";
+import React, { FC } from "react";
 import styled, { useTheme } from "styled-components";
 
 // components
 import { Button } from "../Button";
 import { Box, Flex } from "../Box";
+import { Image } from "../Image";
 
 // types
-import { socials, SocialShareButtonTypes } from "./types";
+import { type SocialShareButtonTypes, Socials } from "./types";
+import { ButtonScales } from "../Button";
 
 // config
 import { socialLinks, socialStyles } from "./config";
-import { Image } from "../Image";
 
 // @ts-ignore
 import gift from "./shared/gift.png";
-import { Scales } from "../Button/types";
 
 const Wrapper = styled(Box)<{ disabled?: boolean; width: string }>`
   position: relative;
   width: ${({ width }) => width ?? "auto"};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: opacity .3s ease-in-out;
-
   opacity: ${({ disabled }) => (disabled ? 0.3 : 1)};
   
   &:hover {
@@ -30,26 +29,26 @@ const Wrapper = styled(Box)<{ disabled?: boolean; width: string }>`
 `;
 
 const GiftWrap = styled(Flex)<{ withGift?: boolean }>`
-  display: ${({ withGift }) => (withGift ? "block" : "none")};
   position: absolute;
+  right: 0;
+  bottom: 0;
+  display: ${({ withGift }) => (withGift ? "block" : "none")};
   width: 37px;
   height: 32px;
-  bottom: 0;
-  right: 0;
 `;
 
-const SocialShareButton = ({
-  social = socials.TELEGRAM,
+const SocialShareButton: FC<SocialShareButtonTypes> = ({
+  social = Socials.TELEGRAM,
   link,
   name,
   message,
-  scale = Scales.LG,
+  scale = ButtonScales.LG,
   target = "_blank",
   width = "auto",
   withGift,
   disabled,
   ...props
-}: SocialShareButtonTypes) => {
+}) => {
   const theme = useTheme();
   const defaultName = social.charAt(0).toUpperCase() + social.slice(1);
   const { icon, backgroundColor } = socialStyles({ theme, disabled })[social];
