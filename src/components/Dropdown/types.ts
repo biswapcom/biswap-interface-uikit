@@ -6,8 +6,8 @@ export interface PositionProps {
   position?: Position;
 }
 
-export type Variant = typeof variants[keyof typeof variants];
-export type Scale = typeof scales[keyof typeof scales];
+export type Variant = (typeof variants)[keyof typeof variants];
+export type Scale = (typeof scales)[keyof typeof scales];
 
 export interface DropdownProps extends PositionProps, SpaceProps {
   maxWidth?: string;

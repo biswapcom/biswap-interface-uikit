@@ -4,15 +4,7 @@ import styled, { css } from "styled-components";
 import { variant as systemVariant, space } from "styled-system";
 
 // types
-import {
-  DropdownButtonProps,
-  Position,
-  OptionProps,
-  VARIANTS,
-  Scale,
-  SCALES,
-  Variant,
-} from "./types";
+import { DropdownButtonProps, Position, OptionProps, VARIANTS, Scale, SCALES, Variant } from "./types";
 
 // theme
 import {
@@ -128,13 +120,10 @@ const DropdownContent = styled(Box)<{
   bottom: ${getBottom};
   width: ${({ dropDownWidth }) => (dropDownWidth ? dropDownWidth : "100%")};
   box-shadow: ${({ contentPosition }) =>
-    contentPosition === "bottom"
-      ? "0px 16px 32px rgba(0, 26, 67, 0.24)"
-      : "0px -16px 32px rgba(0, 26, 67, 0.24)"};
+    contentPosition === "bottom" ? "0px 16px 32px rgba(0, 26, 67, 0.24)" : "0px -16px 32px rgba(0, 26, 67, 0.24)"};
   background: ${({ theme }) => theme.colors.white};
   overflow: hidden;
-  transform: ${({ contentPosition }) =>
-    contentPosition === "bottom" ? "translateY(100%)" : "translateY(0)"};
+  transform: ${({ contentPosition }) => (contentPosition === "bottom" ? "translateY(100%)" : "translateY(0)")};
   transition: height 0.3s;
   z-index: 101;
 
@@ -146,8 +135,7 @@ const DropdownContent = styled(Box)<{
 
 const DropdownItem = styled(Flex)<{ scale: Scale; selected?: boolean }>`
   align-items: center;
-  color: ${({ theme, selected }) =>
-    selected ? theme.colors.primary : theme.colors.dark800};
+  color: ${({ theme, selected }) => (selected ? theme.colors.primary : theme.colors.dark800)};
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.4s ease-out;
@@ -177,24 +165,18 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedOption, setSelectedOption] = useState<OptionProps>(
-    selectedItem || options[0]
-  );
+  const [selectedOption, setSelectedOption] = useState<OptionProps>(selectedItem || options[0]);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const dropdownMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (selectedItem && selectedItem?.value !== selectedOption?.value)
-      setSelectedOption(selectedItem);
+    if (selectedItem && selectedItem?.value !== selectedOption?.value) setSelectedOption(selectedItem);
   }, [selectedItem, selectedOption]);
 
   useEffect(() => {
     function handleClickOutside(event: { target: any }) {
-      if (
-        wrapperRef.current &&
-        !(wrapperRef.current as HTMLElement).contains(event.target)
-      ) {
+      if (wrapperRef.current && !(wrapperRef.current as HTMLElement).contains(event.target)) {
         setIsOpen(false);
       }
     }
@@ -249,13 +231,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
   };
 
   return (
-    <Container
-      maxWidth={maxWidth}
-      minWidth={minWidth}
-      ref={wrapperRef}
-      scale={scale}
-      {...props}
-    >
+    <Container maxWidth={maxWidth} minWidth={minWidth} ref={wrapperRef} scale={scale} {...props}>
       <DropdownTop
         scale={scale}
         variant={variant}
@@ -309,10 +285,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
                   alt="icon"
                 />
               ) : (
-                <IconComponent
-                  iconName={option.icon.name}
-                  color={option.icon.color}
-                />
+                <IconComponent iconName={option.icon.name} color={option.icon.color} />
               ))}
             <span>{option.label}</span>
           </DropdownItem>

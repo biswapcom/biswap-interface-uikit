@@ -24,30 +24,12 @@ export const Default: React.FC = () => {
     <>
       <WrapperLight>
         <div>
-          <Checkbox
-            labelOrientation="left"
-            colorVariant="light"
-            label="On left label"
-          />
-          <Checkbox
-            labelOrientation="right"
-            colorVariant="light"
-            label="On right label"
-          />
+          <Checkbox labelOrientation="left" colorVariant="light" label="On left label" />
+          <Checkbox labelOrientation="right" colorVariant="light" label="On right label" />
         </div>
         <div style={{ marginBottom: "24px" }}>
-          <Checkbox
-            scale="sm"
-            labelOrientation="left"
-            colorVariant="light"
-            label="On left label"
-          />
-          <Checkbox
-            scale="sm"
-            labelOrientation="right"
-            colorVariant="light"
-            label="On right label"
-          />
+          <Checkbox scale="sm" labelOrientation="left" colorVariant="light" label="On left label" />
+          <Checkbox scale="sm" labelOrientation="right" colorVariant="light" label="On right label" />
         </div>
         <div>
           <Checkbox />
@@ -59,30 +41,12 @@ export const Default: React.FC = () => {
 
       <WrapperDark>
         <div>
-          <Checkbox
-            labelOrientation="left"
-            colorVariant="dark"
-            label="On left label"
-          />
-          <Checkbox
-            labelOrientation="right"
-            colorVariant="dark"
-            label="On right label"
-          />
+          <Checkbox labelOrientation="left" colorVariant="dark" label="On left label" />
+          <Checkbox labelOrientation="right" colorVariant="dark" label="On right label" />
         </div>
         <div style={{ marginBottom: "24px" }}>
-          <Checkbox
-            scale="sm"
-            labelOrientation="left"
-            colorVariant="dark"
-            label="On left label"
-          />
-          <Checkbox
-            scale="sm"
-            labelOrientation="right"
-            colorVariant="dark"
-            label="On right label"
-          />
+          <Checkbox scale="sm" labelOrientation="left" colorVariant="dark" label="On left label" />
+          <Checkbox scale="sm" labelOrientation="right" colorVariant="dark" label="On right label" />
         </div>
         <div>
           <Checkbox />

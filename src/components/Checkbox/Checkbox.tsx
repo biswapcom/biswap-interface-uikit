@@ -20,8 +20,7 @@ const Wrapper = styled.label<{
 }>`
   display: inline-flex;
   align-items: ${({ checkboxPosition }) => checkboxPosition ?? "center"};
-  flex-direction: ${({ labelOrientation }) =>
-    labelOrientation === "left" ? "row-reverse" : "row"};
+  flex-direction: ${({ labelOrientation }) => (labelOrientation === "left" ? "row-reverse" : "row")};
 `;
 
 const CheckboxInput = styled.input.attrs({ type: "checkbox" })<CheckboxProps>`
@@ -36,9 +35,10 @@ const CheckboxInput = styled.input.attrs({ type: "checkbox" })<CheckboxProps>`
   min-width: ${getScale};
   border: 2px solid transparent;
   border-radius: 4px;
-  background-color: ${({ theme }) =>
-    getRgba(theme.colors.pastelBlue, theme, 0.16)};
-  transition: background-color 0.4s ease-in-out, border-color 0.4s ease;
+  background-color: ${({ theme }) => getRgba(theme.colors.pastelBlue, theme, 0.16)};
+  transition:
+    background-color 0.4s ease-in-out,
+    border-color 0.4s ease;
 
   &:after {
     content: "";
@@ -77,8 +77,8 @@ const CheckboxInput = styled.input.attrs({ type: "checkbox" })<CheckboxProps>`
       colorVariant === "dark"
         ? theme.colors.white
         : colorVariant === "light"
-        ? theme.colors.dark800
-        : theme.colors.gray900};
+          ? theme.colors.dark800
+          : theme.colors.gray900};
   }
 
   &:disabled {
@@ -105,10 +105,7 @@ const Checkbox: FC<CheckboxProps> = ({
   checkboxPosition,
 }) => {
   return (
-    <Wrapper
-      checkboxPosition={checkboxPosition}
-      labelOrientation={labelOrientation}
-    >
+    <Wrapper checkboxPosition={checkboxPosition} labelOrientation={labelOrientation}>
       <CheckboxInput
         checked={value}
         scale={scale}

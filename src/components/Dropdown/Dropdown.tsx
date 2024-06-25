@@ -95,8 +95,7 @@ const DropdownContent = styled.div<{ position?: Position; scale?: string }>`
       : "box-shadow: 0px -16px 32px rgba(0, 26, 67, 0.24);"};
   background: ${({ theme }) => theme.colors.white};
   overflow: hidden;
-  transform: ${({ position }) =>
-    position === "bottom" ? "translateY(100%)" : "translateY(0)"};
+  transform: ${({ position }) => (position === "bottom" ? "translateY(100%)" : "translateY(0)")};
 
   ${systemVariant({
     prop: "scale",
@@ -106,8 +105,7 @@ const DropdownContent = styled.div<{ position?: Position; scale?: string }>`
 const DropdownItem = styled.div<{ scale?: string; selected?: boolean }>`
   display: flex;
   align-items: center;
-  color: ${({ theme, selected }) =>
-    selected ? theme.colors.primary : theme.colors.dark800};
+  color: ${({ theme, selected }) => (selected ? theme.colors.primary : theme.colors.dark800)};
   cursor: pointer;
   font-weight: 600;
   transition: background-color 0.4s ease-out;
@@ -136,13 +134,10 @@ const Dropdown: React.FC<DropdownProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef(null);
-  const [selectedOption, setSelectedOption] = useState(
-    selectedItem || options[0]
-  );
+  const [selectedOption, setSelectedOption] = useState(selectedItem || options[0]);
 
   useEffect(() => {
-    if (selectedItem && selectedItem?.value !== selectedOption?.value)
-      setSelectedOption(selectedItem);
+    if (selectedItem && selectedItem?.value !== selectedOption?.value) setSelectedOption(selectedItem);
   }, [selectedItem, selectedOption]);
 
   const toggling = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -172,10 +167,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   };
   useEffect(() => {
     function handleClickOutside(event: { target: any }) {
-      if (
-        wrapperRef.current &&
-        !(wrapperRef.current as HTMLElement).contains(event.target)
-      ) {
+      if (wrapperRef.current && !(wrapperRef.current as HTMLElement).contains(event.target)) {
         setIsOpen(false);
       }
     }
@@ -188,13 +180,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   }, [wrapperRef]);
 
   return (
-    <Container
-      maxWidth={maxWidth}
-      minWidth={minWidth}
-      ref={wrapperRef}
-      scale={scale}
-      {...props}
-    >
+    <Container maxWidth={maxWidth} minWidth={minWidth} ref={wrapperRef} scale={scale} {...props}>
       <DropdownTop
         scale={scale}
         variant={variant}
@@ -212,10 +198,7 @@ const Dropdown: React.FC<DropdownProps> = ({
               alt="icon"
             />
           ) : (
-            <IconComponent
-              iconName={selectedOption.icon.name}
-              color={selectedOption.icon.color}
-            />
+            <IconComponent iconName={selectedOption.icon.name} color={selectedOption.icon.color} />
           ))}
         <Label>{selectedOption.label}</Label>
         <StyledArrow className="arrow" isOpen={isOpen} />
@@ -239,10 +222,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                     alt="icon"
                   />
                 ) : (
-                  <IconComponent
-                    iconName={option.icon.name}
-                    color={option.icon.color}
-                  />
+                  <IconComponent iconName={option.icon.name} color={option.icon.color} />
                 ))}
               <span>{option.label}</span>
             </DropdownItem>
