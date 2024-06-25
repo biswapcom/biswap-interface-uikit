@@ -5,7 +5,7 @@ export enum Types {
   DANGER = "danger",
   WARNING = "warning",
   INFO = "info",
-};
+}
 
 export interface Toast {
   id: string;
@@ -34,10 +34,7 @@ export interface ToastContainerProps {
   viewBscScanLabel?: string;
 }
 
-export type ColoredToastContainerProps = Pick<
-  ToastContainerProps,
-  "ttl" | "onRemove"
->;
+export type ColoredToastContainerProps = Pick<ToastContainerProps, "ttl" | "onRemove">;
 
 export interface ToastProps {
   toast: Toast;

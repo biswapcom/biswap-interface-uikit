@@ -1,9 +1,4 @@
-import React, {
-  cloneElement,
-  ElementType,
-  isValidElement,
-  ReactElement,
-} from "react";
+import React, { cloneElement, ElementType, isValidElement, ReactElement } from "react";
 import styled, { keyframes } from "styled-components";
 
 // utils
@@ -101,8 +96,7 @@ const Bubble = styled.span<{ bubbleColor?: keyof MarkerType }>`
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: ${({theme, bubbleColor}) =>
-    !bubbleColor ? theme.colors.success : theme.colors[bubbleColor]};
+  background-color: ${({ theme, bubbleColor }) => (!bubbleColor ? theme.colors.success : theme.colors[bubbleColor])};
   transform: translateX(100%);
 
   &:before {
@@ -115,14 +109,11 @@ const Bubble = styled.span<{ bubbleColor?: keyof MarkerType }>`
     height: 10px;
     border-radius: 50%;
     z-index: 1;
-    animation: ${({color}) =>
-      color ? PULSES[color.toUpperCase()] : PULSE_SUCCESS} 2s infinite;
+    animation: ${({ color }) => (color ? PULSES[color.toUpperCase()] : PULSE_SUCCESS)} 2s infinite;
   }
 `;
 
-const Button = <E extends ElementType = "button">(
-  props: ButtonProps<E>
-): ReactElement => {
+const Button = <E extends ElementType = "button">(props: ButtonProps<E>): ReactElement => {
   const {
     addBubble,
     bubbleColor,
@@ -143,11 +134,7 @@ const Button = <E extends ElementType = "button">(
   const isDisabled = isLoading || disabled;
   const classNames = className ? [className] : [];
   const loadingText = loadingTitle ?? "Loading...";
-  const endIconElement = isLoading ? (
-    <AutoRenewAnimateIcon color="contrast"/>
-  ) : (
-    endIcon
-  );
+  const endIconElement = isLoading ? <AutoRenewAnimateIcon color="contrast" /> : endIcon;
 
   if (isLoading) {
     classNames.push("button--loading");

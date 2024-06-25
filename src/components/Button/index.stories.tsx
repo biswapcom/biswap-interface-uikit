@@ -1,18 +1,18 @@
 import React, { FC, useState } from "react";
-import {camelCase} from "lodash";
-import {BrowserRouter, Link} from "react-router-dom";
+import { camelCase } from "lodash";
+import { BrowserRouter, Link } from "react-router-dom";
 import styled from "styled-components";
 
 // components
 import { Box, Flex } from "../Box";
-import {BodyText} from "../Typography";
-import {AutoRenewIcon, ChevronRightCircleSolidIcon, PlusIcon} from "../Svg";
+import { BodyText } from "../Typography";
+import { AutoRenewIcon, ChevronRightCircleSolidIcon, PlusIcon } from "../Svg";
 import IconButton from "./IconButton";
 import Button from "./Button";
-import {ExpandableButton, ExpandableLabel} from "./ExpandableButton";
+import { ExpandableButton, ExpandableLabel } from "./ExpandableButton";
 
 // types
-import {Scales, Variants as ButtonVariants} from "./types";
+import { Scales, Variants as ButtonVariants } from "./types";
 
 export default {
   title: "Components/Button",
@@ -101,13 +101,7 @@ export const ButtonDefault: FC = () => {
         </BodyText>
         {Object.values(baseBtn).map((variant) => {
           return (
-            <Button
-              isLoading
-              key={variant}
-              variant={variant}
-              scale={Scales.LG}
-              mr="8px"
-            >
+            <Button isLoading key={variant} variant={variant} scale={Scales.LG} mr="8px">
               {`${camelCase(variant)}`}
             </Button>
           );
@@ -120,13 +114,7 @@ export const ButtonDefault: FC = () => {
         </BodyText>
         {Object.values(baseBtn).map((variant) => {
           return (
-            <Button
-              key={variant}
-              variant={variant}
-              scale={Scales.LG}
-              mr="8px"
-              disabled
-            >
+            <Button key={variant} variant={variant} scale={Scales.LG} mr="8px" disabled>
               {`${camelCase(variant)}`}
             </Button>
           );
@@ -152,14 +140,7 @@ export const ButtonDefault: FC = () => {
           </BodyText>
           {Object.values(darkBgBtn).map((variant) => {
             return (
-              <Button
-                key="md"
-                variant={variant}
-                scale={Scales.LG}
-                mr="8px"
-                mb="8px"
-                disabled
-              >
+              <Button key="md" variant={variant} scale={Scales.LG} mr="8px" mb="8px" disabled>
                 {`${camelCase(variant)}`}
               </Button>
             );
@@ -167,13 +148,7 @@ export const ButtonDefault: FC = () => {
         </Box>
       </Flex>
 
-      <Flex
-        justifyContent="space-between"
-        mx="-24px"
-        py="24px"
-        px="24px"
-        background="gray100"
-      >
+      <Flex justifyContent="space-between" mx="-24px" py="24px" px="24px" background="gray100">
         <Box mb="48px">
           <BodyText color="backgroundDark" mb="16px" bold>
             Light background
@@ -192,14 +167,7 @@ export const ButtonDefault: FC = () => {
           </BodyText>
           {Object.values(lightBgBtn).map((variant) => {
             return (
-              <Button
-                key="md"
-                variant={variant}
-                scale={Scales.LG}
-                mr="8px"
-                mb="8px"
-                disabled
-              >
+              <Button key="md" variant={variant} scale={Scales.LG} mr="8px" mb="8px" disabled>
                 {`${camelCase(variant)}`}
               </Button>
             );
@@ -255,22 +223,10 @@ export const Anchors: FC = () => {
         })}
       </Box>
       <Box>
-        <Button
-          as="a"
-          href="https://pancakeswap.finance"
-          mr="8px"
-          external
-          disabled
-        >
+        <Button as="a" href="https://pancakeswap.finance" mr="8px" external disabled>
           Disabled
         </Button>
-        <Button
-          as="a"
-          href="https://pancakeswap.finance"
-          variant={ButtonVariants.PRIMARY}
-          external
-          disabled
-        >
+        <Button as="a" href="https://pancakeswap.finance" variant={ButtonVariants.PRIMARY} external disabled>
           Disabled
         </Button>
       </Box>
@@ -291,10 +247,7 @@ export const Variants: FC = () => {
           <Button width="100%">Full size</Button>
         </Row>
         <Row>
-          <Button
-            isLoading
-            endIcon={<AutoRenewIcon spin color="currentColor" />}
-          >
+          <Button isLoading endIcon={<AutoRenewIcon spin color="currentColor" />}>
             Approving
           </Button>
           <Button isLoading variant={ButtonVariants.SUCCESS}>
@@ -336,14 +289,8 @@ export const Expandable: FC = () => {
     <Box width="640px">
       <BrowserRouter>
         <Row>
-          <ExpandableButton
-            expanded={expanded}
-            onClick={() => setExpanded((prev) => !prev)}
-          />
-          <ExpandableLabel
-            expanded={expanded}
-            onClick={() => setExpanded((prev) => !prev)}
-          >
+          <ExpandableButton expanded={expanded} onClick={() => setExpanded((prev) => !prev)} />
+          <ExpandableLabel expanded={expanded} onClick={() => setExpanded((prev) => !prev)}>
             ExpandableLabel
           </ExpandableLabel>
         </Row>

@@ -77,12 +77,7 @@ const getBadgeColor = ({ badgeType = "light", theme }: StyledBadgeProps) => {
     return theme.colors.warning;
   }
 
-  if (
-    badgeType === "new" ||
-    badgeType === "primary" ||
-    badgeType === "hot" ||
-    badgeType === "boost"
-  ) {
+  if (badgeType === "new" || badgeType === "primary" || badgeType === "hot" || badgeType === "boost") {
     return theme.colors.white;
   }
 
@@ -100,8 +95,8 @@ const Wrapper = styled.div<BadgeProps>`
       ? isIcon === "left"
         ? "4px 8px 4px 4px"
         : isIcon === "right"
-        ? "4px 4px 4px 8px"
-        : "4px 8px"
+          ? "4px 4px 4px 8px"
+          : "4px 8px"
       : "8px 24px"};
   // background: ${getBadgeBg};
   // color: ${getBadgeColor};
@@ -118,15 +113,7 @@ const Wrapper = styled.div<BadgeProps>`
   })}
 `;
 
-const Badge: FC<BadgeProps> = ({
-  children,
-  badgeType,
-  fontSize,
-  fontWeight,
-  isIcon,
-  isLarge,
-  ...props
-}) => {
+const Badge: FC<BadgeProps> = ({ children, badgeType, fontSize, fontWeight, isIcon, isLarge, ...props }) => {
   return (
     <Wrapper
       badgeType={badgeType}

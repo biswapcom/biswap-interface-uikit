@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useEffect, useRef, useState} from "react";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import { TransitionGroup } from "react-transition-group";
 import styled from "styled-components";
 

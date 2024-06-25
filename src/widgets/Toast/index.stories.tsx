@@ -37,9 +37,7 @@ export const Default: FC = () => {
   };
 
   const handleRemove = (id: string) => {
-    setToasts((prevToasts) =>
-      prevToasts.filter((prevToast) => prevToast.id !== id)
-    );
+    setToasts((prevToasts) => prevToasts.filter((prevToast) => prevToast.id !== id));
   };
 
   const ClearAllHandler = () => {
@@ -55,9 +53,7 @@ export const Default: FC = () => {
         type="button"
         variant="primary"
         ml="8px"
-        onClick={() =>
-          handleClick("This is a description to explain more about the toast")
-        }
+        onClick={() => handleClick("This is a description to explain more about the toast")}
       >
         Random Toast with Description
       </Button>
@@ -95,19 +91,12 @@ export const WithAction: FC = () => {
   };
 
   const handleRemove = (id: string) => {
-    setToasts((prevToasts) =>
-      prevToasts.filter((prevToast) => prevToast.id !== id)
-    );
+    setToasts((prevToasts) => prevToasts.filter((prevToast) => prevToast.id !== id));
   };
 
   return (
     <Box>
-      <Button
-        type="button"
-        variant="success"
-        ml="8px"
-        onClick={() => handleClick()}
-      >
+      <Button type="button" variant="success" ml="8px" onClick={() => handleClick()}>
         Random Toast with Action Button
       </Button>
       <ToastContainer
@@ -139,12 +128,7 @@ export const ColoredToast: FC = () => {
 
   return (
     <Box>
-      <Button
-        type="button"
-        variant="success"
-        ml="8px"
-        onClick={() => handleClick()}
-      >
+      <Button type="button" variant="success" ml="8px" onClick={() => handleClick()}>
         Toast for blog
       </Button>
       <ColoredToasts toasts={toasts} onRemove={handleRemove} ttl={1000} />

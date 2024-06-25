@@ -42,8 +42,10 @@ const StyledToast = styled(Box)`
   border-radius: 16px;
   transform: translate(-50%, 0);
   transition: all 250ms ease-in;
-  box-shadow: 0 -4px 11px rgba(0, 0, 0, 0.1),
-    0 20px 36px -8px rgba(14, 14, 44, 0.32), 0 1px 1px rgba(0, 0, 0, 0.16);
+  box-shadow:
+    0 -4px 11px rgba(0, 0, 0, 0.1),
+    0 20px 36px -8px rgba(14, 14, 44, 0.32),
+    0 1px 1px rgba(0, 0, 0, 0.16);
 
   ${({ theme }) => theme.mediaQueries.sm} {
     left: auto;
@@ -53,7 +55,7 @@ const StyledToast = styled(Box)`
   }
 `;
 
-const LinkWrapper = styled(Flex).attrs({ alignItems: 'center', my: '6px' })``;
+const LinkWrapper = styled(Flex).attrs({ alignItems: "center", my: "6px" })``;
 
 const LinkStyles = styled.a`
   color: ${({ theme }) => theme.colors.primary};
@@ -62,7 +64,7 @@ const LinkStyles = styled.a`
   line-height: 16px;
 `;
 
-const ActionContainer = styled(Box).attrs({ width: '100%' })``;
+const ActionContainer = styled(Box).attrs({ width: "100%" })``;
 
 const Toast: FC<ToastProps> = ({
   removeButtonPosition = 60,
@@ -77,74 +79,36 @@ const Toast: FC<ToastProps> = ({
   viewBscScanLabel,
   ...props
 }) => {
-  const {
-    description,
-    type,
-    title,
-    tweeterDescription,
-    hash,
-    url,
-    withGift,
-  } = toast;
+  const { description, type, title, tweeterDescription, hash, url, withGift } = toast;
 
   return (
     <CSSTransition timeout={250} style={style} {...props}>
-      <StyledToast
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+      <StyledToast onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         {clearAll && (
-          <ClearAllButton
-            scale="sm"
-            variant="text"
-            top={removeButtonPosition}
-            onClick={clearAll}
-          >
+          <ClearAllButton scale="sm" variant="text" top={removeButtonPosition} onClick={clearAll}>
             <Text p="0 8px" fontSize="12px" color="dark">
               {clearAllLabel}
             </Text>
           </ClearAllButton>
         )}
-        <Alert
-          progress={progress}
-          title={title}
-          variant={alertTypeMap[type]}
-          onClick={handleRemove}
-        >
+        <Alert progress={progress} title={title} variant={alertTypeMap[type]} onClick={handleRemove}>
           <Box>
             {hash && (
               <LinkWrapper>
-                <LinkStyles
-                  target="_blank"
-                  href={`https://bscscan.com/tx/${hash}`}
-                >
+                <LinkStyles target="_blank" href={`https://bscscan.com/tx/${hash}`}>
                   {viewBscScanLabel}
                 </LinkStyles>
-                <ArrowUpForwardIcon
-                  width="18px"
-                  height="18px"
-                  ml="6px"
-                  color="primary"
-                />
+                <ArrowUpForwardIcon width="18px" height="18px" ml="6px" color="primary" />
               </LinkWrapper>
             )}
             {description && (
-              <Text
-                mb="8px"
-                color="#6B7D98"
-                fontSize="12px"
-                as="p"
-              >
+              <Text mb="8px" color="#6B7D98" fontSize="12px" as="p">
                 {description}
               </Text>
             )}
             {tweeterDescription && (
               <ActionContainer>
-                <ToastAction
-                  withGift={withGift}
-                  tweeterDescription={tweeterDescription}
-                  url={url}
-                />
+                <ToastAction withGift={withGift} tweeterDescription={tweeterDescription} url={url} />
               </ActionContainer>
             )}
           </Box>

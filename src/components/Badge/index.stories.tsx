@@ -23,7 +23,9 @@ const BadgeWrapper = styled.div`
 export const Default: React.FC = () => {
   return (
     <Wrapper>
-      <Text fontSize="32px" mb={20}>Badges</Text>
+      <Text fontSize="32px" mb={20}>
+        Badges
+      </Text>
       <BadgeWrapper>
         <Badge isLarge badgeType="notActive">
           notActive

@@ -15,7 +15,7 @@ interface TransientButtonProps extends ThemedButtonProps {
   $isLoading?: boolean;
 }
 
-const getDisabledStyles = ({ $isLoading, theme }: TransientButtonProps) => {
+const getDisabledStyles = ({ $isLoading }: TransientButtonProps) => {
   if ($isLoading === true) {
     return `
       &:disabled,
@@ -44,11 +44,7 @@ const getOpacity = ({ $isLoading = false }: TransientButtonProps) => {
   return $isLoading ? ".5" : "1";
 };
 
-const getFlat = ({
-  flatBottom = false,
-  flatTop = false,
-  flat = false,
-}: BaseButtonProps) => {
+const getFlat = ({ flatBottom = false, flatTop = false, flat = false }: BaseButtonProps) => {
   if (flatBottom) {
     return `
       border-bottom-right-radius: 0;
@@ -82,7 +78,9 @@ const StyledButton = styled.button<BaseButtonProps>`
   line-height: 1;
   opacity: ${getOpacity};
   outline: 0;
-  transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out,
+  transition:
+    background-color 0.3s ease-in-out,
+    opacity 0.3s ease-in-out,
     color 0.3s ease-in-out;
   white-space: nowrap;
   cursor: pointer;

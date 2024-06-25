@@ -14,40 +14,22 @@ interface Props {
   children?: ReactNode;
 }
 
-export const ExpandableButton: FC<Props> = ({
-  onClick,
-  expanded = false,
-  children,
-}) => {
+export const ExpandableButton: FC<Props> = ({ onClick, expanded = false, children }) => {
   return (
     <IconButton aria-label="Hide or show expandable content" onClick={onClick}>
       {children}
-      {expanded ? (
-        <ChevronUpIcon color="invertedContrast" />
-      ) : (
-        <ChevronDownIcon color="invertedContrast" />
-      )}
+      {expanded ? <ChevronUpIcon color="invertedContrast" /> : <ChevronDownIcon color="invertedContrast" />}
     </IconButton>
   );
 };
 
-export const ExpandableLabel: FC<Props> = ({
-  onClick,
-  expanded = false,
-  children,
-}) => {
+export const ExpandableLabel: FC<Props> = ({ onClick, expanded = false, children }) => {
   return (
     <Button
       variant={Variants.TEXT}
       aria-label="Hide or show expandable content"
       onClick={onClick}
-      endIcon={
-        expanded ? (
-          <ChevronUpIcon color="primary" />
-        ) : (
-          <ChevronDownIcon color="primary" />
-        )
-      }
+      endIcon={expanded ? <ChevronUpIcon color="primary" /> : <ChevronDownIcon color="primary" />}
     >
       {children}
     </Button>

@@ -9,7 +9,7 @@ export enum Variants {
   DANGER = "danger",
   SUCCESS = "success",
   WARNING = "warning",
-};
+}
 
 export interface AlertProps {
   variant?: Variants;
@@ -17,9 +17,9 @@ export interface AlertProps {
   children?: ReactNode;
   onClick?: (evt: MouseEvent<HTMLButtonElement>) => void;
   progress: number | undefined;
-};
+}
 
 export enum ColoredVariants {
   DANGER = "danger",
   SUCCESS = "success",
-};
+}

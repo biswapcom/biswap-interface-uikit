@@ -37,11 +37,9 @@ export const headTextScaleMap = {
   },
 };
 
-export const HeadText = styled(Text).attrs({ tags: 'h2', bold: true })<HeadTextProps>`
-  font-size: ${({ scale }) =>
-    headTextScaleMap[scale || scales.SIZE32].fontSize};
-  line-height: ${({ scale }) =>
-    headTextScaleMap[scale || scales.SIZE32].lineHeight};
+export const HeadText = styled(Text).attrs({ tags: "h2", bold: true })<HeadTextProps>`
+  font-size: ${({ scale }) => headTextScaleMap[scale || scales.SIZE32].fontSize};
+  line-height: ${({ scale }) => headTextScaleMap[scale || scales.SIZE32].lineHeight};
   font-weight: 600;
   white-space: ${({ nowrap }) => (nowrap ? "nowrap" : "normal")};
 `;

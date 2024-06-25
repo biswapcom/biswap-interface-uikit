@@ -35,11 +35,7 @@ const StyledToastContainer = styled(Box)`
   }
 `;
 
-const ColoredToasts: FC<ToastContainerProps> = ({
-  toasts,
-  onRemove,
-  ttl = 5000,
-}) => {
+const ColoredToasts: FC<ToastContainerProps> = ({ toasts, onRemove, ttl = 5000 }) => {
   const handleRemove = useCallback(() => {
     onRemove(toasts[0]?.id);
   }, [toasts, onRemove]);
@@ -58,12 +54,7 @@ const ColoredToasts: FC<ToastContainerProps> = ({
     <StyledToastContainer>
       <TransitionGroup>
         {toasts.map((toast) => (
-          <ColoredToastItem
-            key={toast.id}
-            toast={toast}
-            ttl={ttl}
-            style={{ bottom: "50px" }}
-          />
+          <ColoredToastItem key={toast.id} toast={toast} ttl={ttl} style={{ bottom: "50px" }} />
         ))}
       </TransitionGroup>
     </StyledToastContainer>
