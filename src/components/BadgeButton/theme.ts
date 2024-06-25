@@ -1,7 +1,7 @@
-import { badgeTypes } from "./types";
+import { BadgeButtonTypes } from "./types";
 
-export const BadgeTypesContainer = {
-  [badgeTypes.SUCCESS]: {
+export const BadgeButtonTypesContainer = {
+  [BadgeButtonTypes.SUCCESS]: {
     backgroundColor: "success",
     color: "white",
     border: "0",
@@ -13,7 +13,7 @@ export const BadgeTypesContainer = {
       backgroundColor: "successPress",
     },
   },
-  [badgeTypes.ERROR]: {
+  [BadgeButtonTypes.ERROR]: {
     backgroundColor: "secondary",
     color: "white",
     border: "0",
@@ -25,7 +25,7 @@ export const BadgeTypesContainer = {
       backgroundColor: "secondaryPress",
     },
   },
-  [badgeTypes.WARNING]: {
+  [BadgeButtonTypes.WARNING]: {
     backgroundColor: "warning",
     color: "dark800",
     border: "0",
@@ -37,7 +37,7 @@ export const BadgeTypesContainer = {
       backgroundColor: "warningPress",
     },
   },
-  [badgeTypes.PRIMARY]: {
+  [BadgeButtonTypes.PRIMARY]: {
     backgroundColor: "primary",
     color: "white",
     border: "0",
@@ -49,7 +49,7 @@ export const BadgeTypesContainer = {
       backgroundColor: "primaryPress",
     },
   },
-  [badgeTypes.BOOST]: {
+  [BadgeButtonTypes.BOOST]: {
     backgroundColor: "boost",
     color: "white",
     border: "0",
@@ -61,7 +61,7 @@ export const BadgeTypesContainer = {
       backgroundColor: "boostPress",
     },
   },
-  [badgeTypes.ACTIVE]: {
+  [BadgeButtonTypes.ACTIVE]: {
     backgroundColor: "successOpacity",
     color: "success",
     border: "1px solid transparent",
@@ -75,7 +75,7 @@ export const BadgeTypesContainer = {
       borderColor: "success",
     },
   },
-  [badgeTypes.NOT_ACTIVE]: {
+  [BadgeButtonTypes.NOT_ACTIVE]: {
     backgroundColor: "secondaryOpacity",
     color: "secondary",
     border: "1px solid transparent",
@@ -89,7 +89,7 @@ export const BadgeTypesContainer = {
       borderColor: "secondary",
     },
   },
-  [badgeTypes.CORE]: {
+  [BadgeButtonTypes.CORE]: {
     backgroundColor: "primaryOpacity",
     color: "primary",
     border: "1px solid transparent",
@@ -103,7 +103,7 @@ export const BadgeTypesContainer = {
       borderColor: "primary",
     },
   },
-  [badgeTypes.WARNING_OPACITY]: {
+  [BadgeButtonTypes.WARNING_OPACITY]: {
     backgroundColor: "warningOpacity",
     color: "warning",
     border: "1px solid transparent",
@@ -117,7 +117,7 @@ export const BadgeTypesContainer = {
       borderColor: "warning",
     },
   },
-  [badgeTypes.LIGHT]: {
+  [BadgeButtonTypes.LIGHT]: {
     backgroundColor: "gray200",
     color: "dark800",
     border: "0",

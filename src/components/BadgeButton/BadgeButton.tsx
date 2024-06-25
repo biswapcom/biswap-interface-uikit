@@ -1,17 +1,21 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { BadgeButtonProps } from "./types";
 import { space, variant } from "styled-system";
-import { BadgeTypesContainer } from "./theme";
+
+// types
+import { BadgeButtonProps } from "./types";
+
+// theme
+import { BadgeButtonTypesContainer } from "./theme";
 
 const Wrapper = styled.button<BadgeButtonProps>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  height: 20px;
   padding: ${({ isIcon }) =>
     isIcon === "left" ? "4px 8px 4px 4px" : isIcon === "right" ? "4px 4px 4px 8px" : "4px 8px"};
   border-radius: 16px;
-  height: 20px;
   font-size: 10px;
   font-weight: 600;
   outline: none;
@@ -25,7 +29,7 @@ const Wrapper = styled.button<BadgeButtonProps>`
 
   ${variant({
     prop: "badgeType",
-    variants: BadgeTypesContainer,
+    variants: BadgeButtonTypesContainer,
   })}
 `;
 
