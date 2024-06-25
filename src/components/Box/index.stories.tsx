@@ -1,9 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
+
+// components
 import BoxComponent from "./Box";
 import FlexComponent from "./Flex";
 import GridComponent from "./Grid";
 import Text from "../Text/Text";
 import { Link } from "../Link";
+
+// utils
 import {getResponsiveAttrs} from "../../util";
 
 export default {
@@ -12,7 +16,7 @@ export default {
   argTypes: {},
 };
 
-export const Box: React.FC = () => {
+export const Box: FC = () => {
   return (
     <div>
       <BoxComponent as="p">
@@ -25,7 +29,7 @@ export const Box: React.FC = () => {
   );
 };
 
-export const Flex: React.FC = () => {
+export const Flex: FC = () => {
   return (
     <div>
       <Text>
@@ -54,7 +58,7 @@ export const Flex: React.FC = () => {
   );
 };
 
-export const Grid: React.FC = () => {
+export const Grid: FC = () => {
   return (
     <GridComponent
       justifyItems="center"

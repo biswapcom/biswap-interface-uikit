@@ -4,6 +4,7 @@ import { TransitionGroup } from "react-transition-group";
 
 //components
 import ColoredToastItem from "./ColoredToastItem";
+import { Box } from "../../../components/Box";
 
 //types
 import { ColoredToastProps, ColoredToastContainerProps } from "../types";
@@ -12,7 +13,7 @@ interface ToastContainerProps extends ColoredToastContainerProps {
   toasts: ColoredToastProps[];
 }
 
-const StyledToastContainer = styled.div`
+const StyledToastContainer = styled(Box)`
   .enter,
   .appear {
     opacity: 0.01;
