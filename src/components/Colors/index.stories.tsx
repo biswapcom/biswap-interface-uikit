@@ -22,8 +22,8 @@ export const Default = () => {
   };
   return (
     <Box p="20px">
-      {Object.entries(lightColors).map((colorItem) => (
-        <Flex alignItems="center" mb="20px" justifyContent="space-between" width="800px">
+      {Object.entries(lightColors).map((colorItem, index) => (
+        <Flex key={colorItem[0] + index} alignItems="center" mb="20px" justifyContent="space-between" width="800px">
           <ColorBox width={100} height={40} backgroundColor={colorItem[1]} />
           <Flex justifyContent="space-between" width="350px">
             <BodyText mr="20px">{colorItem[0]}</BodyText>

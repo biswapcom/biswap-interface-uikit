@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import SocialShareButton from "./SocialShareButton";
 import Flex from "../Box/Flex";

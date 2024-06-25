@@ -116,7 +116,6 @@ const Bubble = styled.span<{ bubbleColor?: keyof MarkerType }>`
 const Button = <E extends ElementType = "button">(props: ButtonProps<E>): ReactElement => {
   const {
     addBubble,
-    bubbleColor,
     startIcon,
     endIcon,
     external = false,

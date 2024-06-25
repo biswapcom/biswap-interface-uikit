@@ -129,6 +129,7 @@ const ToastContainer: FC<ToastContainerProps> = ({
       clearTimeout(intervalRef.current);
     }
 
+    // eslint-disable-next-line lodash/prefer-noop
     timer.current = window.setTimeout(() => {}, currentTime);
   };
 

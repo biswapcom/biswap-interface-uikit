@@ -116,7 +116,7 @@ export const bodyText: React.FC = () => {
       </Box>
       <Box p="32px 24px">
         <BodyText scale={{ sm: "size12", xl: "size20" }} color="dark800">
-          sm: 'size12', xl: 'size20'
+          sm: size12, xl: size20
         </BodyText>
         <BodyText color="dark800">default</BodyText>
         <BodyText

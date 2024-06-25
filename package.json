@@ -8,6 +8,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "check-format": "prettier src --check .",
+    "check-lint": "eslint src --ext ts --ext tsx --ext js",
     "format": "prettier src --write ."
   },
   "keywords": [],
@@ -29,7 +30,15 @@
     "@types/styled-system": "5.1.22",
     "prettier": "3.3.2",
     "prop-types": "15.8.1",
-    "storybook": "8.1.10"
+    "storybook": "8.1.10",
+    "eslint": "8.31.0",
+    "eslint-config-google": "0.14.0",
+    "eslint-config-prettier": "8.6.0",
+    "eslint-plugin-lodash": "7.4.0",
+    "eslint-plugin-react": "7.32.0",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "@typescript-eslint/eslint-plugin": "6.7.0",
+    "@typescript-eslint/parser": "6.7.0"
   },
   "dependencies": {
     "@types/node": "20.14.5",

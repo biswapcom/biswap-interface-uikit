@@ -2,8 +2,8 @@ import React from "react";
 import styled, { useTheme } from "styled-components";
 
 // components
-import { BaseButtonProps, Button } from "../Button";
-import { Box, BoxProps, Flex } from "../Box";
+import { Button } from "../Button";
+import { Box, Flex } from "../Box";
 
 // types
 import { socials, SocialShareButtonTypes } from "./types";
@@ -14,6 +14,7 @@ import { Image } from "../Image";
 
 // @ts-ignore
 import gift from "./shared/gift.png";
+import { Scales } from "../Button/types";
 
 const Wrapper = styled(Box)<{ disabled?: boolean; width: string }>`
   position: relative;
@@ -42,7 +43,7 @@ const SocialShareButton = ({
   link,
   name,
   message,
-  scale = "lg",
+  scale = Scales.LG,
   target = "_blank",
   width = "auto",
   withGift,

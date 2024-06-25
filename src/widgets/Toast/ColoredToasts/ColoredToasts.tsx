@@ -48,6 +48,7 @@ const ColoredToasts: FC<ToastContainerProps> = ({ toasts, onRemove, ttl = 5000 }
     return () => {
       clearTimeout(timer);
     };
+    // eslint-disable-next-line
   }, [handleRemove]);
 
   return (
