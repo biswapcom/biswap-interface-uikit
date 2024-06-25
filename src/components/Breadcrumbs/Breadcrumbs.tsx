@@ -1,16 +1,20 @@
-import React, { Children, isValidElement, ReactNode } from "react";
+import React, { Children, FC, isValidElement, ReactNode } from "react";
 import styled from "styled-components";
 import { space } from "styled-system";
+
+// components
 import ChevronRightIcon from "../Svg/Icons/Arrows/ChevronRight";
+import { Flex } from "../Box";
+
+// types
 import { BreadcrumbsProps } from "./types";
 
-const Separator = styled.div`
+const Separator = styled(Flex)`
   align-items: center;
-  color: ${({ theme }) => theme.colors.gray900};
-  display: flex;
   justify-content: center;
   padding-left: 4px;
   padding-right: 4px;
+  color: ${({ theme }) => theme.colors.gray900};
 
   ${({ theme }) => theme.mediaQueries.sm} {
     padding-left: 8px;
@@ -24,8 +28,8 @@ const Separator = styled.div`
 `;
 
 const StyledBreadcrumbs = styled.ul`
-  align-items: center;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   list-style-type: none;
 
@@ -57,7 +61,7 @@ const insertSeparators = (items: ReactNode[], separator: BreadcrumbsProps["separ
 
 const DefaultSeparator = <ChevronRightIcon color="dark500" width="20px" />;
 
-const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ separator = DefaultSeparator, children }) => {
+const Breadcrumbs: FC<BreadcrumbsProps> = ({ separator = DefaultSeparator, children }) => {
   const validItems = Children.toArray(children).filter((child) => isValidElement(child));
   const items = insertSeparators(validItems, separator);
 
