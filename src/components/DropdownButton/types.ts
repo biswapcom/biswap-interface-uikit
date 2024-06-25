@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { SpaceProps } from "styled-system";
 
 // types
@@ -19,7 +18,6 @@ export interface DropdownButtonProps extends PositionProps, SpaceProps {
   disabled?: boolean;
   options: Array<OptionProps>;
   onChange?: (option: OptionProps) => void;
-  children?: ReactNode;
   hideLabel?: boolean;
   dropDownWidth?: string;
   selectedItem?: OptionProps;

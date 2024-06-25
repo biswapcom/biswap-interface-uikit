@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import styled, { css } from "styled-components";
-import { variant, space } from "styled-system";
+import { variant as systemVariant, space } from "styled-system";
 
 // types
 import {
@@ -49,7 +49,7 @@ const Container = styled.div<{
   max-width: ${({ maxWidth }) => maxWidth || "none"};
   min-width: ${({ minWidth }) => minWidth || "0"};
 
-  ${variant({
+  ${systemVariant({
     prop: "scale",
     variants: scaleVariantsContainer,
   })}
@@ -69,12 +69,12 @@ const DropdownTop = styled(Flex)<{
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   opacity: ${({ disabled }) => (disabled ? ".56" : "1")};
 
-  ${variant({
+  ${systemVariant({
     prop: "scale",
     variants: scaleVariantsTop,
   })}
 
-  ${variant({
+  ${systemVariant({
     variants: styleVariantsTop,
   })}
 
@@ -138,7 +138,7 @@ const DropdownContent = styled(Box)<{
   transition: height 0.3s;
   z-index: 101;
 
-  ${variant({
+  ${systemVariant({
     prop: "scale",
     variants: scaleVariantsContent,
   })}
@@ -152,7 +152,7 @@ const DropdownItem = styled(Flex)<{ scale: Scale; selected?: boolean }>`
   cursor: pointer;
   transition: background-color 0.4s ease-out;
 
-  ${variant({
+  ${systemVariant({
     prop: "scale",
     variants: scaleVariantItem,
   })}
@@ -164,7 +164,6 @@ const DropdownItem = styled(Flex)<{ scale: Scale; selected?: boolean }>`
 
 const DropdownButton: React.FC<DropdownButtonProps> = ({
   position = "bottom",
-  children,
   maxWidth,
   minWidth,
   scale = SCALES.MD,
@@ -188,7 +187,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
   useEffect(() => {
     if (selectedItem && selectedItem?.value !== selectedOption?.value)
       setSelectedOption(selectedItem);
-  }, [selectedItem]);
+  }, [selectedItem, selectedOption]);
 
   useEffect(() => {
     function handleClickOutside(event: { target: any }) {
@@ -225,8 +224,8 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
     }
   };
 
-  const scaleVariantsImage = (scale: Scale): number => {
-    switch (scale) {
+  const scaleVariantsImage = (scaleItem: Scale): number => {
+    switch (scaleItem) {
       case SCALES.LG:
         return 24;
       case SCALES.MD:
@@ -237,8 +236,8 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
     }
   };
 
-  const getIconMargin = (scale: Scale): string => {
-    switch (scale) {
+  const getIconMargin = (scaleItem: Scale): string => {
+    switch (scaleItem) {
       case SCALES.LG:
         return "8px";
       case SCALES.MD:

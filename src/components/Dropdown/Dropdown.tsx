@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import styled, { css } from "styled-components";
-import { variant, space } from "styled-system";
+import { variant as systemVariant, space } from "styled-system";
 import { DropdownProps, Position, PositionProps, OptionProps } from "./types";
 import IconComponent from "../Svg/IconComponent";
 import {
@@ -31,7 +31,7 @@ const Container = styled.div<{
   max-width: ${({ maxWidth }) => maxWidth || "none"};
   min-width: ${({ minWidth }) => minWidth || "0"};
 
-  ${variant({
+  ${systemVariant({
     prop: "scale",
     variants: scaleVariantsContainer,
   })}
@@ -53,11 +53,11 @@ const DropdownTop = styled.div<{
   transition: all 0.4s ease-in-out;
   opacity: ${({ disabled }) => (disabled ? ".56" : "1")};
 
-  ${variant({
+  ${systemVariant({
     prop: "scale",
     variants: scaleVariantsTop,
   })}
-  ${variant({
+  ${systemVariant({
     variants: styleVariantsTop,
   })}
 
@@ -98,7 +98,7 @@ const DropdownContent = styled.div<{ position?: Position; scale?: string }>`
   transform: ${({ position }) =>
     position === "bottom" ? "translateY(100%)" : "translateY(0)"};
 
-  ${variant({
+  ${systemVariant({
     prop: "scale",
     variants: scaleVariantsContent,
   })}
@@ -112,7 +112,7 @@ const DropdownItem = styled.div<{ scale?: string; selected?: boolean }>`
   font-weight: 600;
   transition: background-color 0.4s ease-out;
 
-  ${variant({
+  ${systemVariant({
     prop: "scale",
     variants: scaleVariantItem,
   })}
@@ -124,7 +124,6 @@ const DropdownItem = styled.div<{ scale?: string; selected?: boolean }>`
 
 const Dropdown: React.FC<DropdownProps> = ({
   position = "bottom",
-  children,
   maxWidth,
   minWidth,
   scale,
@@ -144,7 +143,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   useEffect(() => {
     if (selectedItem && selectedItem?.value !== selectedOption?.value)
       setSelectedOption(selectedItem);
-  }, [selectedItem]);
+  }, [selectedItem, selectedOption]);
 
   const toggling = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!disabled) {
@@ -160,8 +159,8 @@ const Dropdown: React.FC<DropdownProps> = ({
       onChange(option);
     }
   };
-  const scaleVariantsImage = (scale: Scale): number => {
-    switch (scale) {
+  const scaleVariantsImage = (scaleItem: Scale): number => {
+    switch (scaleItem) {
       case scales.LG:
         return 24;
       case scales.MD:
