@@ -1,14 +1,24 @@
-import React from "react";
+import React, {FC} from "react";
 import styled from "styled-components";
 import noop from "lodash/noop";
-/* eslint-disable import/no-unresolved */
 import { Meta } from "@storybook/react/types-6-0";
+
+// components
 import Alert from "./Alert";
 import { Text } from "../Text";
+import { Box } from "../Box";
 
-const Row = styled.div`
-  margin-bottom: 32px;
+// types
+import { Variants } from "./types";
+
+const Wrapper = styled(Box)`
+    width: 400px;
+    padding: 32px;
+`
+
+const Row = styled(Box)`
   position: relative;
+  margin-bottom: 32px;
 `;
 
 export default {
@@ -17,43 +27,43 @@ export default {
   argTypes: {},
 } as Meta;
 
-export const Default: React.FC = () => {
+export const Default: FC = () => {
   return (
-    <div style={{ padding: "32px", width: "400px" }}>
+    <Wrapper>
       <Row>
-        <Alert title="Info" progress={40}>
+        <Alert title="Info" progress={0}>
           <Text as="p">This is a description</Text>
         </Alert>
       </Row>
       <Row>
-        <Alert title="Success" variant="success" progress={50}>
+        <Alert title="Success" variant={Variants.SUCCESS} progress={25}>
           <Text as="p">This is a description</Text>
         </Alert>
       </Row>
       <Row>
-        <Alert title="Warning" variant="warning" progress={16}>
+        <Alert title="Warning" variant={Variants.WARNING} progress={50}>
           <Text as="p">This is a description</Text>
         </Alert>
       </Row>
       <Row>
-        <Alert title="Danger" variant="danger" progress={82}>
+        <Alert title="Danger" variant={Variants.DANGER} progress={75}>
           <Text as="p">This is a description</Text>
         </Alert>
       </Row>
-    </div>
+    </Wrapper>
   );
 };
 
 const handleClick = noop;
 
-export const WithHandler: React.FC = () => {
+export const WithHandler: FC = () => {
   return (
-    <div style={{ padding: "32px", width: "400px" }}>
+    <Wrapper>
       <Row>
-        <Alert onClick={handleClick} title="Info" progress={10}/>
+        <Alert onClick={handleClick} title="Info" progress={0} />
       </Row>
       <Row>
-        <Alert onClick={handleClick} title="Success" variant="success" progress={100}>
+        <Alert onClick={handleClick} title="Success" variant={Variants.SUCCESS} progress={25}>
           A description of the success alert
         </Alert>
       </Row>
@@ -61,13 +71,13 @@ export const WithHandler: React.FC = () => {
         <Alert
           onClick={handleClick}
           title="Danger A Long Title"
-          variant="danger"
-          progress={40}
+          variant={Variants.DANGER}
+          progress={50}
         />
       </Row>
       <Row>
-        <Alert onClick={handleClick} title="Warning" variant="warning" progress={30}/>
+        <Alert onClick={handleClick} title="Warning" variant={Variants.DANGER} progress={75} />
       </Row>
-    </div>
+    </Wrapper>
   );
 };

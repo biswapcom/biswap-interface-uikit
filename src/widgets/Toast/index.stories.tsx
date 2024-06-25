@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { sample } from "lodash";
-import { alertVariants, coloredVariants } from "../../components/Alert";
+
+// types
+import { AlertVariants, ColoredVariants } from "../../components/Alert";
+import { ColoredToastProps, Toast } from "./types";
+
+// components
 import Button from "../../components/Button/Button";
 import ToastContainer from "./ToastContainer";
 import { ColoredToasts } from "./ColoredToasts";
-import { ColoredToastProps } from "./types";
+import { Box } from "../../components/Box";
 
 export default {
   title: "Widgets/Toast",
@@ -12,21 +17,19 @@ export default {
   argTypes: {},
 };
 
-export const Default: React.FC = () => {
-  const [toasts, setToasts] = useState([]);
+export const Default: FC = () => {
+  const [toasts, setToasts] = useState<Toast[]>([]);
 
   const handleClick = (description = "") => {
     const now = Date.now();
     const randomToast = {
       id: `id-${now}`,
       title: `Title: ${now}`,
-      telegramDescription:
-        "Share your earnings on Biswap and win a part of $2530 in BSW Prize Pool for 253 winners every week! #biswap_sharing",
       tweeterDescription:
         "Share your earnings on Biswap and win a part of $2530 in BSW Prize Pool for 253 winners every week! #biswap_earn",
       description,
       hash: "hash",
-      type: alertVariants[sample(Object.keys(alertVariants))],
+      type: AlertVariants[sample(Object.keys(AlertVariants))],
       url: `https://github.com`,
     };
 
@@ -44,7 +47,7 @@ export const Default: React.FC = () => {
   };
 
   return (
-    <div>
+    <Box>
       <Button type="button" variant="primary" onClick={() => handleClick()}>
         Random Toast
       </Button>
@@ -65,12 +68,12 @@ export const Default: React.FC = () => {
         clearAllLabel="clear all"
         viewBscScanLabel="View bscscan"
       />
-    </div>
+    </Box>
   );
 };
 
-export const WithAction: React.FC = () => {
-  const [toasts, setToasts] = useState([]);
+export const WithAction: FC = () => {
+  const [toasts, setToasts] = useState<Toast[]>([]);
 
   const ClearAllHandler = () => {
     setToasts([]);
@@ -83,12 +86,9 @@ export const WithAction: React.FC = () => {
       title: `Title: ${now}`,
       description:
         "Share your earnings on Twitter and win a part of <strong>$2200 in BSW</strong> Prize Pool for 202 winners every week!",
-      hash: "aeafwa",
-      telegramDescription:
-        "Share your earnings on Biswap and win a part of $2530 in BSW Prize Pool for 253 winners every week! #biswap_sharing",
       tweeterDescription:
         "Share your earnings on Biswap and win a part of $2530 in BSW Prize Pool for 253 winners every week! #biswap_earn",
-      type: alertVariants[sample(Object.keys(alertVariants))],
+      type: AlertVariants[sample(Object.keys(AlertVariants))],
     };
 
     setToasts((prevToasts) => [randomToast, ...prevToasts]);
@@ -101,7 +101,7 @@ export const WithAction: React.FC = () => {
   };
 
   return (
-    <div>
+    <Box>
       <Button
         type="button"
         variant="success"
@@ -117,11 +117,11 @@ export const WithAction: React.FC = () => {
         toasts={toasts}
         onRemove={handleRemove}
       />
-    </div>
+    </Box>
   );
 };
 
-export const ColoredToast: React.FC = () => {
+export const ColoredToast: FC = () => {
   const [toasts, setToasts] = useState<ColoredToastProps[]>([]);
 
   const handleClick = () => {
@@ -129,14 +129,16 @@ export const ColoredToast: React.FC = () => {
     const randomToast = {
       id: `id-${now}`,
       title: "Link copied",
-      type: coloredVariants[sample(Object.keys(coloredVariants))],
+      type: ColoredVariants[sample(Object.keys(ColoredVariants))],
     };
+
     setToasts([randomToast]);
   };
 
   const handleRemove = () => setToasts([]);
+
   return (
-    <div>
+    <Box>
       <Button
         type="button"
         variant="success"
@@ -146,6 +148,6 @@ export const ColoredToast: React.FC = () => {
         Toast for blog
       </Button>
       <ColoredToasts toasts={toasts} onRemove={handleRemove} ttl={1000} />
-    </div>
+    </Box>
   );
 };
