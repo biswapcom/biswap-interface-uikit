@@ -1,9 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
+import styled from "styled-components";
+
+// components
 import { Box, Flex } from "../Box";
 import { Button } from "../Button";
-import { lightColors } from "../../theme";
 import { BodyText } from "../Typography";
-import styled from "styled-components";
+
+// theme
+import { lightColors } from "../../theme";
 
 export default {
   title: "Components/Colors",
@@ -11,15 +15,17 @@ export default {
 };
 
 const ColorBox = styled(Box)<{ backgroundColor: string }>`
-  background-color: ${({ backgroundColor }) => backgroundColor};
   margin-right: 20px;
+  background-color: ${({ backgroundColor }) => backgroundColor};
 `;
-export const Default = () => {
+
+export const Default: FC = () => {
   const copyHandle = (arg: string) => {
     if (navigator.clipboard && navigator.permissions) {
       navigator.clipboard.writeText(arg);
     }
   };
+
   return (
     <Box p="20px">
       {Object.entries(lightColors).map((colorItem, index) => (
