@@ -1,21 +1,21 @@
-import { variants, scales } from "./types";
+import { Variants, Scales } from "./types";
 
 export const scaleVariants = {
-  [scales.LG]: {
+  [Scales.LG]: {
     fontSize: "16px",
 
     svg: {
       width: "16px",
     },
   },
-  [scales.MD]: {
+  [Scales.MD]: {
     fontSize: "14px",
 
     svg: {
       width: "14px",
     },
   },
-  [scales.SM]: {
+  [Scales.SM]: {
     fontSize: "12px",
 
     svg: {
@@ -25,7 +25,7 @@ export const scaleVariants = {
 };
 
 export const styleVariants = {
-  [variants.LIGHT]: {
+  [Variants.LIGHT]: {
     color: "primary",
 
     svg: {
@@ -47,7 +47,7 @@ export const styleVariants = {
       },
     },
   },
-  [variants.DARK]: {
+  [Variants.DARK]: {
     color: "primaryHover",
 
     svg: {

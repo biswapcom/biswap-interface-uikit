@@ -1,15 +1,19 @@
-import React from "react";
-import { Link, LinkExternal } from "./index";
-import ArrowIcon from "../Svg/Icons/Arrows/ChevronLeftCircleSolid";
+import React, { FC } from "react";
 import styled from "styled-components";
 
-const LightWrap = styled.div`
-  background: #f9fafd;
+// components
+import { Link, LinkExternal, LinkScales, LinkVariants } from "./index";
+import ArrowIcon from "../Svg/Icons/Arrows/ChevronLeftCircleSolid";
+import { Box } from "../Box";
+
+const LightWrap = styled(Box)`
   padding: 24px 32px;
+  background: ${({ theme }) => theme.colors.gray100};
 `;
-const DarkWrap = styled.div`
-  background: #07162d;
+
+const DarkWrap = styled(Box)`
   padding: 24px 32px;
+  background: ${({ theme }) => theme.colors.dark800};
 `;
 
 export default {
@@ -29,71 +33,71 @@ export default {
   },
 };
 
-export const Default: React.FC = () => {
+export const Default: FC = () => {
   return (
-    <div>
+    <Box>
       <LightWrap>
-        <Link href="/" variant="light" scale="lg">
+        <Link href="/" variant={LinkVariants.LIGHT} scale={LinkScales.LG}>
           Light LG
         </Link>
-        <Link href="/" variant="light" scale="md">
+        <Link href="/" variant={LinkVariants.LIGHT} scale={LinkScales.MD}>
           Light MD
         </Link>
-        <Link href="/" variant="light" scale="sm" mb="16px">
+        <Link href="/" variant={LinkVariants.LIGHT} scale={LinkScales.SM} mb="16px">
           Light SM
         </Link>
-        <Link href="/" variant="light" scale="md">
+        <Link href="/" variant={LinkVariants.LIGHT} scale={LinkScales.MD}>
           <ArrowIcon mr="4px" />
           Light MD With icon
         </Link>
-        <Link href="/" variant="light" scale="md">
+        <Link href="/" variant={LinkVariants.LIGHT} scale={LinkScales.MD}>
           Light MD With icon
           <ArrowIcon ml="4px" />
         </Link>
-        <Link href="/" variant="light" scale="md">
+        <Link href="/" variant={LinkVariants.LIGHT} scale={LinkScales.MD}>
           <ArrowIcon mr="4px" />
           Light MD With double icon
           <ArrowIcon ml="4px" />
         </Link>
-        <Link href="/" variant="light" scale="md" disabled>
+        <Link href="/" variant={LinkVariants.LIGHT} scale={LinkScales.MD} disabled>
           <ArrowIcon mr="4px" />
           Light MD Disabled
           <ArrowIcon ml="4px" />
         </Link>
       </LightWrap>
       <DarkWrap>
-        <Link href="/" variant="dark" scale="lg">
+        <Link href="/" variant={LinkVariants.DARK} scale={LinkScales.LG}>
           Dark LG
         </Link>
-        <Link href="/" variant="dark" scale="md">
+        <Link href="/" variant={LinkVariants.DARK} scale={LinkScales.MD}>
           Dark MD
         </Link>
-        <Link href="/" variant="dark" scale="sm" mb="16px">
+        <Link href="/" variant={LinkVariants.DARK} scale={LinkScales.SM} mb="16px">
           Dark SM
         </Link>
-        <Link href="/" variant="dark" scale="md">
+        <Link href="/" variant={LinkVariants.DARK} scale={LinkScales.MD}>
           <ArrowIcon mr="4px" />
           Dark MD With icon
         </Link>
-        <Link href="/" variant="dark" scale="md">
+        <Link href="/" variant={LinkVariants.DARK} scale={LinkScales.MD}>
           Dark MD With icon
           <ArrowIcon ml="4px" />
         </Link>
-        <Link href="/" variant="dark" scale="md">
+        <Link href="/" variant={LinkVariants.DARK} scale={LinkScales.MD}>
           <ArrowIcon mr="4px" />
           Dark MD With double icon
           <ArrowIcon ml="4px" />
         </Link>
-        <Link href="/" variant="dark" scale="md" disabled>
+        <Link href="/" variant={LinkVariants.DARK} scale={LinkScales.MD} disabled>
           <ArrowIcon mr="4px" />
           Light MD Disabled
           <ArrowIcon ml="4px" />
         </Link>
       </DarkWrap>
 
-      <div>
+      <Box>
         <LinkExternal href="/">LinkExternal</LinkExternal>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };

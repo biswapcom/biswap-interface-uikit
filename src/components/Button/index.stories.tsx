@@ -283,7 +283,7 @@ export const Variants: FC = () => {
 };
 
 export const Expandable: FC = () => {
-  const [expanded, setExpanded] = useState<Boolean>(false);
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   return (
     <Box width="640px">

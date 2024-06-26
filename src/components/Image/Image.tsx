@@ -1,21 +1,28 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import observerOptions from "./options";
+
+// components
 import Wrapper from "./Wrapper";
-import { ImageProps } from "./types";
 import Placeholder from "./Placeholder";
 
+// types
+import { ImageProps } from "./types";
+
+// config
+import observerOptions from "./options";
+
 const StyledImage = styled.img`
-  height: 100%;
-  left: 0;
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
 `;
 
-const Image: React.FC<ImageProps> = ({ src, alt, width, height, ...props }) => {
+const Image: FC<ImageProps> = ({ src, alt, width, height, ...props }) => {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
   const imgRef = useRef<HTMLDivElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     let observer: IntersectionObserver;
