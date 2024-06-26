@@ -1,16 +1,19 @@
-import React from "react";
+import React, { FC } from "react";
+
+// components
 import Img from "./Image";
+import { Box } from "../Box";
 
 export default {
   title: "Components/Image",
   argTypes: {},
 };
 
-export const Image: React.FC = () => {
+export const Image: FC = () => {
   return (
-    <div>
+    <Box>
       <Img src="https://via.placeholder.com/800x400" width={800} height={400} alt="test" />
-      <div>Image</div>
-    </div>
+      <Box>Image</Box>
+    </Box>
   );
 };

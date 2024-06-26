@@ -10,7 +10,7 @@ import { Variants } from "./types";
 
 interface Props {
   onClick?: () => void;
-  expanded?: Boolean;
+  expanded?: boolean;
   children?: ReactNode;
 }
 

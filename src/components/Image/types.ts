@@ -17,17 +17,15 @@ export interface BackgroundImageProps extends ImageProps {
   loadingPlaceholder?: ReactElement;
 }
 
-export const variants = {
-  DEFAULT: "default",
-  INVERTED: "inverted",
-} as const;
-
-export type Variant = (typeof variants)[keyof typeof variants];
+export enum Variants {
+  DEFAULT = "default",
+  INVERTED = "inverted",
+}
 
 export interface TokenPairImageProps extends BoxProps {
   primarySrc: string;
   secondarySrc: string;
-  variant?: Variant;
+  variant?: Variants;
   height: number;
   width: number;
   primaryImageProps?: Omit<ImageProps, "width" | "height">;

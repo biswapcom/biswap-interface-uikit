@@ -1,10 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
 import { BrowserRouter, Link as RouterLink } from "react-router-dom";
+import styled from "styled-components";
+
+// components
 import Text from "../Text/Text";
 import Link from "../Link/Link";
 import GobletIcon from "../Svg/Svg";
 import BreadCrumbs from "./Breadcrumbs";
-import styled from "styled-components";
 
 export default {
   title: "Components/Breadcrumbs",
@@ -18,7 +20,7 @@ const BswIcon = styled.img.attrs({
   width: 12px;
 `;
 
-export const Default: React.FC = () => {
+export const Default: FC = () => {
   return (
     <BrowserRouter>
       <Text p="32px">
@@ -38,7 +40,7 @@ export const Default: React.FC = () => {
   );
 };
 
-export const CustomSeparator: React.FC = () => {
+export const CustomSeparator: FC = () => {
   return (
     <Text p="32px">
       <Text mb="16px">

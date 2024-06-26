@@ -1,9 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import { variant } from "styled-system";
+
+// utils
 import getExternalLinkProps from "../../util/getExternalLinkProps";
+
+// theme
 import { styleVariants, scaleVariants } from "./theme";
+
+// components
 import Text from "../Text/Text";
+
+// types
 import { LinkProps } from "./types";
 
 const StyledLink = styled(Text)<LinkProps>`
@@ -28,8 +36,9 @@ const StyledLink = styled(Text)<LinkProps>`
   }
 `;
 
-const Link: React.FC<LinkProps> = ({ external, ...props }) => {
+const Link: FC<LinkProps> = ({ external, ...props }) => {
   const internalProps = external ? getExternalLinkProps() : {};
+
   return <StyledLink as="a" bold {...internalProps} {...props} />;
 };
 

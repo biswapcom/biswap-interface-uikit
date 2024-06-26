@@ -1,13 +1,18 @@
 import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { space } from "styled-system";
+
+// types
 import { WrapperProps } from "./types";
 
-const StyledWrapper = styled.div<{ $width: number; $height: number }>`
-  max-height: ${({ $height }) => $height}px;
-  max-width: ${({ $width }) => $width}px;
+// components
+import { Box } from "../Box";
+
+const StyledWrapper = styled(Box)<{ $width: number; $height: number }>`
   position: relative;
   width: 100%;
+  max-width: ${({ $width }) => $width}px;
+  max-height: ${({ $height }) => $height}px;
 
   &:after {
     content: "";

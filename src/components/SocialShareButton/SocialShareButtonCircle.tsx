@@ -1,12 +1,18 @@
 import React, { FC } from "react";
 import { FlexboxProps } from "styled-system";
 
+// config
 import { socialLinks } from "./config";
+
+// components
 import { Flex } from "../Box";
 import { IconComponent } from "../IconComponent";
 
+// types
+import { Socials } from "./types";
+
 interface SocialShareButtonCircleProps extends FlexboxProps {
-  social: string;
+  social: Socials;
   label: string;
   link: string;
   message: string;
