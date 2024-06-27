@@ -1,12 +1,10 @@
-export const scales = {
-  SM: "sm",
-  MD: "md",
-} as const;
-
-export type Scales = (typeof scales)[keyof typeof scales];
+export enum CheckboxScales {
+  SM = "sm",
+  MD = "md",
+}
 
 export interface CheckboxProps {
-  scale?: Scales;
+  scale?: CheckboxScales;
   labelOrientation?: string;
   label?: string;
   colorVariant?: string;
