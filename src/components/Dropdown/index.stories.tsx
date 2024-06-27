@@ -1,6 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
+
+// components
 import Dropdown from "./Dropdown";
+import { Flex } from "../Box";
+
+// types
+import { DropdownPosition, DropdownScales, DropdownVariants } from "./types";
 
 export default {
   title: "Components/Dropdown",
@@ -8,28 +14,25 @@ export default {
   argTypes: {},
 };
 
-const WrapperLight = styled.div`
-  display: flex;
-  background-color: #f9fafd;
-  padding: 32px;
+const WrapperLight = styled(Flex)`
   height: 150px;
-`;
-const WrapperDark = styled.div`
-  display: flex;
-  background-color: #07162d;
   padding: 32px;
-  height: 150px;
+  background-color: ${({ theme }) => theme.colors.gray100};
 `;
 
-export const Default: React.FC = () => {
+const WrapperDark = styled(WrapperLight)`
+  background-color: ${({ theme }) => theme.colors.dark800};
+`;
+
+export const Default: FC = () => {
   return (
     <>
       <WrapperLight>
         <Dropdown
           mr="24px"
           maxWidth="250px"
-          scale="lg"
-          variant="light"
+          scale={DropdownScales.LG}
+          variant={DropdownVariants.LIGHT}
           options={[
             {
               label: "Light LG",
@@ -57,12 +60,11 @@ export const Default: React.FC = () => {
             },
           ]}
         />
-
         <Dropdown
           mr="24px"
           maxWidth="250px"
-          scale="md"
-          variant="light"
+          scale={DropdownScales.MD}
+          variant={DropdownVariants.LIGHT}
           options={[
             {
               label: "Light MD",
@@ -93,8 +95,8 @@ export const Default: React.FC = () => {
         <Dropdown
           mr="24px"
           maxWidth="250px"
-          scale="sm"
-          variant="light"
+          scale={DropdownScales.SM}
+          variant={DropdownVariants.LIGHT}
           options={[
             {
               label: "Light SM",
@@ -127,8 +129,8 @@ export const Default: React.FC = () => {
         <Dropdown
           mr="24px"
           maxWidth="250px"
-          scale="sm"
-          variant="light"
+          scale={DropdownScales.SM}
+          variant={DropdownVariants.LIGHT}
           options={[
             {
               label: "Light open to top",
@@ -155,13 +157,13 @@ export const Default: React.FC = () => {
               },
             },
           ]}
-          position="top"
+          position={DropdownPosition.TOP}
         />
         <Dropdown
           mr="24px"
           maxWidth="250px"
-          scale="sm"
-          variant="light"
+          scale={DropdownScales.SM}
+          variant={DropdownVariants.LIGHT}
           options={[
             {
               label: "Light disabled",
@@ -191,13 +193,12 @@ export const Default: React.FC = () => {
           disabled
         />
       </WrapperLight>
-
       <WrapperDark>
         <Dropdown
           mr="24px"
           maxWidth="250px"
-          scale="lg"
-          variant="dark"
+          scale={DropdownScales.LG}
+          variant={DropdownVariants.DARK}
           options={[
             {
               label: "Dark LG",
@@ -225,12 +226,11 @@ export const Default: React.FC = () => {
             },
           ]}
         />
-
         <Dropdown
           mr="24px"
           maxWidth="250px"
-          scale="md"
-          variant="dark"
+          scale={DropdownScales.MD}
+          variant={DropdownVariants.DARK}
           options={[
             {
               label: "Dark MD",
@@ -261,8 +261,8 @@ export const Default: React.FC = () => {
         <Dropdown
           mr="24px"
           maxWidth="250px"
-          scale="sm"
-          variant="dark"
+          scale={DropdownScales.SM}
+          variant={DropdownVariants.DARK}
           options={[
             {
               label: "Dark SM",
@@ -295,8 +295,8 @@ export const Default: React.FC = () => {
         <Dropdown
           mr="24px"
           maxWidth="250px"
-          scale="sm"
-          variant="dark"
+          scale={DropdownScales.SM}
+          variant={DropdownVariants.DARK}
           options={[
             {
               label: "Dark open to top",
@@ -323,13 +323,13 @@ export const Default: React.FC = () => {
               },
             },
           ]}
-          position="top"
+          position={DropdownPosition.TOP}
         />
         <Dropdown
           mr="24px"
           maxWidth="250px"
-          scale="sm"
-          variant="dark"
+          scale={DropdownScales.SM}
+          variant={DropdownVariants.DARK}
           options={[
             {
               label: "Dark disabled",
@@ -359,7 +359,6 @@ export const Default: React.FC = () => {
           disabled
         />
       </WrapperDark>
-      <WrapperDark></WrapperDark>
     </>
   );
 };

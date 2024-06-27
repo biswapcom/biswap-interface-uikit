@@ -1,9 +1,24 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, FC, BaseSyntheticEvent } from "react";
 import Image from "next/image";
 import styled, { css } from "styled-components";
 import { variant as systemVariant, space } from "styled-system";
-import { DropdownProps, Position, PositionProps, OptionProps } from "./types";
+
+// types
+import {
+  type DropdownProps,
+  type DropdownPositionProps,
+  type OptionProps,
+  DropdownPosition,
+  DropdownScales,
+  DropdownVariants,
+} from "./types";
+
+// components
 import IconComponent from "../Svg/IconComponent";
+import ChevronDown from "../Svg/Icons/Arrows/ChevronDown";
+import { Box, Flex } from "../Box";
+
+// theme
 import {
   scaleVariantsContainer,
   scaleVariantsTop,
@@ -11,20 +26,14 @@ import {
   styleVariantsTop,
   scaleVariantItem,
 } from "./theme";
-import ChevronDown from "../Svg/Icons/Arrows/ChevronDown";
-import { Scale, scales } from "./types";
 
-const getBottom = ({ position }: PositionProps) => {
-  if (position === "top") {
-    return "calc(100% + 8px)";
-  }
-  return "-8px";
-};
+const getBottom = ({ position }: DropdownPositionProps): string =>
+  position === DropdownPosition.TOP ? "calc(100% + 8px)" : "-8px";
 
-const Container = styled.div<{
+const Container = styled(Box)<{
   maxWidth?: string;
   minWidth?: string;
-  scale?: string;
+  scale?: DropdownScales;
 }>`
   position: relative;
   width: 100%;
@@ -38,12 +47,11 @@ const Container = styled.div<{
 
   ${space}
 `;
-const DropdownTop = styled.div<{
+const DropdownTop = styled(Flex)<{
   disabled?: boolean;
-  scale?: string;
-  variant?: string;
+  scale?: DropdownScales;
+  variant?: DropdownVariants;
 }>`
-  display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -63,51 +71,54 @@ const DropdownTop = styled.div<{
 
   ${(props) =>
     props.disabled &&
-    props.variant === "light" &&
+    props.variant === DropdownVariants.LIGHT &&
     css`
       border-color: ${({ theme }) => theme.colors.gray300} !important;
       color: ${({ theme }) => theme.colors.gray900} !important;
     `}
   ${(props) =>
     props.disabled &&
-    props.variant === "dark" &&
+    props.variant === DropdownVariants.DARK &&
     css`
       border-color: ${({ theme }) => theme.colors.dark500} !important;
       color: ${({ theme }) => theme.colors.pastelBlue} !important;
     `}
 `;
+
 const Label = styled.span`
   flex-grow: 1;
 `;
-const StyledArrow = styled(ChevronDown)<{ isOpen: boolean; variant?: string }>`
+
+const StyledArrow = styled(ChevronDown)<{ isOpen: boolean }>`
   transition: transform 0.4s ease-in-out;
   transform: ${({ isOpen }) => (isOpen ? "scale(1,-1)" : "scale(1,1)")};
 `;
-const DropdownContent = styled.div<{ position?: Position; scale?: string }>`
-  width: 100%;
+
+const DropdownContent = styled.div<{ position?: DropdownPosition; scale?: DropdownScales }>`
   position: absolute;
   left: 0;
   bottom: ${getBottom};
-  z-index: 101;
+  width: 100%;
   box-shadow: ${({ position }) =>
-    position === "bottom"
-      ? "0px 16px 32px rgba(0, 26, 67, 0.24)"
-      : "box-shadow: 0px -16px 32px rgba(0, 26, 67, 0.24);"};
+    position === DropdownPosition.BOTTOM
+      ? "0 16px 32px rgba(0, 26, 67, 0.24)"
+      : "box-shadow: 0 -16px 32px rgba(0, 26, 67, 0.24);"};
   background: ${({ theme }) => theme.colors.white};
   overflow: hidden;
-  transform: ${({ position }) => (position === "bottom" ? "translateY(100%)" : "translateY(0)")};
+  z-index: 101;
+  transform: ${({ position }) => (position === DropdownPosition.BOTTOM ? "translateY(100%)" : "translateY(0)")};
 
   ${systemVariant({
     prop: "scale",
     variants: scaleVariantsContent,
   })}
 `;
-const DropdownItem = styled.div<{ scale?: string; selected?: boolean }>`
-  display: flex;
+
+const DropdownItem = styled(Flex)<{ scale?: DropdownScales; selected?: boolean }>`
   align-items: center;
   color: ${({ theme, selected }) => (selected ? theme.colors.primary : theme.colors.dark800)};
-  cursor: pointer;
   font-weight: 600;
+  cursor: pointer;
   transition: background-color 0.4s ease-out;
 
   ${systemVariant({
@@ -120,8 +131,8 @@ const DropdownItem = styled.div<{ scale?: string; selected?: boolean }>`
   }
 `;
 
-const Dropdown: React.FC<DropdownProps> = ({
-  position = "bottom",
+const Dropdown: FC<DropdownProps> = ({
+  position = DropdownPosition.BOTTOM,
   maxWidth,
   minWidth,
   scale,
@@ -132,52 +143,60 @@ const Dropdown: React.FC<DropdownProps> = ({
   selectedItem,
   ...props
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const wrapperRef = useRef(null);
-  const [selectedOption, setSelectedOption] = useState(selectedItem || options[0]);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedOption, setSelectedOption] = useState<OptionProps>(selectedItem || options[0]);
+
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (selectedItem && selectedItem?.value !== selectedOption?.value) setSelectedOption(selectedItem);
   }, [selectedItem, selectedOption]);
 
-  const toggling = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (!disabled) {
-      setIsOpen(!isOpen);
-      event.stopPropagation();
-    }
-    return;
-  };
-  const onOptionClicked = (option: OptionProps) => () => {
-    setIsOpen(false);
-    setSelectedOption(options[options.indexOf(option)]);
-    if (onChange) {
-      onChange(option);
-    }
-  };
-  const scaleVariantsImage = (scaleItem: Scale): number => {
-    switch (scaleItem) {
-      case scales.LG:
-        return 24;
-      case scales.MD:
-        return 20;
-      case scales.SM:
-      default:
-        return 16;
-    }
-  };
   useEffect(() => {
-    function handleClickOutside(event: { target: any }) {
-      if (wrapperRef.current && !(wrapperRef.current as HTMLElement).contains(event.target)) {
+    const handleClickOutside = ({ target }) => {
+      if (!wrapperRef.current?.contains(target)) {
         setIsOpen(false);
       }
-    }
+    };
+
     document.addEventListener("mousedown", handleClickOutside, {
       passive: true,
     });
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [wrapperRef]);
+
+  const toggling = (event: BaseSyntheticEvent) => {
+    if (!disabled) {
+      setIsOpen(!isOpen);
+      event.stopPropagation();
+    }
+
+    return;
+  };
+
+  const onOptionClicked = (option: OptionProps) => () => {
+    setIsOpen(false);
+    setSelectedOption(options[options.indexOf(option)]);
+
+    if (onChange) {
+      onChange(option);
+    }
+  };
+
+  const scaleVariantsImage = (scaleItem: DropdownScales): number => {
+    switch (scaleItem) {
+      case DropdownScales.LG:
+        return 24;
+      case DropdownScales.MD:
+        return 20;
+      case DropdownScales.SM:
+      default:
+        return 16;
+    }
+  };
 
   return (
     <Container maxWidth={maxWidth} minWidth={minWidth} ref={wrapperRef} scale={scale} {...props}>
