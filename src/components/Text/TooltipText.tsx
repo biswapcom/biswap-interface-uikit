@@ -1,4 +1,6 @@
 import styled from "styled-components";
+
+// components
 import Text from "./Text";
 
 const TooltipText = styled(Text)`

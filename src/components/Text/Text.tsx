@@ -1,13 +1,17 @@
 import styled, { DefaultTheme } from "styled-components";
 import { space, typography, layout } from "styled-system";
+
+// utils
 import getThemeValue from "../../util/getThemeValue";
+
+// types
 import { TextProps } from "./types";
 
 interface ThemedProps extends TextProps {
   theme: DefaultTheme;
 }
 
-const getColor = ({ color, theme }: ThemedProps) => {
+const getColor = ({ color = "pastelBlue", theme }: ThemedProps) => {
   return getThemeValue(`colors.${color}`, color)(theme);
 };
 
@@ -27,17 +31,11 @@ const Text = styled.div<TextProps>`
     overflow: hidden;
     text-overflow: ellipsis;`}
 
-  ${({ noWrap }) => noWrap && `white-space: nowrap;`}
-  
-  ${space}
-  ${typography}
-  ${layout}
-`;
+    ${({ noWrap }) => noWrap && `white-space: nowrap;`}
 
-Text.defaultProps = {
-  color: "pastelBlue",
-  small: false,
-  ellipsis: false,
-};
+    ${space}
+    ${typography}
+    ${layout}
+`;
 
 export default Text;

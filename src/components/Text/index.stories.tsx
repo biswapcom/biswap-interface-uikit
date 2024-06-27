@@ -1,6 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
+
+// components
 import Text from "./Text";
 import TooltipText from "./TooltipText";
+import { Box } from "../Box";
 
 export default {
   title: "Components/Text",
@@ -42,9 +45,9 @@ export default {
   },
 };
 
-export const Default: React.FC = () => {
+export const Default: FC = () => {
   return (
-    <div>
+    <Box>
       <Text>Default</Text>
       <Text bold>Bold text</Text>
       <Text small>Small text</Text>
@@ -67,15 +70,15 @@ export const Default: React.FC = () => {
       <Text ellipsis width="250px">
         Ellipsis: a long text with an ellipsis just for the example
       </Text>
-    </div>
+    </Box>
   );
 };
 
-export const TooltipTextVariant: React.FC = () => {
+export const TooltipTextVariant: FC = () => {
   return (
-    <div>
+    <Box>
       <Text>Use TooltipText for text that has tooltip, it accepts the same props as normal Text component</Text>
       <TooltipText>Example</TooltipText>
-    </div>
+    </Box>
   );
 };
