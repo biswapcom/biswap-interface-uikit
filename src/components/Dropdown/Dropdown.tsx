@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, FC, BaseSyntheticEvent } from "react";
 import Image from "next/image";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { variant as systemVariant, space } from "styled-system";
 
 // types
@@ -25,6 +25,7 @@ import {
   scaleVariantsContent,
   styleVariantsTop,
   scaleVariantItem,
+  getVariantColor,
 } from "./theme";
 
 const getBottom = ({ position }: DropdownPositionProps): string =>
@@ -69,20 +70,7 @@ const DropdownTop = styled(Flex)<{
     variants: styleVariantsTop,
   })}
 
-  ${(props) =>
-    props.disabled &&
-    props.variant === DropdownVariants.LIGHT &&
-    css`
-      border-color: ${({ theme }) => theme.colors.gray300} !important;
-      color: ${({ theme }) => theme.colors.gray900} !important;
-    `}
-  ${(props) =>
-    props.disabled &&
-    props.variant === DropdownVariants.DARK &&
-    css`
-      border-color: ${({ theme }) => theme.colors.dark500} !important;
-      color: ${({ theme }) => theme.colors.pastelBlue} !important;
-    `}
+  ${({ disabled, variant }) => disabled && getVariantColor(variant)}
 `;
 
 const Label = styled.span`

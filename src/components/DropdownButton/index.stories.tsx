@@ -5,6 +5,9 @@ import styled from "styled-components";
 import DropdownButton from "./DropdownButton";
 import { Flex } from "../Box";
 
+// types
+import { Positions, Scales, Variants } from "./types";
+
 export default {
   title: "Components/DropdownButton",
   component: DropdownButton,
@@ -29,7 +32,7 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="lg"
+          scale={Scales.LG}
           dropDownWidth="300px"
           options={[
             {
@@ -62,7 +65,7 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="md"
+          scale={Scales.MD}
           options={[
             {
               label: "Light LG",
@@ -93,7 +96,7 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="sm"
+          scale={Scales.SM}
           options={[
             {
               label: "Light LG",
@@ -126,9 +129,9 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="lg"
-          variant="secondary"
-          position="top"
+          scale={Scales.LG}
+          variant={Variants.SECONDARY}
+          position={Positions.TOP}
           options={[
             {
               label: "Light LG",
@@ -160,8 +163,8 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="md"
-          variant="secondary"
+          scale={Scales.MD}
+          variant={Variants.SECONDARY}
           options={[
             {
               label: "Light MD",
@@ -192,8 +195,8 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="sm"
-          variant="secondary"
+          scale={Scales.SM}
+          variant={Variants.SECONDARY}
           options={[
             {
               label: "Light SM",
@@ -226,8 +229,8 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="lg"
-          variant="light"
+          scale={Scales.LG}
+          variant={Variants.LIGHT}
           dropDownWidth="400px"
           options={[
             {
@@ -260,8 +263,8 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="md"
-          variant="light"
+          scale={Scales.MD}
+          variant={Variants.LIGHT}
           options={[
             {
               label: "Light MD",
@@ -292,8 +295,8 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="sm"
-          variant="light"
+          scale={Scales.SM}
+          variant={Variants.LIGHT}
           options={[
             {
               label: "Light SM",
@@ -326,8 +329,8 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="sm"
-          variant="light"
+          scale={Scales.SM}
+          variant={Variants.LIGHT}
           options={[
             {
               label: "Light open to top",
@@ -354,13 +357,13 @@ export const Default: React.FC = () => {
               },
             },
           ]}
-          position="top"
+          position={Positions.TOP}
         />
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="sm"
-          variant="light"
+          scale={Scales.SM}
+          variant={Variants.LIGHT}
           options={[
             {
               label: "Light disabled",
@@ -395,8 +398,8 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="lg"
-          variant="dark"
+          scale={Scales.LG}
+          variant={Variants.DARK}
           options={[
             {
               label: "Dark LG",
@@ -428,8 +431,8 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="md"
-          variant="dark"
+          scale={Scales.MD}
+          variant={Variants.DARK}
           options={[
             {
               label: "Dark MD",
@@ -460,8 +463,8 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="sm"
-          variant="dark"
+          scale={Scales.SM}
+          variant={Variants.DARK}
           options={[
             {
               label: "Dark SM",
@@ -494,8 +497,8 @@ export const Default: React.FC = () => {
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="sm"
-          variant="dark"
+          scale={Scales.SM}
+          variant={Variants.DARK}
           options={[
             {
               label: "Dark open to top",
@@ -522,13 +525,13 @@ export const Default: React.FC = () => {
               },
             },
           ]}
-          position="top"
+          position={Positions.TOP}
         />
         <DropdownButton
           mr="24px"
           maxWidth="250px"
-          scale="sm"
-          variant="dark"
+          scale={Scales.SM}
+          variant={Variants.DARK}
           options={[
             {
               label: "Dark disabled",

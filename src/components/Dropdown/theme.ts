@@ -1,3 +1,6 @@
+import { css } from "styled-components";
+
+// types
 import { DropdownScales, DropdownVariants } from "./types";
 
 export const scaleVariantsContainer = {
@@ -158,4 +161,20 @@ export const styleVariantsTop = {
       },
     },
   },
+};
+
+export const getVariantColor = (variant: DropdownVariants) => {
+  switch (variant) {
+    case DropdownVariants.LIGHT:
+      return css`
+        border-color: ${({ theme }) => theme.colors.gray300} !important;
+        color: ${({ theme }) => theme.colors.gray900} !important;
+      `;
+    case DropdownVariants.DARK:
+    default:
+      return css`
+        border-color: ${({ theme }) => theme.colors.dark500} !important;
+        color: ${({ theme }) => theme.colors.pastelBlue} !important;
+      `;
+  }
 };
