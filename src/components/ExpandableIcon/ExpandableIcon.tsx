@@ -1,14 +1,18 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+
+// components
 import { Flex } from "../Box";
 import IconComponent from "../Svg/IconComponent";
-import { ExpandableIconProps, Scale, variantRotate } from "./type";
 
-const getScale = ({ rotateType, isOpen }: { rotateType: Scale; isOpen: boolean }) => {
+// types
+import { ExpandableIconProps, VariantRotate } from "./type";
+
+const getScale = ({ rotateType, isOpen }: { rotateType: VariantRotate; isOpen: boolean }) => {
   switch (rotateType) {
-    case variantRotate.ROTATE_V1:
+    case VariantRotate.ROTATE_V1:
       return `scale(1, ${isOpen ? -1 : 1})`;
-    case variantRotate.ROTATE_V2:
+    case VariantRotate.ROTATE_V2:
     default:
       return `scale(${isOpen ? -1 : 1})`;
   }
@@ -16,7 +20,7 @@ const getScale = ({ rotateType, isOpen }: { rotateType: Scale; isOpen: boolean }
 
 const StyledChevronWrapper = styled(Flex)<{
   isOpen: boolean;
-  rotateType: Scale;
+  rotateType: VariantRotate;
 }>`
   svg {
     transition: transform 0.3s ease;
@@ -28,7 +32,7 @@ const ExpandableIcon: FC<ExpandableIconProps> = ({
   color = "primary",
   width = "24px",
   iconName,
-  rotateType = variantRotate.ROTATE_V2,
+  rotateType = VariantRotate.ROTATE_V2,
   ...props
 }) => {
   return (
