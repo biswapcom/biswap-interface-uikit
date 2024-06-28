@@ -1,58 +1,61 @@
-import { variants } from "./types";
+import { Variants } from "./types";
 
 export const titleVariants = {
-  [variants.LIGHT]: {
+  [Variants.LIGHT]: {
     color: "dark800",
   },
-  [variants.DARK]: {
+  [Variants.DARK]: {
     color: "white",
   },
-  [variants.DARK_BACKGROUND]: {
+  [Variants.DARK_BACKGROUND]: {
     color: "white",
   },
 };
+
 export const wrapperVariants = {
-  [variants.LIGHT]: {
+  [Variants.LIGHT]: {
     backgroundColor: "gray300",
   },
-  [variants.DARK]: {
+  [Variants.DARK]: {
     backgroundColor: "dark600",
   },
-  [variants.DARK_BACKGROUND]: {
+  [Variants.DARK_BACKGROUND]: {
     backgroundColor: "dark600",
   },
 };
+
 export const questionVariants = {
-  [variants.LIGHT]: {
+  [Variants.LIGHT]: {
     color: "dark800",
   },
-  [variants.DARK]: {
+  [Variants.DARK]: {
     color: "white",
   },
-  [variants.DARK_BACKGROUND]: {
+  [Variants.DARK_BACKGROUND]: {
     color: "white",
   },
 };
+
 export const descriptionVariants = {
-  [variants.LIGHT]: {
+  [Variants.LIGHT]: {
     color: "gray900",
   },
-  [variants.DARK]: {
+  [Variants.DARK]: {
     color: "gray700",
   },
-  [variants.DARK_BACKGROUND]: {
+  [Variants.DARK_BACKGROUND]: {
     color: "gray700",
   },
 };
 
 export const openBackground = {
-  [variants.LIGHT]: {
+  [Variants.LIGHT]: {
     backgroundColor: "transparent",
   },
-  [variants.DARK]: {
+  [Variants.DARK]: {
     backgroundColor: "transparent",
   },
-  [variants.DARK_BACKGROUND]: {
+  [Variants.DARK_BACKGROUND]: {
     backgroundColor: "dark900",
   },
 };

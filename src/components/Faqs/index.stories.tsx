@@ -1,14 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
 import { Meta } from "@storybook/react/types-6-0";
+import styled from "styled-components";
 
 // components
 import Faqs from "./Faqs";
-import { BodyText } from "../Typography";
+import { BodyText, Scales } from "../Typography";
 import { Box, Grid } from "../Box";
 
 // config
 import { Config } from "./config";
-import styled from "styled-components";
+
+// types
+import { Variants } from "./types";
 
 export default {
   title: "Components/Faqs",
@@ -17,7 +20,6 @@ export default {
 } as Meta;
 
 const GridWrapper = styled(Grid)`
-  display: grid;
   grid-template-columns: 1fr;
   grid-gap: 16px;
   height: 100%;
@@ -33,36 +35,37 @@ const GridWrapper = styled(Grid)`
   }
 `;
 
-const Stub = styled.div`
+const Stub = styled(Box)`
   width: 100%;
-  background: #d4701f;
   height: 300px;
+  background: ${({ theme }) => theme.colors.binance};
 `;
-export const Default: React.FC = () => {
+
+export const Default: FC = () => {
   const { title, leftData, rightData } = Config;
 
   return (
     <Box p="20px">
-      <BodyText scale="size32" mb="20px" bold>
+      <BodyText scale={Scales.SIZE32} mb="20px" bold>
         Faqs
       </BodyText>
-      <Faqs titlePosition="center" title={title} leftData={leftData} rightData={rightData} variant="light" />
-      <Faqs title={title} leftData={leftData} rightData={rightData} variant="darkBackground" />
+      <Faqs titlePosition="center" title={title} leftData={leftData} rightData={rightData} variant={Variants.LIGHT} />
+      <Faqs title={title} leftData={leftData} rightData={rightData} variant={Variants.DARK_BACKGROUND} />
     </Box>
   );
 };
 
-export const DefaultBlog: React.FC = () => {
+export const DefaultBlog: FC = () => {
   const { title, leftData, rightData } = Config;
 
   return (
     <Box p="20px">
-      <BodyText scale="size32" mb="20px" bold>
+      <BodyText scale={Scales.SIZE32} mb="20px" bold>
         Faqs
       </BodyText>
       <GridWrapper>
         <Box>
-          <Faqs title={title} leftData={leftData} rightData={rightData} variant="light" blogFAQ />
+          <Faqs title={title} leftData={leftData} rightData={rightData} variant={Variants.LIGHT} blogFAQ />
         </Box>
         <Box>
           <Stub />
