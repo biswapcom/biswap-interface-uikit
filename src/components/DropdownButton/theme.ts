@@ -1,18 +1,21 @@
-import { SCALES, VARIANTS } from "./types";
+import { css } from "styled-components";
+
+// types
+import { Scales, Variants } from "./types";
 
 export const scaleVariantsContainer = {
-  [SCALES.LG]: {
+  [Scales.LG]: {
     height: "48px",
   },
-  [SCALES.MD]: {
+  [Scales.MD]: {
     height: "40px",
   },
-  [SCALES.SM]: {
+  [Scales.SM]: {
     height: "32px",
   },
 };
 export const scaleVariantsTop = {
-  [SCALES.LG]: {
+  [Scales.LG]: {
     padding: "0 12px 0 24px",
     fontSize: "16px",
     borderRadius: "10px",
@@ -29,7 +32,7 @@ export const scaleVariantsTop = {
       marginLeft: "8px",
     },
   },
-  [SCALES.MD]: {
+  [Scales.MD]: {
     padding: "0 10px 0 16px",
     fontSize: "14px",
     borderRadius: "8px",
@@ -46,7 +49,7 @@ export const scaleVariantsTop = {
       marginLeft: "6px",
     },
   },
-  [SCALES.SM]: {
+  [Scales.SM]: {
     padding: "0 8px 0 12px",
     fontSize: "12px",
     borderRadius: "8px",
@@ -66,19 +69,19 @@ export const scaleVariantsTop = {
 };
 
 export const scaleVariantsContent = {
-  [SCALES.LG]: {
+  [Scales.LG]: {
     borderRadius: "10px",
   },
-  [SCALES.MD]: {
+  [Scales.MD]: {
     borderRadius: "8px",
   },
-  [SCALES.SM]: {
+  [Scales.SM]: {
     borderRadius: "8px",
   },
 };
 
 export const scaleVariantItem = {
-  [SCALES.LG]: {
+  [Scales.LG]: {
     height: "48px",
     fontSize: "16px",
     padding: "0 24px",
@@ -91,7 +94,7 @@ export const scaleVariantItem = {
       marginRight: "8px",
     },
   },
-  [SCALES.MD]: {
+  [Scales.MD]: {
     height: "40px",
     fontSize: "14px",
     padding: "0 10px 0 16px",
@@ -104,7 +107,7 @@ export const scaleVariantItem = {
       marginRight: "6px",
     },
   },
-  [SCALES.SM]: {
+  [Scales.SM]: {
     height: "32px",
     fontSize: "12px",
     padding: "0 8px 0 12px",
@@ -120,32 +123,54 @@ export const scaleVariantItem = {
 };
 
 export const styleVariantsTop = {
-  [VARIANTS.PRIMARY]: {
+  [Variants.PRIMARY]: {
     color: "primary",
 
     ".arrow": {
       fill: "primary",
     },
   },
-  [VARIANTS.SECONDARY]: {
+  [Variants.SECONDARY]: {
     color: "gray900",
 
     ".arrow": {
       fill: "gray900",
     },
   },
-  [VARIANTS.LIGHT]: {
+  [Variants.LIGHT]: {
     color: "white",
 
     ".arrow": {
       fill: "white",
     },
   },
-  [VARIANTS.DARK]: {
+  [Variants.DARK]: {
     color: "dark800",
 
     ".arrow": {
       fill: "dark800",
     },
   },
+};
+
+export const getVariantColor = (variant: Variants) => {
+  switch (variant) {
+    case Variants.SECONDARY:
+      return css`
+        color: ${({ theme }) => theme.colors.gray900} !important;
+      `;
+    case Variants.LIGHT:
+      return css`
+        color: ${({ theme }) => theme.colors.white} !important;
+      `;
+    case Variants.DARK:
+      return css`
+        color: ${({ theme }) => theme.colors.dark800} !important;
+      `;
+    case Variants.PRIMARY:
+    default:
+      return css`
+        color: ${({ theme }) => theme.colors.primary} !important;
+      `;
+  }
 };

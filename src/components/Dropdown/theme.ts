@@ -1,18 +1,22 @@
-import { scales, variants } from "./types";
+import { css } from "styled-components";
+
+// types
+import { DropdownScales, DropdownVariants } from "./types";
 
 export const scaleVariantsContainer = {
-  [scales.LG]: {
+  [DropdownScales.LG]: {
     height: "48px",
   },
-  [scales.MD]: {
+  [DropdownScales.MD]: {
     height: "40px",
   },
-  [scales.SM]: {
+  [DropdownScales.SM]: {
     height: "32px",
   },
 };
+
 export const scaleVariantsTop = {
-  [scales.LG]: {
+  [DropdownScales.LG]: {
     padding: "0 12px 0 24px",
     fontSize: "16px",
     borderRadius: "10px",
@@ -25,7 +29,7 @@ export const scaleVariantsTop = {
       marginRight: "12px",
     },
   },
-  [scales.MD]: {
+  [DropdownScales.MD]: {
     padding: "0 10px 0 16px",
     fontSize: "14px",
     borderRadius: "8px",
@@ -38,7 +42,7 @@ export const scaleVariantsTop = {
       marginRight: "8px",
     },
   },
-  [scales.SM]: {
+  [DropdownScales.SM]: {
     padding: "0 8px 0 12px",
     fontSize: "12px",
     borderRadius: "8px",
@@ -54,19 +58,19 @@ export const scaleVariantsTop = {
 };
 
 export const scaleVariantsContent = {
-  [scales.LG]: {
+  [DropdownScales.LG]: {
     borderRadius: "10px",
   },
-  [scales.MD]: {
+  [DropdownScales.MD]: {
     borderRadius: "8px",
   },
-  [scales.SM]: {
+  [DropdownScales.SM]: {
     borderRadius: "8px",
   },
 };
 
 export const scaleVariantItem = {
-  [scales.LG]: {
+  [DropdownScales.LG]: {
     height: "48px",
     fontSize: "16px",
     padding: "0 25px",
@@ -79,7 +83,7 @@ export const scaleVariantItem = {
       marginRight: "12px",
     },
   },
-  [scales.MD]: {
+  [DropdownScales.MD]: {
     height: "40px",
     fontSize: "14px",
     padding: "0 17px",
@@ -92,7 +96,7 @@ export const scaleVariantItem = {
       marginRight: "8px",
     },
   },
-  [scales.SM]: {
+  [DropdownScales.SM]: {
     height: "32px",
     fontSize: "12px",
     padding: "0 13px",
@@ -108,7 +112,7 @@ export const scaleVariantItem = {
 };
 
 export const styleVariantsTop = {
-  [variants.LIGHT]: {
+  [DropdownVariants.LIGHT]: {
     borderColor: "gray300",
     color: "gray900",
 
@@ -133,7 +137,7 @@ export const styleVariantsTop = {
       },
     },
   },
-  [variants.DARK]: {
+  [DropdownVariants.DARK]: {
     borderColor: "pastelBlue",
     color: "white",
 
@@ -157,4 +161,20 @@ export const styleVariantsTop = {
       },
     },
   },
+};
+
+export const getVariantColor = (variant: DropdownVariants) => {
+  switch (variant) {
+    case DropdownVariants.LIGHT:
+      return css`
+        border-color: ${({ theme }) => theme.colors.gray300} !important;
+        color: ${({ theme }) => theme.colors.gray900} !important;
+      `;
+    case DropdownVariants.DARK:
+    default:
+      return css`
+        border-color: ${({ theme }) => theme.colors.dark500} !important;
+        color: ${({ theme }) => theme.colors.pastelBlue} !important;
+      `;
+  }
 };

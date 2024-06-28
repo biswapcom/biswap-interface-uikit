@@ -3,39 +3,41 @@ import styled from "styled-components";
 import { variant as systemVariant } from "styled-system";
 
 // components
-import { HeadText } from "../../Typography";
+import { HeadText, Scales } from "../../Typography";
 import { Box, Flex } from "../../Box";
-
-// icons
 import { ChevronDownIcon } from "../../Svg";
 
 // utils
 import { getRgba } from "../../../util";
 
 // types
-import { Variant } from "../types";
+import { Variants } from "../types";
 
 // theme
-import { wrapperVariants, questionVariants, openBackground } from "../theme";
+import { openBackground, questionVariants, wrapperVariants } from "../theme";
 
 interface IProps {
   name: string;
   isOpened: boolean;
   handleToggle: (value: string) => void;
   children: ReactNode;
-  variant: Variant;
+  variant: Variants;
 }
-const Wrapper = styled(Box)<{ isOpen: boolean; variant: Variant }>`
+
+const Wrapper = styled(Box)<{ isOpen: boolean; variant: Variants }>`
   width: 100%;
   margin-top: 8px;
+
   ${systemVariant({
     variants: wrapperVariants,
   })}
+
   ${({ isOpen }) =>
     isOpen &&
     systemVariant({
       variants: openBackground,
     })};
+
   border: 1px solid ${({ theme, isOpen }) => (isOpen ? getRgba(theme.colors.primary, theme, 0.16) : "transparent")};
   border-radius: 8px;
   cursor: pointer;
@@ -60,7 +62,7 @@ const Question = styled(Flex)<{ isOpen: boolean }>`
   }
 `;
 
-const StyledText = styled(HeadText)<{ variant: Variant }>`
+const StyledText = styled(HeadText)<{ variant: Variants }>`
   ${systemVariant({
     variants: questionVariants,
   })}
@@ -76,13 +78,13 @@ const Answer = styled(Box)`
   transition: height ease 0.3s;
 `;
 
-const FaqAccordion: FC<IProps> = ({ name = "", isOpened, handleToggle, variant = "dark", children }) => {
+const FaqAccordion: FC<IProps> = ({ name = "", isOpened, handleToggle, variant = Variants.DARK, children }) => {
   const contentEl = useRef<HTMLDivElement>(null);
 
   return (
     <Wrapper isOpen={isOpened} onClick={() => handleToggle(name)} variant={variant}>
       <Question isOpen={isOpened}>
-        <StyledText scale="size14" variant={variant}>
+        <StyledText scale={Scales.SIZE14} variant={variant}>
           {name}
         </StyledText>
         <StyledChevronIcon isOpen={isOpened} color="primary" width="24px" />

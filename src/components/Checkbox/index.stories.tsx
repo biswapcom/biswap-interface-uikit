@@ -1,6 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
+
+// components
 import Checkbox from "./Checkbox";
+import { Box } from "../Box";
+
+// types
+import { CheckboxScales } from "./types";
 
 export default {
   title: "Components/Checkbox",
@@ -8,18 +14,17 @@ export default {
   argTypes: {},
 };
 
-const WrapperLight = styled.div`
-  background: #f9fafd;
-  padding: 24px 32px;
+const WrapperLight = styled(Box)`
   height: 200px;
-`;
-const WrapperDark = styled.div`
-  background: #07162d;
   padding: 24px 32px;
-  height: 200px;
+  background: ${({ theme }) => theme.colors.gray100};
 `;
 
-export const Default: React.FC = () => {
+const WrapperDark = styled(WrapperLight)`
+  background: ${({ theme }) => theme.colors.dark800};
+`;
+
+export const Default: FC = () => {
   return (
     <>
       <WrapperLight>
@@ -28,14 +33,14 @@ export const Default: React.FC = () => {
           <Checkbox labelOrientation="right" colorVariant="light" label="On right label" />
         </div>
         <div style={{ marginBottom: "24px" }}>
-          <Checkbox scale="sm" labelOrientation="left" colorVariant="light" label="On left label" />
-          <Checkbox scale="sm" labelOrientation="right" colorVariant="light" label="On right label" />
+          <Checkbox scale={CheckboxScales.SM} labelOrientation="left" colorVariant="light" label="On left label" />
+          <Checkbox scale={CheckboxScales.SM} labelOrientation="right" colorVariant="light" label="On right label" />
         </div>
         <div>
           <Checkbox />
         </div>
         <div>
-          <Checkbox scale="sm" />
+          <Checkbox scale={CheckboxScales.SM} />
         </div>
       </WrapperLight>
 
@@ -45,14 +50,14 @@ export const Default: React.FC = () => {
           <Checkbox labelOrientation="right" colorVariant="dark" label="On right label" />
         </div>
         <div style={{ marginBottom: "24px" }}>
-          <Checkbox scale="sm" labelOrientation="left" colorVariant="dark" label="On left label" />
-          <Checkbox scale="sm" labelOrientation="right" colorVariant="dark" label="On right label" />
+          <Checkbox scale={CheckboxScales.SM} labelOrientation="left" colorVariant="dark" label="On left label" />
+          <Checkbox scale={CheckboxScales.SM} labelOrientation="right" colorVariant="dark" label="On right label" />
         </div>
         <div>
           <Checkbox />
         </div>
         <div>
-          <Checkbox scale="sm" />
+          <Checkbox scale={CheckboxScales.SM} />
         </div>
       </WrapperDark>
     </>

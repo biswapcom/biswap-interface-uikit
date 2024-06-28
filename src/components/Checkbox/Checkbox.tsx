@@ -1,14 +1,20 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { CheckboxProps, scales } from "./types";
+
+// types
+import { type CheckboxProps, CheckboxScales } from "./types";
+
+// utils
 import getRgba from "../../util/getRgba";
+
+// components
 import { Text } from "../Text";
 
 const getScale = ({ scale }: CheckboxProps) => {
   switch (scale) {
-    case scales.SM:
+    case CheckboxScales.SM:
       return "16px";
-    case scales.MD:
+    case CheckboxScales.MD:
     default:
       return "20px";
   }
@@ -24,18 +30,18 @@ const Wrapper = styled.label<{
 `;
 
 const CheckboxInput = styled.input.attrs({ type: "checkbox" })<CheckboxProps>`
-  appearance: none;
-  overflow: hidden;
-  cursor: pointer;
   position: relative;
   display: inline-block;
-  height: ${getScale};
-  min-height: ${getScale};
   width: ${getScale};
   min-width: ${getScale};
+  height: ${getScale};
+  min-height: ${getScale};
   border: 2px solid transparent;
   border-radius: 4px;
   background-color: ${({ theme }) => getRgba(theme.colors.pastelBlue, theme, 0.16)};
+  appearance: none;
+  overflow: hidden;
+  cursor: pointer;
   transition:
     background-color 0.4s ease-in-out,
     border-color 0.4s ease;
@@ -43,15 +49,15 @@ const CheckboxInput = styled.input.attrs({ type: "checkbox" })<CheckboxProps>`
   &:after {
     content: "";
     position: absolute;
-    border-bottom: 2px solid;
-    border-left: 2px solid;
-    border-color: transparent;
     top: 25%;
     left: 0;
     right: 0;
     width: 65%;
     height: 37%;
     margin: auto;
+    border-bottom: 2px solid;
+    border-left: 2px solid;
+    border-color: transparent;
     transform: rotate(-50deg);
     transition: border-color 0.2s ease-in-out;
   }
@@ -66,6 +72,7 @@ const CheckboxInput = styled.input.attrs({ type: "checkbox" })<CheckboxProps>`
 
   &:checked {
     background-color: ${({ theme }) => theme.colors.success};
+
     &:after {
       border-color: white;
     }
@@ -94,7 +101,7 @@ const StyledText = styled(Text)`
 const Checkbox: FC<CheckboxProps> = ({
   labelOrientation = "left",
   label,
-  scale = scales.MD,
+  scale = CheckboxScales.MD,
   colorVariant = "light",
   id,
   defaultChecked,

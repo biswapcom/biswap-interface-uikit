@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { variant as systemVariant, space } from "styled-system";
 
 // types
-import { DropdownButtonProps, Position, OptionProps, VARIANTS, Scale, SCALES, Variant } from "./types";
+import { type DropdownButtonProps, type OptionProps, Positions, Scales, Variants } from "./types";
 
 // theme
 import {
@@ -13,6 +13,7 @@ import {
   scaleVariantsContent,
   styleVariantsTop,
   scaleVariantItem,
+  getVariantColor,
 } from "./theme";
 
 // icons
@@ -23,18 +24,13 @@ import ChevronDownCircleSolid from "../Svg/Icons/Arrows/ChevronDownCircleSolid";
 import IconComponent from "../Svg/IconComponent";
 import { Box, Flex } from "../Box";
 
-const getBottom = ({ contentPosition }: { contentPosition: Position }) => {
-  if (contentPosition === "top") {
-    return "calc(100% + 8px)";
-  }
+const getBottom = ({ contentPosition }: { contentPosition: Positions }): string =>
+  contentPosition === Positions.TOP ? "calc(100% + 8px)" : "-8px";
 
-  return "-8px";
-};
-
-const Container = styled.div<{
+const Container = styled(Box)<{
   maxWidth?: string;
   minWidth?: string;
-  scale: Scale;
+  scale: Scales;
 }>`
   position: relative;
   width: 100%;
@@ -51,8 +47,8 @@ const Container = styled.div<{
 
 const DropdownTop = styled(Flex)<{
   disabled: boolean;
-  scale: Scale;
-  variant: Variant;
+  scale: Scales;
+  variant: Variants;
 }>`
   align-items: center;
   width: 100%;
@@ -69,32 +65,9 @@ const DropdownTop = styled(Flex)<{
   ${systemVariant({
     variants: styleVariantsTop,
   })}
-
-  ${(props) =>
-    props.disabled &&
-    props.variant === VARIANTS.PRIMARY &&
-    css`
-      color: ${({ theme }) => theme.colors.primary} !important;
-    `}
-  ${(props) =>
-    props.disabled &&
-    props.variant === VARIANTS.SECONDARY &&
-    css`
-      color: ${({ theme }) => theme.colors.gray900} !important;
-    `}
-  ${(props) =>
-    props.disabled &&
-    props.variant === VARIANTS.LIGHT &&
-    css`
-      color: ${({ theme }) => theme.colors.white} !important;
-    `}
-  ${(props) =>
-    props.disabled &&
-    props.variant === VARIANTS.DARK &&
-    css`
-      color: ${({ theme }) => theme.colors.dark800} !important;
-    `}
-    
+  
+  ${({ disabled, variant }) => disabled && getVariantColor(variant)}
+  
   ${({ theme }) => theme.mediaQueries.sm} {
     width: auto;
   }
@@ -111,8 +84,8 @@ const StyledArrowPrimary = styled(ChevronDownCircleSolid)<{ isOpen: boolean }>`
 `;
 
 const DropdownContent = styled(Box)<{
-  contentPosition: Position;
-  scale: Scale;
+  contentPosition: Positions;
+  scale: Scales;
   dropDownWidth?: string;
 }>`
   position: absolute;
@@ -133,7 +106,7 @@ const DropdownContent = styled(Box)<{
   })}
 `;
 
-const DropdownItem = styled(Flex)<{ scale: Scale; selected?: boolean }>`
+const DropdownItem = styled(Flex)<{ scale: Scales; selected?: boolean }>`
   align-items: center;
   color: ${({ theme, selected }) => (selected ? theme.colors.primary : theme.colors.dark800)};
   font-weight: 600;
@@ -151,11 +124,11 @@ const DropdownItem = styled(Flex)<{ scale: Scale; selected?: boolean }>`
 `;
 
 const DropdownButton: React.FC<DropdownButtonProps> = ({
-  position = "bottom",
+  position = Positions.BOTTOM,
   maxWidth,
   minWidth,
-  scale = SCALES.MD,
-  variant = VARIANTS.PRIMARY,
+  scale = Scales.MD,
+  variant = Variants.PRIMARY,
   disabled = false,
   options,
   onChange,
@@ -175,14 +148,16 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
   }, [selectedItem, selectedOption]);
 
   useEffect(() => {
-    function handleClickOutside(event: { target: any }) {
-      if (wrapperRef.current && !(wrapperRef.current as HTMLElement).contains(event.target)) {
+    const handleClickOutside = ({ target }) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(target)) {
         setIsOpen(false);
       }
-    }
+    };
+
     document.addEventListener("mousedown", handleClickOutside, {
       passive: true,
     });
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -206,25 +181,25 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
     }
   };
 
-  const scaleVariantsImage = (scaleItem: Scale): number => {
+  const scaleVariantsImage = (scaleItem: Scales): number => {
     switch (scaleItem) {
-      case SCALES.LG:
+      case Scales.LG:
         return 24;
-      case SCALES.MD:
+      case Scales.MD:
         return 20;
-      case SCALES.SM:
+      case Scales.SM:
       default:
         return 16;
     }
   };
 
-  const getIconMargin = (scaleItem: Scale): string => {
+  const getIconMargin = (scaleItem: Scales): string => {
     switch (scaleItem) {
-      case SCALES.LG:
+      case Scales.LG:
         return "8px";
-      case SCALES.MD:
+      case Scales.MD:
         return "6px";
-      case SCALES.SM:
+      case Scales.SM:
       default:
         return "4px";
     }
@@ -256,7 +231,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
             />
           ))}
         {!hideLabel && <span>{selectedOption.label}</span>}
-        {variant === VARIANTS.PRIMARY ? (
+        {variant === Variants.PRIMARY ? (
           <StyledArrowPrimary className="arrow arrow_primary" isOpen={isOpen} />
         ) : (
           <StyledArrow className="arrow" isOpen={isOpen} />

@@ -1,20 +1,31 @@
 import { SpaceProps } from "styled-system";
 
-export type Position = "top" | "bottom";
-
-export interface PositionProps {
-  position?: Position;
+export enum DropdownPosition {
+  TOP = "top",
+  BOTTOM = "bottom",
 }
 
-export type Variant = (typeof variants)[keyof typeof variants];
-export type Scale = (typeof scales)[keyof typeof scales];
+export interface DropdownPositionProps {
+  position?: DropdownPosition;
+}
 
-export interface DropdownProps extends PositionProps, SpaceProps {
+export enum DropdownScales {
+  LG = "lg",
+  MD = "md",
+  SM = "sm",
+}
+
+export enum DropdownVariants {
+  DARK = "dark",
+  LIGHT = "light",
+}
+
+export interface DropdownProps extends DropdownPositionProps, SpaceProps {
   maxWidth?: string;
   minWidth?: string;
   withIcon?: string;
-  variant?: Variant;
-  scale: Scale;
+  variant?: DropdownVariants;
+  scale: DropdownScales;
   disabled?: boolean;
   options: Array<OptionProps>;
   onChange?: (option: OptionProps) => void;
@@ -30,14 +41,3 @@ export interface OptionProps {
     color?: string;
   };
 }
-
-export const scales = {
-  LG: "lg",
-  MD: "md",
-  SM: "sm",
-};
-
-export const variants = {
-  DARK: "dark",
-  LIGHT: "light",
-};
