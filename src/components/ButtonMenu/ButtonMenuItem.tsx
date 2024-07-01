@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
-
-// ui
 import styled, { css } from "styled-components";
 import { variant as systemVariant } from "styled-system";
+
+// theme
 import { styleVariants, scaleVariants, markerScales } from "./theme";
 
 // components
@@ -18,8 +18,14 @@ import { isTouchDevice, PolymorphicComponent } from "../../util";
 import { getColorKey, getHoverKey } from "./helpers";
 
 // types
-import { variants } from "./types";
-import { BaseButtonMenuItemProps, ButtonMenuItemProps, ColorKey, HoverKey, scales } from "./types";
+import {
+  type BaseButtonMenuItemProps,
+  type ButtonMenuItemProps,
+  type ColorKey,
+  type HoverKey,
+  Scales,
+  Variants,
+} from "./types";
 
 interface ItemButtonProps extends BaseButtonMenuItemProps {
   colorKey: ColorKey;
@@ -27,28 +33,29 @@ interface ItemButtonProps extends BaseButtonMenuItemProps {
 }
 
 const MenuItemButton: PolymorphicComponent<ItemButtonProps, "button"> = styled.button<ItemButtonProps>`
-  align-items: center;
-  border: 0;
-  margin: 0;
-  width: 100%;
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  outline: 0;
   font-family: inherit;
   font-weight: 600;
-  justify-content: center;
   line-height: 1;
-  outline: 0;
+  white-space: nowrap;
+  background-color: transparent;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition:
     background-color 0.2s,
     opacity 0.3s,
     color 0.3s;
-  background-color: transparent;
-  white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
 
   ${systemVariant({
     variants: styleVariants,
   })}
+
   ${systemVariant({
     prop: "scale",
     variants: scaleVariants,
@@ -71,9 +78,9 @@ const MenuItemButton: PolymorphicComponent<ItemButtonProps, "button"> = styled.b
 
 const ButtonMenuItem: PolymorphicComponent<ButtonMenuItemProps, "button"> = ({
   isActive = false,
-  variant = variants.DARK,
+  variant = Variants.DARK,
   properties,
-  scale = scales.MD,
+  scale = Scales.MD,
   as,
   setWidth,
   itemIndex = 0,
@@ -83,22 +90,20 @@ const ButtonMenuItem: PolymorphicComponent<ButtonMenuItemProps, "button"> = ({
   onClick,
   ...props
 }: ButtonMenuItemProps) => {
-  const { isMobile, isTablet, isXs, isSm, isMs, isLg, isXl, isXll, isXxl } = useMatchBreakpoints();
-
   const ref = useRef<HTMLButtonElement>(null);
 
+  const { isMobile, isTablet, isXs, isSm, isMs, isLg, isXl, isXll, isXxl } = useMatchBreakpoints();
   const disableStopPropagation = isMobile || isTablet || isTouchDevice();
+  const itemWidth = ref?.current?.clientWidth ?? 0;
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(properties?.tooltipText, {
     placement: "top",
     disableStopPropagation,
   });
 
-  const itemWidth = ref?.current?.clientWidth ?? 0;
-
   useEffect(() => {
     if (itemWidth && setWidth) {
-      setWidth((prev: Array<number>) => {
+      setWidth((prev: number[]) => {
         return prev.length > itemIndex
           ? prev.map((i, index) => (index === itemIndex ? itemWidth : i))
           : [...prev, itemWidth, itemIndex];

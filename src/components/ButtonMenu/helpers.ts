@@ -1,26 +1,26 @@
-import { ColorKey, HoverKey, Variant, variants } from "./types";
+import { ColorKey, HoverKey, Variants } from "./types";
 
-export const getColorKey = (variant: Variant): ColorKey => {
+export const getColorKey = (variant: Variants): ColorKey => {
   switch (variant) {
-    case variants.DARK:
+    case Variants.DARK:
       return "pastelBlue";
-    case variants.LIGHT:
+    case Variants.LIGHT:
       return "gray900";
-    case variants.WARNING_LIGHT:
+    case Variants.WARNING_LIGHT:
       return "gray900";
-    case variants.WARNING_DARK:
+    case Variants.WARNING_DARK:
       return "pastelBlue";
   }
 };
-export const getHoverKey = (variant: Variant): HoverKey => {
+export const getHoverKey = (variant: Variants): HoverKey => {
   switch (variant) {
-    case variants.DARK:
+    case Variants.DARK:
       return "white";
-    case variants.LIGHT:
+    case Variants.LIGHT:
       return "dark800";
-    case variants.WARNING_LIGHT:
+    case Variants.WARNING_LIGHT:
       return "dark800";
-    case variants.WARNING_DARK:
+    case Variants.WARNING_DARK:
       return "white";
   }
 };

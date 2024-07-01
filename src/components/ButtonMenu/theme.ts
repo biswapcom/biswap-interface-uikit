@@ -1,31 +1,31 @@
-import { variants, scales } from "./types";
+import { Variants, Scales } from "./types";
 
 export const scaleVariants = {
-  [scales.XL]: {
+  [Scales.XL]: {
     height: "48px",
     padding: "0 24px",
     borderRadius: "10px",
     fontSize: "16px",
   },
-  [scales.LG]: {
+  [Scales.LG]: {
     height: "40px",
     padding: "0 16px",
     fontSize: "14px",
     borderRadius: "8px",
   },
-  [scales.MD]: {
+  [Scales.MD]: {
     height: "32px",
     padding: "0 12px",
     fontSize: "12px",
     borderRadius: "8px",
   },
-  [scales.SM]: {
+  [Scales.SM]: {
     height: "24px",
     padding: "0 8px",
     fontSize: "12px",
     borderRadius: "6px",
   },
-  [scales.XS]: {
+  [Scales.XS]: {
     height: "20px",
     padding: "0 8px",
     fontSize: "12px",
@@ -34,7 +34,7 @@ export const scaleVariants = {
 };
 
 export const styleVariants = {
-  [variants.DARK]: {
+  [Variants.DARK]: {
     color: "white",
     backgroundColor: "transparent",
 
@@ -42,7 +42,7 @@ export const styleVariants = {
       backgroundColor: "transparent",
     },
   },
-  [variants.LIGHT]: {
+  [Variants.LIGHT]: {
     backgroundColor: "transparent",
     color: "dark800",
 
@@ -53,7 +53,7 @@ export const styleVariants = {
       color: "text",
     },
   },
-  [variants.WARNING_DARK]: {
+  [Variants.WARNING_DARK]: {
     backgroundColor: "transparent",
     color: "dark800",
 
@@ -67,7 +67,7 @@ export const styleVariants = {
       backgroundColor: "transparent",
     },
   },
-  [variants.WARNING_LIGHT]: {
+  [Variants.WARNING_LIGHT]: {
     backgroundColor: "transparent",
     color: "dark800",
 
@@ -81,23 +81,23 @@ export const styleVariants = {
 };
 
 export const markerScales = {
-  [scales.XL]: {
+  [Scales.XL]: {
     top: "2px",
     right: "8px",
   },
-  [scales.LG]: {
+  [Scales.LG]: {
     top: "2px",
     right: "8px",
   },
-  [scales.MD]: {
+  [Scales.MD]: {
     top: "2px",
     right: "8px",
   },
-  [scales.SM]: {
+  [Scales.SM]: {
     top: "2px",
     right: "8px",
   },
-  [scales.XS]: {
+  [Scales.XS]: {
     top: "2px",
     right: "8px",
   },

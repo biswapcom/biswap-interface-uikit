@@ -1,6 +1,26 @@
 import { Dispatch, ElementType, ReactElement, ReactNode, RefObject, SetStateAction } from "react";
 import { LayoutProps, SpaceProps } from "styled-system";
+
+// theme
 import { MarkerType } from "../../theme";
+
+export enum Scales {
+  XL = "xl",
+  LG = "lg",
+  MD = "md",
+  SM = "sm",
+  XS = "xs",
+}
+
+export enum Variants {
+  DARK = "dark",
+  LIGHT = "light",
+  WARNING_LIGHT = "warningLight",
+  WARNING_DARK = "warningDark",
+}
+
+export type ColorKey = "pastelBlue" | "gray900";
+export type HoverKey = "white" | "dark800";
 
 export type IPropertiesType = {
   index: number;
@@ -11,7 +31,7 @@ export type IPropertiesType = {
 
 export interface ButtonMenuItemProps extends BaseButtonMenuItemProps {
   isActive?: boolean;
-  setWidth?: Dispatch<SetStateAction<any>>;
+  setWidth?: Dispatch<SetStateAction<number[]>>;
   itemIndex?: number;
   activeButtonIndex?: number;
   blockOffset?: number;
@@ -20,16 +40,14 @@ export interface ButtonMenuItemProps extends BaseButtonMenuItemProps {
   onClick?: () => void;
   properties?: IPropertiesType;
 }
-// export type ButtonMenuItemProps<P extends ElementType = "button"> =
-//   PolymorphicComponentProps<P, BaseButtonMenuItemProps>;
 
 export interface BaseButtonMenuItemProps extends LayoutProps, SpaceProps {
   as?: "a" | "button" | ElementType;
   external?: boolean;
   isLoading?: boolean;
   loadingTitle?: string;
-  scale?: Scale;
-  variant?: Variant;
+  scale?: Scales;
+  variant?: Variants;
   disabled?: boolean;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
@@ -39,24 +57,11 @@ export interface BaseButtonMenuItemProps extends LayoutProps, SpaceProps {
   isActive?: boolean;
 }
 
-export const menuScales = {
-  LG: "lg",
-  MD: "md",
-  SM: "sm",
-} as const;
-
-export const menuVariants = {
-  PRIMARY: "primary",
-  WARNING: "warning",
-  SELECT: "select",
-  SELECT_LIGHT: "selectLight",
-} as const;
-
 export interface ButtonMenuProps extends SpaceProps {
-  variant?: Variant;
+  variant?: Variants;
   activeIndex?: number;
   onItemClick?: (index: number) => void;
-  scale?: Scale;
+  scale?: Scales;
   disabled?: boolean;
   children: ReactElement[];
   fullWidth?: boolean;
@@ -68,26 +73,3 @@ export interface ButtonMenuProps extends SpaceProps {
   withoutAnimation?: boolean;
   itemsProperties?: IPropertiesType[];
 }
-
-//--------------
-
-export const scales = {
-  XL: "xl",
-  LG: "lg",
-  MD: "md",
-  SM: "sm",
-  XS: "xs",
-} as const;
-
-export const variants = {
-  DARK: "dark",
-  LIGHT: "light",
-  WARNING_LIGHT: "warningLight",
-  WARNING_DARK: "warningDark",
-} as const;
-
-export type Scale = (typeof scales)[keyof typeof scales];
-export type Variant = (typeof variants)[keyof typeof variants];
-
-export type ColorKey = "pastelBlue" | "gray900";
-export type HoverKey = "white" | "dark800";
