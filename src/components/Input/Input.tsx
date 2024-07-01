@@ -1,18 +1,22 @@
 import styled from "styled-components";
 import { variant } from "styled-system";
+
+// theme
 import { scaleVariants, styleVariants } from "./theme";
-import { InputProps } from "./types";
+
+// types
+import type { InputProps } from "./types";
 
 const Input = styled.input<InputProps>`
   display: block;
-  color: ${({ theme }) => theme.colors.gray900};
-  outline: 0;
   width: 100%;
   max-width: ${({ maxWidth }) => maxWidth || "none"};
   min-width: ${({ minWidth }) => minWidth || "0"};
   border-width: 1px;
   border-style: solid;
   border-color: transparent;
+  outline: 0;
+  color: ${({ theme }) => theme.colors.gray900};
   opacity: ${({ disabled }) => (disabled ? ".56" : "1")};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "initial")};
   transition:
@@ -24,6 +28,7 @@ const Input = styled.input<InputProps>`
     prop: "scale",
     variants: scaleVariants,
   })}
+
   ${variant({
     prop: "variant",
     variants: styleVariants,

@@ -1,58 +1,63 @@
 import React, { FC, cloneElement } from "react";
 import styled, { css } from "styled-components";
 import { variant as systemVariant } from "styled-system";
-import Box from "../Box/Box";
-import Input from "./Input";
 import Image from "next/image";
-import Text from "../Text/Text";
-import { InputGroupProps, scales, Scales, Variants } from "./types";
-import { styleVariants, scaleVariants, styleTextVariants } from "./theme";
 
+// components
+import { Box } from "../Box";
+import Input from "./Input";
+import { Text } from "../Text";
 import IconComponent from "../Svg/IconComponent";
 
-const getPadding = (scale: Scales, hasIcon: boolean) => {
+// types
+import { type InputGroupProps, Scales, Variants } from "./types";
+
+// theme
+import { styleVariants, scaleVariants, styleTextVariants } from "./theme";
+
+const getPadding = (scale: Scales, hasIcon: boolean): string => {
   if (!hasIcon) {
     switch (scale) {
-      case scales.SM:
+      case Scales.SM:
         return "12px";
-      case scales.LG:
+      case Scales.LG:
         return "24px";
-      case scales.MD:
+      case Scales.MD:
       default:
         return "16px";
     }
   }
 
   switch (scale) {
-    case scales.SM:
+    case Scales.SM:
       return "36px";
-    case scales.LG:
+    case Scales.LG:
       return "60px";
-    case scales.MD:
+    case Scales.MD:
     default:
       return "44px";
   }
 };
 
-const getIconPosition = (scale: Scales) => {
+const getIconPosition = (scale: Scales): string => {
   switch (scale) {
-    case scales.LG:
+    case Scales.LG:
       return "24px";
-    case scales.MD:
+    case Scales.MD:
       return "16px";
-    case scales.SM:
+    case Scales.SM:
     default:
       return "12px";
   }
 };
 
-const getImageSize = (scale: Scales) => {
+const getImageSize = (scale: Scales): number => {
   switch (scale) {
-    case scales.LG:
+    case Scales.LG:
       return 24;
-    case scales.MD:
+    case Scales.MD:
       return 20;
-    case scales.SM:
+    case Scales.SM:
     default:
       return 16;
   }
@@ -61,10 +66,10 @@ const getImageSize = (scale: Scales) => {
 const StyledInputWrapper = styled(Box)<{
   disabled?: boolean;
 }>`
-  display: block;
-  outline: 0;
-  width: 100%;
   position: relative;
+  display: block;
+  width: 100%;
+  outline: 0;
   opacity: ${({ disabled }) => (disabled ? ".56" : "1")};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "initial")};
 `;
@@ -82,10 +87,10 @@ const StyledInputGroup = styled(Box)<{
 
   ${Input} {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    left: 0;
-    top: 0;
     z-index: 1;
 
     ${systemVariant({
@@ -130,7 +135,7 @@ const TextDescription = styled(Text)<{ variant?: Variants }>`
 `;
 
 const InputGroup: FC<InputGroupProps> = ({
-  scale = scales.MD,
+  scale = Scales.MD,
   startIcon,
   startImage,
   endIcon,
