@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
+
+// hooks
 import { useMatchBreakpoints } from "../../../../contexts";
+
+// styles
 import { StyledBurger } from "./Burger.styled";
 
-const Burger = ({ open }: { open: boolean }) => {
+const Burger: FC<{ open: boolean }> = ({ open }) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
   const { isTablet } = useMatchBreakpoints();
 
   useEffect(() => {
@@ -11,13 +16,7 @@ const Burger = ({ open }: { open: boolean }) => {
   }, [open]);
 
   return (
-    <StyledBurger
-      aria-label="Toggle menu"
-      isLoaded={isLoaded}
-      aria-expanded={open}
-      open={open}
-      isTablet={isTablet}
-    >
+    <StyledBurger aria-label="Toggle menu" isLoaded={isLoaded} aria-expanded={open} open={open} isTablet={isTablet}>
       <span />
       <span />
       <span />

@@ -1,7 +1,7 @@
-import { scales, variants } from "./types";
+import { Scales, Variants } from "./types";
 
 export const scaleVariants = {
-  [scales.LG]: {
+  [Scales.LG]: {
     borderRadius: "10px",
     height: "48px",
     fontSize: "16px",
@@ -11,7 +11,7 @@ export const scaleVariants = {
       width: "24px",
     },
   },
-  [scales.MD]: {
+  [Scales.MD]: {
     borderRadius: "8px",
     height: "40px",
     fontSize: "14px",
@@ -21,7 +21,7 @@ export const scaleVariants = {
       width: "20px",
     },
   },
-  [scales.SM]: {
+  [Scales.SM]: {
     borderRadius: "8px",
     height: "32px",
     fontSize: "12px",
@@ -34,7 +34,7 @@ export const scaleVariants = {
 };
 
 export const styleVariants = {
-  [variants.LIGHT]: {
+  [Variants.LIGHT]: {
     backgroundColor: "gray300",
     color: "dark800",
 
@@ -52,7 +52,7 @@ export const styleVariants = {
       color: "dark800",
     },
   },
-  [variants.LIGHT_WARNING]: {
+  [Variants.LIGHT_WARNING]: {
     borderColor: "warning",
     backgroundColor: "transparent",
     color: "dark800",
@@ -61,7 +61,7 @@ export const styleVariants = {
       color: "dark800",
     },
   },
-  [variants.LIGHT_ERROR]: {
+  [Variants.LIGHT_ERROR]: {
     borderColor: "secondary",
     backgroundColor: "transparent",
     color: "dark800",
@@ -70,7 +70,7 @@ export const styleVariants = {
       color: "dark800",
     },
   },
-  [variants.DARK]: {
+  [Variants.DARK]: {
     backgroundColor: "dark500",
     color: "white",
 
@@ -88,7 +88,7 @@ export const styleVariants = {
       color: "white",
     },
   },
-  [variants.DARK_WARNING]: {
+  [Variants.DARK_WARNING]: {
     borderColor: "warning",
     backgroundColor: "transparent",
     color: "white",
@@ -97,7 +97,7 @@ export const styleVariants = {
       color: "white",
     },
   },
-  [variants.DARK_ERROR]: {
+  [Variants.DARK_ERROR]: {
     borderColor: "secondary",
     backgroundColor: "transparent",
     color: "white",
@@ -106,7 +106,7 @@ export const styleVariants = {
       color: "white",
     },
   },
-  [variants.TRANSPARENT]: {
+  [Variants.TRANSPARENT]: {
     backgroundColor: "transparent",
     color: "dark800",
 
@@ -127,25 +127,25 @@ export const styleVariants = {
 };
 
 export const styleTextVariants = {
-  [variants.LIGHT]: {
+  [Variants.LIGHT]: {
     color: "gray700",
   },
-  [variants.LIGHT_WARNING]: {
+  [Variants.LIGHT_WARNING]: {
     color: "warning",
   },
-  [variants.LIGHT_ERROR]: {
+  [Variants.LIGHT_ERROR]: {
     color: "secondary",
   },
-  [variants.DARK]: {
+  [Variants.DARK]: {
     color: "white",
   },
-  [variants.DARK_WARNING]: {
+  [Variants.DARK_WARNING]: {
     color: "warning",
   },
-  [variants.DARK_ERROR]: {
+  [Variants.DARK_ERROR]: {
     color: "secondary",
   },
-  [variants.TRANSPARENT]: {
+  [Variants.TRANSPARENT]: {
     color: "dark800",
   },
 };

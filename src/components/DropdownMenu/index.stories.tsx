@@ -1,7 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import { BrowserRouter } from "react-router-dom";
+
+// components
 import { Box } from "../Box";
 import DropdownMenu from "./DropdownMenu";
+
+// config
 import ItemsMock from "./mock";
 
 export default {
@@ -9,7 +13,7 @@ export default {
   component: DropdownMenu,
 };
 
-export const Default: React.FC = () => {
+export const Default: FC = () => {
   return (
     <BrowserRouter>
       <Box width="300px">

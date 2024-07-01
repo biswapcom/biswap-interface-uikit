@@ -1,13 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import { Meta } from "@storybook/react/types-6-0";
-import Heading from "../Heading/Heading";
+
+// components
+import { Heading } from "../Heading";
 import Input from "./Input";
 import InputGroup from "./InputGroup";
-import { scales } from "./types";
+import { Box, Flex } from "../Box";
 
-const Row = styled.div`
-  display: flex;
+// types
+import { Scales, Variants } from "./types";
+
+const Row = styled(Flex)`
   margin-bottom: 32px;
 
   & > input + input {
@@ -29,109 +33,109 @@ export default {
   argTypes: {},
 } as Meta;
 
-export const Default: React.FC = () => {
+export const Default: FC = () => {
   return (
-    <div>
+    <Box>
       <LightBg>
         <Heading mb="16px" color="backgroundDark">
           Transparent input
         </Heading>
         <Row>
-          <Input type="text" scale="lg" variant="transparent" placeholder="Transparent input" />
+          <Input type="text" scale={Scales.LG} variant={Variants.TRANSPARENT} placeholder="Transparent input" />
         </Row>
-        {Object.values(scales).map((scale) => (
+        {Object.values(Scales).map((scale) => (
           <>
             <Heading mb="16px" color="backgroundDark">
               {scale} light
             </Heading>
             <Row>
-              <Input type="text" scale={scale} variant="light" value="Value" />
-              <Input type="text" scale={scale} variant="light" placeholder="Placeholder..." />
-              <Input type="text" scale={scale} variant="light" placeholder="Disabled" disabled />
-              <Input type="text" scale={scale} variant="lightError" value="Error" />
-              <Input type="text" scale={scale} variant="lightWarning" value="Warning" />
+              <Input type="text" scale={scale} variant={Variants.LIGHT} value="Value" />
+              <Input type="text" scale={scale} variant={Variants.LIGHT} placeholder="Placeholder..." />
+              <Input type="text" scale={scale} variant={Variants.LIGHT} placeholder="Disabled" disabled />
+              <Input type="text" scale={scale} variant={Variants.LIGHT_ERROR} value="Error" />
+              <Input type="text" scale={scale} variant={Variants.LIGHT_WARNING} value="Warning" />
             </Row>
           </>
         ))}
       </LightBg>
 
       <DarkBg>
-        {Object.values(scales).map((scale) => (
+        {Object.values(Scales).map((scale) => (
           <>
             <Heading mb="16px" color="white">
               {scale} dark
             </Heading>
             <Row>
-              <Input type="text" scale={scale} variant="dark" value="Value" />
-              <Input type="text" scale={scale} variant="dark" placeholder="Placeholder..." />
-              <Input type="text" scale={scale} variant="dark" placeholder="Disabled" disabled />
-              <Input type="text" scale={scale} variant="darkError" value="Error" />
-              <Input type="text" scale={scale} variant="darkWarning" value="Warning" />
+              <Input type="text" scale={scale} variant={Variants.DARK} value="Value" />
+              <Input type="text" scale={scale} variant={Variants.DARK} placeholder="Placeholder..." />
+              <Input type="text" scale={scale} variant={Variants.DARK} placeholder="Disabled" disabled />
+              <Input type="text" scale={scale} variant={Variants.DARK_ERROR} value="Error" />
+              <Input type="text" scale={scale} variant={Variants.DARK_WARNING} value="Warning" />
             </Row>
           </>
         ))}
       </DarkBg>
-    </div>
+    </Box>
   );
 };
 
-export const Icons: React.FC = () => {
+export const Icons: FC = () => {
   return (
     <>
       <LightBg>
         <Heading mb="16px">Input group LG</Heading>
         <Row>
-          <InputGroup mb="24px" variant="light" scale="lg" mr="16px" maxWidth="300px">
+          <InputGroup mb="24px" variant={Variants.LIGHT} scale={Scales.LG} mr="16px" maxWidth="300px">
             <Input type="text" placeholder="placeholder" />
           </InputGroup>
-          <InputGroup mb="24px" variant="light" scale="lg" mr="16px" maxWidth="300px">
+          <InputGroup mb="24px" variant={Variants.LIGHT} scale={Scales.LG} mr="16px" maxWidth="300px">
             <Input type="text" value="value" />
           </InputGroup>
-          <InputGroup mb="24px" variant="light" scale="lg" mr="16px" maxWidth="300px" disabled>
+          <InputGroup mb="24px" variant={Variants.LIGHT} scale={Scales.LG} mr="16px" maxWidth="300px" disabled>
             <Input type="text" placeholder="disabled" />
           </InputGroup>
-          <InputGroup mb="24px" variant="lightWarning" scale="lg" mr="16px" maxWidth="300px" isWarning>
+          <InputGroup mb="24px" variant={Variants.LIGHT_WARNING} scale={Scales.LG} mr="16px" maxWidth="300px" isWarning>
             <Input type="text" value="isWarning" />
           </InputGroup>
-          <InputGroup mb="24px" variant="lightError" scale="lg" mr="16px" maxWidth="300px" isError>
+          <InputGroup mb="24px" variant={Variants.LIGHT_ERROR} scale={Scales.LG} mr="16px" maxWidth="300px" isError>
             <Input type="text" value="isError" />
           </InputGroup>
         </Row>
 
         <Heading mb="16px">Input group MD</Heading>
         <Row>
-          <InputGroup mb="24px" variant="light" scale="md" mr="16px" maxWidth="300px">
+          <InputGroup mb="24px" variant={Variants.LIGHT} scale={Scales.MD} mr="16px" maxWidth="300px">
             <Input type="text" placeholder="placeholder" />
           </InputGroup>
-          <InputGroup mb="24px" variant="light" scale="md" mr="16px" maxWidth="300px">
+          <InputGroup mb="24px" variant={Variants.LIGHT} scale={Scales.MD} mr="16px" maxWidth="300px">
             <Input type="text" value="value" />
           </InputGroup>
-          <InputGroup mb="24px" variant="light" scale="md" mr="16px" maxWidth="300px" disabled>
+          <InputGroup mb="24px" variant={Variants.LIGHT} scale={Scales.MD} mr="16px" maxWidth="300px" disabled>
             <Input type="text" placeholder="disabled" />
           </InputGroup>
-          <InputGroup mb="24px" variant="lightWarning" scale="md" mr="16px" maxWidth="300px" isWarning>
+          <InputGroup mb="24px" variant={Variants.LIGHT_WARNING} scale={Scales.MD} mr="16px" maxWidth="300px" isWarning>
             <Input type="text" value="isWarning" />
           </InputGroup>
-          <InputGroup mb="24px" variant="lightError" scale="md" mr="16px" maxWidth="300px" isError>
+          <InputGroup mb="24px" variant={Variants.LIGHT_ERROR} scale={Scales.MD} mr="16px" maxWidth="300px" isError>
             <Input type="text" value="isError" />
           </InputGroup>
         </Row>
 
         <Heading mb="16px">Input group SM</Heading>
         <Row>
-          <InputGroup mb="24px" variant="light" scale="sm" mr="16px" maxWidth="300px">
+          <InputGroup mb="24px" variant={Variants.LIGHT} scale={Scales.SM} mr="16px" maxWidth="300px">
             <Input type="text" placeholder="placeholder" />
           </InputGroup>
-          <InputGroup mb="24px" variant="light" scale="sm" mr="16px" maxWidth="300px">
+          <InputGroup mb="24px" variant={Variants.LIGHT} scale={Scales.SM} mr="16px" maxWidth="300px">
             <Input type="text" value="value" />
           </InputGroup>
-          <InputGroup mb="24px" variant="light" scale="sm" mr="16px" maxWidth="300px" disabled>
+          <InputGroup mb="24px" variant={Variants.LIGHT} scale={Scales.SM} mr="16px" maxWidth="300px" disabled>
             <Input type="text" placeholder="disabled" />
           </InputGroup>
-          <InputGroup mb="24px" variant="lightWarning" scale="sm" mr="16px" maxWidth="300px" isWarning>
+          <InputGroup mb="24px" variant={Variants.LIGHT_WARNING} scale={Scales.SM} mr="16px" maxWidth="300px" isWarning>
             <Input type="text" value="isWarning" />
           </InputGroup>
-          <InputGroup mb="24px" variant="lightError" scale="sm" mr="16px" maxWidth="300px" isError>
+          <InputGroup mb="24px" variant={Variants.LIGHT_ERROR} scale={Scales.SM} mr="16px" maxWidth="300px" isError>
             <Input type="text" value="isError" />
           </InputGroup>
         </Row>
@@ -144,8 +148,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
           >
             <Input type="text" placeholder="placeholder" />
@@ -157,8 +161,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
           >
             <Input type="text" value="value" />
@@ -170,8 +174,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
             disabled
           >
@@ -184,8 +188,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="lightWarning"
-            scale="lg"
+            variant={Variants.LIGHT_WARNING}
+            scale={Scales.LG}
             maxWidth="300px"
             isWarning
           >
@@ -198,8 +202,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="lightError"
-            scale="lg"
+            variant={Variants.LIGHT_ERROR}
+            scale={Scales.LG}
             maxWidth="300px"
             isError
           >
@@ -216,8 +220,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
           >
             <Input type="text" placeholder="placeholder" />
@@ -229,8 +233,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
           >
             <Input type="text" value="value" />
@@ -242,8 +246,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
             disabled
           >
@@ -256,8 +260,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="lightWarning"
-            scale="lg"
+            variant={Variants.LIGHT_WARNING}
+            scale={Scales.LG}
             maxWidth="300px"
             isWarning
           >
@@ -270,8 +274,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="lightError"
-            scale="lg"
+            variant={Variants.LIGHT_ERROR}
+            scale={Scales.LG}
             maxWidth="300px"
             isError
           >
@@ -292,8 +296,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
           >
             <Input type="text" placeholder="placeholder" />
@@ -309,8 +313,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
           >
             <Input type="text" value="value" />
@@ -326,8 +330,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
             disabled
           >
@@ -344,8 +348,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="lightWarning"
-            scale="lg"
+            variant={Variants.LIGHT_WARNING}
+            scale={Scales.LG}
             maxWidth="300px"
             isWarning
           >
@@ -362,8 +366,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="lightError"
-            scale="lg"
+            variant={Variants.LIGHT_ERROR}
+            scale={Scales.LG}
             maxWidth="300px"
             isError
           >
@@ -377,19 +381,19 @@ export const Icons: React.FC = () => {
           Input group LG
         </Heading>
         <Row>
-          <InputGroup mb="24px" variant="dark" scale="lg" mr="16px" maxWidth="300px">
+          <InputGroup mb="24px" variant={Variants.DARK} scale={Scales.LG} mr="16px" maxWidth="300px">
             <Input type="text" placeholder="placeholder" />
           </InputGroup>
-          <InputGroup mb="24px" variant="dark" scale="lg" mr="16px" maxWidth="300px">
+          <InputGroup mb="24px" variant={Variants.DARK} scale={Scales.LG} mr="16px" maxWidth="300px">
             <Input type="text" value="value" />
           </InputGroup>
-          <InputGroup mb="24px" variant="dark" scale="lg" mr="16px" maxWidth="300px" disabled>
+          <InputGroup mb="24px" variant={Variants.DARK} scale={Scales.LG} mr="16px" maxWidth="300px" disabled>
             <Input type="text" placeholder="disabled" />
           </InputGroup>
-          <InputGroup mb="24px" variant="darkWarning" scale="lg" mr="16px" maxWidth="300px" isWarning>
+          <InputGroup mb="24px" variant={Variants.DARK_WARNING} scale={Scales.LG} mr="16px" maxWidth="300px" isWarning>
             <Input type="text" value="isWarning" />
           </InputGroup>
-          <InputGroup mb="24px" variant="darkError" scale="lg" mr="16px" maxWidth="300px" isError>
+          <InputGroup mb="24px" variant={Variants.DARK_ERROR} scale={Scales.LG} mr="16px" maxWidth="300px" isError>
             <Input type="text" value="isError" />
           </InputGroup>
         </Row>
@@ -398,19 +402,19 @@ export const Icons: React.FC = () => {
           Input group MD
         </Heading>
         <Row>
-          <InputGroup mb="24px" variant="dark" scale="md" mr="16px" maxWidth="300px">
+          <InputGroup mb="24px" variant={Variants.DARK} scale={Scales.MD} mr="16px" maxWidth="300px">
             <Input type="text" placeholder="placeholder" />
           </InputGroup>
-          <InputGroup mb="24px" variant="dark" scale="md" mr="16px" maxWidth="300px">
+          <InputGroup mb="24px" variant={Variants.DARK} scale={Scales.MD} mr="16px" maxWidth="300px">
             <Input type="text" value="value" />
           </InputGroup>
-          <InputGroup mb="24px" variant="dark" scale="md" mr="16px" maxWidth="300px" disabled>
+          <InputGroup mb="24px" variant={Variants.DARK} scale={Scales.MD} mr="16px" maxWidth="300px" disabled>
             <Input type="text" placeholder="disabled" />
           </InputGroup>
-          <InputGroup mb="24px" variant="darkWarning" scale="md" mr="16px" maxWidth="300px" isWarning>
+          <InputGroup mb="24px" variant={Variants.DARK_WARNING} scale={Scales.MD} mr="16px" maxWidth="300px" isWarning>
             <Input type="text" value="isWarning" />
           </InputGroup>
-          <InputGroup mb="24px" variant="darkError" scale="md" mr="16px" maxWidth="300px" isError>
+          <InputGroup mb="24px" variant={Variants.DARK_ERROR} scale={Scales.MD} mr="16px" maxWidth="300px" isError>
             <Input type="text" value="isError" />
           </InputGroup>
         </Row>
@@ -419,19 +423,19 @@ export const Icons: React.FC = () => {
           Input group SM
         </Heading>
         <Row>
-          <InputGroup mb="24px" variant="dark" scale="sm" mr="16px" maxWidth="300px">
+          <InputGroup mb="24px" variant={Variants.DARK} scale={Scales.SM} mr="16px" maxWidth="300px">
             <Input type="text" placeholder="placeholder" />
           </InputGroup>
-          <InputGroup mb="24px" variant="dark" scale="sm" mr="16px" maxWidth="300px">
+          <InputGroup mb="24px" variant={Variants.DARK} scale={Scales.SM} mr="16px" maxWidth="300px">
             <Input type="text" value="value" />
           </InputGroup>
-          <InputGroup mb="24px" variant="dark" scale="sm" mr="16px" maxWidth="300px" disabled>
+          <InputGroup mb="24px" variant={Variants.DARK} scale={Scales.SM} mr="16px" maxWidth="300px" disabled>
             <Input type="text" placeholder="disabled" />
           </InputGroup>
-          <InputGroup mb="24px" variant="darkWarning" scale="sm" mr="16px" maxWidth="300px" isWarning>
+          <InputGroup mb="24px" variant={Variants.DARK_WARNING} scale={Scales.SM} mr="16px" maxWidth="300px" isWarning>
             <Input type="text" value="isWarning" />
           </InputGroup>
-          <InputGroup mb="24px" variant="darkError" scale="sm" mr="16px" maxWidth="300px" isError>
+          <InputGroup mb="24px" variant={Variants.DARK_ERROR} scale={Scales.SM} mr="16px" maxWidth="300px" isError>
             <Input type="text" value="isError" />
           </InputGroup>
         </Row>
@@ -447,8 +451,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
           >
             <Input type="text" placeholder="placeholder" />
@@ -460,8 +464,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
           >
             <Input type="text" value="value" />
@@ -473,8 +477,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
             disabled
           >
@@ -487,8 +491,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="darkWarning"
-            scale="lg"
+            variant={Variants.DARK_WARNING}
+            scale={Scales.LG}
             maxWidth="300px"
             isWarning
           >
@@ -501,8 +505,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="darkError"
-            scale="lg"
+            variant={Variants.DARK_ERROR}
+            scale={Scales.LG}
             maxWidth="300px"
             isError
           >
@@ -521,8 +525,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
           >
             <Input type="text" placeholder="placeholder" />
@@ -534,8 +538,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
           >
             <Input type="text" value="value" />
@@ -547,8 +551,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
             disabled
           >
@@ -561,8 +565,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="darkWarning"
-            scale="lg"
+            variant={Variants.DARK_WARNING}
+            scale={Scales.LG}
             maxWidth="300px"
             isWarning
           >
@@ -575,8 +579,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="darkError"
-            scale="lg"
+            variant={Variants.DARK_ERROR}
+            scale={Scales.LG}
             maxWidth="300px"
             isError
           >
@@ -599,8 +603,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
           >
             <Input type="text" placeholder="placeholder" />
@@ -616,8 +620,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
           >
             <Input type="text" value="value" />
@@ -633,8 +637,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
             disabled
           >
@@ -651,8 +655,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="darkWarning"
-            scale="lg"
+            variant={Variants.DARK_WARNING}
+            scale={Scales.LG}
             maxWidth="300px"
             isWarning
           >
@@ -669,8 +673,8 @@ export const Icons: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="darkError"
-            scale="lg"
+            variant={Variants.DARK_ERROR}
+            scale={Scales.LG}
             maxWidth="300px"
             isError
           >
@@ -682,22 +686,36 @@ export const Icons: React.FC = () => {
   );
 };
 
-export const Info: React.FC = () => {
+export const Info: FC = () => {
   return (
     <>
       <LightBg>
         <Heading mb="16px">Input group LG</Heading>
         <Row>
-          <InputGroup mb="24px" variant="light" scale="lg" mr="16px" maxWidth="300px" description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
+            mr="16px"
+            maxWidth="300px"
+            description="Helper text"
+          >
             <Input type="text" placeholder="placeholder" />
           </InputGroup>
-          <InputGroup mb="24px" variant="light" scale="lg" mr="16px" maxWidth="300px" description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
+            mr="16px"
+            maxWidth="300px"
+            description="Helper text"
+          >
             <Input type="text" value="value" />
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             mr="16px"
             maxWidth="300px"
             disabled
@@ -707,8 +725,8 @@ export const Info: React.FC = () => {
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="lightWarning"
-            scale="lg"
+            variant={Variants.LIGHT_WARNING}
+            scale={Scales.LG}
             mr="16px"
             maxWidth="300px"
             isWarning
@@ -718,8 +736,8 @@ export const Info: React.FC = () => {
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="lightError"
-            scale="lg"
+            variant={Variants.LIGHT_ERROR}
+            scale={Scales.LG}
             mr="16px"
             maxWidth="300px"
             isError
@@ -731,16 +749,30 @@ export const Info: React.FC = () => {
 
         <Heading mb="16px">Input group MD</Heading>
         <Row>
-          <InputGroup mb="24px" variant="light" scale="md" mr="16px" maxWidth="300px" description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.LIGHT}
+            scale={Scales.MD}
+            mr="16px"
+            maxWidth="300px"
+            description="Helper text"
+          >
             <Input type="text" placeholder="placeholder" />
           </InputGroup>
-          <InputGroup mb="24px" variant="light" scale="md" mr="16px" maxWidth="300px" description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.LIGHT}
+            scale={Scales.MD}
+            mr="16px"
+            maxWidth="300px"
+            description="Helper text"
+          >
             <Input type="text" value="value" />
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="light"
-            scale="md"
+            variant={Variants.LIGHT}
+            scale={Scales.MD}
             mr="16px"
             maxWidth="300px"
             disabled
@@ -750,8 +782,8 @@ export const Info: React.FC = () => {
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="lightWarning"
-            scale="md"
+            variant={Variants.LIGHT_WARNING}
+            scale={Scales.MD}
             mr="16px"
             maxWidth="300px"
             isWarning
@@ -761,8 +793,8 @@ export const Info: React.FC = () => {
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="lightError"
-            scale="md"
+            variant={Variants.LIGHT_ERROR}
+            scale={Scales.MD}
             mr="16px"
             maxWidth="300px"
             isError
@@ -774,16 +806,30 @@ export const Info: React.FC = () => {
 
         <Heading mb="16px">Input group SM</Heading>
         <Row>
-          <InputGroup mb="24px" variant="light" scale="sm" mr="16px" maxWidth="300px" description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.LIGHT}
+            scale={Scales.SM}
+            mr="16px"
+            maxWidth="300px"
+            description="Helper text"
+          >
             <Input type="text" placeholder="placeholder" />
           </InputGroup>
-          <InputGroup mb="24px" variant="light" scale="sm" mr="16px" maxWidth="300px" description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.LIGHT}
+            scale={Scales.SM}
+            mr="16px"
+            maxWidth="300px"
+            description="Helper text"
+          >
             <Input type="text" value="value" />
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="light"
-            scale="sm"
+            variant={Variants.LIGHT}
+            scale={Scales.SM}
             mr="16px"
             maxWidth="300px"
             disabled
@@ -793,8 +839,8 @@ export const Info: React.FC = () => {
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="lightWarning"
-            scale="sm"
+            variant={Variants.LIGHT_WARNING}
+            scale={Scales.SM}
             mr="16px"
             maxWidth="300px"
             isWarning
@@ -804,8 +850,8 @@ export const Info: React.FC = () => {
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="lightError"
-            scale="sm"
+            variant={Variants.LIGHT_ERROR}
+            scale={Scales.SM}
             mr="16px"
             maxWidth="300px"
             isError
@@ -824,8 +870,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
             description="Helper text"
           >
@@ -838,8 +884,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
             description="Helper text"
           >
@@ -852,8 +898,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
             disabled
             description="Helper text"
@@ -867,8 +913,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="lightWarning"
-            scale="lg"
+            variant={Variants.LIGHT_WARNING}
+            scale={Scales.LG}
             maxWidth="300px"
             isWarning
             description="Helper text"
@@ -882,8 +928,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="lightError"
-            scale="lg"
+            variant={Variants.LIGHT_ERROR}
+            scale={Scales.LG}
             maxWidth="300px"
             isError
             description="Helper text"
@@ -901,8 +947,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
             description="Helper text"
           >
@@ -915,8 +961,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
             description="Helper text"
           >
@@ -929,8 +975,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
             disabled
             description="Helper text"
@@ -944,8 +990,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="lightWarning"
-            scale="lg"
+            variant={Variants.LIGHT_WARNING}
+            scale={Scales.LG}
             maxWidth="300px"
             isWarning
             description="Helper text"
@@ -959,8 +1005,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="lightError"
-            scale="lg"
+            variant={Variants.LIGHT_ERROR}
+            scale={Scales.LG}
             maxWidth="300px"
             isError
             description="Helper text"
@@ -982,8 +1028,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
             description="Helper text"
           >
@@ -1000,8 +1046,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
             description="Helper text"
           >
@@ -1018,8 +1064,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
             disabled
             description="Helper text"
@@ -1037,8 +1083,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="lightWarning"
-            scale="lg"
+            variant={Variants.LIGHT_WARNING}
+            scale={Scales.LG}
             maxWidth="300px"
             isWarning
             description="Helper text"
@@ -1056,8 +1102,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="lightError"
-            scale="lg"
+            variant={Variants.LIGHT_ERROR}
+            scale={Scales.LG}
             maxWidth="300px"
             isError
             description="Helper text"
@@ -1075,8 +1121,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="light"
-            scale="lg"
+            variant={Variants.LIGHT}
+            scale={Scales.LG}
             maxWidth="300px"
             description="Helper text"
           >
@@ -1090,19 +1136,41 @@ export const Info: React.FC = () => {
           Input group LG
         </Heading>
         <Row>
-          <InputGroup mb="24px" variant="dark" scale="lg" mr="16px" maxWidth="300px" description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.DARK}
+            scale={Scales.LG}
+            mr="16px"
+            maxWidth="300px"
+            description="Helper text"
+          >
             <Input type="text" placeholder="placeholder" />
           </InputGroup>
-          <InputGroup mb="24px" variant="dark" scale="lg" mr="16px" maxWidth="300px" description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.DARK}
+            scale={Scales.LG}
+            mr="16px"
+            maxWidth="300px"
+            description="Helper text"
+          >
             <Input type="text" value="value" />
           </InputGroup>
-          <InputGroup mb="24px" variant="dark" scale="lg" mr="16px" maxWidth="300px" disabled description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.DARK}
+            scale={Scales.LG}
+            mr="16px"
+            maxWidth="300px"
+            disabled
+            description="Helper text"
+          >
             <Input type="text" placeholder="disabled" />
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="darkWarning"
-            scale="lg"
+            variant={Variants.DARK_WARNING}
+            scale={Scales.LG}
             mr="16px"
             maxWidth="300px"
             isWarning
@@ -1112,8 +1180,8 @@ export const Info: React.FC = () => {
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="darkError"
-            scale="lg"
+            variant={Variants.DARK_ERROR}
+            scale={Scales.LG}
             mr="16px"
             maxWidth="300px"
             isError
@@ -1127,19 +1195,41 @@ export const Info: React.FC = () => {
           Input group MD
         </Heading>
         <Row>
-          <InputGroup mb="24px" variant="dark" scale="md" mr="16px" maxWidth="300px" description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.DARK}
+            scale={Scales.MD}
+            mr="16px"
+            maxWidth="300px"
+            description="Helper text"
+          >
             <Input type="text" placeholder="placeholder" />
           </InputGroup>
-          <InputGroup mb="24px" variant="dark" scale="md" mr="16px" maxWidth="300px" description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.DARK}
+            scale={Scales.MD}
+            mr="16px"
+            maxWidth="300px"
+            description="Helper text"
+          >
             <Input type="text" value="value" />
           </InputGroup>
-          <InputGroup mb="24px" variant="dark" scale="md" mr="16px" maxWidth="300px" disabled description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.DARK}
+            scale={Scales.MD}
+            mr="16px"
+            maxWidth="300px"
+            disabled
+            description="Helper text"
+          >
             <Input type="text" placeholder="disabled" />
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="darkWarning"
-            scale="md"
+            variant={Variants.DARK_WARNING}
+            scale={Scales.MD}
             mr="16px"
             maxWidth="300px"
             isWarning
@@ -1149,8 +1239,8 @@ export const Info: React.FC = () => {
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="darkError"
-            scale="md"
+            variant={Variants.DARK_ERROR}
+            scale={Scales.MD}
             mr="16px"
             maxWidth="300px"
             isError
@@ -1164,19 +1254,41 @@ export const Info: React.FC = () => {
           Input group SM
         </Heading>
         <Row>
-          <InputGroup mb="24px" variant="dark" scale="sm" mr="16px" maxWidth="300px" description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.DARK}
+            scale={Scales.SM}
+            mr="16px"
+            maxWidth="300px"
+            description="Helper text"
+          >
             <Input type="text" placeholder="placeholder" />
           </InputGroup>
-          <InputGroup mb="24px" variant="dark" scale="sm" mr="16px" maxWidth="300px" description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.DARK}
+            scale={Scales.SM}
+            mr="16px"
+            maxWidth="300px"
+            description="Helper text"
+          >
             <Input type="text" value="value" />
           </InputGroup>
-          <InputGroup mb="24px" variant="dark" scale="sm" mr="16px" maxWidth="300px" disabled description="Helper text">
+          <InputGroup
+            mb="24px"
+            variant={Variants.DARK}
+            scale={Scales.SM}
+            mr="16px"
+            maxWidth="300px"
+            disabled
+            description="Helper text"
+          >
             <Input type="text" placeholder="disabled" />
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="darkWarning"
-            scale="sm"
+            variant={Variants.DARK_WARNING}
+            scale={Scales.SM}
             mr="16px"
             maxWidth="300px"
             isWarning
@@ -1186,8 +1298,8 @@ export const Info: React.FC = () => {
           </InputGroup>
           <InputGroup
             mb="24px"
-            variant="darkError"
-            scale="sm"
+            variant={Variants.DARK_ERROR}
+            scale={Scales.SM}
             mr="16px"
             maxWidth="300px"
             isError
@@ -1208,8 +1320,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
             description="Helper text"
           >
@@ -1222,8 +1334,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
             description="Helper text"
           >
@@ -1236,8 +1348,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
             disabled
             description="Helper text"
@@ -1251,8 +1363,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="darkWarning"
-            scale="lg"
+            variant={Variants.DARK_WARNING}
+            scale={Scales.LG}
             maxWidth="300px"
             isWarning
             description="Helper text"
@@ -1266,8 +1378,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="darkError"
-            scale="lg"
+            variant={Variants.DARK_ERROR}
+            scale={Scales.LG}
             maxWidth="300px"
             isError
             description="Helper text"
@@ -1287,8 +1399,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
             description="Helper text"
           >
@@ -1301,8 +1413,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
             description="Helper text"
           >
@@ -1315,8 +1427,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
             disabled
             description="Helper text"
@@ -1330,8 +1442,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="darkWarning"
-            scale="lg"
+            variant={Variants.DARK_WARNING}
+            scale={Scales.LG}
             maxWidth="300px"
             isWarning
             description="Helper text"
@@ -1345,8 +1457,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="darkError"
-            scale="lg"
+            variant={Variants.DARK_ERROR}
+            scale={Scales.LG}
             maxWidth="300px"
             isError
             description="Helper text"
@@ -1370,8 +1482,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
             description="Helper text"
           >
@@ -1388,8 +1500,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
             description="Helper text"
           >
@@ -1406,8 +1518,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="dark"
-            scale="lg"
+            variant={Variants.DARK}
+            scale={Scales.LG}
             maxWidth="300px"
             disabled
             description="Helper text"
@@ -1425,8 +1537,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="darkWarning"
-            scale="lg"
+            variant={Variants.DARK_WARNING}
+            scale={Scales.LG}
             maxWidth="300px"
             isWarning
             description="Helper text"
@@ -1444,8 +1556,8 @@ export const Info: React.FC = () => {
             }}
             mb="24px"
             mr="16px"
-            variant="darkError"
-            scale="lg"
+            variant={Variants.DARK_ERROR}
+            scale={Scales.LG}
             maxWidth="300px"
             isError
             description="Helper text"

@@ -1,7 +1,12 @@
-import React, {ElementType, FunctionComponent, ReactNode} from "react";
+import { ComponentPropsWithoutRef, ElementType, FunctionComponent, ReactNode } from "react";
+
+// theme
 import { Colors } from "../../theme";
-import { BoxProps } from "../Box";
-import { MenuItemsType } from "../MenuItems/types";
+
+// types
+import type { BoxProps } from "../Box";
+import type { MenuItemsType } from "../MenuItems/types";
+import { BadgeTypes } from "../Badge";
 
 export interface MobileMenuProps {
   baseAwsUrl: string;
@@ -15,29 +20,16 @@ export interface MobileMenuProps {
 
 export interface DropdownMenuProps extends BoxProps {
   items?: DropdownMenuItems[];
-  mobileItems?: MenuItemsType[];
   activeItem?: string;
-  /**
-   * Show items on mobile
-   */
-  showItemsOnMobile?: boolean;
-  index?: number;
-  setMenuOpenByIndex?: React.Dispatch<
-    React.SetStateAction<Record<number, boolean>>
-  >;
   isExtended?: boolean;
-  mobileMenuCallback?: (s: boolean) => void;
-  isMobileNav?: boolean;
 }
 
-export interface StyledDropdownMenuItemProps
-  extends React.ComponentPropsWithoutRef<"button"> {
+export interface StyledDropdownMenuItemProps extends ComponentPropsWithoutRef<"button"> {
   disabled?: boolean;
   isActive?: boolean;
 }
 
-export interface StyledDropdownMenuInnerLinkItemProps
-  extends React.ComponentPropsWithoutRef<"div"> {}
+export interface StyledDropdownMenuInnerLinkItemProps extends ComponentPropsWithoutRef<"div"> {}
 
 export interface InternalLink {
   label?: string;
@@ -47,7 +39,7 @@ export interface InternalLink {
   linkType?: DropdownMenuItemType;
   target?: string;
   mobileTarget?: string;
-  badgeType?: string;
+  badgeType?: BadgeTypes;
   badgeTitle?: string;
 }
 
@@ -61,12 +53,12 @@ export interface InnerLinksBlockProps {
 
 export interface MenuItemContentProps {
   leftIcon?: string;
-  label?: string | React.ReactNode;
+  label?: string | ReactNode;
   description?: string;
   status?: LinkStatus;
   rightIcon?: string;
   fill?: string;
-  badgeType?: string;
+  badgeType?: BadgeTypes;
   badgeTitle?: string;
   disabled?: boolean;
 }
@@ -86,7 +78,7 @@ export interface LinkStatus {
 }
 
 export interface DropdownMenuItems {
-  label?: string | React.ReactNode;
+  label?: string | ReactNode;
   href?: string;
   text?: string;
   onClick?: () => void;
@@ -101,18 +93,17 @@ export interface DropdownMenuItems {
   rightIconFill?: string;
   description?: string;
   links?: InternalLink[];
-
-  bannerRenderer?: (h?: string, t?: string) => React.ReactNode;
+  bannerRenderer?: (h?: string, t?: string) => ReactNode;
   target?: string;
   mobileTarget?: string;
-  badgeType?: string;
+  badgeType?: BadgeTypes;
   badgeTitle?: string;
 }
 
 export interface DropdownMenuItemContainerProps extends DropdownMenuItems {
   isActive?: boolean;
-  getMenuItemContent: (i: string) => React.ReactNode;
-  linkComponent: React.ElementType;
+  getMenuItemContent: (i: string) => ReactNode;
+  linkComponent: ElementType;
   setIsOpen: (s: boolean) => void;
   isOpenItem?: boolean;
   lastItem?: boolean;

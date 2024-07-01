@@ -1,21 +1,28 @@
 import styled, { DefaultTheme } from "styled-components";
-import { Variant, variants } from "./types";
-import getRgba from "../../util/getRgba";
+
+// types
+import { Variants } from "./types";
+
+// utils
+import { getRgba } from "../../util";
+
+// components
+import { Box } from "../Box";
 
 type StyledButtonMenuProps = {
-  variant: Variant;
+  variant: Variants;
   theme: DefaultTheme;
 };
 
 const getBackgroundColor = ({ theme, variant }: StyledButtonMenuProps) => {
-  return variant === variants.DARK ? theme.colors.tooltip : getRgba(theme.colors.pastelBlue, theme, 0.08);
+  return variant === Variants.DARK ? theme.colors.tooltip : getRgba(theme.colors.pastelBlue, theme, 0.08);
 };
 
-const StyledButtonMenu = styled.div<{ variant: Variant }>`
-  background-color: ${getBackgroundColor};
-  border-radius: 8px;
+const StyledButtonMenu = styled(Box)<{ variant: Variants }>`
   display: inline-flex;
   padding: 4px;
+  border-radius: 8px;
+  background-color: ${getBackgroundColor};
 `;
 
 export default StyledButtonMenu;

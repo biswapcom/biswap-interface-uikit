@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
 import { Meta } from "@storybook/react/types-6-0";
+
+// components
 import ButtonMenu from "./ButtonMenu";
 import ButtonMenuItem from "./ButtonMenuItem";
-import { useMatchBreakpoints } from "../../contexts";
+import { Box } from "../Box";
 
-const Row = styled.div<{ isLight?: boolean }>`
+// hooks
+import { useMatchBreakpoints } from "../../contexts";
+import { Scales, Variants } from "./types";
+
+const Row = styled(Box)<{ isLight?: boolean }>`
   margin-bottom: 32px;
   padding: 8px;
   background-color: ${({ theme, isLight }) => (isLight ? theme.colors.white : "transparent")};
@@ -17,10 +23,11 @@ export default {
   argTypes: {},
 } as Meta;
 
-export const Default: React.FC = () => {
+export const Default: FC = () => {
   const [index, setIndex] = useState<number>(0);
 
   const { isMobile } = useMatchBreakpoints();
+
   const handleClick = (newIndex: number) => setIndex(newIndex);
 
   return (
@@ -34,7 +41,7 @@ export const Default: React.FC = () => {
         </ButtonMenu>
       </Row>
       <Row isLight>
-        <ButtonMenu disabled variant="light" activeIndex={index} onItemClick={handleClick}>
+        <ButtonMenu disabled variant={Variants.LIGHT} activeIndex={index} onItemClick={handleClick}>
           <ButtonMenuItem>Dark sm 1</ButtonMenuItem>
           <ButtonMenuItem>Dark sm 2</ButtonMenuItem>
           <ButtonMenuItem>Dark sm 3</ButtonMenuItem>
@@ -43,7 +50,7 @@ export const Default: React.FC = () => {
       </Row>
 
       <Row isLight>
-        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant="light" scale="sm">
+        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant={Variants.LIGHT} scale={Scales.SM}>
           <ButtonMenuItem>Light sm 1</ButtonMenuItem>
           <ButtonMenuItem>Light sm 2</ButtonMenuItem>
           <ButtonMenuItem>Light sm 3</ButtonMenuItem>
@@ -52,7 +59,7 @@ export const Default: React.FC = () => {
       </Row>
 
       <Row isLight>
-        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant="light">
+        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant={Variants.LIGHT}>
           <ButtonMenuItem>Light md 1</ButtonMenuItem>
           <ButtonMenuItem>Light md 2</ButtonMenuItem>
           <ButtonMenuItem>Light md 3</ButtonMenuItem>
@@ -61,7 +68,7 @@ export const Default: React.FC = () => {
       </Row>
 
       <Row isLight>
-        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant="light" scale="lg">
+        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant={Variants.LIGHT} scale={Scales.LG}>
           <ButtonMenuItem>Light lg 1</ButtonMenuItem>
           <ButtonMenuItem>Light lg 2</ButtonMenuItem>
           <ButtonMenuItem>Light lg 3</ButtonMenuItem>
@@ -70,7 +77,7 @@ export const Default: React.FC = () => {
       </Row>
 
       <Row>
-        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant="dark" scale="sm">
+        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant={Variants.DARK} scale={Scales.SM}>
           <ButtonMenuItem>Dark sm 1</ButtonMenuItem>
           <ButtonMenuItem>Dark sm 2</ButtonMenuItem>
           <ButtonMenuItem>Dark sm 3</ButtonMenuItem>
@@ -82,7 +89,7 @@ export const Default: React.FC = () => {
         <ButtonMenu
           activeIndex={index}
           onItemClick={handleClick}
-          variant="dark"
+          variant={Variants.DARK}
           itemsProperties={[
             {
               index: 0,
@@ -111,7 +118,7 @@ export const Default: React.FC = () => {
       </Row>
 
       <Row>
-        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant="dark" scale="lg">
+        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant={Variants.DARK} scale={Scales.LG}>
           <ButtonMenuItem>Dark lg 1</ButtonMenuItem>
           <ButtonMenuItem>Dark lg 2</ButtonMenuItem>
           <ButtonMenuItem>Dark lg 3</ButtonMenuItem>
@@ -120,7 +127,7 @@ export const Default: React.FC = () => {
       </Row>
 
       <Row isLight>
-        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant="warningLight">
+        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant={Variants.WARNING_LIGHT}>
           <ButtonMenuItem>Warning Light 1</ButtonMenuItem>
           <ButtonMenuItem>Warning Light 2</ButtonMenuItem>
           <ButtonMenuItem>Warning Light 3</ButtonMenuItem>
@@ -129,7 +136,7 @@ export const Default: React.FC = () => {
       </Row>
 
       <Row>
-        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant="warningDark">
+        <ButtonMenu activeIndex={index} onItemClick={handleClick} variant={Variants.WARNING_DARK}>
           <ButtonMenuItem>Warning Light 1</ButtonMenuItem>
           <ButtonMenuItem>Warning Light 2</ButtonMenuItem>
           <ButtonMenuItem>Warning Light 3</ButtonMenuItem>
@@ -158,7 +165,7 @@ export const AsLinks: React.FC = () => {
         </ButtonMenu>
       </Row>
       <Row isLight>
-        <ButtonMenu variant="light" activeIndex={index} onItemClick={setIndex}>
+        <ButtonMenu variant={Variants.LIGHT} activeIndex={index} onItemClick={setIndex}>
           <ButtonMenuItem as="a" href="https://biswap.org/">
             Biswap 1
           </ButtonMenuItem>
@@ -188,7 +195,7 @@ export const FlatBottom: React.FC = () => {
         </ButtonMenu>
       </Row>
       <Row isLight>
-        <ButtonMenu flatBottom variant="light" activeIndex={index} onItemClick={handleClick}>
+        <ButtonMenu flatBottom variant={Variants.LIGHT} activeIndex={index} onItemClick={handleClick}>
           <ButtonMenuItem>Flat Bottom</ButtonMenuItem>
           <ButtonMenuItem>Example</ButtonMenuItem>
           <ButtonMenuItem>Menu</ButtonMenuItem>
@@ -212,7 +219,7 @@ export const FlatTop: React.FC = () => {
         </ButtonMenu>
       </Row>
       <Row isLight>
-        <ButtonMenu flatTop variant="light" activeIndex={index} onItemClick={handleClick}>
+        <ButtonMenu flatTop variant={Variants.LIGHT} activeIndex={index} onItemClick={handleClick}>
           <ButtonMenuItem>Flat Top</ButtonMenuItem>
           <ButtonMenuItem>Example</ButtonMenuItem>
           <ButtonMenuItem>Menu</ButtonMenuItem>
@@ -236,7 +243,7 @@ export const WithoutBackground: React.FC = () => {
         </ButtonMenu>
       </Row>
       <Row>
-        <ButtonMenu withoutBackground variant="light" activeIndex={index} onItemClick={handleClick}>
+        <ButtonMenu withoutBackground variant={Variants.LIGHT} activeIndex={index} onItemClick={handleClick}>
           <ButtonMenuItem>Without</ButtonMenuItem>
           <ButtonMenuItem>Background</ButtonMenuItem>
           <ButtonMenuItem>Example</ButtonMenuItem>
@@ -260,7 +267,7 @@ export const DisabledMenu: React.FC = () => {
         </ButtonMenu>
       </Row>
       <Row isLight>
-        <ButtonMenu disabled variant="light" activeIndex={index} onItemClick={handleClick}>
+        <ButtonMenu disabled variant={Variants.LIGHT} activeIndex={index} onItemClick={handleClick}>
           <ButtonMenuItem>Disabled</ButtonMenuItem>
           <ButtonMenuItem>Light</ButtonMenuItem>
           <ButtonMenuItem>Full</ButtonMenuItem>
@@ -276,7 +283,7 @@ export const DisabledMenu: React.FC = () => {
         </ButtonMenu>
       </Row>
       <Row isLight>
-        <ButtonMenu disabled fullWidth variant="light" activeIndex={index} onItemClick={handleClick}>
+        <ButtonMenu disabled fullWidth variant={Variants.LIGHT} activeIndex={index} onItemClick={handleClick}>
           <ButtonMenuItem>Disabled</ButtonMenuItem>
           <ButtonMenuItem>Light</ButtonMenuItem>
           <ButtonMenuItem>Full</ButtonMenuItem>
@@ -301,8 +308,8 @@ export const FullWidthMenu: React.FC = () => {
           activeIndex={index}
           equalElementWidth
           onItemClick={handleClick}
-          variant="warningDark"
-          scale="lg"
+          variant={Variants.WARNING_DARK}
+          scale={Scales.LG}
         >
           <ButtonMenuItem as="a">Warning Dark</ButtonMenuItem>
           <ButtonMenuItem>Full width</ButtonMenuItem>

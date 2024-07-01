@@ -1,10 +1,15 @@
 import React, { FC, useEffect, useState } from "react";
 
+// hooks
 import { useMatchBreakpoints } from "../../../contexts";
+
+// components
 import MobileMenu from "./MobileMenu";
-import { MenuItemsProps } from "../../MenuItems/types";
 import MenuItem from "../../MenuItem";
 import Burger from "./ButtonBurger";
+
+// types
+import type { MenuItemsProps, MenuItemsType } from "../../MenuItems/types";
 
 const MobileDropdownMenu: FC<MenuItemsProps> = ({
   items,
@@ -14,22 +19,18 @@ const MobileDropdownMenu: FC<MenuItemsProps> = ({
   baseAwsUrl,
   mobileLangSelector,
 }) => {
-  const { isMobile } = useMatchBreakpoints();
+  const [configItems, setConfigItems] = useState<MenuItemsType[]>(items);
 
-  const [configItems, setConfigItems] = useState(items);
+  const { isMobile } = useMatchBreakpoints();
 
   useEffect(() => {
     if (isMobile) {
       setConfigItems(
         items.map((item) => {
           if (item.isExtended) {
-            item.items =
-              item.items &&
-              item.items
-                .filter((extendItem, index) => index % 2 === 0)
-                .concat(
-                  item.items.filter((extendItem, index) => index % 2 === 1)
-                );
+            item.items = item?.items
+              ?.filter((_, index) => index % 2 === 0)
+              .concat(item.items.filter((_, index) => index % 2 === 1));
           }
 
           return item;

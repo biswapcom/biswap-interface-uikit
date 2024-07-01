@@ -41,7 +41,7 @@ export const headTextScaleMap = {
   },
 };
 
-export const HeadText = styled(Text).attrs({ bold: true, as: HeadTextTags.H2 })<HeadTextProps>`
+export const HeadText = styled(Text).attrs({ bold: true, tags: HeadTextTags.H2 })<HeadTextProps>`
   font-size: ${({ scale }) => headTextScaleMap[scale || Scales.SIZE32].fontSize};
   line-height: ${({ scale }) => headTextScaleMap[scale || Scales.SIZE32].lineHeight};
   font-weight: 600;
