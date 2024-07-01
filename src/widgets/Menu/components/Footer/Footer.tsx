@@ -19,8 +19,6 @@ import Product from "./Product";
 import Service from "./Service";
 import Community from "./Community";
 import Audit from "./Audit";
-import { MenuContext } from "../../context";
-// import Support from './Support'
 
 interface Props
   extends BSWPriceProps,

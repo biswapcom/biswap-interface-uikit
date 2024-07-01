@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FooterInfoLinks, FooterLinks } from "../../types";
+import { FooterLinks } from "../../types";
 import CommonFooterLinksComponent from "./CommonFooterLinksComponent";
 
 const Wrapper = styled.div`

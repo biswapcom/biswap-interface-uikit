@@ -136,7 +136,6 @@ const FlagWrap = styled.div`
 
 const Community: React.FC<CommunityProps> = ({
   iconSize = "20px",
-  title,
   menuVariant,
   isFooter = false,
   socialLinks,

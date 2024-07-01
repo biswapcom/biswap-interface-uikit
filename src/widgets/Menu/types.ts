@@ -1,14 +1,12 @@
-import React, {
+import {
   ElementType,
   FunctionComponent,
-  ReactElement,
   ReactNode,
 } from "react";
 import { MenuItemsType } from "../../components/MenuItems/types";
 import { SubMenuItemsType } from "../../components/SubMenuItems";
 import { Colors } from "../../theme";
 import { DropdownMenuItemType } from "../../components/DropdownMenu/types";
-import * as string_decoder from "string_decoder";
 
 export interface LinkStatus {
   text: string;
