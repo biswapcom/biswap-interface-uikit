@@ -1,7 +1,7 @@
 import React, { FC, Fragment } from "react";
 import styled from "styled-components";
 
-// common styles
+// styles
 import {
   DropdownMenuDivider,
   DropdownMenuInnerLinkItem,
@@ -12,30 +12,24 @@ import {
 // components
 import IconComponent from "../../Svg/IconComponent";
 import { Text } from "../../Text";
-import Grid from "../../Box/Grid";
-import { Badge } from "../../Badge";
+import { Grid } from "../../Box";
+import { Badge, BadgeTypes } from "../../Badge";
 
 // types
-import { DropdownMenuItemType, InnerLinksBlockProps } from "../types";
+import { type InnerLinksBlockProps, DropdownMenuItemType } from "../types";
 
 // hooks
 import { useMatchBreakpoints } from "../../../contexts";
 
 const LabelText = styled(Text)`
-  overflow: hidden;
+  max-width: 80px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 80px;
+  overflow: hidden;
 `;
 
-const InnerLinksBlock: FC<InnerLinksBlockProps> = ({
-  links,
-  leftIcon,
-  setIsOpen,
-  linkComponent,
-  lastItem,
-}) => {
-  const { isMobile, isTablet, isDesktop } = useMatchBreakpoints();
+const InnerLinksBlock: FC<InnerLinksBlockProps> = ({ links, leftIcon, setIsOpen, linkComponent, lastItem }) => {
+  const { isMobile, isTablet } = useMatchBreakpoints();
 
   const renderLinks = () =>
     links.map(
@@ -55,19 +49,12 @@ const InnerLinksBlock: FC<InnerLinksBlockProps> = ({
       ) => {
         const getLinkContent = () => (
           <>
-            {icon && (
-              <IconComponent
-                className="inner-chevron"
-                width={16}
-                iconName={icon}
-                color={fill}
-              />
-            )}
+            {icon && <IconComponent className="inner-chevron" width={16} iconName={icon} color={fill} />}
             <LabelText bold fontSize={"12px"} color={fill}>
               {label}
             </LabelText>
             {badgeTitle && (
-              <Badge ml="4px" badgeType={badgeType ?? "success"}>
+              <Badge ml="4px" badgeType={badgeType ?? BadgeTypes.SUCCESS}>
                 {badgeTitle}
               </Badge>
             )}
@@ -106,11 +93,7 @@ const InnerLinksBlock: FC<InnerLinksBlockProps> = ({
 
   return (
     <InnerLinksBlockContainer padded={!!leftIcon && !isTablet}>
-      <Grid
-        gridTemplateColumns={"1fr 1fr"}
-        gridGap={16}
-        paddingBottom={!lastItem ? 16 : 0}
-      >
+      <Grid gridTemplateColumns={"1fr 1fr"} gridGap={16} paddingBottom={!lastItem ? 16 : 0}>
         {renderLinks()}
       </Grid>
       {!lastItem && <DropdownMenuDivider />}

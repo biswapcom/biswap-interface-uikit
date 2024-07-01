@@ -1,31 +1,31 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import { usePopper } from "react-popper";
+
+// context
 import { MenuContext } from "../../widgets/Menu/context";
+
+// components
 import { Box } from "../Box";
 import { MenuItemContent, DropdownMenuItemContainer } from "./components";
 
-import {
-  StyledDropdownMenu,
-} from "./styles";
-import { DropdownMenuItemType, DropdownMenuProps } from "./types";
+// styles
+import { StyledDropdownMenu } from "./styles";
 
-const DropdownMenu: React.FC<DropdownMenuProps> = ({
+// types
+import { type DropdownMenuProps, DropdownMenuItemType } from "./types";
+
+const DropdownMenu: FC<DropdownMenuProps> = ({
   children,
-  isMobileNav = false,
-  showItemsOnMobile = false,
   activeItem = "",
   items = [],
-  mobileItems = [],
-  index,
   isExtended = false,
-  setMenuOpenByIndex,
-  mobileMenuCallback,
   ...props
 }) => {
-  const { linkComponent } = useContext(MenuContext);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [targetRef, setTargetRef] = useState<HTMLDivElement | null>(null);
   const [tooltipRef, setTooltipRef] = useState<HTMLDivElement | null>(null);
+
+  const { linkComponent } = useContext(MenuContext);
   const hasItems = items.length > 0;
   const hasMoreThanItems = items.length > 1;
   const { styles, attributes, update } = usePopper(targetRef, tooltipRef, {
@@ -60,10 +60,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
 
   return (
     <Box ref={setTargetRef} {...props}>
-      <Box
-      >
-        {children}
-      </Box>
+      <Box>{children}</Box>
       {hasItems && (
         <StyledDropdownMenu
           style={styles.popper}
@@ -107,10 +104,8 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
                 />
               );
               const isActive = href === activeItem;
-
               const lastItem =
-                itemIndex === items?.length - 1 ||
-                items[itemIndex + 1]?.type === DropdownMenuItemType.BANNER;
+                itemIndex === items?.length - 1 || items[itemIndex + 1]?.type === DropdownMenuItemType.BANNER;
 
               return (
                 <DropdownMenuItemContainer

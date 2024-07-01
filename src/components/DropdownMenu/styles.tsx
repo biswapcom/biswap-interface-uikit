@@ -1,16 +1,19 @@
-import React from "react";
+import { ReactNode } from "react";
 import styled, { css, DefaultTheme } from "styled-components";
 import { Link } from "react-router-dom";
 
+// theme
 import { Colors } from "../../theme";
+
+// components
 import { Text } from "../Text";
-import {
-  StyledDropdownMenuInnerLinkItemProps,
-  StyledDropdownMenuItemProps,
-} from "./types";
-import { useMatchBreakpoints } from "../../contexts";
 import { Box, Grid } from "../Box";
-import { initial } from "lodash";
+
+// types
+import type { StyledDropdownMenuInnerLinkItemProps, StyledDropdownMenuItemProps } from "./types";
+
+// hooks
+import { useMatchBreakpoints } from "../../contexts";
 
 const getTextColor = ({
   $isActive,
@@ -26,7 +29,7 @@ const getTextColor = ({
   return theme.colors.backgroundDark;
 };
 
-export const InnerLinksBlockContainer = styled.div<{ padded: boolean }>`
+export const InnerLinksBlockContainer = styled(Box)<{ padded: boolean }>`
   padding-top: 16px;
   padding-left: ${({ padded }) => padded && "58px"};
 `;
@@ -45,7 +48,7 @@ const CommonDropdownMenuInnerLinkItem = () => css`
   }
 `;
 
-export const DropdownMenuInnerLinkItem = styled.div<StyledDropdownMenuInnerLinkItemProps>`
+export const DropdownMenuInnerLinkItem = styled(Box)<StyledDropdownMenuInnerLinkItemProps>`
   ${CommonDropdownMenuInnerLinkItem}
 `;
 
@@ -61,25 +64,23 @@ export const CommonLinkStyle = ({
 }: StyledDropdownMenuItemProps & {
   $isActive: boolean;
   $hasIcon?: boolean;
-  label?: string | React.ReactNode;
+  label?: string | ReactNode;
 }) => {
   const { isMobile } = useMatchBreakpoints();
 
   return css`
-    align-items: center;
-    border: 0;
-    //background: transparent;
-    color: ${({ theme }) => getTextColor({ theme, disabled, $isActive })};
-    cursor: ${disabled ? "not-allowed" : "pointer"};
-    font-weight: 600;
-    line-height: 20px;
     display: inline-flex;
-    font-size: 14px;
-    min-height: 40px;
+    align-items: center;
     justify-content: space-between;
-    outline: 0;
-    //padding-left: 16px;
     width: 100%;
+    min-height: 40px;
+    border: 0;
+    outline: 0;
+    line-height: 20px;
+    color: ${({ theme }) => getTextColor({ theme, disabled, $isActive })};
+    font-size: 14px;
+    font-weight: 600;
+    cursor: ${disabled ? "not-allowed" : "pointer"};
 
     .arrow-icon {
       ${!(isMobile && (label === "Marketplace" || label === "GameFi")) &&
@@ -98,7 +99,9 @@ export const CommonLinkStyle = ({
 
       .arrow-icon {
         visibility: visible;
-        transition: visibility 250ms linear, opacity 150ms linear;
+        transition:
+          visibility 250ms linear,
+          opacity 150ms linear;
         opacity: 1;
       }
     }
@@ -123,13 +126,13 @@ export const DropdownInternalMenuItem = styled(Link)<
   StyledDropdownMenuItemProps & {
     $isActive: boolean;
     $hasIcon?: boolean;
-    label?: string | React.ReactNode;
+    label?: string | ReactNode;
   }
 >`
   ${CommonLinkStyle}
 `;
 
-export const StyledDropdownMenuItemContainer = styled.div<{
+export const StyledDropdownMenuItemContainer = styled(Box)<{
   isOpenMenuItem?: boolean;
   disabled?: boolean;
 }>`
@@ -138,8 +141,8 @@ export const StyledDropdownMenuItemContainer = styled.div<{
   pointer-events: ${({ disabled }) => (disabled ? "none" : "initial")};
 
   &:last-child {
-    margin-bottom: ${({ isOpenMenuItem }) =>
-      isOpenMenuItem ? "16px" : "32px"};
+    margin-bottom: ${({ isOpenMenuItem }) => (isOpenMenuItem ? "16px" : "32px")};
+
     ${({ theme }) => theme.mediaQueries.sm} {
       margin-bottom: 24px;
     }
@@ -157,10 +160,10 @@ export const StyledDropdownMenuItemContainer = styled.div<{
 `;
 
 export const DropdownMenuDivider = styled.hr`
+  margin: 0;
   border-color: ${({ theme }) => theme.colors.gray200};
   border-style: solid;
   border-width: 1px 0 0;
-  margin: 0;
   ${({ color }) => `
     color: ${color};
     background-color: ${color};
@@ -173,20 +176,20 @@ export const StyledDropdownMenu = styled(Grid)<{
   $isExtended?: boolean;
 }>`
   grid-template-columns: 1fr;
-
-  background-color: ${({ theme }) => theme.colors.white};
+  width: 352px;
+  padding: 24px 24px 0;
   border: 1px solid ${({ theme }) => theme.colors.white};
   border-radius: 16px;
-
-  padding: 24px 24px 0;
+  box-shadow:
+    0 20px 36px -8px rgba(0, 26, 67, 0.24),
+    0 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: ${({ theme }) => theme.colors.white};
   pointer-events: auto;
-  width: 352px;
   visibility: visible;
   opacity: 1;
-  transition: opacity 250ms linear, visibility 350ms linear;
-  z-index: 1001;
-  box-shadow: 0 20px 36px -8px rgba(0, 26, 67, 0.24),
-    0px 1px 1px rgba(0, 0, 0, 0.05);
+  transition:
+    opacity 250ms linear,
+    visibility 350ms linear;
 
   ${({ $isOpen }) =>
     !$isOpen &&
@@ -206,15 +209,15 @@ export const StyledDropdownMenu = styled(Grid)<{
 `;
 
 export const LinkStatus = styled(Text)<{ color: keyof Colors }>`
-  border-radius: ${({ theme }) => theme.radii.default};
+  margin-left: 8px;
   padding: 0 8px;
   border: 2px solid ${({ theme, color }) => theme.colors[color]};
+  border-radius: ${({ theme }) => theme.radii.default};
   box-shadow: none;
   color: ${({ theme, color }) => theme.colors[color]};
-  margin-left: 8px;
 `;
 
-export const BannerPlacementItem = styled.div`
+export const BannerPlacementItem = styled(Box)`
   margin: 0 -14px -18px -14px;
 `;
 
@@ -222,6 +225,7 @@ export const BorderMobileMenuItem = styled(Box)<{ isHighlighted?: boolean }>`
   padding: 0 12px;
   border-left: ${({ theme, isHighlighted }) =>
     `4px solid ${isHighlighted ? theme.colors.warningPress : "transparent"}`};
+
   ${({ theme }) => theme.mediaQueries.sm} {
     border-left: none;
   }

@@ -1,5 +1,9 @@
 import React, { FC } from "react";
-import { DropdownMenuItemContainerProps, DropdownMenuItemType } from "../types";
+
+// types
+import { type DropdownMenuItemContainerProps, DropdownMenuItemType } from "../types";
+
+// styles
 import {
   BannerPlacementItem,
   DropdownInternalMenuItem,
@@ -7,7 +11,11 @@ import {
   DropdownMenuItem,
   StyledDropdownMenuItemContainer,
 } from "../styles";
+
+// components
 import InnerLinksBlock from "./InnerLinksBlock";
+
+// hooks
 import { useMatchBreakpoints } from "../../../contexts";
 
 const DropdownMenuItemContainer: FC<DropdownMenuItemContainerProps> = ({
@@ -22,8 +30,6 @@ const DropdownMenuItemContainer: FC<DropdownMenuItemContainerProps> = ({
   type,
   target,
   mobileTarget,
-  badgeTitle,
-  badgeType,
   isOpenItem,
   lastItem,
   ...itemProps
@@ -32,16 +38,10 @@ const DropdownMenuItemContainer: FC<DropdownMenuItemContainerProps> = ({
 
   const hasInnerLinks = links.length > 0;
 
-  // @ts-ignore
   return (
     <StyledDropdownMenuItemContainer isOpenMenuItem={isOpenItem} {...itemProps}>
       {type === DropdownMenuItemType.BUTTON && (
-        <DropdownMenuItem
-          $isActive={isActive}
-          $hasIcon={!!leftIcon}
-          type="button"
-          {...itemProps}
-        >
+        <DropdownMenuItem $isActive={isActive} $hasIcon={!!leftIcon} type="button" {...itemProps}>
           {getMenuItemContent("")}
         </DropdownMenuItem>
       )}
@@ -50,7 +50,7 @@ const DropdownMenuItemContainer: FC<DropdownMenuItemContainerProps> = ({
           {hasInnerLinks ? (
             <DropdownMenuItem
               $isActive={isActive}
-              $hasIcon={true} // to disable hover styling
+              $hasIcon={true}
               as={linkComponent}
               href={links[0]?.href}
               onClick={() => {
@@ -61,12 +61,7 @@ const DropdownMenuItemContainer: FC<DropdownMenuItemContainerProps> = ({
               {getMenuItemContent("")}
             </DropdownMenuItem>
           ) : (
-            <DropdownMenuItem
-              $isActive={isActive}
-              $hasIcon={true} // to disable hover styling
-              as="div"
-              {...itemProps}
-            >
+            <DropdownMenuItem $isActive={isActive} $hasIcon={true} as="div" {...itemProps}>
               {getMenuItemContent("")}
             </DropdownMenuItem>
           )}
@@ -115,9 +110,7 @@ const DropdownMenuItemContainer: FC<DropdownMenuItemContainerProps> = ({
       )}
       {type === DropdownMenuItemType.DIVIDER && <DropdownMenuDivider />}
       {type === DropdownMenuItemType.BANNER && isDesktop && bannerRenderer && (
-        <BannerPlacementItem>
-          {bannerRenderer(href, target)}
-        </BannerPlacementItem>
+        <BannerPlacementItem>{bannerRenderer(href, target)}</BannerPlacementItem>
       )}
     </StyledDropdownMenuItemContainer>
   );

@@ -1,7 +1,4 @@
-import React from "react";
-import { DropdownMenuItems, DropdownMenuItemType } from "./types";
-
-const getBanner = () => <div>BANNER</div>;
+import { type DropdownMenuItems, DropdownMenuItemType } from "./types";
 
 const ItemsMock: DropdownMenuItems[] = [
   {
@@ -74,38 +71,32 @@ const ItemsMock: DropdownMenuItems[] = [
   {
     label: "Referral Program",
     href: "/pool",
-    // leftIcon: 'Referral',
     description: "Item description",
   },
   {
     label: "IDO",
     href: "/pool",
-    // leftIcon: 'IdoMenu',
     description: "Item description",
   },
   {
     label: "Lottery",
     href: "/pool",
-    // leftIcon: 'Lottery',
     description: "Item description",
   },
   {
     label: "Competitions",
     href: "/pool",
-    // leftIcon: 'Competitions',
     description: "Item description",
   },
   {
     label: "NFT Launchpad",
     href: "/pool",
-    // leftIcon: 'NftLaunch',
     description: "Item description",
     type: DropdownMenuItemType.EXTERNAL_LINK,
   },
   {
     label: "NFT Earn",
     href: "/pool",
-    // leftIcon: 'NftEarn',
     description: "Item description",
     type: DropdownMenuItemType.EXTERNAL_LINK,
   },
@@ -119,27 +110,9 @@ const ItemsMock: DropdownMenuItems[] = [
   {
     label: "GameFi",
     href: "/pool",
-    // leftIcon: 'GameFi',
     description: "Item description",
     type: DropdownMenuItemType.EXTERNAL_LINK,
   },
-  // {
-  //   label: "LP Migration",
-  //   href: "https://v1exchange.pancakeswap.finance/#/migrate",
-  //   type: DropdownMenuItemType.EXTERNAL_LINK,
-  // },
-  // {
-  //   type: DropdownMenuItemType.DIVIDER,
-  // },
-  // {
-  //   label: "Disconnect",
-  //   onClick: noop,
-  //   type: DropdownMenuItemType.BUTTON,
-  // },
-  // {
-  //   type: DropdownMenuItemType.BANNER,
-  //   bannerRenderer: getBanner,
-  // },
 ];
 
 export default ItemsMock;
