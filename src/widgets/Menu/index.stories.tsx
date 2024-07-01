@@ -11,6 +11,7 @@ import Text from "../../components/Text/Text";
 import {BodyText} from "../../components/Typography";
 import {Modal, ModalProps, useModal} from "../Modal";
 import {Scales, Variants} from "../../components/Button/types";
+import { Dropdown } from "../../components/Dropdown";
 
 import {
   aboutLinks,
@@ -198,7 +199,7 @@ const ConnectedTemplate: React.FC<NavProps> = (args) => {
   const [bannerHeight, setBannerHeight] = useState<number>(0);
 
   const renderContent = Array.from({ length: 30 }, (v, i) => i).map((el) => (
-    <Text as="p" mt="32px">
+    <Text as="p" mt="32px" key={el}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
       veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -231,7 +232,7 @@ const ConnectedTemplate: React.FC<NavProps> = (args) => {
           socialLinks={socialLinks}
           serviceLinks={serviceLinks}
           buyBswLabel={"Buy bsdt"}
-          mobileLangSelector="test"
+          mobileLangSelector={Dropdown}
           banner={(setHeight?: (s: boolean) => void) => (
             <Banner setHeight={setHeight} setBannerHeight={setBannerHeight} />
           )}
@@ -269,62 +270,6 @@ ConnectedWithBanner.args = {
   banner: (setHeight: () => void) => <Banner setHeight={setHeight} />,
 };
 
-export const NotConnected: React.FC = () => {
-  return (
-    <BrowserRouter>
-      <Menu
-        // isDark={false}
-        //   toggleTheme={noop}
-        // langs={langs}
-        //setLang={noop}
-        // currentLang="EN"
-        links={links}
-        rightSide={UserMenuTest}
-        //subLinks={subLinks}
-      >
-        <div>
-          <h1>Page body</h1>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-          mollit anim id est laborum.
-        </div>
-      </Menu>
-    </BrowserRouter>
-  );
-};
-
-export const WithoutConnectButton: React.FC = () => {
-  return (
-    <BrowserRouter>
-      <Menu
-        // isDark={false}
-        //toggleTheme={noop}
-        // langs={langs}
-        // setLang={noop}
-        // currentLang="EN"
-        links={links}
-        // subLinks={subLinks}
-      >
-        <div>
-          <h1>No connect button on top</h1>
-          This variant is needed for info site
-        </div>
-      </Menu>
-    </BrowserRouter>
-  );
-};
-
 export const WithSubmenuSelected: React.FC = () => {
   return (
     <MemoryRouter initialEntries={["/teams"]}>
@@ -338,7 +283,7 @@ export const WithSubmenuSelected: React.FC = () => {
         socialLinks={socialLinks}
         serviceLinks={serviceLinks}
         links={links}
-        mobileLangSelector="test"
+        mobileLangSelector={Dropdown}
         subLinks={[
           {
             label: "Home",

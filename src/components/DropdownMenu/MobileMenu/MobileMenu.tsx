@@ -13,7 +13,7 @@ import IconComponent from "../../Svg/IconComponent";
 import Accordion from "../../Accordion/Accordion";
 import Community from "../../../widgets/Menu/components/Footer/Community";
 import Marker from "../../MenuItem/Marker";
-import { HeadText } from "../../Typography";
+import { HeadText, Scales } from "../../Typography";
 
 const MobileCommunityWrapper = styled.div`
   flex: 1;
@@ -178,7 +178,7 @@ const MobileMenu: FC<MobileMenuProps> = ({
                                   {/*@ts-ignore*/}
                                   {isMarker && <Marker color={isMarkerColor} />}
                                   <HeadText
-                                    scale={isTablet ? "size20" : "size16"}
+                                    scale={isTablet ? Scales.SIZE20 : Scales.SIZE16}
                                     color={
                                       isMobile && opened && !href
                                         ? "primary"

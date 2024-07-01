@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useTheme } from "styled-components";
 import { Modal, useModal, ModalWithBackground } from ".";
 import { ModalProps } from "./types";
 import Button from "../../components/Button/Button";
@@ -24,7 +23,6 @@ const CustomModal: React.FC<ModalProps> = ({ title, onDismiss, ...props }) => (
 );
 
 export const Default: React.FC = () => {
-  const theme = useTheme();
   const modalV2 = useModalV2();
   const modalExtendedV2 = useModalV2();
 
