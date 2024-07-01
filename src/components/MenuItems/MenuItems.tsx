@@ -1,28 +1,34 @@
-import React, { Fragment } from "react";
+import React, { FC, Fragment } from "react";
+
+// components
 import { Box, Flex } from "../Box";
 import { Text } from "../Text";
-import isTouchDevice from "../../util/isTouchDevice";
-import DropdownMenu from "../DropdownMenu/DropdownMenu";
-import MenuItem from "../MenuItem/MenuItem";
-import IconComponent from "../Svg/IconComponent";
-import { ItemTypes, MenuItemsProps } from "./types";
-import { useMatchBreakpoints } from "../../contexts";
+import { DropdownMenu } from "../DropdownMenu";
 import MobileDropdownMenu from "../DropdownMenu/MobileMenu/MobileDropdownMenu";
-import MenuItemDivider from "../MenuItem/Divider";
-import Marker from "../MenuItem/Marker";
+import { MenuItem, MenuItemDivider, MenuItemMarker } from "../MenuItem";
+import IconComponent from "../Svg/IconComponent";
 
-const MenuItems: React.FC<MenuItemsProps> = ({
+// utils
+import { isTouchDevice } from "../../util";
+
+// types
+import { type MenuItemsProps, ItemTypes } from "./types";
+
+// hooks
+import { useMatchBreakpoints } from "../../contexts";
+
+const MenuItems: FC<MenuItemsProps> = ({
   items = [],
   activeItem,
   activeSubItem,
   isMobileMenuOpened = false,
   mobileMenuCallback,
   baseAwsUrl,
-  children,
   mobileLangSelector,
   ...props
 }) => {
   const { isDesktop, isTablet } = useMatchBreakpoints();
+
   return (
     <Flex {...props} alignItems="center">
       {!isDesktop && (
@@ -46,7 +52,6 @@ const MenuItems: React.FC<MenuItemsProps> = ({
             showItemsOnMobile,
             type,
             hidden,
-            showNavBadge,
             highlightTitle,
           },
           index
@@ -54,16 +59,11 @@ const MenuItems: React.FC<MenuItemsProps> = ({
           const isMarker = items[index]?.showNavBadge;
           const isMarkerColor = items[index]?.colorNavBadge;
           const isHighlighted = items[index].highlightTitle;
-          const statusColor = menuItems?.find(
-            (menuItem) => menuItem.status !== undefined
-          )?.status?.color;
+          const statusColor = menuItems?.find((menuItem) => menuItem.status !== undefined)?.status?.color;
           const isActive = activeItem === href;
-          const linkProps =
-            isTouchDevice() && menuItems && menuItems.length > 0
-              ? {}
-              : { href };
-          const visualize =
-            (isDesktop || (isTablet && showItemsOnMobile)) && !hidden;
+          const linkProps = isTouchDevice() && menuItems && menuItems.length > 0 ? {} : { href };
+          const visualize = (isDesktop || (isTablet && showItemsOnMobile)) && !hidden;
+
           return (
             visualize && (
               <Fragment key={`${label}#${href}`}>
@@ -81,13 +81,11 @@ const MenuItems: React.FC<MenuItemsProps> = ({
                     highlightTitle={highlightTitle}
                   >
                     {type === ItemTypes.DIVIDER && <MenuItemDivider />}
-                    {icon && (
-                      <IconComponent mr="8px" iconName={icon} color="white" />
-                    )}
+                    {icon && <IconComponent mr="8px" iconName={icon} color="white" />}
                     {label && (
                       <Box ml={!href ? "8px" : 0} position="relative">
                         {/*@ts-ignore*/}
-                        {isMarker && <Marker color={isMarkerColor} />}
+                        {isMarker && <MenuItemMarker color={isMarkerColor} />}
                         <Text
                           color={isHighlighted ? "warningPress" : "white"}
                           fontSize="14px"
