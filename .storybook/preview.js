@@ -1,7 +1,10 @@
+import React from "react";
 /** @type { import('@storybook/react').Preview } */
-import {withThemeFromJSXProvider} from '@storybook/addon-themes';
-import {ThemeProvider} from 'styled-components';
+import { withThemeFromJSXProvider } from "@storybook/addon-themes";
+import { ThemeProvider } from "styled-components";
 import { light, dark, ResetCSS } from "../src/theme";
+import { MatchBreakpointsProvider } from "../src/contexts";
+import { ModalProvider } from "../src/widgets/Modal";
 
 const preview = {
   parameters: {
@@ -13,6 +16,13 @@ const preview = {
     },
   },
   decorators: [
+    (Story) => (
+      <MatchBreakpointsProvider>
+        <ModalProvider>
+          <Story />
+        </ModalProvider>
+      </MatchBreakpointsProvider>
+    ),
     withThemeFromJSXProvider({
       themes: {
         light: light,
