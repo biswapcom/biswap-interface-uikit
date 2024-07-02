@@ -1,6 +1,12 @@
-import React, { useState } from "react";
-import Radio from "./Radio";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
+
+// components
+import Radio from "./Radio";
+import { Box, Flex } from "../Box";
+
+// types
+import { Scales, Variants } from "./types";
 
 export default {
   title: "Components/Radio",
@@ -8,26 +14,24 @@ export default {
   argTypes: {},
 };
 
-const WrapperLight = styled.div`
-  background: #f9fafd;
+const WrapperLight = styled(Box)`
   padding: 24px;
+  background: ${({ theme }) => theme.colors.gray100};
 `;
-const WrapperDark = styled.div`
-  background: #07162d;
+const WrapperDark = styled(Box)`
   padding: 24px;
+  background: ${({ theme }) => theme.colors.dark800};
 `;
 
-const RadioWrap = styled.div`
-  display: flex;
+const RadioWrap = styled(Flex)`
   gap: 24px;
 `;
 
-export const Default: React.FC = () => {
-  const [radio, setRadio] = useState("one");
+export const Default: FC = () => {
+  const [radio, setRadio] = useState<string>("one");
 
-  const handleChange = (evt: { target: { value: any } }) => {
+  const handleChange = ({ target: { value } }: { target: { value: string } }) => {
     console.info("fired");
-    const { value } = evt.target;
     setRadio(value);
   };
 
@@ -36,63 +40,63 @@ export const Default: React.FC = () => {
       <WrapperLight>
         <RadioWrap style={{ marginBottom: "24px" }}>
           <Radio
-            scale="md"
+            scale={Scales.MD}
             radioName="one"
             label="Radio 1 MD"
-            colorVariant="light"
+            colorVariant={Variants.LIGHT}
             onChange={handleChange}
             checked={radio === "one"}
           />
           <Radio
-            scale="md"
+            scale={Scales.MD}
             radioName="one"
             label="Radio 2 MD"
-            colorVariant="light"
+            colorVariant={Variants.LIGHT}
             onChange={handleChange}
             checked={radio === "two"}
           />
         </RadioWrap>
         <RadioWrap style={{ marginBottom: "32px" }}>
           <Radio
-            scale="sm"
+            scale={Scales.SM}
             radioName="one"
             label="Radio 1 SM"
-            colorVariant="light"
+            colorVariant={Variants.LIGHT}
             onChange={handleChange}
             checked={radio === "one"}
           />
           <Radio
-            scale="sm"
+            scale={Scales.SM}
             radioName="one"
             label="Radio 2 SM"
-            colorVariant="light"
+            colorVariant={Variants.LIGHT}
             onChange={handleChange}
             checked={radio === "two"}
           />
         </RadioWrap>
         <RadioWrap style={{ marginBottom: "24px" }}>
           <Radio
-            scale="md"
+            scale={Scales.MD}
             radioName="one"
             labelOrientation="right"
             label="Radio 1 MD"
-            colorVariant="light"
+            colorVariant={Variants.LIGHT}
             onChange={handleChange}
             checked={radio === "one"}
           />
           <Radio
-            scale="md"
+            scale={Scales.MD}
             radioName="one"
             labelOrientation="right"
             label="Radio 2 MD"
-            colorVariant="light"
+            colorVariant={Variants.LIGHT}
             onChange={handleChange}
             checked={radio === "two"}
           />
         </RadioWrap>
         <RadioWrap style={{ marginBottom: "32px" }}>
           <Radio
-            scale="sm"
+            scale={Scales.SM}
             radioName="one"
             label="Radio 1 SM"
             labelOrientation="right"
@@ -100,7 +104,7 @@ export const Default: React.FC = () => {
             checked={radio === "one"}
           />
           <Radio
-            scale="sm"
+            scale={Scales.SM}
             radioName="one"
             label="Radio 2 SM"
             labelOrientation="right"
@@ -109,66 +113,90 @@ export const Default: React.FC = () => {
           />
         </RadioWrap>
         <RadioWrap style={{ marginBottom: "24px" }}>
-          <Radio scale="md" radioName="one" onChange={handleChange} checked={radio === "one"} />
-          <Radio scale="md" radioName="one" onChange={handleChange} checked={radio === "two"} />
+          <Radio scale={Scales.MD} radioName="one" onChange={handleChange} checked={radio === "one"} />
+          <Radio scale={Scales.MD} radioName="one" onChange={handleChange} checked={radio === "two"} />
         </RadioWrap>
         <RadioWrap style={{ marginBottom: "24px" }}>
-          <Radio scale="sm" radioName="one" onChange={handleChange} checked={radio === "one"} />
-          <Radio scale="sm" radioName="one" onChange={handleChange} checked={radio === "two"} />
+          <Radio scale={Scales.SM} radioName="one" onChange={handleChange} checked={radio === "one"} />
+          <Radio scale={Scales.SM} radioName="one" onChange={handleChange} checked={radio === "two"} />
         </RadioWrap>
       </WrapperLight>
       <WrapperDark>
         <RadioWrap style={{ marginBottom: "24px" }}>
-          <Radio scale="md" radioName="one" label="Radio 1 MD" colorVariant="dark" onChange={handleChange} />
-          <Radio scale="md" radioName="one" label="Radio 2 MD" colorVariant="dark" onChange={handleChange} />
+          <Radio
+            scale={Scales.MD}
+            radioName="one"
+            label="Radio 1 MD"
+            colorVariant={Variants.DARK}
+            onChange={handleChange}
+          />
+          <Radio
+            scale={Scales.MD}
+            radioName="one"
+            label="Radio 2 MD"
+            colorVariant={Variants.DARK}
+            onChange={handleChange}
+          />
         </RadioWrap>
         <RadioWrap style={{ marginBottom: "32px" }}>
-          <Radio scale="sm" radioName="two" label="Radio 1 SM" colorVariant="dark" onChange={handleChange} />
-          <Radio scale="sm" radioName="two" label="Radio 2 SM" colorVariant="dark" onChange={handleChange} />
+          <Radio
+            scale={Scales.SM}
+            radioName="two"
+            label="Radio 1 SM"
+            colorVariant={Variants.DARK}
+            onChange={handleChange}
+          />
+          <Radio
+            scale={Scales.SM}
+            radioName="two"
+            label="Radio 2 SM"
+            colorVariant={Variants.DARK}
+            onChange={handleChange}
+          />
         </RadioWrap>
         <RadioWrap style={{ marginBottom: "24px" }}>
           <Radio
-            scale="md"
+            scale={Scales.MD}
             radioName="three"
             labelOrientation="right"
             label="Radio 1 MD"
-            colorVariant="dark"
+            colorVariant={Variants.DARK}
             onChange={handleChange}
           />
           <Radio
-            scale="md"
+            scale={Scales.MD}
             radioName="three"
             labelOrientation="right"
             label="Radio 2 MD"
-            colorVariant="dark"
+            colorVariant={Variants.DARK}
             onChange={handleChange}
           />
         </RadioWrap>
         <RadioWrap style={{ marginBottom: "32px" }}>
           <Radio
-            scale="sm"
+            scale={Scales.SM}
             radioName="one"
             label="Radio 1 SM"
             labelOrientation="right"
-            colorVariant="dark"
+            colorVariant={Variants.DARK}
             onChange={handleChange}
           />
           <Radio
-            scale="sm"
+            scale={Scales.SM}
             radioName="one"
             label="Radio 2 SM"
             labelOrientation="right"
-            colorVariant="dark"
+            colorVariant={Variants.DARK}
             onChange={handleChange}
           />
         </RadioWrap>
         <RadioWrap style={{ marginBottom: "24px" }}>
-          <Radio scale="md" radioName="one" onChange={handleChange} />
-          <Radio scale="md" radioName="one" onChange={handleChange} />
+          <Radio scale={Scales.MD} radioName="one" onChange={handleChange} />
+          <Radio scale={Scales.MD} radioName="one" onChange={handleChange} />
         </RadioWrap>
         <RadioWrap style={{ marginBottom: "24px" }}>
-          <Radio scale="sm" radioName="one" onChange={handleChange} />
-          <Radio scale="sm" radioName="one" onChange={handleChange} />
+          <Radio scale={Scales.SM} radioName="one" onChange={handleChange} />
+          <Radio scale={Scales.SM} radioName="one" onChange={handleChange} />
         </RadioWrap>
       </WrapperDark>
     </>

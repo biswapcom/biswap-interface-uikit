@@ -4,12 +4,15 @@ export type RadioTheme = {
   handleBackground: string;
 };
 
-export const scales = {
-  SM: "sm",
-  MD: "md",
-} as const;
+export enum Scales {
+  SM = "sm",
+  MD = "md",
+}
 
-export type Scales = (typeof scales)[keyof typeof scales];
+export enum Variants {
+  DARK = "dark",
+  LIGHT = "light",
+}
 
 export interface RadioProps extends SpaceProps {
   scale?: Scales;
@@ -17,6 +20,6 @@ export interface RadioProps extends SpaceProps {
   label?: string;
   radioName?: string;
   onChange: any;
-  colorVariant?: string;
+  colorVariant?: Variants;
   checked?: boolean;
 }
