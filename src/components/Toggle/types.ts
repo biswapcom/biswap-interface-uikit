@@ -1,10 +1,10 @@
-import { InputHTMLAttributes, ReactNode } from "react";
+import { InputHTMLAttributes } from "react";
 import { Colors } from "../../theme";
-import { LayoutProps, SpaceProps } from "styled-system";
+import { SpaceProps } from "styled-system";
 import {
   Scales as BodyTextScales,
   ScalesObj,
-} from "../Typography/typesBodyText";
+} from "../Typography";
 
 export const scales = {
   // SM: "sm",

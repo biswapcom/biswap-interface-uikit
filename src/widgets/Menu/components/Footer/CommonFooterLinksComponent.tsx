@@ -1,13 +1,8 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { FooterInfoLinks, FooterLinks } from "../../types";
+import { FooterLinks } from "../../types";
 import { DropdownMenuItemType } from "../../../../components/DropdownMenu/types";
 import { MenuContext } from "../../context";
-// import MenuLink from "../MenuLink";
-
-interface IProps extends FooterInfoLinks {
-  title: string;
-}
 
 const TopAction = styled.div`
   display: flex;
