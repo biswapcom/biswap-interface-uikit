@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
-import Flex from "../Box/Flex";
-import Box from "../Box/Box";
-import Text from "../Text/Text";
+
+// components
+import { Box, Flex } from "../Box";
+import { Text } from "../Text";
 import PercentSlider from "./PercentSlider";
-import { Variants as ButtonVariants } from "../Button/types";
+
+// types
+import { ButtonVariants } from "../Button";
 
 export default {
   title: "Components/PercentSlider",
@@ -17,11 +20,11 @@ const Col = styled(Flex)`
   width: 420px;
 `;
 
-const SliderVariant = () => {
-  const [value, setValue] = useState(40);
-  //console.log(value, "value");
+export const Default: FC = () => {
+  const [value, setValue] = useState<number>(40);
+
   return (
-    <Box paddingTop="40px">
+    <Col ml="20px" pt="40px">
       <PercentSlider withTooltip darkMode name="slider" value={value} onValueChanged={setValue} />
       <PercentSlider
         name="slider"
@@ -31,20 +34,12 @@ const SliderVariant = () => {
         shortcutVariant={ButtonVariants.TERTIARY_OUT}
         shortcutCheckpoints={[25, 50, 75, 100]}
       />
-    </Box>
-  );
-};
-
-export const Default: React.FC = () => {
-  return (
-    <Col ml="20px">
-      <SliderVariant />
     </Col>
   );
 };
 
-export const Variants: React.FC = () => {
-  const [value, setValue] = useState(10);
+export const Variants: FC = () => {
+  const [value, setValue] = useState<number>(10);
 
   const handleChange = (newValue: number) => {
     setValue(newValue);
@@ -61,8 +56,8 @@ const percentShortcuts = [10, 25, 50, 75];
 const initialBalance = 1.795394;
 const maxBalance = initialBalance - 0.01;
 
-export const Balance: React.FC = () => {
-  const [balance, setBalance] = useState(maxBalance);
+export const Balance: FC = () => {
+  const [balance, setBalance] = useState<number>(maxBalance);
 
   const handleChange = (newValue: number) => {
     setBalance(newValue);
