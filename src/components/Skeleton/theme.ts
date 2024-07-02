@@ -1,16 +1,16 @@
-import { variants } from "./types";
+import { Variants } from "./types";
 
 export const variantsSkeleton = {
-  [variants.CIRCLE]: {
+  [Variants.CIRCLE]: {
     borderRadius: "50%",
   },
-  [variants.SM]: {
+  [Variants.SM]: {
     borderRadius: "4px",
   },
-  [variants.MD]: {
+  [Variants.MD]: {
     borderRadius: "16px",
   },
-  [variants.LG]: {
+  [Variants.LG]: {
     borderRadius: "24px",
   },
 };
