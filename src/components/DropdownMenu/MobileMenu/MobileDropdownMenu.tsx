@@ -5,7 +5,7 @@ import { useMatchBreakpoints } from "../../../contexts";
 
 // components
 import MobileMenu from "./MobileMenu";
-import MenuItem from "../../MenuItem";
+import { MenuItem } from "../../MenuItem";
 import Burger from "./ButtonBurger";
 
 // types

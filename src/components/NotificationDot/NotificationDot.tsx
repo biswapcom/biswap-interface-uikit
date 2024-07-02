@@ -1,26 +1,27 @@
-import React, { cloneElement, Children, ReactElement } from "react";
+import React, { cloneElement, Children, ReactElement, FC } from "react";
 import styled from "styled-components";
-import { NotificationDotProps, DotProps } from "./types";
+
+import type { NotificationDotProps, DotProps } from "./types";
 
 const NotificationDotRoot = styled.span`
-  display: inline-flex;
   position: relative;
+  display: inline-flex;
 `;
 
 const Dot = styled.span<DotProps>`
-  display: ${({ show }) => (show ? "inline-flex" : "none")};
   position: absolute;
   top: 0;
   right: 0;
+  display: ${({ show }) => (show ? "inline-flex" : "none")};
   width: 10px;
   height: 10px;
-  pointer-events: none;
   border: 2px solid ${({ theme }) => theme.colors.dark900};
   border-radius: 50%;
   background-color: ${({ theme, color }) => theme.colors[color]};
+  pointer-events: none;
 `;
 
-const NotificationDot: React.FC<NotificationDotProps> = ({ show = false, color = "secondary", children, ...props }) => (
+const NotificationDot: FC<NotificationDotProps> = ({ show = false, color = "secondary", children, ...props }) => (
   <NotificationDotRoot>
     {Children.map(children, (child: ReactElement) => cloneElement(child, props))}
     <Dot show={show} color={color} />

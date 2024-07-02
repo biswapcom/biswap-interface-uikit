@@ -1,9 +1,15 @@
-import React, { useContext } from "react";
-import { MenuContext } from "../../widgets/Menu/context";
-import StyledMenuItem, { StyledMenuItemContainer } from "./styles";
-import { MenuItemProps } from "./types";
+import React, { FC, useContext } from "react";
 
-const MenuItem: React.FC<MenuItemProps> = ({
+// context
+import { MenuContext } from "../../widgets/Menu/context";
+
+// styles
+import StyledMenuItem, { StyledMenuItemContainer } from "./styles";
+
+// types
+import type { MenuItemProps } from "./types";
+
+const MenuItem: FC<MenuItemProps> = ({
   children,
   href,
   isActive = false,
@@ -13,7 +19,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   ...props
 }) => {
   const { linkComponent } = useContext(MenuContext);
-  const itemLinkProps: unknown = href
+  const itemLinkProps = href
     ? {
         as: linkComponent,
         href,
@@ -21,10 +27,10 @@ const MenuItem: React.FC<MenuItemProps> = ({
     : {
         as: "div",
       };
+
   return (
     <StyledMenuItemContainer $isActive={isActive} $variant={variant}>
       <StyledMenuItem
-        // @ts-ignore
         {...itemLinkProps}
         $isActive={isActive}
         $variant={variant}

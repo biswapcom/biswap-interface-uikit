@@ -1,4 +1,6 @@
-import React from "react";
+import React, { FC } from "react";
+
+// components
 import { Overlay } from "./Overlay";
 
 export default {
@@ -6,6 +8,6 @@ export default {
   argTypes: {},
 };
 
-export const Default: React.FC = () => {
+export const Default: FC = () => {
   return <Overlay />;
 };

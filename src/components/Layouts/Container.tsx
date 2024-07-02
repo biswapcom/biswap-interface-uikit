@@ -1,9 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
+
+// components
 import { Box, BoxProps } from "../Box";
+
+// utils
 import { getResponsiveAttrs } from "../../util";
 
-const Container: React.FC<BoxProps> = ({ children, ...props }) => (
-  <Box width="100%" px={getResponsiveAttrs({ xs: "16px", lg: "24px", xxl: 0 })} mx="auto" maxWidth="1120px" {...props}>
+const Container: FC<BoxProps> = ({ children, ...props }) => (
+  <Box width="100%" maxWidth="1120px" mx="auto" px={getResponsiveAttrs({ xs: "16px", lg: "24px", xxl: 0 })} {...props}>
     {children}
   </Box>
 );

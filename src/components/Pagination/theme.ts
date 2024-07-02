@@ -1,16 +1,16 @@
-import { variants } from "./types";
+import { Variants } from "./types";
 
-export const Variants = {
-  [variants.LIGHT]: {
+export const PaginationVariants = {
+  [Variants.LIGHT]: {
     color: "primary",
   },
-  [variants.DARK]: {
+  [Variants.DARK]: {
     color: "white",
   },
 };
 
 export const VariantsArrows = {
-  [variants.LIGHT]: {
+  [Variants.LIGHT]: {
     border: "1px solid rgba(18, 99, 241, 0.16)",
     color: "primary",
 
@@ -19,7 +19,7 @@ export const VariantsArrows = {
       borderColor: "transparent",
     },
   },
-  [variants.DARK]: {
+  [Variants.DARK]: {
     border: "1px solid rgba(255, 255, 255, 0.24)",
     color: "white",
 

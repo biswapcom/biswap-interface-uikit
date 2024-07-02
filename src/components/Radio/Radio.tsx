@@ -1,14 +1,18 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { space } from "styled-system";
-import { RadioProps, scales } from "./types";
+
+// types
+import { type RadioProps, Scales, Variants } from "./types";
+
+// components
 import { Text } from "../Text";
 
 const getScale = ({ scale }: RadioProps) => {
   switch (scale) {
-    case scales.SM:
+    case Scales.SM:
       return "16px";
-    case scales.MD:
+    case Scales.MD:
     default:
       return "20px";
   }
@@ -22,19 +26,19 @@ const Wrapper = styled.label<{ labelOrientation?: string }>`
 `;
 
 const InputRadio = styled.input.attrs({ type: "radio" })<RadioProps>`
-  appearance: none;
-  overflow: hidden;
-  cursor: pointer;
   position: relative;
   display: inline-block;
-  height: ${getScale};
   width: ${getScale};
+  height: ${getScale};
+  margin: 0;
+  border: 2px solid ${({ theme }) => theme.colors.pastelBlue};
+  border-radius: 50%;
   transition:
     border-color 0.4s ease-in-out,
     border-width 0.3s ease-in-out;
-  border-radius: 50%;
-  border: 2px solid ${({ theme }) => theme.colors.pastelBlue};
-  margin: 0;
+  appearance: none;
+  overflow: hidden;
+  cursor: pointer;
 
   &:hover:not(:disabled):not(:checked) {
     border-color: ${({ theme }) => theme.colors.success};
@@ -48,14 +52,15 @@ const InputRadio = styled.input.attrs({ type: "radio" })<RadioProps>`
     border-color: ${({ theme }) => theme.colors.success};
     border-width: 4px;
   }
+
   &:checked + span {
-    background: ${({ colorVariant }) => colorVariant};
     color: ${({ theme, colorVariant }) =>
-      colorVariant === "dark"
+      colorVariant === Variants.DARK
         ? theme.colors.white
-        : colorVariant === "light"
+        : colorVariant === Variants.LIGHT
           ? theme.colors.dark800
           : theme.colors.gray900};
+    background: ${({ colorVariant }) => colorVariant};
   }
 
   &:disabled {
@@ -72,10 +77,10 @@ const StyledText = styled(Text)`
 const Radio: FC<RadioProps> = ({
   labelOrientation = "left",
   label,
-  scale = scales.MD,
+  scale = Scales.MD,
   radioName,
   onChange,
-  colorVariant = "light",
+  colorVariant = Variants.LIGHT,
   checked,
 }) => {
   return (

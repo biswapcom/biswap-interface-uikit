@@ -1,22 +1,20 @@
 import React, { FC } from "react";
 import { variant as systemVariant } from "styled-system";
 import styled from "styled-components";
-
-//Plugins
 import ReactPaginate from "react-paginate";
 import classNames from "classnames";
 
-//types
-import { PaginationProps, VariantProps } from "./types";
+// types
+import { type PaginationProps, Variants } from "./types";
 
-//theme
-import { Variants, VariantsArrows } from "./theme";
+// theme
+import { PaginationVariants, VariantsArrows } from "./theme";
 
-//icons
+// components
 import { ChevronLeftIcon, ChevronRightIcon } from "../Svg";
+import { Flex } from "../Box";
 
-const PaginationWrap = styled.div<VariantProps>`
-  display: flex;
+const PaginationWrap = styled(Flex)<{ variant: Variants }>`
   justify-content: center;
 
   .paginate-wrapper {
@@ -28,21 +26,21 @@ const PaginationWrap = styled.div<VariantProps>`
     display: flex;
 
     li {
-      border-radius: 8px;
-      font-size: 14px;
-      list-style-type: none;
       width: 40px;
       height: 40px;
       border: 0;
+      border-radius: 8px;
       outline: 0;
+      list-style-type: none;
       line-height: 20px;
+      font-size: 14px;
       font-weight: 600;
       transition:
         opacity 0.4s ease-in-out,
         color 0.4s ease-in-out;
 
       ${systemVariant({
-        variants: Variants,
+        variants: PaginationVariants,
       })}
 
       &:hover {
@@ -109,11 +107,11 @@ const PaginationWrap = styled.div<VariantProps>`
     }
 
     a {
-      width: 40px;
-      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 40px;
+      height: 40px;
       font-weight: 600;
 
       &:focus {
@@ -140,8 +138,8 @@ const Pagination: FC<PaginationProps> = ({
   return (
     <PaginationWrap className={paginationClass} variant={variant}>
       <ReactPaginate
-        previousLabel={<ChevronLeftIcon color={variant === "light" ? "primary" : "white"} />}
-        nextLabel={<ChevronRightIcon color={variant === "light" ? "primary" : "white"} />}
+        previousLabel={<ChevronLeftIcon color={variant === Variants.LIGHT ? "primary" : "white"} />}
+        nextLabel={<ChevronRightIcon color={variant === Variants.LIGHT ? "primary" : "white"} />}
         forcePage={forcePage}
         breakLabel="..."
         breakClassName="break-me"

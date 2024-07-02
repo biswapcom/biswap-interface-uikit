@@ -1,18 +1,14 @@
-export const variants = {
-  LIGHT: "light",
-  DARK: "dark",
-};
+export enum Variants {
+  LIGHT = "light",
+  DARK = "dark",
+}
 
-export type Variant = (typeof variants)[keyof typeof variants];
-
-export type VariantProps = {
-  variant: Variant;
-};
-export interface PaginationProps extends VariantProps {
+export interface PaginationProps {
   isLight?: boolean;
   pageCount: number;
   handlePageClick?: (selectedItem: { selected: number }) => void;
   marginPagesDisplayed?: number;
   pageRangeDisplayed?: number;
   forcePage?: number;
+  variant: Variants;
 }

@@ -1,203 +1,32 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { ChangeEvent, FC, useEffect, useState } from "react";
 import { parseInt } from "lodash";
-import { Box, BoxProps, Flex } from "../Box";
-import SliderIcon from "./Slider.svg";
-import { Text } from "../Text";
-import { Colors } from "../../theme";
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+// components
+import type { BoxProps } from "../Box";
 
-const SliderContainer = styled(Box)`
-  position: relative;
-  top: 0;
-  left: 0;
-  margin-bottom: 24px;
-`;
+// type
+import type { Colors } from "../../theme";
 
-const BarBackground = styled.div`
-  width: 100%;
-  height: 4px;
-  border-radius: 100px;
-  opacity: 0.16;
-  background-color: ${({ theme }) => theme.colors.pastelBlue};
-`;
-
-const BarProgress = styled.div<{ progress: number }>`
-  width: ${({ progress }) => `${progress}%`};
-  height: 4px;
-  transform: translateY(-100%);
-  border-radius: 100px;
-  background: ${({ theme }) => theme.colors.primary};
-`;
-
-const StyledInput = styled.input`
-  height: 20px;
-  position: relative;
-  cursor: pointer;
-  transform: translateY(-18px);
-  margin: 2px 0;
-  -webkit-tap-highlight-color: transparent;
-  z-index: 2;
-
-  ::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    transition: 0.1s all;
-    border-radius: 50%;
-    background-image: url(${SliderIcon});
-    position: relative;
-
-    :hover {
-      transform: scale(1.1);
-    }
-  }
-  ::-moz-range-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    transition: 0.1s all;
-    // custom moz reset
-    background-color: transparent;
-    border: 0;
-
-    :hover {
-      transform: scale(1.1);
-    }
-  }
-  ::-ms-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    transition: 0.1s all;
-    border-radius: 50%;
-    background-image: url(${SliderIcon});
-
-    :hover {
-      transform: scale(1.1);
-    }
-  }
-`;
-
-const BunnySlider = styled.div`
-  position: absolute;
-  width: 100%;
-`;
-
-const BreakPointsWrap = styled.div`
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  width: 100%;
-  top: -3px;
-  left: 0;
-  z-index: 1;
-`;
-
-const Point = styled.span<{ pointColor: keyof Colors }>`
-  display: block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: ${({ theme }) => theme.colors.white};
-  border: ${({ theme, pointColor }) => `3px solid ${theme.colors[pointColor]}`};
-`;
-
-const InfoBlock = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const TitleText = styled(Text)`
-  font-size: 14px;
-  line-height: 20px;
-  color: ${({ theme }) => theme.colors.dark800};
-  font-weight: 600;
-`;
-
-const PercentageAmount = styled(Text)`
-  font-size: 16px;
-  margin: 0 4px;
-  font-weight: 600;
-`;
-
-const InfoNode = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
-const RBPrice = styled(Text)`
-  text-align: right;
-  font-size: 12px;
-  line-height: 16px;
-  color: ${({ theme }) => theme.colors.gray900};
-`;
-
-const PercentWrap = styled.div`
-  width: calc(100% - 20px);
-  margin: 0 10px;
-  position: relative;
-  background: transparent;
-`;
-
-const PercentBanner = styled(Flex)<{
-  left: number;
-  bannerPosition: "top" | "bottom";
-}>`
-  align-items: center;
-  position: absolute;
-  ${({ bannerPosition }) => (bannerPosition === "top" ? "top: 0" : "bottom: 0")};
-  left: ${({ left }) => `${left}%`};
-  transform: translateX(-50%) translateY(calc(${({ bannerPosition }) =>
-    bannerPosition === "top" ? "-100% - 20px" : "100% + 20px"}));
-  border-radius: 8px;
-  padding: 8px 4px;
-  background-color: ${({ theme }) => theme.colors.tooltip};
-  
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 50%;
-    ${({ bannerPosition }) => (bannerPosition === "top" ? "bottom: 0" : "top: 0")};
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    transform: translate(-50%, ${({ bannerPosition }) => (bannerPosition === "top" ? "100%" : "-100%")});
-    ${({ bannerPosition, theme }) =>
-      `border-${bannerPosition === "top" ? "top" : "bottom"}: 6px solid ${theme.colors.tooltip}`};
-`;
-
-const Divider = styled.span`
-  width: 2px;
-  height: 10px;
-  margin: 0 4px 0 4px;
-  background-color: ${({ theme }) => theme.colors.gray900};
-`;
-
-const PercentText = styled(Text)`
-  color: ${({ theme }) => theme.colors.white};
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 600;
-  min-width: 24px;
-
-  &:first-child {
-    text-align: right;
-  }
-`;
-
-// We need to adjust the offset as the percentage increases, as 100% really is 100% - label width. The number 10 is arbitrary, but seems to work...
-// const MOVING_SLIDER_LABEL_OFFSET_FACTOR = 25;
+// styles
+import {
+  BarBackground,
+  BarProgress,
+  BreakPointsWrap,
+  BunnySlider,
+  Divider,
+  InfoBlock,
+  InfoNode,
+  PercentageAmount,
+  PercentBanner,
+  PercentText,
+  PercentWrap,
+  Point,
+  RBPrice,
+  SliderContainer,
+  StyledInput,
+  TitleText,
+  Wrapper,
+} from "./styles";
 
 interface SliderProps extends BoxProps {
   value: number;
@@ -225,7 +54,7 @@ const INIT_CHECKPOINTS: Checkpoint[] = [
   { value: 90, RB: "10000" },
 ];
 
-const Slider: React.FC<SliderProps> = ({
+const Slider: FC<SliderProps> = ({
   value,
   onValueChanged,
   checkPoints = INIT_CHECKPOINTS,
@@ -234,12 +63,14 @@ const Slider: React.FC<SliderProps> = ({
   darkMode = false,
   ...props
 }) => {
-  const [percent, setPercent] = useState({ value: 0, RB: "0" });
+  const [percent, setPercent] = useState<Checkpoint>({ value: 0, RB: "0" });
+  const [infoVisible, setInfoVisible] = useState<boolean>(false);
 
   const getRB = (percentage: number) => {
     const temp = checkPoints.map((item) => Math.abs(item.value - percentage));
     const minValue = Math.min(...temp);
     const res = temp.indexOf(minValue);
+
     return checkPoints[res].RB;
   };
 
@@ -255,6 +86,7 @@ const Slider: React.FC<SliderProps> = ({
     const temp = checkPoints.map((item) => Math.abs(item.value - percent.value));
     const minValue = Math.min(...temp);
     const res = temp.indexOf(minValue);
+
     onValueChanged(checkPoints[res].value);
     setPercent(checkPoints[res]);
   };
@@ -265,6 +97,7 @@ const Slider: React.FC<SliderProps> = ({
 
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const selectedValue = parseInt(target.value);
+
     switch (selectedValue) {
       case checkPoints[0].value: {
         onValueChanged(0);
@@ -294,10 +127,6 @@ const Slider: React.FC<SliderProps> = ({
   };
 
   const progressPercentage = (percent.value / MAX) * 100;
-
-  // const labelOffset = progressPercentage - progressPercentage / MOVING_SLIDER_LABEL_OFFSET_FACTOR;
-
-  const [infoVisible, setInfoVisible] = useState<boolean>(false);
 
   return (
     <Wrapper>

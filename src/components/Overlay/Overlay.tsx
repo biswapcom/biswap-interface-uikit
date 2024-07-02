@@ -1,16 +1,18 @@
-import styled from "styled-components";
 import React, { FC, useEffect } from "react";
+import styled from "styled-components";
+
+// components
 import { Box, BoxProps } from "../Box";
 
 const StyledOverlay = styled(Box)`
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: rgb(10, 22, 43);
-  z-index: 20;
   opacity: 0.55;
+  z-index: 20;
 `;
 
 const BodyLock = () => {
@@ -18,10 +20,9 @@ const BodyLock = () => {
     document.body.style.cssText = `
       overflow: hidden;
     `;
-    document.body.style.overflow = "hidden";
+
     return () => {
       document.body.style.cssText = `
-        overflow: visible;
         overflow: auto;
       `;
     };
