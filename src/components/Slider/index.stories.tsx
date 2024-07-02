@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
+
+// components
 import Slider from "./Slider";
-import Flex from "../Box/Flex";
+import { Flex } from "../Box";
 
 export default {
   title: "Components/Slider",
@@ -10,25 +12,19 @@ export default {
 };
 
 const Col = styled(Flex)`
-  background-color: ${({ theme }) => theme.colors.white};
-  padding: 64px 32px;
   flex-direction: column;
   width: 360px;
+  padding: 64px 32px;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
-const SliderVariant = ({ initialValue }: { initialValue: number }) => {
-  const [value, setValue] = useState(initialValue);
+const SliderVariant: FC<{ initialValue: number }> = ({ initialValue }) => {
+  const [value, setValue] = useState<number>(initialValue);
 
-  return (
-    <Slider
-      value={value}
-      onValueChanged={setValue}
-      // valueLabel={value === max ? "MAX" : `${percentage}%`}
-    />
-  );
+  return <Slider value={value} onValueChanged={setValue} />;
 };
 
-export const Default: React.FC = () => {
+export const Default: FC = () => {
   return (
     <Col>
       <SliderVariant initialValue={5} />
@@ -36,7 +32,7 @@ export const Default: React.FC = () => {
   );
 };
 
-export const Variants: React.FC = () => {
+export const Variants: FC = () => {
   return (
     <Col>
       <SliderVariant initialValue={0} />
