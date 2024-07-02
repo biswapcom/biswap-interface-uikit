@@ -1,28 +1,32 @@
-import React from "react";
+import React, { FC } from "react";
 import { BrowserRouter } from "react-router-dom";
+
+// components
 import { Flex } from "../Box";
 import MenuItem from "./MenuItem";
-import { MenuItemProps } from "./types";
+
+// types
+import type { MenuItemProps } from "./types";
 
 export default {
   title: "Components/Menu/MenuItem",
   component: MenuItem,
 };
 
-const Template: React.FC<MenuItemProps> = ({ children, ...args }) => {
+export const Default: FC<MenuItemProps> = ({
+  isActive = false,
+  href = "/",
+  children = "Trade",
+  variant = "default",
+  ...props
+}) => {
   return (
     <BrowserRouter>
       <Flex>
-        <MenuItem {...args}>{children}</MenuItem>
+        <MenuItem isActive={isActive} href={href} variant={variant} {...props}>
+          {children}
+        </MenuItem>
       </Flex>
     </BrowserRouter>
   );
-};
-
-export const Default = Template.bind({});
-Default.args = {
-  isActive: false,
-  href: "/",
-  children: "Trade",
-  variant: "default",
 };

@@ -1,7 +1,12 @@
 import styled, { css } from "styled-components";
-import { StyledMenuItemProps } from "./types";
 
-export const StyledMenuItemContainer = styled.div<StyledMenuItemProps>`
+// types
+import type { StyledMenuItemProps } from "./types";
+
+// components
+import { Box } from "../Box";
+
+export const StyledMenuItemContainer = styled(Box)<StyledMenuItemProps>`
   position: relative;
 
   ${({ $isActive, $variant }) =>
@@ -23,44 +28,46 @@ const CommonLinkStyles = ({ $isActive, $statusColor, $variant, $highlightTitle }
   position: relative;
   display: flex;
   align-items: center;
-  cursor: pointer;
-
-  color: ${$isActive ? ({ theme }) => theme.colors.secondary : ({ theme }) => theme.colors.white};
+  color: ${({ theme }) => ($isActive ? theme.colors.secondary : theme.colors.white)};
   font-size: 14px;
   font-weight: 600;
+  cursor: pointer;
   transition: color 0.4s ease;
 
   ${$statusColor &&
   `
     &:after {
       content: "";
-      border-radius: 100%;
       height: 8px;
       width: 8px;
       margin-left: 12px;
+      border-radius: 100%;
     }
-    `}
+  `}
 
   ${$variant === "default"
     ? css`
-        padding: 0 8px;
         height: 72px;
+        padding: 0 8px;
+
         ${({ theme }) => theme.mediaQueries.lg} {
           padding: 0 12px;
         }
       `
     : css`
-        padding: 4px 4px 0px 4px;
         height: 42px;
+        padding: 4px 4px 0 4px;
       `}
 
   &:hover {
     div {
       color: ${({ theme }) => ($highlightTitle ? theme.colors.warningHover : theme.colors.pastelBlue)};
     }
+
     svg {
       fill: ${({ theme }) => theme.colors.pastelBlue};
     }
+
     ${$variant === "default" && "border-radius: 16px;"};
   }
 `;

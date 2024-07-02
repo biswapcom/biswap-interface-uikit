@@ -1,10 +1,16 @@
 import React, { FC, ReactElement } from "react";
 import styled, { keyframes } from "styled-components";
 import { space, layout, variant as systemVariant } from "styled-system";
+
+// utils
 import { getRgba } from "../../util";
 
-import { SkeletonProps, animation as ANIMATION, variants as VARIANT } from "./types";
+// types
+import { SkeletonProps, Animations, Variants } from "./types";
 import { variantsSkeleton } from "./theme";
+
+// components
+import { Box } from "../Box";
 
 const waves = keyframes`
    from {
@@ -27,11 +33,10 @@ const pulse = keyframes`
   }
 `;
 
-const Root = styled.div<SkeletonProps>`
+const Root = styled(Box)<SkeletonProps>`
   min-height: 20px;
-  display: block;
+  border-radius: ${({ variant, theme }) => (variant === Variants.CIRCLE ? theme.radii.circle : theme.radii.small)};
   background-color: ${({ theme }) => getRgba(theme.colors.pastelBlue, theme, 0.16)};
-  border-radius: ${({ variant, theme }) => (variant === VARIANT.CIRCLE ? theme.radii.circle : theme.radii.small)};
 
   ${layout}
   ${space}
@@ -48,8 +53,13 @@ const Pulse = styled(Root)`
 
 const Waves = styled(Root)`
   position: relative;
+  top: 0;
+  left: -150px;
+  width: 150px;
+  height: 100%;
   overflow: hidden;
   transform: translate3d(0, 0, 0);
+  animation: ${waves} 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 
   &:before {
     content: "";
@@ -60,21 +70,15 @@ const Waves = styled(Root)`
       rgba(116, 155, 216, 0.16) 50%,
       rgba(116, 155, 216, 0) 100%
     );
-
-    top: 0;
-    left: -150px;
-    height: 100%;
-    width: 150px;
-    animation: ${waves} 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 `;
 
 const Skeleton: FC<SkeletonProps> = ({
-  variant = VARIANT.RECT,
-  animation = ANIMATION.PULSE,
+  variant = Variants.RECT,
+  animation = Animations.PULSE,
   ...props
 }): ReactElement => {
-  if (animation === ANIMATION.WAVES) {
+  if (animation === Animations.WAVES) {
     return <Waves variant={variant} {...props} />;
   }
 

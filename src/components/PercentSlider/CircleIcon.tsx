@@ -1,8 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import { DefaultTheme, useTheme } from "styled-components";
 
+// components
 import { Svg, SvgProps } from "../Svg";
-import getThemeValue from "../../util/getThemeValue";
+
+// utils
+import { getThemeValue } from "../../util";
 
 interface CircleProps extends SvgProps {
   darkMode?: boolean;
@@ -16,8 +19,9 @@ const getColor = ({ color, theme }: ThemedProps) => {
   return getThemeValue(`colors.${color}`, color)(theme);
 };
 
-const CircleIcon: React.FC<CircleProps> = (props) => {
+const CircleIcon: FC<CircleProps> = (props) => {
   const theme = useTheme();
+
   return (
     <Svg viewBox="0 0 10 10" {...props}>
       <rect
@@ -26,7 +30,7 @@ const CircleIcon: React.FC<CircleProps> = (props) => {
         width="7"
         height="7"
         rx="3.5"
-        fill={props.darkMode ? theme.colors.dark700 : "white"}
+        fill={props.darkMode ? theme.colors.dark700 : theme.colors.white}
         stroke={getColor({ color: props.color, theme })}
         strokeWidth="3"
       />

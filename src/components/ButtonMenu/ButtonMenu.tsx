@@ -222,7 +222,7 @@ const ButtonMenu: FC<ButtonMenuProps> = ({
         {Children.map(children, (child: ReactElement, index) => {
           return cloneElement(child, {
             isActive: activeIndex === index,
-            onItemClick: onItemClick ? () => onItemClick(index) : undefined,
+            onItemClick: onItemClick?.(index),
             setWidth: setWidthsArr,
             itemIndex: index,
             activeButtonIndex,

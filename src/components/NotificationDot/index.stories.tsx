@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
+
+// components
 import NotificationDot from "./NotificationDot";
-import Button from "../Button/Button";
-import ButtonMenu from "../ButtonMenu/ButtonMenu";
-import ButtonMenuItem from "../ButtonMenu/ButtonMenuItem";
+import { Button } from "../Button";
+import { ButtonMenu, ButtonMenuItem } from "../ButtonMenu";
+import { Box } from "../Box";
 
 export default {
   title: "Components/NotificationDot",
@@ -11,7 +13,7 @@ export default {
   argTypes: {},
 };
 
-export const Default: React.FC = () => {
+export const Default: FC = () => {
   return (
     <>
       <NotificationDot show>
@@ -27,15 +29,17 @@ export const Default: React.FC = () => {
   );
 };
 
-const Row = styled.div`
+const Row = styled(Box)`
   & > * + * {
     margin-left: 16px;
   }
 `;
 
-export const MenuButtons: React.FC = () => {
-  const [index, setIndex] = useState(0);
-  const handleClick = (newIndex) => setIndex(newIndex);
+export const MenuButtons: FC = () => {
+  const [index, setIndex] = useState<number>(0);
+
+  const handleClick = (newIndex: number) => setIndex(newIndex);
+
   return (
     <Row>
       <ButtonMenu activeIndex={index} onItemClick={handleClick}>

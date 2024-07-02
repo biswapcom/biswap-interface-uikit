@@ -1,21 +1,16 @@
-import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
+import React, { ChangeEvent, FC, useCallback, useEffect, useState } from "react";
 import { BarBackground, BarProgress, PercentSliderLabel, PointsContainer, StyledInput } from "./styles";
 
 // components
-import { Button } from "../Button";
-
-// styles
+import { Button, ButtonScales, ButtonVariants } from "../Button";
 import { Text } from "../Text";
 import { Box, Flex, Grid } from "../Box";
+import CircleIcon from "./CircleIcon";
 
 //types
-import { PercentSliderProps } from "./types";
+import type { PercentSliderProps } from "./types";
 
-// icons
-import CircleIcon from "./CircleIcon";
-import { Scales, Variants } from "../Button/types";
-
-const PercentSlider: React.FC<PercentSliderProps> = ({
+const PercentSlider: FC<PercentSliderProps> = ({
   name = "slider",
   min = 0,
   max = 100,
@@ -27,13 +22,14 @@ const PercentSlider: React.FC<PercentSliderProps> = ({
   withTooltip,
   bannerPosition = "bottom",
   darkMode = false,
-  shortcutScale = Scales.SM,
-  shortcutVariant = Variants.PRIMARY,
+  shortcutScale = ButtonScales.SM,
+  shortcutVariant = ButtonVariants.PRIMARY,
   numberOfPoints = 5,
   ...props
 }) => {
   const [displayPercent, setDisplayPercent] = useState<string>(value.toString());
   const [activeShortcutIndex, setActiveShortcutIndex] = useState<number | null>(null);
+  const [infoVisible, setInfoVisible] = useState<boolean>(false);
 
   useEffect(() => {
     if (!value) setActiveShortcutIndex(null);
@@ -50,8 +46,6 @@ const PercentSlider: React.FC<PercentSliderProps> = ({
     },
     [onValueChanged]
   );
-
-  const [infoVisible, setInfoVisible] = useState<boolean>(false);
 
   const getCirclesColor = (pointPercent: number) => {
     return value >= pointPercent ? "primary" : disabled ? "textDisabled" : darkMode ? "dark400" : "gray300";
@@ -91,6 +85,7 @@ const PercentSlider: React.FC<PercentSliderProps> = ({
           <PointsContainer justifyContent="space-between">
             {Array.from(Array(numberOfPoints).keys()).map((point) => {
               const pointPercent = (100 / (numberOfPoints - 1)) * point;
+
               return (
                 <CircleIcon
                   darkMode={darkMode}
@@ -109,7 +104,7 @@ const PercentSlider: React.FC<PercentSliderProps> = ({
             <Button
               key={index.toString()}
               scale={shortcutScale}
-              variant={activeShortcutIndex === index || value === percent ? Variants.PRIMARY : shortcutVariant}
+              variant={activeShortcutIndex === index || value === percent ? ButtonVariants.PRIMARY : shortcutVariant}
               onClick={() => {
                 onValueChanged(percent);
                 setDisplayPercent(percent.toString());

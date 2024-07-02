@@ -1,21 +1,22 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
-import { BaseLayout, CardsLayout } from ".";
-import Container from "./Container";
-import HeroWrapper from "./HeroWrapper";
+
+// components
+import { BaseLayout, CardsLayout, Container, HeroWrapper } from ".";
+import { Box } from "../Box";
 
 export default {
   title: "Components/Layouts",
   argTypes: {},
 };
 
-const Stub = styled.div`
+const Stub = styled(Box)`
   width: 100%;
-  background: #1fc7d4;
   height: 300px;
+  background: ${({ theme }) => theme.colors.twitter};
 `;
 
-export const Base: React.FC = () => {
+export const Base: FC = () => {
   return (
     <BaseLayout>
       {[...Array(24)].map((value) => (
@@ -25,7 +26,7 @@ export const Base: React.FC = () => {
   );
 };
 
-export const Cards: React.FC = () => {
+export const Cards: FC = () => {
   return (
     <CardsLayout>
       {[...Array(10)].map((value) => (
@@ -35,7 +36,7 @@ export const Cards: React.FC = () => {
   );
 };
 
-export const ContainerLayout: React.FC = () => {
+export const ContainerLayout: FC = () => {
   return (
     <Container>
       <Stub />
@@ -43,7 +44,7 @@ export const ContainerLayout: React.FC = () => {
   );
 };
 
-export const HeroWrap: React.FC = () => {
+export const HeroWrap: FC = () => {
   return (
     <HeroWrapper>
       <Stub />

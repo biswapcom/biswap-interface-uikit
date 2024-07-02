@@ -1,13 +1,13 @@
-import {FunctionComponent, ReactNode} from "react";
-import { BoxProps } from "../Box";
-import { DropdownMenuItems } from "../DropdownMenu/types";
-import { Colors } from "../../theme";
+import { FunctionComponent } from "react";
 
-export const ItemTypes = {
-  DIVIDER: "DIVIDER",
-} as const;
+// types
+import type { BoxProps } from "../Box";
+import type { DropdownMenuItems } from "../DropdownMenu/types";
+import type { Colors } from "../../theme";
 
-type ItemType = typeof ItemTypes[keyof typeof ItemTypes];
+export enum ItemTypes {
+  DIVIDER = "DIVIDER",
+}
 
 export type MenuItemsType = {
   label?: string;
@@ -18,7 +18,7 @@ export type MenuItemsType = {
   showItemsOnMobile?: boolean;
   isExtended?: boolean;
   isMobileNav?: boolean;
-  type?: ItemType;
+  type?: ItemTypes;
   target?: string;
   mobileTarget?: string;
   isMobileMenuOpened?: boolean;
