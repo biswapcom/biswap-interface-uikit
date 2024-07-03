@@ -1,15 +1,9 @@
 import React, { useContext } from "react";
 import { useTheme } from "styled-components";
-import Heading from "../../components/Heading/Heading";
+import { Heading, HeadingScales } from "../../components/Heading";
 import { Flex } from "../../components/Box";
 import getThemeValue from "../../util/getThemeValue";
-import {
-  ModalBody,
-  ModalTitle,
-  ModalContainer,
-  ModalCloseButton,
-  ModalBackButton,
-} from "./styles";
+import { ModalBody, ModalTitle, ModalContainer, ModalCloseButton, ModalBackButton } from "./styles";
 import { ModalProps } from "./types";
 
 // contexts
@@ -29,7 +23,7 @@ const Modal: React.FC<ModalProps> = ({
   modalBackground = "white",
   closeBtnColor,
   maxWidth = "420px",
-  titleSize = "lg",
+  titleSize = HeadingScales.LG,
   walletModal,
   modalBodyProps,
   hideHeader,
@@ -48,24 +42,15 @@ const Modal: React.FC<ModalProps> = ({
     <ModalContainer
       minWidth={minWidth}
       {...props}
-      background={getThemeValue(
-        `colors.${modalBackground}`,
-        modalBackground
-      )(theme)}
+      background={getThemeValue(`colors.${modalBackground}`, modalBackground)(theme)}
       maxWidth={maxWidth}
       walletModal={walletModal}
       width={props.width}
       borderRadius={props.borderRadius ?? "16px"}
     >
       {!hideHeader && (
-        <Flex
-          justifyContent="space-between"
-          alignItems="center"
-          p={headerPadding ?? hp}
-        >
-          {!hideOnBack && onBack && (
-            <ModalBackButton onBack={onBack} closeBtnColor={closeBtnColor} />
-          )}
+        <Flex justifyContent="space-between" alignItems="center" p={headerPadding ?? hp}>
+          {!hideOnBack && onBack && <ModalBackButton onBack={onBack} closeBtnColor={closeBtnColor} />}
           <ModalTitle>
             {title && (
               <Heading scale={titleSize} color={titleColor}>
@@ -73,12 +58,7 @@ const Modal: React.FC<ModalProps> = ({
               </Heading>
             )}
           </ModalTitle>
-          {!hideCloseButton && (
-            <ModalCloseButton
-              closeBtnColor={closeBtnColor}
-              onDismiss={onDismiss}
-            />
-          )}
+          {!hideCloseButton && <ModalCloseButton closeBtnColor={closeBtnColor} onDismiss={onDismiss} />}
         </Flex>
       )}
       <ModalBody p={bodyPadding ?? defaultBodyPadding} {...modalBodyProps}>

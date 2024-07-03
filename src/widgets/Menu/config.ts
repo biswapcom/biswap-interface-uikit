@@ -1,10 +1,8 @@
 import { noop } from "lodash";
-import {
-  DropdownMenuItems,
-  DropdownMenuItemType,
-} from "../../components/DropdownMenu/types";
+import { DropdownMenuItems, DropdownMenuItemType } from "../../components/DropdownMenu/types";
 import { ItemTypes, MenuItemsType } from "../../components/MenuItems/types";
 import { LinkStatus } from "./types";
+import { BadgeTypes } from "../../components/Badge";
 
 export const status = {
   LIVE: <LinkStatus>{
@@ -37,7 +35,7 @@ export const links: MenuItemsType[] = [
         href: "/swap",
         leftIcon: "ExchangeOpacity",
         description: "Item description",
-        badgeType: "success",
+        badgeType: BadgeTypes.SUCCESS,
         badgeTitle: "New",
       },
       {
@@ -48,7 +46,7 @@ export const links: MenuItemsType[] = [
         description: "Item description",
         href: "/liquidity",
         disabled: true,
-        badgeType: "core",
+        badgeType: BadgeTypes.CORE,
         badgeTitle: "Modification",
       },
       {
@@ -77,7 +75,7 @@ export const links: MenuItemsType[] = [
         description: "Item description",
       },
       {
-        badgeType: "success",
+        badgeType: BadgeTypes.SUCCESS,
         badgeTitle: "New",
         label: "LaunchPools",
         href: "/pool",
@@ -164,7 +162,7 @@ export const links: MenuItemsType[] = [
             label: "Staking",
             href: `/nft`,
             badgeTitle: "Ended",
-            badgeType: "error",
+            badgeType: BadgeTypes.ERROR,
           },
           {
             label: "NFT Boost",

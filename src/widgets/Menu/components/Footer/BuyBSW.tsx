@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../../../components/Button/Button";
+import { Button, ButtonScales, ButtonVariants } from "../../../../components/Button";
 
 export interface Props {
   buyBswHandler: () => void;
@@ -8,7 +8,7 @@ export interface Props {
 
 const BuyBSW: React.FC<Props> = ({ buyBswHandler, buyBswLabel }) => {
   return (
-    <Button onClick={buyBswHandler} variant="danger" scale="md">
+    <Button onClick={buyBswHandler} variant={ButtonVariants.DANGER} scale={ButtonScales.MD}>
       {buyBswLabel}
     </Button>
   );
