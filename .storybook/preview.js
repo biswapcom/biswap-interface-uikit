@@ -19,6 +19,7 @@ const preview = {
     (Story) => (
       <MatchBreakpointsProvider>
         <ModalProvider>
+          <ResetCSS />
           <Story />
         </ModalProvider>
       </MatchBreakpointsProvider>
@@ -30,7 +31,6 @@ const preview = {
       },
       defaultTheme: 'light',
       Provider: ThemeProvider,
-      GlobalStyles: ResetCSS,
     }),
   ],
 };
