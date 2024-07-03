@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { sample } from "lodash";
 
 // types
-import { AlertVariants, ColoredVariants } from "../../components/Alert";
+import { AlertVariants, AlertColoredVariants } from "../../components/Alert";
 import { ColoredToastProps, Toast } from "./types";
 
 // components
@@ -10,6 +10,7 @@ import Button from "../../components/Button/Button";
 import ToastContainer from "./ToastContainer";
 import { ColoredToasts } from "./ColoredToasts";
 import { Box } from "../../components/Box";
+import { ButtonVariants } from "../../components/Button";
 
 export default {
   title: "Widgets/Toast",
@@ -46,12 +47,12 @@ export const Default: FC = () => {
 
   return (
     <Box>
-      <Button type="button" variant="primary" onClick={() => handleClick()}>
+      <Button type="button" variant={ButtonVariants.PRIMARY} onClick={() => handleClick()}>
         Random Toast
       </Button>
       <Button
         type="button"
-        variant="primary"
+        variant={ButtonVariants.PRIMARY}
         ml="8px"
         onClick={() => handleClick("This is a description to explain more about the toast")}
       >
@@ -96,7 +97,7 @@ export const WithAction: FC = () => {
 
   return (
     <Box>
-      <Button type="button" variant="success" ml="8px" onClick={() => handleClick()}>
+      <Button type="button" variant={ButtonVariants.SUCCESS} ml="8px" onClick={() => handleClick()}>
         Random Toast with Action Button
       </Button>
       <ToastContainer
@@ -118,7 +119,7 @@ export const ColoredToast: FC = () => {
     const randomToast = {
       id: `id-${now}`,
       title: "Link copied",
-      type: ColoredVariants[sample(Object.keys(ColoredVariants))],
+      type: AlertColoredVariants[sample(Object.keys(AlertColoredVariants))],
     };
 
     setToasts([randomToast]);
@@ -128,7 +129,7 @@ export const ColoredToast: FC = () => {
 
   return (
     <Box>
-      <Button type="button" variant="success" ml="8px" onClick={() => handleClick()}>
+      <Button type="button" variant={ButtonVariants.SUCCESS} ml="8px" onClick={() => handleClick()}>
         Toast for blog
       </Button>
       <ColoredToasts toasts={toasts} onRemove={handleRemove} ttl={1000} />

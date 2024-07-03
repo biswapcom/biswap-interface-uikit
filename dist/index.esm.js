@@ -2331,6 +2331,11 @@ const getDisabledStyles = ({ $isLoading }) => {
     }
   `;
 };
+/**
+ * This is to get around an issue where if you use a Link component
+ * React will throw a invalid DOM attribute error
+ * @see https://github.com/styled-components/styled-components/issues/135
+ */
 const getOpacity = ({ $isLoading = false }) => {
     return $isLoading ? ".5" : "1";
 };
@@ -2496,11 +2501,13 @@ const Button = (props) => {
             addBubble && React.createElement(Bubble, null),
             isValidElement(startIcon) &&
                 cloneElement(startIcon, {
+                    // @ts-ignore
                     mr: "0.5rem",
                 }),
             isLoading ? loadingText : children,
             isValidElement(endIconElement) &&
                 cloneElement(endIconElement, {
+                    // @ts-ignore
                     ml: "0.5rem",
                 }))));
 };
@@ -2625,14 +2632,22 @@ var base = {
 
 const useIsomorphicEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
+/**
+ * Can't use the media queries from "base.mediaQueries" because of how matchMedia works
+ * In order for the listener to trigger we need have have the media query with a range, e.g.
+ * (min-width: 370px) and (max-width: 576px)
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList
+ */
 const mediaQueries = (() => {
     let prevMinWidth = 0;
     return Object.keys(breakpointMap).reduce((accum, size, index) => {
+        // Largest size is just a min-width of second highest max-width
         if (index === Object.keys(breakpointMap).length - 1) {
             return { ...accum, [size]: `(min-width: ${prevMinWidth}px)` };
         }
         const minWidth = prevMinWidth;
         const breakpoint = breakpointMap[size];
+        // Min width for next iteration
         prevMinWidth = breakpoint + 1;
         return {
             ...accum,
@@ -2668,6 +2683,7 @@ const getBreakpointChecks = (state) => {
 const MatchBreakpointsProvider = ({ children }) => {
     const [state, setState] = useState(() => getBreakpointChecks(getState()));
     useIsomorphicEffect(() => {
+        // Create listeners for each media query returning a function to unsubscribe
         const handlers = Object.keys(mediaQueries).map((size) => {
             let mql;
             let handler;
@@ -2680,11 +2696,13 @@ const MatchBreakpointsProvider = ({ children }) => {
                         [key]: matchMediaQuery.matches,
                     }));
                 };
+                // Safari < 14 fix
                 if (mql.addEventListener) {
                     mql.addEventListener("change", handler, { passive: true });
                 }
             }
             return () => {
+                // Safari < 14 fix
                 if (mql?.removeEventListener) {
                     mql.removeEventListener("change", handler);
                 }
@@ -3038,6 +3056,11 @@ const Marker = styled(Box) `
 `;
 
 const baseColors = {
+    // failure: "#F93B5D",
+    // primaryBright: "#53DEE9",
+    // primaryDark: "#0098A1",
+    // dark: "#102648",
+    //BS
     primary: "#1263F1",
     secondary: "#F93B5D",
     success: "#1DC872",
@@ -3056,6 +3079,11 @@ const brandColors = {
     twitter: "#16CDFD",
 };
 const additionalColors = {
+    // overlay: "#452a7a",
+    // gold: "#FFC700",
+    // silver: "#B2B2B2",
+    // bronze: "#E7974D",
+    //BS
     primaryHover: "#2E7AFF",
     primaryPress: "#004ACC",
     secondaryHover: "#FF506F",
@@ -3066,6 +3094,7 @@ const additionalColors = {
     warningPress: "#FFCD1C",
     boostHover: "#8E35FF",
     boostPress: "#6205D9",
+    //---button additional colors
     btnTertiary: "rgba(18, 99, 241, 0.16)",
     btnTertiaryOut: "rgba(18, 99, 241, 0.16)",
     btnTertiaryOutPress: "rgba(18, 99, 241, 0.24)",
@@ -3074,6 +3103,7 @@ const additionalColors = {
     btnLightOutBgPress: "rgba(255, 255, 255, 0.32)",
     btnLight: "rgba(255, 255, 255, 0.24)",
     toggleBg: "rgba(116, 155, 216, 0.16);",
+    //---Dark palette
     dark900: "#021127",
     dark800: "#07162D",
     dark700: "#071C3C",
@@ -3083,6 +3113,7 @@ const additionalColors = {
     dark300: "#3F5880",
     dark200: "#546F99",
     dark100: "#637FA9",
+    //---LightPalette
     gray900: "#708DB7",
     gray800: "#83A0C9",
     gray700: "#9AB2D3",
@@ -3378,6 +3409,7 @@ const StyledTooltip = styled.div `
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const getPortalRoot = () => typeof window !== "undefined" && (document.getElementById("portal-root") ?? document.body);
 
 const invertTheme = (currentTheme) => {
@@ -3427,6 +3459,8 @@ const useTooltip = (content, options) => {
         setVisible(true);
         if (trigger === "hover") {
             if (e.target === targetElement) {
+                // If we were about to close the tooltip and got back to it
+                // then prevent closing it.
                 clearTimeout(hideTimeout.current);
             }
             if (e.target === tooltipElement) {
@@ -3439,12 +3473,14 @@ const useTooltip = (content, options) => {
         setVisible(!visible);
     }, [visible, disableStopPropagation]);
     const stopPropagationHandle = (e) => e.stopPropagation();
+    //stop bubble
     useEffect(() => {
         tooltipElement?.addEventListener("click", stopPropagationHandle);
         return () => {
             tooltipElement?.removeEventListener("click", stopPropagationHandle);
         };
     }, [tooltipElement]);
+    // Trigger = hover
     useEffect(() => {
         if (targetElement === null || trigger !== "hover")
             return undefined;
@@ -3463,6 +3499,7 @@ const useTooltip = (content, options) => {
             targetElement.removeEventListener("mouseleave", showTooltip);
         };
     }, [trigger, targetElement, hideTooltip, showTooltip]);
+    // Keep tooltip open when cursor moves from the targetElement to the tooltip
     useEffect(() => {
         if (tooltipElement === null || trigger !== "hover")
             return undefined;
@@ -3473,12 +3510,14 @@ const useTooltip = (content, options) => {
             tooltipElement.removeEventListener("mouseleave", hideTooltip);
         };
     }, [trigger, tooltipElement, hideTooltip, showTooltip]);
+    // Trigger = click
     useEffect(() => {
         if (targetElement === null || trigger !== "click")
             return undefined;
         targetElement.addEventListener("click", toggleTooltip);
         return () => targetElement.removeEventListener("click", toggleTooltip);
     }, [trigger, targetElement, visible, toggleTooltip]);
+    // If you need open by default
     useEffect(() => {
         if (targetElement === null || trigger !== "click" || !defaultVisible)
             return undefined;
@@ -3487,6 +3526,7 @@ const useTooltip = (content, options) => {
         setDefaultVisible(false);
         return () => targetElement.removeEventListener("click", showTooltip);
     }, [trigger, targetElement, visible, defaultVisible, showTooltip]);
+    // Handle click outside
     useEffect(() => {
         if (trigger !== "click")
             return undefined;
@@ -3503,6 +3543,7 @@ const useTooltip = (content, options) => {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, [trigger, targetElement, tooltipElement]);
+    // Trigger = focus
     useEffect(() => {
         if (targetElement === null || trigger !== "focus")
             return undefined;
@@ -3513,6 +3554,16 @@ const useTooltip = (content, options) => {
             targetElement.removeEventListener("blur", hideTooltip);
         };
     }, [trigger, targetElement, showTooltip, hideTooltip]);
+    // On small screens Popper.js tries to squeeze the tooltip to available space without overflowing beyound the edge
+    // of the screen. While it works fine when the element is in the middle of the screen it does not handle well the
+    // cases when the target element is very close to the edge of the screen - no margin is applied between the tooltip
+    // and the screen edge.
+    // preventOverflow mitigates this behaviour, default 16px paddings on left and right solve the problem for all screen sizes
+    // that we support.
+    // Note that in the farm page where there are tooltips very close to the edge of the screen this padding works perfectly
+    // even on the iPhone 5 screen (320px wide), BUT in the storybook with the contrived example ScreenEdges example
+    // iPhone 5 behaves differently overflowing beyound the edge. All paddings are identical so I have no idea why it is,
+    // and fixing that seems like a very bad use of time.
     const { styles, attributes } = usePopper(targetElement, tooltipElement, {
         placement,
         modifiers: [
@@ -3663,6 +3714,7 @@ const getScalesAttributes = ({ scale, as }) => {
         as: as || BodyTextTags.P,
     };
 };
+// @ts-ignore TODO check types
 const BodyText = styled(Text).attrs(getScalesAttributes) `
   font-weight: ${({ bold }) => (bold ? 600 : 400)};
   white-space: ${({ nowrap }) => (nowrap ? "nowrap" : "normal")};
@@ -3790,6 +3842,7 @@ const NumberItem = styled.button `
     );
   }
 `;
+// for background (fake elements placed under real Numbers block with glide navigation)
 const NumbersBackground = styled.div `
   ${commonStyling};
   height: 40px;
@@ -4000,6 +4053,7 @@ const useCarousel = ({ data, Slide, title, slidesToScroll = 1, isDraggable = fal
 const useOnClickOutside = (ref, handler) => {
     useEffect(() => {
         const listener = (event) => {
+            // Do nothing if clicking ref's element or descendent elements
             if (!ref.current || ref.current.contains(event.target)) {
                 return;
             }
@@ -4011,7 +4065,13 @@ const useOnClickOutside = (ref, handler) => {
             document.removeEventListener("mousedown", listener);
             document.removeEventListener("touchstart", listener);
         };
-    }, [ref, handler]);
+    }, 
+    // It's worth noting that because passed in handler is a new ...
+    // ... function on every render that will cause this effect ...
+    // ... callback/cleanup to run every render. It's not a big deal ...
+    // ... but to optimize you can wrap handler in useCallback before ...
+    // ... passing it into this hook.
+    [ref, handler]);
 };
 
 const MenuItemButton = styled.button `
@@ -4073,6 +4133,7 @@ const ButtonMenuItem = ({ isActive = false, variant = Variants$8.DARK, propertie
                     : [...prev, itemWidth, itemIndex];
             });
         }
+        //eslint-disable-next-line
     }, [blockOffset, activeButtonIndex, itemWidth, isXs, isSm, isMs, isLg, isXl, isXll, isXxl]);
     const omItemClickHandler = (e) => {
         onItemClick && onItemClick(itemIndex);
@@ -5572,6 +5633,7 @@ const Slider = ({ value, onValueChanged, checkPoints = INIT_CHECKPOINTS, isRobiB
             const RB = getRB(value);
             setPercent({ value, RB });
         }
+        // eslint-disable-next-line
     }, [value, checkPoints]);
     const onMouseLeaveHandleChange = () => {
         const temp = checkPoints.map((item) => Math.abs(item.value - percent.value));
@@ -5786,6 +5848,7 @@ const BaseMenu = ({ component, options, children, isOpen = false, }) => {
     const close = () => {
         setIsMenuOpen(false);
     };
+    // Allow for component to be controlled
     useEffect(() => {
         setIsMenuOpen(isOpen);
     }, [isOpen, setIsMenuOpen]);
@@ -5815,7 +5878,7 @@ const BaseMenu = ({ component, options, children, isOpen = false, }) => {
         ],
     });
     const menu = (React.createElement("div", { ref: setMenuElement, style: styles.popper, ...attributes.popper }, typeof children === "function"
-        ?
+        ? // @ts-ignore
             children({ toggle, open, close })
         : children));
     const portal = getPortalRoot();
@@ -6182,10 +6245,14 @@ const TabBarItem = ({ isActive = false, variant, setWidth, itemIndex = 0, active
 };
 
 const scales = {
+    // SM: "sm",
     MD: "md",
+    // LG: "lg",
 };
 
 const scaleKeyValues = {
+    // sm: {},
+    // TODO now used only MD scale
     md: {
         handleHeight: "16px",
         handleWidth: "16px",
@@ -6195,6 +6262,7 @@ const scaleKeyValues = {
         toggleHeight: "20px",
         toggleWidth: "40px",
     },
+    // lg: {},
 };
 const getScale$1 = (property) => ({ scale = scales.MD }) => {
     return scaleKeyValues[scale][property];
@@ -7161,6 +7229,7 @@ const Faqs = ({ title = "FAQs", leftData, rightData, variant = Variants.DARK, bl
         setActiveQuestion(activeQuestion !== name ? name : "");
     };
     const isDarkMobile = variant === Variants.DARK ? Scales$5.SIZE24 : Scales$5.SIZE20;
+    // markup for question
     const renderQuestionList = (list) => (list || []).map((item, index) => (React.createElement(FaqAccordion, { key: index.toString(), name: item.name, isOpened: activeQuestion === item.name, handleToggle: handleToggle, variant: variant },
         React.createElement(Description, { as: "div", scale: Scales$5.SIZE14, p: "0 16px 16px", variant: variant }, item.description))));
     return (React.createElement(Box, { ...props },
@@ -7396,6 +7465,7 @@ const ModalProvider = ({ children }) => {
     const [modalNode, setModalNode] = useState();
     const [nodeId, setNodeId] = useState("");
     const [closeOnOverlayClick, setCloseOnOverlayClick] = useState(true);
+    // console.log('closeOnOverlayClick', closeOnOverlayClick, nodeId)
     const handlePresent = (node, newNodeId, closeOverlayClick) => {
         setModalNode(node);
         setIsOpen(true);
@@ -7425,6 +7495,7 @@ const ModalProvider = ({ children }) => {
             React.createElement(Overlay, { onClick: handleOverlayDismiss }),
             React.isValidElement(modalNode) &&
                 React.cloneElement(modalNode, {
+                    // @ts-ignore
                     onDismiss: handleDismiss,
                 }))),
         children));
@@ -7435,10 +7506,20 @@ const useModal = (modal, closeOnOverlayClick = true, updateOnPropsChange = false
     const onPresentCallback = useCallback(() => {
         onPresent(modal, modalId, closeOnOverlayClick);
     }, [modal, modalId, onPresent, closeOnOverlayClick]);
+    // Updates the "modal" component if props are changed
+    // Use carefully since it might result in unnecessary rerenders
+    // Typically if modal is static there is no need for updates, use when you expect props to change
     useEffect(() => {
+        // NodeId is needed in case there are 2 useModal hooks on the same page and one has updateOnPropsChange
         if (updateOnPropsChange && isOpen && nodeId === modalId) {
             const modalProps = get(modal, "props");
             const oldModalProps = get(modalNode, "props");
+            // Note: I tried to use lodash isEqual to compare props but it is giving false-negatives too easily
+            // For example ConfirmSwapModal in exchange has ~500 lines prop object that stringifies to same string
+            // and online diff checker says both objects are identical but lodash isEqual thinks they are different
+            // Do not try to replace JSON.stringify with isEqual, high risk of infinite rerenders
+            // TODO: Find a good way to handle modal updates, this whole flow is just backwards-compatible workaround,
+            // would be great to simplify the logic here
             if (modalProps &&
                 oldModalProps &&
                 JSON.stringify(modalProps) !== JSON.stringify(oldModalProps)) {
@@ -7457,6 +7538,7 @@ const useModal = (modal, closeOnOverlayClick = true, updateOnPropsChange = false
     return [onPresentCallback, onDismiss];
 };
 
+// import { formatSpacingAmount } from "../../../util/formatSpacingAmount";
 const Wrapper$7 = styled.div `
   display: grid;
   grid-template-columns: 38px 1fr;
@@ -7768,6 +7850,7 @@ const links = [
             {
                 label: "Expert Trade",
                 leftIcon: "ExpertModeOpacity",
+                // rightIcon: "ArrowUpForward",
                 rightIconFill: "primary",
                 description: "Item description",
                 href: "/liquidity",
@@ -7983,6 +8066,32 @@ const links = [
         isMobileNav: true,
         showItemsOnMobile: true,
     },
+    // {
+    //   type: ItemTypes.DIVIDER,
+    //   showItemsOnMobile: true,
+    // },
+    // {
+    //   label: "Biswap Products", // if changed label, also should be changed in Accordion component condition
+    //   icon: "ProductsOpacity",
+    //   isMobileNav: true,
+    //   showItemsOnMobile: true,
+    //   items: [
+    //     {
+    //       label: "Marketplace",
+    //       href: "/pool",
+    //       leftIcon: "Market",
+    //       description: "Item description",
+    //       type: DropdownMenuItemType.EXTERNAL_LINK,
+    //     },
+    //     {
+    //       label: "GameFi",
+    //       href: "/pool",
+    //       leftIcon: "GameFi",
+    //       description: "Item description",
+    //       type: DropdownMenuItemType.EXTERNAL_LINK,
+    //     },
+    //   ],
+    // },
 ];
 const socials = [
     {
@@ -8015,6 +8124,11 @@ const socials = [
                     label: "Tiếng Việt",
                     href: "https://t.me/biswap_vnm",
                 },
+                // {
+                //   icon: 'BDIcon',
+                //   label: "Bangladesh",
+                //   href: "https://t.me/biswap_bgd",
+                // },
                 {
                     icon: "FRIcon",
                     label: "La France",
@@ -8137,6 +8251,8 @@ const socials = [
 ];
 const MENU_HEIGHT = 72;
 const MOBILE_EVENT_BUTTON_HEIGHT = 40;
+// export const FISHING_BANNER_HEIGHT = 40;
+// export const FISHING_MOBILE_BANNER_HEIGHT = 60;
 const TRANSFER_BLOCK_CLOSED_HEIGHT = 40;
 const TRANSFER_BLOCK_OPENED_HEIGHT = 156;
 
@@ -9145,6 +9261,7 @@ const MenuItems = ({ items = [], activeItem, activeSubItem, isMobileMenuOpened =
         })));
 };
 
+// styled
 const StyledInnerButton = styled(Button) `
   display: flex;
   align-items: center;
@@ -9251,17 +9368,21 @@ const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activ
             const isBottomOfPage = window.document.body.clientHeight ===
                 currentOffset + window.innerHeight;
             const isTopOfPage = currentOffset === 0;
+            // Always show the menu when user reach the top
             if (isTopOfPage) {
                 setShowMenu(true);
                 setMenuBg(false);
             }
+            // Avoid triggering anything at the bottom because of layout shift
             else if (!isBottomOfPage) {
                 if (currentOffset < refPrevOffset.current ||
                     currentOffset <= totalTopMenuHeight) {
+                    // Has scroll up
                     setShowMenu(true);
                     setMenuBg(true);
                 }
                 else {
+                    // Has scroll down
                     setShowMenu(false);
                     setMenuBg(true);
                 }
@@ -9274,6 +9395,7 @@ const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activ
             window.removeEventListener("scroll", throttledHandleScroll);
         };
     }, [totalTopMenuHeight]);
+    // Find the home link if provided
     const homeLink = links.find((link) => link.label === "Home");
     return (React.createElement(MenuContext.Provider, { value: { linkComponent } },
         React.createElement(Wrapper, null,
@@ -9367,7 +9489,7 @@ const Toast = ({ removeButtonPosition = 60, clearAll, toast, style, handleMouseE
 };
 
 const ZINDEX = 1000;
-const BOTTOM_POSITION = 120;
+const BOTTOM_POSITION = 120; // Initial position from the bottom
 const StyledToastContainer$1 = styled(Box) `
   .enter,
   .appear {
@@ -9393,6 +9515,7 @@ const ToastContainer = ({ clearAll, toasts, onRemove, ttl = 10000, stackSpacing 
     const [progress, setProgress] = useState(100);
     const [progressRun, setProgressRun] = useState(true);
     const [currentTime, setCurrentTime] = useState(ttl);
+    // for update timer for new toast
     const updateTimerRef = useRef(1);
     const timer = useRef();
     const intervalRef = useRef();
@@ -9400,6 +9523,8 @@ const ToastContainer = ({ clearAll, toasts, onRemove, ttl = 10000, stackSpacing 
     const resetAll = () => {
         setProgress(100);
         setCurrentTime(ttl);
+        // clearTimeout(intervalRef.current)
+        // clearTimeout(timer.current);
     };
     useEffect(() => {
         if (toasts.length !== updateTimerRef.current) {
@@ -9427,6 +9552,7 @@ const ToastContainer = ({ clearAll, toasts, onRemove, ttl = 10000, stackSpacing 
         return () => {
             return clearTimeout(intervalRef.current);
         };
+        // eslint-disable-next-line
     }, [progress, currentTime, progressRun, toasts, updateTimerRef.current]);
     const handleRemove = useCallback(() => {
         removeHandler.current(toasts[0]?.id);
@@ -9435,6 +9561,7 @@ const ToastContainer = ({ clearAll, toasts, onRemove, ttl = 10000, stackSpacing 
         setProgressRun(true);
         clearTimeout(intervalRef.current);
         clearTimeout(timer.current);
+        // eslint-disable-next-line
     }, [toasts, progress, removeHandler]);
     const handleMouseEnter = () => {
         clearTimeout(timer.current);
@@ -9451,6 +9578,7 @@ const ToastContainer = ({ clearAll, toasts, onRemove, ttl = 10000, stackSpacing 
         if (intervalRef.current) {
             clearTimeout(intervalRef.current);
         }
+        // eslint-disable-next-line lodash/prefer-noop
         timer.current = window.setTimeout(() => { }, currentTime);
     };
     useEffect(() => {
@@ -9540,6 +9668,7 @@ const ColoredToasts = ({ toasts, onRemove, ttl = 5000 }) => {
         return () => {
             clearTimeout(timer);
         };
+        // eslint-disable-next-line
     }, [handleRemove]);
     return (React.createElement(StyledToastContainer, null,
         React.createElement(TransitionGroup, null, toasts.map((toast) => (React.createElement(ColoredToastItem, { key: toast.id, toast: toast, ttl: ttl, style: { bottom: "50px" } }))))));
