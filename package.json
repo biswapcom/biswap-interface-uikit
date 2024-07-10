@@ -46,6 +46,8 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "prettier": "3.3.2",
     "prop-types": "15.8.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "rollup": "2.78.0",
     "storybook": "8.1.10"
   },

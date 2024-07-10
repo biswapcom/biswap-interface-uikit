@@ -6747,22 +6747,22 @@ const PercentSlider = ({ name = "slider", min = 0, max = 100, value, onValueChan
             "%")))))));
 };
 
-var Variants;
+exports.PaginationVariants = void 0;
 (function (Variants) {
     Variants["LIGHT"] = "light";
     Variants["DARK"] = "dark";
-})(Variants || (Variants = {}));
+})(exports.PaginationVariants || (exports.PaginationVariants = {}));
 
 const PaginationVariants = {
-    [Variants.LIGHT]: {
+    [exports.PaginationVariants.LIGHT]: {
         color: "primary",
     },
-    [Variants.DARK]: {
+    [exports.PaginationVariants.DARK]: {
         color: "white",
     },
 };
 const VariantsArrows = {
-    [Variants.LIGHT]: {
+    [exports.PaginationVariants.LIGHT]: {
         border: "1px solid rgba(18, 99, 241, 0.16)",
         color: "primary",
         ":hover": {
@@ -6770,7 +6770,7 @@ const VariantsArrows = {
             borderColor: "transparent",
         },
     },
-    [Variants.DARK]: {
+    [exports.PaginationVariants.DARK]: {
         border: "1px solid rgba(255, 255, 255, 0.24)",
         color: "white",
         ":hover": {
@@ -6892,7 +6892,7 @@ const Pagination = ({ variant, isLight, pageCount, handlePageClick, marginPagesD
         paginate__dark: !isLight,
     });
     return (React__default["default"].createElement(PaginationWrap, { className: paginationClass, variant: variant },
-        React__default["default"].createElement(ReactPaginate__default["default"], { previousLabel: React__default["default"].createElement(Icon$3u, { color: variant === Variants.LIGHT ? "primary" : "white" }), nextLabel: React__default["default"].createElement(Icon$3x, { color: variant === Variants.LIGHT ? "primary" : "white" }), forcePage: forcePage, breakLabel: "...", breakClassName: "break-me", pageCount: pageCount, marginPagesDisplayed: marginPagesDisplayed, pageRangeDisplayed: pageRangeDisplayed, onPageChange: handlePageClick, containerClassName: "pagination", activeClassName: "active" })));
+        React__default["default"].createElement(ReactPaginate__default["default"], { previousLabel: React__default["default"].createElement(Icon$3u, { color: variant === exports.PaginationVariants.LIGHT ? "primary" : "white" }), nextLabel: React__default["default"].createElement(Icon$3x, { color: variant === exports.PaginationVariants.LIGHT ? "primary" : "white" }), forcePage: forcePage, breakLabel: "...", breakClassName: "break-me", pageCount: pageCount, marginPagesDisplayed: marginPagesDisplayed, pageRangeDisplayed: pageRangeDisplayed, onPageChange: handlePageClick, containerClassName: "pagination", activeClassName: "active" })));
 };
 
 const StyledWrapper = styled__default["default"](Box) `
