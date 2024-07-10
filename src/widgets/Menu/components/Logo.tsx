@@ -2,15 +2,10 @@ import React, { FC, useContext } from "react";
 import styled from "styled-components";
 
 // components
-import Flex from "../../../components/Box/Flex";
-import {
-  BswIcon,
-  LogoWithTextIcon,
-  ProjectNameIcon,
-} from "../../../components/Svg";
+import { Box, Flex } from "../../../components/Box";
+import { BswIcon, LogoWithTextIcon, ProjectNameIcon } from "../../../components/Svg";
 import { Button } from "../../../components/Button/";
-import { BodyText } from "../../../components/Typography";
-import { Box } from "../../../components/Box";
+import { BodyText, Scales } from "../../../components/Typography";
 import { Variants } from "../../../components/Button/types";
 
 // hooks
@@ -46,7 +41,7 @@ const LogoSwitcher: FC<{ logoSubtitle?: string }> = ({ logoSubtitle }) => {
         <BswIcon width="32px" />
         <Box ml="8px">
           <ProjectNameIcon width="78px" />
-          <BodyText mt="-6px" textAlign="left" scale="size12">
+          <BodyText mt="-6px" textAlign="left" scale={Scales.SIZE12}>
             {logoSubtitle}
           </BodyText>
         </Box>

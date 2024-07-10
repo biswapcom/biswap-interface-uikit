@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 // components
-import { SocialShareButton } from "../../components/SocialShareButton";
+import { Socials, SocialShareButton } from "../../components/SocialShareButton";
 import { Flex } from "../../components/Box";
 
 interface ToastActionProps {
@@ -14,7 +14,7 @@ const ToastAction: FC<ToastActionProps> = ({ tweeterDescription, url, withGift }
   return (
     <Flex>
       <SocialShareButton
-        social="twitter"
+        social={Socials.TWITTER}
         message={tweeterDescription}
         link={url}
         mr="8px"

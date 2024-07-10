@@ -5,7 +5,7 @@ import Flex from "../../../../components/Box/Flex";
 // components
 import Image from "next/image";
 import { Button } from "../../../../components/Button";
-import { BodyText } from "../../../../components/Typography";
+import { BodyText, Scales } from "../../../../components/Typography";
 
 // hooks
 import { useMatchBreakpoints } from "../../../../contexts";
@@ -68,39 +68,22 @@ const IconWrapper = styled.div`
   margin-right: 8px;
 `;
 
-const Audit: FC<{ marketplaceLink?: string; baseAwsUrl: string }> = ({
-  marketplaceLink,
-  baseAwsUrl,
-}) => {
+const Audit: FC<{ marketplaceLink?: string; baseAwsUrl: string }> = ({ marketplaceLink, baseAwsUrl }) => {
   const { isMobile } = useMatchBreakpoints();
   return (
     <AuditedWrap>
-      <MarketPlaceButton
-        as="a"
-        href={marketplaceLink ?? MARKETPLACE_URL}
-        target={isMobile ? "_self" : "_blank"}
-      >
+      <MarketPlaceButton as="a" href={marketplaceLink ?? MARKETPLACE_URL} target={isMobile ? "_self" : "_blank"}>
         <Flex alignItems="center">
           <IconWrapper>
-            <Image
-              width={19}
-              height={19}
-              src={`${baseAwsUrl}/icons/Market.svg`}
-              alt=""
-            />
+            <Image width={19} height={19} src={`${baseAwsUrl}/icons/Market.svg`} alt="" />
           </IconWrapper>
-          <BodyText scale="size14" color="white" bold>
+          <BodyText scale={Scales.SIZE14} color="white" bold>
             Marketplace
           </BodyText>
         </Flex>
       </MarketPlaceButton>
       <LinkWrap href={CERTIK_URL} target="_blank">
-        <Image
-          width={124}
-          height={35}
-          src={`${baseAwsUrl}/icons/CertikAudited.svg`}
-          alt="Certik"
-        />
+        <Image width={124} height={35} src={`${baseAwsUrl}/icons/CertikAudited.svg`} alt="Certik" />
       </LinkWrap>
     </AuditedWrap>
   );

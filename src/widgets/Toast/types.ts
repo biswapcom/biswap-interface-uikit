@@ -1,4 +1,4 @@
-import { ColoredVariants } from "../../components/Alert";
+import { AlertColoredVariants } from "../../components/Alert";
 
 export enum Types {
   SUCCESS = "success",
@@ -20,7 +20,7 @@ export interface Toast {
 
 export interface ColoredToastProps {
   id: string;
-  type?: ColoredVariants;
+  type?: AlertColoredVariants;
   title: string;
 }
 

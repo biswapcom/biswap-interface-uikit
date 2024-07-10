@@ -9,9 +9,9 @@ import { Box, Flex } from "../../../components/Box";
 
 //types
 import { ColoredToastProps, ToastProps } from "../types";
-import { ColoredVariants } from "../../../components/Alert";
+import { AlertColoredVariants } from "../../../components/Alert";
 
-const StyledToast = styled(Box)<{ type?: ColoredVariants }>`
+const StyledToast = styled(Box)<{ type?: AlertColoredVariants }>`
   position: fixed;
   right: auto;
   left: 16px;
@@ -21,7 +21,8 @@ const StyledToast = styled(Box)<{ type?: ColoredVariants }>`
     0 20px 36px -8px rgba(14, 14, 44, 0.32),
     0 1px 1px rgba(0, 0, 0, 0.16);
   border-radius: 16px;
-  background: ${({ theme, type }) => (type === ColoredVariants.DANGER ? theme.colors.secondary : theme.colors.success)};
+  background: ${({ theme, type }) =>
+    type === AlertColoredVariants.DANGER ? theme.colors.secondary : theme.colors.success};
   z-index: 1000;
 
   ${({ theme }) => theme.mediaQueries.sm} {
@@ -41,7 +42,11 @@ const ColoredToastItem: FC<ColoredToastItemProps> = ({ toast, style, ...props })
     <CSSTransition timeout={250} style={style} {...props}>
       <StyledToast left="50%" type={type}>
         <Flex alignItems="center">
-          <IconComponent iconName={type === ColoredVariants.DANGER ? "Warning" : "Check"} color="white" width="26px" />
+          <IconComponent
+            iconName={type === AlertColoredVariants.DANGER ? "Warning" : "Check"}
+            color="white"
+            width="26px"
+          />
           <BodyText bold color="white" ml="12px">
             {title}
           </BodyText>

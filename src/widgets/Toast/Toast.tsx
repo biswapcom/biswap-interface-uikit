@@ -5,7 +5,7 @@ import styled from "styled-components";
 // components
 import { Alert, AlertVariants } from "../../components/Alert";
 import { Text } from "../../components/Text";
-import { Button } from "../../components/Button";
+import { Button, ButtonScales, ButtonVariants } from "../../components/Button";
 import { ArrowUpForwardIcon } from "../../components/Svg";
 import { Box, Flex } from "../../components/Box";
 
@@ -85,7 +85,12 @@ const Toast: FC<ToastProps> = ({
     <CSSTransition timeout={250} style={style} {...props}>
       <StyledToast onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         {clearAll && (
-          <ClearAllButton scale="sm" variant="text" top={removeButtonPosition} onClick={clearAll}>
+          <ClearAllButton
+            scale={ButtonScales.SM}
+            variant={ButtonVariants.TEXT}
+            top={removeButtonPosition}
+            onClick={clearAll}
+          >
             <Text p="0 8px" fontSize="12px" color="dark">
               {clearAllLabel}
             </Text>

@@ -3,7 +3,7 @@ import React from "react";
 import { withThemeFromJSXProvider } from "@storybook/addon-themes";
 import { ThemeProvider } from "styled-components";
 import { light, dark, ResetCSS } from "../src/theme";
-import { MatchBreakpointsProvider } from "../src/contexts";
+import { MatchBreakpointsProvider } from "../src";
 import { ModalProvider } from "../src/widgets/Modal";
 
 const preview = {

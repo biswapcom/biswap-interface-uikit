@@ -2,6 +2,7 @@ import React from "react";
 import StyledToggle, { Input, Handle, Label, ToggleWrap } from "./StyledToggle";
 import { ToggleProps, scales } from "./types";
 import { SpaceProps } from "styled-system";
+import { Scales as BodyTextScales } from "../Typography";
 
 const Toggle: React.FC<ToggleProps> = ({
   checked,
@@ -14,7 +15,7 @@ const Toggle: React.FC<ToggleProps> = ({
   gridArea,
   variant = "light",
   spaceBetween,
-  labelSize = "size12",
+  labelSize = BodyTextScales.SIZE12,
   ...props
 }) => {
   const isChecked = !!checked;
@@ -34,13 +35,7 @@ const Toggle: React.FC<ToggleProps> = ({
         scale={scale}
         disabled={disabled}
       >
-        <Input
-          readOnly
-          checked={checked}
-          scale={scale}
-          type="checkbox"
-          disabled={disabled}
-        />
+        <Input readOnly checked={checked} scale={scale} type="checkbox" disabled={disabled} />
         <Handle scale={scale} disabled={disabled} />
       </StyledToggle>
       {label && (
