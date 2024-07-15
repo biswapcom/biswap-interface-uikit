@@ -143,4 +143,4 @@ export declare const styleVariantsTop: {
         };
     };
 };
-export declare const getVariantColor: (variant: DropdownVariants) => import("styled-components").RuleSet<object>;
+export declare const getVariantColor: (variant: DropdownVariants) => import("styled-components").FlattenInterpolation<import("styled-components").ThemeProps<import("styled-components").DefaultTheme>>;

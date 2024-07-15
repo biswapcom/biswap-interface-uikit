@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { SvgProps } from "./types";
-declare const Svg: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<import("react").SVGProps<SVGSVGElement>, SvgProps>> & string;
+declare const Svg: import("styled-components").StyledComponent<"svg", import("styled-components").DefaultTheme, SvgProps, never>;
 export default Svg;

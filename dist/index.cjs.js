@@ -6765,7 +6765,7 @@ const VariantsArrows = {
     [exports.PaginationVariants.LIGHT]: {
         border: "1px solid rgba(18, 99, 241, 0.16)",
         color: "primary",
-        ":hover": {
+        "&:hover": {
             backgroundColor: "rgba(18, 99, 241, 0.16)",
             borderColor: "transparent",
         },
@@ -6773,7 +6773,7 @@ const VariantsArrows = {
     [exports.PaginationVariants.DARK]: {
         border: "1px solid rgba(255, 255, 255, 0.24)",
         color: "white",
-        ":hover": {
+        "&:hover": {
             backgroundColor: "rgba(255, 255, 255, 0.24)",
             borderColor: "transparent",
         },
@@ -6821,15 +6821,6 @@ const PaginationWrap = styled__default["default"](Flex) `
 
         &:hover {
           background: lighten(${({ theme }) => theme.colors.primary}, 5%);
-        }
-      }
-
-      &:first-child,
-      :last-child {
-        background-color: ${({ theme }) => theme.colors.dark800};
-
-        &:hover {
-          background-color: #46465f;
         }
       }
 

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ComponentType, ReactNode } from "react";
 import { LayoutProps, SpaceProps, TypographyProps } from "styled-system";
 
 export enum HeadTextTags {
@@ -52,5 +52,5 @@ export interface BodyTextProps extends SpaceProps, TypographyProps, LayoutProps 
   nowrap?: boolean;
   scale?: Scales | ScalesObj | undefined;
   children?: string | ReactNode | JSX.Element;
-  as?: BodyTextTags;
+  as?: string | ReactNode | JSX.Element | ComponentType;
 }

@@ -58,15 +58,6 @@ const PaginationWrap = styled(Flex)<{ variant: Variants }>`
         }
       }
 
-      &:first-child,
-      :last-child {
-        background-color: ${({ theme }) => theme.colors.dark800};
-
-        &:hover {
-          background-color: #46465f;
-        }
-      }
-
       &.previous,
       &.next {
         background-color: transparent;
