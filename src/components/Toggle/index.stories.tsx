@@ -39,16 +39,14 @@ export const Default: React.FC = () => {
             checked={isChecked}
             onChange={toggle}
             scale="md"
-            gridArea="test"
             variant="light"
-            mt="12px"
-            label="test"
           />
           <Toggle
             checked={isChecked}
             onChange={toggle}
             scale="md"
             label="Label LEFT"
+            labelOrientation="left"
             variant="light"
           />
           <Toggle
@@ -79,6 +77,7 @@ export const Default: React.FC = () => {
             checkedColor="dark800"
             scale="md"
             label="Label LEFT"
+            labelOrientation="left"
             variant="light"
           />
           <Toggle
@@ -144,6 +143,7 @@ export const Default: React.FC = () => {
             onChange={toggle}
             scale="md"
             label="Label LEFT"
+            labelOrientation="left"
             variant="dark"
           />
           <Toggle
@@ -174,6 +174,7 @@ export const Default: React.FC = () => {
             checkedColor="dark800"
             scale="md"
             label="Label LEFT"
+            labelOrientation="left"
             variant="dark"
           />
           <Toggle
