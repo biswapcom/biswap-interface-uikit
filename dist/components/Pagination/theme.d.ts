@@ -10,7 +10,7 @@ export declare const VariantsArrows: {
     light: {
         border: string;
         color: string;
-        ":hover": {
+        "&:hover": {
             backgroundColor: string;
             borderColor: string;
         };
@@ -18,7 +18,7 @@ export declare const VariantsArrows: {
     dark: {
         border: string;
         color: string;
-        ":hover": {
+        "&:hover": {
             backgroundColor: string;
             borderColor: string;
         };

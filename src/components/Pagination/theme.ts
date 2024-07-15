@@ -14,7 +14,7 @@ export const VariantsArrows = {
     border: "1px solid rgba(18, 99, 241, 0.16)",
     color: "primary",
 
-    ":hover": {
+    "&:hover": {
       backgroundColor: "rgba(18, 99, 241, 0.16)",
       borderColor: "transparent",
     },
@@ -23,7 +23,7 @@ export const VariantsArrows = {
     border: "1px solid rgba(255, 255, 255, 0.24)",
     color: "white",
 
-    ":hover": {
+    "&:hover": {
       backgroundColor: "rgba(255, 255, 255, 0.24)",
       borderColor: "transparent",
     },
