@@ -1,10 +1,10 @@
 export declare const menuAnimationConfig: {
-    boxAnimationBackwards: import("styled-components/dist/models/Keyframes").default;
-    boxAnimationForward: import("styled-components/dist/models/Keyframes").default;
-    firstLineAnimationForward: import("styled-components/dist/models/Keyframes").default;
-    firstLineAnimationBackwards: import("styled-components/dist/models/Keyframes").default;
-    secondLineAnimationForward: import("styled-components/dist/models/Keyframes").default;
-    secondLineAnimationBackwards: import("styled-components/dist/models/Keyframes").default;
-    thirdLineAnimationForward: import("styled-components/dist/models/Keyframes").default;
-    thirdLineAnimationBackwards: import("styled-components/dist/models/Keyframes").default;
+    boxAnimationBackwards: import("styled-components").Keyframes;
+    boxAnimationForward: import("styled-components").Keyframes;
+    firstLineAnimationForward: import("styled-components").Keyframes;
+    firstLineAnimationBackwards: import("styled-components").Keyframes;
+    secondLineAnimationForward: import("styled-components").Keyframes;
+    secondLineAnimationBackwards: import("styled-components").Keyframes;
+    thirdLineAnimationForward: import("styled-components").Keyframes;
+    thirdLineAnimationBackwards: import("styled-components").Keyframes;
 };

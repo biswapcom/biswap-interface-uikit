@@ -1,54 +1,39 @@
 import { ReactNode } from "react";
+import { DefaultTheme } from "styled-components";
 import { Colors } from "../../theme";
 import type { StyledDropdownMenuInnerLinkItemProps, StyledDropdownMenuItemProps } from "./types";
-export declare const InnerLinksBlockContainer: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<Omit<import("styled-components").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, keyof import("../Box").BoxProps> & import("../Box").BoxProps, "ref"> & {
-    ref?: import("react").Ref<HTMLDivElement>;
-}, {
+export declare const InnerLinksBlockContainer: import("styled-components").StyledComponent<"div", DefaultTheme, import("../Box").BoxProps & {
     padded: boolean;
-}>> & string;
-export declare const DropdownMenuInnerLinkItem: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<Omit<import("styled-components").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, keyof import("../Box").BoxProps> & import("../Box").BoxProps, "ref"> & {
-    ref?: import("react").Ref<HTMLDivElement>;
-}, StyledDropdownMenuInnerLinkItemProps>> & string;
-export declare const DropdownMenuInnerOuterLinkItem: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<import("react").DetailedHTMLProps<import("react").AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, StyledDropdownMenuInnerLinkItemProps>> & string;
+}, never>;
+export declare const DropdownMenuInnerLinkItem: import("styled-components").StyledComponent<"div", DefaultTheme, import("../Box").BoxProps & StyledDropdownMenuInnerLinkItemProps, never>;
+export declare const DropdownMenuInnerOuterLinkItem: import("styled-components").StyledComponent<"a", DefaultTheme, StyledDropdownMenuInnerLinkItemProps, never>;
 export declare const CommonLinkStyle: ({ disabled, $isActive, $hasIcon, label, }: StyledDropdownMenuItemProps & {
     $isActive: boolean;
     $hasIcon?: boolean;
     label?: string | ReactNode;
-}) => import("styled-components").RuleSet<object>;
-export declare const DropdownMenuItem: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<import("react").DetailedHTMLProps<import("react").ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, StyledDropdownMenuItemProps & {
+}) => import("styled-components").FlattenInterpolation<import("styled-components").ThemeProps<DefaultTheme>>;
+export declare const DropdownMenuItem: import("styled-components").StyledComponent<"button", DefaultTheme, StyledDropdownMenuItemProps & {
     $isActive: boolean;
     $hasIcon?: boolean;
-}>> & string;
-export declare const DropdownInternalMenuItem: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<Omit<import("react-router-dom").LinkProps & import("react").RefAttributes<HTMLAnchorElement>, "ref"> & {
-    ref?: import("react").Ref<HTMLAnchorElement>;
-}, StyledDropdownMenuItemProps & {
+}, never>;
+export declare const DropdownInternalMenuItem: import("styled-components").StyledComponent<import("react").ForwardRefExoticComponent<import("react-router-dom").LinkProps & import("react").RefAttributes<HTMLAnchorElement>>, DefaultTheme, StyledDropdownMenuItemProps & {
     $isActive: boolean;
     $hasIcon?: boolean;
     label?: string | ReactNode;
-}>> & string & Omit<import("react").ForwardRefExoticComponent<import("react-router-dom").LinkProps & import("react").RefAttributes<HTMLAnchorElement>>, keyof import("react").Component<any, {}, any>>;
-export declare const StyledDropdownMenuItemContainer: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<Omit<import("styled-components").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, keyof import("../Box").BoxProps> & import("../Box").BoxProps, "ref"> & {
-    ref?: import("react").Ref<HTMLDivElement>;
-}, {
+}, never>;
+export declare const StyledDropdownMenuItemContainer: import("styled-components").StyledComponent<"div", DefaultTheme, import("../Box").BoxProps & {
     isOpenMenuItem?: boolean;
     disabled?: boolean;
-}>> & string;
-export declare const DropdownMenuDivider: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLHRElement>, HTMLHRElement>, never>> & string;
-export declare const StyledDropdownMenu: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<import("styled-components").FastOmit<Omit<import("styled-components").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, keyof import("../Box").BoxProps> & import("../Box").BoxProps, "ref"> & {
-    ref?: import("react").Ref<HTMLDivElement>;
-}, keyof import("../Box").GridProps> & import("../Box").GridProps, {
+}, never>;
+export declare const DropdownMenuDivider: import("styled-components").StyledComponent<"hr", DefaultTheme, {}, never>;
+export declare const StyledDropdownMenu: import("styled-components").StyledComponent<"div", DefaultTheme, import("../Box").BoxProps & import("../Box").GridProps & {
     $isOpen: boolean;
     $isExtended?: boolean;
-}>> & string;
-export declare const LinkStatus: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<Omit<import("styled-components").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, keyof import("../Text").TextProps> & import("../Text").TextProps, "ref"> & {
-    ref?: import("react").Ref<HTMLDivElement>;
-}, {
+}, never>;
+export declare const LinkStatus: import("styled-components").StyledComponent<"div", DefaultTheme, import("../Text").TextProps & {
     color: keyof Colors;
-}>> & string;
-export declare const BannerPlacementItem: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components").FastOmit<Omit<import("styled-components").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, keyof import("../Box").BoxProps> & import("../Box").BoxProps, "ref"> & {
-    ref?: import("react").Ref<HTMLDivElement>;
-}, never>> & string;
-export declare const BorderMobileMenuItem: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<Omit<import("styled-components").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, keyof import("../Box").BoxProps> & import("../Box").BoxProps, "ref"> & {
-    ref?: import("react").Ref<HTMLDivElement>;
-}, {
+}, never>;
+export declare const BannerPlacementItem: import("styled-components").StyledComponent<"div", DefaultTheme, import("../Box").BoxProps, never>;
+export declare const BorderMobileMenuItem: import("styled-components").StyledComponent<"div", DefaultTheme, import("../Box").BoxProps & {
     isHighlighted?: boolean;
-}>> & string;
+}, never>;

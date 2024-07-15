@@ -7,9 +7,12 @@ interface ScalesMap {
     };
 }
 export declare const bodyTextScaleMap: ScalesMap;
-export declare const BodyText: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<import("styled-components").FastOmit<import("styled-components/dist/types").Substitute<Omit<import("styled-components").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, keyof import("../Text").TextProps> & import("../Text").TextProps, "ref"> & {
-    ref?: import("react").Ref<HTMLDivElement>;
-}, Omit<import("styled-components").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, keyof import("../Text").TextProps> & import("../Text").TextProps, "ref"> & {
-    ref?: import("react").Ref<HTMLDivElement>;
-}>, never>, BodyTextProps>> & string;
+export declare const BodyText: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, (import("../Text").TextProps & ({
+    fontSize: string;
+    lineHeight: string;
+} | {
+    fontSize: string[];
+    lineHeight: string[];
+    as: string | number | true | Iterable<import("react").ReactNode> | JSX.Element | import("react").ComponentClass<{}, any> | import("react").FunctionComponent<{}>;
+})) & BodyTextProps, "fontSize" | "lineHeight">;
 export {};

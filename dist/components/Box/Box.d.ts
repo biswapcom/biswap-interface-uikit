@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { BoxProps } from "./types";
-declare const Box: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, BoxProps>> & string;
+declare const Box: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, BoxProps, never>;
 export default Box;

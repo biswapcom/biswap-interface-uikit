@@ -19,7 +19,7 @@ const MenuItem: FC<MenuItemProps> = ({
   ...props
 }) => {
   const { linkComponent } = useContext(MenuContext);
-  const itemLinkProps = href
+  const itemLinkProps: Object = href
     ? {
         as: linkComponent,
         href,

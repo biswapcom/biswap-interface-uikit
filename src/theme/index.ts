@@ -1,9 +1,9 @@
 import { AlertTheme } from "../components/Alert/types";
-// import { RadioTheme } from "../components/Radio/types";
-// import { ToggleTheme } from "../components/Toggle/theme";
-// import { TooltipTheme } from "../components/Tooltip/types";
-// import { NavThemeType } from "../widgets/Menu/theme";
-// import { ModalTheme } from "../widgets/Modal/types";
+import { RadioTheme } from "../components/Radio/types";
+import { ToggleTheme } from "../components/Toggle/theme";
+import { TooltipTheme } from "../components/Tooltip/types";
+import { NavThemeType } from "../widgets/Menu/theme";
+import { ModalTheme } from "../widgets/Modal/types";
 
 import { Breakpoints, Colors, MediaQueries, Radii, Shadows, Spacing, ZIndices } from "./types";
 
@@ -12,11 +12,11 @@ export interface BiswapTheme {
   isDark: boolean;
   colors: Colors;
   alert: AlertTheme;
-  // nav: NavThemeType;
-  // modal: ModalTheme;
-  // radio: RadioTheme;
-  // toggle: ToggleTheme;
-  // tooltip: TooltipTheme;
+  nav: NavThemeType;
+  modal: ModalTheme;
+  radio: RadioTheme;
+  toggle: ToggleTheme;
+  tooltip: TooltipTheme;
   breakpoints: Breakpoints;
   mediaQueries: MediaQueries;
   spacing: Spacing;

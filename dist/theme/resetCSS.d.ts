@@ -1,3 +1,2 @@
-/// <reference types="react" />
-declare const ResetCSS: import("react").NamedExoticComponent<import("styled-components").ExecutionProps & object>;
+declare const ResetCSS: import("styled-components").GlobalStyleComponent<{}, import("styled-components").DefaultTheme>;
 export default ResetCSS;

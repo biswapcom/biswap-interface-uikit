@@ -8,18 +8,21 @@ interface IToggleProps extends SpaceProps {
     spaceBetween?: boolean;
     labelSize?: string;
 }
-export declare const ToggleWrap: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<import("react").DetailedHTMLProps<import("react").LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>, IToggleProps>> & string;
-export declare const Handle: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, HandleProps>> & string;
-export declare const Label: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<import("styled-components").FastOmit<import("styled-components").FastOmit<import("styled-components/dist/types").Substitute<Omit<import("styled-components").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, keyof import("../Text").TextProps> & import("../Text").TextProps, "ref"> & {
-    ref?: import("react").Ref<HTMLDivElement>;
-}, Omit<import("styled-components").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, keyof import("../Text").TextProps> & import("../Text").TextProps, "ref"> & {
-    ref?: import("react").Ref<HTMLDivElement>;
-}>, never>, keyof import("../Typography").BodyTextProps> & import("../Typography").BodyTextProps, {
+export declare const ToggleWrap: import("styled-components").StyledComponent<"label", import("styled-components").DefaultTheme, IToggleProps, never>;
+export declare const Handle: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, HandleProps, never>;
+export declare const Label: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, ((import("../Text").TextProps & ({
+    fontSize: string;
+    lineHeight: string;
+} | {
+    fontSize: string[];
+    lineHeight: string[];
+    as: string | number | true | Iterable<import("react").ReactNode> | JSX.Element | import("react").ComponentClass<{}, any> | import("react").FunctionComponent<{}>;
+})) & import("../Typography").BodyTextProps) & {
     labelOrientation?: string;
     isChecked: boolean;
     disabled?: boolean;
     variant?: string;
-}>> & string;
-export declare const Input: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<import("react").DetailedHTMLProps<import("react").InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, InputProps>> & string;
-declare const StyledToggle: import("styled-components/dist/types").IStyledComponentBase<"web", import("styled-components/dist/types").Substitute<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, StyleToggleProps>> & string;
+}, "fontSize" | "lineHeight">;
+export declare const Input: import("styled-components").StyledComponent<"input", import("styled-components").DefaultTheme, InputProps, never>;
+declare const StyledToggle: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, StyleToggleProps, never>;
 export default StyledToggle;
