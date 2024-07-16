@@ -3659,9 +3659,21 @@ const headTextScaleMap = {
         lineHeight: "12px",
     },
 };
-const HeadText = styled(Text).attrs({ bold: true, tags: HeadTextTags.H2 }) `
-  font-size: ${({ scale }) => headTextScaleMap[scale || Scales$5.SIZE32].fontSize};
-  line-height: ${({ scale }) => headTextScaleMap[scale || Scales$5.SIZE32].lineHeight};
+const getScalesAttributes$1 = ({ scale, as }) => {
+    if (typeof scale === "string")
+        return headTextScaleMap[scale || Scales$5.SIZE32];
+    if (typeof scale === "undefined")
+        return headTextScaleMap[Scales$5.SIZE32];
+    const tempScales = JSON.parse(JSON.stringify(scale));
+    if (!tempScales.xs)
+        tempScales.xs = HeadText.defaultProps?.scale;
+    return {
+        fontSize: breakpointsKeys.map((breakPoint) => tempScales[breakPoint] ? headTextScaleMap[tempScales[breakPoint]].fontSize : null),
+        lineHeight: breakpointsKeys.map((breakPoint) => tempScales[breakPoint] ? headTextScaleMap[tempScales[breakPoint]].lineHeight : null),
+        as: as || HeadTextTags.H2,
+    };
+};
+const HeadText = styled(Text).attrs(getScalesAttributes$1) `
   font-weight: 600;
   white-space: ${({ nowrap }) => (nowrap ? "nowrap" : "normal")};
 `;

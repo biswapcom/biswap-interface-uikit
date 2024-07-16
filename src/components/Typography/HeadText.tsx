@@ -6,6 +6,9 @@ import { Text } from "../Text";
 // types
 import { type HeadTextProps, HeadTextTags, Scales } from "./types";
 
+// theme
+import { breakpointsKeys } from "../../theme/base";
+
 export const headTextScaleMap = {
   [Scales.SIZE40]: {
     fontSize: "40px",
@@ -41,9 +44,26 @@ export const headTextScaleMap = {
   },
 };
 
-export const HeadText = styled(Text).attrs({ bold: true, tags: HeadTextTags.H2 })<HeadTextProps>`
-  font-size: ${({ scale }) => headTextScaleMap[scale || Scales.SIZE32].fontSize};
-  line-height: ${({ scale }) => headTextScaleMap[scale || Scales.SIZE32].lineHeight};
+const getScalesAttributes = ({ scale, as }: HeadTextProps) => {
+  if (typeof scale === "string") return headTextScaleMap[scale || Scales.SIZE32];
+  if (typeof scale === "undefined") return headTextScaleMap[Scales.SIZE32];
+
+  const tempScales = JSON.parse(JSON.stringify(scale));
+
+  if (!tempScales.xs) tempScales.xs = HeadText.defaultProps?.scale;
+
+  return {
+    fontSize: breakpointsKeys.map((breakPoint) =>
+      tempScales[breakPoint] ? headTextScaleMap[tempScales[breakPoint]].fontSize : null
+    ),
+    lineHeight: breakpointsKeys.map((breakPoint) =>
+      tempScales[breakPoint] ? headTextScaleMap[tempScales[breakPoint]].lineHeight : null
+    ),
+    as: as || HeadTextTags.H2,
+  };
+};
+
+export const HeadText = styled(Text).attrs(getScalesAttributes)<HeadTextProps>`
   font-weight: 600;
   white-space: ${({ nowrap }) => (nowrap ? "nowrap" : "normal")};
 `;
