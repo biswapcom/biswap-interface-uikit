@@ -1,5 +1,8 @@
-import { ReactNode } from "react";
-import { CarouselButtonsTypes } from "../../hooks";
+export enum VariantsNavButton {
+  PRIMARY = "primary",
+  WHITE = "white",
+  GRAY_OPACITY = "grayOpacity",
+}
 
 export interface IDirectionButtonProps {
   enabled: boolean;
@@ -7,21 +10,12 @@ export interface IDirectionButtonProps {
   iconName: string;
   isNextButton?: boolean;
   navPadding?: number;
-  themeType: CarouselButtonsTypes;
+  themeType: VariantsNavButton;
 }
-
-export const variantsNavButton = {
-  PRIMARY: "primary",
-  WHITE: "white",
-  GRAY_OPACITY: "grayOpacity",
-} as const;
-
-export type VariantNavButton =
-  typeof variantsNavButton[keyof typeof variantsNavButton];
 
 export interface IDirectButtonStyled {
   disabled?: boolean;
   isNextButton?: boolean;
   navPadding?: number;
-  variant: VariantNavButton;
+  variant: VariantsNavButton;
 }

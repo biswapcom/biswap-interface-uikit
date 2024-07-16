@@ -1,17 +1,22 @@
-import React from "react";
-import IconComponent from "../../../Svg/IconComponent";
-import { IDirectionButtonProps } from "../../types";
-import { CarouselButtonsTypes } from "../../../../hooks";
-import { WrapperDirectionButton } from "./style";
+import React, { FC } from "react";
 
-export const DirectionButton = ({
+// components
+import IconComponent from "../../../Svg/IconComponent";
+
+// styles
+import { WrapperDirectionButton } from "./styles";
+
+// types
+import { IDirectionButtonProps, VariantsNavButton } from "../../types";
+
+const DirectionButton: FC<IDirectionButtonProps> = ({
   enabled,
   onClick,
   iconName,
   isNextButton,
   themeType,
   navPadding,
-}: IDirectionButtonProps) => {
+}) => {
   return (
     <WrapperDirectionButton
       onClick={onClick}
@@ -22,9 +27,11 @@ export const DirectionButton = ({
     >
       <IconComponent
         iconName={iconName}
-        color={themeType === CarouselButtonsTypes.WHITE ? "dark900" : "white"}
+        color={themeType === VariantsNavButton.WHITE ? "dark900" : "white"}
         height="32px"
       />
     </WrapperDirectionButton>
   );
 };
+
+export default DirectionButton;

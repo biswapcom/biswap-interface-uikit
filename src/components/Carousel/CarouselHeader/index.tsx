@@ -1,11 +1,15 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+
+// components
 import { IconButton, ButtonScales, ButtonVariants } from "../../Button";
-import { useMatchBreakpoints } from "../../../contexts";
 import { Flex } from "../../Box";
 import { ChevronLeftIcon, ChevronRightIcon } from "../../Svg";
 import { BodyText, Scales } from "../../Typography";
 import { Container } from "../../Layouts";
+
+// hooks
+import { useMatchBreakpoints } from "../../../contexts";
 
 interface Props {
   title?: string;
@@ -17,11 +21,7 @@ const NavButton = styled(IconButton)`
   height: 32px;
 `;
 
-const CarouselHeader: FC<Props> = ({
-  handleNav,
-  title,
-  showNavButtons,
-}): JSX.Element => {
+const CarouselHeader: FC<Props> = ({ handleNav, title, showNavButtons }): JSX.Element => {
   const { isMobile } = useMatchBreakpoints();
 
   return (
