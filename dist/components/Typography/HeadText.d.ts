@@ -33,7 +33,11 @@ export declare const headTextScaleMap: {
         lineHeight: string;
     };
 };
-export declare const HeadText: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, import("../Text").TextProps & {
-    bold: boolean;
-    tags: HeadTextTags;
-} & HeadTextProps, "bold" | "tags">;
+export declare const HeadText: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, (import("../Text").TextProps & ({
+    fontSize: string;
+    lineHeight: string;
+} | {
+    fontSize: any[];
+    lineHeight: any[];
+    as: HeadTextTags;
+})) & HeadTextProps, "fontSize" | "lineHeight">;

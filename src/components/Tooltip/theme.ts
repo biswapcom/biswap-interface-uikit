@@ -1,5 +1,8 @@
+// theme
 import { shadows } from "../../theme/base";
 import { darkColors, lightColors } from "../../theme";
+
+// types
 import { TooltipTheme } from "./types";
 
 export const light: TooltipTheme = {

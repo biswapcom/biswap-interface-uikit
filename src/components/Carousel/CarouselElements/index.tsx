@@ -1,1 +1,1 @@
-export * from "./DirectionButton";
+export { default as DirectionButton } from "./DirectionButton";

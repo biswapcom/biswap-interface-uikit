@@ -1,10 +1,18 @@
-import { SpaceProps } from "styled-system";
 import { Dispatch, ElementType, SetStateAction, ReactElement, ReactNode } from "react";
-import { PolymorphicComponentProps } from "../../util";
+import { SpaceProps } from "styled-system";
+export declare enum Scales {
+    LG = "lg",
+    MD = "md",
+    SM = "sm"
+}
+export declare enum Variants {
+    DARK = "dark",
+    LIGHT = "light"
+}
 export interface TabBarProps extends SpaceProps {
     children: ReactElement[];
-    variant?: typeof tabVariants.DARK | typeof tabVariants.LIGHT;
-    scale?: typeof tabsScales[keyof typeof tabsScales];
+    variant?: Variants;
+    scale?: Scales;
     disabled?: boolean;
     fullWidth?: boolean;
     menuIcons?: Array<string>;
@@ -24,16 +32,6 @@ export interface TabBarItemProps {
     onItemClick?: (index: number) => void;
     onClick?: () => void;
     as?: "a" | "button" | ElementType;
-    scale?: typeof tabsScales[keyof typeof tabsScales];
+    scale?: Scales;
     children?: ReactNode;
 }
-export type TabProps<P extends ElementType = "button"> = PolymorphicComponentProps<P, TabBarItemProps>;
-export declare const tabsScales: {
-    readonly LG: "lg";
-    readonly MD: "md";
-    readonly SM: "sm";
-};
-export declare const tabVariants: {
-    readonly DARK: "dark";
-    readonly LIGHT: "light";
-};

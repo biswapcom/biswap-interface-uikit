@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { BoxProps } from "../Box";
+import { type BoxProps } from "../Box";
 interface IProps extends BoxProps {
     title?: string;
     revised: string;

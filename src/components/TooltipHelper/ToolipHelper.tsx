@@ -1,22 +1,28 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import styled, { css } from "styled-components";
+import { Placement } from "@popperjs/core";
+
+// types
 import { TriggerType } from "../../hooks";
+
+// components
 import { Box, BoxProps, Flex } from "../Box";
 import { HelpIcon } from "../Svg";
+
+// hooks
 import { useTooltip } from "../../hooks";
-import { Placement } from "@popperjs/core";
 
 interface IconProps {
   color?: string;
   size?: string;
 }
 interface Props extends BoxProps {
-  text: string | React.ReactNode;
+  text: string | ReactNode;
   placement?: Placement;
   trigger?: TriggerType;
   size?: string;
   Icon?: FC<IconProps>;
-  children?: React.ReactNode;
+  children?: ReactNode;
   showTooltip?: boolean;
   isLight?: boolean;
 }
@@ -29,6 +35,7 @@ const QuestionWrapper = styled(Flex)<{ showTooltip: boolean }>`
     css`
       cursor: pointer;
       transition: opacity 0.3s ease-in-out;
+
       :hover,
       :focus {
         opacity: 0.7;
@@ -36,7 +43,7 @@ const QuestionWrapper = styled(Flex)<{ showTooltip: boolean }>`
     `}
 `;
 
-const TooltipHelper: React.FC<Props> = ({
+const TooltipHelper: FC<Props> = ({
   text,
   placement = "auto",
   size = "16px",

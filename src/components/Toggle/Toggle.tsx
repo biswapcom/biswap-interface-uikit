@@ -1,19 +1,23 @@
-import React from "react";
-import StyledToggle, { Input, Handle, Label, ToggleWrap } from "./StyledToggle";
-import { ToggleProps, scales } from "./types";
+import React, { FC } from "react";
 import { SpaceProps } from "styled-system";
+
+// styled
+import StyledToggle, { Input, Handle, Label, ToggleWrap } from "./StyledToggle";
+
+// types
+import { type ToggleProps, Scales, Variants } from "./types";
 import { Scales as BodyTextScales } from "../Typography";
 
-const Toggle: React.FC<ToggleProps> = ({
+const Toggle: FC<ToggleProps> = ({
   checked,
   defaultColor = "toggleBg",
   checkedColor = "success",
-  scale = scales.MD,
+  scale = Scales.MD,
   disabled,
   label,
   labelOrientation,
   gridArea,
-  variant = "light",
+  variant = Variants.LIGHT,
   spaceBetween,
   labelSize = BodyTextScales.SIZE12,
   ...props

@@ -1,13 +1,10 @@
-import React, {
-  Dispatch,
-  FC,
-  ReactNode,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import React, { Dispatch, ElementType, FC, ReactNode, SetStateAction, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
+
+// hooks
 import { useMatchBreakpoints } from "../../contexts";
+
+// components
 import { Box, Flex } from "../Box";
 import { DropdownMenuDivider } from "../DropdownMenu/styles";
 
@@ -18,18 +15,17 @@ interface IProps {
   clickable?: boolean;
   index: number;
   href?: string;
-  linkComponent?: React.ElementType;
+  linkComponent?: ElementType;
   isOpenItem?: boolean;
   setIsOpenMenu: (arg: boolean) => void;
   currentOpen: string | undefined;
   setCurrentOpen: Dispatch<SetStateAction<string | undefined>>;
 }
 
-const AccordionBody = styled.div<{ opened: boolean }>`
-  display: flex;
+const AccordionBody = styled(Flex)<{ opened: boolean }>`
   flex-direction: column;
-  overflow: hidden;
   max-height: 0;
+  overflow: hidden;
   transition: max-height 0.45s;
 
   ${({ opened }) =>
@@ -46,7 +42,7 @@ const AccordionTitle = styled(Flex)`
   -webkit-tap-highlight-color: transparent;
 `;
 
-const AccordionComponent = styled.div`
+const AccordionComponent = styled(Box)`
   width: 100%;
 `;
 
@@ -63,7 +59,8 @@ const Accordion: FC<IProps> = ({
   currentOpen,
   setCurrentOpen,
 }) => {
-  const [isOpened, setIsOpened] = useState(false);
+  const [isOpened, setIsOpened] = useState<boolean>(false);
+
   const { isMobile } = useMatchBreakpoints();
 
   useEffect(() => {
@@ -87,11 +84,7 @@ const Accordion: FC<IProps> = ({
   return (
     <AccordionComponent key={`acc-key-${label}`}>
       {isMobile && index !== 1 && <DropdownMenuDivider color="btnTertiary" />}
-      <AccordionTitle
-        as={href ? linkComponent : "div"}
-        href={href}
-        onClick={onTitleClick}
-      >
+      <AccordionTitle as={href ? linkComponent : "div"} href={href} onClick={onTitleClick}>
         {heading(isOpened)}
       </AccordionTitle>
       <AccordionBody opened={isOpened}>{children}</AccordionBody>

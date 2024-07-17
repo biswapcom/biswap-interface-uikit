@@ -1,8 +1,12 @@
-import React, {FC} from "react";
-import {Box} from "../Box";
-import {Skeleton} from "../Skeleton";
-import {SkeletonMode, ViewMode} from "./types";
-import {Animations} from "../Skeleton/types";
+import React, { FC } from "react";
+
+// components
+import { Box } from "../Box";
+import { Skeleton } from "../Skeleton";
+
+// types
+import { SkeletonMode } from "./types";
+import { SkeletonAnimation } from "../Skeleton";
 
 interface IProps {
   viewMode?: SkeletonMode;
@@ -12,28 +16,29 @@ interface IProps {
 }
 
 const TableCardSkeleton: FC<IProps> = ({
-  viewMode = ViewMode.CARD,
+  viewMode = SkeletonMode.CARD,
   number = 6,
   tableHeight = "72px",
   cardHeight = "352px",
 }): JSX.Element => {
-  if (viewMode === ViewMode.CARD) {
+  if (viewMode === SkeletonMode.CARD) {
     return (
       <>
         {Array.from({ length: number }, (v, i) => i).map((item) => (
           <Box key={item.toString()} overflow="hidden" borderRadius="16px">
-            <Skeleton animation={Animations.WAVES} height={cardHeight} width="100%" />
+            <Skeleton animation={SkeletonAnimation.WAVES} height={cardHeight} width="100%" />
           </Box>
         ))}
       </>
     );
   }
+
   return (
     <Box overflow="hidden" borderRadius="16px">
       {Array.from({ length: number }, (v, i) => i).map((item) => (
         <Skeleton
           key={item.toString()}
-          animation={Animations.WAVES}
+          animation={SkeletonAnimation.WAVES}
           height={tableHeight}
           width="100%"
           my="2px"

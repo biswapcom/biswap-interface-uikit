@@ -1,3 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { IDirectionButtonProps } from "../../types";
-export declare const DirectionButton: ({ enabled, onClick, iconName, isNextButton, themeType, navPadding, }: IDirectionButtonProps) => React.JSX.Element;
+declare const DirectionButton: FC<IDirectionButtonProps>;
+export default DirectionButton;

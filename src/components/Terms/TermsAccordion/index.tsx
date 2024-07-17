@@ -30,7 +30,7 @@ const TermsWrapper = styled(Box)`
   transition: height ease 0.5s;
 `;
 
-const PlusAnimatedIcon = styled.div<{
+const PlusAnimatedIcon = styled(Box)<{
   imageSize: string;
   isOpen: boolean;
   imageColor: string;
@@ -56,22 +56,15 @@ const PlusAnimatedIcon = styled.div<{
   }
 
   &:before {
-    transform: ${({ isOpen }) =>
-      `translate(-50%, -50%) ${isOpen ? "rotate(0deg)" : "rotate(90deg)"}`};
+    transform: ${({ isOpen }) => `translate(-50%, -50%) ${isOpen ? "rotate(0deg)" : "rotate(90deg)"}`};
   }
 
   &:after {
-    transform: ${({ isOpen }) =>
-      `translate(-50%, -50%) ${isOpen ? "rotate(0deg)" : "rotate(180deg)"}`};
+    transform: ${({ isOpen }) => `translate(-50%, -50%) ${isOpen ? "rotate(0deg)" : "rotate(180deg)"}`};
   }
 `;
 
-const TermsAccordion: FC<IProps> = ({
-  name = "",
-  imageSize,
-  imageColor,
-  children,
-}) => {
+const TermsAccordion: FC<IProps> = ({ name = "", imageSize, imageColor, children }) => {
   const [isOpened, setOpened] = useState<boolean>(true);
 
   const contentEl = useRef<HTMLDivElement>(null);
@@ -90,10 +83,7 @@ const TermsAccordion: FC<IProps> = ({
           imageColor={getThemeValue(`colors.${imageColor}`, imageColor)(theme)}
         />
       </TermsHead>
-      <TermsWrapper
-        ref={contentEl}
-        height={isOpened ? contentEl?.current?.scrollHeight : "0"}
-      >
+      <TermsWrapper ref={contentEl} height={isOpened ? contentEl?.current?.scrollHeight : "0"}>
         {children}
       </TermsWrapper>
     </Box>

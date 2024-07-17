@@ -1,4 +1,8 @@
-import { CarouselButtonsTypes } from "../../hooks";
+export declare enum CarouselButtonsTypes {
+    PRIMARY = "primary",
+    WHITE = "white",
+    GRAY_OPACITY = "grayOpacity"
+}
 export interface IDirectionButtonProps {
     enabled: boolean;
     onClick: () => void;
@@ -7,15 +11,9 @@ export interface IDirectionButtonProps {
     navPadding?: number;
     themeType: CarouselButtonsTypes;
 }
-export declare const variantsNavButton: {
-    readonly PRIMARY: "primary";
-    readonly WHITE: "white";
-    readonly GRAY_OPACITY: "grayOpacity";
-};
-export type VariantNavButton = typeof variantsNavButton[keyof typeof variantsNavButton];
 export interface IDirectButtonStyled {
     disabled?: boolean;
     isNextButton?: boolean;
     navPadding?: number;
-    variant: VariantNavButton;
+    variant: CarouselButtonsTypes;
 }

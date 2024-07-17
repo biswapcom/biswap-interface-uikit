@@ -1,4 +1,4 @@
-import React from "react";
-import { ToggleProps } from "./types";
-declare const Toggle: React.FC<ToggleProps>;
+import { FC } from "react";
+import { type ToggleProps } from "./types";
+declare const Toggle: FC<ToggleProps>;
 export default Toggle;

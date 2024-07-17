@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 // components
 import TermsAccordion from "./TermsAccordion";
-import { Box, BoxProps, Flex } from "../Box";
+import { type BoxProps, Box, Flex } from "../Box";
 import { BodyText, Scales } from "../Typography";
 
 interface IProps extends BoxProps {
@@ -46,13 +46,10 @@ const Terms: FC<IProps> = ({
         </BodyText>
       </StyledListItem>
     ));
+
   return (
     <Box className={scrollClass} {...rest}>
-      <TermsAccordion
-        name={title}
-        imageSize={imageSize}
-        imageColor={imageColor}
-      >
+      <TermsAccordion name={title} imageSize={imageSize} imageColor={imageColor}>
         <Box>
           <BodyText mt="24px" color="warning" scale={Scales.SIZE16} bold>
             {revised}

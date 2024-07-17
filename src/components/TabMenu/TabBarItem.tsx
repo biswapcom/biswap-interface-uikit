@@ -1,40 +1,45 @@
 import React, { useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
-import { TabBarItemProps, tabsScales, tabVariants } from "./types";
+import { variant as systemVariant } from "styled-system";
+
+// types
+import { type TabBarItemProps, Scales, Variants } from "./types";
+import { type PolymorphicComponent } from "../../util";
+
+// hooks
 import { useMatchBreakpoints } from "../../contexts";
-import {
-  barItemScaleVariant,
-  barVariants,
-  menuIconScaleVariants,
-} from "./theme";
-import { variant } from "styled-system";
+
+// theme
+import { barItemScaleVariant, barVariants, menuIconScaleVariants } from "./theme";
+
+// components
 import IconComponent from "../Svg/IconComponent";
 import { Flex } from "../Box";
-import { PolymorphicComponent } from "../../util";
 
-const TabItem: PolymorphicComponent<
-  TabBarItemProps,
-  "button"
-> = styled.button<TabBarItemProps>`
-  border: 0;
-  margin: 0;
-  cursor: pointer;
+const TabItem = styled.button<TabBarItemProps>`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  margin: 0;
+  border: 0;
+  outline: 0;
   font-family: inherit;
   font-weight: 600;
   line-height: 1;
-  outline: 0;
-  transition: background-color 0.3s, opacity 0.3s, color 0.3s;
   background-color: transparent;
+  transition:
+    background-color 0.3s,
+    opacity 0.3s,
+    color 0.3s;
+  cursor: pointer;
   white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
 
-  ${variant({
+  ${systemVariant({
     variants: barVariants,
   })}
-  ${variant({
+
+  ${systemVariant({
     prop: "scale",
     variants: barItemScaleVariant,
   })}
@@ -42,9 +47,7 @@ const TabItem: PolymorphicComponent<
   ${({ isActive, variant, theme }) =>
     isActive &&
     css`
-      color: ${theme.colors[
-        variant === tabVariants.DARK ? "white" : "dark800"
-      ]};
+      color: ${theme.colors[variant === Variants.DARK ? "white" : "dark800"]};
     `}
 `;
 
@@ -57,14 +60,14 @@ const TabBarItem: PolymorphicComponent<TabBarItemProps, "button"> = ({
   blockOffset,
   iconName = "",
   iconColor = "",
-  scale = tabsScales.MD,
+  scale = Scales.MD,
   as,
-  onItemClick = () => {},
-  onClick = () => {},
+  onItemClick,
+  onClick,
   children,
   ...props
 }: TabBarItemProps): JSX.Element => {
-  const { isXs, isSm, isMs, isLg, isXl, isXll, isXxl } = useMatchBreakpoints();
+  const { isMobile, isTablet, isDesktop } = useMatchBreakpoints();
 
   const ref = useRef<HTMLButtonElement>(null);
 
@@ -78,22 +81,12 @@ const TabBarItem: PolymorphicComponent<TabBarItemProps, "button"> = ({
           : [...prev, itemWidth];
       });
     }
-  }, [
-    blockOffset,
-    itemWidth,
-    activeButtonIndex,
-    isXs,
-    isSm,
-    isMs,
-    isLg,
-    isXl,
-    isXll,
-    isXxl,
-  ]);
+    // eslint-disable-next-line
+  }, [blockOffset, itemWidth, activeButtonIndex, isMobile, isTablet, isDesktop]);
 
   const omItemClickHandler = () => {
-    onItemClick(itemIndex);
-    onClick();
+    onItemClick?.(itemIndex);
+    onClick?.();
   };
 
   const iconSizes = menuIconScaleVariants[scale];
