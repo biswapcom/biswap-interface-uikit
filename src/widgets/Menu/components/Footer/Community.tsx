@@ -176,19 +176,9 @@ const Community: React.FC<CommunityProps> = ({
                     </DropDownLink>
                     <DropDownLabel>Chats:</DropDownLabel>
                     {social.items.chats.map((item) => (
-                      <DropDownLink
-                        key={item.label}
-                        href={item.href}
-                        target="_blank"
-                        aria-label={social.label}
-                      >
+                      <DropDownLink key={item.label} href={item.href} target="_blank" aria-label={social.label}>
                         <FlagWrap>
-                          <Image
-                            src={`${baseAwsUrl}/icons/Flags/${item.icon}.svg`}
-                            width={14}
-                            height={14}
-                            alt=""
-                          />
+                          <Image src={`${baseAwsUrl}/icons/Flags/${item.icon}.svg`} width={14} height={14} alt="" />
                         </FlagWrap>
                         {item.label}
                       </DropDownLink>

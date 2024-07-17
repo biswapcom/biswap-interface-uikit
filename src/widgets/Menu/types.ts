@@ -1,8 +1,4 @@
-import {
-  ElementType,
-  FunctionComponent,
-  ReactNode,
-} from "react";
+import { ElementType, FunctionComponent, ReactNode } from "react";
 import { MenuItemsType } from "../../components/MenuItems/types";
 import { SubMenuItemsType } from "../../components/SubMenuItems";
 import { Colors } from "../../theme";

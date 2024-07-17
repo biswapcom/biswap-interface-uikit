@@ -41,16 +41,12 @@ const ActionIcon = styled.div<{ isOpen: boolean }>`
 
   &:before {
     transform: ${({ isOpen }) =>
-      isOpen
-        ? "translate(-50%, -50%) rotate(180deg)"
-        : "translate(-50%, -50%) rotate(90deg)"};
+      isOpen ? "translate(-50%, -50%) rotate(180deg)" : "translate(-50%, -50%) rotate(90deg)"};
   }
 
   &:after {
     transform: ${({ isOpen }) =>
-      isOpen
-        ? "translate(-50%, -50%) rotate(180deg)"
-        : "translate(-50%, -50%) rotate(0deg)"};
+      isOpen ? "translate(-50%, -50%) rotate(180deg)" : "translate(-50%, -50%) rotate(0deg)"};
   }
 `;
 
@@ -58,10 +54,12 @@ const NavList = styled.div<{ isOpen: boolean; innerHeight: number }>`
   overflow: hidden;
   transform: ${({ isOpen }) => (isOpen ? "scaleY(1)" : "scaleY(0)")};
   transform-origin: top;
-  height: ${({ isOpen, innerHeight }) =>
-    isOpen ? `${innerHeight * 26 + 16}px` : "0"};
+  height: ${({ isOpen, innerHeight }) => (isOpen ? `${innerHeight * 26 + 16}px` : "0")};
   opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
-  transition: transform 0.3s ease, opacity 0.3s ease, height 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    height 0.3s ease;
   padding-bottom: ${({ isOpen }) => (isOpen ? "16px" : "0")};
 
   ${({ theme }) => theme.mediaQueries.sm} {
@@ -104,34 +102,20 @@ const CommonFooterLinksComponent: React.FC<FooterLinks> = ({ footerLinks }) => {
         <ActionIcon isOpen={isOpen} />
       </TopAction>
       <NavList isOpen={isOpen} innerHeight={arrLength}>
-        {links?.map(
-          (
-            {
-              href,
-              target = null,
-              label,
-              type = DropdownMenuItemType.INTERNAL_LINK,
-            },
-            index
-          ) => (
-            <NavItem key={index.toString()}>
-              {type === DropdownMenuItemType.INTERNAL_LINK && (
-                <CustomLink as={linkComponent} to={href}>
-                  {label}
-                </CustomLink>
-              )}
-              {type === DropdownMenuItemType.EXTERNAL_LINK && (
-                <CustomLink
-                  as="a"
-                  href={href}
-                  target={target ? target : "_self"}
-                >
-                  {label}
-                </CustomLink>
-              )}
-            </NavItem>
-          )
-        )}
+        {links?.map(({ href, target = null, label, type = DropdownMenuItemType.INTERNAL_LINK }, index) => (
+          <NavItem key={index.toString()}>
+            {type === DropdownMenuItemType.INTERNAL_LINK && (
+              <CustomLink as={linkComponent} to={href}>
+                {label}
+              </CustomLink>
+            )}
+            {type === DropdownMenuItemType.EXTERNAL_LINK && (
+              <CustomLink as="a" href={href} target={target ? target : "_self"}>
+                {label}
+              </CustomLink>
+            )}
+          </NavItem>
+        ))}
       </NavList>
     </>
   );

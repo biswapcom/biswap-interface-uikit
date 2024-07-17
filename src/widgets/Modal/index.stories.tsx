@@ -30,24 +30,12 @@ export const Default: React.FC = () => {
     <Modal title={"title v1"}>
       <Heading>title</Heading>
       <Text>closeOnOverlayClick</Text>
-      <Button onClick={() => modalV2.onOpen()}>
-        This button opens v2 modal
-      </Button>
+      <Button onClick={() => modalV2.onOpen()}>This button opens v2 modal</Button>
     </Modal>,
     true
   );
-  const [onPresent2] = useModal(
-    <CustomModal title="Modal 2" />,
-    false,
-    false,
-    "second"
-  );
-  const [onPresent3] = useModal(
-    <CustomModal title="Modal 3" />,
-    false,
-    false,
-    "third"
-  );
+  const [onPresent2] = useModal(<CustomModal title="Modal 2" />, false, false, "second");
+  const [onPresent3] = useModal(<CustomModal title="Modal 3" />, false, false, "third");
   return (
     <div>
       <Button onClick={onPresent1}>Open modal 1</Button>
@@ -56,9 +44,7 @@ export const Default: React.FC = () => {
 
       <ModalV2 closeOnOverlayClick {...modalV2}>
         <Modal title="title v2">
-          <Button onClick={() => modalExtendedV2.onOpen()}>
-            This button opens extended v2 modal
-          </Button>
+          <Button onClick={() => modalExtendedV2.onOpen()}>This button opens extended v2 modal</Button>
           <BodyText> TEST V2 MODAL </BodyText>
         </Modal>
       </ModalV2>
@@ -72,25 +58,15 @@ export const Default: React.FC = () => {
 };
 
 export const WithBackground: React.FC = () => {
-  const CustomBackgroundModal: React.FC<ModalProps> = ({
-    title,
-    onDismiss,
-  }) => {
+  const CustomBackgroundModal: React.FC<ModalProps> = ({ title, onDismiss }) => {
     return (
-      <Modal
-        title={title}
-        modalBackground="secondary"
-        onDismiss={onDismiss}
-        maxWidth="400px"
-      >
+      <Modal title={title} modalBackground="secondary" onDismiss={onDismiss} maxWidth="400px">
         Modal body text
       </Modal>
     );
   };
 
-  const [onPresent1] = useModal(
-    <CustomBackgroundModal title="Modal with custom background" />
-  );
+  const [onPresent1] = useModal(<CustomBackgroundModal title="Modal with custom background" />);
   return <Button onClick={onPresent1}>Modal with custom background</Button>;
 };
 
@@ -103,9 +79,7 @@ export const WithCustomWidth: React.FC = () => {
     );
   };
 
-  const [onPresent1] = useModal(
-    <CustomWidthModal title="Modal with custom width and test very long title text" />
-  );
+  const [onPresent1] = useModal(<CustomWidthModal title="Modal with custom width and test very long title text" />);
   return <Button onClick={onPresent1}>Modal with custom width</Button>;
 };
 //-----------
@@ -126,12 +100,7 @@ export const WithBackButton: React.FC = () => {
     };
 
     return (
-      <Modal
-        title={title}
-        onDismiss={onDismiss}
-        onBack={handleOnBack}
-        hideCloseButton
-      >
+      <Modal title={title} onDismiss={onDismiss} onBack={handleOnBack} hideCloseButton>
         <Button onClick={onDismiss} variant={Variants.TEXT}>
           Consumer can still close it.
         </Button>
@@ -139,10 +108,7 @@ export const WithBackButton: React.FC = () => {
     );
   };
 
-  const [onPresent1] = useModal(
-    <BackButtonModal title="Modal with no X" />,
-    false
-  );
+  const [onPresent1] = useModal(<BackButtonModal title="Modal with no X" />, false);
 
   return <Button onClick={onPresent1}>Only Back Button</Button>;
 };
@@ -155,11 +121,7 @@ export const ReactingToOusideChanges: React.FC = () => {
     }, 500);
     return () => clearInterval(intervalId);
   }, []);
-  const ReactiveModal: React.FC<ModalProps & { count: number }> = ({
-    title,
-    count,
-    onDismiss,
-  }) => {
+  const ReactiveModal: React.FC<ModalProps & { count: number }> = ({ title, count, onDismiss }) => {
     return (
       <Modal title={title} onDismiss={onDismiss}>
         <h2>Counter: {count}</h2>
@@ -171,20 +133,14 @@ export const ReactingToOusideChanges: React.FC = () => {
   };
 
   const [onPresent1] = useModal(
-    <ReactiveModal
-      title={`[${counter}] Modal that reacts to outside change`}
-      count={counter}
-    />,
+    <ReactiveModal title={`[${counter}] Modal that reacts to outside change`} count={counter} />,
     true,
     true,
     "reactiveModal"
   );
 
   const [onPresent2] = useModal(
-    <ReactiveModal
-      title={`[${counter}] Modal that does NOT react to outside change`}
-      count={counter}
-    />
+    <ReactiveModal title={`[${counter}] Modal that does NOT react to outside change`} count={counter} />
   );
   return (
     <div>
