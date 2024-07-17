@@ -1,9 +1,12 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { Button, ButtonProps } from "../../../../../components/Button";
-import { useMatchBreakpoints } from "../../../../../contexts";
+
+// components
+import { Button, ButtonProps, ButtonScales } from "../../../../../components/Button";
 import { GobletSolidIcon } from "../../../../../components/Svg";
-import { Scales } from "../../../../../components/Button/types";
+
+// hooks
+import { useMatchBreakpoints } from "../../../../../contexts";
 
 interface Props {
   account?: string;
@@ -49,7 +52,6 @@ const StyledLink = styled.a<{ width?: string; flat: boolean }>`
 
 const StyledBtn = styled(Button)<ButtonProps>`
   background: linear-gradient(77.58deg, #2359aa -8.83%, #3a2281 71.19%, #84227e 124.82%);
-  //padding-left: 0;
 
   &:hover {
     opacity: 0.8;
@@ -78,7 +80,7 @@ const BDayEvent: FC<Props> = ({ account, callback, href = "/" }) => {
           {buttonText}
         </StyledLink>
       ) : (
-        <StyledBtn flat={isMobile} width={isMobile ? "100%" : "auto"} scale={Scales.LG} onClick={onClickHandler}>
+        <StyledBtn flat={isMobile} width={isMobile ? "100%" : "auto"} scale={ButtonScales.LG} onClick={onClickHandler}>
           <GobletSolidIcon width="24px" mr="12px" color="white" />
           {buttonText}
         </StyledBtn>

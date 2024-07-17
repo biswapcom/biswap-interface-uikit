@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 
 // types
@@ -18,6 +18,7 @@ import Product from "./Product";
 import Service from "./Service";
 import Community from "./Community";
 import Audit from "./Audit";
+import { Grid } from "../../../../components/Box";
 
 interface Props
   extends BSWPriceProps,
@@ -49,10 +50,7 @@ const Wrapper = styled.footer`
   }
 `;
 
-const InnerRow = styled.div`
-  display: grid;
-  max-width: 1120px;
-  margin: 0 auto;
+const InnerRow = styled(Grid)`
   grid-template-columns: 1fr;
   grid-template-areas:
     "footer-info"
@@ -61,6 +59,8 @@ const InnerRow = styled.div`
     "service"
     "community"
     "audit";
+  max-width: 1120px;
+  margin: 0 auto;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     grid-template-columns: repeat(3, minmax(110px, 1fr));
@@ -69,6 +69,7 @@ const InnerRow = styled.div`
       "about product service"
       "community . audit";
   }
+
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: 338px minmax(0, 64px) repeat(2, minmax(110px, 1fr)) 110px;
     grid-template-areas:
@@ -84,7 +85,7 @@ const InnerRow = styled.div`
   }
 `;
 
-const Footer: React.FC<Props> = ({
+const Footer: FC<Props> = ({
   BSWPriceLabel,
   BSWPriceValue,
   registerToken,
@@ -115,8 +116,6 @@ const Footer: React.FC<Props> = ({
         <Service footerLinks={serviceLinks} />
         <Community isFooter socialLinks={socialLinks} baseAwsUrl={baseAwsUrl} />
         <Audit marketplaceLink={marketplaceLink} baseAwsUrl={baseAwsUrl} />
-        {/* <Support/> */}
-        {/* <BtnUp onClick={()=> scroll.scrollToTop()}><ArrowUp color='white'/></BtnUp> */}
       </InnerRow>
     </Wrapper>
   );

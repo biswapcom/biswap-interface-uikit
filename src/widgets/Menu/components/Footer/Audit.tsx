@@ -54,13 +54,16 @@ const MarketPlaceButton = styled(Button)`
   border-radius: 8px;
   margin-bottom: 0;
   transition: opacity 0.3s ease;
+
   ${({ theme }) => theme.mediaQueries.sm} {
     margin-bottom: 8px;
   }
+
   &:hover {
     opacity: 0.7;
   }
 `;
+
 const IconWrapper = styled.div`
   background: linear-gradient(136.03deg, #1263f1 -7.36%, #f63d5e 131.43%);
   border-radius: 6px;
@@ -70,6 +73,7 @@ const IconWrapper = styled.div`
 
 const Audit: FC<{ marketplaceLink?: string; baseAwsUrl: string }> = ({ marketplaceLink, baseAwsUrl }) => {
   const { isMobile } = useMatchBreakpoints();
+
   return (
     <AuditedWrap>
       <MarketPlaceButton as="a" href={marketplaceLink ?? MARKETPLACE_URL} target={isMobile ? "_self" : "_blank"}>

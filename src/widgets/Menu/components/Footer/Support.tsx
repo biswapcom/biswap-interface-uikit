@@ -1,6 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
+
+// components
 import { TelegramIcon } from "../../../../components/Svg";
+import { BodyText, Scales } from "../../../../components/Typography";
 
 const Wrapper = styled.div`
   grid-area: support;
@@ -13,12 +16,6 @@ const Wrapper = styled.div`
   ${({ theme }) => theme.mediaQueries.xll} {
     margin-top: 0;
   }
-`;
-
-const Title = styled.h4`
-  font-size: 16px;
-  color: ${({ theme }) => theme.colors.white};
-  margin-bottom: 16px;
 `;
 
 const LinkBtn = styled.a`
@@ -36,10 +33,12 @@ const LinkBtn = styled.a`
   }
 `;
 
-const Suport: React.FC = () => {
+const Suport: FC = () => {
   return (
     <Wrapper>
-      <Title>Support 24/7</Title>
+      <BodyText as="h4" scale={Scales.SIZE16} mt="16px" color="white">
+        Support 24/7
+      </BodyText>
       <LinkBtn href="https://t.me/biswap" target="_blank">
         Contact us
         <TelegramIcon width="24px" color="contrast" ml="4px" />

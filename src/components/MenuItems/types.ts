@@ -1,9 +1,10 @@
-import { FunctionComponent } from "react";
+import { FC, FunctionComponent } from "react";
 
 // types
 import type { BoxProps } from "../Box";
 import type { DropdownMenuItems } from "../DropdownMenu/types";
 import type { Colors } from "../../theme";
+import { DropdownProps } from "../Dropdown";
 
 export enum ItemTypes {
   DIVIDER = "DIVIDER",
@@ -36,5 +37,5 @@ export interface MenuItemsProps extends BoxProps {
   isMobileMenuOpened?: boolean;
   mobileMenuCallback?: (s: boolean) => void;
   baseAwsUrl: string;
-  mobileLangSelector: FunctionComponent;
+  mobileLangSelector: FC<DropdownProps>;
 }

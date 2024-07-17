@@ -1,4 +1,6 @@
-import React from "react";
+import React, { FC } from "react";
+
+// components
 import { Button, ButtonScales, ButtonVariants } from "../../../../components/Button";
 
 export interface Props {
@@ -6,7 +8,7 @@ export interface Props {
   buyBswLabel: string;
 }
 
-const BuyBSW: React.FC<Props> = ({ buyBswHandler, buyBswLabel }) => {
+const BuyBSW: FC<Props> = ({ buyBswHandler, buyBswLabel }) => {
   return (
     <Button onClick={buyBswHandler} variant={ButtonVariants.DANGER} scale={ButtonScales.MD}>
       {buyBswLabel}

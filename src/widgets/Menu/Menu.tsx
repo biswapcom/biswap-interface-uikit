@@ -3,9 +3,9 @@ import throttle from "lodash/throttle";
 import styled, { DefaultTheme } from "styled-components";
 
 // components
-import Flex from "../../components/Box/Flex";
+import { Flex } from "../../components/Box";
 import Footer from "./components/Footer/Footer";
-import MenuItems from "../../components/MenuItems/MenuItems";
+import { MenuItems } from "../../components/MenuItems";
 import Logo from "./components/Logo";
 
 // context
@@ -38,9 +38,11 @@ const getBackground = ({
   theme: DefaultTheme;
   menuBg: boolean;
   isMobileMenuOpened: boolean;
-}) => {
+}): string => {
   if (isMobileMenuOpened) return theme.colors.white;
+
   if (menuBg && !isMobileMenuOpened) return theme.nav.background;
+
   return "transparent";
 };
 
@@ -121,12 +123,12 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
   buyBswLabel = "Buy BSW",
   mobileLangSelector,
 }) => {
-  const { isMobile } = useMatchBreakpoints();
   const [showMenu, setShowMenu] = useState<boolean>(true);
   const [menuBg, setMenuBg] = useState<boolean>(false);
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState<boolean>(false);
-
   const [transferBannerHeight, setTransferBannerHeight] = useState<number>(TRANSFER_BLOCK_CLOSED_HEIGHT);
+
+  const { isMobile } = useMatchBreakpoints();
 
   const refPrevOffset = useRef(typeof window === "undefined" ? 0 : window.pageYOffset);
 
@@ -164,9 +166,11 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
       }
       refPrevOffset.current = currentOffset;
     };
+
     const throttledHandleScroll = throttle(handleScroll, 200);
 
     window.addEventListener("scroll", throttledHandleScroll, { passive: true });
+
     return () => {
       window.removeEventListener("scroll", throttledHandleScroll);
     };

@@ -1,12 +1,18 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
-import { socials } from "../../config";
-import { SvgProps } from "../../../../components/Svg";
-import Link from "../../../../components/Link/Link";
-import * as IconModule from "../../../../components/Svg";
-import { SocialLinks } from "../../types";
-import { Box } from "../../../../components/Box";
 import Image from "next/image";
+
+// config
+import { socials } from "../../config";
+
+// types
+import { SvgProps } from "../../../../components/Svg";
+import { SocialLinks } from "../../types";
+
+// components
+import { Link } from "../../../../components/Link";
+import * as IconModule from "../../../../components/Svg";
+import { Box, Flex } from "../../../../components/Box";
 
 export interface CommunityProps {
   baseAwsUrl: string;
@@ -19,7 +25,7 @@ export interface CommunityProps {
 export interface SocialWrapProps {
   menuVariant?: boolean;
 }
-const Icons = IconModule as unknown as { [key: string]: React.FC<SvgProps> };
+const Icons = IconModule as unknown as { [key: string]: FC<SvgProps> };
 
 const Wrapper = styled.div<{ menuVariant?: boolean }>`
   grid-area: community;
@@ -31,31 +37,30 @@ const Title = styled.h4`
   color: ${({ theme }) => theme.colors.white};
   margin-bottom: 16px;
 `;
-const SocialWrap = styled.div<SocialWrapProps>`
-  display: flex;
+
+const SocialWrap = styled(Flex)<SocialWrapProps>`
   flex-wrap: wrap;
   gap: 16px;
   justify-content: flex-start;
 
-  ${({ menuVariant }) => {
-    if (menuVariant) {
-      return `
+  ${({ menuVariant }) =>
+    menuVariant &&
+    `
       width:274px;
-        row-gap: 25px;
-        column-gap: 26px;
-        justify-content: center;
-        margin: 0 auto;
-        
-      `;
-    }
-  }};
+      row-gap: 25px;
+      column-gap: 26px;
+      justify-content: center;
+      margin: 0 auto;
+      `};
 `;
 const SocialItem = styled.div`
   transition: opacity 0.3s ease;
+
   &:hover {
     opacity: 0.65;
   }
 `;
+
 const DropDownWrap = styled.div`
   position: relative;
 
@@ -65,6 +70,7 @@ const DropDownWrap = styled.div`
     }
   }
 `;
+
 const DropDownInnerWrap = styled.div`
   display: none;
   position: absolute;
@@ -80,6 +86,7 @@ const DropDownInnerWrap = styled.div`
     display: block;
   }
 `;
+
 const DropDown = styled.div`
   position: relative;
   border-radius: 8px;
@@ -101,6 +108,7 @@ const DropDown = styled.div`
     background-color: ${({ theme }) => theme.colors.tooltip};
   }
 `;
+
 const DropDownLink = styled.a`
   display: flex;
   align-items: center;
@@ -119,6 +127,7 @@ const DropDownLink = styled.a`
     margin-bottom: 8px;
   }
 `;
+
 const DropDownLabel = styled.span`
   display: block;
   font-size: 12px;
@@ -126,6 +135,7 @@ const DropDownLabel = styled.span`
   color: ${({ theme }) => theme.colors.pastelBlue};
   margin-bottom: 8px;
 `;
+
 const FlagWrap = styled.div`
   border-radius: 50%;
   margin-right: 8px;
@@ -134,7 +144,7 @@ const FlagWrap = styled.div`
   height: 14px;
 `;
 
-const Community: React.FC<CommunityProps> = ({
+const Community: FC<CommunityProps> = ({
   iconSize = "20px",
   menuVariant,
   isFooter = false,
@@ -144,7 +154,6 @@ const Community: React.FC<CommunityProps> = ({
   return (
     <Wrapper menuVariant={menuVariant || isFooter}>
       {socialLinks?.title && <Title>{socialLinks?.title}</Title>}
-
       <SocialWrap menuVariant={menuVariant}>
         {socials.map((social) => {
           const Icon = Icons[social.icon];
@@ -153,6 +162,7 @@ const Community: React.FC<CommunityProps> = ({
             color: isFooter ? "pastelBlue" : "gray600",
             style: { cursor: "pointer" },
           };
+
           if (social.items) {
             return (
               <DropDownWrap key={social.label}>
@@ -188,6 +198,7 @@ const Community: React.FC<CommunityProps> = ({
               </DropDownWrap>
             );
           }
+
           return (
             <SocialItem key={social.label}>
               <Link external href={social.href} aria-label={social.label}>
