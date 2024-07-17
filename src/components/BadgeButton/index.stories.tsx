@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 // components
 import BadgeButton from "./BadgeButton";
-import { BodyText } from "../Typography";
+import { BodyText, Scales } from "../Typography";
 import { GobletOpacityIcon } from "../Svg";
 import { Box, Flex } from "../Box";
 
@@ -29,7 +29,7 @@ const BadgeWrapper = styled(Flex)`
 export const Default: FC = () => {
   return (
     <Wrapper>
-      <BodyText scale="size32" mb={20} bold>
+      <BodyText scale={Scales.SIZE32} mb={20} bold>
         Badges Buttons
       </BodyText>
       <BadgeWrapper>
