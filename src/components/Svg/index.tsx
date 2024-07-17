@@ -394,6 +394,11 @@ export { default as RouteIcon } from "./Icons/Route/Route";
 export { default as DiscountSolidIcon } from "./Icons/Discount/DiscountSolid";
 export { default as DiscountOpacityIcon } from "./Icons/Discount/DiscountOpacity";
 
+// CrossChain
+export { default as SquidRouterIcon } from "./Icons/CrossChain/SquidRouter";
+export { default as WormholeIcon } from "./Icons/CrossChain/Wormhole";
+export { default as CrossChainOpacityIcon } from "./Icons/Menu/CrossChain/CrossChainOpacity";
+
 // perpetual
 export * from "./Icons/Menu/Perpetual";
 

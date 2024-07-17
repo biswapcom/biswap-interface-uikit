@@ -1,9 +1,9 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
-import {Button, ButtonProps} from "../../../../../components/Button";
-import {useMatchBreakpoints} from "../../../../../contexts";
-import {GobletSolidIcon} from "../../../../../components/Svg";
-import {Scales} from "../../../../../components/Button/types";
+import { Button, ButtonProps } from "../../../../../components/Button";
+import { useMatchBreakpoints } from "../../../../../contexts";
+import { GobletSolidIcon } from "../../../../../components/Svg";
+import { Scales } from "../../../../../components/Button/types";
 
 interface Props {
   account?: string;
@@ -35,12 +35,7 @@ const StyledLink = styled.a<{ width?: string; flat: boolean }>`
   line-height: 1;
   color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ flat }) => (flat ? 0 : "8px")};
-  background: linear-gradient(
-    77.58deg,
-    #2359aa -8.83%,
-    #3a2281 71.19%,
-    #84227e 124.82%
-  );
+  background: linear-gradient(77.58deg, #2359aa -8.83%, #3a2281 71.19%, #84227e 124.82%);
   cursor: pointer;
 
   &:hover {
@@ -48,22 +43,12 @@ const StyledLink = styled.a<{ width?: string; flat: boolean }>`
   }
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    background: linear-gradient(
-      79.91deg,
-      #1263f1 -19.82%,
-      #543fd7 48.01%,
-      #f93b5d 173.07%
-    );
-  } ;
+    background: linear-gradient(79.91deg, #1263f1 -19.82%, #543fd7 48.01%, #f93b5d 173.07%);
+  }
 `;
 
 const StyledBtn = styled(Button)<ButtonProps>`
-  background: linear-gradient(
-    77.58deg,
-    #2359aa -8.83%,
-    #3a2281 71.19%,
-    #84227e 124.82%
-  );
+  background: linear-gradient(77.58deg, #2359aa -8.83%, #3a2281 71.19%, #84227e 124.82%);
   //padding-left: 0;
 
   &:hover {
@@ -71,20 +56,11 @@ const StyledBtn = styled(Button)<ButtonProps>`
   }
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    background: linear-gradient(
-      79.91deg,
-      #1263f1 -19.82%,
-      #543fd7 48.01%,
-      #f93b5d 173.07%
-    );
-  } ;
+    background: linear-gradient(79.91deg, #1263f1 -19.82%, #543fd7 48.01%, #f93b5d 173.07%);
+  }
 `;
 
-const BDayEvent: FC<Props> = ({
-  account,
-  callback,
-  href = "/",
-}) => {
+const BDayEvent: FC<Props> = ({ account, callback, href = "/" }) => {
   const { isMobile } = useMatchBreakpoints();
   const buttonText = "B-Day Presents";
   const isAbsoluteUrl = href.startsWith("http");
@@ -97,21 +73,12 @@ const BDayEvent: FC<Props> = ({
   return (
     <Wrapper>
       {isAbsoluteUrl ? (
-        <StyledLink
-          width={isMobile ? "100%" : "auto"}
-          flat={isMobile}
-          href={pathWithEventParam}
-        >
+        <StyledLink width={isMobile ? "100%" : "auto"} flat={isMobile} href={pathWithEventParam}>
           <GobletSolidIcon width="24px" mr="12px" color="white" />
           {buttonText}
         </StyledLink>
       ) : (
-        <StyledBtn
-          flat={isMobile}
-          width={isMobile ? "100%" : "auto"}
-          scale={Scales.LG}
-          onClick={onClickHandler}
-        >
+        <StyledBtn flat={isMobile} width={isMobile ? "100%" : "auto"} scale={Scales.LG} onClick={onClickHandler}>
           <GobletSolidIcon width="24px" mr="12px" color="white" />
           {buttonText}
         </StyledBtn>

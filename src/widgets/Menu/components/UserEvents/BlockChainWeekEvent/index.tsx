@@ -96,9 +96,7 @@ const BlockChainWeekEvent: FC<Props> = ({ href = "/", eventButtonLogo }) => {
   const { isMobile } = useMatchBreakpoints();
   const buttonText = "Grand Event";
   const isAbsoluteUrl = href.startsWith("http");
-  const pathWithEventParam = isAbsoluteUrl
-    ? `${href}/blockchain_week`
-    : "/blockchain_week";
+  const pathWithEventParam = isAbsoluteUrl ? `${href}/blockchain_week` : "/blockchain_week";
 
   return (
     <Wrapper pl={eventButtonLogo ? "0" : "16px"} flat={isMobile}>
