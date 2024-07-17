@@ -28,12 +28,7 @@ const AddToMetamaskBtn = styled.button`
 const ConnectMetamask: React.FC<Props> = ({ onClick, baseAwsUrl }) => {
   return (
     <AddToMetamaskBtn type="button" onClick={() => onClick()} as="button">
-      <Image
-        width={22}
-        height={22}
-        src={`${baseAwsUrl}/icons/metamask-transparent.svg`}
-        alt=""
-      />
+      <Image width={22} height={22} src={`${baseAwsUrl}/icons/metamask-transparent.svg`} alt="" />
     </AddToMetamaskBtn>
   );
 };

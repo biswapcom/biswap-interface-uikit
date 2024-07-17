@@ -29,10 +29,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const BSWPrice: React.FC<BSWPriceProps> = ({
-  BSWPriceLabel,
-  BSWPriceValue,
-}) => {
+const BSWPrice: React.FC<BSWPriceProps> = ({ BSWPriceLabel, BSWPriceValue }) => {
   return (
     <Wrapper>
       <BswIcon width="38px" className="logo" />

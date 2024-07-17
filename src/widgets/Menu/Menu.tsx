@@ -1,11 +1,4 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  FC,
-  PropsWithChildren,
-  Fragment,
-} from "react";
+import React, { useEffect, useRef, useState, FC, PropsWithChildren, Fragment } from "react";
 import throttle from "lodash/throttle";
 import styled, { DefaultTheme } from "styled-components";
 
@@ -63,9 +56,8 @@ const StyledNav = styled.nav<{ menuBg: boolean; isMobileMenuOpened: boolean }>`
   padding-right: 16px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    background-color: ${({ theme, menuBg }) =>
-      menuBg ? theme.nav.background : "transparent"};
-  } ;
+    background-color: ${({ theme, menuBg }) => (menuBg ? theme.nav.background : "transparent")};
+  }
 `;
 
 const FixedContainer = styled.div.attrs({
@@ -79,7 +71,9 @@ const FixedContainer = styled.div.attrs({
   width: 100%;
   z-index: 20;
 
-  transition: top 0.3s ease-in-out, max-height 0.3s ease-in-out;
+  transition:
+    top 0.3s ease-in-out,
+    max-height 0.3s ease-in-out;
 `;
 
 const TopBannerContainer = styled.div<{ height: number }>`
@@ -96,7 +90,9 @@ const BodyWrapper = styled(Flex)`
 
 const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   flex-grow: 1;
-  transition: margin-top 0.2s, margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    margin-top 0.2s,
+    margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translate3d(0, 0, 0);
   max-width: 100%;
 `;
@@ -130,36 +126,24 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
   const [menuBg, setMenuBg] = useState<boolean>(false);
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState<boolean>(false);
 
-  const [transferBannerHeight, setTransferBannerHeight] = useState<number>(
-    TRANSFER_BLOCK_CLOSED_HEIGHT
-  );
+  const [transferBannerHeight, setTransferBannerHeight] = useState<number>(TRANSFER_BLOCK_CLOSED_HEIGHT);
 
-  const refPrevOffset = useRef(
-    typeof window === "undefined" ? 0 : window.pageYOffset
-  );
+  const refPrevOffset = useRef(typeof window === "undefined" ? 0 : window.pageYOffset);
 
-  const TopMenuWithBannerHeight = banner
-    ? MENU_HEIGHT + transferBannerHeight
-    : MENU_HEIGHT;
+  const TopMenuWithBannerHeight = banner ? MENU_HEIGHT + transferBannerHeight : MENU_HEIGHT;
 
   const totalTopMenuHeight =
-    withEvent && isMobile
-      ? TopMenuWithBannerHeight + MOBILE_EVENT_BUTTON_HEIGHT
-      : TopMenuWithBannerHeight;
+    withEvent && isMobile ? TopMenuWithBannerHeight + MOBILE_EVENT_BUTTON_HEIGHT : TopMenuWithBannerHeight;
 
   const RightSide = rightSide ?? Fragment;
 
   const setTransferHeight = (expanded: boolean) =>
-    setTransferBannerHeight(
-      expanded ? TRANSFER_BLOCK_CLOSED_HEIGHT : TRANSFER_BLOCK_OPENED_HEIGHT
-    );
+    setTransferBannerHeight(expanded ? TRANSFER_BLOCK_CLOSED_HEIGHT : TRANSFER_BLOCK_OPENED_HEIGHT);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentOffset = window.pageYOffset;
-      const isBottomOfPage =
-        window.document.body.clientHeight ===
-        currentOffset + window.innerHeight;
+      const isBottomOfPage = window.document.body.clientHeight === currentOffset + window.innerHeight;
       const isTopOfPage = currentOffset === 0;
       // Always show the menu when user reach the top
       if (isTopOfPage) {
@@ -168,10 +152,7 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
       }
       // Avoid triggering anything at the bottom because of layout shift
       else if (!isBottomOfPage) {
-        if (
-          currentOffset < refPrevOffset.current ||
-          currentOffset <= totalTopMenuHeight
-        ) {
+        if (currentOffset < refPrevOffset.current || currentOffset <= totalTopMenuHeight) {
           // Has scroll up
           setShowMenu(true);
           setMenuBg(true);
@@ -197,21 +178,11 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
   return (
     <MenuContext.Provider value={{ linkComponent }}>
       <Wrapper>
-        <FixedContainer
-          showMenu={showMenu}
-          height={isMobileMenuOpened ? 0 : totalTopMenuHeight}
-        >
-          {banner && (
-            <TopBannerContainer height={transferBannerHeight}>
-              {banner(setTransferHeight)}
-            </TopBannerContainer>
-          )}
+        <FixedContainer showMenu={showMenu} height={isMobileMenuOpened ? 0 : totalTopMenuHeight}>
+          {banner && <TopBannerContainer height={transferBannerHeight}>{banner(setTransferHeight)}</TopBannerContainer>}
           <StyledNav menuBg={menuBg} isMobileMenuOpened={isMobileMenuOpened}>
             <Flex alignItems="center" justifyContent="center">
-              <Logo
-                logoSubtitle={customLogoSubtitle}
-                href={homeLink?.href ?? "/"}
-              />
+              <Logo logoSubtitle={customLogoSubtitle} href={homeLink?.href ?? "/"} />
               <MenuItems
                 items={links}
                 activeItem={activeItem}

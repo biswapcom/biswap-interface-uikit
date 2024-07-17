@@ -6,7 +6,7 @@ import { DropdownMenu } from "../DropdownMenu";
 import MobileDropdownMenu from "../DropdownMenu/MobileMenu/MobileDropdownMenu";
 import { MenuItem, MenuItemDivider, MenuItemMarker } from "../MenuItem";
 import IconComponent from "../Svg/IconComponent";
-import {BodyText, Scales} from "../Typography";
+import { BodyText, Scales } from "../Typography";
 
 // utils
 import { isTouchDevice } from "../../util";
@@ -86,11 +86,7 @@ const MenuItems: FC<MenuItemsProps> = ({
                       <Box ml={!href ? "8px" : 0} position="relative">
                         {/*@ts-ignore*/}
                         {isMarker && <MenuItemMarker color={isMarkerColor} />}
-                        <BodyText
-                          color={isHighlighted ? "warningPress" : "white"}
-                          scale={Scales.SIZE14}
-                          bold
-                        >
+                        <BodyText color={isHighlighted ? "warningPress" : "white"} scale={Scales.SIZE14} bold>
                           {label}
                         </BodyText>
                       </Box>

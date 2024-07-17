@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import Flex from "../../components/Box/Flex";
-import {Box} from "../../components/Box";
-import {ArrowLeftIcon, CloseIcon} from "../../components/Svg";
-import {IconButton} from "../../components/Button";
-import {ModalProps} from "./types";
-import {Scales, Variants} from "../../components/Button/types";
+import { Box } from "../../components/Box";
+import { ArrowLeftIcon, CloseIcon } from "../../components/Svg";
+import { IconButton } from "../../components/Button";
+import { ModalProps } from "./types";
+import { Scales, Variants } from "../../components/Button/types";
 
 export const ModalWrapper = styled.div`
   display: flex;
@@ -32,12 +32,7 @@ export const ModalCloseButton: React.FC<{
   closeBtnColor?: string;
 }> = ({ onDismiss, closeBtnColor }) => {
   return (
-    <IconButton
-      variant={Variants.TEXT}
-      onClick={onDismiss}
-      scale={Scales.SM}
-      aria-label="Close the dialog"
-    >
+    <IconButton variant={Variants.TEXT} onClick={onDismiss} scale={Scales.SM} aria-label="Close the dialog">
       <CloseIcon color={closeBtnColor || "dark600"} width="24px" />
     </IconButton>
   );
