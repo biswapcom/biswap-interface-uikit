@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, ReactNode, SetStateAction } from "react";
+import { Dispatch, ElementType, FC, ReactNode, SetStateAction } from "react";
 interface IProps {
     heading: (s?: boolean) => ReactNode;
     children: ReactNode;
@@ -6,7 +6,7 @@ interface IProps {
     clickable?: boolean;
     index: number;
     href?: string;
-    linkComponent?: React.ElementType;
+    linkComponent?: ElementType;
     isOpenItem?: boolean;
     setIsOpenMenu: (arg: boolean) => void;
     currentOpen: string | undefined;

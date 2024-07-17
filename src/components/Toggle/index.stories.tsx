@@ -1,30 +1,36 @@
-import React, { useState } from "react";
-import Toggle from "./Toggle";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
 
+// components
+import Toggle from "./Toggle";
 import { Text } from "../Text";
+import { Box, Flex } from "../Box";
+
+//types
+import { ToggleScales, ToggleVariants } from "./index";
 
 export default {
   title: "Components/Toggle",
   component: Toggle,
 };
 
-const WrapperLight = styled.div`
-  background: #f9fafd;
+const WrapperLight = styled(Box)`
   padding: 24px;
+  background: ${({ theme }) => theme.colors.gray100};
 `;
-const WrapperDark = styled.div`
-  background: #07162d;
+
+const WrapperDark = styled(Box)`
   padding: 24px;
+  background: ${({ theme }) => theme.colors.dark800};
 `;
-const Row = styled.div`
-  display: flex;
+
+const Row = styled(Flex)`
   gap: 0 24px;
   margin-bottom: 32px;
 `;
 
-export const Default: React.FC = () => {
-  const [isChecked, setIsChecked] = useState(false);
+export const Default: FC = () => {
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const toggle = () => setIsChecked(!isChecked);
 
@@ -35,27 +41,22 @@ export const Default: React.FC = () => {
           Default toggle
         </Text>
         <Row>
+          <Toggle checked={isChecked} onChange={toggle} scale={ToggleScales.MD} variant={ToggleVariants.LIGHT} />
           <Toggle
             checked={isChecked}
             onChange={toggle}
-            scale="md"
-            variant="light"
-          />
-          <Toggle
-            checked={isChecked}
-            onChange={toggle}
-            scale="md"
+            scale={ToggleScales.MD}
             label="Label LEFT"
             labelOrientation="left"
-            variant="light"
+            variant={ToggleVariants.LIGHT}
           />
           <Toggle
             checked={isChecked}
             onChange={toggle}
-            scale="md"
+            scale={ToggleScales.MD}
             label="Label RIGHT"
             labelOrientation="right"
-            variant="light"
+            variant={ToggleVariants.LIGHT}
           />
         </Row>
         <Text mb="12px" bold>
@@ -67,48 +68,42 @@ export const Default: React.FC = () => {
             defaultColor="secondary"
             checkedColor="dark800"
             onChange={toggle}
-            scale="md"
-            variant="light"
+            scale={ToggleScales.MD}
+            variant={ToggleVariants.LIGHT}
           />
           <Toggle
             checked={isChecked}
             onChange={toggle}
             defaultColor="secondary"
             checkedColor="dark800"
-            scale="md"
+            scale={ToggleScales.MD}
             label="Label LEFT"
             labelOrientation="left"
-            variant="light"
+            variant={ToggleVariants.LIGHT}
           />
           <Toggle
             checked={isChecked}
             onChange={toggle}
             defaultColor="secondary"
             checkedColor="dark800"
-            scale="md"
+            scale={ToggleScales.MD}
             label="Label RIGHT"
             labelOrientation="right"
-            variant="light"
+            variant={ToggleVariants.LIGHT}
           />
         </Row>
         <Text mb="12px" bold>
           Toggle disabled
         </Text>
         <Row>
-          <Toggle checked={isChecked} onChange={toggle} scale="md" disabled />
-          <Toggle
-            checked={isChecked}
-            onChange={toggle}
-            label="Label LEFT"
-            variant="light"
-            disabled
-          />
+          <Toggle checked={isChecked} onChange={toggle} scale={ToggleScales.MD} disabled />
+          <Toggle checked={isChecked} onChange={toggle} label="Label LEFT" variant={ToggleVariants.LIGHT} disabled />
           <Toggle
             checked={isChecked}
             onChange={toggle}
             label="Label RIGHT"
             labelOrientation="right"
-            variant="light"
+            variant={ToggleVariants.LIGHT}
             disabled
           />
         </Row>
@@ -122,7 +117,7 @@ export const Default: React.FC = () => {
             onChange={toggle}
             label="Label RIGHT"
             labelOrientation="right"
-            variant="light"
+            variant={ToggleVariants.LIGHT}
             spaceBetween
           />
         </Row>
@@ -132,27 +127,22 @@ export const Default: React.FC = () => {
           Default toggle
         </Text>
         <Row>
+          <Toggle checked={isChecked} onChange={toggle} scale={ToggleScales.MD} variant={ToggleVariants.DARK} />
           <Toggle
             checked={isChecked}
             onChange={toggle}
-            scale="md"
-            variant="dark"
-          />
-          <Toggle
-            checked={isChecked}
-            onChange={toggle}
-            scale="md"
+            scale={ToggleScales.MD}
             label="Label LEFT"
             labelOrientation="left"
-            variant="dark"
+            variant={ToggleVariants.DARK}
           />
           <Toggle
             checked={isChecked}
             onChange={toggle}
-            scale="md"
+            scale={ToggleScales.MD}
             label="Label RIGHT"
             labelOrientation="right"
-            variant="dark"
+            variant={ToggleVariants.DARK}
           />
         </Row>
         <Text mb="12px" color="white" bold>
@@ -164,28 +154,28 @@ export const Default: React.FC = () => {
             defaultColor="secondary"
             checkedColor="dark800"
             onChange={toggle}
-            scale="md"
-            variant="dark"
+            scale={ToggleScales.MD}
+            variant={ToggleVariants.DARK}
           />
           <Toggle
             checked={isChecked}
             onChange={toggle}
             defaultColor="secondary"
             checkedColor="dark800"
-            scale="md"
+            scale={ToggleScales.MD}
             label="Label LEFT"
             labelOrientation="left"
-            variant="dark"
+            variant={ToggleVariants.DARK}
           />
           <Toggle
             checked={isChecked}
             onChange={toggle}
             defaultColor="secondary"
             checkedColor="dark800"
-            scale="md"
+            scale={ToggleScales.MD}
             label="Label RIGHT"
             labelOrientation="right"
-            variant="dark"
+            variant={ToggleVariants.DARK}
           />
         </Row>
         <Text mb="12px" color="white" bold>
@@ -195,24 +185,18 @@ export const Default: React.FC = () => {
           <Toggle
             checked={isChecked}
             onChange={toggle}
-            scale="md"
+            scale={ToggleScales.MD}
             disabled
-            variant="dark"
+            variant={ToggleVariants.DARK}
           />
-          <Toggle
-            checked={isChecked}
-            onChange={toggle}
-            label="Label LEFT"
-            disabled
-            variant="dark"
-          />
+          <Toggle checked={isChecked} onChange={toggle} label="Label LEFT" disabled variant={ToggleVariants.DARK} />
           <Toggle
             checked={isChecked}
             onChange={toggle}
             label="Label RIGHT"
             labelOrientation="right"
             disabled
-            variant="dark"
+            variant={ToggleVariants.DARK}
           />
         </Row>
 
@@ -225,7 +209,7 @@ export const Default: React.FC = () => {
             onChange={toggle}
             label="Label RIGHT"
             labelOrientation="right"
-            variant="light"
+            variant={ToggleVariants.LIGHT}
             spaceBetween
           />
         </Row>

@@ -1,23 +1,29 @@
-import React from "react";
-import {Box, Flex} from "../Box";
-import {BodyText, Scales} from "../Typography";
-import {getRgba} from "../../util";
+import React, { FC } from "react";
 import styled from "styled-components";
+
+// components
+import { Box, Flex } from "../Box";
+import { BodyText, Scales } from "../Typography";
+
+// utils
+import { getRgba } from "../../util";
 
 const TableRow = styled(Flex)`
   padding: 6px 0;
+
   &:not(:last-child) {
-    border-bottom: ${({ theme }) =>
-      `1px solid ${getRgba(theme.colors.pastelBlue, theme, 0.16)}`};
+    border-bottom: ${({ theme }) => `1px solid ${getRgba(theme.colors.pastelBlue, theme, 0.16)}`};
   }
 `;
+
 const exampleArray = [
   { id: 1, maxStake: 56 },
   { id: 2, maxStake: 526 },
   { id: 3, maxStake: 6 },
   { id: 4, maxStake: 506 },
 ];
-const CustomTooltip = () => {
+
+const CustomTooltip: FC = () => {
   return (
     <Box width="194px">
       <BodyText mb="8px" scale={Scales.SIZE12} color="gray700">
@@ -38,13 +44,7 @@ const CustomTooltip = () => {
               {level.id}
             </BodyText>
             <Flex>
-              <BodyText
-                ml="4px"
-                width="74%"
-                scale={Scales.SIZE12}
-                color="white"
-                nowrap
-              >
+              <BodyText ml="4px" width="74%" scale={Scales.SIZE12} color="white" nowrap>
                 {`${level.maxStake} BSW`}
               </BodyText>
             </Flex>

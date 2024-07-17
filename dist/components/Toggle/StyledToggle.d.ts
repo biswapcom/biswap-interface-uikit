@@ -1,6 +1,6 @@
 /// <reference types="react" />
-import { HandleProps, InputProps, StyleToggleProps } from "./types";
 import { SpaceProps } from "styled-system";
+import { type HandleProps, type InputProps, type StyleToggleProps, Variants } from "./types";
 interface IToggleProps extends SpaceProps {
     labelOrientation?: string;
     disabled?: boolean;
@@ -21,7 +21,7 @@ export declare const Label: import("styled-components").StyledComponent<"div", i
     labelOrientation?: string;
     isChecked: boolean;
     disabled?: boolean;
-    variant?: string;
+    variant?: Variants;
 }, "fontSize" | "lineHeight">;
 export declare const Input: import("styled-components").StyledComponent<"input", import("styled-components").DefaultTheme, InputProps, never>;
 declare const StyledToggle: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, StyleToggleProps, never>;

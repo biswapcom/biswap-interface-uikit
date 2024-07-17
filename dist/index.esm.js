@@ -1988,54 +1988,54 @@ const ProgressCircle = ({ filled = 0, notFilled = 100, onClick }) => {
                 React.createElement(Icon$35, { width: "20px", color: "currentColor" })))));
 };
 
-var Variants$a;
+var Variants$c;
 (function (Variants) {
     Variants["INFO"] = "info";
     Variants["DANGER"] = "danger";
     Variants["SUCCESS"] = "success";
     Variants["WARNING"] = "warning";
-})(Variants$a || (Variants$a = {}));
+})(Variants$c || (Variants$c = {}));
 var ColoredVariants;
 (function (ColoredVariants) {
     ColoredVariants["DANGER"] = "danger";
     ColoredVariants["SUCCESS"] = "success";
 })(ColoredVariants || (ColoredVariants = {}));
 
-const getThemeColor = ({ variant = Variants$a.INFO }) => {
+const getThemeColor = ({ variant = Variants$c.INFO }) => {
     switch (variant) {
-        case Variants$a.DANGER:
+        case Variants$c.DANGER:
             return "rgba(249, 59, 93, 0.16)";
-        case Variants$a.WARNING:
+        case Variants$c.WARNING:
             return "rgba(255, 219, 28, 0.16)";
-        case Variants$a.SUCCESS:
+        case Variants$c.SUCCESS:
             return "rgba(29, 200, 114, 0.16)";
-        case Variants$a.INFO:
+        case Variants$c.INFO:
         default:
             return "rgba(18, 99, 241, 0.16)";
     }
 };
-const getIcon = (variant = Variants$a.INFO) => {
+const getIcon = (variant = Variants$c.INFO) => {
     switch (variant) {
-        case Variants$a.DANGER:
+        case Variants$c.DANGER:
             return Icon$32;
-        case Variants$a.WARNING:
+        case Variants$c.WARNING:
             return Icon$38;
-        case Variants$a.SUCCESS:
+        case Variants$c.SUCCESS:
             return Icon$2C;
-        case Variants$a.INFO:
+        case Variants$c.INFO:
         default:
             return Icon$2Q;
     }
 };
-const getIconColor = (variant = Variants$a.INFO) => {
+const getIconColor = (variant = Variants$c.INFO) => {
     switch (variant) {
-        case Variants$a.DANGER:
+        case Variants$c.DANGER:
             return "secondary";
-        case Variants$a.WARNING:
+        case Variants$c.WARNING:
             return "warning";
-        case Variants$a.SUCCESS:
+        case Variants$c.SUCCESS:
             return "success";
-        case Variants$a.INFO:
+        case Variants$c.INFO:
         default:
             return "primary";
     }
@@ -2130,15 +2130,15 @@ const getExternalLinkProps = () => ({
     rel: "noreferrer noopener",
 });
 
-var Scales$7;
+var Scales$9;
 (function (Scales) {
     Scales["XL"] = "xl";
     Scales["LG"] = "lg";
     Scales["MD"] = "md";
     Scales["SM"] = "sm";
     Scales["XS"] = "xs";
-})(Scales$7 || (Scales$7 = {}));
-var Variants$9;
+})(Scales$9 || (Scales$9 = {}));
+var Variants$b;
 (function (Variants) {
     Variants["PRIMARY"] = "primary";
     Variants["DANGER"] = "danger";
@@ -2151,34 +2151,34 @@ var Variants$9;
     Variants["TERTIARY_OUT"] = "tertiaryOut";
     Variants["TEXT"] = "text";
     Variants["TEXT_DARK"] = "textDark";
-})(Variants$9 || (Variants$9 = {}));
+})(Variants$b || (Variants$b = {}));
 
 const scaleVariants$3 = {
-    [Scales$7.XL]: {
+    [Scales$9.XL]: {
         height: "48px",
         fontSize: "16px",
         padding: "0 24px",
         borderRadius: "10px",
     },
-    [Scales$7.LG]: {
+    [Scales$9.LG]: {
         height: "40px",
         padding: "0 16px",
         fontSize: "14px",
         borderRadius: "8px",
     },
-    [Scales$7.MD]: {
+    [Scales$9.MD]: {
         height: "32px",
         padding: "0 12px",
         fontSize: "12px",
         borderRadius: "8px",
     },
-    [Scales$7.SM]: {
+    [Scales$9.SM]: {
         height: "24px",
         padding: "0 8px",
         fontSize: "12px",
         borderRadius: "6px",
     },
-    [Scales$7.XS]: {
+    [Scales$9.XS]: {
         height: "20px",
         padding: "0 8px",
         fontSize: "12px",
@@ -2186,7 +2186,7 @@ const scaleVariants$3 = {
     },
 };
 const styleVariants$3 = {
-    [Variants$9.PRIMARY]: {
+    [Variants$b.PRIMARY]: {
         backgroundColor: "primary",
         color: "white",
         ":hover:not(:disabled)": {
@@ -2196,7 +2196,7 @@ const styleVariants$3 = {
             backgroundColor: "primaryPress",
         },
     },
-    [Variants$9.DANGER]: {
+    [Variants$b.DANGER]: {
         backgroundColor: "secondary",
         color: "white",
         ":hover:not(:disabled)": {
@@ -2206,7 +2206,7 @@ const styleVariants$3 = {
             backgroundColor: "secondaryPress",
         },
     },
-    [Variants$9.SUCCESS]: {
+    [Variants$b.SUCCESS]: {
         backgroundColor: "success",
         color: "white",
         ":hover:not(:disabled)": {
@@ -2216,7 +2216,7 @@ const styleVariants$3 = {
             backgroundColor: "successPress",
         },
     },
-    [Variants$9.WARNING]: {
+    [Variants$b.WARNING]: {
         backgroundColor: "warning",
         color: "dark800",
         ":hover:not(:disabled)": {
@@ -2226,7 +2226,7 @@ const styleVariants$3 = {
             backgroundColor: "warningPress",
         },
     },
-    [Variants$9.BOOST]: {
+    [Variants$b.BOOST]: {
         backgroundColor: "boost",
         color: "white",
         ":hover:not(:disabled)": {
@@ -2236,7 +2236,7 @@ const styleVariants$3 = {
             backgroundColor: "boostPress",
         },
     },
-    [Variants$9.TERTIARY]: {
+    [Variants$b.TERTIARY]: {
         backgroundColor: "btnTertiary",
         color: "primary",
         border: "1px solid transparent",
@@ -2249,7 +2249,7 @@ const styleVariants$3 = {
             borderColor: "primary",
         },
     },
-    [Variants$9.TERTIARY_OUT]: {
+    [Variants$b.TERTIARY_OUT]: {
         color: "primary",
         backgroundColor: "transparent",
         border: "1px solid",
@@ -2263,7 +2263,7 @@ const styleVariants$3 = {
             borderColor: "transparent",
         },
     },
-    [Variants$9.LIGHT_OUT]: {
+    [Variants$b.LIGHT_OUT]: {
         color: "white",
         border: "1px solid",
         borderColor: "btnLightOutBorder",
@@ -2277,7 +2277,7 @@ const styleVariants$3 = {
             borderColor: "transparent",
         },
     },
-    [Variants$9.LIGHT]: {
+    [Variants$b.LIGHT]: {
         backgroundColor: "btnLight",
         color: "white",
         border: "1px solid transparent",
@@ -2290,7 +2290,7 @@ const styleVariants$3 = {
             borderColor: "white",
         },
     },
-    [Variants$9.TEXT]: {
+    [Variants$b.TEXT]: {
         backgroundColor: "transparent",
         color: "primary",
         boxShadow: "none",
@@ -2301,7 +2301,7 @@ const styleVariants$3 = {
             color: "primaryPress",
         },
     },
-    [Variants$9.TEXT_DARK]: {
+    [Variants$b.TEXT_DARK]: {
         backgroundColor: "transparent",
         color: "primaryHover",
         boxShadow: "none",
@@ -2484,7 +2484,7 @@ const Bubble = styled.span `
   }
 `;
 const Button = (props) => {
-    const { addBubble, startIcon, endIcon, external = false, className, isLoading = false, disabled = false, children, loadingTitle, variant = Variants$9.PRIMARY, scale = Scales$7.MD, ...rest } = props;
+    const { addBubble, startIcon, endIcon, external = false, className, isLoading = false, disabled = false, children, loadingTitle, variant = Variants$b.PRIMARY, scale = Scales$9.MD, ...rest } = props;
     const internalProps = external ? getExternalLinkProps() : {};
     const isDisabled = isLoading || disabled;
     const classNames = className ? [className] : [];
@@ -2522,24 +2522,24 @@ const ExpandableButton = ({ onClick, expanded = false, children }) => {
         expanded ? React.createElement(Icon$3t, { color: "invertedContrast" }) : React.createElement(Icon$3A, { color: "invertedContrast" })));
 };
 const ExpandableLabel = ({ onClick, expanded = false, children }) => {
-    return (React.createElement(Button, { variant: Variants$9.TEXT, "aria-label": "Hide or show expandable content", onClick: onClick, endIcon: expanded ? React.createElement(Icon$3t, { color: "primary" }) : React.createElement(Icon$3A, { color: "primary" }) }, children));
+    return (React.createElement(Button, { variant: Variants$b.TEXT, "aria-label": "Hide or show expandable content", onClick: onClick, endIcon: expanded ? React.createElement(Icon$3t, { color: "primary" }) : React.createElement(Icon$3A, { color: "primary" }) }, children));
 };
 
-var Scales$6;
+var Scales$8;
 (function (Scales) {
     Scales["XL"] = "xl";
     Scales["LG"] = "lg";
     Scales["MD"] = "md";
     Scales["SM"] = "sm";
     Scales["XS"] = "xs";
-})(Scales$6 || (Scales$6 = {}));
-var Variants$8;
+})(Scales$8 || (Scales$8 = {}));
+var Variants$a;
 (function (Variants) {
     Variants["DARK"] = "dark";
     Variants["LIGHT"] = "light";
     Variants["WARNING_LIGHT"] = "warningLight";
     Variants["WARNING_DARK"] = "warningDark";
-})(Variants$8 || (Variants$8 = {}));
+})(Variants$a || (Variants$a = {}));
 
 const getRgba = (color, theme, alpha) => {
     const hexRegEx = /^#[0-9A-F]{6}$/i;
@@ -2555,25 +2555,25 @@ const getRgba = (color, theme, alpha) => {
 
 const getColorKey = (variant) => {
     switch (variant) {
-        case Variants$8.DARK:
+        case Variants$a.DARK:
             return "pastelBlue";
-        case Variants$8.LIGHT:
+        case Variants$a.LIGHT:
             return "gray900";
-        case Variants$8.WARNING_LIGHT:
+        case Variants$a.WARNING_LIGHT:
             return "gray900";
-        case Variants$8.WARNING_DARK:
+        case Variants$a.WARNING_DARK:
             return "pastelBlue";
     }
 };
 const getHoverKey = (variant) => {
     switch (variant) {
-        case Variants$8.DARK:
+        case Variants$a.DARK:
             return "white";
-        case Variants$8.LIGHT:
+        case Variants$a.LIGHT:
             return "dark800";
-        case Variants$8.WARNING_LIGHT:
+        case Variants$a.WARNING_LIGHT:
             return "dark800";
-        case Variants$8.WARNING_DARK:
+        case Variants$a.WARNING_DARK:
             return "white";
     }
 };
@@ -2734,7 +2734,7 @@ const Wrapper$h = styled(Box) `
   border-radius: 10px;
   background-color: ${({ theme, withoutBackground, variant }) => withoutBackground
     ? "transparent"
-    : variant === Variants$8.DARK
+    : variant === Variants$a.DARK
         ? theme.colors.tooltip
         : getRgba(theme.colors.pastelBlue, theme, 0.08)};
   overflow: hidden;
@@ -2791,7 +2791,7 @@ const StyledButtonMenu = styled(Box) `
 
         & > button:disabled {
           background-color: transparent;
-          color: ${variant === Variants$8.DARK ? theme.colors.pastelBlue : theme.colors.gray900};
+          color: ${variant === Variants$a.DARK ? theme.colors.pastelBlue : theme.colors.gray900};
         }
     `;
     }
@@ -2804,8 +2804,8 @@ const Selection$1 = styled(Box) `
   left: ${({ offset }) => `${offset}px`};
   width: ${({ width }) => `${width}px`};
   height: calc(100% - 8px);
-  border-radius: ${({ scale }) => (scale === Scales$6.SM ? "6px" : "8px")};
-  background-color: ${({ theme, variant }) => theme.colors[variant === Variants$8.DARK ? "dark500" : variant === Variants$8.LIGHT ? "white" : "warning"]};
+  border-radius: ${({ scale }) => (scale === Scales$8.SM ? "6px" : "8px")};
+  background-color: ${({ theme, variant }) => theme.colors[variant === Variants$a.DARK ? "dark500" : variant === Variants$a.LIGHT ? "white" : "warning"]};
   transform: translateY(-50%);
 
   ${({ withoutAnimation }) => !withoutAnimation &&
@@ -2817,21 +2817,21 @@ const Selection$1 = styled(Box) `
 
   ${({ flatTop, scale }) => flatTop &&
     css `
-      border-radius: ${scale === Scales$6.SM ? "0 0 6px 6px" : "0 0 8px 8px"};
+      border-radius: ${scale === Scales$8.SM ? "0 0 6px 6px" : "0 0 8px 8px"};
       height: calc(100% - 4px);
       top: calc(50% - 2px);
     `}
 
   ${({ flatBottom, scale }) => flatBottom &&
     css `
-      border-radius: ${scale === Scales$6.SM ? "6px 6px 0 0" : "8px 8px 0 0"};
+      border-radius: ${scale === Scales$8.SM ? "6px 6px 0 0" : "8px 8px 0 0"};
       height: calc(100% - 4px);
       top: calc(50% + 2px);
     `}
 
-  ${({ theme, variant }) => variant === Variants$8.DARK && `box-shadow: 0 2px 4px ${getRgba(theme.colors.backgroundDark, theme, 0.08)}`};
+  ${({ theme, variant }) => variant === Variants$a.DARK && `box-shadow: 0 2px 4px ${getRgba(theme.colors.backgroundDark, theme, 0.08)}`};
 `;
-const ButtonMenu = ({ activeIndex = 0, scale = Scales$6.MD, variant = Variants$8.DARK, onItemClick, disabled, children, fullWidth = false, flatBottom = false, flatTop = false, withoutBackground = false, scrollX = false, equalElementWidth, withoutAnimation = false, itemsProperties = [], ...props }) => {
+const ButtonMenu = ({ activeIndex = 0, scale = Scales$8.MD, variant = Variants$a.DARK, onItemClick, disabled, children, fullWidth = false, flatBottom = false, flatTop = false, withoutBackground = false, scrollX = false, equalElementWidth, withoutAnimation = false, itemsProperties = [], ...props }) => {
     const [widthsArr, setWidthsArr] = useState([]);
     const [blockOffset, setBlockOffset] = useState(0);
     const [activeButtonIndex, setActiveButtonIndex] = useState(null);
@@ -2865,31 +2865,31 @@ const ButtonMenu = ({ activeIndex = 0, scale = Scales$6.MD, variant = Variants$8
 };
 
 const scaleVariants$2 = {
-    [Scales$6.XL]: {
+    [Scales$8.XL]: {
         height: "48px",
         padding: "0 24px",
         borderRadius: "10px",
         fontSize: "16px",
     },
-    [Scales$6.LG]: {
+    [Scales$8.LG]: {
         height: "40px",
         padding: "0 16px",
         fontSize: "14px",
         borderRadius: "8px",
     },
-    [Scales$6.MD]: {
+    [Scales$8.MD]: {
         height: "32px",
         padding: "0 12px",
         fontSize: "12px",
         borderRadius: "8px",
     },
-    [Scales$6.SM]: {
+    [Scales$8.SM]: {
         height: "24px",
         padding: "0 8px",
         fontSize: "12px",
         borderRadius: "6px",
     },
-    [Scales$6.XS]: {
+    [Scales$8.XS]: {
         height: "20px",
         padding: "0 8px",
         fontSize: "12px",
@@ -2897,14 +2897,14 @@ const scaleVariants$2 = {
     },
 };
 const styleVariants$2 = {
-    [Variants$8.DARK]: {
+    [Variants$a.DARK]: {
         color: "white",
         backgroundColor: "transparent",
         ":active:not(:disabled)": {
             backgroundColor: "transparent",
         },
     },
-    [Variants$8.LIGHT]: {
+    [Variants$a.LIGHT]: {
         backgroundColor: "transparent",
         color: "dark800",
         ":hover(:disabled)": {
@@ -2914,7 +2914,7 @@ const styleVariants$2 = {
             color: "text",
         },
     },
-    [Variants$8.WARNING_DARK]: {
+    [Variants$a.WARNING_DARK]: {
         backgroundColor: "transparent",
         color: "dark800",
         ":hover(:disabled)": {
@@ -2927,7 +2927,7 @@ const styleVariants$2 = {
             backgroundColor: "transparent",
         },
     },
-    [Variants$8.WARNING_LIGHT]: {
+    [Variants$a.WARNING_LIGHT]: {
         backgroundColor: "transparent",
         color: "dark800",
         ":hover(:disabled)": {
@@ -2939,23 +2939,23 @@ const styleVariants$2 = {
     },
 };
 const markerScales = {
-    [Scales$6.XL]: {
+    [Scales$8.XL]: {
         top: "2px",
         right: "8px",
     },
-    [Scales$6.LG]: {
+    [Scales$8.LG]: {
         top: "2px",
         right: "8px",
     },
-    [Scales$6.MD]: {
+    [Scales$8.MD]: {
         top: "2px",
         right: "8px",
     },
-    [Scales$6.SM]: {
+    [Scales$8.SM]: {
         top: "2px",
         right: "8px",
     },
-    [Scales$6.XS]: {
+    [Scales$8.XS]: {
         top: "2px",
         right: "8px",
     },
@@ -3178,6 +3178,7 @@ const dark$1 = {
     background: darkColors.white,
 };
 
+// theme
 const light = {
     background: darkColors.white,
     text: darkColors.gray900,
@@ -3587,13 +3588,6 @@ const useTooltip = (content, options) => {
     };
 };
 
-var CarouselButtonsTypes;
-(function (CarouselButtonsTypes) {
-    CarouselButtonsTypes["PRIMARY"] = "primary";
-    CarouselButtonsTypes["WHITE"] = "white";
-    CarouselButtonsTypes["GRAY_OPACITY"] = "grayOpacity";
-})(CarouselButtonsTypes || (CarouselButtonsTypes = {}));
-
 var HeadTextTags;
 (function (HeadTextTags) {
     HeadTextTags["H1"] = "h1";
@@ -3613,7 +3607,7 @@ var BodyTextTags;
     BodyTextTags["DIV"] = "div";
     BodyTextTags["A"] = "a";
 })(BodyTextTags || (BodyTextTags = {}));
-var Scales$5;
+var Scales$7;
 (function (Scales) {
     Scales["SIZE40"] = "size40";
     Scales["SIZE32"] = "size32";
@@ -3623,88 +3617,100 @@ var Scales$5;
     Scales["SIZE14"] = "size14";
     Scales["SIZE12"] = "size12";
     Scales["SIZE10"] = "size10";
-})(Scales$5 || (Scales$5 = {}));
+})(Scales$7 || (Scales$7 = {}));
 
 const headTextScaleMap = {
-    [Scales$5.SIZE40]: {
+    [Scales$7.SIZE40]: {
         fontSize: "40px",
         lineHeight: "48px",
     },
-    [Scales$5.SIZE32]: {
+    [Scales$7.SIZE32]: {
         fontSize: "32px",
         lineHeight: "40px",
     },
-    [Scales$5.SIZE24]: {
+    [Scales$7.SIZE24]: {
         fontSize: "24px",
         lineHeight: "32px",
     },
-    [Scales$5.SIZE20]: {
+    [Scales$7.SIZE20]: {
         fontSize: "20px",
         lineHeight: "28px",
     },
-    [Scales$5.SIZE16]: {
+    [Scales$7.SIZE16]: {
         fontSize: "16px",
         lineHeight: "24px",
     },
-    [Scales$5.SIZE14]: {
+    [Scales$7.SIZE14]: {
         fontSize: "14px",
         lineHeight: "20px",
     },
-    [Scales$5.SIZE12]: {
+    [Scales$7.SIZE12]: {
         fontSize: "12px",
         lineHeight: "16px",
     },
-    [Scales$5.SIZE10]: {
+    [Scales$7.SIZE10]: {
         fontSize: "10px",
         lineHeight: "12px",
     },
 };
-const HeadText = styled(Text).attrs({ bold: true, tags: HeadTextTags.H2 }) `
-  font-size: ${({ scale }) => headTextScaleMap[scale || Scales$5.SIZE32].fontSize};
-  line-height: ${({ scale }) => headTextScaleMap[scale || Scales$5.SIZE32].lineHeight};
+const getScalesAttributes$1 = ({ scale, as }) => {
+    if (typeof scale === "string")
+        return headTextScaleMap[scale || Scales$7.SIZE32];
+    if (typeof scale === "undefined")
+        return headTextScaleMap[Scales$7.SIZE32];
+    const tempScales = JSON.parse(JSON.stringify(scale));
+    if (!tempScales.xs)
+        tempScales.xs = HeadText.defaultProps?.scale;
+    return {
+        fontSize: breakpointsKeys.map((breakPoint) => tempScales[breakPoint] ? headTextScaleMap[tempScales[breakPoint]].fontSize : null),
+        lineHeight: breakpointsKeys.map((breakPoint) => tempScales[breakPoint] ? headTextScaleMap[tempScales[breakPoint]].lineHeight : null),
+        as: as || HeadTextTags.H2,
+    };
+};
+const HeadText = styled(Text).attrs(getScalesAttributes$1) `
   font-weight: 600;
   white-space: ${({ nowrap }) => (nowrap ? "nowrap" : "normal")};
 `;
 
 const bodyTextScaleMap = {
-    [Scales$5.SIZE40]: {
+    [Scales$7.SIZE40]: {
         fontSize: "40px",
         lineHeight: "48px",
     },
-    [Scales$5.SIZE32]: {
+    [Scales$7.SIZE32]: {
         fontSize: "32px",
         lineHeight: "40px",
     },
-    [Scales$5.SIZE24]: {
+    [Scales$7.SIZE24]: {
         fontSize: "24px",
         lineHeight: "32px",
     },
-    [Scales$5.SIZE20]: {
+    [Scales$7.SIZE20]: {
         fontSize: "20px",
         lineHeight: "28px",
     },
-    [Scales$5.SIZE16]: {
+    [Scales$7.SIZE16]: {
         fontSize: "16px",
         lineHeight: "24px",
     },
-    [Scales$5.SIZE14]: {
+    [Scales$7.SIZE14]: {
         fontSize: "14px",
         lineHeight: "20px",
     },
-    [Scales$5.SIZE12]: {
+    [Scales$7.SIZE12]: {
         fontSize: "12px",
         lineHeight: "16px",
     },
-    [Scales$5.SIZE10]: {
+    [Scales$7.SIZE10]: {
         fontSize: "10px",
         lineHeight: "12px",
     },
 };
 const getScalesAttributes = ({ scale, as }) => {
     if (typeof scale === "string")
-        return bodyTextScaleMap[scale || Scales$5.SIZE16];
+        return bodyTextScaleMap[scale || Scales$7.SIZE16];
     if (typeof scale === "undefined")
-        return bodyTextScaleMap[Scales$5.SIZE16];
+        return bodyTextScaleMap[Scales$7.SIZE16];
     const tempScales = JSON.parse(JSON.stringify(scale));
     if (!tempScales.xs)
         tempScales.xs = BodyText.defaultProps?.scale;
@@ -3782,40 +3788,43 @@ const NavButton = styled(IconButton) `
   width: 32px;
   height: 32px;
 `;
-const CarouselHeader = ({ handleNav, title, showNavButtons, }) => {
+const CarouselHeader = ({ handleNav, title, showNavButtons }) => {
     const { isMobile } = useMatchBreakpoints();
     return (React.createElement(Container$3, null,
         React.createElement(Flex, { position: "relative", justifyContent: title ? "space-between" : "flex-end", mb: isMobile ? "24px" : "32px", alignItems: isMobile ? "flex-end" : "flex-start" },
-            title && (React.createElement(BodyText, { scale: isMobile ? Scales$5.SIZE24 : Scales$5.SIZE32, color: "white" }, title)),
+            title && (React.createElement(BodyText, { scale: isMobile ? Scales$7.SIZE24 : Scales$7.SIZE32, color: "white" }, title)),
             showNavButtons && (React.createElement(Flex, { ml: "8px" },
-                React.createElement(NavButton, { scale: Scales$7.XS, variant: Variants$9.PRIMARY, onClick: () => {
+                React.createElement(NavButton, { scale: Scales$9.XS, variant: Variants$b.PRIMARY, onClick: () => {
                         handleNav("prev");
                     } },
                     React.createElement(Icon$3u, { color: "white" })),
-                React.createElement(NavButton, { scale: Scales$7.XS, variant: Variants$9.PRIMARY, ml: "8px", onClick: () => {
+                React.createElement(NavButton, { scale: Scales$9.XS, variant: Variants$b.PRIMARY, ml: "8px", onClick: () => {
                         handleNav("next");
                     } },
                     React.createElement(Icon$3x, { color: "white" })))))));
 };
 
 const commonStyling = css `
-  display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+
   ${({ theme }) => theme.mediaQueries.md} {
     margin-bottom: 32px;
   }
 `;
-const Numbers = styled.div `
+const Numbers = styled(Flex) `
   position: absolute;
   top: 0;
   bottom: 0;
   left: -2px;
   right: -2px;
   z-index: 2;
+
   ${commonStyling};
+
   margin-bottom: 0;
+
   ${({ theme }) => theme.mediaQueries.md} {
     margin-bottom: 0;
   }
@@ -3825,51 +3834,46 @@ const NumberItem = styled.button `
   width: 40px;
   height: 40px;
   border: 1px solid ${({ theme }) => theme.colors.dark500};
-  box-sizing: border-box;
   border-radius: 50%;
-  background: ${({ isActive }) => isActive
-    ? "linear-gradient(235deg, #336FF5 4.05%, rgba(17, 81, 225, 0.32) 103.52%)"
-    : "transparent"};
   color: ${({ isActive, theme }) => (isActive ? theme.colors.white : "none")};
+  background: ${({ isActive }) => isActive ? "linear-gradient(235deg, #336FF5 4.05%, rgba(17, 81, 225, 0.32) 103.52%)" : "transparent"};
+  box-sizing: border-box;
 
   &:hover {
     cursor: pointer;
     border: initial;
-    background: linear-gradient(
-      235deg,
-      #336ff5 4.05%,
-      rgba(17, 81, 225, 0.32) 103.52%
-    );
+    background: linear-gradient(235deg, #336ff5 4.05%, rgba(17, 81, 225, 0.32) 103.52%);
   }
 `;
 // for background (fake elements placed under real Numbers block with glide navigation)
-const NumbersBackground = styled.div `
+const NumbersBackground = styled(Flex) `
   ${commonStyling};
-  height: 40px;
+
   position: relative;
+  height: 40px;
   background: transparent;
 `;
-const DummyBlock = styled.div `
+const DummyBlock = styled(Box) `
   width: 40px;
   height: 40px;
   background-color: transparent;
 `;
-const Line = styled.div `
-  height: 0;
-  border-top: 2px dotted ${({ theme }) => theme.colors.dark500};
+const Line = styled(Box) `
   flex: 1;
+  height: 0;
   margin: 0 8px;
+  border-top: 2px dotted ${({ theme }) => theme.colors.dark500};
+
   ${({ theme }) => theme.mediaQueries.md} {
     margin: 0 16px;
   }
+
   &:last-of-type {
     display: none;
   }
 `;
-const CarouselNumbersBlock = ({ dataLength, scrollToHandle, selectedIndex, }) => {
-    const indexes = dataLength
-        ? Array.from({ length: dataLength }, (v, i) => i)
-        : [];
+const CarouselNumbersBlock = ({ dataLength, scrollToHandle, selectedIndex }) => {
+    const indexes = dataLength ? Array.from({ length: dataLength }, (v, i) => i) : [];
     return (React.createElement(NumbersBackground, null,
         React.createElement(Numbers, null, indexes.map((item, index) => (React.createElement(NumberItem, { key: item.toString(), isActive: index === selectedIndex, type: "button", onClick: () => scrollToHandle(index) },
             React.createElement(BodyText, { m: "auto", color: "pastelBlue" }, index + 1))))),
@@ -3878,45 +3882,48 @@ const CarouselNumbersBlock = ({ dataLength, scrollToHandle, selectedIndex, }) =>
             React.createElement(Line, null))))));
 };
 
+var CarouselButtonsTypes;
+(function (CarouselButtonsTypes) {
+    CarouselButtonsTypes["PRIMARY"] = "primary";
+    CarouselButtonsTypes["WHITE"] = "white";
+    CarouselButtonsTypes["GRAY_OPACITY"] = "grayOpacity";
+})(CarouselButtonsTypes || (CarouselButtonsTypes = {}));
+
 const Icons$2 = IconModule;
 const IconComponent$1 = ({ iconName, ...props }) => {
     const IconElement = Icons$2[`${iconName}Icon`];
     return IconElement ? React.createElement(IconElement, { ...props }) : null;
 };
 
-const variantsNavButton = {
-    PRIMARY: "primary",
-    WHITE: "white",
-    GRAY_OPACITY: "grayOpacity",
-};
-
 const backgroundVariants = {
-    [variantsNavButton.GRAY_OPACITY]: {
+    [CarouselButtonsTypes.GRAY_OPACITY]: {
         backgroundColor: "rgba(255, 255, 255, 0.2)",
     },
-    [variantsNavButton.WHITE]: {
+    [CarouselButtonsTypes.WHITE]: {
         backgroundColor: "white",
     },
-    [variantsNavButton.PRIMARY]: {
+    [CarouselButtonsTypes.PRIMARY]: {
         backgroundColor: "primary",
     },
 };
 const ArrowButton = styled.button `
-  height: 32px;
-  border: 0;
-  box-shadow: none;
   position: absolute;
   top: 50%;
-  cursor: pointer;
-  border-radius: 8px;
+  height: 32px;
   padding: 0 6px;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: none;
+  cursor: pointer;
 `;
 const WrapperDirectionButton = styled(ArrowButton) `
   left: ${({ navPadding }) => `${navPadding}px`};
   transform: translate(0, -50%);
+
   ${variant({
     variants: backgroundVariants,
 })}
+
   ${({ isNextButton, navPadding }) => isNextButton &&
     css `
       right: ${`${navPadding}px`};
@@ -3932,14 +3939,14 @@ const DirectionButton = ({ enabled, onClick, iconName, isNextButton, themeType, 
 const DotButton = styled.button `
   width: 4px;
   height: 4px;
-  background: ${({ theme }) => theme.colors.pastelBlue};
-  border: 0;
-  box-shadow: none;
-  border-radius: 50%;
   padding: 0;
   margin-right: 8px;
-  cursor: pointer;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: none;
+  background: ${({ theme }) => theme.colors.pastelBlue};
   opacity: ${({ selected }) => (selected ? "1" : ".32")};
+  cursor: pointer;
   transition: opacity 0.4s ease-in-out;
 `;
 const Dot$1 = ({ selected, onClick }) => {
@@ -4007,9 +4014,7 @@ const useCarousel = ({ data, Slide, title, slidesToScroll = 1, isDraggable = fal
         setSelectedIndex(embla.selectedScrollSnap());
         setPrevBtnEnabled(embla.canScrollPrev());
         setNextBtnEnabled(embla.canScrollNext());
-        isMobile &&
-            slideProps?.selectHandle &&
-            slideProps?.selectHandle(embla.selectedScrollSnap());
+        isMobile && slideProps?.selectHandle && slideProps?.selectHandle(embla.selectedScrollSnap());
     }, [embla, setSelectedIndex, isMobile, slideProps]);
     useEffect(() => {
         if (!embla)
@@ -4033,10 +4038,10 @@ const useCarousel = ({ data, Slide, title, slidesToScroll = 1, isDraggable = fal
             setSelectedIndex(index);
         }
     };
-    const renderNav = (navType, navPadding) => {
+    const renderNav = (navType, padding) => {
         return (React.createElement(React.Fragment, null,
-            React.createElement(DirectionButton, { iconName: "ChevronLeft", onClick: scrollPrev, enabled: prevBtnEnabled, themeType: navType, navPadding: navPadding }),
-            React.createElement(DirectionButton, { isNextButton: true, iconName: "ChevronRight", onClick: scrollNext, enabled: nextBtnEnabled, themeType: navType, navPadding: navPadding })));
+            React.createElement(DirectionButton, { iconName: "ChevronLeft", onClick: scrollPrev, enabled: prevBtnEnabled, themeType: navType, navPadding: padding }),
+            React.createElement(DirectionButton, { isNextButton: true, iconName: "ChevronRight", onClick: scrollNext, enabled: nextBtnEnabled, themeType: navType, navPadding: padding })));
     };
     const showHeader = title || withNavButtonsHeader;
     const carouselComponent = () => (React.createElement(Box, null,
@@ -4045,7 +4050,7 @@ const useCarousel = ({ data, Slide, title, slidesToScroll = 1, isDraggable = fal
         data?.length && (React.createElement(Embla, null,
             React.createElement(Viewport, { containerOverflow: containerOverflow, ref: viewportRef },
                 React.createElement(Container$2, { gap: slideGap, alignItem: alignItem }, renderSlides())),
-            withNavButtons && (React.createElement(NavWrapper, { navPadding: navPadding }, renderNav(navButtonsType, navPadding))))),
+            withNavButtons && React.createElement(NavWrapper, { navPadding: navPadding }, renderNav(navButtonsType, navPadding)))),
         withDots && (React.createElement(Flex, { alignItems: "center", justifyContent: "center", marginTop: marginDots }, scrollSnaps.map((_, index) => (React.createElement(Dot$1, { key: index.toString(), selected: index === selectedIndex, onClick: () => scrollTo(index) })))))));
     return [carouselComponent, scrollNext, scrollPrev, selectedIndex];
 };
@@ -4116,7 +4121,7 @@ const MenuItemButton = styled.button `
       }
     `}
 `;
-const ButtonMenuItem = ({ isActive = false, variant = Variants$8.DARK, properties, scale = Scales$6.MD, as, setWidth, itemIndex = 0, activeButtonIndex, blockOffset, onItemClick, onClick, ...props }) => {
+const ButtonMenuItem = ({ isActive = false, variant = Variants$a.DARK, properties, scale = Scales$8.MD, as, setWidth, itemIndex = 0, activeButtonIndex, blockOffset, onItemClick, onClick, ...props }) => {
     const ref = useRef(null);
     const { isMobile, isTablet, isXs, isSm, isMs, isLg, isXl, isXll, isXxl } = useMatchBreakpoints();
     const disableStopPropagation = isMobile || isTablet || isTouchDevice();
@@ -4553,33 +4558,33 @@ var Positions;
     Positions["TOP"] = "top";
     Positions["BOTTOM"] = "bottom";
 })(Positions || (Positions = {}));
-var Variants$7;
+var Variants$9;
 (function (Variants) {
     Variants["DARK"] = "dark";
     Variants["LIGHT"] = "light";
     Variants["PRIMARY"] = "primary";
     Variants["SECONDARY"] = "secondary";
-})(Variants$7 || (Variants$7 = {}));
-var Scales$4;
+})(Variants$9 || (Variants$9 = {}));
+var Scales$6;
 (function (Scales) {
     Scales["LG"] = "lg";
     Scales["MD"] = "md";
     Scales["SM"] = "sm";
-})(Scales$4 || (Scales$4 = {}));
+})(Scales$6 || (Scales$6 = {}));
 
 const scaleVariantsContainer = {
-    [Scales$4.LG]: {
+    [Scales$6.LG]: {
         height: "48px",
     },
-    [Scales$4.MD]: {
+    [Scales$6.MD]: {
         height: "40px",
     },
-    [Scales$4.SM]: {
+    [Scales$6.SM]: {
         height: "32px",
     },
 };
 const scaleVariantsTop = {
-    [Scales$4.LG]: {
+    [Scales$6.LG]: {
         padding: "0 12px 0 24px",
         fontSize: "16px",
         borderRadius: "10px",
@@ -4594,7 +4599,7 @@ const scaleVariantsTop = {
             marginLeft: "8px",
         },
     },
-    [Scales$4.MD]: {
+    [Scales$6.MD]: {
         padding: "0 10px 0 16px",
         fontSize: "14px",
         borderRadius: "8px",
@@ -4609,7 +4614,7 @@ const scaleVariantsTop = {
             marginLeft: "6px",
         },
     },
-    [Scales$4.SM]: {
+    [Scales$6.SM]: {
         padding: "0 8px 0 12px",
         fontSize: "12px",
         borderRadius: "8px",
@@ -4626,18 +4631,18 @@ const scaleVariantsTop = {
     },
 };
 const scaleVariantsContent = {
-    [Scales$4.LG]: {
+    [Scales$6.LG]: {
         borderRadius: "10px",
     },
-    [Scales$4.MD]: {
+    [Scales$6.MD]: {
         borderRadius: "8px",
     },
-    [Scales$4.SM]: {
+    [Scales$6.SM]: {
         borderRadius: "8px",
     },
 };
 const scaleVariantItem = {
-    [Scales$4.LG]: {
+    [Scales$6.LG]: {
         height: "48px",
         fontSize: "16px",
         padding: "0 24px",
@@ -4649,7 +4654,7 @@ const scaleVariantItem = {
             marginRight: "8px",
         },
     },
-    [Scales$4.MD]: {
+    [Scales$6.MD]: {
         height: "40px",
         fontSize: "14px",
         padding: "0 10px 0 16px",
@@ -4661,7 +4666,7 @@ const scaleVariantItem = {
             marginRight: "6px",
         },
     },
-    [Scales$4.SM]: {
+    [Scales$6.SM]: {
         height: "32px",
         fontSize: "12px",
         padding: "0 8px 0 12px",
@@ -4675,25 +4680,25 @@ const scaleVariantItem = {
     },
 };
 const styleVariantsTop = {
-    [Variants$7.PRIMARY]: {
+    [Variants$9.PRIMARY]: {
         color: "primary",
         ".arrow": {
             fill: "primary",
         },
     },
-    [Variants$7.SECONDARY]: {
+    [Variants$9.SECONDARY]: {
         color: "gray900",
         ".arrow": {
             fill: "gray900",
         },
     },
-    [Variants$7.LIGHT]: {
+    [Variants$9.LIGHT]: {
         color: "white",
         ".arrow": {
             fill: "white",
         },
     },
-    [Variants$7.DARK]: {
+    [Variants$9.DARK]: {
         color: "dark800",
         ".arrow": {
             fill: "dark800",
@@ -4702,19 +4707,19 @@ const styleVariantsTop = {
 };
 const getVariantColor = (variant) => {
     switch (variant) {
-        case Variants$7.SECONDARY:
+        case Variants$9.SECONDARY:
             return css `
         color: ${({ theme }) => theme.colors.gray900} !important;
       `;
-        case Variants$7.LIGHT:
+        case Variants$9.LIGHT:
             return css `
         color: ${({ theme }) => theme.colors.white} !important;
       `;
-        case Variants$7.DARK:
+        case Variants$9.DARK:
             return css `
         color: ${({ theme }) => theme.colors.dark800} !important;
       `;
-        case Variants$7.PRIMARY:
+        case Variants$9.PRIMARY:
         default:
             return css `
         color: ${({ theme }) => theme.colors.primary} !important;
@@ -4800,7 +4805,7 @@ const DropdownItem = styled(Flex) `
     background: ${({ theme }) => theme.colors.gray200};
   }
 `;
-const DropdownButton = ({ position = Positions.BOTTOM, maxWidth, minWidth, scale = Scales$4.MD, variant = Variants$7.PRIMARY, disabled = false, options, onChange, hideLabel, dropDownWidth, selectedItem, ...props }) => {
+const DropdownButton = ({ position = Positions.BOTTOM, maxWidth, minWidth, scale = Scales$6.MD, variant = Variants$9.PRIMARY, disabled = false, options, onChange, hideLabel, dropDownWidth, selectedItem, ...props }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(selectedItem || options[0]);
     const wrapperRef = useRef(null);
@@ -4838,22 +4843,22 @@ const DropdownButton = ({ position = Positions.BOTTOM, maxWidth, minWidth, scale
     };
     const scaleVariantsImage = (scaleItem) => {
         switch (scaleItem) {
-            case Scales$4.LG:
+            case Scales$6.LG:
                 return 24;
-            case Scales$4.MD:
+            case Scales$6.MD:
                 return 20;
-            case Scales$4.SM:
+            case Scales$6.SM:
             default:
                 return 16;
         }
     };
     const getIconMargin = (scaleItem) => {
         switch (scaleItem) {
-            case Scales$4.LG:
+            case Scales$6.LG:
                 return "8px";
-            case Scales$4.MD:
+            case Scales$6.MD:
                 return "6px";
-            case Scales$4.SM:
+            case Scales$6.SM:
             default:
                 return "4px";
         }
@@ -4863,7 +4868,7 @@ const DropdownButton = ({ position = Positions.BOTTOM, maxWidth, minWidth, scale
             selectedOption.icon &&
                 (selectedOption.icon.isAws ? (React.createElement(Image$1, { src: selectedOption.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), quality: 90, alt: "icon" })) : (React.createElement(IconComponent$1, { iconName: selectedOption.icon.name, color: selectedOption.icon.color, mr: getIconMargin(scale) }))),
             !hideLabel && React.createElement("span", null, selectedOption.label),
-            variant === Variants$7.PRIMARY ? (React.createElement(StyledArrowPrimary, { className: "arrow arrow_primary", isOpen: isOpen })) : (React.createElement(StyledArrow, { className: "arrow", isOpen: isOpen }))),
+            variant === Variants$9.PRIMARY ? (React.createElement(StyledArrowPrimary, { className: "arrow arrow_primary", isOpen: isOpen })) : (React.createElement(StyledArrow, { className: "arrow", isOpen: isOpen }))),
         React.createElement(DropdownContent, { ref: dropdownMenuRef, height: isOpen ? dropdownMenuRef?.current?.scrollHeight : 0, contentPosition: position, scale: scale, dropDownWidth: dropDownWidth }, options.map((option) => (React.createElement(DropdownItem, { scale: scale, selected: option.label === selectedOption.label, onClick: onOptionClicked(option), key: option.label },
             option.icon &&
                 (option.icon.isAws ? (React.createElement(Image$1, { src: option.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), alt: "icon" })) : (React.createElement(IconComponent$1, { iconName: option.icon.name, color: option.icon.color }))),
@@ -4879,49 +4884,49 @@ var Tags;
     Tags["H5"] = "h5";
     Tags["H6"] = "h6";
 })(Tags || (Tags = {}));
-var Scales$3;
+var Scales$5;
 (function (Scales) {
     Scales["MD"] = "md";
     Scales["LG"] = "lg";
     Scales["XL"] = "xl";
     Scales["XXL"] = "xxl";
-})(Scales$3 || (Scales$3 = {}));
+})(Scales$5 || (Scales$5 = {}));
 
 const style = {
-    [Scales$3.MD]: {
+    [Scales$5.MD]: {
         fontSize: "20px",
         fontSizeLg: "20px",
     },
-    [Scales$3.LG]: {
+    [Scales$5.LG]: {
         fontSize: "24px",
         fontSizeLg: "24px",
     },
-    [Scales$3.XL]: {
+    [Scales$5.XL]: {
         fontSize: "32px",
         fontSizeLg: "40px",
     },
-    [Scales$3.XXL]: {
+    [Scales$5.XXL]: {
         fontSize: "48px",
         fontSizeLg: "64px",
     },
 };
 const Heading = styled(Text).attrs({ bold: true, tags: Tags.H2 }) `
-  font-size: ${({ scale }) => style[scale || Scales$3.MD].fontSize};
+  font-size: ${({ scale }) => style[scale || Scales$5.MD].fontSize};
   font-weight: 600;
   line-height: 1.1;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    font-size: ${({ scale }) => style[scale || Scales$3.LG].fontSize};
+    font-size: ${({ scale }) => style[scale || Scales$5.LG].fontSize};
   }
 `;
 
-var Scales$2;
+var Scales$4;
 (function (Scales) {
     Scales["SM"] = "sm";
     Scales["MD"] = "md";
     Scales["LG"] = "lg";
-})(Scales$2 || (Scales$2 = {}));
-var Variants$6;
+})(Scales$4 || (Scales$4 = {}));
+var Variants$8;
 (function (Variants) {
     Variants["LIGHT"] = "light";
     Variants["LIGHT_WARNING"] = "lightWarning";
@@ -4930,10 +4935,10 @@ var Variants$6;
     Variants["DARK_WARNING"] = "darkWarning";
     Variants["DARK_ERROR"] = "darkError";
     Variants["TRANSPARENT"] = "transparent";
-})(Variants$6 || (Variants$6 = {}));
+})(Variants$8 || (Variants$8 = {}));
 
 const scaleVariants$1 = {
-    [Scales$2.LG]: {
+    [Scales$4.LG]: {
         borderRadius: "10px",
         height: "48px",
         fontSize: "16px",
@@ -4942,7 +4947,7 @@ const scaleVariants$1 = {
             width: "24px",
         },
     },
-    [Scales$2.MD]: {
+    [Scales$4.MD]: {
         borderRadius: "8px",
         height: "40px",
         fontSize: "14px",
@@ -4951,7 +4956,7 @@ const scaleVariants$1 = {
             width: "20px",
         },
     },
-    [Scales$2.SM]: {
+    [Scales$4.SM]: {
         borderRadius: "8px",
         height: "32px",
         fontSize: "12px",
@@ -4962,7 +4967,7 @@ const scaleVariants$1 = {
     },
 };
 const styleVariants$1 = {
-    [Variants$6.LIGHT]: {
+    [Variants$8.LIGHT]: {
         backgroundColor: "gray300",
         color: "dark800",
         "::placeholder": {
@@ -4979,7 +4984,7 @@ const styleVariants$1 = {
             color: "dark800",
         },
     },
-    [Variants$6.LIGHT_WARNING]: {
+    [Variants$8.LIGHT_WARNING]: {
         borderColor: "warning",
         backgroundColor: "transparent",
         color: "dark800",
@@ -4987,7 +4992,7 @@ const styleVariants$1 = {
             color: "dark800",
         },
     },
-    [Variants$6.LIGHT_ERROR]: {
+    [Variants$8.LIGHT_ERROR]: {
         borderColor: "secondary",
         backgroundColor: "transparent",
         color: "dark800",
@@ -4995,7 +5000,7 @@ const styleVariants$1 = {
             color: "dark800",
         },
     },
-    [Variants$6.DARK]: {
+    [Variants$8.DARK]: {
         backgroundColor: "dark500",
         color: "white",
         "::placeholder": {
@@ -5012,7 +5017,7 @@ const styleVariants$1 = {
             color: "white",
         },
     },
-    [Variants$6.DARK_WARNING]: {
+    [Variants$8.DARK_WARNING]: {
         borderColor: "warning",
         backgroundColor: "transparent",
         color: "white",
@@ -5020,7 +5025,7 @@ const styleVariants$1 = {
             color: "white",
         },
     },
-    [Variants$6.DARK_ERROR]: {
+    [Variants$8.DARK_ERROR]: {
         borderColor: "secondary",
         backgroundColor: "transparent",
         color: "white",
@@ -5028,7 +5033,7 @@ const styleVariants$1 = {
             color: "white",
         },
     },
-    [Variants$6.TRANSPARENT]: {
+    [Variants$8.TRANSPARENT]: {
         backgroundColor: "transparent",
         color: "dark800",
         "::placeholder": {
@@ -5047,25 +5052,25 @@ const styleVariants$1 = {
     },
 };
 const styleTextVariants = {
-    [Variants$6.LIGHT]: {
+    [Variants$8.LIGHT]: {
         color: "gray700",
     },
-    [Variants$6.LIGHT_WARNING]: {
+    [Variants$8.LIGHT_WARNING]: {
         color: "warning",
     },
-    [Variants$6.LIGHT_ERROR]: {
+    [Variants$8.LIGHT_ERROR]: {
         color: "secondary",
     },
-    [Variants$6.DARK]: {
+    [Variants$8.DARK]: {
         color: "white",
     },
-    [Variants$6.DARK_WARNING]: {
+    [Variants$8.DARK_WARNING]: {
         color: "warning",
     },
-    [Variants$6.DARK_ERROR]: {
+    [Variants$8.DARK_ERROR]: {
         color: "secondary",
     },
-    [Variants$6.TRANSPARENT]: {
+    [Variants$8.TRANSPARENT]: {
         color: "dark800",
     },
 };
@@ -5101,43 +5106,43 @@ const Input$1 = styled.input `
 const getPadding = (scale, hasIcon) => {
     if (!hasIcon) {
         switch (scale) {
-            case Scales$2.SM:
+            case Scales$4.SM:
                 return "12px";
-            case Scales$2.LG:
+            case Scales$4.LG:
                 return "24px";
-            case Scales$2.MD:
+            case Scales$4.MD:
             default:
                 return "16px";
         }
     }
     switch (scale) {
-        case Scales$2.SM:
+        case Scales$4.SM:
             return "36px";
-        case Scales$2.LG:
+        case Scales$4.LG:
             return "60px";
-        case Scales$2.MD:
+        case Scales$4.MD:
         default:
             return "44px";
     }
 };
 const getIconPosition = (scale) => {
     switch (scale) {
-        case Scales$2.LG:
+        case Scales$4.LG:
             return "24px";
-        case Scales$2.MD:
+        case Scales$4.MD:
             return "16px";
-        case Scales$2.SM:
+        case Scales$4.SM:
         default:
             return "12px";
     }
 };
 const getImageSize = (scale) => {
     switch (scale) {
-        case Scales$2.LG:
+        case Scales$4.LG:
             return 24;
-        case Scales$2.MD:
+        case Scales$4.MD:
             return 20;
-        case Scales$2.SM:
+        case Scales$4.SM:
         default:
             return 16;
     }
@@ -5198,7 +5203,7 @@ const TextDescription = styled(Text) `
     variants: styleTextVariants,
 })}
 `;
-const InputGroup = ({ scale = Scales$2.MD, startIcon, startImage, endIcon, children, variant, isError, isWarning, disabled, description, baseAwsUrl = "https://static.biswap.org/bs", ...props }) => {
+const InputGroup = ({ scale = Scales$4.MD, startIcon, startImage, endIcon, children, variant, isError, isWarning, disabled, description, baseAwsUrl = "https://static.biswap.org/bs", ...props }) => {
     return (React.createElement(StyledInputWrapper, { width: "100%", position: "relative", disabled: disabled, ...props },
         React.createElement(StyledInputGroup, { scale: scale, variant: variant, width: "100%", position: "relative", hasStartIcon: !!startIcon || !!startImage, hasEndIcon: !!endIcon },
             startIcon && React.createElement(LeftIconComponent, { color: startIcon.color, iconName: startIcon.iconName, scale: scale }),
@@ -5211,32 +5216,32 @@ const InputGroup = ({ scale = Scales$2.MD, startIcon, startImage, endIcon, child
         description && (React.createElement(TextDescription, { mt: "4px", fontSize: "12px", variant: variant }, description))));
 };
 
-var Scales$1;
+var Scales$3;
 (function (Scales) {
     Scales["LG"] = "lg";
     Scales["MD"] = "md";
     Scales["SM"] = "sm";
-})(Scales$1 || (Scales$1 = {}));
-var Variants$5;
+})(Scales$3 || (Scales$3 = {}));
+var Variants$7;
 (function (Variants) {
     Variants["LIGHT"] = "light";
     Variants["DARK"] = "dark";
-})(Variants$5 || (Variants$5 = {}));
+})(Variants$7 || (Variants$7 = {}));
 
 const scaleVariants = {
-    [Scales$1.LG]: {
+    [Scales$3.LG]: {
         fontSize: "16px",
         svg: {
             width: "16px",
         },
     },
-    [Scales$1.MD]: {
+    [Scales$3.MD]: {
         fontSize: "14px",
         svg: {
             width: "14px",
         },
     },
-    [Scales$1.SM]: {
+    [Scales$3.SM]: {
         fontSize: "12px",
         svg: {
             width: "12px",
@@ -5244,7 +5249,7 @@ const scaleVariants = {
     },
 };
 const styleVariants = {
-    [Variants$5.LIGHT]: {
+    [Variants$7.LIGHT]: {
         color: "primary",
         svg: {
             fill: "primary",
@@ -5262,7 +5267,7 @@ const styleVariants = {
             },
         },
     },
-    [Variants$5.DARK]: {
+    [Variants$7.DARK]: {
         color: "primaryHover",
         svg: {
             fill: "primaryHover",
@@ -5363,22 +5368,22 @@ const Overlay = (props) => {
         React.createElement(StyledOverlay, { role: "presentation", ...props })));
 };
 
-var Scales;
+var Scales$2;
 (function (Scales) {
     Scales["SM"] = "sm";
     Scales["MD"] = "md";
-})(Scales || (Scales = {}));
-var Variants$4;
+})(Scales$2 || (Scales$2 = {}));
+var Variants$6;
 (function (Variants) {
     Variants["DARK"] = "dark";
     Variants["LIGHT"] = "light";
-})(Variants$4 || (Variants$4 = {}));
+})(Variants$6 || (Variants$6 = {}));
 
 const getScale$2 = ({ scale }) => {
     switch (scale) {
-        case Scales.SM:
+        case Scales$2.SM:
             return "16px";
-        case Scales.MD:
+        case Scales$2.MD:
         default:
             return "20px";
     }
@@ -5418,9 +5423,9 @@ const InputRadio = styled.input.attrs({ type: "radio" }) `
   }
 
   &:checked + span {
-    color: ${({ theme, colorVariant }) => colorVariant === Variants$4.DARK
+    color: ${({ theme, colorVariant }) => colorVariant === Variants$6.DARK
     ? theme.colors.white
-    : colorVariant === Variants$4.LIGHT
+    : colorVariant === Variants$6.LIGHT
         ? theme.colors.dark800
         : theme.colors.gray900};
     background: ${({ colorVariant }) => colorVariant};
@@ -5435,7 +5440,7 @@ const InputRadio = styled.input.attrs({ type: "radio" }) `
 const StyledText$1 = styled(Text) `
   transition: color 0.4s ease-in-out;
 `;
-const Radio = ({ labelOrientation = "left", label, scale = Scales.MD, radioName, onChange, colorVariant = Variants$4.LIGHT, checked, }) => {
+const Radio = ({ labelOrientation = "left", label, scale = Scales$2.MD, radioName, onChange, colorVariant = Variants$6.LIGHT, checked, }) => {
     return (React.createElement(Wrapper$f, { labelOrientation: labelOrientation },
         React.createElement(InputRadio, { scale: scale, name: radioName, onChange: onChange, colorVariant: colorVariant, checked: checked }),
         label && labelOrientation && (React.createElement(StyledText$1, { as: "span", fontSize: "12px", fontWeight: "400", color: "gray900", mr: labelOrientation === "left" ? "12px" : 0, ml: labelOrientation === "right" ? "12px" : 0 }, label))));
@@ -5711,26 +5716,26 @@ var Animations;
     Animations["WAVES"] = "waves";
     Animations["PULSE"] = "pulse";
 })(Animations || (Animations = {}));
-var Variants$3;
+var Variants$5;
 (function (Variants) {
     Variants["RECT"] = "rect";
     Variants["CIRCLE"] = "circle";
     Variants["SM"] = "sm";
     Variants["MD"] = "md";
     Variants["LG"] = "lg";
-})(Variants$3 || (Variants$3 = {}));
+})(Variants$5 || (Variants$5 = {}));
 
 const variantsSkeleton = {
-    [Variants$3.CIRCLE]: {
+    [Variants$5.CIRCLE]: {
         borderRadius: "50%",
     },
-    [Variants$3.SM]: {
+    [Variants$5.SM]: {
         borderRadius: "4px",
     },
-    [Variants$3.MD]: {
+    [Variants$5.MD]: {
         borderRadius: "16px",
     },
-    [Variants$3.LG]: {
+    [Variants$5.LG]: {
         borderRadius: "24px",
     },
 };
@@ -5756,7 +5761,7 @@ const pulse = keyframes `
 `;
 const Root = styled(Box) `
   min-height: 20px;
-  border-radius: ${({ variant, theme }) => (variant === Variants$3.CIRCLE ? theme.radii.circle : theme.radii.small)};
+  border-radius: ${({ variant, theme }) => (variant === Variants$5.CIRCLE ? theme.radii.circle : theme.radii.small)};
   background-color: ${({ theme }) => getRgba(theme.colors.pastelBlue, theme, 0.16)};
 
   ${layout}
@@ -5791,7 +5796,7 @@ const Waves = styled(Root) `
     );
   }
 `;
-const Skeleton = ({ variant = Variants$3.RECT, animation = Animations.PULSE, ...props }) => {
+const Skeleton = ({ variant = Variants$5.RECT, animation = Animations.PULSE, ...props }) => {
     if (animation === Animations.WAVES) {
         return React.createElement(Waves, { variant: variant, ...props });
     }
@@ -6005,30 +6010,32 @@ const SubMenuItems = ({ items = [], activeItem, isMobileOnly = false, ...props }
             label))))));
 };
 
-const tabsScales = {
-    LG: "lg",
-    MD: "md",
-    SM: "sm",
-};
-const tabVariants = {
-    DARK: "dark",
-    LIGHT: "light",
-};
+var Scales$1;
+(function (Scales) {
+    Scales["LG"] = "lg";
+    Scales["MD"] = "md";
+    Scales["SM"] = "sm";
+})(Scales$1 || (Scales$1 = {}));
+var Variants$4;
+(function (Variants) {
+    Variants["DARK"] = "dark";
+    Variants["LIGHT"] = "light";
+})(Variants$4 || (Variants$4 = {}));
 
 const barItemScaleVariant = {
-    [tabsScales.LG]: {
+    [Scales$1.LG]: {
         height: "40px",
         padding: "0 16px",
         fontSize: "16px",
         lineHeight: "24px",
     },
-    [tabsScales.MD]: {
+    [Scales$1.MD]: {
         height: "32px",
         padding: "0 12px",
         fontSize: "14px",
         lineHeight: "20px",
     },
-    [tabsScales.SM]: {
+    [Scales$1.SM]: {
         height: "24px",
         padding: "0 8px",
         fontSize: "12px",
@@ -6036,13 +6043,13 @@ const barItemScaleVariant = {
     },
 };
 const barVariants = {
-    [tabVariants.DARK]: {
+    [Variants$4.DARK]: {
         color: "pastelBlue",
         ":hover:not(:disabled)": {
             color: "white",
         },
     },
-    [tabVariants.LIGHT]: {
+    [Variants$4.LIGHT]: {
         color: "gray900",
         ":hover:not(:disabled)": {
             color: "dark800",
@@ -6050,36 +6057,36 @@ const barVariants = {
     },
 };
 const menuIconScaleVariants = {
-    [tabsScales.LG]: {
+    [Scales$1.LG]: {
         width: "24px",
         marginRight: "10px",
     },
-    [tabsScales.MD]: {
+    [Scales$1.MD]: {
         width: "20px",
         marginRight: "8px",
     },
-    [tabsScales.SM]: {
+    [Scales$1.SM]: {
         width: "16px",
         marginRight: "6px",
     },
 };
 const sectionScaleVariants = {
-    [tabsScales.LG]: {
+    [Scales$1.LG]: {
         padding: "0 16px",
     },
-    [tabsScales.MD]: {
+    [Scales$1.MD]: {
         padding: "0 12px",
     },
-    [tabsScales.SM]: {
+    [Scales$1.SM]: {
         padding: "0 8px",
     },
 };
 
-const Wrapper$d = styled.div `
-  background-color: transparent;
+const Wrapper$d = styled(Box) `
   position: relative;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
+  background-color: transparent;
   overflow: hidden;
 
   ${({ scrollX }) => scrollX &&
@@ -6093,7 +6100,7 @@ const Wrapper$d = styled.div `
 
   ${space}
 `;
-const StyledTabBar = styled.div `
+const StyledTabBar = styled(Box) `
   position: relative;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
@@ -6120,17 +6127,19 @@ const StyledTabBar = styled.div `
       opacity: 0.5;
     `}
 `;
-const Selection = styled.div `
+const Selection = styled(Box) `
+  position: absolute;
+  left: ${({ offset }) => `${offset}px`};
+  bottom: 0;
   width: ${({ width }) => `${width}px`};
   height: 2px;
-  position: absolute;
-  bottom: 0;
-  left: ${({ offset }) => `${offset}px`};
   z-index: 1;
 
   ${({ withoutAnimation }) => !withoutAnimation &&
     css `
-      transition: left 0.3s ease, width 0.3s ease;
+      transition:
+        left 0.3s ease,
+        width 0.3s ease;
     `}
 
   ${variant({
@@ -6138,12 +6147,12 @@ const Selection = styled.div `
     variants: sectionScaleVariants,
 })}
 `;
-const ColorSection = styled.div `
+const ColorSection = styled(Box) `
   width: 100%;
   height: 100%;
-  background: ${({ theme, variant }) => theme.colors[variant === tabVariants.DARK ? "warning" : "primary"]};
+  background: ${({ theme, variant }) => theme.colors[variant === Variants$4.DARK ? "warning" : "primary"]};
 `;
-const TabMenu = ({ activeIndex, scale = tabsScales.MD, variant = tabVariants.DARK, onItemClick, disabled = false, fullWidth = false, menuIcons = [], scrollX = false, children, equalElementWidth, withoutAnimation = false, ...props }) => {
+const TabMenu = ({ activeIndex, scale = Scales$1.MD, variant = Variants$4.DARK, onItemClick, disabled = false, fullWidth = false, scrollX = false, children, equalElementWidth, withoutAnimation = false, ...props }) => {
     const [widthsArr, setWidthsArr] = useState([]);
     const [blockOffset, setBlockOffset] = useState(null);
     const [activeButtonIndex, setActiveButtonIndex] = useState(null);
@@ -6153,19 +6162,17 @@ const TabMenu = ({ activeIndex, scale = tabsScales.MD, variant = tabVariants.DAR
     }, [activeIndex]);
     useEffect(() => {
         if (activeButtonIndex !== null && widthsArr.length) {
-            setBlockOffset(widthsArr
-                .slice(0, activeButtonIndex)
-                .reduce((sum, elem) => sum + elem, 0));
+            setBlockOffset(widthsArr.slice(0, activeButtonIndex).reduce((sum, elem) => sum + elem, 0));
         }
     }, [widthsArr, activeButtonIndex, isDesktop, isMobile, isTablet]);
     const showSelection = !disabled && activeIndex !== null && blockOffset !== null;
-    return (React.createElement(Wrapper$d, { fullWidth: fullWidth, variant: variant, scrollX: scrollX, ...props },
-        showSelection && (React.createElement(Selection, { scale: scale, width: widthsArr[activeIndex], offset: blockOffset, variant: variant, withoutAnimation: withoutAnimation },
+    return (React.createElement(Wrapper$d, { fullWidth: fullWidth, scrollX: scrollX, ...props },
+        showSelection && (React.createElement(Selection, { scale: scale, width: widthsArr[activeIndex], offset: blockOffset, withoutAnimation: withoutAnimation },
             React.createElement(ColorSection, { variant: variant }))),
         React.createElement(StyledTabBar, { disabled: disabled, variant: variant, fullWidth: fullWidth, equalElementWidth: equalElementWidth, ...props }, Children.map(children, (child, index) => {
             return cloneElement(child, {
                 isActive: activeIndex === index,
-                onItemClick: onItemClick ? () => onItemClick(index) : undefined,
+                onItemClick: () => onItemClick?.(index),
                 setWidth: setWidthsArr,
                 itemIndex: index,
                 activeButtonIndex,
@@ -6178,24 +6185,28 @@ const TabMenu = ({ activeIndex, scale = tabsScales.MD, variant = tabVariants.DAR
 };
 
 const TabItem = styled.button `
-  border: 0;
-  margin: 0;
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  margin: 0;
+  border: 0;
+  outline: 0;
   font-family: inherit;
   font-weight: 600;
   line-height: 1;
-  outline: 0;
-  transition: background-color 0.3s, opacity 0.3s, color 0.3s;
   background-color: transparent;
+  transition:
+    background-color 0.3s,
+    opacity 0.3s,
+    color 0.3s;
+  cursor: pointer;
   white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
 
   ${variant({
     variants: barVariants,
 })}
+
   ${variant({
     prop: "scale",
     variants: barItemScaleVariant,
@@ -6203,11 +6214,11 @@ const TabItem = styled.button `
   
   ${({ isActive, variant, theme }) => isActive &&
     css `
-      color: ${theme.colors[variant === tabVariants.DARK ? "white" : "dark800"]};
+      color: ${theme.colors[variant === Variants$4.DARK ? "white" : "dark800"]};
     `}
 `;
-const TabBarItem = ({ isActive = false, variant, setWidth, itemIndex = 0, activeButtonIndex, blockOffset, iconName = "", iconColor = "", scale = tabsScales.MD, as, onItemClick = () => { }, onClick = () => { }, children, ...props }) => {
-    const { isXs, isSm, isMs, isLg, isXl, isXll, isXxl } = useMatchBreakpoints();
+const TabBarItem = ({ isActive = false, variant, setWidth, itemIndex = 0, activeButtonIndex, blockOffset, iconName = "", iconColor = "", scale = Scales$1.MD, as, onItemClick, onClick, children, ...props }) => {
+    const { isMobile, isTablet, isDesktop } = useMatchBreakpoints();
     const ref = useRef(null);
     const itemWidth = ref?.current?.clientWidth ?? 0;
     useEffect(() => {
@@ -6218,21 +6229,11 @@ const TabBarItem = ({ isActive = false, variant, setWidth, itemIndex = 0, active
                     : [...prev, itemWidth];
             });
         }
-    }, [
-        blockOffset,
-        itemWidth,
-        activeButtonIndex,
-        isXs,
-        isSm,
-        isMs,
-        isLg,
-        isXl,
-        isXll,
-        isXxl,
-    ]);
+        // eslint-disable-next-line
+    }, [blockOffset, itemWidth, activeButtonIndex, isMobile, isTablet, isDesktop]);
     const omItemClickHandler = () => {
-        onItemClick(itemIndex);
-        onClick();
+        onItemClick?.(itemIndex);
+        onClick?.();
     };
     const iconSizes = menuIconScaleVariants[scale];
     const getTabMenuIcons = () => {
@@ -6244,15 +6245,27 @@ const TabBarItem = ({ isActive = false, variant, setWidth, itemIndex = 0, active
             children)));
 };
 
-const scales = {
-    // SM: "sm",
-    MD: "md",
-    // LG: "lg",
-};
+var Scales;
+(function (Scales) {
+    Scales["MD"] = "md";
+})(Scales || (Scales = {}));
+var Variants$3;
+(function (Variants) {
+    Variants["LIGHT"] = "light";
+    Variants["DARK"] = "dark";
+})(Variants$3 || (Variants$3 = {}));
+var ScaleKeys;
+(function (ScaleKeys) {
+    ScaleKeys["HANDLE_HEIGHT"] = "handleHeight";
+    ScaleKeys["HANDLE_WIDTH"] = "handleWidth";
+    ScaleKeys["HANDLE_LEFT"] = "handleLeft";
+    ScaleKeys["HANDLE_TOP"] = "handleTop";
+    ScaleKeys["CHECKED_LEFT"] = "checkedLeft";
+    ScaleKeys["TOGGLE_HEIGHT"] = "toggleHeight";
+    ScaleKeys["TOGGLE_WIDTH"] = "toggleWidth";
+})(ScaleKeys || (ScaleKeys = {}));
 
 const scaleKeyValues = {
-    // sm: {},
-    // TODO now used only MD scale
     md: {
         handleHeight: "16px",
         handleWidth: "16px",
@@ -6262,78 +6275,64 @@ const scaleKeyValues = {
         toggleHeight: "20px",
         toggleWidth: "40px",
     },
-    // lg: {},
 };
-const getScale$1 = (property) => ({ scale = scales.MD }) => {
-    return scaleKeyValues[scale][property];
-};
+const getScale$1 = (property) => ({ scale = Scales.MD }) => scaleKeyValues[scale][property];
 const ToggleWrap = styled.label `
   display: inline-flex;
   align-items: center;
-  width: ${({ spaceBetween }) => (spaceBetween ? "100%" : "auto")};
-  flex-direction: ${({ labelOrientation }) => labelOrientation === "left"
-    ? "row-reverse"
-    : labelOrientation === "right"
-        ? "row"
-        : "row"};
-  justify-content: ${({ spaceBetween }) => spaceBetween ? "space-between" : "start"};
-  opacity: ${({ disabled }) => (disabled ? "0.32" : "1")};
+  flex-direction: ${({ labelOrientation }) => labelOrientation === "left" ? "row-reverse" : labelOrientation === "right" ? "row" : "row"};
+  justify-content: ${({ spaceBetween }) => (spaceBetween ? "space-between" : "start")};
   grid-area: ${({ gridArea }) => gridArea || "initial"};
+  width: ${({ spaceBetween }) => (spaceBetween ? "100%" : "auto")};
+  opacity: ${({ disabled }) => (disabled ? "0.32" : "1")};
 
   ${space}
 `;
 const Handle = styled.div `
-  background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: 0 2px 4px rgba(7, 22, 45, 0.16);
-  border-radius: 50%;
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  height: ${getScale$1("handleHeight")};
-  left: ${getScale$1("handleLeft")};
   position: absolute;
-  top: ${getScale$1("handleTop")};
+  top: ${getScale$1(ScaleKeys.HANDLE_TOP)};
+  left: ${getScale$1(ScaleKeys.HANDLE_LEFT)};
+  width: ${getScale$1(ScaleKeys.HANDLE_WIDTH)};
+  height: ${getScale$1(ScaleKeys.HANDLE_HEIGHT)};
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(7, 22, 45, 0.16);
+  background-color: ${({ theme }) => theme.colors.white};
   transition: left 200ms ease-in;
-  width: ${getScale$1("handleWidth")};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   z-index: 1;
 `;
 const Label = styled(BodyText) `
-  color: ${({ theme, isChecked }) => isChecked ? theme.colors.dark800 : theme.colors.gray900};
-
-  color: ${({ theme, variant, isChecked }) => variant === "dark" && isChecked
-    ? theme.colors.white
-    : variant === "light" && isChecked
-        ? theme.colors.dark800
-        : theme.colors.gray900};
-
-  margin: ${({ labelOrientation }) => labelOrientation === "left" ? "0 8px 0 0" : "0 0 0 8px"};
+  margin: ${({ labelOrientation }) => (labelOrientation === "left" ? "0 8px 0 0" : "0 0 0 8px")};
+  color: ${({ theme, variant, isChecked }) => !isChecked ? theme.colors.gray900 : variant === Variants$3.LIGHT ? theme.colors.dark800 : theme.colors.white};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: color 0.2s ease-in-out;
 `;
 const Input = styled.input `
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  opacity: 0;
-  height: 100%;
   position: absolute;
   width: 100%;
-  z-index: 3;
+  height: 100%;
   margin: 0;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  opacity: 0;
+  z-index: 3;
 
   &:checked + ${Handle} {
-    left: ${getScale$1("checkedLeft")};
+    left: ${getScale$1(ScaleKeys.CHECKED_LEFT)};
   }
 `;
 const StyledToggle = styled.div `
-  background-color: ${({ theme, $checked, $checkedColor, $defaultColor }) => theme.colors[$checked ? $checkedColor : $defaultColor]};
-  align-items: center;
-  border-radius: 26px;
-  display: inline-flex;
-  height: ${getScale$1("toggleHeight")};
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: ${getScale$1(ScaleKeys.TOGGLE_WIDTH)};
+  height: ${getScale$1(ScaleKeys.TOGGLE_HEIGHT)};
+  border-radius: 26px;
+  background-color: ${({ theme, $checked, $checkedColor, $defaultColor }) => theme.colors[$checked ? $checkedColor : $defaultColor]};
   transition: background-color 0.2s ease-in-out;
-  width: ${getScale$1("toggleWidth")};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
 
-const Toggle = ({ checked, defaultColor = "toggleBg", checkedColor = "success", scale = scales.MD, disabled, label, labelOrientation, gridArea, variant = "light", spaceBetween, labelSize = Scales$5.SIZE12, ...props }) => {
+const Toggle = ({ checked, defaultColor = "toggleBg", checkedColor = "success", scale = Scales.MD, disabled, label, labelOrientation, gridArea, variant = Variants$3.LIGHT, spaceBetween, labelSize = Scales$7.SIZE12, ...props }) => {
     const isChecked = !!checked;
     return (React.createElement(ToggleWrap, { labelOrientation: labelOrientation, disabled: disabled, gridArea: gridArea, spaceBetween: spaceBetween, ...props },
         React.createElement(StyledToggle, { "$checked": isChecked, "$checkedColor": checkedColor, "$defaultColor": defaultColor, scale: scale, disabled: disabled },
@@ -6689,7 +6688,7 @@ const CircleIcon = (props) => {
         React.createElement("rect", { x: "1.5", y: "1.5", width: "7", height: "7", rx: "3.5", fill: props.darkMode ? theme.colors.dark700 : theme.colors.white, stroke: getColor({ color: props.color, theme }), strokeWidth: "3" })));
 };
 
-const PercentSlider = ({ name = "slider", min = 0, max = 100, value, onValueChanged, disabled = false, enableShortcuts, shortcutCheckpoints = [0, 25, 50, 75, 100], withTooltip, bannerPosition = "bottom", darkMode = false, shortcutScale = Scales$7.SM, shortcutVariant = Variants$9.PRIMARY, numberOfPoints = 5, ...props }) => {
+const PercentSlider = ({ name = "slider", min = 0, max = 100, value, onValueChanged, disabled = false, enableShortcuts, shortcutCheckpoints = [0, 25, 50, 75, 100], withTooltip, bannerPosition = "bottom", darkMode = false, shortcutScale = Scales$9.SM, shortcutVariant = Variants$b.PRIMARY, numberOfPoints = 5, ...props }) => {
     const [displayPercent, setDisplayPercent] = useState(value.toString());
     const [activeShortcutIndex, setActiveShortcutIndex] = useState(null);
     const [infoVisible, setInfoVisible] = useState(false);
@@ -6722,7 +6721,7 @@ const PercentSlider = ({ name = "slider", min = 0, max = 100, value, onValueChan
                 const pointPercent = (100 / (numberOfPoints - 1)) * point;
                 return (React.createElement(CircleIcon, { darkMode: darkMode, key: point.toString(), width: "10px", color: getCirclesColor(pointPercent) }));
             })))),
-        enableShortcuts && shortcutCheckpoints && (React.createElement(Grid, { gridTemplateColumns: `repeat(${shortcutCheckpoints.length}, 1fr)`, gridColumnGap: "8px", py: "16px" }, shortcutCheckpoints.map((percent, index) => (React.createElement(Button, { key: index.toString(), scale: shortcutScale, variant: activeShortcutIndex === index || value === percent ? Variants$9.PRIMARY : shortcutVariant, onClick: () => {
+        enableShortcuts && shortcutCheckpoints && (React.createElement(Grid, { gridTemplateColumns: `repeat(${shortcutCheckpoints.length}, 1fr)`, gridColumnGap: "8px", py: "16px" }, shortcutCheckpoints.map((percent, index) => (React.createElement(Button, { key: index.toString(), scale: shortcutScale, variant: activeShortcutIndex === index || value === percent ? Variants$b.PRIMARY : shortcutVariant, onClick: () => {
                 onValueChanged(percent);
                 setDisplayPercent(percent.toString());
                 setActiveShortcutIndex(index);
@@ -6988,7 +6987,7 @@ const GiftWrap = styled(Flex) `
   width: 37px;
   height: 32px;
 `;
-const SocialShareButton = ({ social = Socials.TELEGRAM, link, name, message, scale = Scales$7.LG, target = "_blank", width = "auto", withGift, disabled, ...props }) => {
+const SocialShareButton = ({ social = Socials.TELEGRAM, link, name, message, scale = Scales$9.LG, target = "_blank", width = "auto", withGift, disabled, ...props }) => {
     const theme = useTheme();
     const defaultName = social.charAt(0).toUpperCase() + social.slice(1);
     const { icon, backgroundColor } = socialStyles({ theme, disabled })[social];
@@ -7016,6 +7015,7 @@ const QuestionWrapper = styled(Flex) `
     css `
       cursor: pointer;
       transition: opacity 0.3s ease-in-out;
+
       :hover,
       :focus {
         opacity: 0.7;
@@ -7033,13 +7033,14 @@ const TooltipHelper = ({ text, placement = "auto", size = "16px", color = "paste
         React.createElement(QuestionWrapper, { ref: targetRef, showTooltip: showTooltip }, children ?? React.createElement(Icon, { color: color, width: size }))));
 };
 
-const ViewMode = {
-    TABLE: "table",
-    CARD: "card",
-};
+var SkeletonMode;
+(function (SkeletonMode) {
+    SkeletonMode["TABLE"] = "table";
+    SkeletonMode["CARD"] = "card";
+})(SkeletonMode || (SkeletonMode = {}));
 
-const TableCardSkeleton = ({ viewMode = ViewMode.CARD, number = 6, tableHeight = "72px", cardHeight = "352px", }) => {
-    if (viewMode === ViewMode.CARD) {
+const TableCardSkeleton = ({ viewMode = SkeletonMode.CARD, number = 6, tableHeight = "72px", cardHeight = "352px", }) => {
+    if (viewMode === SkeletonMode.CARD) {
         return (React.createElement(React.Fragment, null, Array.from({ length: number }, (v, i) => i).map((item) => (React.createElement(Box, { key: item.toString(), overflow: "hidden", borderRadius: "16px" },
             React.createElement(Skeleton, { animation: Animations.WAVES, height: cardHeight, width: "100%" }))))));
     }
@@ -7186,7 +7187,7 @@ const FaqAccordion = ({ name = "", isOpened, handleToggle, variant = Variants.DA
     const contentEl = useRef(null);
     return (React.createElement(Wrapper$8, { isOpen: isOpened, onClick: () => handleToggle(name), variant: variant },
         React.createElement(Question, { isOpen: isOpened },
-            React.createElement(StyledText, { scale: Scales$5.SIZE14, variant: variant }, name),
+            React.createElement(StyledText, { scale: Scales$7.SIZE14, variant: variant }, name),
             React.createElement(StyledChevronIcon, { isOpen: isOpened, color: "primary", width: "24px" })),
         React.createElement(Answer, { ref: contentEl, height: isOpened ? contentEl?.current?.scrollHeight : "0" }, children)));
 };
@@ -7219,12 +7220,12 @@ const Faqs = ({ title = "FAQs", leftData, rightData, variant = Variants.DARK, bl
     const handleToggle = (name) => {
         setActiveQuestion(activeQuestion !== name ? name : "");
     };
-    const isDarkMobile = variant === Variants.DARK ? Scales$5.SIZE24 : Scales$5.SIZE20;
+    const isDarkMobile = variant === Variants.DARK ? Scales$7.SIZE24 : Scales$7.SIZE20;
     // markup for question
     const renderQuestionList = (list) => (list || []).map((item, index) => (React.createElement(FaqAccordion, { key: index.toString(), name: item.name, isOpened: activeQuestion === item.name, handleToggle: handleToggle, variant: variant },
-        React.createElement(Description, { as: "div", scale: Scales$5.SIZE14, p: "0 16px 16px", variant: variant }, item.description))));
+        React.createElement(Description, { as: "div", scale: Scales$7.SIZE14, p: "0 16px 16px", variant: variant }, item.description))));
     return (React.createElement(Box, { ...props },
-        title && (React.createElement(Title$2, { titlePosition: titlePosition, scale: { xs: isDarkMobile, md: Scales$5.SIZE24 }, mb: "16px", bold: true, variant: variant }, title)),
+        title && (React.createElement(Title$2, { titlePosition: titlePosition, scale: { xs: isDarkMobile, md: Scales$7.SIZE24 }, mb: "16px", bold: true, variant: variant }, title)),
         React.createElement(ContentWrapper, { blogFAQ: blogFAQ, singleList: !rightData?.length },
             React.createElement(Flex, { flexDirection: "column" }, renderQuestionList(leftData)),
             !!rightData?.length && React.createElement(Flex, { flexDirection: "column" }, renderQuestionList(rightData)))));
@@ -7243,7 +7244,7 @@ const TermsWrapper = styled(Box) `
   overflow: hidden;
   transition: height ease 0.5s;
 `;
-const PlusAnimatedIcon = styled.div `
+const PlusAnimatedIcon = styled(Box) `
   position: relative;
   width: ${({ imageSize }) => imageSize};
   height: ${({ imageSize }) => imageSize};
@@ -7272,13 +7273,13 @@ const PlusAnimatedIcon = styled.div `
     transform: ${({ isOpen }) => `translate(-50%, -50%) ${isOpen ? "rotate(0deg)" : "rotate(180deg)"}`};
   }
 `;
-const TermsAccordion = ({ name = "", imageSize, imageColor, children, }) => {
+const TermsAccordion = ({ name = "", imageSize, imageColor, children }) => {
     const [isOpened, setOpened] = useState(true);
     const contentEl = useRef(null);
     const theme = useTheme();
     return (React.createElement(Box, null,
         React.createElement(TermsHead, { onClick: () => setOpened((prev) => !prev) },
-            React.createElement(HeadText, { color: "white", scale: Scales$5.SIZE14 }, name),
+            React.createElement(HeadText, { color: "white", scale: Scales$7.SIZE14 }, name),
             React.createElement(PlusAnimatedIcon, { imageSize: imageSize, isOpen: isOpened, imageColor: getThemeValue(`colors.${imageColor}`, imageColor)(theme) })),
         React.createElement(TermsWrapper, { ref: contentEl, height: isOpened ? contentEl?.current?.scrollHeight : "0" }, children)));
 };
@@ -7295,12 +7296,12 @@ const StyledListItem = styled(Flex) `
 `;
 const Terms = ({ title = "Terms of use", scrollClass = "", termsList, description, revised, imageSize = "32px", imageColor = "primary", ...rest }) => {
     const renderTermsList = () => termsList.map((item, index) => (React.createElement(StyledListItem, { key: index.toString(), py: "8px" },
-        React.createElement(BodyText, { color: "pastelBlue", scale: Scales$5.SIZE16 }, item))));
+        React.createElement(BodyText, { color: "pastelBlue", scale: Scales$7.SIZE16 }, item))));
     return (React.createElement(Box, { className: scrollClass, ...rest },
         React.createElement(TermsAccordion, { name: title, imageSize: imageSize, imageColor: imageColor },
             React.createElement(Box, null,
-                React.createElement(BodyText, { mt: "24px", color: "warning", scale: Scales$5.SIZE16, bold: true }, revised),
-                React.createElement(BodyText, { mt: "16px", color: "white", scale: Scales$5.SIZE16 }, description),
+                React.createElement(BodyText, { mt: "24px", color: "warning", scale: Scales$7.SIZE16, bold: true }, revised),
+                React.createElement(BodyText, { mt: "16px", color: "white", scale: Scales$7.SIZE16 }, description),
                 React.createElement(StyledList, { mt: "8px", pl: "8px" }, renderTermsList())))));
 };
 
@@ -7322,11 +7323,11 @@ const ModalBody$1 = styled(Flex) `
   overflow-y: auto;
 `;
 const ModalCloseButton = ({ onDismiss, closeBtnColor }) => {
-    return (React.createElement(IconButton, { variant: Variants$9.TEXT, onClick: onDismiss, scale: Scales$7.SM, "aria-label": "Close the dialog" },
+    return (React.createElement(IconButton, { variant: Variants$b.TEXT, onClick: onDismiss, scale: Scales$9.SM, "aria-label": "Close the dialog" },
         React.createElement(Icon$35, { color: closeBtnColor || "dark600", width: "24px" })));
 };
 const ModalBackButton = ({ onBack, closeBtnColor }) => {
-    return (React.createElement(IconButton, { variant: Variants$9.TEXT, onClick: onBack, "area-label": "go back", mr: "8px" },
+    return (React.createElement(IconButton, { variant: Variants$b.TEXT, onClick: onBack, "area-label": "go back", mr: "8px" },
         React.createElement(Icon$3o, { color: closeBtnColor || "primary" })));
 };
 const ModalContainer = styled(Box) `
@@ -7376,7 +7377,7 @@ function ModalV2({ isOpen, onDismiss, closeOnOverlayClick, children, disableOuts
     return null;
 }
 
-const Modal = ({ title, onDismiss: onDismiss_, onBack, hideOnBack, children, hideCloseButton = false, bodyPadding, headerPadding, minWidth = "320px", modalBackground = "white", closeBtnColor, maxWidth = "420px", titleSize = Scales$3.LG, walletModal, modalBodyProps, hideHeader, titleColor = "backgroundDark", ...props }) => {
+const Modal = ({ title, onDismiss: onDismiss_, onBack, hideOnBack, children, hideCloseButton = false, bodyPadding, headerPadding, minWidth = "320px", modalBackground = "white", closeBtnColor, maxWidth = "420px", titleSize = Scales$5.LG, walletModal, modalBodyProps, hideHeader, titleColor = "backgroundDark", ...props }) => {
     const theme = useTheme();
     const { isMobile } = useMatchBreakpoints();
     const defaultBodyPadding = isMobile ? "0 16px 24px" : "0 32px 32px";
@@ -7437,7 +7438,7 @@ const ModalWithBackground = ({ onDismiss: onDismiss_, children, hideCloseButton 
     const context = useContext(ModalV2Context);
     const onDismiss = context?.onDismiss || onDismiss_;
     return (React.createElement(StyledModal, { backgroundTransparent: backgroundTransparent, ...boxProps },
-        !hideCloseButton && (React.createElement(StyledIconButton, { variant: Variants$9.TEXT, className: "closeModal", scale: Scales$7.SM, onClick: onDismiss, "aria-label": "Close the dialog" },
+        !hideCloseButton && (React.createElement(StyledIconButton, { variant: Variants$b.TEXT, className: "closeModal", scale: Scales$9.SM, onClick: onDismiss, "aria-label": "Close the dialog" },
             React.createElement(Icon$35, { width: "24px", color: backBtnColor ?? "card" }))),
         background && React.createElement(Background, { src: background, alt: "image" }),
         React.createElement(ModalBody, { padding: p }, children)));
@@ -7583,7 +7584,7 @@ const ConnectMetamask = ({ onClick, baseAwsUrl }) => {
 };
 
 const BuyBSW = ({ buyBswHandler, buyBswLabel }) => {
-    return (React.createElement(Button, { onClick: buyBswHandler, variant: Variants$9.DANGER, scale: Scales$7.MD }, buyBswLabel));
+    return (React.createElement(Button, { onClick: buyBswHandler, variant: Variants$b.DANGER, scale: Scales$9.MD }, buyBswLabel));
 };
 
 const Wrapper$6 = styled.div `
@@ -8453,7 +8454,7 @@ const Audit = ({ marketplaceLink, baseAwsUrl }) => {
             React.createElement(Flex, { alignItems: "center" },
                 React.createElement(IconWrapper, null,
                     React.createElement(Image$1, { width: 19, height: 19, src: `${baseAwsUrl}/icons/Market.svg`, alt: "" })),
-                React.createElement(BodyText, { scale: Scales$5.SIZE14, color: "white", bold: true }, "Marketplace"))),
+                React.createElement(BodyText, { scale: Scales$7.SIZE14, color: "white", bold: true }, "Marketplace"))),
         React.createElement(LinkWrap, { href: CERTIK_URL, target: "_blank" },
             React.createElement(Image$1, { width: 124, height: 35, src: `${baseAwsUrl}/icons/CertikAudited.svg`, alt: "Certik" }))));
 };
@@ -8806,11 +8807,10 @@ const DropdownMenu = ({ children, activeItem = "", items = [], isExtended = fals
         })))));
 };
 
-const AccordionBody = styled.div `
-  display: flex;
+const AccordionBody = styled(Flex) `
   flex-direction: column;
-  overflow: hidden;
   max-height: 0;
+  overflow: hidden;
   transition: max-height 0.45s;
 
   ${({ opened }) => opened &&
@@ -8824,7 +8824,7 @@ const AccordionTitle = styled(Flex) `
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 `;
-const AccordionComponent = styled.div `
+const AccordionComponent = styled(Box) `
   width: 100%;
 `;
 const Accordion = ({ label, clickable = true, heading, children, index, href, linkComponent, setIsOpenMenu, isOpenItem, currentOpen, setCurrentOpen, }) => {
@@ -8950,7 +8950,7 @@ const MobileMenu = ({ items, mobileMenuCallback, children, activeItem, baseAwsUr
                                 return (((!showItemsOnMobile && !hidden) || (href && !isTablet)) && (React.createElement(React.Fragment, null,
                                     React.createElement(Box, { m: "16px 0", position: "relative" },
                                         isMarker && React.createElement(Marker, { color: isMarkerColor }),
-                                        React.createElement(HeadText, { scale: isTablet ? Scales$5.SIZE20 : Scales$5.SIZE16, color: isMobile && opened && !href
+                                        React.createElement(HeadText, { scale: isTablet ? Scales$7.SIZE20 : Scales$7.SIZE16, color: isMobile && opened && !href
                                                 ? "primary"
                                                 : isHighlighted && isTablet
                                                     ? "warningPress"
@@ -9271,14 +9271,14 @@ const LogoSwitcher = ({ logoSubtitle }) => {
             React.createElement(Icon$c, { width: "32px" }),
             React.createElement(Box, { ml: "8px" },
                 React.createElement(Icon$d, { width: "78px" }),
-                React.createElement(BodyText, { mt: "-6px", textAlign: "left", scale: Scales$5.SIZE12 }, logoSubtitle))));
+                React.createElement(BodyText, { mt: "-6px", textAlign: "left", scale: Scales$7.SIZE12 }, logoSubtitle))));
     }
     return React.createElement(Icon$e, { width: "145px" });
 };
 const Logo = ({ href, logoSubtitle }) => {
     const { linkComponent } = useContext(MenuContext);
     const isAbsoluteUrl = href.startsWith("http");
-    return (React.createElement(Flex, null, isAbsoluteUrl ? (React.createElement(StyledInnerButton, { variant: Variants$9.LIGHT, onClick: () => window.open(href, "_self"), "aria-label": "Biswap home page" },
+    return (React.createElement(Flex, null, isAbsoluteUrl ? (React.createElement(StyledInnerButton, { variant: Variants$b.LIGHT, onClick: () => window.open(href, "_self"), "aria-label": "Biswap home page" },
         React.createElement(LogoSwitcher, { logoSubtitle: logoSubtitle }))) : (React.createElement(StyledInnerButton, { variant: "light", as: linkComponent, href: href, "aria-label": "Biswap home page" },
         React.createElement(LogoSwitcher, { logoSubtitle: logoSubtitle })))));
 };
@@ -9419,10 +9419,10 @@ var Types;
 })(Types || (Types = {}));
 
 const alertTypeMap = {
-    [Types.INFO]: Variants$a.INFO,
-    [Types.SUCCESS]: Variants$a.SUCCESS,
-    [Types.DANGER]: Variants$a.DANGER,
-    [Types.WARNING]: Variants$a.WARNING,
+    [Types.INFO]: Variants$c.INFO,
+    [Types.SUCCESS]: Variants$c.SUCCESS,
+    [Types.DANGER]: Variants$c.DANGER,
+    [Types.WARNING]: Variants$c.WARNING,
 };
 const ClearAllButton = styled(Button) `
   position: absolute;
@@ -9467,7 +9467,7 @@ const Toast = ({ removeButtonPosition = 60, clearAll, toast, style, handleMouseE
     const { description, type, title, tweeterDescription, hash, url, withGift } = toast;
     return (React.createElement(CSSTransition, { timeout: 250, style: style, ...props },
         React.createElement(StyledToast$1, { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave },
-            clearAll && (React.createElement(ClearAllButton, { scale: Scales$7.SM, variant: Variants$9.TEXT, top: removeButtonPosition, onClick: clearAll },
+            clearAll && (React.createElement(ClearAllButton, { scale: Scales$9.SM, variant: Variants$b.TEXT, top: removeButtonPosition, onClick: clearAll },
                 React.createElement(Text, { p: "0 8px", fontSize: "12px", color: "dark" }, clearAllLabel))),
             React.createElement(Alert, { progress: progress, title: title, variant: alertTypeMap[type], onClick: handleRemove },
                 React.createElement(Box, null,
@@ -9665,4 +9665,4 @@ const ColoredToasts = ({ toasts, onRemove, ttl = 5000 }) => {
         React.createElement(TransitionGroup, null, toasts.map((toast) => (React.createElement(ColoredToastItem, { key: toast.id, toast: toast, ttl: ttl, style: { bottom: "50px" } }))))));
 };
 
-export { Icon$U as AboutBSWOpacityIcon, Icon$V as AboutBSWSolidIcon, Alert, ColoredVariants as AlertColoredVariants, Variants$a as AlertVariants, Icon$_ as AnalyticsOpacityIcon, Icon$$ as AnalyticsSolidIcon, Icon$3n as ArrowDownIcon, Icon$g as ArrowFiguredIcon, Icon$3o as ArrowLeftIcon, Icon$3q as ArrowRightIcon, Icon$3k as ArrowSkipLeftIcon, Icon$3l as ArrowSkipRightIcon, Icon$3m as ArrowUpForwardIcon, Icon$3p as ArrowUpIcon, Icon$28 as AuctionIcon, Icon$26 as AuctionOpacityIcon, Icon$27 as AuctionSolidIcon, Icon$H as AuditProtectionOpacityIcon, Icon$G as AuditProtectionSolidIcon, Icon$E as AuditSearchOpacityIcon, Icon$F as AuditSearchSolidIcon, Icon$1B as AutoRenewAnimateIcon, Icon$1E as AutoRenewIcon, Icon$1C as AutoRenewOpacityAnimateIcon, Icon$1F as AutoRenewOpacityIcon, Icon$1D as AutoRenewSolidAnimateIcon, Icon$1G as AutoRenewSolidIcon, Icon$h as AvalancheIcon, Icon$j as BSCIcon, Badge$1 as Badge, Badge as BadgeButton, BadgeButtonTypes, BadgeTypes, GridLayout$1 as BaseLayout, BaseMenu, Icon$2x as BellOpacityIcon, Icon$2y as BellSolidIcon, Icon$1Y as BlockIcon, Icon$1X as BlockOpacityIcon, Icon$1W as BlockSolidIcon, Icon$C as BlogOpacityIcon, Icon$D as BlogSolidIcon, BodyText, BodyTextTags, Icon$2e as BookIcon, Icon$2c as BookOpacityIcon, Icon$2d as BookSolidIcon, Box, Breadcrumbs, Icon$3D as BscBlackRoundIcon, Icon$c as BswIcon, Icon$1r as BurgerCloseIcon, Icon$1s as BurgerIcon, Button, ButtonMenu, ButtonMenuItem, Scales$6 as ButtonMenuScales, Variants$8 as ButtonMenuVariants, Scales$7 as ButtonScales, Variants$9 as ButtonVariants, Icon$2Z as CalculateIcon, Icon$2$ as CalculateOpacityIcon, Icon$2_ as CalculateSolidIcon, Icon$2Y as CalendarIcon, Icon$2H as CardViewIcon, GridLayout as CardsLayout, CarouselButtonsTypes, CarouselHeader, CarouselNumbersBlock, Icon$W as CharityOpacityIcon, Icon$X as CharitySolidIcon, Icon$2D as CheckCircleIcon, Icon$2E as CheckIcon, Icon$2B as CheckOpacityIcon, Icon$2C as CheckSolidIcon, Checkbox, CheckboxScales, Icon$3B as ChevronDownCircleOpacityIcon, Icon$3C as ChevronDownCircleSolidIcon, Icon$3A as ChevronDownIcon, Icon$3h as ChevronDownTripleIcon, Icon$3v as ChevronLeftCircleOpacityIcon, Icon$3w as ChevronLeftCircleSolidIcon, Icon$3u as ChevronLeftIcon, Icon$3y as ChevronRightCircleOpacityIcon, Icon$3z as ChevronRightCircleSolidIcon, Icon$3x as ChevronRightIcon, Icon$3g as ChevronRightTripleIcon, Icon$3r as ChevronUpCircleOpacityIcon, Icon$3s as ChevronUpCircleSolidIcon, Icon$3j as ChevronUpDoubleIcon, Icon$3t as ChevronUpIcon, Icon$3i as ChevronUpTripleIcon, ClickableElementContainer, Icon$34 as CloseCircleIcon, Icon$33 as CloseCircleOpacityIcon, Icon$32 as CloseCircleSolidIcon, Icon$35 as CloseIcon, Icon$m as CoinMarketCapIcon, ColoredToasts, Icon$a as ConflictIcon, Container$3 as Container, ContainerCarousel, Icon$2n as CopyIcon, Icon$2l as CopyOpacityIcon, Icon$2m as CopySolidIcon, Icon$k as DeBankIcon, DirectionButton, Icon$2 as DiscountOpacityIcon, Icon$3 as DiscountSolidIcon, Icon$I as DocsOpacityIcon, Icon$J as DocsSolidIcon, Dot$1 as Dot, Icon$3G as DownloadIcon, Icon$9 as DropIcon, Dropdown, DropdownButton, Positions as DropdownButtonPositions, Scales$4 as DropdownButtonScales, Variants$7 as DropdownButtonVariants, DropdownMenuItemType, DropdownPosition, DropdownScales, DropdownVariants, Icon$1M as EditIcon, Icon$1L as EditOpacityIcon, Icon$1K as EditSolidIcon, Icon$1k as ExchangeOpacityIcon, Icon$1l as ExchangeSolidIcon, ExpandableButton, ExpandableIcon, ExpandableLabel, Icon$1i as ExpertModeOpacityIcon, Icon$1j as ExpertModeSolidIcon, Icon$2F as EyeCloseIcon, Icon$2G as EyeOpenIcon, Icon$o as FacebookIcon, Faqs, Variants as FaqsVariants, Icon$1e as FarmsOpacityIcon, Icon$1f as FarmsSolidIcon, Icon$2K as FavoriteEmptyIcon, Icon$2J as FavoriteSolidIcon, Icon$2b as FileIcon, Icon$29 as FileOpacityIcon, Icon$2a as FileSolidIcon, Icon$2h as FilterIcon, Icon$2f as FilterOpacityIcon, Icon$2g as FilterSolidIcon, Icon$2U as FireIcon, Icon$2S as FireOpacityIcon, Icon$2T as FireSolidIcon, Icon$10 as FixedStakingOpacityIcon, Icon$11 as FixedStakingSolidIcon, Icon$1$ as FlagIcon, Icon$1_ as FlagOpacityIcon, Icon$1Z as FlagSolidIcon, Flex, Icon$1I as GasIcon, Icon$5 as GiftIcon, Icon$18 as GobletOpacityIcon, Icon$19 as GobletSolidIcon, Grid, HeadText, HeadTextTags, Heading, Scales$3 as HeadingScales, Tags as HeadingTags, Icon$2V as HelpIcon, Icon$2X as HelpOpacityIcon, Icon$2W as HelpSolidIcon, HeroWrapper, Icon$1v as HistoryIcon, Icon$3E as HourglassIcon, IconButton, IconComponent, Icon$1a as IdoOpacityIcon, Icon$1b as IdoSolidIcon, Image, Variants$1 as ImageVariants, Icon$2R as InfoIcon, Icon$2P as InfoOpacityIcon, Icon$2Q as InfoSolidIcon, InlineMenu, InlineMenuContainer, Input$1 as Input, InputGroup, Scales$2 as InputScales, Variants$6 as InputVariants, Icon$v as InstagramIcon, Icon$z as InvestPoolOpacityIcon, ItemTypes, Icon$6 as LanguageIcon, Icon$14 as LaunchpadOpacityIcon, Icon$15 as LaunchpadSolidIcon, Icon$b as LightningIcon, Icon$A as LimitOrderOpacityIcon, Icon$B as LimitOrderSolidIcon, Link, LinkExternal, Scales$1 as LinkScales, Variants$5 as LinkVariants, Icon$1m as LiquidityOpacityIcon, Icon$1n as LiquiditySolidIcon, Icon$y as LiquidityStakingOpacityIcon, Icon$x as LiquidityStakingSolidIcon, Icon$w as LiquidityStakingSolidOpacityIcon, Icon$1x as ListOpacityIcon, Icon$1w as ListSolidIcon, Icon$2I as ListViewIcon, Icon$8 as LockIcon, Icon$e as LogoWithTextIcon, Icon$16 as LotteryOpacityIcon, Icon$17 as LotterySolidIcon, MatchBreakpointsProvider, Icon$1J as MedalIcon, Icon$u as MediumIcon, Menu, Icon$3a as MinusCircleOpacityIcon, Icon$3b as MinusCircleSolidIcon, Icon$3c as MinusIcon, Modal, ModalBackButton, ModalBody$1 as ModalBody, ModalCloseButton, ModalContainer, ModalProvider, ModalTitle, ModalV2, ModalV2Context, ModalWithBackground, ModalWrapper, Icon$1N as More2Icon, Icon$1R as MoreHorizontalIcon, Icon$1P as MoreHorizontalOpacityIcon, Icon$1O as MoreHorizontalOutlineIcon, Icon$1Q as MoreHorizontalSolidIcon, Icon$1V as MoreVerticalIcon, Icon$1T as MoreVerticalOpacityIcon, Icon$1S as MoreVerticalOutlineIcon, Icon$1U as MoreVerticalSolidIcon, Icon$3F as MouseIcon, Icon$N as MultiPoolOpacityIcon, Icon$M as MultiPoolSolidIcon, Icon$12 as NFTEarnOpacityIcon, Icon$13 as NFTEarnSolidIcon, Icon$K as NewsOpacityIcon, Icon$L as NewsSolidIcon, NotificationDot, Icon$2q as OptionsOpacityIcon, Icon$2r as OptionsSolidIcon, Overlay, Pagination, Variants$2 as PaginationVariants, PercentSlider, Icon$1 as PerpetualOpacityIcon, Icon as PerpetualSolidIcon, Icon$1H as PlayIcon, Icon$3d as PlusCircleOpacityIcon, Icon$3e as PlusCircleSolidIcon, Icon$3f as PlusIcon, Icon$i as PolygonIcon, Icon$1g as PoolsOpacityIcon, Icon$1h as PoolsSolidIcon, Icon$1t as ProductsOpacityIcon, Icon$1u as ProductsSolidIcon, Icon$Q as Program10mOpacityIcon, Icon$R as Program10mSolidIcon, Icon$d as ProjectNameIcon, Icon$l as QuoraIcon, Radio, Scales as RadioScales, Variants$4 as RadioVariants, Icon$t as RedditIcon, Icon$1c as ReferralOpacityIcon, Icon$1d as ReferralSolidIcon, Icon$1A as RefreshIcon, Icon$1z as RefreshOpacityIcon, Icon$1y as RefreshSolidIcon, ResetCSS, Icon$4 as RouteIcon, Scales$5 as Scales, Icon$2v as SearchOpacityIcon, Icon$2w as SearchSolidIcon, Icon$2k as ShareIcon, Icon$2i as ShareOpacityIcon, Icon$2j as ShareSolidIcon, Skeleton, Animations as SkeletonAnimation, Variants$3 as SkeletonVariants, Slider, SocialShareButton, SocialShareButtonCircle, Socials, Icon$O as SpaceAgentOpacityIcon, Icon$P as SpaceAgentSolidIcon, Icon$2u as StarIcon, Icon$2t as StarOpacityIcon, Icon$2s as StarSolidIcon, SubMenu, SubMenuContainer, SubMenuItem, SubMenuItems, Svg, Icon$2O as SwapHorizontalOpacityIcon, Icon$2N as SwapHorizontalSolidIcon, Icon$2M as SwapVerticalOpacityIcon, Icon$2L as SwapVerticalSolidIcon, TabMenu, TabBarItem as TabMenuItem, TableCardSkeleton, Icon$S as TeamOpacityIcon, Icon$T as TeamSolidIcon, Icon$s as TelegramIcon, Terms, Icon$22 as TestIcon, Icon$21 as TestOpacityIcon, Icon$20 as TestSolidIcon, Text, Icon$f as Ticket2Icon, Icon$n as TikTokIcon, Icon$25 as TimerIcon, Icon$23 as TimerOpacityIcon, Icon$24 as TimerSolidIcon, ToastContainer, Toggle, TooltipHelper, TooltipText, Icon$r as TwitchIcon, Icon$q as TwitterIcon, Icon$7 as UnlockIcon, Icon$1o as UsdLineIcon, Icon$1q as UsdOpacityIcon, Icon$1p as UsdSolidIcon, Icon$2z as UserOpacityIcon, Icon$2A as UserSolidIcon, VariantRotate, Icon$2o as VerifiedOpacityIcon, Icon$2p as VerifiedSolidIcon, ViewMode, Icon$Y as VotingOpacityIcon, Icon$Z as VotingSolidIcon, Icon$30 as WalletOpacityIcon, Icon$31 as WalletSolidIcon, Icon$36 as WarningCycleIcon, Icon$37 as WarningIcon, Icon$39 as WarningOpacityIcon, Icon$38 as WarningSolidIcon, Icon$p as YoutubeIcon, bodyTextScaleMap, darkTheme as dark, darkColors, formatSpacingAmount, getExternalLinkProps, getPortalRoot, getResponsiveAttrs, getRgba, getThemeValue, headTextScaleMap, isTouchDevice, lightTheme as light, lightColors, links as menuConfig, status as menuStatus, useCarousel, useMatchBreakpoints, useModal, useModalV2, useOnClickOutside, useTooltip };
+export { Icon$U as AboutBSWOpacityIcon, Icon$V as AboutBSWSolidIcon, Alert, ColoredVariants as AlertColoredVariants, Variants$c as AlertVariants, Icon$_ as AnalyticsOpacityIcon, Icon$$ as AnalyticsSolidIcon, Icon$3n as ArrowDownIcon, Icon$g as ArrowFiguredIcon, Icon$3o as ArrowLeftIcon, Icon$3q as ArrowRightIcon, Icon$3k as ArrowSkipLeftIcon, Icon$3l as ArrowSkipRightIcon, Icon$3m as ArrowUpForwardIcon, Icon$3p as ArrowUpIcon, Icon$28 as AuctionIcon, Icon$26 as AuctionOpacityIcon, Icon$27 as AuctionSolidIcon, Icon$H as AuditProtectionOpacityIcon, Icon$G as AuditProtectionSolidIcon, Icon$E as AuditSearchOpacityIcon, Icon$F as AuditSearchSolidIcon, Icon$1B as AutoRenewAnimateIcon, Icon$1E as AutoRenewIcon, Icon$1C as AutoRenewOpacityAnimateIcon, Icon$1F as AutoRenewOpacityIcon, Icon$1D as AutoRenewSolidAnimateIcon, Icon$1G as AutoRenewSolidIcon, Icon$h as AvalancheIcon, Icon$j as BSCIcon, Badge$1 as Badge, Badge as BadgeButton, BadgeButtonTypes, BadgeTypes, GridLayout$1 as BaseLayout, BaseMenu, Icon$2x as BellOpacityIcon, Icon$2y as BellSolidIcon, Icon$1Y as BlockIcon, Icon$1X as BlockOpacityIcon, Icon$1W as BlockSolidIcon, Icon$C as BlogOpacityIcon, Icon$D as BlogSolidIcon, BodyText, BodyTextTags, Icon$2e as BookIcon, Icon$2c as BookOpacityIcon, Icon$2d as BookSolidIcon, Box, Breadcrumbs, Icon$3D as BscBlackRoundIcon, Icon$c as BswIcon, Icon$1r as BurgerCloseIcon, Icon$1s as BurgerIcon, Button, ButtonMenu, ButtonMenuItem, Scales$8 as ButtonMenuScales, Variants$a as ButtonMenuVariants, Scales$9 as ButtonScales, Variants$b as ButtonVariants, Icon$2Z as CalculateIcon, Icon$2$ as CalculateOpacityIcon, Icon$2_ as CalculateSolidIcon, Icon$2Y as CalendarIcon, Icon$2H as CardViewIcon, GridLayout as CardsLayout, CarouselButtonsTypes, CarouselHeader, CarouselNumbersBlock, Icon$W as CharityOpacityIcon, Icon$X as CharitySolidIcon, Icon$2D as CheckCircleIcon, Icon$2E as CheckIcon, Icon$2B as CheckOpacityIcon, Icon$2C as CheckSolidIcon, Checkbox, CheckboxScales, Icon$3B as ChevronDownCircleOpacityIcon, Icon$3C as ChevronDownCircleSolidIcon, Icon$3A as ChevronDownIcon, Icon$3h as ChevronDownTripleIcon, Icon$3v as ChevronLeftCircleOpacityIcon, Icon$3w as ChevronLeftCircleSolidIcon, Icon$3u as ChevronLeftIcon, Icon$3y as ChevronRightCircleOpacityIcon, Icon$3z as ChevronRightCircleSolidIcon, Icon$3x as ChevronRightIcon, Icon$3g as ChevronRightTripleIcon, Icon$3r as ChevronUpCircleOpacityIcon, Icon$3s as ChevronUpCircleSolidIcon, Icon$3j as ChevronUpDoubleIcon, Icon$3t as ChevronUpIcon, Icon$3i as ChevronUpTripleIcon, ClickableElementContainer, Icon$34 as CloseCircleIcon, Icon$33 as CloseCircleOpacityIcon, Icon$32 as CloseCircleSolidIcon, Icon$35 as CloseIcon, Icon$m as CoinMarketCapIcon, ColoredToasts, Icon$a as ConflictIcon, Container$3 as Container, ContainerCarousel, Icon$2n as CopyIcon, Icon$2l as CopyOpacityIcon, Icon$2m as CopySolidIcon, Icon$k as DeBankIcon, DirectionButton, Icon$2 as DiscountOpacityIcon, Icon$3 as DiscountSolidIcon, Icon$I as DocsOpacityIcon, Icon$J as DocsSolidIcon, Dot$1 as Dot, Icon$3G as DownloadIcon, Icon$9 as DropIcon, Dropdown, DropdownButton, Positions as DropdownButtonPositions, Scales$6 as DropdownButtonScales, Variants$9 as DropdownButtonVariants, DropdownMenuItemType, DropdownPosition, DropdownScales, DropdownVariants, Icon$1M as EditIcon, Icon$1L as EditOpacityIcon, Icon$1K as EditSolidIcon, Icon$1k as ExchangeOpacityIcon, Icon$1l as ExchangeSolidIcon, ExpandableButton, ExpandableIcon, ExpandableLabel, Icon$1i as ExpertModeOpacityIcon, Icon$1j as ExpertModeSolidIcon, Icon$2F as EyeCloseIcon, Icon$2G as EyeOpenIcon, Icon$o as FacebookIcon, Faqs, Variants as FaqsVariants, Icon$1e as FarmsOpacityIcon, Icon$1f as FarmsSolidIcon, Icon$2K as FavoriteEmptyIcon, Icon$2J as FavoriteSolidIcon, Icon$2b as FileIcon, Icon$29 as FileOpacityIcon, Icon$2a as FileSolidIcon, Icon$2h as FilterIcon, Icon$2f as FilterOpacityIcon, Icon$2g as FilterSolidIcon, Icon$2U as FireIcon, Icon$2S as FireOpacityIcon, Icon$2T as FireSolidIcon, Icon$10 as FixedStakingOpacityIcon, Icon$11 as FixedStakingSolidIcon, Icon$1$ as FlagIcon, Icon$1_ as FlagOpacityIcon, Icon$1Z as FlagSolidIcon, Flex, Icon$1I as GasIcon, Icon$5 as GiftIcon, Icon$18 as GobletOpacityIcon, Icon$19 as GobletSolidIcon, Grid, HeadText, HeadTextTags, Heading, Scales$5 as HeadingScales, Tags as HeadingTags, Icon$2V as HelpIcon, Icon$2X as HelpOpacityIcon, Icon$2W as HelpSolidIcon, HeroWrapper, Icon$1v as HistoryIcon, Icon$3E as HourglassIcon, IconButton, IconComponent, Icon$1a as IdoOpacityIcon, Icon$1b as IdoSolidIcon, Image, Variants$1 as ImageVariants, Icon$2R as InfoIcon, Icon$2P as InfoOpacityIcon, Icon$2Q as InfoSolidIcon, InlineMenu, InlineMenuContainer, Input$1 as Input, InputGroup, Scales$4 as InputScales, Variants$8 as InputVariants, Icon$v as InstagramIcon, Icon$z as InvestPoolOpacityIcon, ItemTypes, Icon$6 as LanguageIcon, Icon$14 as LaunchpadOpacityIcon, Icon$15 as LaunchpadSolidIcon, Icon$b as LightningIcon, Icon$A as LimitOrderOpacityIcon, Icon$B as LimitOrderSolidIcon, Link, LinkExternal, Scales$3 as LinkScales, Variants$7 as LinkVariants, Icon$1m as LiquidityOpacityIcon, Icon$1n as LiquiditySolidIcon, Icon$y as LiquidityStakingOpacityIcon, Icon$x as LiquidityStakingSolidIcon, Icon$w as LiquidityStakingSolidOpacityIcon, Icon$1x as ListOpacityIcon, Icon$1w as ListSolidIcon, Icon$2I as ListViewIcon, Icon$8 as LockIcon, Icon$e as LogoWithTextIcon, Icon$16 as LotteryOpacityIcon, Icon$17 as LotterySolidIcon, MatchBreakpointsProvider, Icon$1J as MedalIcon, Icon$u as MediumIcon, Menu, Icon$3a as MinusCircleOpacityIcon, Icon$3b as MinusCircleSolidIcon, Icon$3c as MinusIcon, Modal, ModalBackButton, ModalBody$1 as ModalBody, ModalCloseButton, ModalContainer, ModalProvider, ModalTitle, ModalV2, ModalV2Context, ModalWithBackground, ModalWrapper, Icon$1N as More2Icon, Icon$1R as MoreHorizontalIcon, Icon$1P as MoreHorizontalOpacityIcon, Icon$1O as MoreHorizontalOutlineIcon, Icon$1Q as MoreHorizontalSolidIcon, Icon$1V as MoreVerticalIcon, Icon$1T as MoreVerticalOpacityIcon, Icon$1S as MoreVerticalOutlineIcon, Icon$1U as MoreVerticalSolidIcon, Icon$3F as MouseIcon, Icon$N as MultiPoolOpacityIcon, Icon$M as MultiPoolSolidIcon, Icon$12 as NFTEarnOpacityIcon, Icon$13 as NFTEarnSolidIcon, Icon$K as NewsOpacityIcon, Icon$L as NewsSolidIcon, NotificationDot, Icon$2q as OptionsOpacityIcon, Icon$2r as OptionsSolidIcon, Overlay, Pagination, Variants$2 as PaginationVariants, PercentSlider, Icon$1 as PerpetualOpacityIcon, Icon as PerpetualSolidIcon, Icon$1H as PlayIcon, Icon$3d as PlusCircleOpacityIcon, Icon$3e as PlusCircleSolidIcon, Icon$3f as PlusIcon, Icon$i as PolygonIcon, Icon$1g as PoolsOpacityIcon, Icon$1h as PoolsSolidIcon, Icon$1t as ProductsOpacityIcon, Icon$1u as ProductsSolidIcon, Icon$Q as Program10mOpacityIcon, Icon$R as Program10mSolidIcon, Icon$d as ProjectNameIcon, Icon$l as QuoraIcon, Radio, Scales$2 as RadioScales, Variants$6 as RadioVariants, Icon$t as RedditIcon, Icon$1c as ReferralOpacityIcon, Icon$1d as ReferralSolidIcon, Icon$1A as RefreshIcon, Icon$1z as RefreshOpacityIcon, Icon$1y as RefreshSolidIcon, ResetCSS, Icon$4 as RouteIcon, Scales$7 as Scales, Icon$2v as SearchOpacityIcon, Icon$2w as SearchSolidIcon, Icon$2k as ShareIcon, Icon$2i as ShareOpacityIcon, Icon$2j as ShareSolidIcon, Skeleton, Animations as SkeletonAnimation, SkeletonMode, Variants$5 as SkeletonVariants, Slider, SocialShareButton, SocialShareButtonCircle, Socials, Icon$O as SpaceAgentOpacityIcon, Icon$P as SpaceAgentSolidIcon, Icon$2u as StarIcon, Icon$2t as StarOpacityIcon, Icon$2s as StarSolidIcon, SubMenu, SubMenuContainer, SubMenuItem, SubMenuItems, Svg, Icon$2O as SwapHorizontalOpacityIcon, Icon$2N as SwapHorizontalSolidIcon, Icon$2M as SwapVerticalOpacityIcon, Icon$2L as SwapVerticalSolidIcon, Scales$1 as TabBarScales, Variants$4 as TabBarVariants, TabMenu, TabBarItem as TabMenuItem, TableCardSkeleton, Icon$S as TeamOpacityIcon, Icon$T as TeamSolidIcon, Icon$s as TelegramIcon, Terms, Icon$22 as TestIcon, Icon$21 as TestOpacityIcon, Icon$20 as TestSolidIcon, Text, Icon$f as Ticket2Icon, Icon$n as TikTokIcon, Icon$25 as TimerIcon, Icon$23 as TimerOpacityIcon, Icon$24 as TimerSolidIcon, ToastContainer, Toggle, Scales as ToggleScales, Variants$3 as ToggleVariants, TooltipHelper, TooltipText, Icon$r as TwitchIcon, Icon$q as TwitterIcon, Icon$7 as UnlockIcon, Icon$1o as UsdLineIcon, Icon$1q as UsdOpacityIcon, Icon$1p as UsdSolidIcon, Icon$2z as UserOpacityIcon, Icon$2A as UserSolidIcon, VariantRotate, Icon$2o as VerifiedOpacityIcon, Icon$2p as VerifiedSolidIcon, Icon$Y as VotingOpacityIcon, Icon$Z as VotingSolidIcon, Icon$30 as WalletOpacityIcon, Icon$31 as WalletSolidIcon, Icon$36 as WarningCycleIcon, Icon$37 as WarningIcon, Icon$39 as WarningOpacityIcon, Icon$38 as WarningSolidIcon, Icon$p as YoutubeIcon, bodyTextScaleMap, darkTheme as dark, darkColors, formatSpacingAmount, getExternalLinkProps, getPortalRoot, getResponsiveAttrs, getRgba, getThemeValue, headTextScaleMap, isTouchDevice, lightTheme as light, lightColors, links as menuConfig, status as menuStatus, useCarousel, useMatchBreakpoints, useModal, useModalV2, useOnClickOutside, useTooltip };

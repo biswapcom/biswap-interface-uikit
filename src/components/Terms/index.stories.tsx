@@ -1,5 +1,6 @@
-import React from "react";
+import React, { FC } from "react";
 import { Meta } from "@storybook/react/types-6-0";
+import styled from "styled-components";
 
 // components
 import { Heading } from "../Heading";
@@ -15,17 +16,17 @@ export default {
   argTypes: {},
 } as Meta;
 
-export const Default: React.FC = () => {
+const Wrapper = styled(Box)`
+  background-color: ${({ theme }) => theme.colors.dark700};
+`;
+
+export const Default: FC = () => {
   const { revised, description, termsList } = Config;
 
   return (
-    <Box p="20px" background="#071C3C" minHeight="100vh">
+    <Wrapper p="20px" minHeight="100vh">
       <Heading mb="20px">Terms</Heading>
-      <Terms
-        revised={revised}
-        description={description}
-        termsList={termsList}
-      />
-    </Box>
+      <Terms revised={revised} description={description} termsList={termsList} />
+    </Wrapper>
   );
 };

@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
-/* eslint-disable import/no-unresolved */
 import { Meta } from "@storybook/react/types-6-0";
-import { TabMenu, TabMenuItem } from "./index";
 
-const Row = styled.div<{ isLight?: boolean }>`
+// components
+import { TabBarScales, TabBarVariants, TabMenu, TabMenuItem } from "./index";
+import { Box } from "../Box";
+
+const Row = styled(Box)<{ isLight?: boolean }>`
   margin-bottom: 32px;
   padding: 24px;
-  background-color: ${({ theme, isLight }) =>
-    isLight ? theme.colors.white : theme.colors.tooltip};
+  background-color: ${({ theme, isLight }) => (isLight ? theme.colors.white : theme.colors.tooltip)};
 `;
 
 export default {
@@ -17,7 +18,7 @@ export default {
   argTypes: {},
 } as Meta;
 
-export const Default: React.FC = () => {
+export const Default: FC = () => {
   const [index, setIndex] = useState<number>(0);
 
   const handleClick = (newIndex: number) => setIndex(newIndex);
@@ -33,12 +34,7 @@ export const Default: React.FC = () => {
         </TabMenu>
       </Row>
       <Row isLight>
-        <TabMenu
-          disabled
-          variant="light"
-          activeIndex={index}
-          onItemClick={handleClick}
-        >
+        <TabMenu disabled variant={TabBarVariants.LIGHT} activeIndex={index} onItemClick={handleClick}>
           <TabMenuItem>Dark sm 1</TabMenuItem>
           <TabMenuItem>Dark sm 2</TabMenuItem>
           <TabMenuItem>Dark sm 3</TabMenuItem>
@@ -51,8 +47,8 @@ export const Default: React.FC = () => {
           withoutAnimation
           activeIndex={index}
           onItemClick={handleClick}
-          variant="light"
-          scale="sm"
+          variant={TabBarVariants.LIGHT}
+          scale={TabBarScales.SM}
         >
           <TabMenuItem>Light sm 1</TabMenuItem>
           <TabMenuItem>Light sm 2</TabMenuItem>
@@ -62,7 +58,7 @@ export const Default: React.FC = () => {
       </Row>
 
       <Row isLight>
-        <TabMenu activeIndex={index} onItemClick={handleClick} variant="light">
+        <TabMenu activeIndex={index} onItemClick={handleClick} variant={TabBarVariants.LIGHT}>
           <TabMenuItem>Light md 1</TabMenuItem>
           <TabMenuItem>Light md 2</TabMenuItem>
           <TabMenuItem>Light md 3</TabMenuItem>
@@ -71,12 +67,7 @@ export const Default: React.FC = () => {
       </Row>
 
       <Row isLight>
-        <TabMenu
-          activeIndex={index}
-          onItemClick={handleClick}
-          variant="light"
-          scale="lg"
-        >
+        <TabMenu activeIndex={index} onItemClick={handleClick} variant={TabBarVariants.LIGHT} scale={TabBarScales.LG}>
           <TabMenuItem>Light lg 1</TabMenuItem>
           <TabMenuItem>Light lg 2</TabMenuItem>
           <TabMenuItem>Light lg 3</TabMenuItem>
@@ -85,12 +76,7 @@ export const Default: React.FC = () => {
       </Row>
 
       <Row>
-        <TabMenu
-          activeIndex={index}
-          onItemClick={handleClick}
-          variant="dark"
-          scale="sm"
-        >
+        <TabMenu activeIndex={index} onItemClick={handleClick} variant={TabBarVariants.DARK} scale={TabBarScales.SM}>
           <TabMenuItem>Dark sm 1</TabMenuItem>
           <TabMenuItem>Dark sm 2</TabMenuItem>
           <TabMenuItem>Dark sm 3</TabMenuItem>
@@ -99,7 +85,7 @@ export const Default: React.FC = () => {
       </Row>
 
       <Row>
-        <TabMenu activeIndex={index} onItemClick={handleClick} variant="dark">
+        <TabMenu activeIndex={index} onItemClick={handleClick} variant={TabBarVariants.DARK}>
           <TabMenuItem>Dark md 1</TabMenuItem>
           <TabMenuItem>Dark md 2</TabMenuItem>
           <TabMenuItem>Dark md 3</TabMenuItem>
@@ -108,12 +94,7 @@ export const Default: React.FC = () => {
       </Row>
 
       <Row>
-        <TabMenu
-          activeIndex={index}
-          onItemClick={handleClick}
-          variant="dark"
-          scale="lg"
-        >
+        <TabMenu activeIndex={index} onItemClick={handleClick} variant={TabBarVariants.DARK} scale={TabBarScales.LG}>
           <TabMenuItem>Dark lg 1</TabMenuItem>
           <TabMenuItem>Dark lg 2</TabMenuItem>
           <TabMenuItem>Dark lg 3</TabMenuItem>
@@ -124,8 +105,9 @@ export const Default: React.FC = () => {
   );
 };
 
-export const AsLinks: React.FC = () => {
+export const AsLinks: FC = () => {
   const [index, setIndex] = useState<number>(0);
+
   return (
     <>
       <Row>
@@ -142,7 +124,7 @@ export const AsLinks: React.FC = () => {
         </TabMenu>
       </Row>
       <Row isLight>
-        <TabMenu variant="light" activeIndex={index} onItemClick={setIndex}>
+        <TabMenu variant={TabBarVariants.LIGHT} activeIndex={index} onItemClick={setIndex}>
           <TabMenuItem as="a" href="https://biswap.org/">
             Biswap 1
           </TabMenuItem>
@@ -158,10 +140,11 @@ export const AsLinks: React.FC = () => {
   );
 };
 
-export const DisabledMenu: React.FC = () => {
+export const DisabledMenu: FC = () => {
   const [index, setIndex] = useState<number>(0);
 
   const handleClick = (newIndex: number) => setIndex(newIndex);
+
   return (
     <>
       <Row>
@@ -172,12 +155,7 @@ export const DisabledMenu: React.FC = () => {
         </TabMenu>
       </Row>
       <Row isLight>
-        <TabMenu
-          disabled
-          variant="light"
-          activeIndex={index}
-          onItemClick={handleClick}
-        >
+        <TabMenu disabled variant={TabBarVariants.LIGHT} activeIndex={index} onItemClick={handleClick}>
           <TabMenuItem>Disabled</TabMenuItem>
           <TabMenuItem>Light</TabMenuItem>
           <TabMenuItem>Full</TabMenuItem>
@@ -185,12 +163,7 @@ export const DisabledMenu: React.FC = () => {
         </TabMenu>
       </Row>
       <Row>
-        <TabMenu
-          disabled
-          fullWidth
-          activeIndex={index}
-          onItemClick={handleClick}
-        >
+        <TabMenu disabled fullWidth activeIndex={index} onItemClick={handleClick}>
           <TabMenuItem>Disabled</TabMenuItem>
           <TabMenuItem>Light</TabMenuItem>
           <TabMenuItem>Full</TabMenuItem>
@@ -198,13 +171,7 @@ export const DisabledMenu: React.FC = () => {
         </TabMenu>
       </Row>
       <Row isLight>
-        <TabMenu
-          disabled
-          fullWidth
-          variant="light"
-          activeIndex={index}
-          onItemClick={handleClick}
-        >
+        <TabMenu disabled fullWidth variant={TabBarVariants.LIGHT} activeIndex={index} onItemClick={handleClick}>
           <TabMenuItem>Disabled</TabMenuItem>
           <TabMenuItem>Light</TabMenuItem>
           <TabMenuItem>Full</TabMenuItem>
@@ -215,7 +182,7 @@ export const DisabledMenu: React.FC = () => {
   );
 };
 
-export const FullWidthMenu: React.FC = () => {
+export const FullWidthMenu: FC = () => {
   const [index, setIndex] = useState<number>(0);
 
   const handleClick = (newIndex: number) => setIndex(newIndex);
@@ -229,8 +196,8 @@ export const FullWidthMenu: React.FC = () => {
           activeIndex={index}
           equalElementWidth
           onItemClick={handleClick}
-          variant="dark"
-          scale="lg"
+          variant={TabBarVariants.DARK}
+          scale={TabBarScales.LG}
         >
           <TabMenuItem as="a">Warning Dark</TabMenuItem>
           <TabMenuItem>Full width</TabMenuItem>
@@ -243,8 +210,8 @@ export const FullWidthMenu: React.FC = () => {
           activeIndex={index}
           equalElementWidth
           onItemClick={handleClick}
-          variant="light"
-          scale="lg"
+          variant={TabBarVariants.LIGHT}
+          scale={TabBarScales.LG}
         >
           <TabMenuItem as="a">Warning Dark</TabMenuItem>
           <TabMenuItem>Full width</TabMenuItem>
@@ -264,12 +231,7 @@ export const FullWidthMenu: React.FC = () => {
         </TabMenu>
       </Row>
       <Row isLight>
-        <TabMenu
-          variant="light"
-          fullWidth
-          activeIndex={index}
-          onItemClick={setIndex}
-        >
+        <TabMenu variant={TabBarVariants.LIGHT} fullWidth activeIndex={index} onItemClick={setIndex}>
           <TabMenuItem as="a" href="https://biswap.org/">
             Biswap
           </TabMenuItem>
@@ -282,25 +244,14 @@ export const FullWidthMenu: React.FC = () => {
         </TabMenu>
       </Row>
       <Row>
-        <TabMenu
-          disabled
-          fullWidth
-          activeIndex={index}
-          onItemClick={handleClick}
-        >
+        <TabMenu disabled fullWidth activeIndex={index} onItemClick={handleClick}>
           <TabMenuItem>Disabled</TabMenuItem>
           <TabMenuItem>Dark</TabMenuItem>
           <TabMenuItem>Buttons</TabMenuItem>
         </TabMenu>
       </Row>
       <Row isLight>
-        <TabMenu
-          variant="light"
-          disabled
-          fullWidth
-          activeIndex={index}
-          onItemClick={handleClick}
-        >
+        <TabMenu variant={TabBarVariants.LIGHT} disabled fullWidth activeIndex={index} onItemClick={handleClick}>
           <TabMenuItem>Disabled</TabMenuItem>
           <TabMenuItem>Dark</TabMenuItem>
           <TabMenuItem>Buttons</TabMenuItem>

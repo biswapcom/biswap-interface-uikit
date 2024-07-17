@@ -1,19 +1,19 @@
-import { tabsScales, tabVariants } from "./types";
+import { Scales, Variants } from "./types";
 
 export const barItemScaleVariant = {
-  [tabsScales.LG]: {
+  [Scales.LG]: {
     height: "40px",
     padding: "0 16px",
     fontSize: "16px",
     lineHeight: "24px",
   },
-  [tabsScales.MD]: {
+  [Scales.MD]: {
     height: "32px",
     padding: "0 12px",
     fontSize: "14px",
     lineHeight: "20px",
   },
-  [tabsScales.SM]: {
+  [Scales.SM]: {
     height: "24px",
     padding: "0 8px",
     fontSize: "12px",
@@ -22,14 +22,14 @@ export const barItemScaleVariant = {
 };
 
 export const barVariants = {
-  [tabVariants.DARK]: {
+  [Variants.DARK]: {
     color: "pastelBlue",
 
     ":hover:not(:disabled)": {
       color: "white",
     },
   },
-  [tabVariants.LIGHT]: {
+  [Variants.LIGHT]: {
     color: "gray900",
 
     ":hover:not(:disabled)": {
@@ -39,28 +39,28 @@ export const barVariants = {
 };
 
 export const menuIconScaleVariants = {
-  [tabsScales.LG]: {
+  [Scales.LG]: {
     width: "24px",
     marginRight: "10px",
   },
-  [tabsScales.MD]: {
+  [Scales.MD]: {
     width: "20px",
     marginRight: "8px",
   },
-  [tabsScales.SM]: {
+  [Scales.SM]: {
     width: "16px",
     marginRight: "6px",
   },
 };
 
 export const sectionScaleVariants = {
-  [tabsScales.LG]: {
+  [Scales.LG]: {
     padding: "0 16px",
   },
-  [tabsScales.MD]: {
+  [Scales.MD]: {
     padding: "0 12px",
   },
-  [tabsScales.SM]: {
+  [Scales.SM]: {
     padding: "0 8px",
   },
 };

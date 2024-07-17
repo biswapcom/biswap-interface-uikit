@@ -1,19 +1,21 @@
 import styled from "styled-components";
-
-import {
-  ToggleProps,
-  HandleProps,
-  InputProps,
-  ScaleKeys,
-  scales,
-  StyleToggleProps,
-} from "./types";
 import { space, SpaceProps } from "styled-system";
+
+// types
+import {
+  type ToggleProps,
+  type HandleProps,
+  type InputProps,
+  type StyleToggleProps,
+  ScaleKeys,
+  Scales,
+  Variants,
+} from "./types";
+
+// components
 import { BodyText } from "../Typography";
 
 const scaleKeyValues = {
-  // sm: {},
-  // TODO now used only MD scale
   md: {
     handleHeight: "16px",
     handleWidth: "16px",
@@ -23,14 +25,12 @@ const scaleKeyValues = {
     toggleHeight: "20px",
     toggleWidth: "40px",
   },
-  // lg: {},
 };
 
 const getScale =
   (property: ScaleKeys) =>
-  ({ scale = scales.MD }: ToggleProps) => {
-    return scaleKeyValues[scale][property];
-  };
+  ({ scale = Scales.MD }: ToggleProps): string =>
+    scaleKeyValues[scale][property];
 
 interface IToggleProps extends SpaceProps {
   labelOrientation?: string;
@@ -43,31 +43,27 @@ interface IToggleProps extends SpaceProps {
 export const ToggleWrap = styled.label<IToggleProps>`
   display: inline-flex;
   align-items: center;
-  width: ${({ spaceBetween }) => (spaceBetween ? "100%" : "auto")};
   flex-direction: ${({ labelOrientation }) =>
-    labelOrientation === "left"
-      ? "row-reverse"
-      : labelOrientation === "right"
-      ? "row"
-      : "row"};
-  justify-content: ${({ spaceBetween }) =>
-    spaceBetween ? "space-between" : "start"};
-  opacity: ${({ disabled }) => (disabled ? "0.32" : "1")};
+    labelOrientation === "left" ? "row-reverse" : labelOrientation === "right" ? "row" : "row"};
+  justify-content: ${({ spaceBetween }) => (spaceBetween ? "space-between" : "start")};
   grid-area: ${({ gridArea }) => gridArea || "initial"};
+  width: ${({ spaceBetween }) => (spaceBetween ? "100%" : "auto")};
+  opacity: ${({ disabled }) => (disabled ? "0.32" : "1")};
 
   ${space}
 `;
+
 export const Handle = styled.div<HandleProps>`
-  background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: 0 2px 4px rgba(7, 22, 45, 0.16);
-  border-radius: 50%;
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  height: ${getScale("handleHeight")};
-  left: ${getScale("handleLeft")};
   position: absolute;
-  top: ${getScale("handleTop")};
+  top: ${getScale(ScaleKeys.HANDLE_TOP)};
+  left: ${getScale(ScaleKeys.HANDLE_LEFT)};
+  width: ${getScale(ScaleKeys.HANDLE_WIDTH)};
+  height: ${getScale(ScaleKeys.HANDLE_HEIGHT)};
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(7, 22, 45, 0.16);
+  background-color: ${({ theme }) => theme.colors.white};
   transition: left 200ms ease-in;
-  width: ${getScale("handleWidth")};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   z-index: 1;
 `;
 
@@ -75,48 +71,39 @@ export const Label = styled(BodyText)<{
   labelOrientation?: string;
   isChecked: boolean;
   disabled?: boolean;
-  variant?: string;
+  variant?: Variants;
 }>`
-  color: ${({ theme, isChecked }) =>
-    isChecked ? theme.colors.dark800 : theme.colors.gray900};
-
+  margin: ${({ labelOrientation }) => (labelOrientation === "left" ? "0 8px 0 0" : "0 0 0 8px")};
   color: ${({ theme, variant, isChecked }) =>
-    variant === "dark" && isChecked
-      ? theme.colors.white
-      : variant === "light" && isChecked
-      ? theme.colors.dark800
-      : theme.colors.gray900};
-
-  margin: ${({ labelOrientation }) =>
-    labelOrientation === "left" ? "0 8px 0 0" : "0 0 0 8px"};
+    !isChecked ? theme.colors.gray900 : variant === Variants.LIGHT ? theme.colors.dark800 : theme.colors.white};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: color 0.2s ease-in-out;
 `;
 
 export const Input = styled.input<InputProps>`
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  opacity: 0;
-  height: 100%;
   position: absolute;
   width: 100%;
-  z-index: 3;
+  height: 100%;
   margin: 0;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  opacity: 0;
+  z-index: 3;
 
   &:checked + ${Handle} {
-    left: ${getScale("checkedLeft")};
+    left: ${getScale(ScaleKeys.CHECKED_LEFT)};
   }
 `;
 
 const StyledToggle = styled.div<StyleToggleProps>`
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: ${getScale(ScaleKeys.TOGGLE_WIDTH)};
+  height: ${getScale(ScaleKeys.TOGGLE_HEIGHT)};
+  border-radius: 26px;
   background-color: ${({ theme, $checked, $checkedColor, $defaultColor }) =>
     theme.colors[$checked ? $checkedColor : $defaultColor]};
-  align-items: center;
-  border-radius: 26px;
-  display: inline-flex;
-  height: ${getScale("toggleHeight")};
-  position: relative;
   transition: background-color 0.2s ease-in-out;
-  width: ${getScale("toggleWidth")};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
 

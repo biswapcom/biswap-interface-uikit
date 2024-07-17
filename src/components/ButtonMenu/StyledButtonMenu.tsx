@@ -14,7 +14,7 @@ type StyledButtonMenuProps = {
   theme: DefaultTheme;
 };
 
-const getBackgroundColor = ({ theme, variant }: StyledButtonMenuProps) => {
+const getBackgroundColor = ({ theme, variant }: StyledButtonMenuProps): string => {
   return variant === Variants.DARK ? theme.colors.tooltip : getRgba(theme.colors.pastelBlue, theme, 0.08);
 };
 

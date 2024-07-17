@@ -3194,6 +3194,7 @@ const dark$1 = {
     background: darkColors.white,
 };
 
+// theme
 const light = {
     background: darkColors.white,
     text: darkColors.gray900,
@@ -3603,13 +3604,6 @@ const useTooltip = (content, options) => {
     };
 };
 
-exports.CarouselButtonsTypes = void 0;
-(function (CarouselButtonsTypes) {
-    CarouselButtonsTypes["PRIMARY"] = "primary";
-    CarouselButtonsTypes["WHITE"] = "white";
-    CarouselButtonsTypes["GRAY_OPACITY"] = "grayOpacity";
-})(exports.CarouselButtonsTypes || (exports.CarouselButtonsTypes = {}));
-
 exports.HeadTextTags = void 0;
 (function (HeadTextTags) {
     HeadTextTags["H1"] = "h1";
@@ -3675,9 +3669,21 @@ const headTextScaleMap = {
         lineHeight: "12px",
     },
 };
-const HeadText = styled__default["default"](Text).attrs({ bold: true, tags: exports.HeadTextTags.H2 }) `
-  font-size: ${({ scale }) => headTextScaleMap[scale || exports.Scales.SIZE32].fontSize};
-  line-height: ${({ scale }) => headTextScaleMap[scale || exports.Scales.SIZE32].lineHeight};
+const getScalesAttributes$1 = ({ scale, as }) => {
+    if (typeof scale === "string")
+        return headTextScaleMap[scale || exports.Scales.SIZE32];
+    if (typeof scale === "undefined")
+        return headTextScaleMap[exports.Scales.SIZE32];
+    const tempScales = JSON.parse(JSON.stringify(scale));
+    if (!tempScales.xs)
+        tempScales.xs = HeadText.defaultProps?.scale;
+    return {
+        fontSize: breakpointsKeys.map((breakPoint) => tempScales[breakPoint] ? headTextScaleMap[tempScales[breakPoint]].fontSize : null),
+        lineHeight: breakpointsKeys.map((breakPoint) => tempScales[breakPoint] ? headTextScaleMap[tempScales[breakPoint]].lineHeight : null),
+        as: as || exports.HeadTextTags.H2,
+    };
+};
+const HeadText = styled__default["default"](Text).attrs(getScalesAttributes$1) `
   font-weight: 600;
   white-space: ${({ nowrap }) => (nowrap ? "nowrap" : "normal")};
 `;
@@ -3798,7 +3804,7 @@ const NavButton = styled__default["default"](IconButton) `
   width: 32px;
   height: 32px;
 `;
-const CarouselHeader = ({ handleNav, title, showNavButtons, }) => {
+const CarouselHeader = ({ handleNav, title, showNavButtons }) => {
     const { isMobile } = useMatchBreakpoints();
     return (React__default["default"].createElement(Container$3, null,
         React__default["default"].createElement(Flex, { position: "relative", justifyContent: title ? "space-between" : "flex-end", mb: isMobile ? "24px" : "32px", alignItems: isMobile ? "flex-end" : "flex-start" },
@@ -3815,23 +3821,26 @@ const CarouselHeader = ({ handleNav, title, showNavButtons, }) => {
 };
 
 const commonStyling = styled.css `
-  display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+
   ${({ theme }) => theme.mediaQueries.md} {
     margin-bottom: 32px;
   }
 `;
-const Numbers = styled__default["default"].div `
+const Numbers = styled__default["default"](Flex) `
   position: absolute;
   top: 0;
   bottom: 0;
   left: -2px;
   right: -2px;
   z-index: 2;
+
   ${commonStyling};
+
   margin-bottom: 0;
+
   ${({ theme }) => theme.mediaQueries.md} {
     margin-bottom: 0;
   }
@@ -3841,51 +3850,46 @@ const NumberItem = styled__default["default"].button `
   width: 40px;
   height: 40px;
   border: 1px solid ${({ theme }) => theme.colors.dark500};
-  box-sizing: border-box;
   border-radius: 50%;
-  background: ${({ isActive }) => isActive
-    ? "linear-gradient(235deg, #336FF5 4.05%, rgba(17, 81, 225, 0.32) 103.52%)"
-    : "transparent"};
   color: ${({ isActive, theme }) => (isActive ? theme.colors.white : "none")};
+  background: ${({ isActive }) => isActive ? "linear-gradient(235deg, #336FF5 4.05%, rgba(17, 81, 225, 0.32) 103.52%)" : "transparent"};
+  box-sizing: border-box;
 
   &:hover {
     cursor: pointer;
     border: initial;
-    background: linear-gradient(
-      235deg,
-      #336ff5 4.05%,
-      rgba(17, 81, 225, 0.32) 103.52%
-    );
+    background: linear-gradient(235deg, #336ff5 4.05%, rgba(17, 81, 225, 0.32) 103.52%);
   }
 `;
 // for background (fake elements placed under real Numbers block with glide navigation)
-const NumbersBackground = styled__default["default"].div `
+const NumbersBackground = styled__default["default"](Flex) `
   ${commonStyling};
-  height: 40px;
+
   position: relative;
+  height: 40px;
   background: transparent;
 `;
-const DummyBlock = styled__default["default"].div `
+const DummyBlock = styled__default["default"](Box) `
   width: 40px;
   height: 40px;
   background-color: transparent;
 `;
-const Line = styled__default["default"].div `
-  height: 0;
-  border-top: 2px dotted ${({ theme }) => theme.colors.dark500};
+const Line = styled__default["default"](Box) `
   flex: 1;
+  height: 0;
   margin: 0 8px;
+  border-top: 2px dotted ${({ theme }) => theme.colors.dark500};
+
   ${({ theme }) => theme.mediaQueries.md} {
     margin: 0 16px;
   }
+
   &:last-of-type {
     display: none;
   }
 `;
-const CarouselNumbersBlock = ({ dataLength, scrollToHandle, selectedIndex, }) => {
-    const indexes = dataLength
-        ? Array.from({ length: dataLength }, (v, i) => i)
-        : [];
+const CarouselNumbersBlock = ({ dataLength, scrollToHandle, selectedIndex }) => {
+    const indexes = dataLength ? Array.from({ length: dataLength }, (v, i) => i) : [];
     return (React__default["default"].createElement(NumbersBackground, null,
         React__default["default"].createElement(Numbers, null, indexes.map((item, index) => (React__default["default"].createElement(NumberItem, { key: item.toString(), isActive: index === selectedIndex, type: "button", onClick: () => scrollToHandle(index) },
             React__default["default"].createElement(BodyText, { m: "auto", color: "pastelBlue" }, index + 1))))),
@@ -3894,45 +3898,48 @@ const CarouselNumbersBlock = ({ dataLength, scrollToHandle, selectedIndex, }) =>
             React__default["default"].createElement(Line, null))))));
 };
 
+exports.CarouselButtonsTypes = void 0;
+(function (CarouselButtonsTypes) {
+    CarouselButtonsTypes["PRIMARY"] = "primary";
+    CarouselButtonsTypes["WHITE"] = "white";
+    CarouselButtonsTypes["GRAY_OPACITY"] = "grayOpacity";
+})(exports.CarouselButtonsTypes || (exports.CarouselButtonsTypes = {}));
+
 const Icons$2 = IconModule;
 const IconComponent$1 = ({ iconName, ...props }) => {
     const IconElement = Icons$2[`${iconName}Icon`];
     return IconElement ? React__default["default"].createElement(IconElement, { ...props }) : null;
 };
 
-const variantsNavButton = {
-    PRIMARY: "primary",
-    WHITE: "white",
-    GRAY_OPACITY: "grayOpacity",
-};
-
 const backgroundVariants = {
-    [variantsNavButton.GRAY_OPACITY]: {
+    [exports.CarouselButtonsTypes.GRAY_OPACITY]: {
         backgroundColor: "rgba(255, 255, 255, 0.2)",
     },
-    [variantsNavButton.WHITE]: {
+    [exports.CarouselButtonsTypes.WHITE]: {
         backgroundColor: "white",
     },
-    [variantsNavButton.PRIMARY]: {
+    [exports.CarouselButtonsTypes.PRIMARY]: {
         backgroundColor: "primary",
     },
 };
 const ArrowButton = styled__default["default"].button `
-  height: 32px;
-  border: 0;
-  box-shadow: none;
   position: absolute;
   top: 50%;
-  cursor: pointer;
-  border-radius: 8px;
+  height: 32px;
   padding: 0 6px;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: none;
+  cursor: pointer;
 `;
 const WrapperDirectionButton = styled__default["default"](ArrowButton) `
   left: ${({ navPadding }) => `${navPadding}px`};
   transform: translate(0, -50%);
+
   ${styledSystem.variant({
     variants: backgroundVariants,
 })}
+
   ${({ isNextButton, navPadding }) => isNextButton &&
     styled.css `
       right: ${`${navPadding}px`};
@@ -3948,14 +3955,14 @@ const DirectionButton = ({ enabled, onClick, iconName, isNextButton, themeType, 
 const DotButton = styled__default["default"].button `
   width: 4px;
   height: 4px;
-  background: ${({ theme }) => theme.colors.pastelBlue};
-  border: 0;
-  box-shadow: none;
-  border-radius: 50%;
   padding: 0;
   margin-right: 8px;
-  cursor: pointer;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: none;
+  background: ${({ theme }) => theme.colors.pastelBlue};
   opacity: ${({ selected }) => (selected ? "1" : ".32")};
+  cursor: pointer;
   transition: opacity 0.4s ease-in-out;
 `;
 const Dot$1 = ({ selected, onClick }) => {
@@ -4023,9 +4030,7 @@ const useCarousel = ({ data, Slide, title, slidesToScroll = 1, isDraggable = fal
         setSelectedIndex(embla.selectedScrollSnap());
         setPrevBtnEnabled(embla.canScrollPrev());
         setNextBtnEnabled(embla.canScrollNext());
-        isMobile &&
-            slideProps?.selectHandle &&
-            slideProps?.selectHandle(embla.selectedScrollSnap());
+        isMobile && slideProps?.selectHandle && slideProps?.selectHandle(embla.selectedScrollSnap());
     }, [embla, setSelectedIndex, isMobile, slideProps]);
     React.useEffect(() => {
         if (!embla)
@@ -4049,10 +4054,10 @@ const useCarousel = ({ data, Slide, title, slidesToScroll = 1, isDraggable = fal
             setSelectedIndex(index);
         }
     };
-    const renderNav = (navType, navPadding) => {
+    const renderNav = (navType, padding) => {
         return (React__default["default"].createElement(React__default["default"].Fragment, null,
-            React__default["default"].createElement(DirectionButton, { iconName: "ChevronLeft", onClick: scrollPrev, enabled: prevBtnEnabled, themeType: navType, navPadding: navPadding }),
-            React__default["default"].createElement(DirectionButton, { isNextButton: true, iconName: "ChevronRight", onClick: scrollNext, enabled: nextBtnEnabled, themeType: navType, navPadding: navPadding })));
+            React__default["default"].createElement(DirectionButton, { iconName: "ChevronLeft", onClick: scrollPrev, enabled: prevBtnEnabled, themeType: navType, navPadding: padding }),
+            React__default["default"].createElement(DirectionButton, { isNextButton: true, iconName: "ChevronRight", onClick: scrollNext, enabled: nextBtnEnabled, themeType: navType, navPadding: padding })));
     };
     const showHeader = title || withNavButtonsHeader;
     const carouselComponent = () => (React__default["default"].createElement(Box, null,
@@ -4061,7 +4066,7 @@ const useCarousel = ({ data, Slide, title, slidesToScroll = 1, isDraggable = fal
         data?.length && (React__default["default"].createElement(Embla, null,
             React__default["default"].createElement(Viewport, { containerOverflow: containerOverflow, ref: viewportRef },
                 React__default["default"].createElement(Container$2, { gap: slideGap, alignItem: alignItem }, renderSlides())),
-            withNavButtons && (React__default["default"].createElement(NavWrapper, { navPadding: navPadding }, renderNav(navButtonsType, navPadding))))),
+            withNavButtons && React__default["default"].createElement(NavWrapper, { navPadding: navPadding }, renderNav(navButtonsType, navPadding)))),
         withDots && (React__default["default"].createElement(Flex, { alignItems: "center", justifyContent: "center", marginTop: marginDots }, scrollSnaps.map((_, index) => (React__default["default"].createElement(Dot$1, { key: index.toString(), selected: index === selectedIndex, onClick: () => scrollTo(index) })))))));
     return [carouselComponent, scrollNext, scrollPrev, selectedIndex];
 };
@@ -6021,30 +6026,32 @@ const SubMenuItems = ({ items = [], activeItem, isMobileOnly = false, ...props }
             label))))));
 };
 
-const tabsScales = {
-    LG: "lg",
-    MD: "md",
-    SM: "sm",
-};
-const tabVariants = {
-    DARK: "dark",
-    LIGHT: "light",
-};
+exports.TabBarScales = void 0;
+(function (Scales) {
+    Scales["LG"] = "lg";
+    Scales["MD"] = "md";
+    Scales["SM"] = "sm";
+})(exports.TabBarScales || (exports.TabBarScales = {}));
+exports.TabBarVariants = void 0;
+(function (Variants) {
+    Variants["DARK"] = "dark";
+    Variants["LIGHT"] = "light";
+})(exports.TabBarVariants || (exports.TabBarVariants = {}));
 
 const barItemScaleVariant = {
-    [tabsScales.LG]: {
+    [exports.TabBarScales.LG]: {
         height: "40px",
         padding: "0 16px",
         fontSize: "16px",
         lineHeight: "24px",
     },
-    [tabsScales.MD]: {
+    [exports.TabBarScales.MD]: {
         height: "32px",
         padding: "0 12px",
         fontSize: "14px",
         lineHeight: "20px",
     },
-    [tabsScales.SM]: {
+    [exports.TabBarScales.SM]: {
         height: "24px",
         padding: "0 8px",
         fontSize: "12px",
@@ -6052,13 +6059,13 @@ const barItemScaleVariant = {
     },
 };
 const barVariants = {
-    [tabVariants.DARK]: {
+    [exports.TabBarVariants.DARK]: {
         color: "pastelBlue",
         ":hover:not(:disabled)": {
             color: "white",
         },
     },
-    [tabVariants.LIGHT]: {
+    [exports.TabBarVariants.LIGHT]: {
         color: "gray900",
         ":hover:not(:disabled)": {
             color: "dark800",
@@ -6066,36 +6073,36 @@ const barVariants = {
     },
 };
 const menuIconScaleVariants = {
-    [tabsScales.LG]: {
+    [exports.TabBarScales.LG]: {
         width: "24px",
         marginRight: "10px",
     },
-    [tabsScales.MD]: {
+    [exports.TabBarScales.MD]: {
         width: "20px",
         marginRight: "8px",
     },
-    [tabsScales.SM]: {
+    [exports.TabBarScales.SM]: {
         width: "16px",
         marginRight: "6px",
     },
 };
 const sectionScaleVariants = {
-    [tabsScales.LG]: {
+    [exports.TabBarScales.LG]: {
         padding: "0 16px",
     },
-    [tabsScales.MD]: {
+    [exports.TabBarScales.MD]: {
         padding: "0 12px",
     },
-    [tabsScales.SM]: {
+    [exports.TabBarScales.SM]: {
         padding: "0 8px",
     },
 };
 
-const Wrapper$d = styled__default["default"].div `
-  background-color: transparent;
+const Wrapper$d = styled__default["default"](Box) `
   position: relative;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
+  background-color: transparent;
   overflow: hidden;
 
   ${({ scrollX }) => scrollX &&
@@ -6109,7 +6116,7 @@ const Wrapper$d = styled__default["default"].div `
 
   ${styledSystem.space}
 `;
-const StyledTabBar = styled__default["default"].div `
+const StyledTabBar = styled__default["default"](Box) `
   position: relative;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
@@ -6136,17 +6143,19 @@ const StyledTabBar = styled__default["default"].div `
       opacity: 0.5;
     `}
 `;
-const Selection = styled__default["default"].div `
+const Selection = styled__default["default"](Box) `
+  position: absolute;
+  left: ${({ offset }) => `${offset}px`};
+  bottom: 0;
   width: ${({ width }) => `${width}px`};
   height: 2px;
-  position: absolute;
-  bottom: 0;
-  left: ${({ offset }) => `${offset}px`};
   z-index: 1;
 
   ${({ withoutAnimation }) => !withoutAnimation &&
     styled.css `
-      transition: left 0.3s ease, width 0.3s ease;
+      transition:
+        left 0.3s ease,
+        width 0.3s ease;
     `}
 
   ${styledSystem.variant({
@@ -6154,12 +6163,12 @@ const Selection = styled__default["default"].div `
     variants: sectionScaleVariants,
 })}
 `;
-const ColorSection = styled__default["default"].div `
+const ColorSection = styled__default["default"](Box) `
   width: 100%;
   height: 100%;
-  background: ${({ theme, variant }) => theme.colors[variant === tabVariants.DARK ? "warning" : "primary"]};
+  background: ${({ theme, variant }) => theme.colors[variant === exports.TabBarVariants.DARK ? "warning" : "primary"]};
 `;
-const TabMenu = ({ activeIndex, scale = tabsScales.MD, variant = tabVariants.DARK, onItemClick, disabled = false, fullWidth = false, menuIcons = [], scrollX = false, children, equalElementWidth, withoutAnimation = false, ...props }) => {
+const TabMenu = ({ activeIndex, scale = exports.TabBarScales.MD, variant = exports.TabBarVariants.DARK, onItemClick, disabled = false, fullWidth = false, scrollX = false, children, equalElementWidth, withoutAnimation = false, ...props }) => {
     const [widthsArr, setWidthsArr] = React.useState([]);
     const [blockOffset, setBlockOffset] = React.useState(null);
     const [activeButtonIndex, setActiveButtonIndex] = React.useState(null);
@@ -6169,19 +6178,17 @@ const TabMenu = ({ activeIndex, scale = tabsScales.MD, variant = tabVariants.DAR
     }, [activeIndex]);
     React.useEffect(() => {
         if (activeButtonIndex !== null && widthsArr.length) {
-            setBlockOffset(widthsArr
-                .slice(0, activeButtonIndex)
-                .reduce((sum, elem) => sum + elem, 0));
+            setBlockOffset(widthsArr.slice(0, activeButtonIndex).reduce((sum, elem) => sum + elem, 0));
         }
     }, [widthsArr, activeButtonIndex, isDesktop, isMobile, isTablet]);
     const showSelection = !disabled && activeIndex !== null && blockOffset !== null;
-    return (React__default["default"].createElement(Wrapper$d, { fullWidth: fullWidth, variant: variant, scrollX: scrollX, ...props },
-        showSelection && (React__default["default"].createElement(Selection, { scale: scale, width: widthsArr[activeIndex], offset: blockOffset, variant: variant, withoutAnimation: withoutAnimation },
+    return (React__default["default"].createElement(Wrapper$d, { fullWidth: fullWidth, scrollX: scrollX, ...props },
+        showSelection && (React__default["default"].createElement(Selection, { scale: scale, width: widthsArr[activeIndex], offset: blockOffset, withoutAnimation: withoutAnimation },
             React__default["default"].createElement(ColorSection, { variant: variant }))),
         React__default["default"].createElement(StyledTabBar, { disabled: disabled, variant: variant, fullWidth: fullWidth, equalElementWidth: equalElementWidth, ...props }, React.Children.map(children, (child, index) => {
             return React.cloneElement(child, {
                 isActive: activeIndex === index,
-                onItemClick: onItemClick ? () => onItemClick(index) : undefined,
+                onItemClick: () => onItemClick?.(index),
                 setWidth: setWidthsArr,
                 itemIndex: index,
                 activeButtonIndex,
@@ -6194,24 +6201,28 @@ const TabMenu = ({ activeIndex, scale = tabsScales.MD, variant = tabVariants.DAR
 };
 
 const TabItem = styled__default["default"].button `
-  border: 0;
-  margin: 0;
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  margin: 0;
+  border: 0;
+  outline: 0;
   font-family: inherit;
   font-weight: 600;
   line-height: 1;
-  outline: 0;
-  transition: background-color 0.3s, opacity 0.3s, color 0.3s;
   background-color: transparent;
+  transition:
+    background-color 0.3s,
+    opacity 0.3s,
+    color 0.3s;
+  cursor: pointer;
   white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
 
   ${styledSystem.variant({
     variants: barVariants,
 })}
+
   ${styledSystem.variant({
     prop: "scale",
     variants: barItemScaleVariant,
@@ -6219,11 +6230,11 @@ const TabItem = styled__default["default"].button `
   
   ${({ isActive, variant, theme }) => isActive &&
     styled.css `
-      color: ${theme.colors[variant === tabVariants.DARK ? "white" : "dark800"]};
+      color: ${theme.colors[variant === exports.TabBarVariants.DARK ? "white" : "dark800"]};
     `}
 `;
-const TabBarItem = ({ isActive = false, variant, setWidth, itemIndex = 0, activeButtonIndex, blockOffset, iconName = "", iconColor = "", scale = tabsScales.MD, as, onItemClick = () => { }, onClick = () => { }, children, ...props }) => {
-    const { isXs, isSm, isMs, isLg, isXl, isXll, isXxl } = useMatchBreakpoints();
+const TabBarItem = ({ isActive = false, variant, setWidth, itemIndex = 0, activeButtonIndex, blockOffset, iconName = "", iconColor = "", scale = exports.TabBarScales.MD, as, onItemClick, onClick, children, ...props }) => {
+    const { isMobile, isTablet, isDesktop } = useMatchBreakpoints();
     const ref = React.useRef(null);
     const itemWidth = ref?.current?.clientWidth ?? 0;
     React.useEffect(() => {
@@ -6234,21 +6245,11 @@ const TabBarItem = ({ isActive = false, variant, setWidth, itemIndex = 0, active
                     : [...prev, itemWidth];
             });
         }
-    }, [
-        blockOffset,
-        itemWidth,
-        activeButtonIndex,
-        isXs,
-        isSm,
-        isMs,
-        isLg,
-        isXl,
-        isXll,
-        isXxl,
-    ]);
+        // eslint-disable-next-line
+    }, [blockOffset, itemWidth, activeButtonIndex, isMobile, isTablet, isDesktop]);
     const omItemClickHandler = () => {
-        onItemClick(itemIndex);
-        onClick();
+        onItemClick?.(itemIndex);
+        onClick?.();
     };
     const iconSizes = menuIconScaleVariants[scale];
     const getTabMenuIcons = () => {
@@ -6260,15 +6261,27 @@ const TabBarItem = ({ isActive = false, variant, setWidth, itemIndex = 0, active
             children)));
 };
 
-const scales = {
-    // SM: "sm",
-    MD: "md",
-    // LG: "lg",
-};
+exports.ToggleScales = void 0;
+(function (Scales) {
+    Scales["MD"] = "md";
+})(exports.ToggleScales || (exports.ToggleScales = {}));
+exports.ToggleVariants = void 0;
+(function (Variants) {
+    Variants["LIGHT"] = "light";
+    Variants["DARK"] = "dark";
+})(exports.ToggleVariants || (exports.ToggleVariants = {}));
+var ScaleKeys;
+(function (ScaleKeys) {
+    ScaleKeys["HANDLE_HEIGHT"] = "handleHeight";
+    ScaleKeys["HANDLE_WIDTH"] = "handleWidth";
+    ScaleKeys["HANDLE_LEFT"] = "handleLeft";
+    ScaleKeys["HANDLE_TOP"] = "handleTop";
+    ScaleKeys["CHECKED_LEFT"] = "checkedLeft";
+    ScaleKeys["TOGGLE_HEIGHT"] = "toggleHeight";
+    ScaleKeys["TOGGLE_WIDTH"] = "toggleWidth";
+})(ScaleKeys || (ScaleKeys = {}));
 
 const scaleKeyValues = {
-    // sm: {},
-    // TODO now used only MD scale
     md: {
         handleHeight: "16px",
         handleWidth: "16px",
@@ -6278,78 +6291,64 @@ const scaleKeyValues = {
         toggleHeight: "20px",
         toggleWidth: "40px",
     },
-    // lg: {},
 };
-const getScale$1 = (property) => ({ scale = scales.MD }) => {
-    return scaleKeyValues[scale][property];
-};
+const getScale$1 = (property) => ({ scale = exports.ToggleScales.MD }) => scaleKeyValues[scale][property];
 const ToggleWrap = styled__default["default"].label `
   display: inline-flex;
   align-items: center;
-  width: ${({ spaceBetween }) => (spaceBetween ? "100%" : "auto")};
-  flex-direction: ${({ labelOrientation }) => labelOrientation === "left"
-    ? "row-reverse"
-    : labelOrientation === "right"
-        ? "row"
-        : "row"};
-  justify-content: ${({ spaceBetween }) => spaceBetween ? "space-between" : "start"};
-  opacity: ${({ disabled }) => (disabled ? "0.32" : "1")};
+  flex-direction: ${({ labelOrientation }) => labelOrientation === "left" ? "row-reverse" : labelOrientation === "right" ? "row" : "row"};
+  justify-content: ${({ spaceBetween }) => (spaceBetween ? "space-between" : "start")};
   grid-area: ${({ gridArea }) => gridArea || "initial"};
+  width: ${({ spaceBetween }) => (spaceBetween ? "100%" : "auto")};
+  opacity: ${({ disabled }) => (disabled ? "0.32" : "1")};
 
   ${styledSystem.space}
 `;
 const Handle = styled__default["default"].div `
-  background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: 0 2px 4px rgba(7, 22, 45, 0.16);
-  border-radius: 50%;
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  height: ${getScale$1("handleHeight")};
-  left: ${getScale$1("handleLeft")};
   position: absolute;
-  top: ${getScale$1("handleTop")};
+  top: ${getScale$1(ScaleKeys.HANDLE_TOP)};
+  left: ${getScale$1(ScaleKeys.HANDLE_LEFT)};
+  width: ${getScale$1(ScaleKeys.HANDLE_WIDTH)};
+  height: ${getScale$1(ScaleKeys.HANDLE_HEIGHT)};
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(7, 22, 45, 0.16);
+  background-color: ${({ theme }) => theme.colors.white};
   transition: left 200ms ease-in;
-  width: ${getScale$1("handleWidth")};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   z-index: 1;
 `;
 const Label = styled__default["default"](BodyText) `
-  color: ${({ theme, isChecked }) => isChecked ? theme.colors.dark800 : theme.colors.gray900};
-
-  color: ${({ theme, variant, isChecked }) => variant === "dark" && isChecked
-    ? theme.colors.white
-    : variant === "light" && isChecked
-        ? theme.colors.dark800
-        : theme.colors.gray900};
-
-  margin: ${({ labelOrientation }) => labelOrientation === "left" ? "0 8px 0 0" : "0 0 0 8px"};
+  margin: ${({ labelOrientation }) => (labelOrientation === "left" ? "0 8px 0 0" : "0 0 0 8px")};
+  color: ${({ theme, variant, isChecked }) => !isChecked ? theme.colors.gray900 : variant === exports.ToggleVariants.LIGHT ? theme.colors.dark800 : theme.colors.white};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: color 0.2s ease-in-out;
 `;
 const Input = styled__default["default"].input `
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  opacity: 0;
-  height: 100%;
   position: absolute;
   width: 100%;
-  z-index: 3;
+  height: 100%;
   margin: 0;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  opacity: 0;
+  z-index: 3;
 
   &:checked + ${Handle} {
-    left: ${getScale$1("checkedLeft")};
+    left: ${getScale$1(ScaleKeys.CHECKED_LEFT)};
   }
 `;
 const StyledToggle = styled__default["default"].div `
-  background-color: ${({ theme, $checked, $checkedColor, $defaultColor }) => theme.colors[$checked ? $checkedColor : $defaultColor]};
-  align-items: center;
-  border-radius: 26px;
-  display: inline-flex;
-  height: ${getScale$1("toggleHeight")};
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: ${getScale$1(ScaleKeys.TOGGLE_WIDTH)};
+  height: ${getScale$1(ScaleKeys.TOGGLE_HEIGHT)};
+  border-radius: 26px;
+  background-color: ${({ theme, $checked, $checkedColor, $defaultColor }) => theme.colors[$checked ? $checkedColor : $defaultColor]};
   transition: background-color 0.2s ease-in-out;
-  width: ${getScale$1("toggleWidth")};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
 
-const Toggle = ({ checked, defaultColor = "toggleBg", checkedColor = "success", scale = scales.MD, disabled, label, labelOrientation, gridArea, variant = "light", spaceBetween, labelSize = exports.Scales.SIZE12, ...props }) => {
+const Toggle = ({ checked, defaultColor = "toggleBg", checkedColor = "success", scale = exports.ToggleScales.MD, disabled, label, labelOrientation, gridArea, variant = exports.ToggleVariants.LIGHT, spaceBetween, labelSize = exports.Scales.SIZE12, ...props }) => {
     const isChecked = !!checked;
     return (React__default["default"].createElement(ToggleWrap, { labelOrientation: labelOrientation, disabled: disabled, gridArea: gridArea, spaceBetween: spaceBetween, ...props },
         React__default["default"].createElement(StyledToggle, { "$checked": isChecked, "$checkedColor": checkedColor, "$defaultColor": defaultColor, scale: scale, disabled: disabled },
@@ -7032,6 +7031,7 @@ const QuestionWrapper = styled__default["default"](Flex) `
     styled.css `
       cursor: pointer;
       transition: opacity 0.3s ease-in-out;
+
       :hover,
       :focus {
         opacity: 0.7;
@@ -7049,13 +7049,14 @@ const TooltipHelper = ({ text, placement = "auto", size = "16px", color = "paste
         React__default["default"].createElement(QuestionWrapper, { ref: targetRef, showTooltip: showTooltip }, children ?? React__default["default"].createElement(Icon, { color: color, width: size }))));
 };
 
-const ViewMode = {
-    TABLE: "table",
-    CARD: "card",
-};
+exports.SkeletonMode = void 0;
+(function (SkeletonMode) {
+    SkeletonMode["TABLE"] = "table";
+    SkeletonMode["CARD"] = "card";
+})(exports.SkeletonMode || (exports.SkeletonMode = {}));
 
-const TableCardSkeleton = ({ viewMode = ViewMode.CARD, number = 6, tableHeight = "72px", cardHeight = "352px", }) => {
-    if (viewMode === ViewMode.CARD) {
+const TableCardSkeleton = ({ viewMode = exports.SkeletonMode.CARD, number = 6, tableHeight = "72px", cardHeight = "352px", }) => {
+    if (viewMode === exports.SkeletonMode.CARD) {
         return (React__default["default"].createElement(React__default["default"].Fragment, null, Array.from({ length: number }, (v, i) => i).map((item) => (React__default["default"].createElement(Box, { key: item.toString(), overflow: "hidden", borderRadius: "16px" },
             React__default["default"].createElement(Skeleton, { animation: exports.SkeletonAnimation.WAVES, height: cardHeight, width: "100%" }))))));
     }
@@ -7259,7 +7260,7 @@ const TermsWrapper = styled__default["default"](Box) `
   overflow: hidden;
   transition: height ease 0.5s;
 `;
-const PlusAnimatedIcon = styled__default["default"].div `
+const PlusAnimatedIcon = styled__default["default"](Box) `
   position: relative;
   width: ${({ imageSize }) => imageSize};
   height: ${({ imageSize }) => imageSize};
@@ -7288,7 +7289,7 @@ const PlusAnimatedIcon = styled__default["default"].div `
     transform: ${({ isOpen }) => `translate(-50%, -50%) ${isOpen ? "rotate(0deg)" : "rotate(180deg)"}`};
   }
 `;
-const TermsAccordion = ({ name = "", imageSize, imageColor, children, }) => {
+const TermsAccordion = ({ name = "", imageSize, imageColor, children }) => {
     const [isOpened, setOpened] = React.useState(true);
     const contentEl = React.useRef(null);
     const theme = styled.useTheme();
@@ -8822,11 +8823,10 @@ const DropdownMenu = ({ children, activeItem = "", items = [], isExtended = fals
         })))));
 };
 
-const AccordionBody = styled__default["default"].div `
-  display: flex;
+const AccordionBody = styled__default["default"](Flex) `
   flex-direction: column;
-  overflow: hidden;
   max-height: 0;
+  overflow: hidden;
   transition: max-height 0.45s;
 
   ${({ opened }) => opened &&
@@ -8840,7 +8840,7 @@ const AccordionTitle = styled__default["default"](Flex) `
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 `;
-const AccordionComponent = styled__default["default"].div `
+const AccordionComponent = styled__default["default"](Box) `
   width: 100%;
 `;
 const Accordion = ({ label, clickable = true, heading, children, index, href, linkComponent, setIsOpenMenu, isOpenItem, currentOpen, setCurrentOpen, }) => {
@@ -9985,7 +9985,6 @@ exports.UserOpacityIcon = Icon$2z;
 exports.UserSolidIcon = Icon$2A;
 exports.VerifiedOpacityIcon = Icon$2o;
 exports.VerifiedSolidIcon = Icon$2p;
-exports.ViewMode = ViewMode;
 exports.VotingOpacityIcon = Icon$Y;
 exports.VotingSolidIcon = Icon$Z;
 exports.WalletOpacityIcon = Icon$30;

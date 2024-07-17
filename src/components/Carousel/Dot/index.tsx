@@ -9,14 +9,14 @@ interface DotProps {
 const DotButton = styled.button<{ selected?: boolean }>`
   width: 4px;
   height: 4px;
-  background: ${({ theme }) => theme.colors.pastelBlue};
-  border: 0;
-  box-shadow: none;
-  border-radius: 50%;
   padding: 0;
   margin-right: 8px;
-  cursor: pointer;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: none;
+  background: ${({ theme }) => theme.colors.pastelBlue};
   opacity: ${({ selected }) => (selected ? "1" : ".32")};
+  cursor: pointer;
   transition: opacity 0.4s ease-in-out;
 `;
 

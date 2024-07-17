@@ -38,7 +38,7 @@ export interface ScalesObj {
 }
 export interface HeadTextProps {
     as?: HeadTextTags;
-    scale?: Scales;
+    scale?: Scales | ScalesObj | undefined;
     nowrap?: boolean;
 }
 export interface BodyTextProps extends SpaceProps, TypographyProps, LayoutProps {
