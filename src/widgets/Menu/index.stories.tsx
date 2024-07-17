@@ -204,18 +204,21 @@ const ConnectedTemplate: FC<NavProps> = (args) => {
   );
 };
 export const Connected = ConnectedTemplate.bind({});
+// @ts-ignore
 Connected.args = defaultProps;
 
 export const ConnectedWithBanner = ConnectedTemplate.bind({});
+// @ts-ignore
 ConnectedWithBanner.args = {
   ...defaultProps,
   banner: (setHeight: () => void) => <Banner setHeight={setHeight} />,
 };
 
-export const WithSubmenuSelected: FC = () => {
+export const WithSubmenuSelected: FC<NavProps> = (args) => {
   return (
     <MemoryRouter initialEntries={["/teams"]}>
       <Menu
+        {...args}
         BSWPriceLabel={BSWPriceLabel}
         BSWPriceValue={BSWPriceValue}
         footerStatistic={footerStatistic}

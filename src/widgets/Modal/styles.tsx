@@ -1,14 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
-import Flex from "../../components/Box/Flex";
-import { Box } from "../../components/Box";
-import { ArrowLeftIcon, CloseIcon } from "../../components/Svg";
-import { IconButton } from "../../components/Button";
-import { ModalProps } from "./types";
-import { Scales, Variants } from "../../components/Button/types";
 
-export const ModalWrapper = styled.div`
-  display: flex;
+// components
+import { Box, Flex } from "../../components/Box";
+import { ArrowLeftIcon, CloseIcon } from "../../components/Svg";
+import { IconButton, ButtonScales, ButtonVariants } from "../../components/Button";
+
+// types
+import { ModalProps } from "./types";
+
+export const ModalWrapper = styled(Flex)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -20,30 +21,28 @@ export const ModalWrapper = styled.div`
   z-index: ${({ theme }) => theme.zIndices.modal - 1};
 `;
 
-export const ModalTitle = styled(Flex)``;
-
 export const ModalBody = styled(Flex)`
   flex-direction: column;
   overflow-y: auto;
 `;
 
-export const ModalCloseButton: React.FC<{
+export const ModalCloseButton: FC<{
   onDismiss: ModalProps["onDismiss"];
   closeBtnColor?: string;
 }> = ({ onDismiss, closeBtnColor }) => {
   return (
-    <IconButton variant={Variants.TEXT} onClick={onDismiss} scale={Scales.SM} aria-label="Close the dialog">
+    <IconButton variant={ButtonVariants.TEXT} onClick={onDismiss} scale={ButtonScales.SM} aria-label="Close the dialog">
       <CloseIcon color={closeBtnColor || "dark600"} width="24px" />
     </IconButton>
   );
 };
 
-export const ModalBackButton: React.FC<{
+export const ModalBackButton: FC<{
   onBack: ModalProps["onBack"];
   closeBtnColor?: string;
 }> = ({ onBack, closeBtnColor }) => {
   return (
-    <IconButton variant={Variants.TEXT} onClick={onBack} area-label="go back" mr="8px">
+    <IconButton variant={ButtonVariants.TEXT} onClick={onBack} area-label="go back" mr="8px">
       <ArrowLeftIcon color={closeBtnColor || "primary"} />
     </IconButton>
   );
