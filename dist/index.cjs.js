@@ -7704,7 +7704,7 @@ const FooterInfo = ({ BSWPriceLabel, BSWPriceValue, registerToken, footerStatist
             React__default["default"].createElement(InfoListValue, null, formatSpacingAmount(item.value))))))));
 };
 
-var DropdownMenuItemType;
+exports.DropdownMenuItemType = void 0;
 (function (DropdownMenuItemType) {
     DropdownMenuItemType[DropdownMenuItemType["INTERNAL_LINK"] = 0] = "INTERNAL_LINK";
     DropdownMenuItemType[DropdownMenuItemType["EXTERNAL_LINK"] = 1] = "EXTERNAL_LINK";
@@ -7712,7 +7712,7 @@ var DropdownMenuItemType;
     DropdownMenuItemType[DropdownMenuItemType["DIVIDER"] = 3] = "DIVIDER";
     DropdownMenuItemType[DropdownMenuItemType["BANNER"] = 4] = "BANNER";
     DropdownMenuItemType[DropdownMenuItemType["CONTAINER"] = 5] = "CONTAINER";
-})(DropdownMenuItemType || (DropdownMenuItemType = {}));
+})(exports.DropdownMenuItemType || (exports.DropdownMenuItemType = {}));
 
 const TopAction = styled__default["default"](Flex) `
   justify-content: space-between;
@@ -7796,9 +7796,9 @@ const CommonFooterLinksComponent = ({ footerLinks }) => {
         React__default["default"].createElement(TopAction, { onClick: () => setIsOpen(!isOpen) },
             React__default["default"].createElement(Title$1, null, title),
             React__default["default"].createElement(ActionIcon, { isOpen: isOpen })),
-        React__default["default"].createElement(NavList, { isOpen: isOpen, innerHeight: arrLength }, links?.map(({ href, target = null, label, type = DropdownMenuItemType.INTERNAL_LINK }, index) => (React__default["default"].createElement(NavItem, { key: index.toString() },
-            type === DropdownMenuItemType.INTERNAL_LINK && (React__default["default"].createElement(CustomLink, { as: linkComponent, to: href }, label)),
-            type === DropdownMenuItemType.EXTERNAL_LINK && (React__default["default"].createElement(CustomLink, { as: "a", href: href, target: target ? target : "_self" }, label))))))));
+        React__default["default"].createElement(NavList, { isOpen: isOpen, innerHeight: arrLength }, links?.map(({ href, target = null, label, type = exports.DropdownMenuItemType.INTERNAL_LINK }, index) => (React__default["default"].createElement(NavItem, { key: index.toString() },
+            type === exports.DropdownMenuItemType.INTERNAL_LINK && (React__default["default"].createElement(CustomLink, { as: linkComponent, to: href }, label)),
+            type === exports.DropdownMenuItemType.EXTERNAL_LINK && (React__default["default"].createElement(CustomLink, { as: "a", href: href, target: target ? target : "_self" }, label))))))));
 };
 
 const Wrapper$5 = styled__default["default"].div `
@@ -7905,17 +7905,17 @@ const links = [
                 href: "/pool",
                 leftIcon: "PoolsOpacity",
                 description: "Item description description very long long long",
-                type: DropdownMenuItemType.CONTAINER,
+                type: exports.DropdownMenuItemType.CONTAINER,
                 links: [
                     {
                         label: "Stake BSW",
                         href: "https://google.com",
-                        linkType: DropdownMenuItemType.EXTERNAL_LINK,
+                        linkType: exports.DropdownMenuItemType.EXTERNAL_LINK,
                     },
                     {
                         label: "Stake tokens",
                         href: "/polar",
-                        linkType: DropdownMenuItemType.INTERNAL_LINK,
+                        linkType: exports.DropdownMenuItemType.INTERNAL_LINK,
                     },
                 ],
             },
@@ -7952,7 +7952,7 @@ const links = [
                 href: "/pool",
                 leftIcon: "GobletOpacity",
                 description: "Item description",
-                type: DropdownMenuItemType.CONTAINER,
+                type: exports.DropdownMenuItemType.CONTAINER,
                 links: [
                     {
                         label: "NFT Staking",
@@ -7980,7 +7980,7 @@ const links = [
                 label: "NFT Earn",
                 leftIcon: "NFTEarnOpacity",
                 description: "Stake NFT & Get multiple tokens",
-                type: DropdownMenuItemType.CONTAINER,
+                type: exports.DropdownMenuItemType.CONTAINER,
                 links: [
                     {
                         label: "Staking",
@@ -8008,7 +8008,7 @@ const links = [
                 href: "/",
                 target: "_blank",
                 mobileTarget: "_self",
-                type: DropdownMenuItemType.BANNER,
+                type: exports.DropdownMenuItemType.BANNER,
             },
         ],
     },
@@ -8045,28 +8045,28 @@ const links = [
                 leftIcon: "Program10mOpacity",
                 href: "/pool",
                 description: "Item description",
-                type: DropdownMenuItemType.EXTERNAL_LINK,
+                type: exports.DropdownMenuItemType.EXTERNAL_LINK,
             },
             {
                 label: "News",
                 leftIcon: "NewsOpacity",
                 href: "/pool",
                 description: "Item description",
-                type: DropdownMenuItemType.EXTERNAL_LINK,
+                type: exports.DropdownMenuItemType.EXTERNAL_LINK,
             },
             {
                 label: "Docs",
                 leftIcon: "DocsOpacity",
                 href: "/pool",
                 description: "Item description",
-                type: DropdownMenuItemType.EXTERNAL_LINK,
+                type: exports.DropdownMenuItemType.EXTERNAL_LINK,
             },
             {
                 label: "Audit",
                 leftIcon: "AuditProtectionOpacity",
                 href: "/pool",
                 description: "Item description",
-                type: DropdownMenuItemType.EXTERNAL_LINK,
+                type: exports.DropdownMenuItemType.EXTERNAL_LINK,
             },
         ],
     },
@@ -8196,22 +8196,22 @@ const socials = [
     {
         label: "Wallet",
         onClick: lodash.noop,
-        type: DropdownMenuItemType.BUTTON,
+        type: exports.DropdownMenuItemType.BUTTON,
     },
     {
         label: "Transactions",
-        type: DropdownMenuItemType.BUTTON,
+        type: exports.DropdownMenuItemType.BUTTON,
     },
     {
-        type: DropdownMenuItemType.DIVIDER,
+        type: exports.DropdownMenuItemType.DIVIDER,
     },
     {
-        type: DropdownMenuItemType.BUTTON,
+        type: exports.DropdownMenuItemType.BUTTON,
         disabled: true,
         label: "Dashboard",
     },
     {
-        type: DropdownMenuItemType.BUTTON,
+        type: exports.DropdownMenuItemType.BUTTON,
         disabled: true,
         label: "Portfolio",
     },
@@ -8220,15 +8220,15 @@ const socials = [
         href: "/profile",
     },
     {
-        type: DropdownMenuItemType.EXTERNAL_LINK,
+        type: exports.DropdownMenuItemType.EXTERNAL_LINK,
         href: "https://biswap.org",
         label: "Link",
     },
     {
-        type: DropdownMenuItemType.DIVIDER,
+        type: exports.DropdownMenuItemType.DIVIDER,
     },
     {
-        type: DropdownMenuItemType.BUTTON,
+        type: exports.DropdownMenuItemType.BUTTON,
         onClick: lodash.noop,
         label: "Disconnect",
     },
@@ -8682,16 +8682,16 @@ const LabelText = styled__default["default"](Text) `
 `;
 const InnerLinksBlock = ({ links, leftIcon, setIsOpen, linkComponent, lastItem }) => {
     const { isMobile, isTablet } = useMatchBreakpoints();
-    const renderLinks = () => links.map(({ label = "", href = "/", icon = "ChevronRight", linkType = DropdownMenuItemType.INTERNAL_LINK, mobileTarget, target, fill = "primary", badgeTitle, badgeType, }, index) => {
+    const renderLinks = () => links.map(({ label = "", href = "/", icon = "ChevronRight", linkType = exports.DropdownMenuItemType.INTERNAL_LINK, mobileTarget, target, fill = "primary", badgeTitle, badgeType, }, index) => {
         const getLinkContent = () => (React__default["default"].createElement(React__default["default"].Fragment, null,
             icon && React__default["default"].createElement(IconComponent$1, { className: "inner-chevron", width: 16, iconName: icon, color: fill }),
             React__default["default"].createElement(LabelText, { bold: true, fontSize: "12px", color: fill }, label),
             badgeTitle && (React__default["default"].createElement(Badge$1, { ml: "4px", badgeType: badgeType ?? exports.BadgeTypes.SUCCESS }, badgeTitle))));
         return (React__default["default"].createElement(React.Fragment, { key: `${index}#${label}` },
-            linkType === DropdownMenuItemType.INTERNAL_LINK && (React__default["default"].createElement(DropdownMenuInnerLinkItem, { key: index + label, as: linkComponent, to: href, onClick: () => {
+            linkType === exports.DropdownMenuItemType.INTERNAL_LINK && (React__default["default"].createElement(DropdownMenuInnerLinkItem, { key: index + label, as: linkComponent, to: href, onClick: () => {
                     setIsOpen(false);
                 } }, getLinkContent())),
-            linkType === DropdownMenuItemType.EXTERNAL_LINK && (React__default["default"].createElement(DropdownMenuInnerOuterLinkItem, { key: index + label, href: href, target: isMobile ? mobileTarget || "_self" : target || "_blank", onClick: () => {
+            linkType === exports.DropdownMenuItemType.EXTERNAL_LINK && (React__default["default"].createElement(DropdownMenuInnerOuterLinkItem, { key: index + label, href: href, target: isMobile ? mobileTarget || "_self" : target || "_blank", onClick: () => {
                     setIsOpen(false);
                 } }, getLinkContent()))));
     });
@@ -8704,20 +8704,20 @@ const DropdownMenuItemContainer = ({ isActive = false, leftIcon, getMenuItemCont
     const { isMobile, isDesktop } = useMatchBreakpoints();
     const hasInnerLinks = links.length > 0;
     return (React__default["default"].createElement(StyledDropdownMenuItemContainer, { isOpenMenuItem: isOpenItem, ...itemProps },
-        type === DropdownMenuItemType.BUTTON && (React__default["default"].createElement(DropdownMenuItem, { "$isActive": isActive, "$hasIcon": !!leftIcon, type: "button", ...itemProps }, getMenuItemContent(""))),
-        type === DropdownMenuItemType.CONTAINER && (React__default["default"].createElement(React__default["default"].Fragment, null,
+        type === exports.DropdownMenuItemType.BUTTON && (React__default["default"].createElement(DropdownMenuItem, { "$isActive": isActive, "$hasIcon": !!leftIcon, type: "button", ...itemProps }, getMenuItemContent(""))),
+        type === exports.DropdownMenuItemType.CONTAINER && (React__default["default"].createElement(React__default["default"].Fragment, null,
             hasInnerLinks ? (React__default["default"].createElement(DropdownMenuItem, { "$isActive": isActive, "$hasIcon": true, as: linkComponent, href: links[0]?.href, onClick: () => {
                     setIsOpen(false);
                 }, ...itemProps }, getMenuItemContent(""))) : (React__default["default"].createElement(DropdownMenuItem, { "$isActive": isActive, "$hasIcon": true, as: "div", ...itemProps }, getMenuItemContent(""))),
             hasInnerLinks && (React__default["default"].createElement(InnerLinksBlock, { links: links, leftIcon: leftIcon, setIsOpen: setIsOpen, linkComponent: linkComponent, lastItem: lastItem })))),
-        type === DropdownMenuItemType.INTERNAL_LINK && (React__default["default"].createElement(DropdownInternalMenuItem, { label: itemProps.label, "$isActive": isActive, "$hasIcon": !!leftIcon, as: linkComponent, to: href, onClick: () => {
+        type === exports.DropdownMenuItemType.INTERNAL_LINK && (React__default["default"].createElement(DropdownInternalMenuItem, { label: itemProps.label, "$isActive": isActive, "$hasIcon": !!leftIcon, as: linkComponent, to: href, onClick: () => {
                 setIsOpen(false);
             }, ...itemProps }, getMenuItemContent("ArrowRight"))),
-        type === DropdownMenuItemType.EXTERNAL_LINK && (React__default["default"].createElement(DropdownMenuItem, { label: itemProps.label, "$isActive": isActive, "$hasIcon": !!leftIcon, as: "a", href: href, target: isMobile ? mobileTarget || "_self" : target || "_blank", onClick: () => {
+        type === exports.DropdownMenuItemType.EXTERNAL_LINK && (React__default["default"].createElement(DropdownMenuItem, { label: itemProps.label, "$isActive": isActive, "$hasIcon": !!leftIcon, as: "a", href: href, target: isMobile ? mobileTarget || "_self" : target || "_blank", onClick: () => {
                 setIsOpen(false);
             }, ...itemProps }, getMenuItemContent("ArrowUpForward"))),
-        type === DropdownMenuItemType.DIVIDER && React__default["default"].createElement(DropdownMenuDivider, null),
-        type === DropdownMenuItemType.BANNER && isDesktop && bannerRenderer && (React__default["default"].createElement(BannerPlacementItem, null, bannerRenderer(href, target)))));
+        type === exports.DropdownMenuItemType.DIVIDER && React__default["default"].createElement(DropdownMenuDivider, null),
+        type === exports.DropdownMenuItemType.BANNER && isDesktop && bannerRenderer && (React__default["default"].createElement(BannerPlacementItem, null, bannerRenderer(href, target)))));
 };
 
 const getBG = ({ theme, leftIcon }) => {
@@ -8787,10 +8787,10 @@ const DropdownMenu = ({ children, activeItem = "", items = [], isExtended = fals
     }, [targetRef, tooltipRef, setIsOpen, update]);
     return (React__default["default"].createElement(Box, { ref: setTargetRef, ...props },
         React__default["default"].createElement(Box, null, children),
-        hasItems && (React__default["default"].createElement(StyledDropdownMenu, { style: styles.popper, ref: setTooltipRef, ...attributes.popper, "$isOpen": isOpen, "$isExtended": isExtended && hasMoreThanItems }, items.map(({ type = DropdownMenuItemType.INTERNAL_LINK, label, rightIconFill, description, href = "/", status, leftIcon = "", rightIcon = "", links = [], bannerRenderer, target, mobileTarget, badgeType, badgeTitle, ...itemProps }, itemIndex) => {
+        hasItems && (React__default["default"].createElement(StyledDropdownMenu, { style: styles.popper, ref: setTooltipRef, ...attributes.popper, "$isOpen": isOpen, "$isExtended": isExtended && hasMoreThanItems }, items.map(({ type = exports.DropdownMenuItemType.INTERNAL_LINK, label, rightIconFill, description, href = "/", status, leftIcon = "", rightIcon = "", links = [], bannerRenderer, target, mobileTarget, badgeType, badgeTitle, ...itemProps }, itemIndex) => {
             const getMenuItemContent = (icon = rightIcon) => (React__default["default"].createElement(MenuItemContent, { label: label, fill: rightIconFill, leftIcon: leftIcon, rightIcon: icon, description: description, status: status, badgeType: badgeType, badgeTitle: badgeTitle, ...itemProps }));
             const isActive = href === activeItem;
-            const lastItem = itemIndex === items?.length - 1 || items[itemIndex + 1]?.type === DropdownMenuItemType.BANNER;
+            const lastItem = itemIndex === items?.length - 1 || items[itemIndex + 1]?.type === exports.DropdownMenuItemType.BANNER;
             return (React__default["default"].createElement(DropdownMenuItemContainer, { key: itemIndex, isActive: isActive, leftIcon: leftIcon, getMenuItemContent: getMenuItemContent, links: links, setIsOpen: setIsOpen, linkComponent: linkComponent, href: href, bannerRenderer: bannerRenderer, type: type, target: target, mobileTarget: mobileTarget, lastItem: lastItem, ...itemProps }));
         })))));
 };
@@ -8945,8 +8945,8 @@ const MobileMenu = ({ items, mobileMenuCallback, children, activeItem, baseAwsUr
                                                     : "backgroundDark" }, label)),
                                     !isTablet && (React__default["default"].createElement(IconComponent$1, { width: !href ? "24px" : "20px", iconName: href ? "ArrowRight" : opened ? "ChevronUp" : "ChevronDown", color: opened ? "primary" : "dark800" })))));
                             } }, innerItems.length > 0 && (React__default["default"].createElement(Grid, { gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)", gridColumnGap: 16, mt: isOpenAccordion ? 16 : 0 }, innerItems
-                            .filter((element) => element.type !== DropdownMenuItemType.BANNER)
-                            .map(({ type = DropdownMenuItemType.INTERNAL_LINK, rightIconFill, description, status, leftIcon = "", rightIcon = "", links = [], badgeTitle, badgeType, bannerRenderer, ...itemProps }, itemIndex, arr) => {
+                            .filter((element) => element.type !== exports.DropdownMenuItemType.BANNER)
+                            .map(({ type = exports.DropdownMenuItemType.INTERNAL_LINK, rightIconFill, description, status, leftIcon = "", rightIcon = "", links = [], badgeTitle, badgeType, bannerRenderer, ...itemProps }, itemIndex, arr) => {
                             const getMenuItemContent = (icon = rightIcon) => (React__default["default"].createElement(MenuItemContent, { fill: rightIconFill, leftIcon: leftIcon, rightIcon: icon, description: description, status: status, badgeTitle: badgeTitle, badgeType: badgeType, ...itemProps }));
                             const isActive = (itemProps.href ?? "/") === activeItem;
                             const lastItem = itemIndex === arr?.length - 1;
