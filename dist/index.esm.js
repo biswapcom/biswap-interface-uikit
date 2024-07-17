@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Children, isValidElement, cloneElement, useLayoutEffect, createContext, useContext, useRef, useCallback, Fragment, forwardRef } from 'react';
+import React, { useState, useEffect, Children, isValidElement, cloneElement, useRef, useCallback, Fragment, useLayoutEffect, createContext, useContext, forwardRef } from 'react';
 import styled, { keyframes, css, createGlobalStyle, ThemeProvider, useTheme } from 'styled-components';
 import { space, typography, layout, background, border, position, flexbox, grid, variant } from 'styled-system';
 import get from 'lodash/get';
@@ -2584,6 +2584,7 @@ var Variants$a;
     Variants["WARNING_DARK"] = "warningDark";
 })(Variants$a || (Variants$a = {}));
 
+// utils
 const getRgba = (color, theme, alpha) => {
     const hexRegEx = /^#[0-9A-F]{6}$/i;
     const hex = hexRegEx.test(color) ? color : getThemeValue(`colors.${color}`, color)(theme);
@@ -2672,431 +2673,6 @@ var base = {
     radii,
     zIndices,
 };
-
-const useIsomorphicEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
-
-/**
- * Can't use the media queries from "base.mediaQueries" because of how matchMedia works
- * In order for the listener to trigger we need have have the media query with a range, e.g.
- * (min-width: 370px) and (max-width: 576px)
- * @see https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList
- */
-const mediaQueries = (() => {
-    let prevMinWidth = 0;
-    return Object.keys(breakpointMap).reduce((accum, size, index) => {
-        // Largest size is just a min-width of second highest max-width
-        if (index === Object.keys(breakpointMap).length - 1) {
-            return { ...accum, [size]: `(min-width: ${prevMinWidth}px)` };
-        }
-        const minWidth = prevMinWidth;
-        const breakpoint = breakpointMap[size];
-        // Min width for next iteration
-        prevMinWidth = breakpoint + 1;
-        return {
-            ...accum,
-            [size]: `(min-width: ${minWidth}px) and (max-width: ${breakpoint}px)`,
-        };
-    }, {});
-})();
-const getKey = (size) => `is${size.charAt(0).toUpperCase()}${size.slice(1)}`;
-const getState = () => Object.keys(mediaQueries).reduce((accum, size) => {
-    const key = getKey(size);
-    if (typeof window === "undefined") {
-        return {
-            ...accum,
-            [key]: false,
-        };
-    }
-    const mql = window.matchMedia(mediaQueries[size]);
-    return { ...accum, [key]: mql?.matches ?? false };
-}, {});
-const MatchBreakpointsContext = createContext({
-    isMobile: false,
-    isTablet: false,
-    isDesktop: false,
-});
-const getBreakpointChecks = (state) => {
-    return {
-        ...state,
-        isMobile: state.isXs || state.isSm,
-        isTablet: state.isMd || state.isLg,
-        isDesktop: state.isXl || state.isXll || state.isXxl,
-    };
-};
-const MatchBreakpointsProvider = ({ children }) => {
-    const [state, setState] = useState(() => getBreakpointChecks(getState()));
-    useIsomorphicEffect(() => {
-        // Create listeners for each media query returning a function to unsubscribe
-        const handlers = Object.keys(mediaQueries).map((size) => {
-            let mql;
-            let handler;
-            if (typeof window?.matchMedia === "function") {
-                mql = window.matchMedia(mediaQueries[size]);
-                handler = (matchMediaQuery) => {
-                    const key = getKey(size);
-                    setState((prevState) => getBreakpointChecks({
-                        ...prevState,
-                        [key]: matchMediaQuery.matches,
-                    }));
-                };
-                // Safari < 14 fix
-                if (mql.addEventListener) {
-                    mql.addEventListener("change", handler, { passive: true });
-                }
-            }
-            return () => {
-                // Safari < 14 fix
-                if (mql?.removeEventListener) {
-                    mql.removeEventListener("change", handler);
-                }
-            };
-        });
-        setState(getBreakpointChecks(getState()));
-        return () => {
-            handlers.forEach((unsubscribe) => {
-                unsubscribe();
-            });
-        };
-    }, []);
-    return React.createElement(MatchBreakpointsContext.Provider, { value: state }, children);
-};
-
-const useMatchBreakpoints = () => {
-    const matchBreakpointContext = useContext(MatchBreakpointsContext);
-    if (matchBreakpointContext === undefined) {
-        throw new Error("Match Breakpoint context is undefined");
-    }
-    return matchBreakpointContext;
-};
-
-const Wrapper$h = styled(Box) `
-  position: relative;
-  display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
-  width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
-  padding: 4px;
-  border-radius: 10px;
-  background-color: ${({ theme, withoutBackground, variant }) => withoutBackground
-    ? "transparent"
-    : variant === Variants$a.DARK
-        ? theme.colors.tooltip
-        : getRgba(theme.colors.pastelBlue, theme, 0.08)};
-  overflow: hidden;
-
-  ${({ scrollX }) => scrollX &&
-    css `
-      overflow-x: scroll;
-    `};
-
-  ${({ flatTop }) => flatTop &&
-    css `
-      border-radius: 0 0 8px 8px;
-      padding: 0;
-    `}
-
-  ${({ flatBottom }) => flatBottom &&
-    css `
-      border-radius: 8px 8px 0 0;
-      padding: 0;
-    `}
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  ${space}
-`;
-const StyledButtonMenu = styled(Box) `
-  position: relative;
-  display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
-  width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
-
-  & > button,
-  & > div,
-  & > a {
-    flex-grow: 1;
-
-    ${({ equalElementWidth }) => equalElementWidth &&
-    css `
-        flex: 1;
-      `}
-  }
-
-  & > button,
-  & > div,
-  & a {
-    box-shadow: none;
-  }
-
-  ${({ disabled, theme, variant }) => {
-    if (disabled) {
-        return `
-        opacity: 0.32;
-
-        & > button:disabled {
-          background-color: transparent;
-          color: ${variant === Variants$a.DARK ? theme.colors.pastelBlue : theme.colors.gray900};
-        }
-    `;
-    }
-    return "";
-}}
-`;
-const Selection$1 = styled(Box) `
-  position: absolute;
-  top: 50%;
-  left: ${({ offset }) => `${offset}px`};
-  width: ${({ width }) => `${width}px`};
-  height: calc(100% - 8px);
-  border-radius: ${({ scale }) => (scale === Scales$8.SM ? "6px" : "8px")};
-  background-color: ${({ theme, variant }) => theme.colors[variant === Variants$a.DARK ? "dark500" : variant === Variants$a.LIGHT ? "white" : "warning"]};
-  transform: translateY(-50%);
-
-  ${({ withoutAnimation }) => !withoutAnimation &&
-    css `
-      transition:
-        left 0.3s ease,
-        width 0.3s ease;
-    `}
-
-  ${({ flatTop, scale }) => flatTop &&
-    css `
-      border-radius: ${scale === Scales$8.SM ? "0 0 6px 6px" : "0 0 8px 8px"};
-      height: calc(100% - 4px);
-      top: calc(50% - 2px);
-    `}
-
-  ${({ flatBottom, scale }) => flatBottom &&
-    css `
-      border-radius: ${scale === Scales$8.SM ? "6px 6px 0 0" : "8px 8px 0 0"};
-      height: calc(100% - 4px);
-      top: calc(50% + 2px);
-    `}
-
-  ${({ theme, variant }) => variant === Variants$a.DARK && `box-shadow: 0 2px 4px ${getRgba(theme.colors.backgroundDark, theme, 0.08)}`};
-`;
-const ButtonMenu = ({ activeIndex = 0, scale = Scales$8.MD, variant = Variants$a.DARK, onItemClick, disabled, children, fullWidth = false, flatBottom = false, flatTop = false, withoutBackground = false, scrollX = false, equalElementWidth, withoutAnimation = false, itemsProperties = [], ...props }) => {
-    const [widthsArr, setWidthsArr] = useState([]);
-    const [blockOffset, setBlockOffset] = useState(0);
-    const [activeButtonIndex, setActiveButtonIndex] = useState(null);
-    const { isDesktop, isMobile, isTablet } = useMatchBreakpoints();
-    useEffect(() => {
-        setActiveButtonIndex(activeIndex);
-    }, [activeIndex]);
-    useEffect(() => {
-        if (activeButtonIndex !== null) {
-            setBlockOffset(widthsArr.slice(0, activeButtonIndex).reduce((sum, elem) => sum + elem, 0));
-        }
-    }, [widthsArr, activeButtonIndex, isDesktop, isMobile, isTablet]);
-    return (React.createElement(Wrapper$h, { flatBottom: flatBottom, flatTop: flatTop, fullWidth: fullWidth, withoutBackground: withoutBackground, variant: variant, scrollX: scrollX, ...props },
-        React.createElement(Selection$1, { flatTop: flatTop, flatBottom: flatBottom, scale: scale, width: widthsArr[activeIndex], offset: getOffset(blockOffset, flatTop || flatBottom), variant: variant, withoutAnimation: withoutAnimation }),
-        React.createElement(StyledButtonMenu, { disabled: disabled, variant: variant, fullWidth: fullWidth, withoutBackground: withoutBackground, equalElementWidth: equalElementWidth, ...props }, Children.map(children, (child, index) => {
-            return cloneElement(child, {
-                isActive: activeIndex === index,
-                onItemClick: onItemClick?.(index),
-                setWidth: setWidthsArr,
-                itemIndex: index,
-                activeButtonIndex,
-                blockOffset,
-                properties: itemsProperties.find((i) => i.index === index),
-                scale,
-                variant,
-                disabled,
-                flatBottom,
-                flatTop,
-            });
-        }))));
-};
-
-const scaleVariants$2 = {
-    [Scales$8.XL]: {
-        height: "48px",
-        padding: "0 24px",
-        borderRadius: "10px",
-        fontSize: "16px",
-    },
-    [Scales$8.LG]: {
-        height: "40px",
-        padding: "0 16px",
-        fontSize: "14px",
-        borderRadius: "8px",
-    },
-    [Scales$8.MD]: {
-        height: "32px",
-        padding: "0 12px",
-        fontSize: "12px",
-        borderRadius: "8px",
-    },
-    [Scales$8.SM]: {
-        height: "24px",
-        padding: "0 8px",
-        fontSize: "12px",
-        borderRadius: "6px",
-    },
-    [Scales$8.XS]: {
-        height: "20px",
-        padding: "0 8px",
-        fontSize: "12px",
-        borderRadius: "6px",
-    },
-};
-const styleVariants$2 = {
-    [Variants$a.DARK]: {
-        color: "white",
-        backgroundColor: "transparent",
-        ":active:not(:disabled)": {
-            backgroundColor: "transparent",
-        },
-    },
-    [Variants$a.LIGHT]: {
-        backgroundColor: "transparent",
-        color: "dark800",
-        ":hover(:disabled)": {
-            color: "dark800",
-        },
-        ":active:not(:disabled)": {
-            color: "text",
-        },
-    },
-    [Variants$a.WARNING_DARK]: {
-        backgroundColor: "transparent",
-        color: "dark800",
-        ":hover(:disabled)": {
-            color: "dark800",
-        },
-        ":active:not(:disabled)": {
-            color: "dark800",
-        },
-        ":active": {
-            backgroundColor: "transparent",
-        },
-    },
-    [Variants$a.WARNING_LIGHT]: {
-        backgroundColor: "transparent",
-        color: "dark800",
-        ":hover(:disabled)": {
-            color: "dark800",
-        },
-        ":active:not(:disabled)": {
-            color: "dark800",
-        },
-    },
-};
-const markerScales = {
-    [Scales$8.XL]: {
-        top: "2px",
-        right: "8px",
-    },
-    [Scales$8.LG]: {
-        top: "2px",
-        right: "8px",
-    },
-    [Scales$8.MD]: {
-        top: "2px",
-        right: "8px",
-    },
-    [Scales$8.SM]: {
-        top: "2px",
-        right: "8px",
-    },
-    [Scales$8.XS]: {
-        top: "2px",
-        right: "8px",
-    },
-};
-
-const PULSE_SUCCESS = keyframes `
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(29, 200, 124, 0.7);
-  }
-
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 4px rgba(29, 200, 124, 0);
-  }
-
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(29, 200, 124, 0);
-  }
-`;
-const PULSE_WARNING = keyframes `
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 219, 28, 0.7);
-  }
-
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 4px rgba(255, 219, 28, 0);
-  }
-
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 219, 28, 0);
-  }
-`;
-const PULSE_PRIMARY = keyframes `
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(18, 99, 241, 0.7);
-  }
-
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 4px rgba(18, 99, 241, 0);
-  }
-
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(18, 99, 241, 0);
-  }
-`;
-const PULSE_SECONDARY = keyframes `
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(249, 59, 93, 0.7);
-  }
-
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 4px rgba(249, 59, 93, 0);
-  }
-
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(249, 59, 93, 0);
-  }
-`;
-const PULSES = {
-    PRIMARY: PULSE_PRIMARY,
-    SECONDARY: PULSE_SECONDARY,
-    WARNING: PULSE_WARNING,
-    SUCCESS: PULSE_SUCCESS,
-};
-const Marker = styled(Box) `
-  position: absolute;
-  top: ${({ top }) => top ?? 0};
-  right: ${({ right }) => right ?? "-4px"};
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: ${({ theme, color }) => (!color ? theme.colors.success : theme.colors[color])};
-  transform: translateX(100%);
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    z-index: 1;
-    animation: ${({ color }) => (color ? PULSES[color.toUpperCase()] : PULSE_SUCCESS)} 2s infinite;
-  }
-`;
 
 const baseColors = {
     // failure: "#F93B5D",
@@ -3371,9 +2947,31 @@ const ResetCSS = createGlobalStyle `
   }  
 `;
 
+const formatSpacingAmount = (x) => {
+    if (x) {
+        const parts = x.toString().split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        return parts.join(".");
+    }
+    return null;
+};
+
+const getPortalRoot = () => typeof window !== "undefined" && (document.getElementById("portal-root") ?? document.body);
+
 const isTouchDevice = () => {
     return typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
 };
+
+const defaultObject = {
+    xs: null,
+    sm: null,
+    md: null,
+    lg: null,
+    xl: null,
+    xll: null,
+    xxl: null,
+};
+const getResponsiveAttrs = (obj) => Object.values({ ...defaultObject, ...obj });
 
 const Arrow = styled.div `
   &,
@@ -3453,9 +3051,6 @@ const StyledTooltip = styled.div `
   }
 `;
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const getPortalRoot = () => typeof window !== "undefined" && (document.getElementById("portal-root") ?? document.body);
-
 const invertTheme = (currentTheme) => {
     if (currentTheme.isDark) {
         return lightTheme;
@@ -3463,12 +3058,12 @@ const invertTheme = (currentTheme) => {
     return darkTheme;
 };
 const useTooltip = (content, options) => {
-    const { isMobile, isTablet } = useMatchBreakpoints();
-    const { placement = "auto", trigger = isMobile || isTablet ? "click" : "hover", tooltipPadding = { left: 16, right: 16 }, tooltipOffset = [0, 10], disableStopPropagation, openedByDefault = false, isLight = false, } = options;
     const [targetElement, setTargetElement] = useState(null);
     const [tooltipElement, setTooltipElement] = useState(null);
     const [arrowElement, setArrowElement] = useState(null);
     const [visible, setVisible] = useState(false);
+    const { isMobile, isTablet } = useMatchBreakpoints();
+    const { placement = "auto", trigger = isMobile || isTablet ? "click" : "hover", tooltipPadding = { left: 16, right: 16 }, tooltipOffset = [0, 10], disableStopPropagation, openedByDefault = false, isLight = false, } = options;
     const [defaultVisible, setDefaultVisible] = useState(openedByDefault);
     const isHoveringOverTooltip = useRef(false);
     const hideTimeout = useRef();
@@ -3503,8 +3098,6 @@ const useTooltip = (content, options) => {
         setVisible(true);
         if (trigger === "hover") {
             if (e.target === targetElement) {
-                // If we were about to close the tooltip and got back to it
-                // then prevent closing it.
                 clearTimeout(hideTimeout.current);
             }
             if (e.target === tooltipElement) {
@@ -3517,14 +3110,12 @@ const useTooltip = (content, options) => {
         setVisible(!visible);
     }, [visible, disableStopPropagation]);
     const stopPropagationHandle = (e) => e.stopPropagation();
-    //stop bubble
     useEffect(() => {
         tooltipElement?.addEventListener("click", stopPropagationHandle);
         return () => {
             tooltipElement?.removeEventListener("click", stopPropagationHandle);
         };
     }, [tooltipElement]);
-    // Trigger = hover
     useEffect(() => {
         if (targetElement === null || trigger !== "hover")
             return undefined;
@@ -3543,7 +3134,6 @@ const useTooltip = (content, options) => {
             targetElement.removeEventListener("mouseleave", showTooltip);
         };
     }, [trigger, targetElement, hideTooltip, showTooltip]);
-    // Keep tooltip open when cursor moves from the targetElement to the tooltip
     useEffect(() => {
         if (tooltipElement === null || trigger !== "hover")
             return undefined;
@@ -3554,14 +3144,12 @@ const useTooltip = (content, options) => {
             tooltipElement.removeEventListener("mouseleave", hideTooltip);
         };
     }, [trigger, tooltipElement, hideTooltip, showTooltip]);
-    // Trigger = click
     useEffect(() => {
         if (targetElement === null || trigger !== "click")
             return undefined;
         targetElement.addEventListener("click", toggleTooltip);
         return () => targetElement.removeEventListener("click", toggleTooltip);
     }, [trigger, targetElement, visible, toggleTooltip]);
-    // If you need open by default
     useEffect(() => {
         if (targetElement === null || trigger !== "click" || !defaultVisible)
             return undefined;
@@ -3570,7 +3158,6 @@ const useTooltip = (content, options) => {
         setDefaultVisible(false);
         return () => targetElement.removeEventListener("click", showTooltip);
     }, [trigger, targetElement, visible, defaultVisible, showTooltip]);
-    // Handle click outside
     useEffect(() => {
         if (trigger !== "click")
             return undefined;
@@ -3587,7 +3174,6 @@ const useTooltip = (content, options) => {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, [trigger, targetElement, tooltipElement]);
-    // Trigger = focus
     useEffect(() => {
         if (targetElement === null || trigger !== "focus")
             return undefined;
@@ -3598,16 +3184,6 @@ const useTooltip = (content, options) => {
             targetElement.removeEventListener("blur", hideTooltip);
         };
     }, [trigger, targetElement, showTooltip, hideTooltip]);
-    // On small screens Popper.js tries to squeeze the tooltip to available space without overflowing beyound the edge
-    // of the screen. While it works fine when the element is in the middle of the screen it does not handle well the
-    // cases when the target element is very close to the edge of the screen - no margin is applied between the tooltip
-    // and the screen edge.
-    // preventOverflow mitigates this behaviour, default 16px paddings on left and right solve the problem for all screen sizes
-    // that we support.
-    // Note that in the farm page where there are tooltips very close to the edge of the screen this padding works perfectly
-    // even on the iPhone 5 screen (320px wide), BUT in the storybook with the contrived example ScreenEdges example
-    // iPhone 5 behaves differently overflowing beyound the edge. All paddings are identical so I have no idea why it is,
-    // and fixing that seems like a very bad use of time.
     const { styles, attributes } = usePopper(targetElement, tooltipElement, {
         placement,
         modifiers: [
@@ -3798,26 +3374,6 @@ const GridLayout = styled(GridLayout$1) `
     }
   }
 `;
-
-const formatSpacingAmount = (x) => {
-    if (x) {
-        const parts = x.toString().split(".");
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-        return parts.join(".");
-    }
-    return null;
-};
-
-const defaultObject = {
-    xs: null,
-    sm: null,
-    md: null,
-    lg: null,
-    xl: null,
-    xll: null,
-    xxl: null,
-};
-const getResponsiveAttrs = (obj) => Object.values({ ...defaultObject, ...obj });
 
 const Container$3 = ({ children, ...props }) => (React.createElement(Box, { width: "100%", maxWidth: "1120px", mx: "auto", px: getResponsiveAttrs({ xs: "16px", lg: "24px", xxl: 0 }), ...props }, children));
 
@@ -4032,6 +3588,10 @@ const Container$2 = styled(Flex) `
   margin: ${({ gap }) => (gap === 0 ? "0" : gap > 0 ? `0 -${gap / 2}px` : "0")};
 `;
 const useCarousel = ({ data, Slide, title, slidesToScroll = 1, isDraggable = false, withDots = false, withNavButtons = false, navButtonsType = CarouselButtonsTypes.GRAY_OPACITY, navPadding = 0, withNavButtonsHeader = false, showNumberBlock = false, position = "center", isAutoplay = false, alignItem = "normal", breakpoints = {}, slideProps = {}, loop = true, marginDots = "24px", slideGap = 32, speed = 10, delay = 8000, containerOverflow, }) => {
+    const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
+    const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [scrollSnaps, setScrollSnaps] = useState([]);
     const autoplay = isAutoplay ? [Autoplay({ delay: delay })] : [];
     const { isMobile } = useMatchBreakpoints();
     const [viewportRef, embla] = useEmblaCarousel({
@@ -4043,10 +3603,6 @@ const useCarousel = ({ data, Slide, title, slidesToScroll = 1, isDraggable = fal
         align: position,
         breakpoints: breakpoints,
     }, autoplay);
-    const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-    const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    const [scrollSnaps, setScrollSnaps] = useState([]);
     const reInit = useCallback(() => embla && embla.reInit(), [embla]);
     const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
     const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
@@ -4121,6 +3677,431 @@ const useOnClickOutside = (ref, handler) => {
     // ... passing it into this hook.
     [ref, handler]);
 };
+
+const useIsomorphicEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
+
+/**
+ * Can't use the media queries from "base.mediaQueries" because of how matchMedia works
+ * In order for the listener to trigger we need have have the media query with a range, e.g.
+ * (min-width: 370px) and (max-width: 576px)
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList
+ */
+const mediaQueries = (() => {
+    let prevMinWidth = 0;
+    return Object.keys(breakpointMap).reduce((accum, size, index) => {
+        // Largest size is just a min-width of second highest max-width
+        if (index === Object.keys(breakpointMap).length - 1) {
+            return { ...accum, [size]: `(min-width: ${prevMinWidth}px)` };
+        }
+        const minWidth = prevMinWidth;
+        const breakpoint = breakpointMap[size];
+        // Min width for next iteration
+        prevMinWidth = breakpoint + 1;
+        return {
+            ...accum,
+            [size]: `(min-width: ${minWidth}px) and (max-width: ${breakpoint}px)`,
+        };
+    }, {});
+})();
+const getKey = (size) => `is${size.charAt(0).toUpperCase()}${size.slice(1)}`;
+const getState = () => Object.keys(mediaQueries).reduce((accum, size) => {
+    const key = getKey(size);
+    if (typeof window === "undefined") {
+        return {
+            ...accum,
+            [key]: false,
+        };
+    }
+    const mql = window.matchMedia(mediaQueries[size]);
+    return { ...accum, [key]: mql?.matches ?? false };
+}, {});
+const MatchBreakpointsContext = createContext({
+    isMobile: false,
+    isTablet: false,
+    isDesktop: false,
+});
+const getBreakpointChecks = (state) => {
+    return {
+        ...state,
+        isMobile: state.isXs || state.isSm,
+        isTablet: state.isMd || state.isLg,
+        isDesktop: state.isXl || state.isXll || state.isXxl,
+    };
+};
+const MatchBreakpointsProvider = ({ children }) => {
+    const [state, setState] = useState(() => getBreakpointChecks(getState()));
+    useIsomorphicEffect(() => {
+        // Create listeners for each media query returning a function to unsubscribe
+        const handlers = Object.keys(mediaQueries).map((size) => {
+            let mql;
+            let handler;
+            if (typeof window?.matchMedia === "function") {
+                mql = window.matchMedia(mediaQueries[size]);
+                handler = (matchMediaQuery) => {
+                    const key = getKey(size);
+                    setState((prevState) => getBreakpointChecks({
+                        ...prevState,
+                        [key]: matchMediaQuery.matches,
+                    }));
+                };
+                // Safari < 14 fix
+                if (mql.addEventListener) {
+                    mql.addEventListener("change", handler, { passive: true });
+                }
+            }
+            return () => {
+                // Safari < 14 fix
+                if (mql?.removeEventListener) {
+                    mql.removeEventListener("change", handler);
+                }
+            };
+        });
+        setState(getBreakpointChecks(getState()));
+        return () => {
+            handlers.forEach((unsubscribe) => {
+                unsubscribe();
+            });
+        };
+    }, []);
+    return React.createElement(MatchBreakpointsContext.Provider, { value: state }, children);
+};
+
+const useMatchBreakpoints = () => {
+    const matchBreakpointContext = useContext(MatchBreakpointsContext);
+    if (matchBreakpointContext === undefined) {
+        throw new Error("Match Breakpoint context is undefined");
+    }
+    return matchBreakpointContext;
+};
+
+const Wrapper$h = styled(Box) `
+  position: relative;
+  display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
+  width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
+  padding: 4px;
+  border-radius: 10px;
+  background-color: ${({ theme, withoutBackground, variant }) => withoutBackground
+    ? "transparent"
+    : variant === Variants$a.DARK
+        ? theme.colors.tooltip
+        : getRgba(theme.colors.pastelBlue, theme, 0.08)};
+  overflow: hidden;
+
+  ${({ scrollX }) => scrollX &&
+    css `
+      overflow-x: scroll;
+    `};
+
+  ${({ flatTop }) => flatTop &&
+    css `
+      border-radius: 0 0 8px 8px;
+      padding: 0;
+    `}
+
+  ${({ flatBottom }) => flatBottom &&
+    css `
+      border-radius: 8px 8px 0 0;
+      padding: 0;
+    `}
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  ${space}
+`;
+const StyledButtonMenu = styled(Box) `
+  position: relative;
+  display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
+  width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
+
+  & > button,
+  & > div,
+  & > a {
+    flex-grow: 1;
+
+    ${({ equalElementWidth }) => equalElementWidth &&
+    css `
+        flex: 1;
+      `}
+  }
+
+  & > button,
+  & > div,
+  & a {
+    box-shadow: none;
+  }
+
+  ${({ disabled, theme, variant }) => {
+    if (disabled) {
+        return `
+        opacity: 0.32;
+
+        & > button:disabled {
+          background-color: transparent;
+          color: ${variant === Variants$a.DARK ? theme.colors.pastelBlue : theme.colors.gray900};
+        }
+    `;
+    }
+    return "";
+}}
+`;
+const Selection$1 = styled(Box) `
+  position: absolute;
+  top: 50%;
+  left: ${({ offset }) => `${offset}px`};
+  width: ${({ width }) => `${width}px`};
+  height: calc(100% - 8px);
+  border-radius: ${({ scale }) => (scale === Scales$8.SM ? "6px" : "8px")};
+  background-color: ${({ theme, variant }) => theme.colors[variant === Variants$a.DARK ? "dark500" : variant === Variants$a.LIGHT ? "white" : "warning"]};
+  transform: translateY(-50%);
+
+  ${({ withoutAnimation }) => !withoutAnimation &&
+    css `
+      transition:
+        left 0.3s ease,
+        width 0.3s ease;
+    `}
+
+  ${({ flatTop, scale }) => flatTop &&
+    css `
+      border-radius: ${scale === Scales$8.SM ? "0 0 6px 6px" : "0 0 8px 8px"};
+      height: calc(100% - 4px);
+      top: calc(50% - 2px);
+    `}
+
+  ${({ flatBottom, scale }) => flatBottom &&
+    css `
+      border-radius: ${scale === Scales$8.SM ? "6px 6px 0 0" : "8px 8px 0 0"};
+      height: calc(100% - 4px);
+      top: calc(50% + 2px);
+    `}
+
+  ${({ theme, variant }) => variant === Variants$a.DARK && `box-shadow: 0 2px 4px ${getRgba(theme.colors.backgroundDark, theme, 0.08)}`};
+`;
+const ButtonMenu = ({ activeIndex = 0, scale = Scales$8.MD, variant = Variants$a.DARK, onItemClick, disabled, children, fullWidth = false, flatBottom = false, flatTop = false, withoutBackground = false, scrollX = false, equalElementWidth, withoutAnimation = false, itemsProperties = [], ...props }) => {
+    const [widthsArr, setWidthsArr] = useState([]);
+    const [blockOffset, setBlockOffset] = useState(0);
+    const [activeButtonIndex, setActiveButtonIndex] = useState(null);
+    const { isDesktop, isMobile, isTablet } = useMatchBreakpoints();
+    useEffect(() => {
+        setActiveButtonIndex(activeIndex);
+    }, [activeIndex]);
+    useEffect(() => {
+        if (activeButtonIndex !== null) {
+            setBlockOffset(widthsArr.slice(0, activeButtonIndex).reduce((sum, elem) => sum + elem, 0));
+        }
+    }, [widthsArr, activeButtonIndex, isDesktop, isMobile, isTablet]);
+    return (React.createElement(Wrapper$h, { flatBottom: flatBottom, flatTop: flatTop, fullWidth: fullWidth, withoutBackground: withoutBackground, variant: variant, scrollX: scrollX, ...props },
+        React.createElement(Selection$1, { flatTop: flatTop, flatBottom: flatBottom, scale: scale, width: widthsArr[activeIndex], offset: getOffset(blockOffset, flatTop || flatBottom), variant: variant, withoutAnimation: withoutAnimation }),
+        React.createElement(StyledButtonMenu, { disabled: disabled, variant: variant, fullWidth: fullWidth, withoutBackground: withoutBackground, equalElementWidth: equalElementWidth, ...props }, Children.map(children, (child, index) => {
+            return cloneElement(child, {
+                isActive: activeIndex === index,
+                onItemClick: () => onItemClick?.(index),
+                setWidth: setWidthsArr,
+                itemIndex: index,
+                activeButtonIndex,
+                blockOffset,
+                properties: itemsProperties.find((i) => i.index === index),
+                scale,
+                variant,
+                disabled,
+                flatBottom,
+                flatTop,
+            });
+        }))));
+};
+
+const scaleVariants$2 = {
+    [Scales$8.XL]: {
+        height: "48px",
+        padding: "0 24px",
+        borderRadius: "10px",
+        fontSize: "16px",
+    },
+    [Scales$8.LG]: {
+        height: "40px",
+        padding: "0 16px",
+        fontSize: "14px",
+        borderRadius: "8px",
+    },
+    [Scales$8.MD]: {
+        height: "32px",
+        padding: "0 12px",
+        fontSize: "12px",
+        borderRadius: "8px",
+    },
+    [Scales$8.SM]: {
+        height: "24px",
+        padding: "0 8px",
+        fontSize: "12px",
+        borderRadius: "6px",
+    },
+    [Scales$8.XS]: {
+        height: "20px",
+        padding: "0 8px",
+        fontSize: "12px",
+        borderRadius: "6px",
+    },
+};
+const styleVariants$2 = {
+    [Variants$a.DARK]: {
+        color: "white",
+        backgroundColor: "transparent",
+        ":active:not(:disabled)": {
+            backgroundColor: "transparent",
+        },
+    },
+    [Variants$a.LIGHT]: {
+        backgroundColor: "transparent",
+        color: "dark800",
+        ":hover(:disabled)": {
+            color: "dark800",
+        },
+        ":active:not(:disabled)": {
+            color: "text",
+        },
+    },
+    [Variants$a.WARNING_DARK]: {
+        backgroundColor: "transparent",
+        color: "dark800",
+        ":hover(:disabled)": {
+            color: "dark800",
+        },
+        ":active:not(:disabled)": {
+            color: "dark800",
+        },
+        ":active": {
+            backgroundColor: "transparent",
+        },
+    },
+    [Variants$a.WARNING_LIGHT]: {
+        backgroundColor: "transparent",
+        color: "dark800",
+        ":hover(:disabled)": {
+            color: "dark800",
+        },
+        ":active:not(:disabled)": {
+            color: "dark800",
+        },
+    },
+};
+const markerScales = {
+    [Scales$8.XL]: {
+        top: "2px",
+        right: "8px",
+    },
+    [Scales$8.LG]: {
+        top: "2px",
+        right: "8px",
+    },
+    [Scales$8.MD]: {
+        top: "2px",
+        right: "8px",
+    },
+    [Scales$8.SM]: {
+        top: "2px",
+        right: "8px",
+    },
+    [Scales$8.XS]: {
+        top: "2px",
+        right: "8px",
+    },
+};
+
+const PULSE_SUCCESS = keyframes `
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(29, 200, 124, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(29, 200, 124, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(29, 200, 124, 0);
+  }
+`;
+const PULSE_WARNING = keyframes `
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 219, 28, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(255, 219, 28, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 219, 28, 0);
+  }
+`;
+const PULSE_PRIMARY = keyframes `
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(18, 99, 241, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(18, 99, 241, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(18, 99, 241, 0);
+  }
+`;
+const PULSE_SECONDARY = keyframes `
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(249, 59, 93, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(249, 59, 93, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(249, 59, 93, 0);
+  }
+`;
+const PULSES = {
+    PRIMARY: PULSE_PRIMARY,
+    SECONDARY: PULSE_SECONDARY,
+    WARNING: PULSE_WARNING,
+    SUCCESS: PULSE_SUCCESS,
+};
+const Marker = styled(Box) `
+  position: absolute;
+  top: ${({ top }) => top ?? 0};
+  right: ${({ right }) => right ?? "-4px"};
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: ${({ theme, color }) => (!color ? theme.colors.success : theme.colors[color])};
+  transform: translateX(100%);
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    z-index: 1;
+    animation: ${({ color }) => (color ? PULSES[color.toUpperCase()] : PULSE_SUCCESS)} 2s infinite;
+  }
+`;
 
 const MenuItemButton = styled.button `
   display: flex;
@@ -5859,9 +5840,9 @@ const SubMenuContainer = styled(Flex) `
   border-radius: ${({ theme }) => theme.radii.default};
   border: ${({ theme }) => `1px solid ${theme.colors.dark600}`};
 `;
-const ClickableElementContainer = styled.div `
-  cursor: pointer;
+const ClickableElementContainer = styled(Box) `
   display: inline-flex;
+  cursor: pointer;
 `;
 const SubMenuItem = styled.button `
   border: 0;
@@ -5883,19 +5864,10 @@ const SubMenuItem = styled.button `
 const BaseMenu = ({ component, options, children, isOpen = false }) => {
     const [targetElement, setTargetElement] = useState(null);
     const [menuElement, setMenuElement] = useState(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(isOpen);
     const placement = options?.placement ?? "bottom";
     const offset = options?.offset ?? [0, 10];
     const padding = options?.padding ?? { left: 16, right: 16 };
-    const [isMenuOpen, setIsMenuOpen] = useState(isOpen);
-    const toggle = () => {
-        setIsMenuOpen((prev) => !prev);
-    };
-    const open = () => {
-        setIsMenuOpen(true);
-    };
-    const close = () => {
-        setIsMenuOpen(false);
-    };
     // Allow for component to be controlled
     useEffect(() => {
         setIsMenuOpen(isOpen);
@@ -5918,6 +5890,15 @@ const BaseMenu = ({ component, options, children, isOpen = false }) => {
             document.removeEventListener("click", handleClickOutside);
         };
     }, [menuElement, targetElement]);
+    const toggle = () => {
+        setIsMenuOpen((prev) => !prev);
+    };
+    const open = () => {
+        setIsMenuOpen(true);
+    };
+    const close = () => {
+        setIsMenuOpen(false);
+    };
     const { styles, attributes } = usePopper(targetElement, menuElement, {
         placement,
         modifiers: [
@@ -6031,13 +6012,20 @@ const MenuItem = ({ children, href, isActive = false, variant = "default", statu
         React.createElement(StyledMenuItem, { ...itemLinkProps, "$isActive": isActive, "$variant": variant, "$statusColor": statusColor, "$highlightTitle": highlightTitle, ...props }, children)));
 };
 
+const Divider = styled(Box) `
+  border: 1px solid ${({ theme }) => theme.colors.white};
+  opacity: 0.16;
+`;
+const MenuItemDivider = () => React.createElement(Divider, { width: 0, height: 20 });
+
 const StyledSubMenuItems = styled(Flex) `
   ${({ theme }) => theme.mediaQueries.sm} {
     ${({ $isMobileOnly }) => ($isMobileOnly ? "display:none" : "")};
   }
+
   flex-grow: 1;
   background-color: ${({ theme }) => `${theme.colors.white}`};
-  box-shadow: inset 0px -2px 0px -8px rgba(133, 133, 133, 0.1);
+  box-shadow: inset 0 -2px 0 -8px rgba(133, 133, 133, 0.1);
   overflow-x: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -7348,8 +7336,7 @@ const Terms = ({ title = "Terms of use", scrollClass = "", termsList, descriptio
                 React.createElement(StyledList, { mt: "8px", pl: "8px" }, renderTermsList())))));
 };
 
-const ModalWrapper = styled.div `
-  display: flex;
+const ModalWrapper = styled(Flex) `
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -7360,7 +7347,6 @@ const ModalWrapper = styled.div `
   left: 0;
   z-index: ${({ theme }) => theme.zIndices.modal - 1};
 `;
-const ModalTitle = styled(Flex) ``;
 const ModalBody$1 = styled(Flex) `
   flex-direction: column;
   overflow-y: auto;
@@ -7430,13 +7416,12 @@ const Modal = ({ title, onDismiss: onDismiss_, onBack, hideOnBack, children, hid
     return (React.createElement(ModalContainer, { minWidth: minWidth, ...props, background: getThemeValue(`colors.${modalBackground}`, modalBackground)(theme), maxWidth: maxWidth, walletModal: walletModal, width: props.width, borderRadius: props.borderRadius ?? "16px" },
         !hideHeader && (React.createElement(Flex, { justifyContent: "space-between", alignItems: "center", p: headerPadding ?? hp },
             !hideOnBack && onBack && React.createElement(ModalBackButton, { onBack: onBack, closeBtnColor: closeBtnColor }),
-            React.createElement(ModalTitle, null, title && (React.createElement(Heading, { scale: titleSize, color: titleColor }, title))),
+            React.createElement(Flex, null, title && (React.createElement(Heading, { scale: titleSize, color: titleColor }, title))),
             !hideCloseButton && React.createElement(ModalCloseButton, { closeBtnColor: closeBtnColor, onDismiss: onDismiss }))),
         React.createElement(ModalBody$1, { p: bodyPadding ?? defaultBodyPadding, ...modalBodyProps }, children)));
 };
 
 const StyledModal = styled(Flex) `
-  display: flex;
   flex-direction: column;
   background-color: ${({ theme, backgroundTransparent }) => backgroundTransparent ? "transparent" : theme.colors.white};
   border-radius: 16px 16px 0 0;
@@ -7500,7 +7485,6 @@ const ModalProvider = ({ children }) => {
     const [modalNode, setModalNode] = useState();
     const [nodeId, setNodeId] = useState("");
     const [closeOnOverlayClick, setCloseOnOverlayClick] = useState(true);
-    // console.log('closeOnOverlayClick', closeOnOverlayClick, nodeId)
     const handlePresent = (node, newNodeId, closeOverlayClick) => {
         setModalNode(node);
         setIsOpen(true);
@@ -7528,8 +7512,8 @@ const ModalProvider = ({ children }) => {
         } },
         isOpen && (React.createElement(ModalWrapper, null,
             React.createElement(Overlay, { onClick: handleOverlayDismiss }),
-            React.isValidElement(modalNode) &&
-                React.cloneElement(modalNode, {
+            isValidElement(modalNode) &&
+                cloneElement(modalNode, {
                     // @ts-ignore
                     onDismiss: handleDismiss,
                 }))),
@@ -7563,15 +7547,13 @@ const useModal = (modal, closeOnOverlayClick = true, updateOnPropsChange = false
     return [onPresentCallback, onDismiss];
 };
 
-// import { formatSpacingAmount } from "../../../util/formatSpacingAmount";
-const Wrapper$7 = styled.div `
-  display: grid;
+const Wrapper$7 = styled(Grid) `
+  position: relative;
   grid-template-columns: 38px 1fr;
   grid-template-areas:
     "logo bsw-title"
     "logo bsw-value";
   grid-column-gap: 8px;
-  position: relative;
   width: 140px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
@@ -7613,22 +7595,22 @@ const AddToMetamaskBtn = styled.button `
 `;
 const ConnectMetamask = ({ onClick, baseAwsUrl }) => {
     return (React.createElement(AddToMetamaskBtn, { type: "button", onClick: () => onClick(), as: "button" },
-        React.createElement(Image$1, { width: 22, height: 22, src: `${baseAwsUrl}/icons/metamask-transparent.svg`, alt: "" })));
+        React.createElement(Image$1, { width: 22, height: 22, src: `${baseAwsUrl}/icons/metamask-transparent.svg`, alt: "image" })));
 };
 
 const BuyBSW = ({ buyBswHandler, buyBswLabel }) => {
     return (React.createElement(Button, { onClick: buyBswHandler, variant: Variants$b.DANGER, scale: Scales$9.MD }, buyBswLabel));
 };
 
-const Wrapper$6 = styled.div `
+const Wrapper$6 = styled(Flex) `
   display: flex;
+  grid-area: footer-info;
   flex-direction: column;
   justify-content: space-between;
   border-radius: 16px;
   padding: 24px;
-  background: ${({ theme }) => theme.colors.dark600};
   margin-bottom: 24px;
-  grid-area: footer-info;
+  background: ${({ theme }) => theme.colors.dark600};
 
   ${({ theme }) => theme.mediaQueries.md} {
     margin-bottom: 0;
@@ -7639,8 +7621,7 @@ const Wrapper$6 = styled.div `
     justify-content: initial;
   }
 `;
-const LeftInfo = styled.div `
-  display: flex;
+const LeftInfo = styled(Flex) `
   justify-content: space-between;
   margin-bottom: 24px;
 
@@ -7653,8 +7634,7 @@ const LeftInfo = styled.div `
     margin-bottom: 0;
   }
 `;
-const FlexWrap = styled.div `
-  display: flex;
+const FlexWrap = styled(Flex) `
   align-items: center;
   gap: 8px;
 `;
@@ -7665,8 +7645,7 @@ const InfoList = styled.div `
     flex-grow: 1;
   }
 `;
-const InfoListItem = styled.div `
-  display: flex;
+const InfoListItem = styled(Flex) `
   align-items: center;
   line-height: 18px;
 
@@ -7679,10 +7658,10 @@ const InfoListItem = styled.div `
   }
 `;
 const InfoListLabel = styled.span `
-  font-size: 12px;
   width: 140px;
   min-width: 140px;
   color: ${({ theme }) => theme.colors.gray900};
+  font-size: 12px;
   font-weight: bold;
 
   ${({ theme }) => theme.mediaQueries.sm} {
@@ -7719,8 +7698,7 @@ var DropdownMenuItemType;
     DropdownMenuItemType[DropdownMenuItemType["CONTAINER"] = 5] = "CONTAINER";
 })(DropdownMenuItemType || (DropdownMenuItemType = {}));
 
-const TopAction = styled.div `
-  display: flex;
+const TopAction = styled(Flex) `
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
@@ -7729,11 +7707,10 @@ const Title$1 = styled.h4 `
   font-size: 16px;
   color: ${({ theme }) => theme.colors.white};
 `;
-const ActionIcon = styled.div `
+const ActionIcon = styled(Box) `
+  position: relative;
   width: 14px;
   height: 14px;
-  position: relative;
-  display: block;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     display: none;
@@ -7760,36 +7737,35 @@ const ActionIcon = styled.div `
     transform: ${({ isOpen }) => isOpen ? "translate(-50%, -50%) rotate(180deg)" : "translate(-50%, -50%) rotate(0deg)"};
   }
 `;
-const NavList = styled.div `
-  overflow: hidden;
-  transform: ${({ isOpen }) => (isOpen ? "scaleY(1)" : "scaleY(0)")};
-  transform-origin: top;
+const NavList = styled(Box) `
   height: ${({ isOpen, innerHeight }) => (isOpen ? `${innerHeight * 26 + 16}px` : "0")};
-  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+  padding-bottom: ${({ isOpen }) => (isOpen ? "16px" : "0")};
   transition:
     transform 0.3s ease,
     opacity 0.3s ease,
     height 0.3s ease;
-  padding-bottom: ${({ isOpen }) => (isOpen ? "16px" : "0")};
+  transform: ${({ isOpen }) => (isOpen ? "scaleY(1)" : "scaleY(0)")};
+  transform-origin: top;
+  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+  overflow: hidden;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    padding-bottom: 0;
     height: auto;
+    padding-bottom: 0;
     opacity: 1;
     transform: scaleY(1);
   }
 `;
-const NavItem = styled.div `
-  display: block;
+const NavItem = styled(Box) `
   margin-bottom: 8px;
-  font-size: 12px;
   color: ${({ theme }) => theme.colors.gray900};
+  font-size: 12px;
   line-height: 18px;
 `;
-const CustomLink = styled.div `
-  transition: opacity 0.3s ease;
+const CustomLink = styled(Box) `
   color: ${({ theme }) => theme.colors.pastelBlue};
   font-weight: 600;
+  transition: opacity 0.3s ease;
 
   &:hover {
     opacity: 0.65;
@@ -7874,7 +7850,6 @@ const links = [
             {
                 label: "Expert Trade",
                 leftIcon: "ExpertModeOpacity",
-                // rightIcon: "ArrowUpForward",
                 rightIconFill: "primary",
                 description: "Item description",
                 href: "/liquidity",
@@ -8090,32 +8065,6 @@ const links = [
         isMobileNav: true,
         showItemsOnMobile: true,
     },
-    // {
-    //   type: ItemTypes.DIVIDER,
-    //   showItemsOnMobile: true,
-    // },
-    // {
-    //   label: "Biswap Products", // if changed label, also should be changed in Accordion component condition
-    //   icon: "ProductsOpacity",
-    //   isMobileNav: true,
-    //   showItemsOnMobile: true,
-    //   items: [
-    //     {
-    //       label: "Marketplace",
-    //       href: "/pool",
-    //       leftIcon: "Market",
-    //       description: "Item description",
-    //       type: DropdownMenuItemType.EXTERNAL_LINK,
-    //     },
-    //     {
-    //       label: "GameFi",
-    //       href: "/pool",
-    //       leftIcon: "GameFi",
-    //       description: "Item description",
-    //       type: DropdownMenuItemType.EXTERNAL_LINK,
-    //     },
-    //   ],
-    // },
 ];
 const socials = [
     {
@@ -8148,11 +8097,6 @@ const socials = [
                     label: "Tiếng Việt",
                     href: "https://t.me/biswap_vnm",
                 },
-                // {
-                //   icon: 'BDIcon',
-                //   label: "Bangladesh",
-                //   href: "https://t.me/biswap_bgd",
-                // },
                 {
                     icon: "FRIcon",
                     label: "La France",
@@ -8261,7 +8205,7 @@ const socials = [
     },
     {
         type: DropdownMenuItemType.EXTERNAL_LINK,
-        href: "https://pancakeswap.finance",
+        href: "https://biswap.org",
         label: "Link",
     },
     {
@@ -8275,8 +8219,6 @@ const socials = [
 ];
 const MENU_HEIGHT = 72;
 const MOBILE_EVENT_BUTTON_HEIGHT = 40;
-// export const FISHING_BANNER_HEIGHT = 40;
-// export const FISHING_MOBILE_BANNER_HEIGHT = 60;
 const TRANSFER_BLOCK_CLOSED_HEIGHT = 40;
 const TRANSFER_BLOCK_OPENED_HEIGHT = 156;
 
@@ -8290,27 +8232,23 @@ const Title = styled.h4 `
   color: ${({ theme }) => theme.colors.white};
   margin-bottom: 16px;
 `;
-const SocialWrap = styled.div `
-  display: flex;
+const SocialWrap = styled(Flex) `
   flex-wrap: wrap;
   gap: 16px;
   justify-content: flex-start;
 
-  ${({ menuVariant }) => {
-    if (menuVariant) {
-        return `
+  ${({ menuVariant }) => menuVariant &&
+    `
       width:274px;
-        row-gap: 25px;
-        column-gap: 26px;
-        justify-content: center;
-        margin: 0 auto;
-        
-      `;
-    }
-}};
+      row-gap: 25px;
+      column-gap: 26px;
+      justify-content: center;
+      margin: 0 auto;
+      `};
 `;
 const SocialItem = styled.div `
   transition: opacity 0.3s ease;
+
   &:hover {
     opacity: 0.65;
   }
@@ -8466,9 +8404,11 @@ const MarketPlaceButton = styled(Button) `
   border-radius: 8px;
   margin-bottom: 0;
   transition: opacity 0.3s ease;
+
   ${({ theme }) => theme.mediaQueries.sm} {
     margin-bottom: 8px;
   }
+
   &:hover {
     opacity: 0.7;
   }
@@ -8506,10 +8446,7 @@ const Wrapper$1 = styled.footer `
     padding: 56px 24px;
   }
 `;
-const InnerRow = styled.div `
-  display: grid;
-  max-width: 1120px;
-  margin: 0 auto;
+const InnerRow = styled(Grid) `
   grid-template-columns: 1fr;
   grid-template-areas:
     "footer-info"
@@ -8518,6 +8455,8 @@ const InnerRow = styled.div `
     "service"
     "community"
     "audit";
+  max-width: 1120px;
+  margin: 0 auto;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     grid-template-columns: repeat(3, minmax(110px, 1fr));
@@ -8526,6 +8465,7 @@ const InnerRow = styled.div `
       "about product service"
       "community . audit";
   }
+
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: 338px minmax(0, 64px) repeat(2, minmax(110px, 1fr)) 110px;
     grid-template-areas:
@@ -9004,12 +8944,6 @@ const MobileMenu = ({ items, mobileMenuCallback, children, activeItem, baseAwsUr
                 React.createElement(Community, { menuVariant: true, iconSize: "24px", baseAwsUrl: baseAwsUrl })))))));
 };
 
-const Divider = styled(Box) `
-  border: 1px solid ${({ theme }) => theme.colors.white};
-  opacity: 0.16;
-`;
-const MenuItemDivider = () => React.createElement(Divider, { width: 0, height: 20 });
-
 const translateY = "6px";
 const menuAnimationConfig = {
     boxAnimationBackwards: keyframes `
@@ -9284,7 +9218,6 @@ const MenuItems = ({ items = [], activeItem, activeSubItem, isMobileMenuOpened =
         })));
 };
 
-// styled
 const StyledInnerButton = styled(Button) `
   display: flex;
   align-items: center;
@@ -9375,11 +9308,11 @@ const Inner = styled.div `
   max-width: 100%;
 `;
 const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, footerStatistic, registerToken, buyBswHandler, aboutLinks, productLinks, serviceLinks, socialLinks, withEvent, customLogoSubtitle, marketplaceLink, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", mobileLangSelector, }) => {
-    const { isMobile } = useMatchBreakpoints();
     const [showMenu, setShowMenu] = useState(true);
     const [menuBg, setMenuBg] = useState(false);
     const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
     const [transferBannerHeight, setTransferBannerHeight] = useState(TRANSFER_BLOCK_CLOSED_HEIGHT);
+    const { isMobile } = useMatchBreakpoints();
     const refPrevOffset = useRef(typeof window === "undefined" ? 0 : window.pageYOffset);
     const TopMenuWithBannerHeight = banner ? MENU_HEIGHT + transferBannerHeight : MENU_HEIGHT;
     const totalTopMenuHeight = withEvent && isMobile ? TopMenuWithBannerHeight + MOBILE_EVENT_BUTTON_HEIGHT : TopMenuWithBannerHeight;
@@ -9544,8 +9477,6 @@ const ToastContainer = ({ clearAll, toasts, onRemove, ttl = 10000, stackSpacing 
     const resetAll = () => {
         setProgress(100);
         setCurrentTime(ttl);
-        // clearTimeout(intervalRef.current)
-        // clearTimeout(timer.current);
     };
     useEffect(() => {
         if (toasts.length !== updateTimerRef.current) {
@@ -9695,4 +9626,4 @@ const ColoredToasts = ({ toasts, onRemove, ttl = 5000 }) => {
         React.createElement(TransitionGroup, null, toasts.map((toast) => (React.createElement(ColoredToastItem, { key: toast.id, toast: toast, ttl: ttl, style: { bottom: "50px" } }))))));
 };
 
-export { Icon$X as AboutBSWOpacityIcon, Icon$Y as AboutBSWSolidIcon, Alert, ColoredVariants as AlertColoredVariants, Variants$c as AlertVariants, Icon$11 as AnalyticsOpacityIcon, Icon$12 as AnalyticsSolidIcon, Icon$3q as ArrowDownIcon, Icon$j as ArrowFiguredIcon, Icon$3r as ArrowLeftIcon, Icon$3t as ArrowRightIcon, Icon$3n as ArrowSkipLeftIcon, Icon$3o as ArrowSkipRightIcon, Icon$3p as ArrowUpForwardIcon, Icon$3s as ArrowUpIcon, Icon$2b as AuctionIcon, Icon$29 as AuctionOpacityIcon, Icon$2a as AuctionSolidIcon, Icon$K as AuditProtectionOpacityIcon, Icon$J as AuditProtectionSolidIcon, Icon$H as AuditSearchOpacityIcon, Icon$I as AuditSearchSolidIcon, Icon$1E as AutoRenewAnimateIcon, Icon$1H as AutoRenewIcon, Icon$1F as AutoRenewOpacityAnimateIcon, Icon$1I as AutoRenewOpacityIcon, Icon$1G as AutoRenewSolidAnimateIcon, Icon$1J as AutoRenewSolidIcon, Icon$k as AvalancheIcon, Icon$m as BSCIcon, Badge$1 as Badge, Badge as BadgeButton, BadgeButtonTypes, BadgeTypes, GridLayout$1 as BaseLayout, BaseMenu, Icon$2A as BellOpacityIcon, Icon$2B as BellSolidIcon, Icon$1$ as BlockIcon, Icon$1_ as BlockOpacityIcon, Icon$1Z as BlockSolidIcon, Icon$F as BlogOpacityIcon, Icon$G as BlogSolidIcon, BodyText, BodyTextTags, Icon$2h as BookIcon, Icon$2f as BookOpacityIcon, Icon$2g as BookSolidIcon, Box, Breadcrumbs, Icon$3G as BscBlackRoundIcon, Icon$f as BswIcon, Icon$1u as BurgerCloseIcon, Icon$1v as BurgerIcon, Button, ButtonMenu, ButtonMenuItem, Scales$8 as ButtonMenuScales, Variants$a as ButtonMenuVariants, Scales$9 as ButtonScales, Variants$b as ButtonVariants, Icon$30 as CalculateIcon, Icon$32 as CalculateOpacityIcon, Icon$31 as CalculateSolidIcon, Icon$2$ as CalendarIcon, Icon$2K as CardViewIcon, GridLayout as CardsLayout, CarouselButtonsTypes, CarouselHeader, CarouselNumbersBlock, Icon$Z as CharityOpacityIcon, Icon$_ as CharitySolidIcon, Icon$2G as CheckCircleIcon, Icon$2H as CheckIcon, Icon$2E as CheckOpacityIcon, Icon$2F as CheckSolidIcon, Checkbox, CheckboxScales, Icon$3E as ChevronDownCircleOpacityIcon, Icon$3F as ChevronDownCircleSolidIcon, Icon$3D as ChevronDownIcon, Icon$3k as ChevronDownTripleIcon, Icon$3y as ChevronLeftCircleOpacityIcon, Icon$3z as ChevronLeftCircleSolidIcon, Icon$3x as ChevronLeftIcon, Icon$3B as ChevronRightCircleOpacityIcon, Icon$3C as ChevronRightCircleSolidIcon, Icon$3A as ChevronRightIcon, Icon$3j as ChevronRightTripleIcon, Icon$3u as ChevronUpCircleOpacityIcon, Icon$3v as ChevronUpCircleSolidIcon, Icon$3m as ChevronUpDoubleIcon, Icon$3w as ChevronUpIcon, Icon$3l as ChevronUpTripleIcon, ClickableElementContainer, Icon$37 as CloseCircleIcon, Icon$36 as CloseCircleOpacityIcon, Icon$35 as CloseCircleSolidIcon, Icon$38 as CloseIcon, Icon$p as CoinMarketCapIcon, ColoredToasts, Icon$d as ConflictIcon, Container$3 as Container, ContainerCarousel, Icon$2q as CopyIcon, Icon$2o as CopyOpacityIcon, Icon$2p as CopySolidIcon, Icon$2 as CrossChainOpacityIcon, Icon$n as DeBankIcon, DirectionButton, Icon$5 as DiscountOpacityIcon, Icon$6 as DiscountSolidIcon, Icon$L as DocsOpacityIcon, Icon$M as DocsSolidIcon, Dot$1 as Dot, Icon$3J as DownloadIcon, Icon$c as DropIcon, Dropdown, DropdownButton, Positions as DropdownButtonPositions, Scales$6 as DropdownButtonScales, Variants$9 as DropdownButtonVariants, DropdownMenuItemType, DropdownPosition, DropdownScales, DropdownVariants, Icon$1P as EditIcon, Icon$1O as EditOpacityIcon, Icon$1N as EditSolidIcon, Icon$1n as ExchangeOpacityIcon, Icon$1o as ExchangeSolidIcon, ExpandableButton, ExpandableIcon, ExpandableLabel, Icon$1l as ExpertModeOpacityIcon, Icon$1m as ExpertModeSolidIcon, Icon$2I as EyeCloseIcon, Icon$2J as EyeOpenIcon, Icon$r as FacebookIcon, Faqs, Variants as FaqsVariants, Icon$1h as FarmsOpacityIcon, Icon$1i as FarmsSolidIcon, Icon$2N as FavoriteEmptyIcon, Icon$2M as FavoriteSolidIcon, Icon$2e as FileIcon, Icon$2c as FileOpacityIcon, Icon$2d as FileSolidIcon, Icon$2k as FilterIcon, Icon$2i as FilterOpacityIcon, Icon$2j as FilterSolidIcon, Icon$2X as FireIcon, Icon$2V as FireOpacityIcon, Icon$2W as FireSolidIcon, Icon$13 as FixedStakingOpacityIcon, Icon$14 as FixedStakingSolidIcon, Icon$22 as FlagIcon, Icon$21 as FlagOpacityIcon, Icon$20 as FlagSolidIcon, Flex, Icon$1L as GasIcon, Icon$8 as GiftIcon, Icon$1b as GobletOpacityIcon, Icon$1c as GobletSolidIcon, Grid, HeadText, HeadTextTags, Heading, Scales$5 as HeadingScales, Tags as HeadingTags, Icon$2Y as HelpIcon, Icon$2_ as HelpOpacityIcon, Icon$2Z as HelpSolidIcon, HeroWrapper, Icon$1y as HistoryIcon, Icon$3H as HourglassIcon, IconButton, IconComponent, Icon$1d as IdoOpacityIcon, Icon$1e as IdoSolidIcon, Image, Variants$1 as ImageVariants, Icon$2U as InfoIcon, Icon$2S as InfoOpacityIcon, Icon$2T as InfoSolidIcon, InlineMenu, InlineMenuContainer, Input$1 as Input, InputGroup, Scales$4 as InputScales, Variants$8 as InputVariants, Icon$y as InstagramIcon, Icon$C as InvestPoolOpacityIcon, ItemTypes, Icon$9 as LanguageIcon, Icon$17 as LaunchpadOpacityIcon, Icon$18 as LaunchpadSolidIcon, Icon$e as LightningIcon, Icon$D as LimitOrderOpacityIcon, Icon$E as LimitOrderSolidIcon, Link, LinkExternal, Scales$3 as LinkScales, Variants$7 as LinkVariants, Icon$1p as LiquidityOpacityIcon, Icon$1q as LiquiditySolidIcon, Icon$B as LiquidityStakingOpacityIcon, Icon$A as LiquidityStakingSolidIcon, Icon$z as LiquidityStakingSolidOpacityIcon, Icon$1A as ListOpacityIcon, Icon$1z as ListSolidIcon, Icon$2L as ListViewIcon, Icon$b as LockIcon, Icon$h as LogoWithTextIcon, Icon$19 as LotteryOpacityIcon, Icon$1a as LotterySolidIcon, MatchBreakpointsProvider, Icon$1M as MedalIcon, Icon$x as MediumIcon, Menu, Icon$3d as MinusCircleOpacityIcon, Icon$3e as MinusCircleSolidIcon, Icon$3f as MinusIcon, Modal, ModalBackButton, ModalBody$1 as ModalBody, ModalCloseButton, ModalContainer, ModalProvider, ModalTitle, ModalV2, ModalV2Context, ModalWithBackground, ModalWrapper, Icon$1Q as More2Icon, Icon$1U as MoreHorizontalIcon, Icon$1S as MoreHorizontalOpacityIcon, Icon$1R as MoreHorizontalOutlineIcon, Icon$1T as MoreHorizontalSolidIcon, Icon$1Y as MoreVerticalIcon, Icon$1W as MoreVerticalOpacityIcon, Icon$1V as MoreVerticalOutlineIcon, Icon$1X as MoreVerticalSolidIcon, Icon$3I as MouseIcon, Icon$Q as MultiPoolOpacityIcon, Icon$P as MultiPoolSolidIcon, Icon$15 as NFTEarnOpacityIcon, Icon$16 as NFTEarnSolidIcon, Icon$N as NewsOpacityIcon, Icon$O as NewsSolidIcon, NotificationDot, Icon$2t as OptionsOpacityIcon, Icon$2u as OptionsSolidIcon, Overlay, Pagination, Variants$2 as PaginationVariants, PercentSlider, Icon$1 as PerpetualOpacityIcon, Icon as PerpetualSolidIcon, Icon$1K as PlayIcon, Icon$3g as PlusCircleOpacityIcon, Icon$3h as PlusCircleSolidIcon, Icon$3i as PlusIcon, Icon$l as PolygonIcon, Icon$1j as PoolsOpacityIcon, Icon$1k as PoolsSolidIcon, Icon$1w as ProductsOpacityIcon, Icon$1x as ProductsSolidIcon, Icon$T as Program10mOpacityIcon, Icon$U as Program10mSolidIcon, Icon$g as ProjectNameIcon, Icon$o as QuoraIcon, Radio, Scales$2 as RadioScales, Variants$6 as RadioVariants, Icon$w as RedditIcon, Icon$1f as ReferralOpacityIcon, Icon$1g as ReferralSolidIcon, Icon$1D as RefreshIcon, Icon$1C as RefreshOpacityIcon, Icon$1B as RefreshSolidIcon, ResetCSS, Icon$7 as RouteIcon, Scales$7 as Scales, Icon$2y as SearchOpacityIcon, Icon$2z as SearchSolidIcon, Icon$2n as ShareIcon, Icon$2l as ShareOpacityIcon, Icon$2m as ShareSolidIcon, Skeleton, Animations as SkeletonAnimation, SkeletonMode, Variants$5 as SkeletonVariants, Slider, SocialShareButton, SocialShareButtonCircle, Socials, Icon$R as SpaceAgentOpacityIcon, Icon$S as SpaceAgentSolidIcon, Icon$4 as SquidRouterIcon, Icon$2x as StarIcon, Icon$2w as StarOpacityIcon, Icon$2v as StarSolidIcon, SubMenu, SubMenuContainer, SubMenuItem, SubMenuItems, Svg, Icon$2R as SwapHorizontalOpacityIcon, Icon$2Q as SwapHorizontalSolidIcon, Icon$2P as SwapVerticalOpacityIcon, Icon$2O as SwapVerticalSolidIcon, Scales$1 as TabBarScales, Variants$4 as TabBarVariants, TabMenu, TabBarItem as TabMenuItem, TableCardSkeleton, Icon$V as TeamOpacityIcon, Icon$W as TeamSolidIcon, Icon$v as TelegramIcon, Terms, Icon$25 as TestIcon, Icon$24 as TestOpacityIcon, Icon$23 as TestSolidIcon, Text, Icon$i as Ticket2Icon, Icon$q as TikTokIcon, Icon$28 as TimerIcon, Icon$26 as TimerOpacityIcon, Icon$27 as TimerSolidIcon, ToastContainer, Toggle, Scales as ToggleScales, Variants$3 as ToggleVariants, TooltipHelper, TooltipText, Icon$u as TwitchIcon, Icon$t as TwitterIcon, Icon$a as UnlockIcon, Icon$1r as UsdLineIcon, Icon$1t as UsdOpacityIcon, Icon$1s as UsdSolidIcon, Icon$2C as UserOpacityIcon, Icon$2D as UserSolidIcon, VariantRotate, Icon$2r as VerifiedOpacityIcon, Icon$2s as VerifiedSolidIcon, Icon$$ as VotingOpacityIcon, Icon$10 as VotingSolidIcon, Icon$33 as WalletOpacityIcon, Icon$34 as WalletSolidIcon, Icon$39 as WarningCycleIcon, Icon$3a as WarningIcon, Icon$3c as WarningOpacityIcon, Icon$3b as WarningSolidIcon, Icon$3 as WormholeIcon, Icon$s as YoutubeIcon, bodyTextScaleMap, darkTheme as dark, darkColors, formatSpacingAmount, getExternalLinkProps, getPortalRoot, getResponsiveAttrs, getRgba, getThemeValue, headTextScaleMap, isTouchDevice, lightTheme as light, lightColors, links as menuConfig, status as menuStatus, useCarousel, useMatchBreakpoints, useModal, useModalV2, useOnClickOutside, useTooltip };
+export { Icon$X as AboutBSWOpacityIcon, Icon$Y as AboutBSWSolidIcon, Alert, ColoredVariants as AlertColoredVariants, Variants$c as AlertVariants, Icon$11 as AnalyticsOpacityIcon, Icon$12 as AnalyticsSolidIcon, Icon$3q as ArrowDownIcon, Icon$j as ArrowFiguredIcon, Icon$3r as ArrowLeftIcon, Icon$3t as ArrowRightIcon, Icon$3n as ArrowSkipLeftIcon, Icon$3o as ArrowSkipRightIcon, Icon$3p as ArrowUpForwardIcon, Icon$3s as ArrowUpIcon, Icon$2b as AuctionIcon, Icon$29 as AuctionOpacityIcon, Icon$2a as AuctionSolidIcon, Icon$K as AuditProtectionOpacityIcon, Icon$J as AuditProtectionSolidIcon, Icon$H as AuditSearchOpacityIcon, Icon$I as AuditSearchSolidIcon, Icon$1E as AutoRenewAnimateIcon, Icon$1H as AutoRenewIcon, Icon$1F as AutoRenewOpacityAnimateIcon, Icon$1I as AutoRenewOpacityIcon, Icon$1G as AutoRenewSolidAnimateIcon, Icon$1J as AutoRenewSolidIcon, Icon$k as AvalancheIcon, Icon$m as BSCIcon, Badge$1 as Badge, Badge as BadgeButton, BadgeButtonTypes, BadgeTypes, GridLayout$1 as BaseLayout, BaseMenu, Icon$2A as BellOpacityIcon, Icon$2B as BellSolidIcon, Icon$1$ as BlockIcon, Icon$1_ as BlockOpacityIcon, Icon$1Z as BlockSolidIcon, Icon$F as BlogOpacityIcon, Icon$G as BlogSolidIcon, BodyText, BodyTextTags, Icon$2h as BookIcon, Icon$2f as BookOpacityIcon, Icon$2g as BookSolidIcon, Box, Breadcrumbs, Icon$3G as BscBlackRoundIcon, Icon$f as BswIcon, Icon$1u as BurgerCloseIcon, Icon$1v as BurgerIcon, Button, ButtonMenu, ButtonMenuItem, Scales$8 as ButtonMenuScales, Variants$a as ButtonMenuVariants, Scales$9 as ButtonScales, Variants$b as ButtonVariants, Icon$30 as CalculateIcon, Icon$32 as CalculateOpacityIcon, Icon$31 as CalculateSolidIcon, Icon$2$ as CalendarIcon, Icon$2K as CardViewIcon, GridLayout as CardsLayout, CarouselButtonsTypes, CarouselHeader, CarouselNumbersBlock, Icon$Z as CharityOpacityIcon, Icon$_ as CharitySolidIcon, Icon$2G as CheckCircleIcon, Icon$2H as CheckIcon, Icon$2E as CheckOpacityIcon, Icon$2F as CheckSolidIcon, Checkbox, CheckboxScales, Icon$3E as ChevronDownCircleOpacityIcon, Icon$3F as ChevronDownCircleSolidIcon, Icon$3D as ChevronDownIcon, Icon$3k as ChevronDownTripleIcon, Icon$3y as ChevronLeftCircleOpacityIcon, Icon$3z as ChevronLeftCircleSolidIcon, Icon$3x as ChevronLeftIcon, Icon$3B as ChevronRightCircleOpacityIcon, Icon$3C as ChevronRightCircleSolidIcon, Icon$3A as ChevronRightIcon, Icon$3j as ChevronRightTripleIcon, Icon$3u as ChevronUpCircleOpacityIcon, Icon$3v as ChevronUpCircleSolidIcon, Icon$3m as ChevronUpDoubleIcon, Icon$3w as ChevronUpIcon, Icon$3l as ChevronUpTripleIcon, ClickableElementContainer, Icon$37 as CloseCircleIcon, Icon$36 as CloseCircleOpacityIcon, Icon$35 as CloseCircleSolidIcon, Icon$38 as CloseIcon, Icon$p as CoinMarketCapIcon, ColoredToasts, Icon$d as ConflictIcon, Container$3 as Container, ContainerCarousel, Icon$2q as CopyIcon, Icon$2o as CopyOpacityIcon, Icon$2p as CopySolidIcon, Icon$2 as CrossChainOpacityIcon, Icon$n as DeBankIcon, DirectionButton, Icon$5 as DiscountOpacityIcon, Icon$6 as DiscountSolidIcon, Icon$L as DocsOpacityIcon, Icon$M as DocsSolidIcon, Dot$1 as Dot, Icon$3J as DownloadIcon, Icon$c as DropIcon, Dropdown, DropdownButton, Positions as DropdownButtonPositions, Scales$6 as DropdownButtonScales, Variants$9 as DropdownButtonVariants, DropdownPosition, DropdownScales, DropdownVariants, Icon$1P as EditIcon, Icon$1O as EditOpacityIcon, Icon$1N as EditSolidIcon, Icon$1n as ExchangeOpacityIcon, Icon$1o as ExchangeSolidIcon, ExpandableButton, ExpandableIcon, ExpandableLabel, Icon$1l as ExpertModeOpacityIcon, Icon$1m as ExpertModeSolidIcon, Icon$2I as EyeCloseIcon, Icon$2J as EyeOpenIcon, Icon$r as FacebookIcon, Faqs, Variants as FaqsVariants, Icon$1h as FarmsOpacityIcon, Icon$1i as FarmsSolidIcon, Icon$2N as FavoriteEmptyIcon, Icon$2M as FavoriteSolidIcon, Icon$2e as FileIcon, Icon$2c as FileOpacityIcon, Icon$2d as FileSolidIcon, Icon$2k as FilterIcon, Icon$2i as FilterOpacityIcon, Icon$2j as FilterSolidIcon, Icon$2X as FireIcon, Icon$2V as FireOpacityIcon, Icon$2W as FireSolidIcon, Icon$13 as FixedStakingOpacityIcon, Icon$14 as FixedStakingSolidIcon, Icon$22 as FlagIcon, Icon$21 as FlagOpacityIcon, Icon$20 as FlagSolidIcon, Flex, Icon$1L as GasIcon, Icon$8 as GiftIcon, Icon$1b as GobletOpacityIcon, Icon$1c as GobletSolidIcon, Grid, HeadText, HeadTextTags, Heading, Scales$5 as HeadingScales, Tags as HeadingTags, Icon$2Y as HelpIcon, Icon$2_ as HelpOpacityIcon, Icon$2Z as HelpSolidIcon, HeroWrapper, Icon$1y as HistoryIcon, Icon$3H as HourglassIcon, IconButton, IconComponent, Icon$1d as IdoOpacityIcon, Icon$1e as IdoSolidIcon, Image, Variants$1 as ImageVariants, Icon$2U as InfoIcon, Icon$2S as InfoOpacityIcon, Icon$2T as InfoSolidIcon, InlineMenu, InlineMenuContainer, Input$1 as Input, InputGroup, Scales$4 as InputScales, Variants$8 as InputVariants, Icon$y as InstagramIcon, Icon$C as InvestPoolOpacityIcon, ItemTypes, Icon$9 as LanguageIcon, Icon$17 as LaunchpadOpacityIcon, Icon$18 as LaunchpadSolidIcon, Icon$e as LightningIcon, Icon$D as LimitOrderOpacityIcon, Icon$E as LimitOrderSolidIcon, Link, LinkExternal, Scales$3 as LinkScales, Variants$7 as LinkVariants, Icon$1p as LiquidityOpacityIcon, Icon$1q as LiquiditySolidIcon, Icon$B as LiquidityStakingOpacityIcon, Icon$A as LiquidityStakingSolidIcon, Icon$z as LiquidityStakingSolidOpacityIcon, Icon$1A as ListOpacityIcon, Icon$1z as ListSolidIcon, Icon$2L as ListViewIcon, Icon$b as LockIcon, Icon$h as LogoWithTextIcon, Icon$19 as LotteryOpacityIcon, Icon$1a as LotterySolidIcon, MatchBreakpointsProvider, Icon$1M as MedalIcon, Icon$x as MediumIcon, Menu, Icon$3d as MinusCircleOpacityIcon, Icon$3e as MinusCircleSolidIcon, Icon$3f as MinusIcon, Modal, ModalBackButton, ModalBody$1 as ModalBody, ModalCloseButton, ModalContainer, ModalProvider, ModalV2, ModalV2Context, ModalWithBackground, ModalWrapper, Icon$1Q as More2Icon, Icon$1U as MoreHorizontalIcon, Icon$1S as MoreHorizontalOpacityIcon, Icon$1R as MoreHorizontalOutlineIcon, Icon$1T as MoreHorizontalSolidIcon, Icon$1Y as MoreVerticalIcon, Icon$1W as MoreVerticalOpacityIcon, Icon$1V as MoreVerticalOutlineIcon, Icon$1X as MoreVerticalSolidIcon, Icon$3I as MouseIcon, Icon$Q as MultiPoolOpacityIcon, Icon$P as MultiPoolSolidIcon, Icon$15 as NFTEarnOpacityIcon, Icon$16 as NFTEarnSolidIcon, Icon$N as NewsOpacityIcon, Icon$O as NewsSolidIcon, NotificationDot, Icon$2t as OptionsOpacityIcon, Icon$2u as OptionsSolidIcon, Overlay, Pagination, Variants$2 as PaginationVariants, PercentSlider, Icon$1 as PerpetualOpacityIcon, Icon as PerpetualSolidIcon, Icon$1K as PlayIcon, Icon$3g as PlusCircleOpacityIcon, Icon$3h as PlusCircleSolidIcon, Icon$3i as PlusIcon, Icon$l as PolygonIcon, Icon$1j as PoolsOpacityIcon, Icon$1k as PoolsSolidIcon, Icon$1w as ProductsOpacityIcon, Icon$1x as ProductsSolidIcon, Icon$T as Program10mOpacityIcon, Icon$U as Program10mSolidIcon, Icon$g as ProjectNameIcon, Icon$o as QuoraIcon, Radio, Scales$2 as RadioScales, Variants$6 as RadioVariants, Icon$w as RedditIcon, Icon$1f as ReferralOpacityIcon, Icon$1g as ReferralSolidIcon, Icon$1D as RefreshIcon, Icon$1C as RefreshOpacityIcon, Icon$1B as RefreshSolidIcon, ResetCSS, Icon$7 as RouteIcon, Scales$7 as Scales, Icon$2y as SearchOpacityIcon, Icon$2z as SearchSolidIcon, Icon$2n as ShareIcon, Icon$2l as ShareOpacityIcon, Icon$2m as ShareSolidIcon, Skeleton, Animations as SkeletonAnimation, SkeletonMode, Variants$5 as SkeletonVariants, Slider, SocialShareButton, SocialShareButtonCircle, Socials, Icon$R as SpaceAgentOpacityIcon, Icon$S as SpaceAgentSolidIcon, Icon$4 as SquidRouterIcon, Icon$2x as StarIcon, Icon$2w as StarOpacityIcon, Icon$2v as StarSolidIcon, SubMenu, SubMenuContainer, SubMenuItem, SubMenuItems, Svg, Icon$2R as SwapHorizontalOpacityIcon, Icon$2Q as SwapHorizontalSolidIcon, Icon$2P as SwapVerticalOpacityIcon, Icon$2O as SwapVerticalSolidIcon, Scales$1 as TabBarScales, Variants$4 as TabBarVariants, TabMenu, TabBarItem as TabMenuItem, TableCardSkeleton, Icon$V as TeamOpacityIcon, Icon$W as TeamSolidIcon, Icon$v as TelegramIcon, Terms, Icon$25 as TestIcon, Icon$24 as TestOpacityIcon, Icon$23 as TestSolidIcon, Text, Icon$i as Ticket2Icon, Icon$q as TikTokIcon, Icon$28 as TimerIcon, Icon$26 as TimerOpacityIcon, Icon$27 as TimerSolidIcon, ToastContainer, Toggle, Scales as ToggleScales, Variants$3 as ToggleVariants, TooltipHelper, TooltipText, Icon$u as TwitchIcon, Icon$t as TwitterIcon, Icon$a as UnlockIcon, Icon$1r as UsdLineIcon, Icon$1t as UsdOpacityIcon, Icon$1s as UsdSolidIcon, Icon$2C as UserOpacityIcon, Icon$2D as UserSolidIcon, VariantRotate, Icon$2r as VerifiedOpacityIcon, Icon$2s as VerifiedSolidIcon, Icon$$ as VotingOpacityIcon, Icon$10 as VotingSolidIcon, Icon$33 as WalletOpacityIcon, Icon$34 as WalletSolidIcon, Icon$39 as WarningCycleIcon, Icon$3a as WarningIcon, Icon$3c as WarningOpacityIcon, Icon$3b as WarningSolidIcon, Icon$3 as WormholeIcon, Icon$s as YoutubeIcon, bodyTextScaleMap, darkTheme as dark, darkColors, formatSpacingAmount, getExternalLinkProps, getPortalRoot, getResponsiveAttrs, getRgba, getThemeValue, headTextScaleMap, isTouchDevice, lightTheme as light, lightColors, links as menuConfig, status as menuStatus, useCarousel, useIsomorphicEffect, useMatchBreakpoints, useModal, useModalV2, useOnClickOutside, useTooltip };

@@ -1,7 +1,7 @@
-import React from "react";
+import { FC } from "react";
 interface Props {
     onClick: () => void;
     baseAwsUrl: string;
 }
-declare const ConnectMetamask: React.FC<Props>;
+declare const ConnectMetamask: FC<Props>;
 export default ConnectMetamask;

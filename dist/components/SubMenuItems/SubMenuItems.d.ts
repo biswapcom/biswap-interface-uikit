@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { SubMenuItemsProps } from "./types";
-declare const SubMenuItems: React.FC<SubMenuItemsProps>;
+declare const SubMenuItems: FC<SubMenuItemsProps>;
 export default SubMenuItems;

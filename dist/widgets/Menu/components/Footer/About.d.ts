@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { FooterLinks } from "../../types";
-declare const About: React.FC<FooterLinks>;
+declare const About: FC<FooterLinks>;
 export default About;

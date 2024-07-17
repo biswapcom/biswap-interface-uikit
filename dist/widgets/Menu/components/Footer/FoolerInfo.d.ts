@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { BSWPriceProps, FooterStatisticProps } from "../../types";
 interface Props extends BSWPriceProps, FooterStatisticProps {
     registerToken: () => void;
@@ -6,5 +6,5 @@ interface Props extends BSWPriceProps, FooterStatisticProps {
     baseAwsUrl: string;
     buyBswLabel: string;
 }
-declare const FooterInfo: React.FC<Props>;
+declare const FooterInfo: FC<Props>;
 export default FooterInfo;

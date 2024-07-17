@@ -1,1 +1,2 @@
-export declare const formatSpacingAmount: (x: any) => any;
+declare const formatSpacingAmount: (x: string | number) => string | null;
+export default formatSpacingAmount;
