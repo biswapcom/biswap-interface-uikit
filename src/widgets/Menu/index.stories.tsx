@@ -5,13 +5,13 @@ import Box from "../../components/Box/Box";
 import Flex from "../../components/Box/Flex";
 import Button from "../../components/Button/Button";
 import IconButton from "../../components/Button/IconButton";
-import Heading from "../../components/Heading/Heading";
+// import Heading from "../../components/Heading/Heading";
 import {DownloadIcon, OptionsSolidIcon} from "../../components/Svg";
 import Text from "../../components/Text/Text";
-import {BodyText} from "../../components/Typography";
+import {BodyText, HeadText, Scales as TextScales, HeadTextTags} from "../../components/Typography";
 import {Modal, ModalProps, useModal} from "../Modal";
 import {Scales, Variants} from "../../components/Button/types";
-import { Dropdown } from "../../components/Dropdown";
+import {Dropdown} from "../../components/Dropdown";
 
 import {
   aboutLinks,
@@ -39,36 +39,13 @@ export default {
   },
 };
 
-// const UserMenuComponent: React.FC<{
-//   variant?: Variant;
-//   text?: string;
-//   account?: string;
-// }> = ({
-//   variant = variants.DEFAULT,
-//   text,
-//   account = "0x8b017905DC96B38f817473dc885F84D4C76bC113",
-// }) => {
-//   const accountEllipsis = account
-//     ? `${account.substring(0, 2)}...${account.substring(account.length - 4)}`
-//     : undefined;
-//   return (
-//     <DropdownMenu items={userMenulinks} py="12px">
-//       <UserMenu
-//         account={text || accountEllipsis}
-//         avatarSrc=""
-//         variant={variant}
-//       />
-//     </DropdownMenu>
-//   );
-// };
-
 const GlobalMenuModal: React.FC<ModalProps> = ({
   title,
   onDismiss,
   ...props
 }) => (
   <Modal title={title} onDismiss={onDismiss} {...props}>
-    <Heading>{title}</Heading>
+    <HeadText scale={TextScales.SIZE20} bold>{title}</HeadText>
     <Button>This button Does nothing</Button>
   </Modal>
 );
@@ -101,14 +78,6 @@ const defaultProps = {
   linkComponent: ({ href, ...props }) => {
     return <Link to={href} {...props} />;
   },
-  // account: "0xbdda50183d817c3289f895a4472eb475967dc980",
-  //login: noop,
-  // logout: noop,
-  // isDark: false,
-  // toggleTheme: noop,
-  // langs,
-  // setLang: noop,
-  // currentLang: "EN",
   bswPriceUsd: 0.023158668932877668,
   links,
   subLinks: [
@@ -117,12 +86,6 @@ const defaultProps = {
       href: "/",
     },
   ],
-  // profile: null,
-
-  //  userMenu: (
-  //    <UserMenuComponent account="0xbdda50183d817c3289f895a4472eb475967dc980" />
-  //  ),
-  //globalMenu: <GlobalMenuComponent />,
   activeItem: "/swap",
   activeSubItem: "https://exchange.biswap.org",
   buyCakeLabel: "Buy BSW",
@@ -249,11 +212,6 @@ const ConnectedTemplate: React.FC<NavProps> = (args) => {
             <Button scale={Scales.SM} onClick={() => setIsOpen(!isOpen)}>
               Show mobile drawer
             </Button>
-            {/*<BottomDrawer*/}
-            {/*  content={<Box p="16px">Example</Box>}*/}
-            {/*  isOpen={isOpen}*/}
-            {/*  setIsOpen={setIsOpen}*/}
-            {/*/>*/}
             {renderContent}
           </ContentWrap>
         </Menu>
@@ -297,9 +255,9 @@ export const WithSubmenuSelected: React.FC = () => {
         buyBswLabel={"Buy bsdt"}
       >
         <div style={{ paddingTop: "72px" }}>
-          <Heading as="h1" mb="8px">
+          <HeadText as={HeadTextTags.H1} mb="8px" bold>
             Submenu leaderboard selected
-          </Heading>
+          </HeadText>
         </div>
         <div>
           <h1>Page body</h1>
@@ -373,49 +331,3 @@ export const WithSubmenuSelected: React.FC = () => {
     </MemoryRouter>
   );
 };
-
-// export const UserMenuWithVariants:  React.FC<React.PropsWithChildren> = () => {
-//   const [variant, setVariant] = useState<Variant>(variants.DEFAULT);
-//   const [text, setText] = useState(undefined);
-//
-//   const handleChange = (evt) => {
-//     const { value } = evt.target;
-//     setText(value);
-//   };
-//
-//   return (
-//     <BrowserRouter>
-//       <Box p="40px">
-//         <Flex justifyContent="space-between">
-//           <Box>
-//             <Heading size="sm" mb="16px">
-//               Variants
-//             </Heading>
-//             <Flex mb="16px">
-//               {Object.keys(variants).map((variantKey) => (
-//                 <Button
-//                   scale="sm"
-//                   variant={
-//                     variant === variants[variantKey] ? "primary" : "text"
-//                   }
-//                   ml="8px"
-//                   onClick={() => setVariant(variants[variantKey])}
-//                 >
-//                   {variants[variantKey].toUpperCase()}
-//                 </Button>
-//               ))}
-//             </Flex>
-//             <Box py="8px">
-//               <Input
-//                 value={text}
-//                 onChange={handleChange}
-//                 placeholder="Custom Text..."
-//               />
-//             </Box>
-//           </Box>
-//           <UserMenuComponent variant={variant} text={text} />
-//         </Flex>
-//       </Box>
-//     </BrowserRouter>
-//   );
-// };

@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+
+// types
 import {
   BSWPriceProps,
   FooterStatisticProps,
@@ -8,11 +10,8 @@ import {
   FooterServiceLinks,
   FooterSocialLinks,
 } from "../../types";
-// import {animateScroll as scroll} from 'react-scroll'
-// import { SIDEBAR_WIDTH_FULL, SIDEBAR_WIDTH_REDUCED } from "../../config";
-// import { Button } from "../../../../components/Button";
-// import ArrowUp from "../../../../components/Svg/Icons/ArrowUp";
 
+// components
 import FooterInfo from "./FoolerInfo";
 import About from "./About";
 import Product from "./Product";

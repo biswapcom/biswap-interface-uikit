@@ -2,11 +2,11 @@ import React, { FC, Fragment } from "react";
 
 // components
 import { Box, Flex } from "../Box";
-import { Text } from "../Text";
 import { DropdownMenu } from "../DropdownMenu";
 import MobileDropdownMenu from "../DropdownMenu/MobileMenu/MobileDropdownMenu";
 import { MenuItem, MenuItemDivider, MenuItemMarker } from "../MenuItem";
 import IconComponent from "../Svg/IconComponent";
+import {BodyText, Scales} from "../Typography";
 
 // utils
 import { isTouchDevice } from "../../util";
@@ -86,14 +86,13 @@ const MenuItems: FC<MenuItemsProps> = ({
                       <Box ml={!href ? "8px" : 0} position="relative">
                         {/*@ts-ignore*/}
                         {isMarker && <MenuItemMarker color={isMarkerColor} />}
-                        <Text
+                        <BodyText
                           color={isHighlighted ? "warningPress" : "white"}
-                          fontSize="14px"
-                          lineHeight="20px"
-                          fontWeight="600"
+                          scale={Scales.SIZE14}
+                          bold
                         >
                           {label}
-                        </Text>
+                        </BodyText>
                       </Box>
                     )}
                   </MenuItem>
