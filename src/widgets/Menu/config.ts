@@ -548,7 +548,7 @@ export const userMenulinks: DropdownMenuItems[] = [
   },
   {
     type: DropdownMenuItemType.EXTERNAL_LINK,
-    href: "https://pancakeswap.finance",
+    href: "https://biswap.org",
     label: "Link",
   },
   {

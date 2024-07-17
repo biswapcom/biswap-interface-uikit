@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { BrowserRouter, Link } from "react-router-dom";
+
+// components
 import InlineMenu from "./InlineMenu";
 import SubMenuComp from "./SubMenu";
-import { SubMenuItem } from "./styles";
 import { LinkExternal } from "../Link";
 import { Box, Flex, Grid } from "../Box";
 import { Text } from "../Text";
-import Button from "../Button/Button";
 import { MoreHorizontalIcon } from "../Svg";
-import { ButtonVariants, ButtonScales } from "../Button";
+import { Button, ButtonVariants, ButtonScales } from "../Button";
+
+// styles
+import { SubMenuItem } from "./styles";
 
 export default {
   title: "Components/Menu",
 };
 
-export const Default: React.FC = () => {
+export const Default: FC = () => {
   return (
     <Flex justifyContent="space-around" p="64px">
       <InlineMenu component={<Button>Inline Menu #1</Button>}>
@@ -43,17 +46,12 @@ export const Default: React.FC = () => {
   );
 };
 
-export const Controlled: React.FC = () => {
+export const Controlled: FC = () => {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
     <Box>
-      <Button
-        variant={ButtonVariants.SUCCESS}
-        scale={ButtonScales.SM}
-        mr="32px"
-        onClick={() => setIsOpen(!isOpen)}
-      >
+      <Button variant={ButtonVariants.SUCCESS} scale={ButtonScales.SM} mr="32px" onClick={() => setIsOpen(!isOpen)}>
         Outside component controlling menu
       </Button>
       <InlineMenu component={<Button>Controlled Menu</Button>} isOpen={isOpen}>
@@ -68,17 +66,10 @@ export const Controlled: React.FC = () => {
   );
 };
 
-export const SubMenu: React.FC = () => {
+export const SubMenu: FC = () => {
   return (
     <BrowserRouter>
-      <Flex
-        mb="24px"
-        p="8px"
-        width="300px"
-        border="1px solid grey"
-        justifyContent="space-between"
-        alignItems="center"
-      >
+      <Flex mb="24px" p="8px" width="300px" border="1px solid grey" justifyContent="space-between" alignItems="center">
         <Text>Icon</Text>
         <SubMenuComp
           component={<MoreHorizontalIcon height="16px" width="16px" />}
@@ -88,21 +79,10 @@ export const SubMenu: React.FC = () => {
             padding: { top: 20 },
           }}
         >
-          <SubMenuItem
-            as={LinkExternal}
-            href="https://bscscan.com"
-            bold={false}
-            color="text"
-          >
+          <SubMenuItem as={LinkExternal} href="https://bscscan.com" bold={false} color="text">
             View on BSCScan
           </SubMenuItem>
-          <SubMenuItem
-            as={LinkExternal}
-            href="https://pancakeswap.info"
-            bold={false}
-            color="text"
-            target="blank"
-          >
+          <SubMenuItem as={LinkExternal} href="https://biswap.org" bold={false} color="text" target="blank">
             View on PCS Info
           </SubMenuItem>
           <SubMenuItem as={Link} to="/profile">
@@ -111,13 +91,7 @@ export const SubMenu: React.FC = () => {
           <SubMenuItem>Just button</SubMenuItem>
         </SubMenuComp>
       </Flex>
-      <Flex
-        p="8px"
-        width="300px"
-        border="1px solid grey"
-        justifyContent="space-between"
-        alignItems="center"
-      >
+      <Flex p="8px" width="300px" border="1px solid grey" justifyContent="space-between" alignItems="center">
         <Text>Text</Text>
         <SubMenuComp
           component={
@@ -126,21 +100,10 @@ export const SubMenu: React.FC = () => {
             </Text>
           }
         >
-          <SubMenuItem
-            as={LinkExternal}
-            href="https://bscscan.com"
-            bold={false}
-            color="text"
-          >
+          <SubMenuItem as={LinkExternal} href="https://bscscan.com" bold={false} color="text">
             View on BSCScan
           </SubMenuItem>
-          <SubMenuItem
-            as={LinkExternal}
-            href="https://pancakeswap.info"
-            bold={false}
-            color="text"
-            target="blank"
-          >
+          <SubMenuItem as={LinkExternal} href="https://biswap.org" bold={false} color="text" target="blank">
             View on PCS Info
           </SubMenuItem>
           <SubMenuItem as={Link} to="/profile">
