@@ -6,12 +6,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { CarouselButtonsTypes } from "./types";
 
 //components
-import {
-  CarouselHeader,
-  CarouselNumbersBlock,
-  DirectionButton,
-  Dot,
-} from "../../components/Carousel";
+import { CarouselHeader, CarouselNumbersBlock, DirectionButton, Dot } from "../../components/Carousel";
 import { Box, Flex } from "../../components/Box";
 import { useMatchBreakpoints } from "../../contexts";
 
@@ -127,19 +122,14 @@ export const useCarousel = ({
   const reInit = useCallback(() => embla && embla.reInit(), [embla]);
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
-  const scrollTo = useCallback(
-    (index: number) => embla && embla.scrollTo(index),
-    [embla]
-  );
+  const scrollTo = useCallback((index: number) => embla && embla.scrollTo(index), [embla]);
 
   const onSelect = useCallback(() => {
     if (!embla) return;
     setSelectedIndex(embla.selectedScrollSnap());
     setPrevBtnEnabled(embla.canScrollPrev());
     setNextBtnEnabled(embla.canScrollNext());
-    isMobile &&
-      slideProps?.selectHandle &&
-      slideProps?.selectHandle(embla.selectedScrollSnap());
+    isMobile && slideProps?.selectHandle && slideProps?.selectHandle(embla.selectedScrollSnap());
   }, [embla, setSelectedIndex, isMobile, slideProps]);
 
   useEffect(() => {
@@ -176,10 +166,7 @@ export const useCarousel = ({
     }
   };
 
-  const renderNav = (
-    navType: CarouselButtonsTypes,
-    navPadding?: number
-  ): JSX.Element => {
+  const renderNav = (navType: CarouselButtonsTypes, padding?: number): JSX.Element => {
     return (
       <>
         <DirectionButton
@@ -187,7 +174,7 @@ export const useCarousel = ({
           onClick={scrollPrev}
           enabled={prevBtnEnabled}
           themeType={navType}
-          navPadding={navPadding}
+          navPadding={padding}
         />
         <DirectionButton
           isNextButton
@@ -195,7 +182,7 @@ export const useCarousel = ({
           onClick={scrollNext}
           enabled={nextBtnEnabled}
           themeType={navType}
-          navPadding={navPadding}
+          navPadding={padding}
         />
       </>
     );
@@ -206,18 +193,10 @@ export const useCarousel = ({
   const carouselComponent = () => (
     <Box>
       {showHeader && (
-        <CarouselHeader
-          title={title}
-          handleNav={handleDirectionClick}
-          showNavButtons={withNavButtonsHeader}
-        />
+        <CarouselHeader title={title} handleNav={handleDirectionClick} showNavButtons={withNavButtonsHeader} />
       )}
       {showNumberBlock && (
-        <CarouselNumbersBlock
-          dataLength={data?.length}
-          selectedIndex={selectedIndex}
-          scrollToHandle={scrollToHandle}
-        />
+        <CarouselNumbersBlock dataLength={data?.length} selectedIndex={selectedIndex} scrollToHandle={scrollToHandle} />
       )}
 
       {data?.length && (
@@ -227,26 +206,14 @@ export const useCarousel = ({
               {renderSlides()}
             </Container>
           </Viewport>
-          {withNavButtons && (
-            <NavWrapper navPadding={navPadding}>
-              {renderNav(navButtonsType, navPadding)}
-            </NavWrapper>
-          )}
+          {withNavButtons && <NavWrapper navPadding={navPadding}>{renderNav(navButtonsType, navPadding)}</NavWrapper>}
         </Embla>
       )}
 
       {withDots && (
-        <Flex
-          alignItems="center"
-          justifyContent="center"
-          marginTop={marginDots}
-        >
+        <Flex alignItems="center" justifyContent="center" marginTop={marginDots}>
           {scrollSnaps.map((_, index) => (
-            <Dot
-              key={index.toString()}
-              selected={index === selectedIndex}
-              onClick={() => scrollTo(index)}
-            />
+            <Dot key={index.toString()} selected={index === selectedIndex} onClick={() => scrollTo(index)} />
           ))}
         </Flex>
       )}

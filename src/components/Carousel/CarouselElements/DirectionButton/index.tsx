@@ -7,7 +7,8 @@ import IconComponent from "../../../Svg/IconComponent";
 import { WrapperDirectionButton } from "./styles";
 
 // types
-import { IDirectionButtonProps, VariantsNavButton } from "../../types";
+import { IDirectionButtonProps } from "../../types";
+import { CarouselButtonsTypes } from "../../../../hooks";
 
 const DirectionButton: FC<IDirectionButtonProps> = ({
   enabled,
@@ -27,7 +28,7 @@ const DirectionButton: FC<IDirectionButtonProps> = ({
     >
       <IconComponent
         iconName={iconName}
-        color={themeType === VariantsNavButton.WHITE ? "dark900" : "white"}
+        color={themeType === CarouselButtonsTypes.WHITE ? "dark900" : "white"}
         height="32px"
       />
     </WrapperDirectionButton>

@@ -2,16 +2,17 @@ import styled, { css } from "styled-components";
 import { variant } from "styled-system";
 
 // types
-import { type IDirectButtonStyled, VariantsNavButton } from "../../types";
+import { type IDirectButtonStyled } from "../../types";
+import { CarouselButtonsTypes } from "../../../../hooks";
 
 export const backgroundVariants = {
-  [VariantsNavButton.GRAY_OPACITY]: {
+  [CarouselButtonsTypes.GRAY_OPACITY]: {
     backgroundColor: "rgba(255, 255, 255, 0.2)",
   },
-  [VariantsNavButton.WHITE]: {
+  [CarouselButtonsTypes.WHITE]: {
     backgroundColor: "white",
   },
-  [VariantsNavButton.PRIMARY]: {
+  [CarouselButtonsTypes.PRIMARY]: {
     backgroundColor: "primary",
   },
 };

@@ -1,8 +1,5 @@
-export enum VariantsNavButton {
-  PRIMARY = "primary",
-  WHITE = "white",
-  GRAY_OPACITY = "grayOpacity",
-}
+// types
+import { CarouselButtonsTypes } from "../../hooks";
 
 export interface IDirectionButtonProps {
   enabled: boolean;
@@ -10,12 +7,12 @@ export interface IDirectionButtonProps {
   iconName: string;
   isNextButton?: boolean;
   navPadding?: number;
-  themeType: VariantsNavButton;
+  themeType: CarouselButtonsTypes;
 }
 
 export interface IDirectButtonStyled {
   disabled?: boolean;
   isNextButton?: boolean;
   navPadding?: number;
-  variant: VariantsNavButton;
+  variant: CarouselButtonsTypes;
 }

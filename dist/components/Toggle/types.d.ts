@@ -1,11 +1,23 @@
 import { InputHTMLAttributes } from "react";
-import { Colors } from "../../theme";
 import { SpaceProps } from "styled-system";
-import { Scales as BodyTextScales, ScalesObj } from "../Typography";
-export declare const scales: {
-    readonly MD: "md";
-};
-export type Scales = typeof scales[keyof typeof scales];
+import { Colors } from "../../theme";
+import { type ScalesObj, Scales as BodyTextScales } from "../Typography";
+export declare enum Scales {
+    MD = "md"
+}
+export declare enum Variants {
+    LIGHT = "light",
+    DARK = "dark"
+}
+export declare enum ScaleKeys {
+    HANDLE_HEIGHT = "handleHeight",
+    HANDLE_WIDTH = "handleWidth",
+    HANDLE_LEFT = "handleLeft",
+    HANDLE_TOP = "handleTop",
+    CHECKED_LEFT = "checkedLeft",
+    TOGGLE_HEIGHT = "toggleHeight",
+    TOGGLE_WIDTH = "toggleWidth"
+}
 export interface ToggleProps extends InputHTMLAttributes<HTMLInputElement>, SpaceProps {
     scale?: Scales;
     checked?: boolean;
@@ -16,7 +28,7 @@ export interface ToggleProps extends InputHTMLAttributes<HTMLInputElement>, Spac
     labelOrientation?: string;
     labelSize?: BodyTextScales | ScalesObj | undefined;
     gridArea?: string;
-    variant?: string;
+    variant?: Variants;
     spaceBetween?: boolean;
 }
 export interface HandleProps {
@@ -33,13 +45,3 @@ export interface StyleToggleProps {
     scale: Scales;
     disabled?: boolean;
 }
-export declare const scaleKeys: {
-    readonly handleHeight: "handleHeight";
-    readonly handleWidth: "handleWidth";
-    readonly handleLeft: "handleLeft";
-    readonly handleTop: "handleTop";
-    readonly checkedLeft: "checkedLeft";
-    readonly toggleHeight: "toggleHeight";
-    readonly toggleWidth: "toggleWidth";
-};
-export type ScaleKeys = typeof scaleKeys[keyof typeof scaleKeys];
