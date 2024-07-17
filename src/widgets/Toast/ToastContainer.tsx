@@ -57,9 +57,6 @@ const ToastContainer: FC<ToastContainerProps> = ({
   const resetAll = () => {
     setProgress(100);
     setCurrentTime(ttl);
-
-    // clearTimeout(intervalRef.current)
-    // clearTimeout(timer.current);
   };
 
   useEffect(() => {
