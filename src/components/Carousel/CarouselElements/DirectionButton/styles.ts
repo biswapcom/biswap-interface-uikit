@@ -2,8 +2,7 @@ import styled, { css } from "styled-components";
 import { variant } from "styled-system";
 
 // types
-import { type IDirectButtonStyled } from "../../types";
-import { CarouselButtonsTypes } from "../../../../hooks";
+import { IDirectButtonStyled, CarouselButtonsTypes } from "../../types";
 
 export const backgroundVariants = {
   [CarouselButtonsTypes.GRAY_OPACITY]: {

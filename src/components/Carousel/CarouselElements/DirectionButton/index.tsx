@@ -7,8 +7,7 @@ import IconComponent from "../../../Svg/IconComponent";
 import { WrapperDirectionButton } from "./styles";
 
 // types
-import { IDirectionButtonProps } from "../../types";
-import { CarouselButtonsTypes } from "../../../../hooks";
+import { IDirectionButtonProps, CarouselButtonsTypes } from "../../types";
 
 const DirectionButton: FC<IDirectionButtonProps> = ({
   enabled,

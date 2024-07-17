@@ -3604,13 +3604,6 @@ const useTooltip = (content, options) => {
     };
 };
 
-exports.CarouselButtonsTypes = void 0;
-(function (CarouselButtonsTypes) {
-    CarouselButtonsTypes["PRIMARY"] = "primary";
-    CarouselButtonsTypes["WHITE"] = "white";
-    CarouselButtonsTypes["GRAY_OPACITY"] = "grayOpacity";
-})(exports.CarouselButtonsTypes || (exports.CarouselButtonsTypes = {}));
-
 exports.HeadTextTags = void 0;
 (function (HeadTextTags) {
     HeadTextTags["H1"] = "h1";
@@ -3904,6 +3897,13 @@ const CarouselNumbersBlock = ({ dataLength, scrollToHandle, selectedIndex }) => 
             React__default["default"].createElement(DummyBlock, { key: item.toString() }),
             React__default["default"].createElement(Line, null))))));
 };
+
+exports.CarouselButtonsTypes = void 0;
+(function (CarouselButtonsTypes) {
+    CarouselButtonsTypes["PRIMARY"] = "primary";
+    CarouselButtonsTypes["WHITE"] = "white";
+    CarouselButtonsTypes["GRAY_OPACITY"] = "grayOpacity";
+})(exports.CarouselButtonsTypes || (exports.CarouselButtonsTypes = {}));
 
 const Icons$2 = IconModule;
 const IconComponent$1 = ({ iconName, ...props }) => {

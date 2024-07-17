@@ -3588,13 +3588,6 @@ const useTooltip = (content, options) => {
     };
 };
 
-var CarouselButtonsTypes;
-(function (CarouselButtonsTypes) {
-    CarouselButtonsTypes["PRIMARY"] = "primary";
-    CarouselButtonsTypes["WHITE"] = "white";
-    CarouselButtonsTypes["GRAY_OPACITY"] = "grayOpacity";
-})(CarouselButtonsTypes || (CarouselButtonsTypes = {}));
-
 var HeadTextTags;
 (function (HeadTextTags) {
     HeadTextTags["H1"] = "h1";
@@ -3888,6 +3881,13 @@ const CarouselNumbersBlock = ({ dataLength, scrollToHandle, selectedIndex }) => 
             React.createElement(DummyBlock, { key: item.toString() }),
             React.createElement(Line, null))))));
 };
+
+var CarouselButtonsTypes;
+(function (CarouselButtonsTypes) {
+    CarouselButtonsTypes["PRIMARY"] = "primary";
+    CarouselButtonsTypes["WHITE"] = "white";
+    CarouselButtonsTypes["GRAY_OPACITY"] = "grayOpacity";
+})(CarouselButtonsTypes || (CarouselButtonsTypes = {}));
 
 const Icons$2 = IconModule;
 const IconComponent$1 = ({ iconName, ...props }) => {

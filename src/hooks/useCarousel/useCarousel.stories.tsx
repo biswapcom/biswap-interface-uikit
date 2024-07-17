@@ -3,7 +3,6 @@ import { useCarousel } from "./useCarousel";
 import { Box, Flex } from "../../components/Box";
 import { BodyText } from "../../components/Typography";
 import { useTheme } from "styled-components";
-import { CarouselButtonsTypes } from "./types";
 
 export default {
   title: "Hooks/useCarousel",
@@ -25,13 +24,7 @@ const data = [
 ];
 
 const Item: FC<{ text: string }> = ({ text }) => (
-  <Flex
-    p="24px"
-    width="100%"
-    minWidth="100%"
-    alignItems="center"
-    justifyContent="center"
-  >
+  <Flex p="24px" width="100%" minWidth="100%" alignItems="center" justifyContent="center">
     <BodyText textAlign="center" color="white">
       {text}
     </BodyText>

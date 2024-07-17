@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CarouselButtonsTypes } from "./types";
+import { CarouselButtonsTypes } from "../../components/Carousel";
 interface IProps<T, C, A> {
     data: T[];
     Slide: FC<C>;

@@ -2,12 +2,15 @@ import React, { FC, useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import styled from "styled-components";
 import Autoplay from "embla-carousel-autoplay";
+
 //types
-import { CarouselButtonsTypes } from "./types";
+import { CarouselButtonsTypes } from "../../components/Carousel";
 
 //components
 import { CarouselHeader, CarouselNumbersBlock, DirectionButton, Dot } from "../../components/Carousel";
 import { Box, Flex } from "../../components/Box";
+
+// hooks
 import { useMatchBreakpoints } from "../../contexts";
 
 interface IProps<T, C, A> {

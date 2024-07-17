@@ -1,5 +1,8 @@
-// types
-import { CarouselButtonsTypes } from "../../hooks";
+export enum CarouselButtonsTypes {
+  PRIMARY = "primary",
+  WHITE = "white",
+  GRAY_OPACITY = "grayOpacity",
+}
 
 export interface IDirectionButtonProps {
   enabled: boolean;

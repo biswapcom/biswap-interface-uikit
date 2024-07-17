@@ -1,4 +1,4 @@
-import { type IDirectButtonStyled } from "../../types";
+import { IDirectButtonStyled } from "../../types";
 export declare const backgroundVariants: {
     grayOpacity: {
         backgroundColor: string;
