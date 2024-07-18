@@ -5817,23 +5817,23 @@ const Pulse = styled__default["default"](Root) `
 `;
 const Waves = styled__default["default"](Root) `
   position: relative;
-  top: 0;
-  left: -150px;
-  width: 150px;
-  height: 100%;
   overflow: hidden;
   transform: translate3d(0, 0, 0);
-  animation: ${waves} 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 
   &:before {
     content: "";
     position: absolute;
+    top: 0;
+    left: -150px;
+    width: 150px;
+    height: 100%;
     background: linear-gradient(
       90deg,
       rgba(116, 155, 216, 0) 0%,
       rgba(116, 155, 216, 0.16) 50%,
       rgba(116, 155, 216, 0) 100%
     );
+    animation: ${waves} 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 `;
 const Skeleton = ({ variant = exports.SkeletonVariants.RECT, animation = exports.SkeletonAnimation.PULSE, ...props }) => {
