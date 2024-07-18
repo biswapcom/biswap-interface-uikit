@@ -1,11 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import styled from "styled-components";
+
+// types
 import { FooterLinks } from "../../types";
 import { DropdownMenuItemType } from "../../../../components/DropdownMenu/types";
+
+// context
 import { MenuContext } from "../../context";
 
-const TopAction = styled.div`
-  display: flex;
+// components
+import { Box, Flex } from "../../../../components/Box";
+
+const TopAction = styled(Flex)`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
@@ -16,11 +22,10 @@ const Title = styled.h4`
   color: ${({ theme }) => theme.colors.white};
 `;
 
-const ActionIcon = styled.div<{ isOpen: boolean }>`
+const ActionIcon = styled(Box)<{ isOpen: boolean }>`
+  position: relative;
   width: 14px;
   height: 14px;
-  position: relative;
-  display: block;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     display: none;
@@ -50,46 +55,46 @@ const ActionIcon = styled.div<{ isOpen: boolean }>`
   }
 `;
 
-const NavList = styled.div<{ isOpen: boolean; innerHeight: number }>`
-  overflow: hidden;
-  transform: ${({ isOpen }) => (isOpen ? "scaleY(1)" : "scaleY(0)")};
-  transform-origin: top;
+const NavList = styled(Box)<{ isOpen: boolean; innerHeight: number }>`
   height: ${({ isOpen, innerHeight }) => (isOpen ? `${innerHeight * 26 + 16}px` : "0")};
-  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+  padding-bottom: ${({ isOpen }) => (isOpen ? "16px" : "0")};
   transition:
     transform 0.3s ease,
     opacity 0.3s ease,
     height 0.3s ease;
-  padding-bottom: ${({ isOpen }) => (isOpen ? "16px" : "0")};
+  transform: ${({ isOpen }) => (isOpen ? "scaleY(1)" : "scaleY(0)")};
+  transform-origin: top;
+  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+  overflow: hidden;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    padding-bottom: 0;
     height: auto;
+    padding-bottom: 0;
     opacity: 1;
     transform: scaleY(1);
   }
 `;
 
-const NavItem = styled.div`
-  display: block;
+const NavItem = styled(Box)`
   margin-bottom: 8px;
-  font-size: 12px;
   color: ${({ theme }) => theme.colors.gray900};
+  font-size: 12px;
   line-height: 18px;
 `;
 
-const CustomLink = styled.div`
-  transition: opacity 0.3s ease;
+const CustomLink = styled(Box)`
   color: ${({ theme }) => theme.colors.pastelBlue};
   font-weight: 600;
+  transition: opacity 0.3s ease;
 
   &:hover {
     opacity: 0.65;
   }
 `;
 
-const CommonFooterLinksComponent: React.FC<FooterLinks> = ({ footerLinks }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const CommonFooterLinksComponent: FC<FooterLinks> = ({ footerLinks }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const { linkComponent } = useContext(MenuContext);
   const { title, links } = footerLinks;
 

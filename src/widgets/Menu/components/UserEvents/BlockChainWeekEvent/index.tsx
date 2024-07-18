@@ -1,8 +1,12 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { useMatchBreakpoints } from "../../../../../contexts";
-import { Flex } from "../../../../../components/Box";
 import { Link } from "react-router-dom";
+
+// hooks
+import { useMatchBreakpoints } from "../../../../../contexts";
+
+// components
+import { Flex } from "../../../../../components/Box";
 
 interface Props {
   href?: string;
@@ -18,6 +22,7 @@ const Wrapper = styled(Flex)<{ flat: boolean }>`
   background: linear-gradient(258.91deg, #ffdb1c 52.52%, #ff5c00 95.56%);
   cursor: pointer;
   transition: opacity 0.3s ease;
+
   ${({ theme }) => theme.mediaQueries.sm} {
     margin-right: 10px;
     &:before {
@@ -32,6 +37,7 @@ const Wrapper = styled(Flex)<{ flat: boolean }>`
       z-index: 1;
       animation: pulse-whiteCustom 2s infinite;
     }
+
     @keyframes pulse-whiteCustom {
       0% {
         transform: scale(1) translateY(-50%) translateX(-50%);
@@ -47,6 +53,7 @@ const Wrapper = styled(Flex)<{ flat: boolean }>`
       }
     }
   }
+
   &:hover {
     opacity: 0.8;
   }
@@ -65,6 +72,7 @@ const StyledLink = styled.a`
   font-weight: 600;
   line-height: 20px;
   color: ${({ theme }) => theme.colors.dark800};
+
   ${({ theme }) => theme.mediaQueries.sm} {
     z-index: 10;
     width: auto;
@@ -85,6 +93,7 @@ const StyledRouterLink = styled(Link)`
   font-weight: 600;
   line-height: 20px;
   color: ${({ theme }) => theme.colors.dark800};
+
   ${({ theme }) => theme.mediaQueries.sm} {
     z-index: 30;
     width: auto;

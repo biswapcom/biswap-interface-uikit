@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { BSWPriceProps } from "../../types";
-declare const BSWPrice: React.FC<BSWPriceProps>;
+declare const BSWPrice: FC<BSWPriceProps>;
 export default BSWPrice;

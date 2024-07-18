@@ -1,4 +1,6 @@
 import { noop } from "lodash";
+
+// types
 import { DropdownMenuItems, DropdownMenuItemType } from "../../components/DropdownMenu/types";
 import { ItemTypes, MenuItemsType } from "../../components/MenuItems/types";
 import { LinkStatus } from "./types";
@@ -41,7 +43,6 @@ export const links: MenuItemsType[] = [
       {
         label: "Expert Trade",
         leftIcon: "ExpertModeOpacity",
-        // rightIcon: "ArrowUpForward",
         rightIconFill: "primary",
         description: "Item description",
         href: "/liquidity",
@@ -257,32 +258,6 @@ export const links: MenuItemsType[] = [
     isMobileNav: true,
     showItemsOnMobile: true,
   },
-  // {
-  //   type: ItemTypes.DIVIDER,
-  //   showItemsOnMobile: true,
-  // },
-  // {
-  //   label: "Biswap Products", // if changed label, also should be changed in Accordion component condition
-  //   icon: "ProductsOpacity",
-  //   isMobileNav: true,
-  //   showItemsOnMobile: true,
-  //   items: [
-  //     {
-  //       label: "Marketplace",
-  //       href: "/pool",
-  //       leftIcon: "Market",
-  //       description: "Item description",
-  //       type: DropdownMenuItemType.EXTERNAL_LINK,
-  //     },
-  //     {
-  //       label: "GameFi",
-  //       href: "/pool",
-  //       leftIcon: "GameFi",
-  //       description: "Item description",
-  //       type: DropdownMenuItemType.EXTERNAL_LINK,
-  //     },
-  //   ],
-  // },
 ];
 
 export const socials = [
@@ -316,11 +291,6 @@ export const socials = [
           label: "Tiếng Việt",
           href: "https://t.me/biswap_vnm",
         },
-        // {
-        //   icon: 'BDIcon',
-        //   label: "Bangladesh",
-        //   href: "https://t.me/biswap_bgd",
-        // },
         {
           icon: "FRIcon",
           label: "La France",
@@ -359,7 +329,6 @@ export const socials = [
       ],
     },
   },
-
   {
     label: "Instagram",
     icon: "InstagramIcon",
@@ -548,7 +517,7 @@ export const userMenulinks: DropdownMenuItems[] = [
   },
   {
     type: DropdownMenuItemType.EXTERNAL_LINK,
-    href: "https://pancakeswap.finance",
+    href: "https://biswap.org",
     label: "Link",
   },
   {
@@ -562,15 +531,8 @@ export const userMenulinks: DropdownMenuItems[] = [
 ];
 
 export const MENU_HEIGHT = 72;
-// export const MENU_ENTRY_HEIGHT = 48;
-// export const MOBILE_MENU_HEIGHT = 44;
-// export const SIDEBAR_WIDTH_FULL = 240;
-// export const SIDEBAR_WIDTH_REDUCED = 56;
 export const TOP_BANNER_HEIGHT = 70;
 export const TOP_BANNER_HEIGHT_MOBILE = 84;
 export const MOBILE_EVENT_BUTTON_HEIGHT = 40;
-// export const FISHING_BANNER_HEIGHT = 40;
-// export const FISHING_MOBILE_BANNER_HEIGHT = 60;
-
 export const TRANSFER_BLOCK_CLOSED_HEIGHT = 40;
 export const TRANSFER_BLOCK_OPENED_HEIGHT = 156;

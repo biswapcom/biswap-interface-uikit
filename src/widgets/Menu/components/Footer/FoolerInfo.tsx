@@ -1,11 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
+
+// types
 import { BSWPriceProps, FooterStatisticProps } from "../../types";
+
+// utils
 import { formatSpacingAmount } from "../../../../util";
 
+// components
 import BSWPrice from "./BSWPrice";
 import ConnectMetamask from "./ConnectMetamask";
 import BuyBSW from "./BuyBSW";
+import { Flex } from "../../../../components/Box";
 
 interface Props extends BSWPriceProps, FooterStatisticProps {
   registerToken: () => void;
@@ -14,15 +20,15 @@ interface Props extends BSWPriceProps, FooterStatisticProps {
   buyBswLabel: string;
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled(Flex)`
   display: flex;
+  grid-area: footer-info;
   flex-direction: column;
   justify-content: space-between;
   border-radius: 16px;
   padding: 24px;
-  background: ${({ theme }) => theme.colors.dark600};
   margin-bottom: 24px;
-  grid-area: footer-info;
+  background: ${({ theme }) => theme.colors.dark600};
 
   ${({ theme }) => theme.mediaQueries.md} {
     margin-bottom: 0;
@@ -34,8 +40,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const LeftInfo = styled.div`
-  display: flex;
+const LeftInfo = styled(Flex)`
   justify-content: space-between;
   margin-bottom: 24px;
 
@@ -48,8 +53,8 @@ const LeftInfo = styled.div`
     margin-bottom: 0;
   }
 `;
-const FlexWrap = styled.div`
-  display: flex;
+
+const FlexWrap = styled(Flex)`
   align-items: center;
   gap: 8px;
 `;
@@ -61,8 +66,8 @@ const InfoList = styled.div`
     flex-grow: 1;
   }
 `;
-const InfoListItem = styled.div`
-  display: flex;
+
+const InfoListItem = styled(Flex)`
   align-items: center;
   line-height: 18px;
 
@@ -74,11 +79,12 @@ const InfoListItem = styled.div`
     justify-content: space-between;
   }
 `;
+
 const InfoListLabel = styled.span`
-  font-size: 12px;
   width: 140px;
   min-width: 140px;
   color: ${({ theme }) => theme.colors.gray900};
+  font-size: 12px;
   font-weight: bold;
 
   ${({ theme }) => theme.mediaQueries.sm} {
@@ -86,6 +92,7 @@ const InfoListLabel = styled.span`
     min-width: 120px;
   }
 `;
+
 const InfoListValue = styled.span`
   font-size: 12px;
   color: ${({ theme }) => theme.colors.white};
@@ -94,7 +101,7 @@ const InfoListValue = styled.span`
   width: 126px;
 `;
 
-const FooterInfo: React.FC<Props> = ({
+const FooterInfo: FC<Props> = ({
   BSWPriceLabel,
   BSWPriceValue,
   registerToken,

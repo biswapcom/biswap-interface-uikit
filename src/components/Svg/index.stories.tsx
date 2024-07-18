@@ -36,6 +36,7 @@ export const Default: React.FC = () => {
   );
 };
 
+// @ts-ignore
 const contextAll = require.context("./Icons", true, /.tsx$/);
 const components = contextAll.keys().reduce((accum, path) => {
   const file = path.substring(2).replace(".tsx", "");
@@ -82,7 +83,7 @@ const AnimatedIconComponentTemplate: React.FC = (args) => {
   return (
     <Box background="white" height="48px" width="48px">
       <AnimatedIconComponent
-        activeBackgroundColor="backgroundAlt"
+        activeBackgroundColor="backgroundLight"
         iconName="CheckSolid"
         height="48px"
         width="48px"
@@ -93,6 +94,7 @@ const AnimatedIconComponentTemplate: React.FC = (args) => {
 };
 
 export const AnimatedIconComponentStory = AnimatedIconComponentTemplate.bind({});
+// @ts-ignore
 AnimatedIconComponentStory.args = {
   isActive: false,
 };

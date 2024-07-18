@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { SocialLinks } from "../../types";
 export interface CommunityProps {
     baseAwsUrl: string;
@@ -11,5 +11,5 @@ export interface CommunityProps {
 export interface SocialWrapProps {
     menuVariant?: boolean;
 }
-declare const Community: React.FC<CommunityProps>;
+declare const Community: FC<CommunityProps>;
 export default Community;

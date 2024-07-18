@@ -1,3 +1,3 @@
-import React from "react";
-declare const Suport: React.FC;
+import { FC } from "react";
+declare const Suport: FC;
 export default Suport;

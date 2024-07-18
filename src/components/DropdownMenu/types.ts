@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType, FunctionComponent, ReactNode } from "react";
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
 // theme
 import { Colors } from "../../theme";
@@ -15,7 +15,7 @@ export interface MobileMenuProps {
   activeItem?: string;
   isMobileNav?: boolean;
   children: ReactNode;
-  mobileLangSelector: FunctionComponent;
+  mobileLangSelector: ElementType;
 }
 
 export interface DropdownMenuProps extends BoxProps {

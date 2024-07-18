@@ -6,11 +6,10 @@ import { AlertVariants, AlertColoredVariants } from "../../components/Alert";
 import { ColoredToastProps, Toast } from "./types";
 
 // components
-import Button from "../../components/Button/Button";
+import { Button, ButtonVariants } from "../../components/Button";
 import ToastContainer from "./ToastContainer";
 import { ColoredToasts } from "./ColoredToasts";
 import { Box } from "../../components/Box";
-import { ButtonVariants } from "../../components/Button";
 
 export default {
   title: "Widgets/Toast",

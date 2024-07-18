@@ -1,8 +1,8 @@
 import { ElementType, FunctionComponent, ReactNode } from "react";
 import { MenuItemsType } from "../../components/MenuItems/types";
 import { SubMenuItemsType } from "../../components/SubMenuItems";
-import { Colors } from "../../theme";
 import { DropdownMenuItemType } from "../../components/DropdownMenu/types";
+import { Colors } from "../../theme";
 export interface LinkStatus {
     text: string;
     color: keyof Colors;
@@ -28,7 +28,7 @@ export interface NavProps extends BSWPriceProps, FooterAboutLinks, FooterProduct
     marketplaceLink?: string;
     baseAwsUrl?: string;
     buyBswLabel?: string;
-    mobileLangSelector: FunctionComponent;
+    mobileLangSelector: ElementType;
 }
 export interface FooterStatisticProps {
     footerStatistic: Array<FooterStatisticItem>;

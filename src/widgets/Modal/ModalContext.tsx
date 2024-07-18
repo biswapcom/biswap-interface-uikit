@@ -1,14 +1,29 @@
-import React, { createContext, useState } from "react";
+import React, {
+  cloneElement,
+  createContext,
+  Dispatch,
+  FC,
+  isValidElement,
+  ReactNode,
+  SetStateAction,
+  useState,
+} from "react";
+
+// components
 import { Overlay } from "../../components/Overlay";
+
+// styles
 import { ModalWrapper } from "./styles";
+
+// types
 import { Handler } from "./types";
 
 interface ModalsContext {
   isOpen: boolean;
   nodeId: string;
-  modalNode: React.ReactNode;
-  setModalNode: React.Dispatch<React.SetStateAction<React.ReactNode>>;
-  onPresent: (node: React.ReactNode, newNodeId: string, closeOverlayClick: boolean) => void;
+  modalNode: ReactNode;
+  setModalNode: Dispatch<SetStateAction<ReactNode>>;
+  onPresent: (node: ReactNode, newNodeId: string, closeOverlayClick: boolean) => void;
   onDismiss: Handler;
 }
 
@@ -21,15 +36,13 @@ export const Context = createContext<ModalsContext>({
   onDismiss: () => null,
 });
 
-const ModalProvider: React.FC<{ children: any }> = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [modalNode, setModalNode] = useState<React.ReactNode>();
-  const [nodeId, setNodeId] = useState("");
-  const [closeOnOverlayClick, setCloseOnOverlayClick] = useState(true);
+const ModalProvider: FC<{ children: any }> = ({ children }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [modalNode, setModalNode] = useState<ReactNode>();
+  const [nodeId, setNodeId] = useState<string>("");
+  const [closeOnOverlayClick, setCloseOnOverlayClick] = useState<boolean>(true);
 
-  // console.log('closeOnOverlayClick', closeOnOverlayClick, nodeId)
-
-  const handlePresent = (node: React.ReactNode, newNodeId: string, closeOverlayClick: boolean) => {
+  const handlePresent = (node: ReactNode, newNodeId: string, closeOverlayClick: boolean) => {
     setModalNode(node);
     setIsOpen(true);
     setNodeId(newNodeId);
@@ -63,8 +76,8 @@ const ModalProvider: React.FC<{ children: any }> = ({ children }) => {
       {isOpen && (
         <ModalWrapper>
           <Overlay onClick={handleOverlayDismiss} />
-          {React.isValidElement(modalNode) &&
-            React.cloneElement(modalNode, {
+          {isValidElement(modalNode) &&
+            cloneElement(modalNode, {
               // @ts-ignore
               onDismiss: handleDismiss,
             })}

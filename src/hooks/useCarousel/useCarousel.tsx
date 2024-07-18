@@ -3,11 +3,14 @@ import useEmblaCarousel from "embla-carousel-react";
 import styled from "styled-components";
 import Autoplay from "embla-carousel-autoplay";
 
-//types
-import { CarouselButtonsTypes } from "../../components/Carousel";
-
 //components
-import { CarouselHeader, CarouselNumbersBlock, DirectionButton, Dot } from "../../components/Carousel";
+import {
+  CarouselHeader,
+  CarouselNumbersBlock,
+  DirectionButton,
+  Dot,
+  CarouselButtonsTypes,
+} from "../../components/Carousel";
 import { Box, Flex } from "../../components/Box";
 
 // hooks
@@ -103,6 +106,11 @@ export const useCarousel = ({
   delay = 8000,
   containerOverflow,
 }: IProps<any, any, any>): ReturnDataType => {
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState<boolean>(false);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
   const autoplay = isAutoplay ? [Autoplay({ delay: delay })] : [];
   const { isMobile } = useMatchBreakpoints();
   const [viewportRef, embla] = useEmblaCarousel(
@@ -117,10 +125,6 @@ export const useCarousel = ({
     },
     autoplay
   );
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState<boolean>(false);
-  const [nextBtnEnabled, setNextBtnEnabled] = useState<boolean>(false);
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
   const reInit = useCallback(() => embla && embla.reInit(), [embla]);
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
@@ -129,6 +133,7 @@ export const useCarousel = ({
 
   const onSelect = useCallback(() => {
     if (!embla) return;
+
     setSelectedIndex(embla.selectedScrollSnap());
     setPrevBtnEnabled(embla.canScrollPrev());
     setNextBtnEnabled(embla.canScrollNext());
@@ -137,11 +142,13 @@ export const useCarousel = ({
 
   useEffect(() => {
     if (!embla) return;
+
     setScrollSnaps(embla.scrollSnapList());
   }, [embla]);
 
   useEffect(() => {
     if (!embla) return;
+
     onSelect();
     embla.on("select", onSelect);
   }, [embla, setScrollSnaps, onSelect]);

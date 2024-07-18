@@ -16,9 +16,9 @@ export const SubMenuContainer = styled(Flex)`
   border: ${({ theme }) => `1px solid ${theme.colors.dark600}`};
 `;
 
-export const ClickableElementContainer = styled.div`
-  cursor: pointer;
+export const ClickableElementContainer = styled(Box)`
   display: inline-flex;
+  cursor: pointer;
 `;
 
 export const SubMenuItem = styled.button`

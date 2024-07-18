@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { ElementType } from "react";
 
 // types
 import type { BoxProps } from "../Box";
@@ -36,5 +36,5 @@ export interface MenuItemsProps extends BoxProps {
   isMobileMenuOpened?: boolean;
   mobileMenuCallback?: (s: boolean) => void;
   baseAwsUrl: string;
-  mobileLangSelector: FunctionComponent;
+  mobileLangSelector: ElementType;
 }

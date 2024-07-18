@@ -1,16 +1,26 @@
-import React, { useContext } from "react";
+import React, { FC, useContext } from "react";
 import { useTheme } from "styled-components";
+
+// components
 import { Heading, HeadingScales } from "../../components/Heading";
 import { Flex } from "../../components/Box";
-import getThemeValue from "../../util/getThemeValue";
-import { ModalBody, ModalTitle, ModalContainer, ModalCloseButton, ModalBackButton } from "./styles";
+
+// utils
+import { getThemeValue } from "../../util";
+
+// styles
+import { ModalBody, ModalContainer, ModalCloseButton, ModalBackButton } from "./styles";
+
+// types
 import { ModalProps } from "./types";
 
 // contexts
-import { useMatchBreakpoints } from "../../contexts";
 import { ModalV2Context } from "./ModalV2";
 
-const Modal: React.FC<ModalProps> = ({
+// hooks
+import { useMatchBreakpoints } from "../../contexts";
+
+const Modal: FC<ModalProps> = ({
   title,
   onDismiss: onDismiss_,
   onBack,
@@ -38,6 +48,7 @@ const Modal: React.FC<ModalProps> = ({
   const onDismiss = context?.onDismiss || onDismiss_;
 
   const hp = isMobile ? "24px 16px 16px" : "32px 32px 24px";
+
   return (
     <ModalContainer
       minWidth={minWidth}
@@ -51,13 +62,13 @@ const Modal: React.FC<ModalProps> = ({
       {!hideHeader && (
         <Flex justifyContent="space-between" alignItems="center" p={headerPadding ?? hp}>
           {!hideOnBack && onBack && <ModalBackButton onBack={onBack} closeBtnColor={closeBtnColor} />}
-          <ModalTitle>
+          <Flex>
             {title && (
               <Heading scale={titleSize} color={titleColor}>
                 {title}
               </Heading>
             )}
-          </ModalTitle>
+          </Flex>
           {!hideCloseButton && <ModalCloseButton closeBtnColor={closeBtnColor} onDismiss={onDismiss} />}
         </Flex>
       )}
