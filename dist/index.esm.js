@@ -8934,7 +8934,7 @@ const MobileMenu = ({ items, mobileMenuCallback, children, activeItem, baseAwsUr
                             const getMenuItemContent = (icon = rightIcon) => (React.createElement(MenuItemContent, { fill: rightIconFill, leftIcon: leftIcon, rightIcon: icon, description: description, status: status, badgeTitle: badgeTitle, badgeType: badgeType, ...itemProps }));
                             const isActive = (itemProps.href ?? "/") === activeItem;
                             const lastItem = itemIndex === arr?.length - 1;
-                            return (visualize && (React.createElement(DropdownMenuItemContainer, { key: itemIndex, isActive: isActive, leftIcon: leftIcon, getMenuItemContent: getMenuItemContent, links: links, setIsOpen: setIsOpen, linkComponent: linkComponent, bannerRenderer: bannerRenderer, type: type, badgeTitle: badgeTitle, badgeType: badgeType, isOpenItem: isOpenAccordion, lastItem: lastItem, ...itemProps })));
+                            return (visualize && (React.createElement(DropdownMenuItemContainer, { key: itemIndex, isActive: isActive, leftIcon: leftIcon, getMenuItemContent: getMenuItemContent, links: links, setIsOpen: setIsOpen, linkComponent: linkComponent, bannerRenderer: bannerRenderer, type: type, isOpenItem: isOpenAccordion, lastItem: lastItem, ...itemProps })));
                         })))),
                         isTablet && !showItemsOnMobile && React.createElement(DropdownMenuDivider, null)));
                 }),
