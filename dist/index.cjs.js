@@ -2053,6 +2053,7 @@ exports.AlertVariants = void 0;
     Variants["DANGER"] = "danger";
     Variants["SUCCESS"] = "success";
     Variants["WARNING"] = "warning";
+    Variants["EXTENSIONS_CONFLICT"] = "extensionsConflict";
 })(exports.AlertVariants || (exports.AlertVariants = {}));
 exports.AlertColoredVariants = void 0;
 (function (ColoredVariants) {
@@ -2068,6 +2069,8 @@ const getThemeColor = ({ variant = exports.AlertVariants.INFO }) => {
             return "rgba(255, 219, 28, 0.16)";
         case exports.AlertVariants.SUCCESS:
             return "rgba(29, 200, 114, 0.16)";
+        case exports.AlertVariants.EXTENSIONS_CONFLICT:
+            return "rgba(255, 255, 255, 1)";
         case exports.AlertVariants.INFO:
         default:
             return "rgba(18, 99, 241, 0.16)";
@@ -2081,6 +2084,8 @@ const getIcon = (variant = exports.AlertVariants.INFO) => {
             return Icon$3b;
         case exports.AlertVariants.SUCCESS:
             return Icon$2F;
+        case exports.AlertVariants.EXTENSIONS_CONFLICT:
+            return Icon$d;
         case exports.AlertVariants.INFO:
         default:
             return Icon$2T;
@@ -2104,7 +2109,7 @@ const IconLabel = styled__default["default"](Flex) `
   align-items: center;
   padding: 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: ${({ variant }) => (variant === exports.AlertVariants.EXTENSIONS_CONFLICT ? "50px" : "8px")};
   background-color: ${getThemeColor};
 `;
 const StyledAlert = styled__default["default"](Flex) `
@@ -2119,9 +2124,30 @@ const StyledBox = styled__default["default"](Box) `
   position: absolute;
   right: 8px;
 `;
+const Wrapper$i = styled__default["default"](Flex) `
+  flex-direction: column;
+  border-radius: ${({ theme }) => theme.radii.default};
+  background-color: ${({ theme }) => theme.colors.gray200};
+  overflow: hidden;
+`;
+const TitleWrapper = styled__default["default"](Box) `
+  background-color: ${({ theme }) => theme.colors.white};
+`;
 const Alert = ({ title, children, variant, onClick, progress }) => {
     const Icon = getIcon(variant);
     const IconColor = getIconColor(variant);
+    if (variant === exports.AlertVariants.EXTENSIONS_CONFLICT) {
+        return (React__default["default"].createElement(Wrapper$i, null,
+            React__default["default"].createElement(TitleWrapper, { py: "8px", pl: "20px", pr: "66px" },
+                React__default["default"].createElement(Text, { fontSize: "16px", color: "dark800", bold: true }, title)),
+            React__default["default"].createElement(Flex, { p: "16px" },
+                React__default["default"].createElement(Box, { mr: "12px" },
+                    React__default["default"].createElement(IconLabel, { variant: variant },
+                        React__default["default"].createElement(Icon, { width: "48px", color: IconColor }))),
+                typeof children === "string" ? React__default["default"].createElement(Text, { as: "p" }, children) : children),
+            React__default["default"].createElement(StyledBox, null,
+                React__default["default"].createElement(ProgressCircle, { onClick: onClick, filled: progress, notFilled: progress ? 100 - progress : 0 }))));
+    }
     return (React__default["default"].createElement(StyledAlert, null,
         React__default["default"].createElement(Box, null,
             React__default["default"].createElement(IconLabel, { variant: variant },
@@ -9395,6 +9421,7 @@ var Types;
     Types["DANGER"] = "danger";
     Types["WARNING"] = "warning";
     Types["INFO"] = "info";
+    Types["EXTENSIONS_CONFLICT"] = "extensionsConflict";
 })(Types || (Types = {}));
 
 const alertTypeMap = {
@@ -9402,6 +9429,7 @@ const alertTypeMap = {
     [Types.SUCCESS]: exports.AlertVariants.SUCCESS,
     [Types.DANGER]: exports.AlertVariants.DANGER,
     [Types.WARNING]: exports.AlertVariants.WARNING,
+    [Types.EXTENSIONS_CONFLICT]: exports.AlertVariants.EXTENSIONS_CONFLICT,
 };
 const ClearAllButton = styled__default["default"](Button) `
   position: absolute;
@@ -9444,6 +9472,7 @@ const LinkStyles = styled__default["default"].a `
 const ActionContainer = styled__default["default"](Box).attrs({ width: "100%" }) ``;
 const Toast = ({ removeButtonPosition = 60, clearAll, toast, style, handleMouseEnter, handleMouseLeave, handleRemove, progress, clearAllLabel, viewBscScanLabel, ...props }) => {
     const { description, type, title, tweeterDescription, hash, url, withGift } = toast;
+    const isExtensionConflict = type === Types.EXTENSIONS_CONFLICT;
     return (React__default["default"].createElement(reactTransitionGroup.CSSTransition, { timeout: 250, style: style, ...props },
         React__default["default"].createElement(StyledToast$1, { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave },
             clearAll && (React__default["default"].createElement(ClearAllButton, { scale: exports.ButtonScales.SM, variant: exports.ButtonVariants.TEXT, top: removeButtonPosition, onClick: clearAll },
@@ -9453,7 +9482,7 @@ const Toast = ({ removeButtonPosition = 60, clearAll, toast, style, handleMouseE
                     hash && (React__default["default"].createElement(LinkWrapper, null,
                         React__default["default"].createElement(LinkStyles, { target: "_blank", href: `https://bscscan.com/tx/${hash}` }, viewBscScanLabel),
                         React__default["default"].createElement(Icon$3p, { width: "18px", height: "18px", ml: "6px", color: "primary" }))),
-                    description && (React__default["default"].createElement(Text, { mb: "8px", color: "#6B7D98", fontSize: "12px", as: "p" }, description)),
+                    description && (React__default["default"].createElement(Text, { color: isExtensionConflict ? "gray900" : "#6B7D98", fontSize: "12px", as: "p", mb: isExtensionConflict ? "0" : "8px" }, description)),
                     tweeterDescription && (React__default["default"].createElement(ActionContainer, null,
                         React__default["default"].createElement(ToastAction, { withGift: withGift, tweeterDescription: tweeterDescription, url: url }))))))));
 };

@@ -20,6 +20,7 @@ const alertTypeMap = {
   [Types.SUCCESS]: AlertVariants.SUCCESS,
   [Types.DANGER]: AlertVariants.DANGER,
   [Types.WARNING]: AlertVariants.WARNING,
+  [Types.EXTENSIONS_CONFLICT]: AlertVariants.EXTENSIONS_CONFLICT,
 };
 
 const ClearAllButton = styled(Button)<{ top: number }>`
@@ -80,6 +81,7 @@ const Toast: FC<ToastProps> = ({
   ...props
 }) => {
   const { description, type, title, tweeterDescription, hash, url, withGift } = toast;
+  const isExtensionConflict = type === Types.EXTENSIONS_CONFLICT;
 
   return (
     <CSSTransition timeout={250} style={style} {...props}>
@@ -107,7 +109,12 @@ const Toast: FC<ToastProps> = ({
               </LinkWrapper>
             )}
             {description && (
-              <Text mb="8px" color="#6B7D98" fontSize="12px" as="p">
+              <Text
+                color={isExtensionConflict ? "gray900" : "#6B7D98"}
+                fontSize="12px"
+                as="p"
+                mb={isExtensionConflict ? "0" : "8px"}
+              >
                 {description}
               </Text>
             )}
