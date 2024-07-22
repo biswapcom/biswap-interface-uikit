@@ -49,7 +49,7 @@ const Wrapper = styled(Box)<IWrapper>`
   ${space}
 `;
 
-const StyledTabBar = styled(Box)<StyledTabBarProps>`
+const StyledTabBar = styled.div<StyledTabBarProps>`
   position: relative;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};

@@ -3836,7 +3836,7 @@ const Wrapper$h = styled(Box) `
 
   ${space}
 `;
-const StyledButtonMenu = styled(Box) `
+const StyledButtonMenu = styled.div `
   position: relative;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
@@ -6157,7 +6157,7 @@ const Wrapper$d = styled(Box) `
 
   ${space}
 `;
-const StyledTabBar = styled(Box) `
+const StyledTabBar = styled.div `
   position: relative;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};

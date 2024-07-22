@@ -3852,7 +3852,7 @@ const Wrapper$h = styled__default["default"](Box) `
 
   ${styledSystem.space}
 `;
-const StyledButtonMenu = styled__default["default"](Box) `
+const StyledButtonMenu = styled__default["default"].div `
   position: relative;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
@@ -6173,7 +6173,7 @@ const Wrapper$d = styled__default["default"](Box) `
 
   ${styledSystem.space}
 `;
-const StyledTabBar = styled__default["default"](Box) `
+const StyledTabBar = styled__default["default"].div `
   position: relative;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};

@@ -81,7 +81,7 @@ const Wrapper = styled(Box)<IWrapper>`
   ${space}
 `;
 
-const StyledButtonMenu = styled(Box)<StyledButtonMenuProps>`
+const StyledButtonMenu = styled.div<StyledButtonMenuProps>`
   position: relative;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
