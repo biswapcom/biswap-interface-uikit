@@ -4448,14 +4448,14 @@ const styleVariantsTop$1 = {
         },
     },
     [exports.DropdownVariants.DARK]: {
-        borderColor: "pastelBlue",
+        borderColor: "dark500",
         color: "white",
         ".arrow": {
             fill: "pastelBlue",
         },
         ":hover": {
-            color: "white",
-            borderColor: "pastelBlue",
+            color: "pastelBlue",
+            borderColor: "dark300",
         },
         "&.open": {
             color: "white",
