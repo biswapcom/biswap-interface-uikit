@@ -29,6 +29,7 @@ export interface NavProps extends BSWPriceProps, FooterAboutLinks, FooterProduct
     baseAwsUrl?: string;
     buyBswLabel?: string;
     mobileLangSelector: ElementType;
+    showFooter?: boolean;
 }
 export interface FooterStatisticProps {
     footerStatistic: Array<FooterStatisticItem>;

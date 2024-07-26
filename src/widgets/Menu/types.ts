@@ -40,6 +40,7 @@ export interface NavProps
   baseAwsUrl?: string;
   buyBswLabel?: string;
   mobileLangSelector: ElementType;
+  showFooter?: boolean;
 }
 
 export interface FooterStatisticProps {
