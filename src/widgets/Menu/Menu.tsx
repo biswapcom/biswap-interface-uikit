@@ -122,6 +122,7 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
   baseAwsUrl = "https://static.biswap.org/bs",
   buyBswLabel = "Buy BSW",
   mobileLangSelector,
+  showFooter = true,
 }) => {
   const [showMenu, setShowMenu] = useState<boolean>(true);
   const [menuBg, setMenuBg] = useState<boolean>(false);
@@ -207,20 +208,22 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
           <Inner isPushed={false} showMenu={showMenu}>
             <>
               {children}
-              <Footer
-                BSWPriceLabel={BSWPriceLabel}
-                BSWPriceValue={BSWPriceValue}
-                footerStatistic={footerStatistic}
-                registerToken={registerToken}
-                buyBswHandler={buyBswHandler}
-                aboutLinks={aboutLinks}
-                productLinks={productLinks}
-                serviceLinks={serviceLinks}
-                socialLinks={socialLinks}
-                marketplaceLink={marketplaceLink}
-                baseAwsUrl={baseAwsUrl}
-                buyBswLabel={buyBswLabel}
-              />
+              {showFooter && (
+                <Footer
+                  BSWPriceLabel={BSWPriceLabel}
+                  BSWPriceValue={BSWPriceValue}
+                  footerStatistic={footerStatistic}
+                  registerToken={registerToken}
+                  buyBswHandler={buyBswHandler}
+                  aboutLinks={aboutLinks}
+                  productLinks={productLinks}
+                  serviceLinks={serviceLinks}
+                  socialLinks={socialLinks}
+                  marketplaceLink={marketplaceLink}
+                  baseAwsUrl={baseAwsUrl}
+                  buyBswLabel={buyBswLabel}
+                />
+              )}
             </>
           </Inner>
         </BodyWrapper>

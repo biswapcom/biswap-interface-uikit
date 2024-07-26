@@ -402,5 +402,8 @@ export { default as CrossChainOpacityIcon } from "./Icons/Menu/CrossChain/CrossC
 // perpetual
 export * from "./Icons/Menu/Perpetual";
 
+// Prediction
+export * from "./Icons/Menu/Prediction";
+
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";
