@@ -1,15 +1,15 @@
-import React from "react";
+import React, { Dispatch, FC, ReactNode, SetStateAction } from "react";
 import { Handler } from "./types";
 interface ModalsContext {
     isOpen: boolean;
     nodeId: string;
-    modalNode: React.ReactNode;
-    setModalNode: React.Dispatch<React.SetStateAction<React.ReactNode>>;
-    onPresent: (node: React.ReactNode, newNodeId: string, closeOverlayClick: boolean) => void;
+    modalNode: ReactNode;
+    setModalNode: Dispatch<SetStateAction<ReactNode>>;
+    onPresent: (node: ReactNode, newNodeId: string, closeOverlayClick: boolean) => void;
     onDismiss: Handler;
 }
 export declare const Context: React.Context<ModalsContext>;
-declare const ModalProvider: React.FC<{
+declare const ModalProvider: FC<{
     children: any;
 }>;
 export default ModalProvider;

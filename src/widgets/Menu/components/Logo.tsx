@@ -4,9 +4,8 @@ import styled from "styled-components";
 // components
 import { Box, Flex } from "../../../components/Box";
 import { BswIcon, LogoWithTextIcon, ProjectNameIcon } from "../../../components/Svg";
-import { Button } from "../../../components/Button/";
+import { Button, ButtonVariants } from "../../../components/Button/";
 import { BodyText, Scales } from "../../../components/Typography";
-import { Variants } from "../../../components/Button/types";
 
 // hooks
 import { useMatchBreakpoints } from "../../../contexts";
@@ -14,13 +13,11 @@ import { useMatchBreakpoints } from "../../../contexts";
 // context
 import { MenuContext } from "../context";
 
-// types
 interface Props {
   href: string;
   logoSubtitle?: string;
 }
 
-// styled
 const StyledInnerButton = styled(Button)`
   display: flex;
   align-items: center;
@@ -52,7 +49,7 @@ const LogoSwitcher: FC<{ logoSubtitle?: string }> = ({ logoSubtitle }) => {
   return <LogoWithTextIcon width="145px" />;
 };
 
-const Logo: React.FC<Props> = ({ href, logoSubtitle }) => {
+const Logo: FC<Props> = ({ href, logoSubtitle }) => {
   const { linkComponent } = useContext(MenuContext);
 
   const isAbsoluteUrl = href.startsWith("http");
@@ -61,20 +58,14 @@ const Logo: React.FC<Props> = ({ href, logoSubtitle }) => {
     <Flex>
       {isAbsoluteUrl ? (
         <StyledInnerButton
-          variant={Variants.LIGHT}
+          variant={ButtonVariants.LIGHT}
           onClick={() => window.open(href, "_self")}
           aria-label="Biswap home page"
         >
           <LogoSwitcher logoSubtitle={logoSubtitle} />
         </StyledInnerButton>
       ) : (
-        <StyledInnerButton
-          variant="light"
-          as={linkComponent}
-          href={href}
-          // onClick={() => push(href)}
-          aria-label="Biswap home page"
-        >
+        <StyledInnerButton variant="light" as={linkComponent} href={href} aria-label="Biswap home page">
           <LogoSwitcher logoSubtitle={logoSubtitle} />
         </StyledInnerButton>
       )}

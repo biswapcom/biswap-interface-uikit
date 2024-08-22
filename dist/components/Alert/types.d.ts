@@ -6,7 +6,8 @@ export declare enum Variants {
     INFO = "info",
     DANGER = "danger",
     SUCCESS = "success",
-    WARNING = "warning"
+    WARNING = "warning",
+    EXTENSIONS_CONFLICT = "extensionsConflict"
 }
 export interface AlertProps {
     variant?: Variants;

@@ -9,6 +9,7 @@ export enum Variants {
   DANGER = "danger",
   SUCCESS = "success",
   WARNING = "warning",
+  EXTENSIONS_CONFLICT = "extensionsConflict",
 }
 
 export interface AlertProps {

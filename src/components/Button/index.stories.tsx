@@ -207,7 +207,7 @@ export const Anchors: FC = () => {
                 return (
                   <Button
                     as="a"
-                    href="https://pancakeswap.finance"
+                    href="https://biswap.org"
                     key={scale}
                     variant={variant}
                     scale={scale}
@@ -223,10 +223,10 @@ export const Anchors: FC = () => {
         })}
       </Box>
       <Box>
-        <Button as="a" href="https://pancakeswap.finance" mr="8px" external disabled>
+        <Button as="a" href="https://biswap.org" mr="8px" external disabled>
           Disabled
         </Button>
-        <Button as="a" href="https://pancakeswap.finance" variant={ButtonVariants.PRIMARY} external disabled>
+        <Button as="a" href="https://biswap.org" variant={ButtonVariants.PRIMARY} external disabled>
           Disabled
         </Button>
       </Box>

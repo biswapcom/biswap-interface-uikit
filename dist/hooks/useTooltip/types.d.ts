@@ -1,8 +1,8 @@
-/// <reference types="react" />
+import { Dispatch, ReactNode, SetStateAction } from "react";
 import { Placement, Padding } from "@popperjs/core";
 export interface TooltipRefs {
-    targetRef: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
-    tooltip: React.ReactNode;
+    targetRef: Dispatch<SetStateAction<HTMLElement | null>>;
+    tooltip: ReactNode;
     tooltipVisible: boolean;
 }
 export interface TooltipOptions {

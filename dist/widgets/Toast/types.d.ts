@@ -3,7 +3,8 @@ export declare enum Types {
     SUCCESS = "success",
     DANGER = "danger",
     WARNING = "warning",
-    INFO = "info"
+    INFO = "info",
+    EXTENSIONS_CONFLICT = "extensionsConflict"
 }
 export interface Toast {
     id: string;

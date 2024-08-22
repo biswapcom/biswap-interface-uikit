@@ -1,7 +1,9 @@
 import { DefaultTheme } from "styled-components";
+
+// utils
 import getThemeValue from "./getThemeValue";
 
-const getRgba = (color: string, theme: DefaultTheme, alpha?: number) => {
+const getRgba = (color: string, theme: DefaultTheme, alpha?: number): string => {
   const hexRegEx = /^#[0-9A-F]{6}$/i;
 
   const hex = hexRegEx.test(color) ? color : getThemeValue(`colors.${color}`, color)(theme);

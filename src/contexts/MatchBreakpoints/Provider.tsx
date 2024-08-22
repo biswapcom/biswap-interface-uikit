@@ -1,6 +1,10 @@
 import React, { FC, PropsWithChildren, useState, createContext } from "react";
+
+// theme
 import { breakpointMap } from "../../theme/base";
-import { useIsomorphicEffect } from "../../hooks/useIsomorphicEffect";
+
+// hooks
+import { useIsomorphicEffect } from "../../hooks";
 
 type State = {
   [key: string]: boolean;
@@ -49,13 +53,16 @@ const getKey = (size: string) => `is${size.charAt(0).toUpperCase()}${size.slice(
 const getState = () =>
   Object.keys(mediaQueries).reduce((accum, size) => {
     const key = getKey(size);
+
     if (typeof window === "undefined") {
       return {
         ...accum,
         [key]: false,
       };
     }
+
     const mql = window.matchMedia(mediaQueries[size]);
+
     return { ...accum, [key]: mql?.matches ?? false };
   }, {});
 

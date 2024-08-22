@@ -1,11 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
+
+// components
 import { Box } from "../Box";
-import MenuItem from "../MenuItem/MenuItem";
+import { MenuItem } from "../MenuItem";
 import IconComponent from "../Svg/IconComponent";
+
+// styles
 import StyledSubMenuItems from "./styles";
+
+// types
 import { SubMenuItemsProps } from "./types";
 
-const SubMenuItems: React.FC<SubMenuItemsProps> = ({ items = [], activeItem, isMobileOnly = false, ...props }) => {
+const SubMenuItems: FC<SubMenuItemsProps> = ({ items = [], activeItem, isMobileOnly = false, ...props }) => {
   return (
     <StyledSubMenuItems
       justifyContent={[isMobileOnly ? "flex-end" : "start", null, "center"]}

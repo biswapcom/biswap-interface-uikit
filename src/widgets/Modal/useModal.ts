@@ -1,15 +1,20 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { ReactNode, useCallback, useContext, useEffect } from "react";
 import get from "lodash/get";
+
+// context
 import { Context } from "./ModalContext";
+
+// types
 import { Handler } from "./types";
 
 const useModal = (
-  modal: React.ReactNode,
+  modal: ReactNode,
   closeOnOverlayClick = true,
   updateOnPropsChange = false,
   modalId = "defaultNodeId"
 ): [Handler, Handler] => {
   const { isOpen, nodeId, modalNode, setModalNode, onPresent, onDismiss } = useContext(Context);
+
   const onPresentCallback = useCallback(() => {
     onPresent(modal, modalId, closeOnOverlayClick);
   }, [modal, modalId, onPresent, closeOnOverlayClick]);

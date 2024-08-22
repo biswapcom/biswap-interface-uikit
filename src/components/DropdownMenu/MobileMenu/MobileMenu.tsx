@@ -241,8 +241,6 @@ const MobileMenu: FC<MobileMenuProps> = ({
                                       linkComponent={linkComponent}
                                       bannerRenderer={bannerRenderer}
                                       type={type}
-                                      badgeTitle={badgeTitle}
-                                      badgeType={badgeType}
                                       isOpenItem={isOpenAccordion}
                                       lastItem={lastItem}
                                       {...itemProps}

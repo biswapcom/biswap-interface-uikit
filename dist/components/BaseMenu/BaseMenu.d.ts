@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { BaseMenuProps } from "./types";
-declare const BaseMenu: React.FC<BaseMenuProps>;
+declare const BaseMenu: FC<BaseMenuProps>;
 export default BaseMenu;

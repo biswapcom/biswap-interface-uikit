@@ -1,18 +1,19 @@
 import noop from "lodash/noop";
 import React, { FC, useState } from "react";
 import { BrowserRouter, Link, MemoryRouter } from "react-router-dom";
-import Box from "../../components/Box/Box";
-import Flex from "../../components/Box/Flex";
-import Button from "../../components/Button/Button";
-import IconButton from "../../components/Button/IconButton";
-// import Heading from "../../components/Heading/Heading";
+import styled, { css } from "styled-components";
+
+// components
+import { Box, Flex } from "../../components/Box";
+import { Button, IconButton, ExpandableButton, ButtonScales, ButtonVariants } from "../../components/Button";
 import { DownloadIcon, OptionsSolidIcon } from "../../components/Svg";
-import Text from "../../components/Text/Text";
+import { Text } from "../../components/Text";
 import { BodyText, HeadText, Scales as TextScales, HeadTextTags } from "../../components/Typography";
 import { Modal, ModalProps, useModal } from "../Modal";
-import { Scales, Variants } from "../../components/Button/types";
 import { Dropdown } from "../../components/Dropdown";
+import Menu from "./Menu";
 
+// config
 import {
   aboutLinks,
   BSWPriceLabel,
@@ -23,10 +24,9 @@ import {
   serviceLinks,
   socialLinks,
 } from "./config";
-import Menu from "./Menu";
+
+// types
 import { NavProps } from "./types";
-import { ExpandableButton } from "../../components/Button";
-import styled, { css } from "styled-components";
 
 export default {
   title: "Widgets/Menu",
@@ -39,7 +39,7 @@ export default {
   },
 };
 
-const GlobalMenuModal: React.FC<ModalProps> = ({ title, onDismiss, ...props }) => (
+const GlobalMenuModal: FC<ModalProps> = ({ title, onDismiss, ...props }) => (
   <Modal title={title} onDismiss={onDismiss} {...props}>
     <HeadText scale={TextScales.SIZE20} bold>
       {title}
@@ -48,16 +48,16 @@ const GlobalMenuModal: React.FC<ModalProps> = ({ title, onDismiss, ...props }) =
   </Modal>
 );
 
-const GlobalMenuComponent: React.FC = () => {
+const GlobalMenuComponent: FC = () => {
   const [onPresent1] = useModal(<GlobalMenuModal title="Display Settings Modal" />);
   const [onPresent2] = useModal(<GlobalMenuModal title="Global Settings Modal" />);
 
   return (
     <Flex>
-      <IconButton onClick={onPresent1} variant={Variants.TEXT} scale={Scales.SM} mr="4px">
+      <IconButton onClick={onPresent1} variant={ButtonVariants.TEXT} scale={ButtonScales.SM} mr="4px">
         <DownloadIcon height={22} width={22} color="textSubtle" />
       </IconButton>
-      <IconButton onClick={onPresent2} variant={Variants.TEXT} scale={Scales.SM} mr="8px">
+      <IconButton onClick={onPresent2} variant={ButtonVariants.TEXT} scale={ButtonScales.SM} mr="8px">
         <OptionsSolidIcon height={22} width={22} color="textSubtle" />
       </IconButton>
     </Flex>
@@ -122,7 +122,7 @@ const Banner: FC<{
   setHeight?: (i: boolean) => void;
   setBannerHeight?: (i: number) => void;
 }> = ({ setHeight, setBannerHeight }) => {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   const onClick = () => {
     setHeight && setHeight(expanded);
@@ -151,7 +151,7 @@ const Banner: FC<{
   );
 };
 
-const ConnectedTemplate: React.FC<NavProps> = (args) => {
+const ConnectedTemplate: FC<NavProps> = (args) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [bannerHeight, setBannerHeight] = useState<number>(0);
 
@@ -193,7 +193,7 @@ const ConnectedTemplate: React.FC<NavProps> = (args) => {
             <Text bold fontSize="24px" as="h1" mb="8px" color="white">
               Page body
             </Text>
-            <Button scale={Scales.SM} onClick={() => setIsOpen(!isOpen)}>
+            <Button scale={ButtonScales.SM} onClick={() => setIsOpen(!isOpen)}>
               Show mobile drawer
             </Button>
             {renderContent}
@@ -204,18 +204,21 @@ const ConnectedTemplate: React.FC<NavProps> = (args) => {
   );
 };
 export const Connected = ConnectedTemplate.bind({});
+// @ts-ignore
 Connected.args = defaultProps;
 
 export const ConnectedWithBanner = ConnectedTemplate.bind({});
+// @ts-ignore
 ConnectedWithBanner.args = {
   ...defaultProps,
   banner: (setHeight: () => void) => <Banner setHeight={setHeight} />,
 };
 
-export const WithSubmenuSelected: React.FC = () => {
+export const WithSubmenuSelected: FC<NavProps> = (args) => {
   return (
     <MemoryRouter initialEntries={["/teams"]}>
       <Menu
+        {...args}
         BSWPriceLabel={BSWPriceLabel}
         BSWPriceValue={BSWPriceValue}
         footerStatistic={footerStatistic}

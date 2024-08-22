@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
-import { InjectedProps } from "./types";
+import { FC, ReactNode } from "react";
 import { BoxProps } from "../../components/Box";
+import { InjectedProps } from "./types";
 interface Props extends InjectedProps, BoxProps {
     hideCloseButton?: boolean;
     backBtnColor?: string;
@@ -9,5 +9,5 @@ interface Props extends InjectedProps, BoxProps {
     p?: string;
     children: ReactNode;
 }
-declare const ModalWithBackground: React.FC<Props>;
+declare const ModalWithBackground: FC<Props>;
 export default ModalWithBackground;

@@ -235,5 +235,6 @@ export { default as SquidRouterIcon } from "./Icons/CrossChain/SquidRouter";
 export { default as WormholeIcon } from "./Icons/CrossChain/Wormhole";
 export { default as CrossChainOpacityIcon } from "./Icons/Menu/CrossChain/CrossChainOpacity";
 export * from "./Icons/Menu/Perpetual";
+export * from "./Icons/Menu/Prediction";
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";

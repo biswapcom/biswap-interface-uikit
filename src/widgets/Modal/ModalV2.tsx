@@ -1,8 +1,16 @@
 import React, { createContext, useCallback, useState } from "react";
 import { createPortal } from "react-dom";
+
+// components
 import { Overlay } from "../../components/Overlay";
-import getPortalRoot from "../../util/getPortalRoot";
+
+// utils
+import { getPortalRoot } from "../../util";
+
+// styles
 import { ModalWrapper } from "./styles";
+
+// types
 import { IUseModalV2, ModalV2Props } from "./types";
 
 export const ModalV2Context = createContext<{
@@ -10,7 +18,7 @@ export const ModalV2Context = createContext<{
 }>({});
 
 export function useModalV2(): IUseModalV2 {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const onDismiss = useCallback(() => setIsOpen(false), []);
   const onOpen = useCallback(() => setIsOpen(true), []);

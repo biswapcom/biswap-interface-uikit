@@ -5,6 +5,7 @@ export enum Types {
   DANGER = "danger",
   WARNING = "warning",
   INFO = "info",
+  EXTENSIONS_CONFLICT = "extensionsConflict",
 }
 
 export interface Toast {

@@ -1,8 +1,12 @@
 import React, { FC } from "react";
+import { useTheme } from "styled-components";
+
+// hooks
 import { useCarousel } from "./useCarousel";
+
+// components
 import { Box, Flex } from "../../components/Box";
 import { BodyText } from "../../components/Typography";
-import { useTheme } from "styled-components";
 
 export default {
   title: "Hooks/useCarousel",
@@ -31,7 +35,7 @@ const Item: FC<{ text: string }> = ({ text }) => (
   </Flex>
 );
 
-export const Default = () => {
+export const Default: FC = () => {
   const {
     // @ts-ignore
     colors: { dark900 },
@@ -49,7 +53,7 @@ export const Default = () => {
     </Box>
   );
 };
-export const TopButtons = () => {
+export const TopButtons: FC = () => {
   const {
     // @ts-ignore
     colors: { dark900 },
@@ -76,7 +80,7 @@ export const TopButtons = () => {
   );
 };
 
-export const WithDots = () => {
+export const WithDots: FC = () => {
   const {
     // @ts-ignore
     colors: { dark900 },
@@ -103,7 +107,7 @@ export const WithDots = () => {
   );
 };
 
-export const WithNavButtons = () => {
+export const WithNavButtons: FC = () => {
   const {
     // @ts-ignore
     colors: { dark900 },

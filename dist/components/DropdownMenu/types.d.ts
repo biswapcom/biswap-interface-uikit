@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType, FunctionComponent, ReactNode } from "react";
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 import { Colors } from "../../theme";
 import type { BoxProps } from "../Box";
 import type { MenuItemsType } from "../MenuItems/types";
@@ -10,7 +10,7 @@ export interface MobileMenuProps {
     activeItem?: string;
     isMobileNav?: boolean;
     children: ReactNode;
-    mobileLangSelector: FunctionComponent;
+    mobileLangSelector: ElementType;
 }
 export interface DropdownMenuProps extends BoxProps {
     items?: DropdownMenuItems[];

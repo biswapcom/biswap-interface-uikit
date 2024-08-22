@@ -1,11 +1,16 @@
-import React, { ReactNode, useContext } from "react";
+import React, { FC, ReactNode, useContext } from "react";
 import styled from "styled-components";
+
+// components
 import { CloseIcon } from "../../components/Svg";
-import { IconButton } from "../../components/Button";
-import { InjectedProps } from "./types";
-import { ModalV2Context } from "./ModalV2";
+import { IconButton, ButtonVariants, ButtonScales } from "../../components/Button";
 import { BoxProps, Flex } from "../../components/Box";
-import { Variants, Scales } from "../../components/Button/types";
+
+// types
+import { InjectedProps } from "./types";
+
+// context
+import { ModalV2Context } from "./ModalV2";
 
 interface Props extends InjectedProps, BoxProps {
   hideCloseButton?: boolean;
@@ -17,7 +22,6 @@ interface Props extends InjectedProps, BoxProps {
 }
 
 const StyledModal = styled(Flex)<{ backgroundTransparent?: boolean }>`
-  display: flex;
   flex-direction: column;
   background-color: ${({ theme, backgroundTransparent }) =>
     backgroundTransparent ? "transparent" : theme.colors.white};
@@ -63,7 +67,7 @@ const Background = styled.img`
   width: 100%;
 `;
 
-const ModalWithBackground: React.FC<Props> = ({
+const ModalWithBackground: FC<Props> = ({
   onDismiss: onDismiss_,
   children,
   hideCloseButton = false,
@@ -75,13 +79,14 @@ const ModalWithBackground: React.FC<Props> = ({
 }) => {
   const context = useContext(ModalV2Context);
   const onDismiss = context?.onDismiss || onDismiss_;
+
   return (
     <StyledModal backgroundTransparent={backgroundTransparent} {...boxProps}>
       {!hideCloseButton && (
         <StyledIconButton
-          variant={Variants.TEXT}
+          variant={ButtonVariants.TEXT}
           className="closeModal"
-          scale={Scales.SM}
+          scale={ButtonScales.SM}
           onClick={onDismiss}
           aria-label="Close the dialog"
         >

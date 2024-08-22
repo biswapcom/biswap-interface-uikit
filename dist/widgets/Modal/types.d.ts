@@ -1,6 +1,6 @@
-import React, { Dispatch, SetStateAction } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 import { BoxProps, FlexProps } from "../../components/Box";
-import { Scales } from "../../components/Heading/types";
+import { HeadingScales } from "../../components/Heading";
 import { ResponsiveValueType } from "../../util";
 export interface ModalTheme {
     background: string;
@@ -20,7 +20,7 @@ export interface ModalProps extends InjectedProps, BoxProps {
     maxWidth?: string;
     modalBackground?: string;
     closeBtnColor?: string;
-    titleSize?: Scales;
+    titleSize?: HeadingScales;
     walletModal?: boolean;
     modalBodyProps?: FlexProps;
     titleColor?: string;
@@ -29,7 +29,7 @@ export interface ModalProps extends InjectedProps, BoxProps {
 export interface ModalV2Props extends InjectedProps, BoxProps {
     isOpen?: boolean;
     closeOnOverlayClick?: boolean;
-    children?: React.ReactNode;
+    children?: ReactNode;
     disableOutsidePointerEvents?: boolean;
 }
 export interface IUseModalV2 extends InjectedProps {

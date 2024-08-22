@@ -1,4 +1,4 @@
-export { formatSpacingAmount } from "./formatSpacingAmount";
+export { default as formatSpacingAmount } from "./formatSpacingAmount";
 export { default as getExternalLinkProps } from "./getExternalLinkProps";
 export { default as getPortalRoot } from "./getPortalRoot";
 export { default as getRgba } from "./getRgba";
