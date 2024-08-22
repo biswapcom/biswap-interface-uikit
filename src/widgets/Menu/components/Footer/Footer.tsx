@@ -101,20 +101,20 @@ const Footer: React.FC<Props> = ({
   return (
     <Wrapper>
       <InnerRow>
-        <FooterInfo
-          BSWPriceLabel={BSWPriceLabel}
-          BSWPriceValue={BSWPriceValue}
-          registerToken={registerToken}
-          footerStatistic={footerStatistic}
-          buyBswHandler={buyBswHandler}
-          baseAwsUrl={baseAwsUrl}
-          buyBswLabel={buyBswLabel}
-        />
-        <About footerLinks={aboutLinks} />
-        <Product footerLinks={productLinks} />
-        <Service footerLinks={serviceLinks} />
-        <Community isFooter socialLinks={socialLinks} baseAwsUrl={baseAwsUrl} />
-        <Audit marketplaceLink={marketplaceLink} baseAwsUrl={baseAwsUrl} />
+        {/*<FooterInfo*/}
+        {/*  BSWPriceLabel={BSWPriceLabel}*/}
+        {/*  BSWPriceValue={BSWPriceValue}*/}
+        {/*  registerToken={registerToken}*/}
+        {/*  footerStatistic={footerStatistic}*/}
+        {/*  buyBswHandler={buyBswHandler}*/}
+        {/*  baseAwsUrl={baseAwsUrl}*/}
+        {/*  buyBswLabel={buyBswLabel}*/}
+        {/*/>*/}
+        {/*<About footerLinks={aboutLinks} />*/}
+        {/*<Product footerLinks={productLinks} />*/}
+        {/*<Service footerLinks={serviceLinks} />*/}
+        {/*<Community isFooter socialLinks={socialLinks} baseAwsUrl={baseAwsUrl} />*/}
+        {/*<Audit marketplaceLink={marketplaceLink} baseAwsUrl={baseAwsUrl} />*/}
         {/* <Support/> */}
         {/* <BtnUp onClick={()=> scroll.scrollToTop()}><ArrowUp color='white'/></BtnUp> */}
       </InnerRow>
