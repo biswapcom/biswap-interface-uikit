@@ -2127,7 +2127,7 @@ const StyledBox = styled(Box) `
   position: absolute;
   right: 8px;
 `;
-const Wrapper$i = styled(Flex) `
+const Wrapper$d = styled(Flex) `
   flex-direction: column;
   border-radius: ${({ theme }) => theme.radii.default};
   background-color: ${({ theme }) => theme.colors.gray200};
@@ -2140,7 +2140,7 @@ const Alert = ({ title, children, variant, onClick, progress }) => {
     const Icon = getIcon(variant);
     const IconColor = getIconColor(variant);
     if (variant === Variants$c.EXTENSIONS_CONFLICT) {
-        return (React.createElement(Wrapper$i, null,
+        return (React.createElement(Wrapper$d, null,
             React.createElement(TitleWrapper, { py: "8px", pl: "20px", pr: "66px" },
                 React.createElement(Text, { fontSize: "16px", color: "dark800", bold: true }, title)),
             React.createElement(Flex, { p: "16px" },
@@ -3819,7 +3819,7 @@ const useMatchBreakpoints = () => {
     return matchBreakpointContext;
 };
 
-const Wrapper$h = styled(Box) `
+const Wrapper$c = styled(Box) `
   position: relative;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
@@ -3937,7 +3937,7 @@ const ButtonMenu = ({ activeIndex = 0, scale = Scales$8.MD, variant = Variants$a
             setBlockOffset(widthsArr.slice(0, activeButtonIndex).reduce((sum, elem) => sum + elem, 0));
         }
     }, [widthsArr, activeButtonIndex, isDesktop, isMobile, isTablet]);
-    return (React.createElement(Wrapper$h, { flatBottom: flatBottom, flatTop: flatTop, fullWidth: fullWidth, withoutBackground: withoutBackground, variant: variant, scrollX: scrollX, ...props },
+    return (React.createElement(Wrapper$c, { flatBottom: flatBottom, flatTop: flatTop, fullWidth: fullWidth, withoutBackground: withoutBackground, variant: variant, scrollX: scrollX, ...props },
         React.createElement(Selection$1, { flatTop: flatTop, flatBottom: flatBottom, scale: scale, width: widthsArr[activeIndex], offset: getOffset(blockOffset, flatTop || flatBottom), variant: variant, withoutAnimation: withoutAnimation }),
         React.createElement(StyledButtonMenu, { disabled: disabled, variant: variant, fullWidth: fullWidth, withoutBackground: withoutBackground, equalElementWidth: equalElementWidth, ...props }, Children.map(children, (child, index) => {
             return cloneElement(child, {
@@ -4235,7 +4235,7 @@ const getScale$3 = ({ scale }) => {
             return "20px";
     }
 };
-const Wrapper$g = styled.label `
+const Wrapper$b = styled.label `
   display: inline-flex;
   align-items: ${({ checkboxPosition }) => checkboxPosition ?? "center"};
   flex-direction: ${({ labelOrientation }) => (labelOrientation === "left" ? "row-reverse" : "row")};
@@ -4307,7 +4307,7 @@ const StyledText$2 = styled(Text) `
   transition: color 0.4s ease-in-out;
 `;
 const Checkbox = ({ labelOrientation = "left", label, scale = CheckboxScales.MD, colorVariant = "light", id, defaultChecked, onChange, value, disabled, inputMargin, checkboxPosition, }) => {
-    return (React.createElement(Wrapper$g, { checkboxPosition: checkboxPosition, labelOrientation: labelOrientation },
+    return (React.createElement(Wrapper$b, { checkboxPosition: checkboxPosition, labelOrientation: labelOrientation },
         React.createElement(CheckboxInput, { checked: value, scale: scale, colorVariant: colorVariant, id: id, defaultChecked: defaultChecked, onChange: onChange, disabled: disabled }),
         label && labelOrientation && (React.createElement(StyledText$2, { as: "span", fontSize: "12px", fontWeight: "600", color: "gray900", mr: labelOrientation === "left" ? inputMargin ?? "12px" : 0, ml: labelOrientation === "right" ? inputMargin ?? "12px" : 0 }, label))));
 };
@@ -5457,7 +5457,7 @@ const getScale$2 = ({ scale }) => {
             return "20px";
     }
 };
-const Wrapper$f = styled.label `
+const Wrapper$a = styled.label `
   display: flex;
   align-items: center;
   flex-direction: ${({ labelOrientation }) => (labelOrientation === "left" ? "row-reverse" : "row")};
@@ -5510,14 +5510,14 @@ const StyledText$1 = styled(Text) `
   transition: color 0.4s ease-in-out;
 `;
 const Radio = ({ labelOrientation = "left", label, scale = Scales$2.MD, radioName, onChange, colorVariant = Variants$6.LIGHT, checked, }) => {
-    return (React.createElement(Wrapper$f, { labelOrientation: labelOrientation },
+    return (React.createElement(Wrapper$a, { labelOrientation: labelOrientation },
         React.createElement(InputRadio, { scale: scale, name: radioName, onChange: onChange, colorVariant: colorVariant, checked: checked }),
         label && labelOrientation && (React.createElement(StyledText$1, { as: "span", fontSize: "12px", fontWeight: "400", color: "gray900", mr: labelOrientation === "left" ? "12px" : 0, ml: labelOrientation === "right" ? "12px" : 0 }, label))));
 };
 
 var SliderIcon = "data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20clip-path%3D%22url%28%23clip0_4728_34338%29%22%3E%3Cpath%20d%3D%22M0%2010C0%204.47715%204.47715%200%2010%200C15.5228%200%2020%204.47715%2020%2010C20%2015.5228%2015.5228%2020%2010%2020C4.47715%2020%200%2015.5228%200%2010Z%22%20fill%3D%22%231263F1%22%2F%3E%3Cg%20filter%3D%22url%28%23filter0_d_4728_34338%29%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2212%22%20height%3D%2212%22%20rx%3D%226%22%20fill%3D%22white%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cdefs%3E%3Cfilter%20id%3D%22filter0_d_4728_34338%22%20x%3D%220%22%20y%3D%222%22%20width%3D%2220%22%20height%3D%2220%22%20filterUnits%3D%22userSpaceOnUse%22%20color-interpolation-filters%3D%22sRGB%22%3E%3CfeFlood%20flood-opacity%3D%220%22%20result%3D%22BackgroundImageFix%22%2F%3E%3CfeColorMatrix%20in%3D%22SourceAlpha%22%20type%3D%22matrix%22%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20127%200%22%20result%3D%22hardAlpha%22%2F%3E%3CfeOffset%20dy%3D%222%22%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%222%22%2F%3E%3CfeComposite%20in2%3D%22hardAlpha%22%20operator%3D%22out%22%2F%3E%3CfeColorMatrix%20type%3D%22matrix%22%20values%3D%220%200%200%200%200.027451%200%200%200%200%200.0862745%200%200%200%200%200.176471%200%200%200%200.32%200%22%2F%3E%3CfeBlend%20mode%3D%22normal%22%20in2%3D%22BackgroundImageFix%22%20result%3D%22effect1_dropShadow_4728_34338%22%2F%3E%3CfeBlend%20mode%3D%22normal%22%20in%3D%22SourceGraphic%22%20in2%3D%22effect1_dropShadow_4728_34338%22%20result%3D%22shape%22%2F%3E%3C%2Ffilter%3E%3CclipPath%20id%3D%22clip0_4728_34338%22%3E%3Crect%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22white%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3C%2Fsvg%3E";
 
-const Wrapper$e = styled(Flex) `
+const Wrapper$9 = styled(Flex) `
   flex-direction: column;
 `;
 const SliderContainer = styled(Box) `
@@ -5750,7 +5750,7 @@ const Slider = ({ value, onValueChanged, checkPoints = INIT_CHECKPOINTS, isRobiB
         }
     };
     const progressPercentage = (percent.value / MAX) * 100;
-    return (React.createElement(Wrapper$e, null,
+    return (React.createElement(Wrapper$9, null,
         React.createElement(SliderContainer, { ...props },
             React.createElement(BunnySlider, null,
                 React.createElement(PercentWrap, null, infoVisible && (React.createElement(PercentBanner, { className: "percent-info-banner", bannerPosition: bannerPosition, left: percent?.value },
@@ -6158,7 +6158,7 @@ const sectionScaleVariants = {
     },
 };
 
-const Wrapper$d = styled(Box) `
+const Wrapper$8 = styled(Box) `
   position: relative;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
@@ -6242,7 +6242,7 @@ const TabMenu = ({ activeIndex, scale = Scales$1.MD, variant = Variants$4.DARK, 
         }
     }, [widthsArr, activeButtonIndex, isDesktop, isMobile, isTablet]);
     const showSelection = !disabled && activeIndex !== null && blockOffset !== null;
-    return (React.createElement(Wrapper$d, { fullWidth: fullWidth, scrollX: scrollX, ...props },
+    return (React.createElement(Wrapper$8, { fullWidth: fullWidth, scrollX: scrollX, ...props },
         showSelection && (React.createElement(Selection, { scale: scale, width: widthsArr[activeIndex], offset: blockOffset, withoutAnimation: withoutAnimation },
             React.createElement(ColorSection, { variant: variant }))),
         React.createElement(StyledTabBar, { disabled: disabled, variant: variant, fullWidth: fullWidth, equalElementWidth: equalElementWidth, ...props }, Children.map(children, (child, index) => {
@@ -6484,7 +6484,7 @@ const BadgeTypesContainer = {
     },
 };
 
-const Wrapper$c = styled(Box) `
+const Wrapper$7 = styled(Box) `
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -6502,7 +6502,7 @@ const Wrapper$c = styled(Box) `
 })}
 `;
 const Badge$1 = ({ children, badgeType, fontSize, fontWeight, isIcon, ...props }) => {
-    return (React.createElement(Wrapper$c, { badgeType: badgeType, isIcon: isIcon, fontSize: fontSize, fontWeight: fontWeight, ...props }, children));
+    return (React.createElement(Wrapper$7, { badgeType: badgeType, isIcon: isIcon, fontSize: fontSize, fontWeight: fontWeight, ...props }, children));
 };
 
 var BadgeButtonTypes;
@@ -6640,7 +6640,7 @@ const BadgeButtonTypesContainer = {
     },
 };
 
-const Wrapper$b = styled.button `
+const Wrapper$6 = styled.button `
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -6664,7 +6664,7 @@ const Wrapper$b = styled.button `
 })}
 `;
 const Badge = ({ children, badgeType, fontSize, fontWeight, isIcon, isActive, ...props }) => {
-    return (React.createElement(Wrapper$b, { badgeType: badgeType, isIcon: isIcon, fontSize: fontSize, fontWeight: fontWeight, className: isActive ? "active" : "", ...props }, children));
+    return (React.createElement(Wrapper$6, { badgeType: badgeType, isIcon: isIcon, fontSize: fontSize, fontWeight: fontWeight, className: isActive ? "active" : "", ...props }, children));
 };
 
 var circle = "data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20clip-path%3D%22url%28%23clip0_4728_34338%29%22%3E%3Cpath%20d%3D%22M0%2010C0%204.47715%204.47715%200%2010%200C15.5228%200%2020%204.47715%2020%2010C20%2015.5228%2015.5228%2020%2010%2020C4.47715%2020%200%2015.5228%200%2010Z%22%20fill%3D%22%231263F1%22%2F%3E%3Cg%20filter%3D%22url%28%23filter0_d_4728_34338%29%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2212%22%20height%3D%2212%22%20rx%3D%226%22%20fill%3D%22white%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cdefs%3E%3Cfilter%20id%3D%22filter0_d_4728_34338%22%20x%3D%220%22%20y%3D%222%22%20width%3D%2220%22%20height%3D%2220%22%20filterUnits%3D%22userSpaceOnUse%22%20color-interpolation-filters%3D%22sRGB%22%3E%3CfeFlood%20flood-opacity%3D%220%22%20result%3D%22BackgroundImageFix%22%2F%3E%3CfeColorMatrix%20in%3D%22SourceAlpha%22%20type%3D%22matrix%22%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20127%200%22%20result%3D%22hardAlpha%22%2F%3E%3CfeOffset%20dy%3D%222%22%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%222%22%2F%3E%3CfeComposite%20in2%3D%22hardAlpha%22%20operator%3D%22out%22%2F%3E%3CfeColorMatrix%20type%3D%22matrix%22%20values%3D%220%200%200%200%200.027451%200%200%200%200%200.0862745%200%200%200%200%200.176471%200%200%200%200.32%200%22%2F%3E%3CfeBlend%20mode%3D%22normal%22%20in2%3D%22BackgroundImageFix%22%20result%3D%22effect1_dropShadow_4728_34338%22%2F%3E%3CfeBlend%20mode%3D%22normal%22%20in%3D%22SourceGraphic%22%20in2%3D%22effect1_dropShadow_4728_34338%22%20result%3D%22shape%22%2F%3E%3C%2Ffilter%3E%3CclipPath%20id%3D%22clip0_4728_34338%22%3E%3Crect%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22white%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3C%2Fsvg%3E";
@@ -6959,7 +6959,7 @@ const StyledWrapper = styled(Box) `
 
   ${space}
 `;
-const Wrapper$a = forwardRef(({ width, height, ...props }, ref) => {
+const Wrapper$5 = forwardRef(({ width, height, ...props }, ref) => {
     return React.createElement(StyledWrapper, { ref: ref, "$width": width, "$height": height, ...props });
 });
 
@@ -7007,7 +7007,7 @@ const Image = ({ src, alt, width, height, ...props }) => {
             }
         };
     }, [src]);
-    return (React.createElement(Wrapper$a, { ref: imgRef, height: height, width: width, ...props }, isLoaded ? React.createElement(StyledImage, { src: src, alt: alt }) : React.createElement(Placeholder, null)));
+    return (React.createElement(Wrapper$5, { ref: imgRef, height: height, width: width, ...props }, isLoaded ? React.createElement(StyledImage, { src: src, alt: alt }) : React.createElement(Placeholder, null)));
 };
 
 var Variants$1;
@@ -7044,7 +7044,7 @@ const socialStyles = ({ theme, size = "20px", color = "white", disabled = false,
 
 var gift = "data:image/png;base64,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";
 
-const Wrapper$9 = styled(Box) `
+const Wrapper$4 = styled(Box) `
   position: relative;
   width: ${({ width }) => width ?? "auto"};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
@@ -7067,7 +7067,7 @@ const SocialShareButton = ({ social = Socials.TELEGRAM, link, name, message, sca
     const theme = useTheme();
     const defaultName = social.charAt(0).toUpperCase() + social.slice(1);
     const { icon, backgroundColor } = socialStyles({ theme, disabled })[social];
-    return (React.createElement(Wrapper$9, { disabled: disabled, width: width, ...props },
+    return (React.createElement(Wrapper$4, { disabled: disabled, width: width, ...props },
         React.createElement(Button, { as: "a", href: socialLinks[social]({ link, message }), scale: scale, startIcon: icon, style: { backgroundColor, pointerEvents: disabled ? "none" : "auto" }, target: target, width: "100%", external: true, pr: withGift ? "20px" : "16px", ...props }, name || defaultName),
         React.createElement(GiftWrap, { withGift: withGift },
             React.createElement(Image, { width: 37, height: 32, src: gift }))));
@@ -7211,7 +7211,7 @@ const openBackground = {
     },
 };
 
-const Wrapper$8 = styled(Box) `
+const Wrapper$3 = styled(Box) `
   width: 100%;
   margin-top: 8px;
 
@@ -7261,14 +7261,14 @@ const Answer = styled(Box) `
 `;
 const FaqAccordion = ({ name = "", isOpened, handleToggle, variant = Variants.DARK, children }) => {
     const contentEl = useRef(null);
-    return (React.createElement(Wrapper$8, { isOpen: isOpened, onClick: () => handleToggle(name), variant: variant },
+    return (React.createElement(Wrapper$3, { isOpen: isOpened, onClick: () => handleToggle(name), variant: variant },
         React.createElement(Question, { isOpen: isOpened },
             React.createElement(StyledText, { scale: Scales$7.SIZE14, variant: variant }, name),
             React.createElement(StyledChevronIcon, { isOpen: isOpened, color: "primary", width: "24px" })),
         React.createElement(Answer, { ref: contentEl, height: isOpened ? contentEl?.current?.scrollHeight : "0" }, children)));
 };
 
-const Title$2 = styled(BodyText) `
+const Title$1 = styled(BodyText) `
   text-align: ${({ titlePosition }) => titlePosition}}
 
   ${variant({
@@ -7301,7 +7301,7 @@ const Faqs = ({ title = "FAQs", leftData, rightData, variant = Variants.DARK, bl
     const renderQuestionList = (list) => (list || []).map((item, index) => (React.createElement(FaqAccordion, { key: index.toString(), name: item.name, isOpened: activeQuestion === item.name, handleToggle: handleToggle, variant: variant },
         React.createElement(Description, { as: "div", scale: Scales$7.SIZE14, p: "0 16px 16px", variant: variant }, item.description))));
     return (React.createElement(Box, { ...props },
-        title && (React.createElement(Title$2, { titlePosition: titlePosition, scale: { xs: isDarkMobile, md: Scales$7.SIZE24 }, mb: "16px", bold: true, variant: variant }, title)),
+        title && (React.createElement(Title$1, { titlePosition: titlePosition, scale: { xs: isDarkMobile, md: Scales$7.SIZE24 }, mb: "16px", bold: true, variant: variant }, title)),
         React.createElement(ContentWrapper, { blogFAQ: blogFAQ, singleList: !rightData?.length },
             React.createElement(Flex, { flexDirection: "column" }, renderQuestionList(leftData)),
             !!rightData?.length && React.createElement(Flex, { flexDirection: "column" }, renderQuestionList(rightData)))));
@@ -7592,145 +7592,58 @@ const useModal = (modal, closeOnOverlayClick = true, updateOnPropsChange = false
     return [onPresentCallback, onDismiss];
 };
 
-const Wrapper$7 = styled(Grid) `
-  position: relative;
-  grid-template-columns: 38px 1fr;
-  grid-template-areas:
-    "logo bsw-title"
-    "logo bsw-value";
-  grid-column-gap: 8px;
-  width: 140px;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    width: 120px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.xll} {
-    grid-column-gap: 16px;
-  }
-
-  .logo {
-    width: 38px;
-    grid-area: logo;
-  }
-`;
-const BSWPrice = ({ BSWPriceLabel, BSWPriceValue }) => {
-    return (React.createElement(Wrapper$7, null,
-        React.createElement(Icon$h, { width: "38px", className: "logo" }),
-        React.createElement(Text, { color: "gray900", fontSize: "12px", lineHeight: "18px", bold: true }, BSWPriceLabel),
-        React.createElement(Text, { color: "contrast", fontSize: "16px", lineHeight: "19px", bold: true }, BSWPriceValue)));
-};
-
-const AddToMetamaskBtn = styled.button `
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  background: ${({ theme }) => theme.colors.dark500};
-  border-radius: 50%;
-  box-shadow: none;
-  border: 0;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-
-  &:hover {
-    opacity: 0.65;
-  }
-`;
-const ConnectMetamask = ({ onClick, baseAwsUrl }) => {
-    return (React.createElement(AddToMetamaskBtn, { type: "button", onClick: () => onClick(), as: "button" },
-        React.createElement(Image$1, { width: 22, height: 22, src: `${baseAwsUrl}/icons/metamask-transparent.svg`, alt: "image" })));
-};
-
-const BuyBSW = ({ buyBswHandler, buyBswLabel }) => {
-    return (React.createElement(Button, { onClick: buyBswHandler, variant: Variants$b.DANGER, scale: Scales$9.MD }, buyBswLabel));
-};
-
-const Wrapper$6 = styled(Flex) `
-  display: flex;
-  grid-area: footer-info;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 24px;
-  background: ${({ theme }) => theme.colors.dark600};
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    margin-bottom: 0;
-  }
-
-  ${({ theme }) => theme.mediaQueries.xll} {
-    flex-direction: row;
-    justify-content: initial;
-  }
-`;
-const LeftInfo = styled(Flex) `
-  justify-content: space-between;
-  margin-bottom: 24px;
-
-  ${({ theme }) => theme.mediaQueries.xll} {
-    flex-direction: column;
-    justify-content: space-between;
-    width: 142px;
-    min-width: 142px;
-    margin-right: 24px;
-    margin-bottom: 0;
-  }
-`;
-const FlexWrap = styled(Flex) `
-  align-items: center;
-  gap: 8px;
-`;
-const InfoList = styled.div `
-  flex-grow: initial;
-
-  ${({ theme }) => theme.mediaQueries.xll} {
-    flex-grow: 1;
-  }
-`;
-const InfoListItem = styled(Flex) `
-  align-items: center;
-  line-height: 18px;
-
-  &:not(:last-child) {
-    margin-bottom: 8px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    justify-content: space-between;
-  }
-`;
-const InfoListLabel = styled.span `
-  width: 140px;
-  min-width: 140px;
-  color: ${({ theme }) => theme.colors.gray900};
-  font-size: 12px;
-  font-weight: bold;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    width: 120px;
-    min-width: 120px;
-  }
-`;
-const InfoListValue = styled.span `
-  font-size: 12px;
+const Wrapper$2 = styled.footer `
   color: ${({ theme }) => theme.colors.white};
-  padding-left: 4px;
-  font-weight: bold;
-  width: 126px;
+  background: ${({ theme }) => theme.colors.dark700};
+  padding: 56px 16px 24px;
+  transition: padding-left 0.2s;
+  z-index: 10;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    padding: 56px 24px 24px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding: 56px 24px;
+  }
 `;
-const FooterInfo = ({ BSWPriceLabel, BSWPriceValue, registerToken, footerStatistic, buyBswHandler, baseAwsUrl, buyBswLabel, }) => {
-    return (React.createElement(Wrapper$6, null,
-        React.createElement(LeftInfo, null,
-            React.createElement(BSWPrice, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue }),
-            React.createElement(FlexWrap, null,
-                React.createElement(ConnectMetamask, { onClick: registerToken, baseAwsUrl: baseAwsUrl }),
-                React.createElement(BuyBSW, { buyBswHandler: buyBswHandler, buyBswLabel: buyBswLabel }))),
-        React.createElement(InfoList, null, footerStatistic.map((item, index) => (React.createElement(InfoListItem, { key: index.toString() },
-            React.createElement(InfoListLabel, null, item.label),
-            React.createElement(InfoListValue, null, formatSpacingAmount(item.value))))))));
+const InnerRow = styled(Grid) `
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "footer-info"
+    "about"
+    "product"
+    "service"
+    "community"
+    "audit";
+  max-width: 1120px;
+  margin: 0 auto;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    grid-template-columns: repeat(3, minmax(110px, 1fr));
+    grid-template-areas:
+      "footer-info footer-info footer-info"
+      "about product service"
+      "community . audit";
+  }
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    grid-template-columns: 338px minmax(0, 64px) repeat(2, minmax(110px, 1fr)) 110px;
+    grid-template-areas:
+      "footer-info . about product service "
+      "footer-info . community . audit";
+  }
+
+  ${({ theme }) => theme.mediaQueries.xll} {
+    grid-template-columns: 424px minmax(0, 64px) repeat(3, minmax(110px, 1fr)) 174px;
+    grid-template-areas:
+      "footer-info . about product service community"
+      "footer-info . about product service audit";
+  }
+`;
+const Footer = ({ BSWPriceLabel, BSWPriceValue, registerToken, footerStatistic, aboutLinks, productLinks, serviceLinks, buyBswHandler, socialLinks, marketplaceLink, baseAwsUrl, buyBswLabel, }) => {
+    return (React.createElement(Wrapper$2, null,
+        React.createElement(InnerRow, null)));
 };
 
 var DropdownMenuItemType;
@@ -7743,115 +7656,339 @@ var DropdownMenuItemType;
     DropdownMenuItemType[DropdownMenuItemType["CONTAINER"] = 5] = "CONTAINER";
 })(DropdownMenuItemType || (DropdownMenuItemType = {}));
 
-const TopAction = styled(Flex) `
-  justify-content: space-between;
+const getTextColor = ({ $isActive, disabled, theme, }) => {
+    if (disabled)
+        return theme.colors.gray700;
+    if ($isActive)
+        return theme.colors.primary;
+    return theme.colors.backgroundDark;
+};
+const InnerLinksBlockContainer = styled(Box) `
+  padding-top: 16px;
+  padding-left: ${({ padded }) => padded && "58px"};
+`;
+const CommonDropdownMenuInnerLinkItem = () => css `
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
-  margin-bottom: 16px;
-`;
-const Title$1 = styled.h4 `
-  font-size: 16px;
-  color: ${({ theme }) => theme.colors.white};
-`;
-const ActionIcon = styled(Box) `
-  position: relative;
-  width: 14px;
-  height: 14px;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    display: none;
-  }
-
-  &:before,
-  &:after {
-    display: block;
-    content: "";
-    width: 14px;
-    height: 2px;
-    background-color: ${({ theme }) => theme.colors.white};
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transition: transform 0.3s ease;
-  }
-
-  &:before {
-    transform: ${({ isOpen }) => isOpen ? "translate(-50%, -50%) rotate(180deg)" : "translate(-50%, -50%) rotate(90deg)"};
-  }
-
-  &:after {
-    transform: ${({ isOpen }) => isOpen ? "translate(-50%, -50%) rotate(180deg)" : "translate(-50%, -50%) rotate(0deg)"};
-  }
-`;
-const NavList = styled(Box) `
-  height: ${({ isOpen, innerHeight }) => (isOpen ? `${innerHeight * 26 + 16}px` : "0")};
-  padding-bottom: ${({ isOpen }) => (isOpen ? "16px" : "0")};
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease,
-    height 0.3s ease;
-  transform: ${({ isOpen }) => (isOpen ? "scaleY(1)" : "scaleY(0)")};
-  transform-origin: top;
-  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
-  overflow: hidden;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    height: auto;
-    padding-bottom: 0;
-    opacity: 1;
-    transform: scaleY(1);
-  }
-`;
-const NavItem = styled(Box) `
-  margin-bottom: 8px;
-  color: ${({ theme }) => theme.colors.gray900};
-  font-size: 12px;
-  line-height: 18px;
-`;
-const CustomLink = styled(Box) `
-  color: ${({ theme }) => theme.colors.pastelBlue};
-  font-weight: 600;
-  transition: opacity 0.3s ease;
+  cursor: pointer;
 
   &:hover {
-    opacity: 0.65;
+    .inner-chevron {
+      margin-right: 4px;
+      transition: margin-right 150ms linear;
+    }
   }
 `;
-const CommonFooterLinksComponent = ({ footerLinks }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const { linkComponent } = useContext(MenuContext);
-    const { title, links } = footerLinks;
-    const arrLength = links?.length ?? 0;
+const DropdownMenuInnerLinkItem = styled(Box) `
+  ${CommonDropdownMenuInnerLinkItem}
+`;
+const DropdownMenuInnerOuterLinkItem = styled.a `
+  ${CommonDropdownMenuInnerLinkItem}
+`;
+const CommonLinkStyle = ({ disabled, $isActive, $hasIcon, label, }) => {
+    const { isMobile } = useMatchBreakpoints();
+    return css `
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 40px;
+    border: 0;
+    outline: 0;
+    line-height: 20px;
+    color: ${({ theme }) => getTextColor({ theme, disabled, $isActive })};
+    font-size: 14px;
+    font-weight: 600;
+    cursor: ${disabled ? "not-allowed" : "pointer"};
+
+    .arrow-icon {
+      ${!(isMobile && (label === "Marketplace" || label === "GameFi")) &&
+        `
+        visibility: hidden;
+        opacity: 0;
+      `}
+    }
+
+    &:hover:not(:disabled) {
+      color: ${({ theme }) => !$hasIcon && theme.colors.primary};
+
+      svg {
+        opacity: 0.85;
+      }
+
+      .arrow-icon {
+        visibility: visible;
+        transition:
+          visibility 250ms linear,
+          opacity 150ms linear;
+        opacity: 1;
+      }
+    }
+
+    &:active:not(:disabled) {
+      opacity: 0.85;
+      transform: translateY(1px);
+    }
+  `;
+};
+const DropdownMenuItem = styled.button `
+  ${CommonLinkStyle}
+`;
+const DropdownInternalMenuItem = styled(Link$1) `
+  ${CommonLinkStyle}
+`;
+const StyledDropdownMenuItemContainer = styled(Box) `
+  position: relative;
+  margin-bottom: 24px;
+  pointer-events: ${({ disabled }) => (disabled ? "none" : "initial")};
+
+  &:last-child {
+    margin-bottom: ${({ isOpenMenuItem }) => (isOpenMenuItem ? "16px" : "32px")};
+
+    ${({ theme }) => theme.mediaQueries.sm} {
+      margin-bottom: 24px;
+    }
+  }
+
+  &:first-child > ${DropdownMenuItem} {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  &:last-child > ${DropdownMenuItem} {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+`;
+const DropdownMenuDivider = styled.hr `
+  margin: 0;
+  border-color: ${({ theme }) => theme.colors.gray200};
+  border-style: solid;
+  border-width: 1px 0 0;
+  ${({ color }) => `
+    color: ${color};
+    background-color: ${color};
+    border-color: ${color};
+`}
+`;
+const StyledDropdownMenu = styled(Grid) `
+  grid-template-columns: 1fr;
+  width: 352px;
+  padding: 24px 24px 0;
+  border: 1px solid ${({ theme }) => theme.colors.white};
+  border-radius: 16px;
+  box-shadow:
+    0 20px 36px -8px rgba(0, 26, 67, 0.24),
+    0 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: ${({ theme }) => theme.colors.white};
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  transition:
+    opacity 250ms linear,
+    visibility 350ms linear;
+
+  ${({ $isOpen }) => !$isOpen &&
+    `
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+  `}
+
+  ${({ $isExtended }) => $isExtended &&
+    `
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 24px;
+    width: 680px;
+  `}
+`;
+styled(Text) `
+  margin-left: 8px;
+  padding: 0 8px;
+  border: 2px solid ${({ theme, color }) => theme.colors[color]};
+  border-radius: ${({ theme }) => theme.radii.default};
+  box-shadow: none;
+  color: ${({ theme, color }) => theme.colors[color]};
+`;
+const BannerPlacementItem = styled(Box) `
+  margin: 0 -14px -18px -14px;
+`;
+const BorderMobileMenuItem = styled(Box) `
+  padding: 0 12px;
+  border-left: ${({ theme, isHighlighted }) => `4px solid ${isHighlighted ? theme.colors.warningPress : "transparent"}`};
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    border-left: none;
+  }
+`;
+
+const LabelText = styled(Text) `
+  max-width: 80px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+`;
+const InnerLinksBlock = ({ links, leftIcon, setIsOpen, linkComponent, lastItem }) => {
+    const { isMobile, isTablet } = useMatchBreakpoints();
+    const renderLinks = () => links.map(({ label = "", href = "/", icon = "ChevronRight", linkType = DropdownMenuItemType.INTERNAL_LINK, mobileTarget, target, fill = "primary", badgeTitle, badgeType, }, index) => {
+        const getLinkContent = () => (React.createElement(React.Fragment, null,
+            icon && React.createElement(IconComponent$1, { className: "inner-chevron", width: 16, iconName: icon, color: fill }),
+            React.createElement(LabelText, { bold: true, fontSize: "12px", color: fill }, label),
+            badgeTitle && (React.createElement(Badge$1, { ml: "4px", badgeType: badgeType ?? BadgeTypes.SUCCESS }, badgeTitle))));
+        return (React.createElement(Fragment, { key: `${index}#${label}` },
+            linkType === DropdownMenuItemType.INTERNAL_LINK && (React.createElement(DropdownMenuInnerLinkItem, { key: index + label, as: linkComponent, to: href, onClick: () => {
+                    setIsOpen(false);
+                } }, getLinkContent())),
+            linkType === DropdownMenuItemType.EXTERNAL_LINK && (React.createElement(DropdownMenuInnerOuterLinkItem, { key: index + label, href: href, target: isMobile ? mobileTarget || "_self" : target || "_blank", onClick: () => {
+                    setIsOpen(false);
+                } }, getLinkContent()))));
+    });
+    return (React.createElement(InnerLinksBlockContainer, { padded: !!leftIcon && !isTablet },
+        React.createElement(Grid, { gridTemplateColumns: "1fr 1fr", gridGap: 16, paddingBottom: !lastItem ? 16 : 0 }, renderLinks()),
+        !lastItem && React.createElement(DropdownMenuDivider, null)));
+};
+
+const DropdownMenuItemContainer = ({ isActive = false, leftIcon, getMenuItemContent, links = [], setIsOpen, linkComponent, href = "/", bannerRenderer, type, target, mobileTarget, isOpenItem, lastItem, ...itemProps }) => {
+    const { isMobile, isDesktop } = useMatchBreakpoints();
+    const hasInnerLinks = links.length > 0;
+    return (React.createElement(StyledDropdownMenuItemContainer, { isOpenMenuItem: isOpenItem, ...itemProps },
+        type === DropdownMenuItemType.BUTTON && (React.createElement(DropdownMenuItem, { "$isActive": isActive, "$hasIcon": !!leftIcon, type: "button", ...itemProps }, getMenuItemContent(""))),
+        type === DropdownMenuItemType.CONTAINER && (React.createElement(React.Fragment, null,
+            hasInnerLinks ? (React.createElement(DropdownMenuItem, { "$isActive": isActive, "$hasIcon": true, as: linkComponent, href: links[0]?.href, onClick: () => {
+                    setIsOpen(false);
+                }, ...itemProps }, getMenuItemContent(""))) : (React.createElement(DropdownMenuItem, { "$isActive": isActive, "$hasIcon": true, as: "div", ...itemProps }, getMenuItemContent(""))),
+            hasInnerLinks && (React.createElement(InnerLinksBlock, { links: links, leftIcon: leftIcon, setIsOpen: setIsOpen, linkComponent: linkComponent, lastItem: lastItem })))),
+        type === DropdownMenuItemType.INTERNAL_LINK && (React.createElement(DropdownInternalMenuItem, { label: itemProps.label, "$isActive": isActive, "$hasIcon": !!leftIcon, as: linkComponent, to: href, onClick: () => {
+                setIsOpen(false);
+            }, ...itemProps }, getMenuItemContent("ArrowRight"))),
+        type === DropdownMenuItemType.EXTERNAL_LINK && (React.createElement(DropdownMenuItem, { label: itemProps.label, "$isActive": isActive, "$hasIcon": !!leftIcon, as: "a", href: href, target: isMobile ? mobileTarget || "_self" : target || "_blank", onClick: () => {
+                setIsOpen(false);
+            }, ...itemProps }, getMenuItemContent("ArrowUpForward"))),
+        type === DropdownMenuItemType.DIVIDER && React.createElement(DropdownMenuDivider, null),
+        type === DropdownMenuItemType.BANNER && isDesktop && bannerRenderer && (React.createElement(BannerPlacementItem, null, bannerRenderer(href, target)))));
+};
+
+const getBG = ({ theme, leftIcon }) => {
+    switch (leftIcon) {
+        case "Market":
+            return "linear-gradient(136.03deg, #1263F1 -7.36%, #F63D5E 131.43%)";
+        case "GameFi":
+            return "radial-gradient(170.13% 152.5% at 50% -32.5%, #FF1C5E 4.9%, #00000D 58.29%, #1EBB95 100%)";
+        default:
+            return theme.colors.primary;
+    }
+};
+const IconComponentWrap = styled(Flex) `
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  align-self: flex-start;
+  background: ${getBG};
+  opacity: ${({ disabled }) => (disabled ? 0.32 : 1)};
+`;
+const MenuItemContent = ({ leftIcon, label, description, rightIcon, fill = "primary", badgeTitle, badgeType, disabled, }) => {
+    const { isMobile } = useMatchBreakpoints();
     return (React.createElement(React.Fragment, null,
-        React.createElement(TopAction, { onClick: () => setIsOpen(!isOpen) },
-            React.createElement(Title$1, null, title),
-            React.createElement(ActionIcon, { isOpen: isOpen })),
-        React.createElement(NavList, { isOpen: isOpen, innerHeight: arrLength }, links?.map(({ href, target = null, label, type = DropdownMenuItemType.INTERNAL_LINK }, index) => (React.createElement(NavItem, { key: index.toString() },
-            type === DropdownMenuItemType.INTERNAL_LINK && (React.createElement(CustomLink, { as: linkComponent, to: href }, label)),
-            type === DropdownMenuItemType.EXTERNAL_LINK && (React.createElement(CustomLink, { as: "a", href: href, target: target ? target : "_self" }, label))))))));
+        leftIcon && (React.createElement(IconComponentWrap, { disabled: disabled },
+            React.createElement(IconComponent$1, { width: 24, iconName: leftIcon, color: "white" }))),
+        React.createElement(Flex, { alignSelf: isMobile ? "stretch" : "", flexDirection: "column", flex: 1, paddingLeft: leftIcon && "16px" },
+            React.createElement(Flex, { alignItems: "center" },
+                label,
+                badgeTitle && (React.createElement(Badge$1, { ml: "4px", badgeType: badgeType ?? BadgeTypes.SUCCESS }, badgeTitle))),
+            description && (React.createElement(Text, { fontSize: "12px", color: "gray900", lineHeight: "16px" }, description))),
+        rightIcon && !disabled && React.createElement(IconComponent$1, { className: "arrow-icon", iconName: rightIcon, color: fill })));
 };
 
-const Wrapper$5 = styled.div `
-  grid-area: about;
-`;
-const About = ({ footerLinks }) => {
-    return (React.createElement(Wrapper$5, null,
-        React.createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
+const DropdownMenu = ({ children, activeItem = "", items = [], isExtended = false, ...props }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [targetRef, setTargetRef] = useState(null);
+    const [tooltipRef, setTooltipRef] = useState(null);
+    const { linkComponent } = useContext(MenuContext);
+    const hasItems = items.length > 0;
+    const hasMoreThanItems = items.length > 1;
+    const { styles, attributes, update } = usePopper(targetRef, tooltipRef, {
+        strategy: "fixed",
+        placement: "bottom-start",
+        modifiers: [{ name: "offset", options: { offset: [0, -14] } }],
+    });
+    useEffect(() => {
+        const showDropdownMenu = async () => {
+            update && (await update());
+            setIsOpen(true);
+        };
+        const hideDropdownMenu = (evt) => {
+            const target = evt.target;
+            return target && !tooltipRef?.contains(target) && setIsOpen(false);
+        };
+        targetRef?.addEventListener("mouseenter", showDropdownMenu, {
+            passive: true,
+        });
+        targetRef?.addEventListener("mouseleave", hideDropdownMenu, {
+            passive: true,
+        });
+        return () => {
+            targetRef?.removeEventListener("mouseenter", showDropdownMenu);
+            targetRef?.removeEventListener("mouseleave", hideDropdownMenu);
+        };
+    }, [targetRef, tooltipRef, setIsOpen, update]);
+    return (React.createElement(Box, { ref: setTargetRef, ...props },
+        React.createElement(Box, null, children),
+        hasItems && (React.createElement(StyledDropdownMenu, { style: styles.popper, ref: setTooltipRef, ...attributes.popper, "$isOpen": isOpen, "$isExtended": isExtended && hasMoreThanItems }, items.map(({ type = DropdownMenuItemType.INTERNAL_LINK, label, rightIconFill, description, href = "/", status, leftIcon = "", rightIcon = "", links = [], bannerRenderer, target, mobileTarget, badgeType, badgeTitle, ...itemProps }, itemIndex) => {
+            const getMenuItemContent = (icon = rightIcon) => (React.createElement(MenuItemContent, { label: label, fill: rightIconFill, leftIcon: leftIcon, rightIcon: icon, description: description, status: status, badgeType: badgeType, badgeTitle: badgeTitle, ...itemProps }));
+            const isActive = href === activeItem;
+            const lastItem = itemIndex === items?.length - 1 || items[itemIndex + 1]?.type === DropdownMenuItemType.BANNER;
+            return (React.createElement(DropdownMenuItemContainer, { key: itemIndex, isActive: isActive, leftIcon: leftIcon, getMenuItemContent: getMenuItemContent, links: links, setIsOpen: setIsOpen, linkComponent: linkComponent, href: href, bannerRenderer: bannerRenderer, type: type, target: target, mobileTarget: mobileTarget, lastItem: lastItem, ...itemProps }));
+        })))));
 };
 
-const Wrapper$4 = styled.div `
-  grid-area: product;
-`;
-const Product = ({ footerLinks }) => {
-    return (React.createElement(Wrapper$4, null,
-        React.createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
-};
+const AccordionBody = styled(Flex) `
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s;
 
-const Wrapper$3 = styled.div `
-  grid-area: service;
+  ${({ opened }) => opened &&
+    css `
+      max-height: 900px;
+    `}
 `;
-const Service = ({ footerLinks }) => {
-    return (React.createElement(Wrapper$3, null,
-        React.createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
+const AccordionTitle = styled(Flex) `
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+`;
+const AccordionComponent = styled(Box) `
+  width: 100%;
+`;
+const Accordion = ({ label, clickable = true, heading, children, index, href, linkComponent, setIsOpenMenu, isOpenItem, currentOpen, setCurrentOpen, }) => {
+    const [isOpened, setIsOpened] = useState(false);
+    const { isMobile } = useMatchBreakpoints();
+    useEffect(() => {
+        if (!clickable || isOpenItem) {
+            setCurrentOpen(label);
+        }
+    }, [label, clickable]);
+    useEffect(() => {
+        setIsOpened(clickable ? currentOpen === label : true);
+    }, [currentOpen, clickable]);
+    const onTitleClick = () => {
+        if (!href && clickable) {
+            setCurrentOpen(!isOpened ? label : undefined);
+        }
+        else {
+            setIsOpenMenu(false);
+        }
+    };
+    return (React.createElement(AccordionComponent, { key: `acc-key-${label}` },
+        isMobile && index !== 1 && React.createElement(DropdownMenuDivider, { color: "btnTertiary" }),
+        React.createElement(AccordionTitle, { as: href ? linkComponent : "div", href: href, onClick: onTitleClick }, heading(isOpened)),
+        React.createElement(AccordionBody, { opened: isOpened }, children),
+        isMobile && !index && (React.createElement(Box, { m: "0 -24px 0" },
+            React.createElement(DropdownMenuDivider, { color: "rgba(18, 99, 241, 0.16)" })))));
 };
 
 var ItemTypes;
@@ -8268,7 +8405,7 @@ const TRANSFER_BLOCK_CLOSED_HEIGHT = 40;
 const TRANSFER_BLOCK_OPENED_HEIGHT = 156;
 
 const Icons = IconModule;
-const Wrapper$2 = styled.div `
+const Wrapper$1 = styled.div `
   grid-area: community;
   ${({ menuVariant }) => !menuVariant && "max-width: 136px;"}
 `;
@@ -8376,7 +8513,7 @@ const FlagWrap = styled.div `
   height: 14px;
 `;
 const Community = ({ iconSize = "20px", menuVariant, isFooter = false, socialLinks, baseAwsUrl, }) => {
-    return (React.createElement(Wrapper$2, { menuVariant: menuVariant || isFooter },
+    return (React.createElement(Wrapper$1, { menuVariant: menuVariant || isFooter },
         socialLinks?.title && React.createElement(Title, null, socialLinks?.title),
         React.createElement(SocialWrap, { menuVariant: menuVariant }, socials.map((social) => {
             const Icon = Icons[social.icon];
@@ -8406,469 +8543,6 @@ const Community = ({ iconSize = "20px", menuVariant, isFooter = false, socialLin
                 React.createElement(Link, { external: true, href: social.href, "aria-label": social.label },
                     React.createElement(Icon, { ...iconProps }))));
         }))));
-};
-
-const MARKETPLACE_URL = "https://marketplace.biswap.org";
-const CERTIK_URL = "https://www.certik.org/projects/biswap";
-const AuditedWrap = styled(Flex) `
-  grid-area: audit;
-  margin-top: 24px;
-  flex-direction: row;
-  justify-content: space-between;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin-top: 0;
-  }
-  ${({ theme }) => theme.mediaQueries.md} {
-    margin-left: -44px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.xll} {
-    margin-top: 16px;
-    margin-left: 0;
-  }
-`;
-const LinkWrap = styled.a `
-  height: fit-content;
-  transition: opacity 0.3s ease;
-  border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.dark600};
-  padding: 8px 16px;
-
-  &:hover {
-    opacity: 0.7;
-  }
-`;
-const MarketPlaceButton = styled(Button) `
-  padding: 8px;
-  width: 156px;
-  background: ${({ theme }) => theme.colors.dark600};
-  border-radius: 8px;
-  margin-bottom: 0;
-  transition: opacity 0.3s ease;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    margin-bottom: 8px;
-  }
-
-  &:hover {
-    opacity: 0.7;
-  }
-`;
-const IconWrapper = styled.div `
-  background: linear-gradient(136.03deg, #1263f1 -7.36%, #f63d5e 131.43%);
-  border-radius: 6px;
-  padding: 8px;
-  margin-right: 8px;
-`;
-const Audit = ({ marketplaceLink, baseAwsUrl }) => {
-    const { isMobile } = useMatchBreakpoints();
-    return (React.createElement(AuditedWrap, null,
-        React.createElement(MarketPlaceButton, { as: "a", href: marketplaceLink ?? MARKETPLACE_URL, target: isMobile ? "_self" : "_blank" },
-            React.createElement(Flex, { alignItems: "center" },
-                React.createElement(IconWrapper, null,
-                    React.createElement(Image$1, { width: 19, height: 19, src: `${baseAwsUrl}/icons/Market.svg`, alt: "" })),
-                React.createElement(BodyText, { scale: Scales$7.SIZE14, color: "white", bold: true }, "Marketplace"))),
-        React.createElement(LinkWrap, { href: CERTIK_URL, target: "_blank" },
-            React.createElement(Image$1, { width: 124, height: 35, src: `${baseAwsUrl}/icons/CertikAudited.svg`, alt: "Certik" }))));
-};
-
-const Wrapper$1 = styled.footer `
-  color: ${({ theme }) => theme.colors.white};
-  background: ${({ theme }) => theme.colors.dark700};
-  padding: 56px 16px 24px;
-  transition: padding-left 0.2s;
-  z-index: 10;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    padding: 56px 24px 24px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding: 56px 24px;
-  }
-`;
-const InnerRow = styled(Grid) `
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    "footer-info"
-    "about"
-    "product"
-    "service"
-    "community"
-    "audit";
-  max-width: 1120px;
-  margin: 0 auto;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    grid-template-columns: repeat(3, minmax(110px, 1fr));
-    grid-template-areas:
-      "footer-info footer-info footer-info"
-      "about product service"
-      "community . audit";
-  }
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-columns: 338px minmax(0, 64px) repeat(2, minmax(110px, 1fr)) 110px;
-    grid-template-areas:
-      "footer-info . about product service "
-      "footer-info . community . audit";
-  }
-
-  ${({ theme }) => theme.mediaQueries.xll} {
-    grid-template-columns: 424px minmax(0, 64px) repeat(3, minmax(110px, 1fr)) 174px;
-    grid-template-areas:
-      "footer-info . about product service community"
-      "footer-info . about product service audit";
-  }
-`;
-const Footer = ({ BSWPriceLabel, BSWPriceValue, registerToken, footerStatistic, aboutLinks, productLinks, serviceLinks, buyBswHandler, socialLinks, marketplaceLink, baseAwsUrl, buyBswLabel, }) => {
-    return (React.createElement(Wrapper$1, null,
-        React.createElement(InnerRow, null,
-            React.createElement(FooterInfo, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, registerToken: registerToken, footerStatistic: footerStatistic, buyBswHandler: buyBswHandler, baseAwsUrl: baseAwsUrl, buyBswLabel: buyBswLabel }),
-            React.createElement(About, { footerLinks: aboutLinks }),
-            React.createElement(Product, { footerLinks: productLinks }),
-            React.createElement(Service, { footerLinks: serviceLinks }),
-            React.createElement(Community, { isFooter: true, socialLinks: socialLinks, baseAwsUrl: baseAwsUrl }),
-            React.createElement(Audit, { marketplaceLink: marketplaceLink, baseAwsUrl: baseAwsUrl }))));
-};
-
-const getTextColor = ({ $isActive, disabled, theme, }) => {
-    if (disabled)
-        return theme.colors.gray700;
-    if ($isActive)
-        return theme.colors.primary;
-    return theme.colors.backgroundDark;
-};
-const InnerLinksBlockContainer = styled(Box) `
-  padding-top: 16px;
-  padding-left: ${({ padded }) => padded && "58px"};
-`;
-const CommonDropdownMenuInnerLinkItem = () => css `
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  cursor: pointer;
-
-  &:hover {
-    .inner-chevron {
-      margin-right: 4px;
-      transition: margin-right 150ms linear;
-    }
-  }
-`;
-const DropdownMenuInnerLinkItem = styled(Box) `
-  ${CommonDropdownMenuInnerLinkItem}
-`;
-const DropdownMenuInnerOuterLinkItem = styled.a `
-  ${CommonDropdownMenuInnerLinkItem}
-`;
-const CommonLinkStyle = ({ disabled, $isActive, $hasIcon, label, }) => {
-    const { isMobile } = useMatchBreakpoints();
-    return css `
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    min-height: 40px;
-    border: 0;
-    outline: 0;
-    line-height: 20px;
-    color: ${({ theme }) => getTextColor({ theme, disabled, $isActive })};
-    font-size: 14px;
-    font-weight: 600;
-    cursor: ${disabled ? "not-allowed" : "pointer"};
-
-    .arrow-icon {
-      ${!(isMobile && (label === "Marketplace" || label === "GameFi")) &&
-        `
-        visibility: hidden;
-        opacity: 0;
-      `}
-    }
-
-    &:hover:not(:disabled) {
-      color: ${({ theme }) => !$hasIcon && theme.colors.primary};
-
-      svg {
-        opacity: 0.85;
-      }
-
-      .arrow-icon {
-        visibility: visible;
-        transition:
-          visibility 250ms linear,
-          opacity 150ms linear;
-        opacity: 1;
-      }
-    }
-
-    &:active:not(:disabled) {
-      opacity: 0.85;
-      transform: translateY(1px);
-    }
-  `;
-};
-const DropdownMenuItem = styled.button `
-  ${CommonLinkStyle}
-`;
-const DropdownInternalMenuItem = styled(Link$1) `
-  ${CommonLinkStyle}
-`;
-const StyledDropdownMenuItemContainer = styled(Box) `
-  position: relative;
-  margin-bottom: 24px;
-  pointer-events: ${({ disabled }) => (disabled ? "none" : "initial")};
-
-  &:last-child {
-    margin-bottom: ${({ isOpenMenuItem }) => (isOpenMenuItem ? "16px" : "32px")};
-
-    ${({ theme }) => theme.mediaQueries.sm} {
-      margin-bottom: 24px;
-    }
-  }
-
-  &:first-child > ${DropdownMenuItem} {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-  }
-
-  &:last-child > ${DropdownMenuItem} {
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
-`;
-const DropdownMenuDivider = styled.hr `
-  margin: 0;
-  border-color: ${({ theme }) => theme.colors.gray200};
-  border-style: solid;
-  border-width: 1px 0 0;
-  ${({ color }) => `
-    color: ${color};
-    background-color: ${color};
-    border-color: ${color};
-`}
-`;
-const StyledDropdownMenu = styled(Grid) `
-  grid-template-columns: 1fr;
-  width: 352px;
-  padding: 24px 24px 0;
-  border: 1px solid ${({ theme }) => theme.colors.white};
-  border-radius: 16px;
-  box-shadow:
-    0 20px 36px -8px rgba(0, 26, 67, 0.24),
-    0 1px 1px rgba(0, 0, 0, 0.05);
-  background-color: ${({ theme }) => theme.colors.white};
-  pointer-events: auto;
-  visibility: visible;
-  opacity: 1;
-  transition:
-    opacity 250ms linear,
-    visibility 350ms linear;
-
-  ${({ $isOpen }) => !$isOpen &&
-    `
-    pointer-events: none;
-    visibility: hidden;
-    opacity: 0;
-  `}
-
-  ${({ $isExtended }) => $isExtended &&
-    `
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 24px;
-    width: 680px;
-  `}
-`;
-styled(Text) `
-  margin-left: 8px;
-  padding: 0 8px;
-  border: 2px solid ${({ theme, color }) => theme.colors[color]};
-  border-radius: ${({ theme }) => theme.radii.default};
-  box-shadow: none;
-  color: ${({ theme, color }) => theme.colors[color]};
-`;
-const BannerPlacementItem = styled(Box) `
-  margin: 0 -14px -18px -14px;
-`;
-const BorderMobileMenuItem = styled(Box) `
-  padding: 0 12px;
-  border-left: ${({ theme, isHighlighted }) => `4px solid ${isHighlighted ? theme.colors.warningPress : "transparent"}`};
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    border-left: none;
-  }
-`;
-
-const LabelText = styled(Text) `
-  max-width: 80px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-`;
-const InnerLinksBlock = ({ links, leftIcon, setIsOpen, linkComponent, lastItem }) => {
-    const { isMobile, isTablet } = useMatchBreakpoints();
-    const renderLinks = () => links.map(({ label = "", href = "/", icon = "ChevronRight", linkType = DropdownMenuItemType.INTERNAL_LINK, mobileTarget, target, fill = "primary", badgeTitle, badgeType, }, index) => {
-        const getLinkContent = () => (React.createElement(React.Fragment, null,
-            icon && React.createElement(IconComponent$1, { className: "inner-chevron", width: 16, iconName: icon, color: fill }),
-            React.createElement(LabelText, { bold: true, fontSize: "12px", color: fill }, label),
-            badgeTitle && (React.createElement(Badge$1, { ml: "4px", badgeType: badgeType ?? BadgeTypes.SUCCESS }, badgeTitle))));
-        return (React.createElement(Fragment, { key: `${index}#${label}` },
-            linkType === DropdownMenuItemType.INTERNAL_LINK && (React.createElement(DropdownMenuInnerLinkItem, { key: index + label, as: linkComponent, to: href, onClick: () => {
-                    setIsOpen(false);
-                } }, getLinkContent())),
-            linkType === DropdownMenuItemType.EXTERNAL_LINK && (React.createElement(DropdownMenuInnerOuterLinkItem, { key: index + label, href: href, target: isMobile ? mobileTarget || "_self" : target || "_blank", onClick: () => {
-                    setIsOpen(false);
-                } }, getLinkContent()))));
-    });
-    return (React.createElement(InnerLinksBlockContainer, { padded: !!leftIcon && !isTablet },
-        React.createElement(Grid, { gridTemplateColumns: "1fr 1fr", gridGap: 16, paddingBottom: !lastItem ? 16 : 0 }, renderLinks()),
-        !lastItem && React.createElement(DropdownMenuDivider, null)));
-};
-
-const DropdownMenuItemContainer = ({ isActive = false, leftIcon, getMenuItemContent, links = [], setIsOpen, linkComponent, href = "/", bannerRenderer, type, target, mobileTarget, isOpenItem, lastItem, ...itemProps }) => {
-    const { isMobile, isDesktop } = useMatchBreakpoints();
-    const hasInnerLinks = links.length > 0;
-    return (React.createElement(StyledDropdownMenuItemContainer, { isOpenMenuItem: isOpenItem, ...itemProps },
-        type === DropdownMenuItemType.BUTTON && (React.createElement(DropdownMenuItem, { "$isActive": isActive, "$hasIcon": !!leftIcon, type: "button", ...itemProps }, getMenuItemContent(""))),
-        type === DropdownMenuItemType.CONTAINER && (React.createElement(React.Fragment, null,
-            hasInnerLinks ? (React.createElement(DropdownMenuItem, { "$isActive": isActive, "$hasIcon": true, as: linkComponent, href: links[0]?.href, onClick: () => {
-                    setIsOpen(false);
-                }, ...itemProps }, getMenuItemContent(""))) : (React.createElement(DropdownMenuItem, { "$isActive": isActive, "$hasIcon": true, as: "div", ...itemProps }, getMenuItemContent(""))),
-            hasInnerLinks && (React.createElement(InnerLinksBlock, { links: links, leftIcon: leftIcon, setIsOpen: setIsOpen, linkComponent: linkComponent, lastItem: lastItem })))),
-        type === DropdownMenuItemType.INTERNAL_LINK && (React.createElement(DropdownInternalMenuItem, { label: itemProps.label, "$isActive": isActive, "$hasIcon": !!leftIcon, as: linkComponent, to: href, onClick: () => {
-                setIsOpen(false);
-            }, ...itemProps }, getMenuItemContent("ArrowRight"))),
-        type === DropdownMenuItemType.EXTERNAL_LINK && (React.createElement(DropdownMenuItem, { label: itemProps.label, "$isActive": isActive, "$hasIcon": !!leftIcon, as: "a", href: href, target: isMobile ? mobileTarget || "_self" : target || "_blank", onClick: () => {
-                setIsOpen(false);
-            }, ...itemProps }, getMenuItemContent("ArrowUpForward"))),
-        type === DropdownMenuItemType.DIVIDER && React.createElement(DropdownMenuDivider, null),
-        type === DropdownMenuItemType.BANNER && isDesktop && bannerRenderer && (React.createElement(BannerPlacementItem, null, bannerRenderer(href, target)))));
-};
-
-const getBG = ({ theme, leftIcon }) => {
-    switch (leftIcon) {
-        case "Market":
-            return "linear-gradient(136.03deg, #1263F1 -7.36%, #F63D5E 131.43%)";
-        case "GameFi":
-            return "radial-gradient(170.13% 152.5% at 50% -32.5%, #FF1C5E 4.9%, #00000D 58.29%, #1EBB95 100%)";
-        default:
-            return theme.colors.primary;
-    }
-};
-const IconComponentWrap = styled(Flex) `
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  align-self: flex-start;
-  background: ${getBG};
-  opacity: ${({ disabled }) => (disabled ? 0.32 : 1)};
-`;
-const MenuItemContent = ({ leftIcon, label, description, rightIcon, fill = "primary", badgeTitle, badgeType, disabled, }) => {
-    const { isMobile } = useMatchBreakpoints();
-    return (React.createElement(React.Fragment, null,
-        leftIcon && (React.createElement(IconComponentWrap, { disabled: disabled },
-            React.createElement(IconComponent$1, { width: 24, iconName: leftIcon, color: "white" }))),
-        React.createElement(Flex, { alignSelf: isMobile ? "stretch" : "", flexDirection: "column", flex: 1, paddingLeft: leftIcon && "16px" },
-            React.createElement(Flex, { alignItems: "center" },
-                label,
-                badgeTitle && (React.createElement(Badge$1, { ml: "4px", badgeType: badgeType ?? BadgeTypes.SUCCESS }, badgeTitle))),
-            description && (React.createElement(Text, { fontSize: "12px", color: "gray900", lineHeight: "16px" }, description))),
-        rightIcon && !disabled && React.createElement(IconComponent$1, { className: "arrow-icon", iconName: rightIcon, color: fill })));
-};
-
-const DropdownMenu = ({ children, activeItem = "", items = [], isExtended = false, ...props }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [targetRef, setTargetRef] = useState(null);
-    const [tooltipRef, setTooltipRef] = useState(null);
-    const { linkComponent } = useContext(MenuContext);
-    const hasItems = items.length > 0;
-    const hasMoreThanItems = items.length > 1;
-    const { styles, attributes, update } = usePopper(targetRef, tooltipRef, {
-        strategy: "fixed",
-        placement: "bottom-start",
-        modifiers: [{ name: "offset", options: { offset: [0, -14] } }],
-    });
-    useEffect(() => {
-        const showDropdownMenu = async () => {
-            update && (await update());
-            setIsOpen(true);
-        };
-        const hideDropdownMenu = (evt) => {
-            const target = evt.target;
-            return target && !tooltipRef?.contains(target) && setIsOpen(false);
-        };
-        targetRef?.addEventListener("mouseenter", showDropdownMenu, {
-            passive: true,
-        });
-        targetRef?.addEventListener("mouseleave", hideDropdownMenu, {
-            passive: true,
-        });
-        return () => {
-            targetRef?.removeEventListener("mouseenter", showDropdownMenu);
-            targetRef?.removeEventListener("mouseleave", hideDropdownMenu);
-        };
-    }, [targetRef, tooltipRef, setIsOpen, update]);
-    return (React.createElement(Box, { ref: setTargetRef, ...props },
-        React.createElement(Box, null, children),
-        hasItems && (React.createElement(StyledDropdownMenu, { style: styles.popper, ref: setTooltipRef, ...attributes.popper, "$isOpen": isOpen, "$isExtended": isExtended && hasMoreThanItems }, items.map(({ type = DropdownMenuItemType.INTERNAL_LINK, label, rightIconFill, description, href = "/", status, leftIcon = "", rightIcon = "", links = [], bannerRenderer, target, mobileTarget, badgeType, badgeTitle, ...itemProps }, itemIndex) => {
-            const getMenuItemContent = (icon = rightIcon) => (React.createElement(MenuItemContent, { label: label, fill: rightIconFill, leftIcon: leftIcon, rightIcon: icon, description: description, status: status, badgeType: badgeType, badgeTitle: badgeTitle, ...itemProps }));
-            const isActive = href === activeItem;
-            const lastItem = itemIndex === items?.length - 1 || items[itemIndex + 1]?.type === DropdownMenuItemType.BANNER;
-            return (React.createElement(DropdownMenuItemContainer, { key: itemIndex, isActive: isActive, leftIcon: leftIcon, getMenuItemContent: getMenuItemContent, links: links, setIsOpen: setIsOpen, linkComponent: linkComponent, href: href, bannerRenderer: bannerRenderer, type: type, target: target, mobileTarget: mobileTarget, lastItem: lastItem, ...itemProps }));
-        })))));
-};
-
-const AccordionBody = styled(Flex) `
-  flex-direction: column;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.45s;
-
-  ${({ opened }) => opened &&
-    css `
-      max-height: 900px;
-    `}
-`;
-const AccordionTitle = styled(Flex) `
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-`;
-const AccordionComponent = styled(Box) `
-  width: 100%;
-`;
-const Accordion = ({ label, clickable = true, heading, children, index, href, linkComponent, setIsOpenMenu, isOpenItem, currentOpen, setCurrentOpen, }) => {
-    const [isOpened, setIsOpened] = useState(false);
-    const { isMobile } = useMatchBreakpoints();
-    useEffect(() => {
-        if (!clickable || isOpenItem) {
-            setCurrentOpen(label);
-        }
-    }, [label, clickable]);
-    useEffect(() => {
-        setIsOpened(clickable ? currentOpen === label : true);
-    }, [currentOpen, clickable]);
-    const onTitleClick = () => {
-        if (!href && clickable) {
-            setCurrentOpen(!isOpened ? label : undefined);
-        }
-        else {
-            setIsOpenMenu(false);
-        }
-    };
-    return (React.createElement(AccordionComponent, { key: `acc-key-${label}` },
-        isMobile && index !== 1 && React.createElement(DropdownMenuDivider, { color: "btnTertiary" }),
-        React.createElement(AccordionTitle, { as: href ? linkComponent : "div", href: href, onClick: onTitleClick }, heading(isOpened)),
-        React.createElement(AccordionBody, { opened: isOpened }, children),
-        isMobile && !index && (React.createElement(Box, { m: "0 -24px 0" },
-            React.createElement(DropdownMenuDivider, { color: "rgba(18, 99, 241, 0.16)" })))));
 };
 
 const MobileCommunityWrapper = styled(Flex) `
