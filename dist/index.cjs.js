@@ -4629,12 +4629,12 @@ const Dropdown = ({ position = exports.DropdownPosition.BOTTOM, maxWidth, minWid
     return (React__default["default"].createElement(Container$1, { maxWidth: maxWidth, minWidth: minWidth, ref: wrapperRef, scale: scale, ...props },
         React__default["default"].createElement(DropdownTop$1, { scale: scale, variant: variant, onClick: toggling, disabled: disabled, className: isOpen ? "open" : disabled ? "disabled" : "" },
             selectedOption.icon &&
-                (selectedOption.icon.isAws ? (React__default["default"].createElement(Image__default["default"], { src: selectedOption.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), quality: 90, alt: "icon" })) : (React__default["default"].createElement(IconComponent$1, { iconName: selectedOption.icon.name, color: selectedOption.icon.color }))),
+                (selectedOption.icon.isAws ? (React__default["default"].createElement("img", { src: selectedOption.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), alt: "icon" })) : (React__default["default"].createElement(IconComponent$1, { iconName: selectedOption.icon.name, color: selectedOption.icon.color }))),
             React__default["default"].createElement(Label$1, null, selectedOption.label),
             React__default["default"].createElement(StyledArrow$1, { className: "arrow", isOpen: isOpen })),
         isOpen && (React__default["default"].createElement(DropdownContent$1, { position: position, scale: scale }, options.map((option) => (React__default["default"].createElement(DropdownItem$1, { scale: scale, selected: option.label === selectedOption.label, onClick: onOptionClicked(option), key: option.label },
             option.icon &&
-                (option.icon.isAws ? (React__default["default"].createElement(Image__default["default"], { src: option.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), quality: 90, alt: "icon" })) : (React__default["default"].createElement(IconComponent$1, { iconName: option.icon.name, color: option.icon.color }))),
+                (option.icon.isAws ? (React__default["default"].createElement("img", { src: option.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), alt: "icon" })) : (React__default["default"].createElement(IconComponent$1, { iconName: option.icon.name, color: option.icon.color }))),
             React__default["default"].createElement("span", null, option.label))))))));
 };
 
@@ -4951,12 +4951,12 @@ const DropdownButton = ({ position = exports.DropdownButtonPositions.BOTTOM, max
     return (React__default["default"].createElement(Container, { maxWidth: maxWidth, minWidth: minWidth, ref: wrapperRef, scale: scale, ...props },
         React__default["default"].createElement(DropdownTop, { scale: scale, variant: variant, onClick: toggling, disabled: disabled, className: isOpen ? "open" : disabled ? "disabled" : "" },
             selectedOption.icon &&
-                (selectedOption.icon.isAws ? (React__default["default"].createElement(Image__default["default"], { src: selectedOption.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), quality: 90, alt: "icon" })) : (React__default["default"].createElement(IconComponent$1, { iconName: selectedOption.icon.name, color: selectedOption.icon.color, mr: getIconMargin(scale) }))),
+                (selectedOption.icon.isAws ? (React__default["default"].createElement("img", { src: selectedOption.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), alt: "icon" })) : (React__default["default"].createElement(IconComponent$1, { iconName: selectedOption.icon.name, color: selectedOption.icon.color, mr: getIconMargin(scale) }))),
             !hideLabel && React__default["default"].createElement("span", null, selectedOption.label),
             variant === exports.DropdownButtonVariants.PRIMARY ? (React__default["default"].createElement(StyledArrowPrimary, { className: "arrow arrow_primary", isOpen: isOpen })) : (React__default["default"].createElement(StyledArrow, { className: "arrow", isOpen: isOpen }))),
         React__default["default"].createElement(DropdownContent, { ref: dropdownMenuRef, height: isOpen ? dropdownMenuRef?.current?.scrollHeight : 0, contentPosition: position, scale: scale, dropDownWidth: dropDownWidth }, options.map((option) => (React__default["default"].createElement(DropdownItem, { scale: scale, selected: option.label === selectedOption.label, onClick: onOptionClicked(option), key: option.label },
             option.icon &&
-                (option.icon.isAws ? (React__default["default"].createElement(Image__default["default"], { src: option.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), alt: "icon" })) : (React__default["default"].createElement(IconComponent$1, { iconName: option.icon.name, color: option.icon.color }))),
+                (option.icon.isAws ? (React__default["default"].createElement("img", { src: option.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), alt: "icon" })) : (React__default["default"].createElement(IconComponent$1, { iconName: option.icon.name, color: option.icon.color }))),
             React__default["default"].createElement("span", null, option.label)))))));
 };
 

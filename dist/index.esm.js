@@ -4613,12 +4613,12 @@ const Dropdown = ({ position = DropdownPosition.BOTTOM, maxWidth, minWidth, scal
     return (React.createElement(Container$1, { maxWidth: maxWidth, minWidth: minWidth, ref: wrapperRef, scale: scale, ...props },
         React.createElement(DropdownTop$1, { scale: scale, variant: variant, onClick: toggling, disabled: disabled, className: isOpen ? "open" : disabled ? "disabled" : "" },
             selectedOption.icon &&
-                (selectedOption.icon.isAws ? (React.createElement(Image$1, { src: selectedOption.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), quality: 90, alt: "icon" })) : (React.createElement(IconComponent$1, { iconName: selectedOption.icon.name, color: selectedOption.icon.color }))),
+                (selectedOption.icon.isAws ? (React.createElement("img", { src: selectedOption.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), alt: "icon" })) : (React.createElement(IconComponent$1, { iconName: selectedOption.icon.name, color: selectedOption.icon.color }))),
             React.createElement(Label$1, null, selectedOption.label),
             React.createElement(StyledArrow$1, { className: "arrow", isOpen: isOpen })),
         isOpen && (React.createElement(DropdownContent$1, { position: position, scale: scale }, options.map((option) => (React.createElement(DropdownItem$1, { scale: scale, selected: option.label === selectedOption.label, onClick: onOptionClicked(option), key: option.label },
             option.icon &&
-                (option.icon.isAws ? (React.createElement(Image$1, { src: option.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), quality: 90, alt: "icon" })) : (React.createElement(IconComponent$1, { iconName: option.icon.name, color: option.icon.color }))),
+                (option.icon.isAws ? (React.createElement("img", { src: option.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), alt: "icon" })) : (React.createElement(IconComponent$1, { iconName: option.icon.name, color: option.icon.color }))),
             React.createElement("span", null, option.label))))))));
 };
 
@@ -4935,12 +4935,12 @@ const DropdownButton = ({ position = Positions.BOTTOM, maxWidth, minWidth, scale
     return (React.createElement(Container, { maxWidth: maxWidth, minWidth: minWidth, ref: wrapperRef, scale: scale, ...props },
         React.createElement(DropdownTop, { scale: scale, variant: variant, onClick: toggling, disabled: disabled, className: isOpen ? "open" : disabled ? "disabled" : "" },
             selectedOption.icon &&
-                (selectedOption.icon.isAws ? (React.createElement(Image$1, { src: selectedOption.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), quality: 90, alt: "icon" })) : (React.createElement(IconComponent$1, { iconName: selectedOption.icon.name, color: selectedOption.icon.color, mr: getIconMargin(scale) }))),
+                (selectedOption.icon.isAws ? (React.createElement("img", { src: selectedOption.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), alt: "icon" })) : (React.createElement(IconComponent$1, { iconName: selectedOption.icon.name, color: selectedOption.icon.color, mr: getIconMargin(scale) }))),
             !hideLabel && React.createElement("span", null, selectedOption.label),
             variant === Variants$9.PRIMARY ? (React.createElement(StyledArrowPrimary, { className: "arrow arrow_primary", isOpen: isOpen })) : (React.createElement(StyledArrow, { className: "arrow", isOpen: isOpen }))),
         React.createElement(DropdownContent, { ref: dropdownMenuRef, height: isOpen ? dropdownMenuRef?.current?.scrollHeight : 0, contentPosition: position, scale: scale, dropDownWidth: dropDownWidth }, options.map((option) => (React.createElement(DropdownItem, { scale: scale, selected: option.label === selectedOption.label, onClick: onOptionClicked(option), key: option.label },
             option.icon &&
-                (option.icon.isAws ? (React.createElement(Image$1, { src: option.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), alt: "icon" })) : (React.createElement(IconComponent$1, { iconName: option.icon.name, color: option.icon.color }))),
+                (option.icon.isAws ? (React.createElement("img", { src: option.icon.name, width: scaleVariantsImage(scale), height: scaleVariantsImage(scale), alt: "icon" })) : (React.createElement(IconComponent$1, { iconName: option.icon.name, color: option.icon.color }))),
             React.createElement("span", null, option.label)))))));
 };
 

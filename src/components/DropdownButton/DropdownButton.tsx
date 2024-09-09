@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import Image from "next/image";
 import styled from "styled-components";
 import { variant as systemVariant, space } from "styled-system";
 
@@ -216,11 +215,10 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
       >
         {selectedOption.icon &&
           (selectedOption.icon.isAws ? (
-            <Image
+            <img
               src={selectedOption.icon.name}
               width={scaleVariantsImage(scale)}
               height={scaleVariantsImage(scale)}
-              quality={90}
               alt="icon"
             />
           ) : (
@@ -253,7 +251,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
           >
             {option.icon &&
               (option.icon.isAws ? (
-                <Image
+                <img
                   src={option.icon.name}
                   width={scaleVariantsImage(scale)}
                   height={scaleVariantsImage(scale)}
