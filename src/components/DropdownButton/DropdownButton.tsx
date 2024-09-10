@@ -180,15 +180,15 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
     }
   };
 
-  const scaleVariantsImage = (scaleItem: Scales): number => {
+  const scaleVariantsImage = (scaleItem: Scales): string => {
     switch (scaleItem) {
       case Scales.LG:
-        return 24;
+        return "24px";
       case Scales.MD:
-        return 20;
+        return "20px";
       case Scales.SM:
       default:
-        return 16;
+        return "16px";
     }
   };
 

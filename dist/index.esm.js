@@ -4913,12 +4913,12 @@ const DropdownButton = ({ position = Positions.BOTTOM, maxWidth, minWidth, scale
     const scaleVariantsImage = (scaleItem) => {
         switch (scaleItem) {
             case Scales$6.LG:
-                return 24;
+                return "24px";
             case Scales$6.MD:
-                return 20;
+                return "20px";
             case Scales$6.SM:
             default:
-                return 16;
+                return "16px";
         }
     };
     const getIconMargin = (scaleItem) => {
