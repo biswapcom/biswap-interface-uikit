@@ -80,7 +80,7 @@ const Toast: FC<ToastProps> = ({
   viewBscScanLabel,
   ...props
 }) => {
-  const { description, type, title, tweeterDescription, hash, scanLink, url, withGift } = toast;
+  const { description, type, title, tweeterDescription, scanLink, url, withGift } = toast;
   const isExtensionConflict = type === Types.EXTENSIONS_CONFLICT;
 
   return (
@@ -100,9 +100,9 @@ const Toast: FC<ToastProps> = ({
         )}
         <Alert progress={progress} title={title} variant={alertTypeMap[type]} onClick={handleRemove}>
           <Box>
-            {hash && (
+            {scanLink && (
               <LinkWrapper>
-                <LinkStyles target="_blank" href={`${scanLink}${hash}`}>
+                <LinkStyles target="_blank" href={`${scanLink}`}>
                   {viewBscScanLabel}
                 </LinkStyles>
                 <ArrowUpForwardIcon width="18px" height="18px" ml="6px" color="primary" />

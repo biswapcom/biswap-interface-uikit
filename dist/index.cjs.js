@@ -9490,7 +9490,7 @@ const LinkStyles = styled__default["default"].a `
 `;
 const ActionContainer = styled__default["default"](Box).attrs({ width: "100%" }) ``;
 const Toast = ({ removeButtonPosition = 60, clearAll, toast, style, handleMouseEnter, handleMouseLeave, handleRemove, progress, clearAllLabel, viewBscScanLabel, ...props }) => {
-    const { description, type, title, tweeterDescription, hash, scanLink, url, withGift } = toast;
+    const { description, type, title, tweeterDescription, scanLink, url, withGift } = toast;
     const isExtensionConflict = type === Types.EXTENSIONS_CONFLICT;
     return (React__default["default"].createElement(reactTransitionGroup.CSSTransition, { timeout: 250, style: style, ...props },
         React__default["default"].createElement(StyledToast$1, { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave },
@@ -9498,8 +9498,8 @@ const Toast = ({ removeButtonPosition = 60, clearAll, toast, style, handleMouseE
                 React__default["default"].createElement(Text, { p: "0 8px", fontSize: "12px", color: "dark" }, clearAllLabel))),
             React__default["default"].createElement(Alert, { progress: progress, title: title, variant: alertTypeMap[type], onClick: handleRemove },
                 React__default["default"].createElement(Box, null,
-                    hash && (React__default["default"].createElement(LinkWrapper, null,
-                        React__default["default"].createElement(LinkStyles, { target: "_blank", href: `${scanLink}${hash}` }, viewBscScanLabel),
+                    scanLink && (React__default["default"].createElement(LinkWrapper, null,
+                        React__default["default"].createElement(LinkStyles, { target: "_blank", href: `${scanLink}` }, viewBscScanLabel),
                         React__default["default"].createElement(Icon$3r, { width: "18px", height: "18px", ml: "6px", color: "primary" }))),
                     description && (React__default["default"].createElement(Text, { color: isExtensionConflict ? "gray900" : "#6B7D98", fontSize: "12px", as: "p", mb: isExtensionConflict ? "0" : "8px" }, description)),
                     tweeterDescription && (React__default["default"].createElement(ActionContainer, null,
