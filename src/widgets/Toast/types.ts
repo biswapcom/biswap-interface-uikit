@@ -17,6 +17,7 @@ export interface Toast {
   hash?: string;
   url?: string;
   withGift?: boolean;
+  scanLink?: string;
 }
 
 export interface ColoredToastProps {
