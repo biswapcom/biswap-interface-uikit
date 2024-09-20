@@ -14,9 +14,9 @@ export interface Toast {
   title: string;
   description?: any;
   tweeterDescription?: string;
-  hash?: string;
   url?: string;
   withGift?: boolean;
+  scanLink?: string;
 }
 
 export interface ColoredToastProps {
