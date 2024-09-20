@@ -9474,7 +9474,7 @@ const LinkStyles = styled.a `
 `;
 const ActionContainer = styled(Box).attrs({ width: "100%" }) ``;
 const Toast = ({ removeButtonPosition = 60, clearAll, toast, style, handleMouseEnter, handleMouseLeave, handleRemove, progress, clearAllLabel, viewBscScanLabel, ...props }) => {
-    const { description, type, title, tweeterDescription, hash, url, withGift } = toast;
+    const { description, type, title, tweeterDescription, scanLink, url, withGift } = toast;
     const isExtensionConflict = type === Types.EXTENSIONS_CONFLICT;
     return (React.createElement(CSSTransition, { timeout: 250, style: style, ...props },
         React.createElement(StyledToast$1, { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave },
@@ -9482,8 +9482,8 @@ const Toast = ({ removeButtonPosition = 60, clearAll, toast, style, handleMouseE
                 React.createElement(Text, { p: "0 8px", fontSize: "12px", color: "dark" }, clearAllLabel))),
             React.createElement(Alert, { progress: progress, title: title, variant: alertTypeMap[type], onClick: handleRemove },
                 React.createElement(Box, null,
-                    hash && (React.createElement(LinkWrapper, null,
-                        React.createElement(LinkStyles, { target: "_blank", href: `https://bscscan.com/tx/${hash}` }, viewBscScanLabel),
+                    scanLink && (React.createElement(LinkWrapper, null,
+                        React.createElement(LinkStyles, { target: "_blank", href: `${scanLink}` }, viewBscScanLabel),
                         React.createElement(Icon$3r, { width: "18px", height: "18px", ml: "6px", color: "primary" }))),
                     description && (React.createElement(Text, { color: isExtensionConflict ? "gray900" : "#6B7D98", fontSize: "12px", as: "p", mb: isExtensionConflict ? "0" : "8px" }, description)),
                     tweeterDescription && (React.createElement(ActionContainer, null,
