@@ -7410,6 +7410,8 @@ const ModalContainer = styled(Box) `
   width: ${({ width }) => width ?? "100%"};
   z-index: ${({ theme }) => theme.zIndices.modal};
   border-radius: 16px 16px 0 0;
+  position: absolute;
+  bottom: 0;
   ${({ walletModal }) => !walletModal &&
     `
     max-height: 100vh;
@@ -7421,6 +7423,8 @@ const ModalContainer = styled(Box) `
     min-width: ${({ minWidth }) => minWidth};
     max-width: 100%;
     border-radius: 16px;
+    position: static;
+    bottom: auto;
   }
 `;
 
