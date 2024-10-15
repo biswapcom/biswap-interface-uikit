@@ -4541,6 +4541,9 @@ const DropdownTop$1 = styled__default["default"](Flex) `
 `;
 const Label$1 = styled__default["default"].span `
   flex-grow: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 const StyledArrow$1 = styled__default["default"](Icon$3F) `
   transition: transform 0.4s ease-in-out;
@@ -7456,7 +7459,9 @@ function useModalV2() {
         setIsOpen,
     };
 }
-function ModalV2({ isOpen, onDismiss, closeOnOverlayClick, children, disableOutsidePointerEvents = false, ...props }) {
+function ModalV2({ isOpen, onDismiss, closeOnOverlayClick, children,
+// ...props // todo add usage if InjectedProps, BoxProps are needed
+ }) {
     const handleOverlayDismiss = (e) => {
         e.stopPropagation();
         e.preventDefault();

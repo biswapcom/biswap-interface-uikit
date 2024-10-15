@@ -75,6 +75,9 @@ const DropdownTop = styled(Flex)<{
 
 const Label = styled.span`
   flex-grow: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 const StyledArrow = styled(ChevronDown)<{ isOpen: boolean }>`

@@ -30,7 +30,6 @@ export interface ModalV2Props extends InjectedProps, BoxProps {
     isOpen?: boolean;
     closeOnOverlayClick?: boolean;
     children?: ReactNode;
-    disableOutsidePointerEvents?: boolean;
 }
 export interface IUseModalV2 extends InjectedProps {
     onOpen: () => void;
