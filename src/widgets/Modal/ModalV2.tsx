@@ -36,6 +36,7 @@ export function ModalV2({
   onDismiss,
   closeOnOverlayClick,
   children,
+  // ...props // todo add usage if InjectedProps, BoxProps are needed
 }: ModalV2Props): ReactElement {
   const handleOverlayDismiss = (e: any) => {
     e.stopPropagation();

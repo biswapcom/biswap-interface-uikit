@@ -7459,7 +7459,9 @@ function useModalV2() {
         setIsOpen,
     };
 }
-function ModalV2({ isOpen, onDismiss, closeOnOverlayClick, children, }) {
+function ModalV2({ isOpen, onDismiss, closeOnOverlayClick, children,
+// ...props // todo add usage if InjectedProps, BoxProps are needed
+ }) {
     const handleOverlayDismiss = (e) => {
         e.stopPropagation();
         e.preventDefault();
