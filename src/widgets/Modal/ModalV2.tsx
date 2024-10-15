@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useState } from "react";
+import React, { createContext, ReactElement, useCallback, useState } from "react";
 import { createPortal } from "react-dom";
 
 // components
@@ -36,9 +36,7 @@ export function ModalV2({
   onDismiss,
   closeOnOverlayClick,
   children,
-  disableOutsidePointerEvents = false,
-  ...props
-}: ModalV2Props) {
+}: ModalV2Props): ReactElement {
   const handleOverlayDismiss = (e: any) => {
     e.stopPropagation();
     e.preventDefault();
