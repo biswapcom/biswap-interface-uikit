@@ -371,31 +371,31 @@ export const socials = [
   },
 ];
 
-export const BSWPriceLabel = "BSW";
+export const BSWPriceLabel = "BSW Price";
 export const BSWPriceValue = 1234.947;
 
-export const footerStatistic = [
-  {
-    label: "Max supply:",
-    value: 600000000,
-  },
-  {
-    label: "Total supply:",
-    value: 10000000,
-  },
-  {
-    label: "Circulating supply:",
-    value: 600000000,
-  },
-  {
-    label: "Total Burned:",
-    value: 600000000,
-  },
-  {
-    label: "Market Cap:",
-    value: 1600000000,
-  },
-];
+// export const footerStatistic = [
+//   {
+//     label: "Max supply:",
+//     value: 600000000,
+//   },
+//   {
+//     label: "Total supply:",
+//     value: 10000000,
+//   },
+//   {
+//     label: "Circulating supply:",
+//     value: 600000000,
+//   },
+//   {
+//     label: "Total Burned:",
+//     value: 600000000,
+//   },
+//   {
+//     label: "Market Cap:",
+//     value: 1600000000,
+//   },
+// ];
 
 export const socialLinks = {
   title: "Community",
@@ -428,6 +428,70 @@ export const aboutLinks = {
   ],
 };
 
+export const moreLinks = {
+  title: "More",
+  links: [
+    {
+      label: "Voting",
+      href: "/",
+    },
+    {
+      label: "Charity",
+      href: "/",
+    },
+    {
+      label: "Marketplace",
+      href: "/",
+    },
+    {
+      label: "Limit Order",
+      href: "/",
+    },
+    {
+      label: "Liquid Staking",
+      href: "/",
+    },
+    {
+      label: "Competitions",
+      href: "/",
+    },
+    {
+      label: "Prediction",
+      href: "/",
+    },
+  ],
+};
+
+export const infoLinks = {
+  title: "Info",
+  links: [
+    {
+      label: "Terms of Use",
+      href: "/",
+    },
+    {
+      label: "Privacy Policy",
+      href: "/",
+    },
+    {
+      label: "Cookies",
+      href: "/",
+    },
+    {
+      label: "Marketplace",
+      href: "/",
+    },
+    {
+      label: "IDO",
+      href: "/",
+    },
+    {
+      label: "About BSW",
+      href: "/",
+    },
+  ],
+};
+
 export const productLinks = {
   title: "Features",
   links: [
@@ -446,10 +510,6 @@ export const productLinks = {
     {
       label: "Launchpools",
       href: `/pools`,
-    },
-    {
-      label: "Multi-Reward Pool",
-      href: `/multireward_pool`,
     },
     {
       label: "Fixed Staking",

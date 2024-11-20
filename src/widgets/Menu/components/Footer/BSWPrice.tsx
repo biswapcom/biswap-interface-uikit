@@ -2,47 +2,31 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 // components
-import { Text } from "../../../../components/Text";
+import { BodyText, BodyTextTags, Scales } from "../../../../components/Typography";
 import { BswIcon } from "../../../../components/Svg";
-import { Grid } from "../../../../components/Box";
+import { Flex, Box } from "../../../../components/Box";
 
 // types
 import { BSWPriceProps } from "../../types";
 
-const Wrapper = styled(Grid)`
-  position: relative;
-  grid-template-columns: 38px 1fr;
-  grid-template-areas:
-    "logo bsw-title"
-    "logo bsw-value";
-  grid-column-gap: 8px;
-  width: 140px;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    width: 120px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.xll} {
-    grid-column-gap: 16px;
-  }
-
-  .logo {
-    width: 38px;
-    grid-area: logo;
-  }
+const Test = styled.span`
+  font-size: 16px;
+  font-weight: 600;
 `;
 
 const BSWPrice: FC<BSWPriceProps> = ({ BSWPriceLabel, BSWPriceValue }) => {
   return (
-    <Wrapper>
-      <BswIcon width="38px" className="logo" />
-      <Text color="gray900" fontSize="12px" lineHeight="18px" bold>
-        {BSWPriceLabel}
-      </Text>
-      <Text color="contrast" fontSize="16px" lineHeight="19px" bold>
-        {BSWPriceValue}
-      </Text>
-    </Wrapper>
+    <Flex mr="24px">
+      <BswIcon width="40px" />
+      <Box ml="8px">
+        <BodyText color="gray900" as={BodyTextTags.P} scale={Scales.SIZE16} bold>
+          {BSWPriceLabel}
+        </BodyText>
+        <BodyText color="gray100" as={BodyTextTags.P} scale={Scales.SIZE24} bold>
+          {BSWPriceValue}
+        </BodyText>
+      </Box>
+    </Flex>
   );
 };
 

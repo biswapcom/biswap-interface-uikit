@@ -4,9 +4,9 @@ import styled, { DefaultTheme } from "styled-components";
 
 // components
 import { Flex } from "../../components/Box";
-import Footer from "./components/Footer/Footer";
 import { MenuItems } from "../../components/MenuItems";
 import Logo from "./components/Logo";
+import Footer from "./components/Footer/Footer";
 
 // context
 import { MenuContext } from "./context";
@@ -109,10 +109,11 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
   children,
   BSWPriceLabel,
   BSWPriceValue,
-  footerStatistic,
   registerToken,
   buyBswHandler,
   aboutLinks,
+  moreLinks,
+  infoLinks,
   productLinks,
   serviceLinks,
   socialLinks,
@@ -212,10 +213,11 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
                 <Footer
                   BSWPriceLabel={BSWPriceLabel}
                   BSWPriceValue={BSWPriceValue}
-                  footerStatistic={footerStatistic}
                   registerToken={registerToken}
                   buyBswHandler={buyBswHandler}
                   aboutLinks={aboutLinks}
+                  moreLinks={moreLinks}
+                  infoLinks={infoLinks}
                   productLinks={productLinks}
                   serviceLinks={serviceLinks}
                   socialLinks={socialLinks}

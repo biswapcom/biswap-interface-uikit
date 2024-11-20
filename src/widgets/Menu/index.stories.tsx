@@ -18,8 +18,9 @@ import {
   aboutLinks,
   BSWPriceLabel,
   BSWPriceValue,
-  footerStatistic,
+  infoLinks,
   links,
+  moreLinks,
   productLinks,
   serviceLinks,
   socialLinks,
@@ -155,7 +156,7 @@ const ConnectedTemplate: FC<NavProps> = (args) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [bannerHeight, setBannerHeight] = useState<number>(0);
 
-  const renderContent = Array.from({ length: 30 }, (v, i) => i).map((el) => (
+  const renderContent = Array.from({ length: 1 }, (v, i) => i).map((el) => (
     <Text as="p" mt="32px" key={el}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
       magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -177,19 +178,20 @@ const ConnectedTemplate: FC<NavProps> = (args) => {
           {...args}
           BSWPriceLabel={BSWPriceLabel}
           BSWPriceValue={BSWPriceValue}
-          footerStatistic={footerStatistic}
           registerToken={noop}
           aboutLinks={aboutLinks}
+          moreLinks={moreLinks}
+          infoLinks={infoLinks}
           productLinks={productLinks}
           socialLinks={socialLinks}
           serviceLinks={serviceLinks}
-          buyBswLabel={"Buy bsdt"}
+          buyBswLabel={"Buy BSW"}
           mobileLangSelector={Dropdown}
           banner={(setHeight?: (s: boolean) => void) => (
             <Banner setHeight={setHeight} setBannerHeight={setBannerHeight} />
           )}
         >
-          <ContentWrap pt={`${bannerHeight + 116}px`} pb="32px" px="24px" background="#071C3C">
+          <ContentWrap pt={`${bannerHeight + 116}px`} pb="32px" px="24px" background="#030811">
             <Text bold fontSize="24px" as="h1" mb="8px" color="white">
               Page body
             </Text>
@@ -221,9 +223,10 @@ export const WithSubmenuSelected: FC<NavProps> = (args) => {
         {...args}
         BSWPriceLabel={BSWPriceLabel}
         BSWPriceValue={BSWPriceValue}
-        footerStatistic={footerStatistic}
         registerToken={noop}
         aboutLinks={aboutLinks}
+        moreLinks={moreLinks}
+        infoLinks={infoLinks}
         productLinks={productLinks}
         socialLinks={socialLinks}
         serviceLinks={serviceLinks}
@@ -239,7 +242,7 @@ export const WithSubmenuSelected: FC<NavProps> = (args) => {
             href: "/",
           },
         ]}
-        buyBswLabel={"Buy bsdt"}
+        buyBswLabel={"Buy BSW"}
       >
         <div style={{ paddingTop: "72px" }}>
           <HeadText as={HeadTextTags.H1} mb="8px" bold>
