@@ -9222,7 +9222,7 @@ const getBackground = ({ theme, menuBg, isMobileMenuOpened, }) => {
     if (isMobileMenuOpened)
         return theme.colors.white;
     if (menuBg && !isMobileMenuOpened)
-        return theme.nav.background;
+        return theme.colors.black;
     return "transparent";
 };
 const StyledNav = styled__default["default"].nav `
