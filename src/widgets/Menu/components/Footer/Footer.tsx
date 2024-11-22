@@ -40,16 +40,16 @@ interface Props
 
 const Wrapper = styled.footer`
   background: ${({ theme }) => theme.colors.dark900};
-  padding: 56px 16px 24px;
+  padding: 56px 0 24px;
   transition: padding-left 0.2s;
   z-index: 10;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    padding: 56px 24px 24px;
+    padding: 56px 0 24px;
   }
 
   ${({ theme }) => theme.mediaQueries.md} {
-    padding: 56px 64px;
+    padding: 56px 0;
   }
 `;
 
@@ -60,7 +60,15 @@ const FooterTop = styled(Grid)`
   justify-content: space-between;
   max-width: 1440px;
   margin: 0 auto;
-  padding-bottom: 48px;
+  padding: 0 16px 48px;
+
+    ${({ theme }) => theme.mediaQueries.sm} {
+        padding: 0 24px 48px;
+    }
+
+    ${({ theme }) => theme.mediaQueries.md} {
+        padding: 0 64px 48px;
+    }
 `;
 
 const SocialWrap = styled.div`
@@ -72,6 +80,7 @@ const FooterBottom = styled(Flex)`
   justify-content: space-between;
   max-width: 1440px;
   margin: 0 auto;
+  padding: 0 64px 48px;
 `;
 
 const Footer: FC<Props> = ({

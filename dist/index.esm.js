@@ -9128,16 +9128,16 @@ const Audit = ({ marketplaceLink, baseAwsUrl }) => {
 
 const Wrapper$1 = styled.footer `
   background: ${({ theme }) => theme.colors.dark900};
-  padding: 56px 16px 24px;
+  padding: 56px 0 24px;
   transition: padding-left 0.2s;
   z-index: 10;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    padding: 56px 24px 24px;
+    padding: 56px 0 24px;
   }
 
   ${({ theme }) => theme.mediaQueries.md} {
-    padding: 56px 64px;
+    padding: 56px 0;
   }
 `;
 const FooterTop = styled(Grid) `
@@ -9147,7 +9147,15 @@ const FooterTop = styled(Grid) `
   justify-content: space-between;
   max-width: 1440px;
   margin: 0 auto;
-  padding-bottom: 48px;
+  padding: 0 16px 48px;
+
+    ${({ theme }) => theme.mediaQueries.sm} {
+        padding: 0 24px 48px;
+    }
+
+    ${({ theme }) => theme.mediaQueries.md} {
+        padding: 0 64px 48px;
+    }
 `;
 const SocialWrap = styled.div `
   width: 260px;
@@ -9157,6 +9165,7 @@ const FooterBottom = styled(Flex) `
   justify-content: space-between;
   max-width: 1440px;
   margin: 0 auto;
+  padding: 0 64px 48px;
 `;
 const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, moreLinks, infoLinks, productLinks, serviceLinks, buyBswHandler, socialLinks, marketplaceLink, baseAwsUrl, buyBswLabel, }) => {
     return (React.createElement(Wrapper$1, null,
