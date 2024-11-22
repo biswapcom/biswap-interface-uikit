@@ -116,6 +116,11 @@ export type Colors = {
   secondaryOpacity: string;
   primaryOpacity: string;
   warningOpacity: string;
+
+  //newColors
+  blue: string;
+  wineRed: string;
+  black: string;
 };
 
 export type ZIndices = {

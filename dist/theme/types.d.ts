@@ -91,6 +91,9 @@ export type Colors = {
     secondaryOpacity: string;
     primaryOpacity: string;
     warningOpacity: string;
+    blue: string;
+    wineRed: string;
+    black: string;
 };
 export type ZIndices = {
     dropdown: number;
