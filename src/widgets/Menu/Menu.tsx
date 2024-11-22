@@ -58,7 +58,7 @@ const StyledNav = styled.nav<{ menuBg: boolean; isMobileMenuOpened: boolean }>`
   padding-right: 16px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    background-color: ${({ theme, menuBg }) => (menuBg ? theme.nav.background : "transparent")};
+    background-color: ${({ theme, menuBg }) => (menuBg ? theme.colors.black : "transparent")};
   }
 `;
 

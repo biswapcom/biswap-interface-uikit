@@ -9221,7 +9221,7 @@ const StyledNav = styled.nav `
   padding-right: 16px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    background-color: ${({ theme, menuBg }) => (menuBg ? theme.nav.background : "transparent")};
+    background-color: ${({ theme, menuBg }) => (menuBg ? theme.colors.black : "transparent")};
   }
 `;
 const FixedContainer = styled.div.attrs({
