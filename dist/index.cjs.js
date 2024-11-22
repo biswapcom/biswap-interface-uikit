@@ -2810,17 +2810,24 @@ const badgeSpecialColors = {
     primaryOpacity: "rgba(18, 99, 241, 0.16)",
     warningOpacity: "rgba(255, 205, 28, 0.16)",
 };
+const newColors = {
+    blue: "#377EF7",
+    wineRed: "#A8102B",
+    black: "#030811"
+};
 const lightColors = {
     ...baseColors,
     ...additionalColors,
     ...brandColors,
     ...badgeSpecialColors,
+    ...newColors,
 };
 const darkColors = {
     ...baseColors,
     ...additionalColors,
     ...brandColors,
     ...badgeSpecialColors,
+    ...newColors,
 };
 
 const light$5 = {
