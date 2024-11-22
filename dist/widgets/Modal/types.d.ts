@@ -3,36 +3,36 @@ import { BoxProps, FlexProps } from "../../components/Box";
 import { HeadingScales } from "../../components/Heading";
 import { ResponsiveValueType } from "../../util";
 export interface ModalTheme {
-  background: string;
+    background: string;
 }
 export type Handler = () => void;
 export interface InjectedProps {
-  onDismiss?: Handler;
+    onDismiss?: Handler;
 }
 export interface ModalProps extends InjectedProps, BoxProps {
-  title?: string;
-  hideCloseButton?: boolean;
-  onBack?: () => void;
-  hideOnBack?: boolean;
-  bodyPadding?: string;
-  headerPadding?: ResponsiveValueType;
-  minWidth?: string;
-  maxWidth?: string;
-  modalBackground?: string;
-  closeBtnColor?: string;
-  titleSize?: HeadingScales;
-  walletModal?: boolean;
-  modalBodyProps?: FlexProps;
-  titleColor?: string;
-  hideHeader?: boolean;
+    title?: string;
+    hideCloseButton?: boolean;
+    onBack?: () => void;
+    hideOnBack?: boolean;
+    bodyPadding?: string;
+    headerPadding?: ResponsiveValueType;
+    minWidth?: string;
+    maxWidth?: string;
+    modalBackground?: string;
+    closeBtnColor?: string;
+    titleSize?: HeadingScales;
+    walletModal?: boolean;
+    modalBodyProps?: FlexProps;
+    titleColor?: string;
+    hideHeader?: boolean;
 }
 export interface ModalV2Props extends InjectedProps, BoxProps {
-  isOpen?: boolean;
-  closeOnOverlayClick?: boolean;
-  children?: ReactNode;
+    isOpen?: boolean;
+    closeOnOverlayClick?: boolean;
+    children?: ReactNode;
 }
 export interface IUseModalV2 extends InjectedProps {
-  onOpen: () => void;
-  isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
+    onOpen: () => void;
+    isOpen: boolean;
+    setIsOpen: Dispatch<SetStateAction<boolean>>;
 }

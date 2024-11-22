@@ -4,7 +4,6 @@ export interface CommunityProps {
     baseAwsUrl: string;
     iconSize?: string;
     menuVariant?: boolean;
-    title?: string;
     isFooter?: boolean;
     socialLinks?: SocialLinks;
 }
