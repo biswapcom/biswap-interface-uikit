@@ -38,6 +38,10 @@ export const headTextScaleMap = {
     fontSize: "20px",
     lineHeight: "28px",
   },
+  [Scales.SIZE18]: {
+    fontSize: "18px",
+    lineHeight: "24px",
+  },
   [Scales.SIZE16]: {
     fontSize: "16px",
     lineHeight: "24px",

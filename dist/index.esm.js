@@ -3280,6 +3280,7 @@ var Scales$7;
     Scales["SIZE32"] = "size32";
     Scales["SIZE24"] = "size24";
     Scales["SIZE20"] = "size20";
+    Scales["SIZE18"] = "size18";
     Scales["SIZE16"] = "size16";
     Scales["SIZE14"] = "size14";
     Scales["SIZE12"] = "size12";
@@ -3314,6 +3315,10 @@ const headTextScaleMap = {
     [Scales$7.SIZE20]: {
         fontSize: "20px",
         lineHeight: "28px",
+    },
+    [Scales$7.SIZE18]: {
+        fontSize: "18px",
+        lineHeight: "24px",
     },
     [Scales$7.SIZE16]: {
         fontSize: "16px",
@@ -3382,6 +3387,10 @@ const bodyTextScaleMap = {
     },
     [Scales$7.SIZE16]: {
         fontSize: "16px",
+        lineHeight: "24px",
+    },
+    [Scales$7.SIZE18]: {
+        fontSize: "18px",
         lineHeight: "24px",
     },
     [Scales$7.SIZE14]: {

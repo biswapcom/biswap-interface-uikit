@@ -25,6 +25,7 @@ export declare enum Scales {
     SIZE32 = "size32",
     SIZE24 = "size24",
     SIZE20 = "size20",
+    SIZE18 = "size18",
     SIZE16 = "size16",
     SIZE14 = "size14",
     SIZE12 = "size12",

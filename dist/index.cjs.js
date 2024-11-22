@@ -3296,6 +3296,7 @@ exports.Scales = void 0;
     Scales["SIZE32"] = "size32";
     Scales["SIZE24"] = "size24";
     Scales["SIZE20"] = "size20";
+    Scales["SIZE18"] = "size18";
     Scales["SIZE16"] = "size16";
     Scales["SIZE14"] = "size14";
     Scales["SIZE12"] = "size12";
@@ -3330,6 +3331,10 @@ const headTextScaleMap = {
     [exports.Scales.SIZE20]: {
         fontSize: "20px",
         lineHeight: "28px",
+    },
+    [exports.Scales.SIZE18]: {
+        fontSize: "18px",
+        lineHeight: "24px",
     },
     [exports.Scales.SIZE16]: {
         fontSize: "16px",
@@ -3398,6 +3403,10 @@ const bodyTextScaleMap = {
     },
     [exports.Scales.SIZE16]: {
         fontSize: "16px",
+        lineHeight: "24px",
+    },
+    [exports.Scales.SIZE18]: {
+        fontSize: "18px",
         lineHeight: "24px",
     },
     [exports.Scales.SIZE14]: {

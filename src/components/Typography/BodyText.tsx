@@ -49,6 +49,10 @@ export const bodyTextScaleMap: ScalesMap = {
     fontSize: "16px",
     lineHeight: "24px",
   },
+  [Scales.SIZE18]: {
+    fontSize: "18px",
+    lineHeight: "24px",
+  },
   [Scales.SIZE14]: {
     fontSize: "14px",
     lineHeight: "20px",

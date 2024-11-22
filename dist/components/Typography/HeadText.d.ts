@@ -28,6 +28,10 @@ export declare const headTextScaleMap: {
         fontSize: string;
         lineHeight: string;
     };
+    size18: {
+        fontSize: string;
+        lineHeight: string;
+    };
     size16: {
         fontSize: string;
         lineHeight: string;
