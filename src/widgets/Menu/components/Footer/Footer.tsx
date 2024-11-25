@@ -62,13 +62,13 @@ const FooterTop = styled(Grid)`
   margin: 0 auto;
   padding: 0 16px 48px;
 
-    ${({ theme }) => theme.mediaQueries.sm} {
-        padding: 0 24px 48px;
-    }
+  ${({ theme }) => theme.mediaQueries.sm} {
+    padding: 0 24px 48px;
+  }
 
-    ${({ theme }) => theme.mediaQueries.md} {
-        padding: 0 64px 48px;
-    }
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding: 0 64px 48px;
+  }
 `;
 
 const SocialWrap = styled.div`
