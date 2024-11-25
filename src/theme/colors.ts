@@ -95,8 +95,8 @@ export const badgeSpecialColors = {
 export const newColors = {
   blue: "#377EF7",
   wineRed: "#A8102B",
-  black: "#030811"
-}
+  black: "#030811",
+};
 
 export const lightColors: Colors = {
   ...baseColors,
