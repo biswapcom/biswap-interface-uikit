@@ -31,6 +31,7 @@ export { default as ChevronRightTripleIcon } from "./Icons/Arrows/ChevronRightTr
 export { default as SwapArrowIcon } from "./Icons/Arrows/SwapArrow";
 export { default as CrownIcon } from "./Icons/Arrows/CrownIcon";
 export { default as UpwardArrowIcon } from "./Icons/Arrows/UpwardArrowIcon";
+export { default as ChevronSlimRightIcon } from "./Icons/Arrows/ChevronSlimRight";
 
 //PLUS
 export { default as PlusIcon } from "./Icons/Plus/Plus";
