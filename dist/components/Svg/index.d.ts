@@ -28,6 +28,7 @@ export { default as ChevronRightTripleIcon } from "./Icons/Arrows/ChevronRightTr
 export { default as SwapArrowIcon } from "./Icons/Arrows/SwapArrow";
 export { default as CrownIcon } from "./Icons/Arrows/CrownIcon";
 export { default as UpwardArrowIcon } from "./Icons/Arrows/UpwardArrowIcon";
+export { default as ChevronSlimRightIcon } from "./Icons/Arrows/ChevronSlimRight";
 export { default as PlusIcon } from "./Icons/Plus/Plus";
 export { default as PlusCircleSolidIcon } from "./Icons/Plus/PlusCircleSolid";
 export { default as PlusCircleOpacityIcon } from "./Icons/Plus/PlusCircleOpacity";
