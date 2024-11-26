@@ -2966,7 +2966,7 @@ const ResetCSS = createGlobalStyle `
 
   /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
   }
   ::-webkit-scrollbar-thumb {
     background: ${({ theme }) => theme.colors.pastelBlue}; 
