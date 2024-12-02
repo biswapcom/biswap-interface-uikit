@@ -21,10 +21,14 @@ export enum BodyTextTags {
 }
 
 export enum Scales {
+  SIZE72 = "size72",
+  SIZE64 = "size64",
+  SIZE56 = "size56",
   SIZE40 = "size40",
   SIZE32 = "size32",
   SIZE24 = "size24",
   SIZE20 = "size20",
+  SIZE18 = "size18",
   SIZE16 = "size16",
   SIZE14 = "size14",
   SIZE12 = "size12",

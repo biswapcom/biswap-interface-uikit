@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { BSWPriceProps, FooterStatisticProps, FooterAboutLinks, FooterProductLinks, FooterServiceLinks, FooterSocialLinks } from "../../types";
-interface Props extends BSWPriceProps, FooterStatisticProps, FooterAboutLinks, FooterProductLinks, FooterSocialLinks, FooterServiceLinks {
+import { BSWPriceProps, FooterAboutLinks, FooterMoreLinks, FooterInfoPagesLinks, FooterProductLinks, FooterServiceLinks, FooterSocialLinks } from "../../types";
+interface Props extends BSWPriceProps, FooterAboutLinks, FooterMoreLinks, FooterInfoPagesLinks, FooterProductLinks, FooterSocialLinks, FooterServiceLinks {
     registerToken: () => void;
     buyBswHandler: () => void;
     marketplaceLink?: string;

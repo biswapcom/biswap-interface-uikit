@@ -10,6 +10,18 @@ import { type HeadTextProps, HeadTextTags, Scales } from "./types";
 import { breakpointsKeys } from "../../theme/base";
 
 export const headTextScaleMap = {
+  [Scales.SIZE72]: {
+    fontSize: "72px",
+    lineHeight: "88px",
+  },
+  [Scales.SIZE64]: {
+    fontSize: "64px",
+    lineHeight: "80px",
+  },
+  [Scales.SIZE56]: {
+    fontSize: "56px",
+    lineHeight: "64px",
+  },
   [Scales.SIZE40]: {
     fontSize: "40px",
     lineHeight: "48px",
@@ -25,6 +37,10 @@ export const headTextScaleMap = {
   [Scales.SIZE20]: {
     fontSize: "20px",
     lineHeight: "28px",
+  },
+  [Scales.SIZE18]: {
+    fontSize: "18px",
+    lineHeight: "24px",
   },
   [Scales.SIZE16]: {
     fontSize: "16px",

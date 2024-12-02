@@ -4,8 +4,9 @@ import styled from "styled-components";
 // types
 import {
   BSWPriceProps,
-  FooterStatisticProps,
   FooterAboutLinks,
+  FooterMoreLinks,
+  FooterInfoPagesLinks,
   FooterProductLinks,
   FooterServiceLinks,
   FooterSocialLinks,
@@ -14,16 +15,19 @@ import {
 // components
 import FooterInfo from "./FoolerInfo";
 import About from "./About";
+import More from "./More";
+import Info from "./Info";
 import Product from "./Product";
 import Service from "./Service";
 import Community from "./Community";
 import Audit from "./Audit";
-import { Grid } from "../../../../components/Box";
+import { Flex, Grid } from "../../../../components/Box";
 
 interface Props
   extends BSWPriceProps,
-    FooterStatisticProps,
     FooterAboutLinks,
+    FooterMoreLinks,
+    FooterInfoPagesLinks,
     FooterProductLinks,
     FooterSocialLinks,
     FooterServiceLinks {
@@ -35,62 +39,72 @@ interface Props
 }
 
 const Wrapper = styled.footer`
-  color: ${({ theme }) => theme.colors.white};
-  background: ${({ theme }) => theme.colors.dark700};
-  padding: 56px 16px 24px;
+  background: ${({ theme }) => theme.colors.dark900};
+  padding: 40px 0 12px;
   transition: padding-left 0.2s;
   z-index: 10;
 
-  ${({ theme }) => theme.mediaQueries.sm} {
-    padding: 56px 24px 24px;
-  }
-
   ${({ theme }) => theme.mediaQueries.md} {
-    padding: 56px 24px;
+    padding: 56px 0 8px;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    padding: 56px 0 0;
   }
 `;
 
-const InnerRow = styled(Grid)`
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    "footer-info"
-    "about"
-    "product"
-    "service"
-    "community"
-    "audit";
-  max-width: 1120px;
+const FooterTop = styled(Grid)`
+  grid-template-columns: 310px 1fr 150px;
+  grid-column-gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
   margin: 0 auto;
+  padding: 0 16px 48px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    grid-template-columns: repeat(3, minmax(110px, 1fr));
-    grid-template-areas:
-      "footer-info footer-info footer-info"
-      "about product service"
-      "community . audit";
+    padding: 0 16px 48px;
   }
 
   ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-columns: 338px minmax(0, 64px) repeat(2, minmax(110px, 1fr)) 110px;
-    grid-template-areas:
-      "footer-info . about product service "
-      "footer-info . community . audit";
+    padding: 0 24px 48px;
   }
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    padding: 0 64px 48px;
+  }
+`;
 
-  ${({ theme }) => theme.mediaQueries.xll} {
-    grid-template-columns: 424px minmax(0, 64px) repeat(3, minmax(110px, 1fr)) 174px;
-    grid-template-areas:
-      "footer-info . about product service community"
-      "footer-info . about product service audit";
+const SocialWrap = styled.div`
+  width: 260px;
+  margin: 0 auto;
+`;
+
+const FooterBottom = styled(Flex)`
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 16px;
+  flex-wrap: wrap;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    justify-content: center;
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding: 0 24px;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    padding: 0 64px;
   }
 `;
 
 const Footer: FC<Props> = ({
   BSWPriceLabel,
   BSWPriceValue,
-  registerToken,
-  footerStatistic,
   aboutLinks,
+  moreLinks,
+  infoLinks,
   productLinks,
   serviceLinks,
   buyBswHandler,
@@ -101,22 +115,25 @@ const Footer: FC<Props> = ({
 }) => {
   return (
     <Wrapper>
-      <InnerRow>
+      <FooterTop>
         <FooterInfo
           BSWPriceLabel={BSWPriceLabel}
           BSWPriceValue={BSWPriceValue}
-          registerToken={registerToken}
-          footerStatistic={footerStatistic}
           buyBswHandler={buyBswHandler}
-          baseAwsUrl={baseAwsUrl}
           buyBswLabel={buyBswLabel}
         />
-        <About footerLinks={aboutLinks} />
+        <SocialWrap>
+          <Community isFooter socialLinks={socialLinks} iconSize="24px" baseAwsUrl={baseAwsUrl} />
+        </SocialWrap>
+        <Audit marketplaceLink={marketplaceLink} baseAwsUrl={baseAwsUrl} />
+      </FooterTop>
+      <FooterBottom>
         <Product footerLinks={productLinks} />
         <Service footerLinks={serviceLinks} />
-        <Community isFooter socialLinks={socialLinks} baseAwsUrl={baseAwsUrl} />
-        <Audit marketplaceLink={marketplaceLink} baseAwsUrl={baseAwsUrl} />
-      </InnerRow>
+        <More footerLinks={moreLinks} />
+        <Info footerLinks={infoLinks} />
+        <About footerLinks={aboutLinks} />
+      </FooterBottom>
     </Wrapper>
   );
 };

@@ -1,9 +1,7 @@
 import { FC } from "react";
-import { BSWPriceProps, FooterStatisticProps } from "../../types";
-interface Props extends BSWPriceProps, FooterStatisticProps {
-    registerToken: () => void;
+import { BSWPriceProps } from "../../types";
+interface Props extends BSWPriceProps {
     buyBswHandler: () => void;
-    baseAwsUrl: string;
     buyBswLabel: string;
 }
 declare const FooterInfo: FC<Props>;
