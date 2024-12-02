@@ -8472,7 +8472,7 @@ const Wrapper$4 = styled.div `
 const SocialWrap$1 = styled(Flex) `
   flex-wrap: wrap;
   gap: 32px 24px;
-  justify-content: flex-start;
+  justify-content: center;
 
   ${({ menuVariant }) => menuVariant &&
     `
@@ -9026,7 +9026,7 @@ styled.span `
   font-weight: 600;
 `;
 const BSWPrice = ({ BSWPriceLabel, BSWPriceValue }) => {
-    return (React.createElement(Flex, { mr: "24px" },
+    return (React.createElement(Flex, null,
         React.createElement(Icon$k, { width: "40px" }),
         React.createElement(Box, { ml: "8px" },
             React.createElement(BodyText, { color: "gray900", as: BodyTextTags.P, scale: Scales$7.SIZE16, bold: true }, BSWPriceLabel),
@@ -9043,6 +9043,21 @@ const Wrapper$3 = styled(Flex) `
   border-radius: 16px;
   padding: 24px;
   background: ${({ theme }) => theme.colors.dark600};
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    flex-direction: column;
+
+    & > div {
+      margin-bottom: 24px;
+    }
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    flex-direction: row;
+
+    & > div {
+      margin-bottom: 0;
+    }
+  }
 `;
 const FooterInfo = ({ BSWPriceLabel, BSWPriceValue, buyBswHandler, buyBswLabel }) => {
     return (React.createElement(Wrapper$3, null,
@@ -9232,7 +9247,7 @@ const Wrapper$1 = styled.footer `
   }
 `;
 const FooterTop = styled(Grid) `
-  grid-template-columns: 310px 1fr 150px;
+  grid-template-columns: 1fr;
   grid-column-gap: 24px;
   align-items: center;
   justify-content: space-between;
@@ -9242,9 +9257,11 @@ const FooterTop = styled(Grid) `
 
   ${({ theme }) => theme.mediaQueries.sm} {
     padding: 0 16px 48px;
+    grid-template-columns: 200px 1fr 150px;
   }
 
   ${({ theme }) => theme.mediaQueries.md} {
+    grid-template-columns: 310px 1fr 150px;
     padding: 0 24px 48px;
   }
   ${({ theme }) => theme.mediaQueries.xxl} {

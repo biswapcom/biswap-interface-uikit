@@ -4,80 +4,72 @@ import { SubMenuItemsType } from "../../components/SubMenuItems";
 import { DropdownMenuItemType } from "../../components/DropdownMenu/types";
 import { Colors } from "../../theme";
 export interface LinkStatus {
-  text: string;
-  color: keyof Colors;
+    text: string;
+    color: keyof Colors;
 }
-export interface NavProps
-  extends BSWPriceProps,
-    FooterAboutLinks,
-    FooterMoreLinks,
-    FooterInfoPagesLinks,
-    FooterProductLinks,
-    FooterServiceLinks,
-    ConnectMetaProps,
-    FooterSocialLinks {
-  buyBswHandler: () => void;
-  linkComponent?: ElementType;
-  banner?: (b?: (s: boolean) => void) => JSX.Element;
-  links: Array<MenuItemsType>;
-  subLinks: Array<SubMenuItemsType>;
-  activeItem: string;
-  activeSubItem: string;
-  rightSide: FunctionComponent<{
-    isMobileMenuOpen?: boolean;
-  }>;
-  bswPriceUsd?: number;
-  buyBSWLabel: string;
-  withEvent?: boolean;
-  eventCallback?: () => void;
-  children?: ReactNode;
-  eventButtonLogo?: () => JSX.Element;
-  customLogoSubtitle?: string;
-  marketplaceLink?: string;
-  baseAwsUrl?: string;
-  buyBswLabel?: string;
-  mobileLangSelector: ElementType;
-  showFooter?: boolean;
+export interface NavProps extends BSWPriceProps, FooterAboutLinks, FooterMoreLinks, FooterInfoPagesLinks, FooterProductLinks, FooterServiceLinks, ConnectMetaProps, FooterSocialLinks {
+    buyBswHandler: () => void;
+    linkComponent?: ElementType;
+    banner?: (b?: (s: boolean) => void) => JSX.Element;
+    links: Array<MenuItemsType>;
+    subLinks: Array<SubMenuItemsType>;
+    activeItem: string;
+    activeSubItem: string;
+    rightSide: FunctionComponent<{
+        isMobileMenuOpen?: boolean;
+    }>;
+    bswPriceUsd?: number;
+    buyBSWLabel: string;
+    withEvent?: boolean;
+    eventCallback?: () => void;
+    children?: ReactNode;
+    eventButtonLogo?: () => JSX.Element;
+    customLogoSubtitle?: string;
+    marketplaceLink?: string;
+    baseAwsUrl?: string;
+    buyBswLabel?: string;
+    mobileLangSelector: ElementType;
+    showFooter?: boolean;
 }
 export interface ConnectMetaProps {
-  registerToken: () => void;
+    registerToken: () => void;
 }
 export interface BSWPriceProps {
-  BSWPriceLabel: string;
-  BSWPriceValue: number;
+    BSWPriceLabel: string;
+    BSWPriceValue: number;
 }
 export interface FooterInfoLinks {
-  title?: string;
-  links?: Array<FooterNavItem>;
+    title?: string;
+    links?: Array<FooterNavItem>;
 }
 export interface FooterAboutLinks {
-  aboutLinks: FooterInfoLinks;
+    aboutLinks: FooterInfoLinks;
 }
 export interface FooterMoreLinks {
-  moreLinks: FooterInfoLinks;
+    moreLinks: FooterInfoLinks;
 }
 export interface FooterInfoPagesLinks {
-  infoLinks: FooterInfoLinks;
+    infoLinks: FooterInfoLinks;
 }
 export interface FooterProductLinks {
-  productLinks: FooterInfoLinks;
+    productLinks: FooterInfoLinks;
 }
 export interface SocialLinks {
-  title?: string;
-  links?: any[];
+    title?: string;
+    links?: any[];
 }
 export interface FooterSocialLinks {
-  socialLinks: SocialLinks;
+    socialLinks: SocialLinks;
 }
 export interface FooterServiceLinks {
-  serviceLinks: FooterInfoLinks;
+    serviceLinks: FooterInfoLinks;
 }
 export interface FooterLinks {
-  footerLinks: FooterInfoLinks;
+    footerLinks: FooterInfoLinks;
 }
 export interface FooterNavItem {
-  label: string;
-  href: string;
-  target?: string;
-  type?: DropdownMenuItemType;
+    label: string;
+    href: string;
+    target?: string;
+    type?: DropdownMenuItemType;
 }
