@@ -17,6 +17,18 @@ interface ScalesMap {
 }
 
 export const bodyTextScaleMap: ScalesMap = {
+  [Scales.SIZE72]: {
+    fontSize: "72px",
+    lineHeight: "88px",
+  },
+  [Scales.SIZE64]: {
+    fontSize: "64px",
+    lineHeight: "80px",
+  },
+  [Scales.SIZE56]: {
+    fontSize: "56px",
+    lineHeight: "64px",
+  },
   [Scales.SIZE40]: {
     fontSize: "40px",
     lineHeight: "48px",
@@ -35,6 +47,10 @@ export const bodyTextScaleMap: ScalesMap = {
   },
   [Scales.SIZE16]: {
     fontSize: "16px",
+    lineHeight: "24px",
+  },
+  [Scales.SIZE18]: {
+    fontSize: "18px",
     lineHeight: "24px",
   },
   [Scales.SIZE14]: {

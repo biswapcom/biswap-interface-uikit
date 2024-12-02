@@ -4,9 +4,9 @@ import styled, { DefaultTheme } from "styled-components";
 
 // components
 import { Flex } from "../../components/Box";
-import Footer from "./components/Footer/Footer";
 import { MenuItems } from "../../components/MenuItems";
 import Logo from "./components/Logo";
+import Footer from "./components/Footer/Footer";
 
 // context
 import { MenuContext } from "./context";
@@ -41,7 +41,7 @@ const getBackground = ({
 }): string => {
   if (isMobileMenuOpened) return theme.colors.white;
 
-  if (menuBg && !isMobileMenuOpened) return theme.nav.background;
+  if (menuBg && !isMobileMenuOpened) return theme.colors.black;
 
   return "transparent";
 };
@@ -58,7 +58,7 @@ const StyledNav = styled.nav<{ menuBg: boolean; isMobileMenuOpened: boolean }>`
   padding-right: 16px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    background-color: ${({ theme, menuBg }) => (menuBg ? theme.nav.background : "transparent")};
+    background-color: ${({ theme, menuBg }) => (menuBg ? theme.colors.black : "transparent")};
   }
 `;
 
@@ -109,10 +109,11 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
   children,
   BSWPriceLabel,
   BSWPriceValue,
-  footerStatistic,
   registerToken,
   buyBswHandler,
   aboutLinks,
+  moreLinks,
+  infoLinks,
   productLinks,
   serviceLinks,
   socialLinks,
@@ -212,10 +213,11 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
                 <Footer
                   BSWPriceLabel={BSWPriceLabel}
                   BSWPriceValue={BSWPriceValue}
-                  footerStatistic={footerStatistic}
                   registerToken={registerToken}
                   buyBswHandler={buyBswHandler}
                   aboutLinks={aboutLinks}
+                  moreLinks={moreLinks}
+                  infoLinks={infoLinks}
                   productLinks={productLinks}
                   serviceLinks={serviceLinks}
                   socialLinks={socialLinks}

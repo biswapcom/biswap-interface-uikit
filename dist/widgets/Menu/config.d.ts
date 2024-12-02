@@ -29,17 +29,27 @@ export declare const socials: ({
     href: string;
     items?: undefined;
 })[];
-export declare const BSWPriceLabel = "BSW";
+export declare const BSWPriceLabel = "BSW Price";
 export declare const BSWPriceValue = 1234.947;
-export declare const footerStatistic: {
-    label: string;
-    value: number;
-}[];
 export declare const socialLinks: {
     title: string;
     links: any[];
 };
 export declare const aboutLinks: {
+    title: string;
+    links: {
+        label: string;
+        href: string;
+    }[];
+};
+export declare const moreLinks: {
+    title: string;
+    links: {
+        label: string;
+        href: string;
+    }[];
+};
+export declare const infoLinks: {
     title: string;
     links: {
         label: string;

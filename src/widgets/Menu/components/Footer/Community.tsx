@@ -18,7 +18,6 @@ export interface CommunityProps {
   baseAwsUrl: string;
   iconSize?: string;
   menuVariant?: boolean;
-  title?: string;
   isFooter?: boolean;
   socialLinks?: SocialLinks;
 }
@@ -28,19 +27,12 @@ export interface SocialWrapProps {
 const Icons = IconModule as unknown as { [key: string]: FC<SvgProps> };
 
 const Wrapper = styled.div<{ menuVariant?: boolean }>`
-  grid-area: community;
   ${({ menuVariant }) => !menuVariant && "max-width: 136px;"}
-`;
-
-const Title = styled.h4`
-  font-size: 16px;
-  color: ${({ theme }) => theme.colors.white};
-  margin-bottom: 16px;
 `;
 
 const SocialWrap = styled(Flex)<SocialWrapProps>`
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 32px 24px;
   justify-content: flex-start;
 
   ${({ menuVariant }) =>
@@ -153,13 +145,12 @@ const Community: FC<CommunityProps> = ({
 }) => {
   return (
     <Wrapper menuVariant={menuVariant || isFooter}>
-      {socialLinks?.title && <Title>{socialLinks?.title}</Title>}
       <SocialWrap menuVariant={menuVariant}>
         {socials.map((social) => {
           const Icon = Icons[social.icon];
           const iconProps = {
             width: iconSize,
-            color: isFooter ? "pastelBlue" : "gray600",
+            color: isFooter ? "gray100" : "gray600",
             style: { cursor: "pointer" },
           };
 

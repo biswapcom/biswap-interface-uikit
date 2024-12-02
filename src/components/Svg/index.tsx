@@ -28,6 +28,10 @@ export { default as ChevronUpDoubleIcon } from "./Icons/Arrows/ChevronUpDouble";
 export { default as ChevronUpTripleIcon } from "./Icons/Arrows/ChevronUpTriple";
 export { default as ChevronDownTripleIcon } from "./Icons/Arrows/ChevronDownTriple";
 export { default as ChevronRightTripleIcon } from "./Icons/Arrows/ChevronRightTriple";
+export { default as SwapDoubleArrowIcon } from "./Icons/Arrows/SwapDoubleArrow";
+export { default as CrownIcon } from "./Icons/Arrows/CrownIcon";
+export { default as UpwardArrowIcon } from "./Icons/Arrows/UpwardArrowIcon";
+export { default as ChevronSlimRightIcon } from "./Icons/Arrows/ChevronSlimRight";
 
 //PLUS
 export { default as PlusIcon } from "./Icons/Plus/Plus";
@@ -404,6 +408,11 @@ export * from "./Icons/Menu/Perpetual";
 
 // Prediction
 export * from "./Icons/Menu/Prediction";
+
+// Home
+export { default as AnalyticsIcon } from "./Icons/Home/AnalyticsIcon";
+export { default as ChainLinkIcon } from "./Icons/Home/ChainLinkIcon";
+export { default as InfinityLoopIcon } from "./Icons/Home/InfinityLoopIcon";
 
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";

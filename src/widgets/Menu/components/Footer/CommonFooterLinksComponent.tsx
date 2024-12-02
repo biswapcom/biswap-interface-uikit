@@ -11,10 +11,34 @@ import { MenuContext } from "../../context";
 // components
 import { Box, Flex } from "../../../../components/Box";
 
+const Wrapper = styled.div`
+  width: 100%;
+  margin-bottom: 28px;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    width: 50%;
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    width: 33.333%;
+    margin-bottom: 32px;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: auto;
+    margin-bottom: 65px;
+  }
+`;
+
 const TopAction = styled(Flex)`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    justify-content: center;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    justify-content: space-between;
+  }
 `;
 
 const Title = styled.h4`
@@ -80,6 +104,13 @@ const NavItem = styled(Box)`
   color: ${({ theme }) => theme.colors.gray900};
   font-size: 12px;
   line-height: 18px;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    text-align: center;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    text-align: left;
+  }
 `;
 
 const CustomLink = styled(Box)`
@@ -101,7 +132,7 @@ const CommonFooterLinksComponent: FC<FooterLinks> = ({ footerLinks }) => {
   const arrLength = links?.length ?? 0;
 
   return (
-    <>
+    <Wrapper>
       <TopAction onClick={() => setIsOpen(!isOpen)}>
         <Title>{title}</Title>
         <ActionIcon isOpen={isOpen} />
@@ -122,7 +153,7 @@ const CommonFooterLinksComponent: FC<FooterLinks> = ({ footerLinks }) => {
           </NavItem>
         ))}
       </NavList>
-    </>
+    </Wrapper>
   );
 };
 
