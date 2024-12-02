@@ -186,7 +186,7 @@ const ConnectedTemplate: FC<NavProps> = (args) => {
           socialLinks={socialLinks}
           serviceLinks={serviceLinks}
           buyBswLabel={"Buy BSW"}
-          mobileLangSelector={Dropdown}
+          // mobileLangSelector={Dropdown}
           banner={(setHeight?: (s: boolean) => void) => (
             <Banner setHeight={setHeight} setBannerHeight={setBannerHeight} />
           )}
@@ -231,7 +231,7 @@ export const WithSubmenuSelected: FC<NavProps> = (args) => {
         socialLinks={socialLinks}
         serviceLinks={serviceLinks}
         links={links}
-        mobileLangSelector={Dropdown}
+        // mobileLangSelector={Dropdown}
         subLinks={[
           {
             label: "Home",

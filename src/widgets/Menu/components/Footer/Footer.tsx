@@ -40,16 +40,15 @@ interface Props
 
 const Wrapper = styled.footer`
   background: ${({ theme }) => theme.colors.dark900};
-  padding: 56px 0 24px;
+  padding: 40px 0 12px;
   transition: padding-left 0.2s;
   z-index: 10;
 
-  ${({ theme }) => theme.mediaQueries.sm} {
-    padding: 56px 0 24px;
-  }
-
   ${({ theme }) => theme.mediaQueries.md} {
-    padding: 56px 0;
+    padding: 56px 0 8px;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    padding: 56px 0 0;
   }
 `;
 
@@ -63,10 +62,13 @@ const FooterTop = styled(Grid)`
   padding: 0 16px 48px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    padding: 0 24px 48px;
+    padding: 0 16px 48px;
   }
 
   ${({ theme }) => theme.mediaQueries.md} {
+    padding: 0 24px 48px;
+  }
+  ${({ theme }) => theme.mediaQueries.xxl} {
     padding: 0 64px 48px;
   }
 `;
@@ -77,10 +79,24 @@ const SocialWrap = styled.div`
 `;
 
 const FooterBottom = styled(Flex)`
-  justify-content: space-between;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 64px 48px;
+  padding: 0 16px;
+  flex-wrap: wrap;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    justify-content: center;
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding: 0 24px;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    padding: 0 64px;
+  }
 `;
 
 const Footer: FC<Props> = ({
