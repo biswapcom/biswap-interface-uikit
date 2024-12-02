@@ -217,7 +217,6 @@ const ButtonMenu: FC<ButtonMenuProps> = ({
         fullWidth={fullWidth}
         withoutBackground={withoutBackground}
         equalElementWidth={equalElementWidth}
-        {...props}
       >
         {Children.map(children, (child: ReactElement, index) => {
           return cloneElement(child, {
