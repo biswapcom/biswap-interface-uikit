@@ -3939,7 +3939,7 @@ const ButtonMenu = ({ activeIndex = 0, scale = Scales$8.MD, variant = Variants$a
     }, [widthsArr, activeButtonIndex, isDesktop, isMobile, isTablet]);
     return (React.createElement(Wrapper$h, { flatBottom: flatBottom, flatTop: flatTop, fullWidth: fullWidth, withoutBackground: withoutBackground, variant: variant, scrollX: scrollX, ...props },
         React.createElement(Selection$1, { flatTop: flatTop, flatBottom: flatBottom, scale: scale, width: widthsArr[activeIndex], offset: getOffset(blockOffset, flatTop || flatBottom), variant: variant, withoutAnimation: withoutAnimation }),
-        React.createElement(StyledButtonMenu, { disabled: disabled, variant: variant, fullWidth: fullWidth, withoutBackground: withoutBackground, equalElementWidth: equalElementWidth, ...props }, Children.map(children, (child, index) => {
+        React.createElement(StyledButtonMenu, { disabled: disabled, variant: variant, fullWidth: fullWidth, withoutBackground: withoutBackground, equalElementWidth: equalElementWidth }, Children.map(children, (child, index) => {
             return cloneElement(child, {
                 isActive: activeIndex === index,
                 onItemClick: () => onItemClick?.(index),
