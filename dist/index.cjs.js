@@ -4059,7 +4059,7 @@ const ButtonMenu = ({ activeIndex = 0, scale = exports.ButtonMenuScales.MD, vari
     }, [widthsArr, activeButtonIndex, isDesktop, isMobile, isTablet]);
     return (React__default["default"].createElement(Wrapper$e, { flatBottom: flatBottom, flatTop: flatTop, fullWidth: fullWidth, withoutBackground: withoutBackground, variant: variant, scrollX: scrollX, ...props },
         React__default["default"].createElement(Selection$1, { flatTop: flatTop, flatBottom: flatBottom, scale: scale, width: widthsArr[activeIndex], offset: getOffset(blockOffset, flatTop || flatBottom), variant: variant, withoutAnimation: withoutAnimation }),
-        React__default["default"].createElement(StyledButtonMenu, { disabled: disabled, variant: variant, fullWidth: fullWidth, withoutBackground: withoutBackground, equalElementWidth: equalElementWidth, ...props }, React.Children.map(children, (child, index) => {
+        React__default["default"].createElement(StyledButtonMenu, { disabled: disabled, variant: variant, fullWidth: fullWidth, withoutBackground: withoutBackground, equalElementWidth: equalElementWidth }, React.Children.map(children, (child, index) => {
             return React.cloneElement(child, {
                 isActive: activeIndex === index,
                 onItemClick: () => onItemClick?.(index),
