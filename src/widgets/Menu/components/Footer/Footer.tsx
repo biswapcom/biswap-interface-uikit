@@ -53,7 +53,7 @@ const Wrapper = styled.footer`
 `;
 
 const FooterTop = styled(Grid)`
-  grid-template-columns: 310px 1fr 150px;
+  grid-template-columns: 1fr;
   grid-column-gap: 24px;
   align-items: center;
   justify-content: space-between;
@@ -63,9 +63,11 @@ const FooterTop = styled(Grid)`
 
   ${({ theme }) => theme.mediaQueries.sm} {
     padding: 0 16px 48px;
+    grid-template-columns: 200px 1fr 150px;
   }
 
   ${({ theme }) => theme.mediaQueries.md} {
+    grid-template-columns: 310px 1fr 150px;
     padding: 0 24px 48px;
   }
   ${({ theme }) => theme.mediaQueries.xxl} {

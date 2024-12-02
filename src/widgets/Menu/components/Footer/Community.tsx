@@ -33,7 +33,7 @@ const Wrapper = styled.div<{ menuVariant?: boolean }>`
 const SocialWrap = styled(Flex)<SocialWrapProps>`
   flex-wrap: wrap;
   gap: 32px 24px;
-  justify-content: flex-start;
+  justify-content: center;
 
   ${({ menuVariant }) =>
     menuVariant &&

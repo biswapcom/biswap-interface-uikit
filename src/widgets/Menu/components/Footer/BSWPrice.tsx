@@ -16,7 +16,7 @@ const Test = styled.span`
 
 const BSWPrice: FC<BSWPriceProps> = ({ BSWPriceLabel, BSWPriceValue }) => {
   return (
-    <Flex mr="24px">
+    <Flex>
       <BswIcon width="40px" />
       <Box ml="8px">
         <BodyText color="gray900" as={BodyTextTags.P} scale={Scales.SIZE16} bold>

@@ -20,6 +20,21 @@ const Wrapper = styled(Flex)`
   border-radius: 16px;
   padding: 24px;
   background: ${({ theme }) => theme.colors.dark600};
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    flex-direction: column;
+
+    & > div {
+      margin-bottom: 24px;
+    }
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    flex-direction: row;
+
+    & > div {
+      margin-bottom: 0;
+    }
+  }
 `;
 
 const FooterInfo: FC<Props> = ({ BSWPriceLabel, BSWPriceValue, buyBswHandler, buyBswLabel }) => {

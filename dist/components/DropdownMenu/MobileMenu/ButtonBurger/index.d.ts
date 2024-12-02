@@ -1,5 +1,5 @@
 import { FC } from "react";
 declare const Burger: FC<{
-    open: boolean;
+  open: boolean;
 }>;
 export default Burger;
