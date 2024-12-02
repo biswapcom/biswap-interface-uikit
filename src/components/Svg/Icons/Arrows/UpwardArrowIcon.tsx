@@ -4,29 +4,32 @@ import { SvgProps } from "../../types";
 
 const Icon: React.FC<SvgProps> = (props) => {
   return (
-    <Svg viewBox="0 0 40 40" fill="currentColor" {...props}>
-      <rect width="40" height="40" rx="20" fill="#94A3C6" fillOpacity="0.16" />
-      <g clipPath="url(#clip0_435_2788)">
-        <path d="M24.25 20V10" stroke="#9AB2D3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <Svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <g clipPath="url(#clip0_14160_11818)">
         <path
-          d="M20.5 13.75L24.25 10L28 13.75"
-          stroke="#9AB2D3"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M16.25 1C16.8023 1 17.25 1.44772 17.25 2V12C17.25 12.5523 16.8023 13 16.25 13C15.6977 13 15.25 12.5523 15.25 12V2C15.25 1.44772 15.6977 1 16.25 1Z"
         />
-        <path d="M15.75 30V20" stroke="#9AB2D3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <path
-          d="M12 26.25L15.75 30L19.5 26.25"
-          stroke="#9AB2D3"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M15.5429 1.29289C15.9334 0.902369 16.5666 0.902369 16.9571 1.29289L20.7071 5.04289C21.0976 5.43342 21.0976 6.06658 20.7071 6.45711C20.3166 6.84763 19.6834 6.84763 19.2929 6.45711L16.25 3.41421L13.2071 6.45711C12.8166 6.84763 12.1834 6.84763 11.7929 6.45711C11.4024 6.06658 11.4024 5.43342 11.7929 5.04289L15.5429 1.29289Z"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M7.75 11C8.30228 11 8.75 11.4477 8.75 12V22C8.75 22.5523 8.30228 23 7.75 23C7.19772 23 6.75 22.5523 6.75 22V12C6.75 11.4477 7.19772 11 7.75 11Z"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M3.29289 17.5429C3.68342 17.1524 4.31658 17.1524 4.70711 17.5429L7.75 20.5858L10.7929 17.5429C11.1834 17.1524 11.8166 17.1524 12.2071 17.5429C12.5976 17.9334 12.5976 18.5666 12.2071 18.9571L8.45711 22.7071C8.06658 23.0976 7.43342 23.0976 7.04289 22.7071L3.29289 18.9571C2.90237 18.5666 2.90237 17.9334 3.29289 17.5429Z"
         />
       </g>
       <defs>
-        <clipPath id="clip0_435_2788">
-          <rect width="24" height="24" fill="white" transform="translate(8 8)" />
+        <clipPath id="clip0_14160_11818">
+          <rect width="24" height="24" fill="white" />
         </clipPath>
       </defs>
     </Svg>

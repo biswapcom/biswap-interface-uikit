@@ -28,9 +28,10 @@ export { default as ChevronUpDoubleIcon } from "./Icons/Arrows/ChevronUpDouble";
 export { default as ChevronUpTripleIcon } from "./Icons/Arrows/ChevronUpTriple";
 export { default as ChevronDownTripleIcon } from "./Icons/Arrows/ChevronDownTriple";
 export { default as ChevronRightTripleIcon } from "./Icons/Arrows/ChevronRightTriple";
-export { default as SwapArrowIcon } from "./Icons/Arrows/SwapArrow";
+export { default as SwapDoubleArrowIcon } from "./Icons/Arrows/SwapDoubleArrow";
 export { default as CrownIcon } from "./Icons/Arrows/CrownIcon";
 export { default as UpwardArrowIcon } from "./Icons/Arrows/UpwardArrowIcon";
+export { default as ChevronSlimRightIcon } from "./Icons/Arrows/ChevronSlimRight";
 
 //PLUS
 export { default as PlusIcon } from "./Icons/Plus/Plus";
