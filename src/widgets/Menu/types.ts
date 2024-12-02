@@ -16,11 +16,12 @@ export interface LinkStatus {
 export interface NavProps
   extends BSWPriceProps,
     FooterAboutLinks,
+    FooterMoreLinks,
+    FooterInfoPagesLinks,
     FooterProductLinks,
     FooterServiceLinks,
     ConnectMetaProps,
-    FooterSocialLinks,
-    FooterStatisticProps {
+    FooterSocialLinks {
   buyBswHandler: () => void;
   linkComponent?: ElementType;
   banner?: (b?: (s: boolean) => void) => JSX.Element;
@@ -42,15 +43,6 @@ export interface NavProps
   mobileLangSelector: ElementType;
   showFooter?: boolean;
 }
-
-export interface FooterStatisticProps {
-  footerStatistic: Array<FooterStatisticItem>;
-}
-
-export interface FooterStatisticItem {
-  label: string;
-  value: number | string;
-}
 export interface ConnectMetaProps {
   registerToken: () => void;
 }
@@ -67,6 +59,14 @@ export interface FooterInfoLinks {
 
 export interface FooterAboutLinks {
   aboutLinks: FooterInfoLinks;
+}
+
+export interface FooterMoreLinks {
+  moreLinks: FooterInfoLinks;
+}
+
+export interface FooterInfoPagesLinks {
+  infoLinks: FooterInfoLinks;
 }
 
 export interface FooterProductLinks {

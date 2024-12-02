@@ -61,5 +61,10 @@ export declare const badgeSpecialColors: {
     primaryOpacity: string;
     warningOpacity: string;
 };
+export declare const newColors: {
+    blue: string;
+    wineRed: string;
+    black: string;
+};
 export declare const lightColors: Colors;
 export declare const darkColors: Colors;

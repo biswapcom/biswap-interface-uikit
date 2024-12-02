@@ -6,7 +6,7 @@ import { FooterLinks } from "../../types";
 // components
 import CommonFooterLinksComponent from "./CommonFooterLinksComponent";
 
-const Service: FC<FooterLinks> = ({ footerLinks }) => {
+const Info: FC<FooterLinks> = ({ footerLinks }) => {
   return (
     <>
       <CommonFooterLinksComponent footerLinks={footerLinks} />
@@ -14,4 +14,4 @@ const Service: FC<FooterLinks> = ({ footerLinks }) => {
   );
 };
 
-export default Service;
+export default Info;

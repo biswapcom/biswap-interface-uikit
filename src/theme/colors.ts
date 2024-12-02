@@ -92,11 +92,18 @@ export const badgeSpecialColors = {
   warningOpacity: "rgba(255, 205, 28, 0.16)",
 };
 
+export const newColors = {
+  blue: "#377EF7",
+  wineRed: "#A8102B",
+  black: "#030811",
+};
+
 export const lightColors: Colors = {
   ...baseColors,
   ...additionalColors,
   ...brandColors,
   ...badgeSpecialColors,
+  ...newColors,
 };
 
 export const darkColors: Colors = {
@@ -104,4 +111,5 @@ export const darkColors: Colors = {
   ...additionalColors,
   ...brandColors,
   ...badgeSpecialColors,
+  ...newColors,
 };

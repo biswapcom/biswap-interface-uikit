@@ -1,5 +1,17 @@
 import { type HeadTextProps, HeadTextTags } from "./types";
 export declare const headTextScaleMap: {
+    size72: {
+        fontSize: string;
+        lineHeight: string;
+    };
+    size64: {
+        fontSize: string;
+        lineHeight: string;
+    };
+    size56: {
+        fontSize: string;
+        lineHeight: string;
+    };
     size40: {
         fontSize: string;
         lineHeight: string;
@@ -13,6 +25,10 @@ export declare const headTextScaleMap: {
         lineHeight: string;
     };
     size20: {
+        fontSize: string;
+        lineHeight: string;
+    };
+    size18: {
         fontSize: string;
         lineHeight: string;
     };
