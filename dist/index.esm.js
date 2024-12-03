@@ -8472,7 +8472,7 @@ const Wrapper$4 = styled.div `
 const SocialWrap$1 = styled(Flex) `
   flex-wrap: wrap;
   gap: 32px 24px;
-  justify-content: flex-start;
+  justify-content: center;
 
   ${({ menuVariant }) => menuVariant &&
     `
@@ -9021,12 +9021,8 @@ const Logo = ({ href, logoSubtitle }) => {
         React.createElement(LogoSwitcher, { logoSubtitle: logoSubtitle })))));
 };
 
-styled.span `
-  font-size: 16px;
-  font-weight: 600;
-`;
 const BSWPrice = ({ BSWPriceLabel, BSWPriceValue }) => {
-    return (React.createElement(Flex, { mr: "24px" },
+    return (React.createElement(Flex, null,
         React.createElement(Icon$k, { width: "40px" }),
         React.createElement(Box, { ml: "8px" },
             React.createElement(BodyText, { color: "gray900", as: BodyTextTags.P, scale: Scales$7.SIZE16, bold: true }, BSWPriceLabel),
@@ -9041,8 +9037,27 @@ const Wrapper$3 = styled(Flex) `
   justify-content: space-between;
   align-items: center;
   border-radius: 16px;
-  padding: 24px;
+  padding: 20px 16px;
   background: ${({ theme }) => theme.colors.dark600};
+  margin-bottom: 32px;
+
+  @media screen and (min-width: 750px) {
+    flex-direction: column;
+    margin-bottom: 0;
+    padding: 20px 24px;
+
+    & > div {
+      margin-bottom: 24px;
+    }
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    flex-direction: row;
+    padding: 24px;
+
+    & > div {
+      margin-bottom: 0;
+    }
+  }
 `;
 const FooterInfo = ({ BSWPriceLabel, BSWPriceValue, buyBswHandler, buyBswLabel }) => {
     return (React.createElement(Wrapper$3, null,
@@ -9194,11 +9209,15 @@ const Service = ({ footerLinks }) => {
 
 const CERTIK_URL = "https://www.certik.org/projects/biswap";
 const AuditedWrap = styled(Flex) `
-  //grid-area: audit;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
+  margin-top: 32px;
+
+  @media screen and (min-width: 750px) {
+    flex-direction: column;
+    margin-top: 0;
+  }
 `;
 const LinkWrap = styled.a `
   height: fit-content;
@@ -9232,7 +9251,7 @@ const Wrapper$1 = styled.footer `
   }
 `;
 const FooterTop = styled(Grid) `
-  grid-template-columns: 310px 1fr 150px;
+  grid-template-columns: 1fr;
   grid-column-gap: 24px;
   align-items: center;
   justify-content: space-between;
@@ -9243,9 +9262,14 @@ const FooterTop = styled(Grid) `
   ${({ theme }) => theme.mediaQueries.sm} {
     padding: 0 16px 48px;
   }
-
+  @media screen and (min-width: 750px) {
+    grid-template-columns: 200px 1fr 150px;
+  }
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 0 24px 48px;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    grid-template-columns: 310px 1fr 150px;
   }
   ${({ theme }) => theme.mediaQueries.xxl} {
     padding: 0 64px 48px;
