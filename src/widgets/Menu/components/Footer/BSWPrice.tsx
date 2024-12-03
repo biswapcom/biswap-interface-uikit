@@ -9,14 +9,9 @@ import { Flex, Box } from "../../../../components/Box";
 // types
 import { BSWPriceProps } from "../../types";
 
-const Test = styled.span`
-  font-size: 16px;
-  font-weight: 600;
-`;
-
 const BSWPrice: FC<BSWPriceProps> = ({ BSWPriceLabel, BSWPriceValue }) => {
   return (
-    <Flex mr="24px">
+    <Flex>
       <BswIcon width="40px" />
       <Box ml="8px">
         <BodyText color="gray900" as={BodyTextTags.P} scale={Scales.SIZE16} bold>

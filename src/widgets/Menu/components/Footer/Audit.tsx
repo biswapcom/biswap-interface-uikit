@@ -12,11 +12,15 @@ import { BswIcon, ProjectNameIcon } from "../../../../components/Svg";
 const CERTIK_URL = "https://www.certik.org/projects/biswap";
 
 const AuditedWrap = styled(Flex)`
-  //grid-area: audit;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
+  margin-top: 32px;
+
+  @media screen and (min-width: 750px) {
+    flex-direction: column;
+    margin-top: 0;
+  }
 `;
 
 const LinkWrap = styled.a`
