@@ -63,12 +63,15 @@ const FooterTop = styled(Grid)`
 
   ${({ theme }) => theme.mediaQueries.sm} {
     padding: 0 16px 48px;
+  }
+  @media screen and (min-width: 750px) {
     grid-template-columns: 200px 1fr 150px;
   }
-
   ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-columns: 310px 1fr 150px;
     padding: 0 24px 48px;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    grid-template-columns: 310px 1fr 150px;
   }
   ${({ theme }) => theme.mediaQueries.xxl} {
     padding: 0 64px 48px;

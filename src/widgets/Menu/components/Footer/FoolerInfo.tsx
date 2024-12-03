@@ -18,18 +18,22 @@ const Wrapper = styled(Flex)`
   justify-content: space-between;
   align-items: center;
   border-radius: 16px;
-  padding: 24px;
+  padding: 20px 16px;
   background: ${({ theme }) => theme.colors.dark600};
+  margin-bottom: 32px;
 
-  ${({ theme }) => theme.mediaQueries.sm} {
+  @media screen and (min-width: 750px) {
     flex-direction: column;
+    margin-bottom: 0;
+    padding: 20px 24px;
 
     & > div {
       margin-bottom: 24px;
     }
   }
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.lg} {
     flex-direction: row;
+    padding: 24px;
 
     & > div {
       margin-bottom: 0;
