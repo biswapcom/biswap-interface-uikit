@@ -9070,10 +9070,9 @@ const Wrapper$2 = styled.div `
   margin-bottom: 28px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    width: 50%;
+    width: auto;
   }
   ${({ theme }) => theme.mediaQueries.md} {
-    width: 33.333%;
     margin-bottom: 32px;
   }
   ${({ theme }) => theme.mediaQueries.lg} {
@@ -9085,13 +9084,6 @@ const TopAction = styled(Flex) `
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    justify-content: center;
-  }
-  ${({ theme }) => theme.mediaQueries.lg} {
-    justify-content: space-between;
-  }
 `;
 const Title = styled.h4 `
   font-size: 16px;
@@ -9151,13 +9143,6 @@ const NavItem = styled(Box) `
   color: ${({ theme }) => theme.colors.gray900};
   font-size: 12px;
   line-height: 18px;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    text-align: center;
-  }
-  ${({ theme }) => theme.mediaQueries.lg} {
-    text-align: left;
-  }
 `;
 const CustomLink = styled(Box) `
   color: ${({ theme }) => theme.colors.pastelBlue};
@@ -9284,16 +9269,12 @@ const FooterBottom = styled(Flex) `
   margin: 0 auto;
   padding: 0 16px;
   flex-wrap: wrap;
+  justify-content: space-between;
 
-  ${({ theme }) => theme.mediaQueries.sm} {
-    justify-content: center;
-  }
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 0 24px;
   }
   ${({ theme }) => theme.mediaQueries.lg} {
-    flex-wrap: nowrap;
-    justify-content: space-between;
   }
   ${({ theme }) => theme.mediaQueries.xxl} {
     padding: 0 64px;
