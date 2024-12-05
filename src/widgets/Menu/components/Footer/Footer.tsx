@@ -5,7 +5,6 @@ import styled from "styled-components";
 import {
   BSWPriceProps,
   FooterAboutLinks,
-  FooterMoreLinks,
   FooterInfoPagesLinks,
   FooterProductLinks,
   FooterServiceLinks,
@@ -26,7 +25,6 @@ import { Flex, Grid } from "../../../../components/Box";
 interface Props
   extends BSWPriceProps,
     FooterAboutLinks,
-    FooterMoreLinks,
     FooterInfoPagesLinks,
     FooterProductLinks,
     FooterSocialLinks,
@@ -88,16 +86,12 @@ const FooterBottom = styled(Flex)`
   margin: 0 auto;
   padding: 0 16px;
   flex-wrap: wrap;
+  justify-content: space-between;
 
-  ${({ theme }) => theme.mediaQueries.sm} {
-    justify-content: center;
-  }
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 0 24px;
   }
   ${({ theme }) => theme.mediaQueries.lg} {
-    flex-wrap: nowrap;
-    justify-content: space-between;
   }
   ${({ theme }) => theme.mediaQueries.xxl} {
     padding: 0 64px;
@@ -108,7 +102,6 @@ const Footer: FC<Props> = ({
   BSWPriceLabel,
   BSWPriceValue,
   aboutLinks,
-  moreLinks,
   infoLinks,
   productLinks,
   serviceLinks,
@@ -135,7 +128,6 @@ const Footer: FC<Props> = ({
       <FooterBottom>
         <Product footerLinks={productLinks} />
         <Service footerLinks={serviceLinks} />
-        <More footerLinks={moreLinks} />
         <Info footerLinks={infoLinks} />
         <About footerLinks={aboutLinks} />
       </FooterBottom>

@@ -20,7 +20,6 @@ import {
   BSWPriceValue,
   infoLinks,
   links,
-  moreLinks,
   productLinks,
   serviceLinks,
   socialLinks,
@@ -180,7 +179,6 @@ const ConnectedTemplate: FC<NavProps> = (args) => {
           BSWPriceValue={BSWPriceValue}
           registerToken={noop}
           aboutLinks={aboutLinks}
-          moreLinks={moreLinks}
           infoLinks={infoLinks}
           productLinks={productLinks}
           socialLinks={socialLinks}
@@ -225,7 +223,6 @@ export const WithSubmenuSelected: FC<NavProps> = (args) => {
         BSWPriceValue={BSWPriceValue}
         registerToken={noop}
         aboutLinks={aboutLinks}
-        moreLinks={moreLinks}
         infoLinks={infoLinks}
         productLinks={productLinks}
         socialLinks={socialLinks}

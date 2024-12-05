@@ -16,7 +16,6 @@ export interface LinkStatus {
 export interface NavProps
   extends BSWPriceProps,
     FooterAboutLinks,
-    FooterMoreLinks,
     FooterInfoPagesLinks,
     FooterProductLinks,
     FooterServiceLinks,
@@ -59,10 +58,6 @@ export interface FooterInfoLinks {
 
 export interface FooterAboutLinks {
   aboutLinks: FooterInfoLinks;
-}
-
-export interface FooterMoreLinks {
-  moreLinks: FooterInfoLinks;
 }
 
 export interface FooterInfoPagesLinks {
