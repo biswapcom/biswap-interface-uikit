@@ -9188,11 +9188,6 @@ const About = ({ footerLinks }) => {
         React__default["default"].createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
 };
 
-const More = ({ footerLinks }) => {
-    return (React__default["default"].createElement(React__default["default"].Fragment, null,
-        React__default["default"].createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
-};
-
 const Info = ({ footerLinks }) => {
     return (React__default["default"].createElement(React__default["default"].Fragment, null,
         React__default["default"].createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
@@ -9296,7 +9291,7 @@ const FooterBottom = styled__default["default"](Flex) `
     padding: 0 64px;
   }
 `;
-const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, moreLinks, infoLinks, productLinks, serviceLinks, buyBswHandler, socialLinks, marketplaceLink, baseAwsUrl, buyBswLabel, }) => {
+const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, infoLinks, productLinks, serviceLinks, buyBswHandler, socialLinks, marketplaceLink, baseAwsUrl, buyBswLabel, }) => {
     return (React__default["default"].createElement(Wrapper$1, null,
         React__default["default"].createElement(FooterTop, null,
             React__default["default"].createElement(FooterInfo, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, buyBswHandler: buyBswHandler, buyBswLabel: buyBswLabel }),
@@ -9306,7 +9301,6 @@ const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, moreLinks, infoLinks
         React__default["default"].createElement(FooterBottom, null,
             React__default["default"].createElement(Product, { footerLinks: productLinks }),
             React__default["default"].createElement(Service, { footerLinks: serviceLinks }),
-            React__default["default"].createElement(More, { footerLinks: moreLinks }),
             React__default["default"].createElement(Info, { footerLinks: infoLinks }),
             React__default["default"].createElement(About, { footerLinks: aboutLinks }))));
 };

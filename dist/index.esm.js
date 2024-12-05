@@ -9172,11 +9172,6 @@ const About = ({ footerLinks }) => {
         React.createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
 };
 
-const More = ({ footerLinks }) => {
-    return (React.createElement(React.Fragment, null,
-        React.createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
-};
-
 const Info = ({ footerLinks }) => {
     return (React.createElement(React.Fragment, null,
         React.createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
@@ -9280,7 +9275,7 @@ const FooterBottom = styled(Flex) `
     padding: 0 64px;
   }
 `;
-const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, moreLinks, infoLinks, productLinks, serviceLinks, buyBswHandler, socialLinks, marketplaceLink, baseAwsUrl, buyBswLabel, }) => {
+const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, infoLinks, productLinks, serviceLinks, buyBswHandler, socialLinks, marketplaceLink, baseAwsUrl, buyBswLabel, }) => {
     return (React.createElement(Wrapper$1, null,
         React.createElement(FooterTop, null,
             React.createElement(FooterInfo, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, buyBswHandler: buyBswHandler, buyBswLabel: buyBswLabel }),
@@ -9290,7 +9285,6 @@ const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, moreLinks, infoLinks
         React.createElement(FooterBottom, null,
             React.createElement(Product, { footerLinks: productLinks }),
             React.createElement(Service, { footerLinks: serviceLinks }),
-            React.createElement(More, { footerLinks: moreLinks }),
             React.createElement(Info, { footerLinks: infoLinks }),
             React.createElement(About, { footerLinks: aboutLinks }))));
 };
