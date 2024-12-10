@@ -18,7 +18,6 @@ export interface NavProps
     FooterAboutLinks,
     FooterInfoPagesLinks,
     FooterProductLinks,
-    FooterServiceLinks,
     ConnectMetaProps,
     FooterSocialLinks {
   buyBswHandler: () => void;
@@ -75,10 +74,6 @@ export interface SocialLinks {
 
 export interface FooterSocialLinks {
   socialLinks: SocialLinks;
-}
-
-export interface FooterServiceLinks {
-  serviceLinks: FooterInfoLinks;
 }
 
 export interface FooterLinks {

@@ -7,7 +7,7 @@ export interface LinkStatus {
     text: string;
     color: keyof Colors;
 }
-export interface NavProps extends BSWPriceProps, FooterAboutLinks, FooterInfoPagesLinks, FooterProductLinks, FooterServiceLinks, ConnectMetaProps, FooterSocialLinks {
+export interface NavProps extends BSWPriceProps, FooterAboutLinks, FooterInfoPagesLinks, FooterProductLinks, ConnectMetaProps, FooterSocialLinks {
     buyBswHandler: () => void;
     linkComponent?: ElementType;
     banner?: (b?: (s: boolean) => void) => JSX.Element;
@@ -57,9 +57,6 @@ export interface SocialLinks {
 }
 export interface FooterSocialLinks {
     socialLinks: SocialLinks;
-}
-export interface FooterServiceLinks {
-    serviceLinks: FooterInfoLinks;
 }
 export interface FooterLinks {
     footerLinks: FooterInfoLinks;

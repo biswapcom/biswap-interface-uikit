@@ -9198,11 +9198,6 @@ const Product = ({ footerLinks }) => {
         React__default["default"].createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
 };
 
-const Service = ({ footerLinks }) => {
-    return (React__default["default"].createElement(React__default["default"].Fragment, null,
-        React__default["default"].createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
-};
-
 const CERTIK_URL = "https://www.certik.org/projects/biswap";
 const AuditedWrap = styled__default["default"](Flex) `
   justify-content: space-between;
@@ -9291,7 +9286,7 @@ const FooterBottom = styled__default["default"](Flex) `
     padding: 0 64px;
   }
 `;
-const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, infoLinks, productLinks, serviceLinks, buyBswHandler, socialLinks, marketplaceLink, baseAwsUrl, buyBswLabel, }) => {
+const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, infoLinks, productLinks, buyBswHandler, socialLinks, marketplaceLink, baseAwsUrl, buyBswLabel, }) => {
     return (React__default["default"].createElement(Wrapper$1, null,
         React__default["default"].createElement(FooterTop, null,
             React__default["default"].createElement(FooterInfo, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, buyBswHandler: buyBswHandler, buyBswLabel: buyBswLabel }),
@@ -9300,7 +9295,6 @@ const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, infoLinks, productLi
             React__default["default"].createElement(Audit, { marketplaceLink: marketplaceLink, baseAwsUrl: baseAwsUrl })),
         React__default["default"].createElement(FooterBottom, null,
             React__default["default"].createElement(Product, { footerLinks: productLinks }),
-            React__default["default"].createElement(Service, { footerLinks: serviceLinks }),
             React__default["default"].createElement(Info, { footerLinks: infoLinks }),
             React__default["default"].createElement(About, { footerLinks: aboutLinks }))));
 };
@@ -9364,7 +9358,7 @@ const Inner = styled__default["default"].div `
   transform: translate3d(0, 0, 0);
   max-width: 100%;
 `;
-const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, moreLinks, infoLinks, productLinks, serviceLinks, socialLinks, withEvent, customLogoSubtitle, marketplaceLink, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", mobileLangSelector, showFooter = true, }) => {
+const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, infoLinks, productLinks, socialLinks, withEvent, customLogoSubtitle, marketplaceLink, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", mobileLangSelector, showFooter = true, }) => {
     const [showMenu, setShowMenu] = React.useState(true);
     const [menuBg, setMenuBg] = React.useState(false);
     const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
@@ -9422,7 +9416,7 @@ const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activ
                 React__default["default"].createElement(Inner, { isPushed: false, showMenu: showMenu },
                     React__default["default"].createElement(React__default["default"].Fragment, null,
                         children,
-                        showFooter && (React__default["default"].createElement(Footer, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, registerToken: registerToken, buyBswHandler: buyBswHandler, aboutLinks: aboutLinks, moreLinks: moreLinks, infoLinks: infoLinks, productLinks: productLinks, serviceLinks: serviceLinks, socialLinks: socialLinks, marketplaceLink: marketplaceLink, baseAwsUrl: baseAwsUrl, buyBswLabel: buyBswLabel }))))))));
+                        showFooter && (React__default["default"].createElement(Footer, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, registerToken: registerToken, buyBswHandler: buyBswHandler, aboutLinks: aboutLinks, infoLinks: infoLinks, productLinks: productLinks, socialLinks: socialLinks, marketplaceLink: marketplaceLink, baseAwsUrl: baseAwsUrl, buyBswLabel: buyBswLabel }))))))));
 };
 
 const ToastAction = ({ tweeterDescription, url, withGift }) => {
