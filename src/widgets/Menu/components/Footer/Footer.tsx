@@ -7,7 +7,6 @@ import {
   FooterAboutLinks,
   FooterInfoPagesLinks,
   FooterProductLinks,
-  FooterServiceLinks,
   FooterSocialLinks,
 } from "../../types";
 
@@ -22,13 +21,7 @@ import Community from "./Community";
 import Audit from "./Audit";
 import { Flex, Grid } from "../../../../components/Box";
 
-interface Props
-  extends BSWPriceProps,
-    FooterAboutLinks,
-    FooterInfoPagesLinks,
-    FooterProductLinks,
-    FooterSocialLinks,
-    FooterServiceLinks {
+interface Props extends BSWPriceProps, FooterAboutLinks, FooterInfoPagesLinks, FooterProductLinks, FooterSocialLinks {
   registerToken: () => void;
   buyBswHandler: () => void;
   marketplaceLink?: string;
@@ -104,7 +97,6 @@ const Footer: FC<Props> = ({
   aboutLinks,
   infoLinks,
   productLinks,
-  serviceLinks,
   buyBswHandler,
   socialLinks,
   marketplaceLink,
@@ -127,7 +119,6 @@ const Footer: FC<Props> = ({
       </FooterTop>
       <FooterBottom>
         <Product footerLinks={productLinks} />
-        <Service footerLinks={serviceLinks} />
         <Info footerLinks={infoLinks} />
         <About footerLinks={aboutLinks} />
       </FooterBottom>

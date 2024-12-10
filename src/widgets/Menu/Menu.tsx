@@ -112,10 +112,8 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
   registerToken,
   buyBswHandler,
   aboutLinks,
-  moreLinks,
   infoLinks,
   productLinks,
-  serviceLinks,
   socialLinks,
   withEvent,
   customLogoSubtitle,
@@ -216,10 +214,8 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
                   registerToken={registerToken}
                   buyBswHandler={buyBswHandler}
                   aboutLinks={aboutLinks}
-                  moreLinks={moreLinks}
                   infoLinks={infoLinks}
                   productLinks={productLinks}
-                  serviceLinks={serviceLinks}
                   socialLinks={socialLinks}
                   marketplaceLink={marketplaceLink}
                   baseAwsUrl={baseAwsUrl}
