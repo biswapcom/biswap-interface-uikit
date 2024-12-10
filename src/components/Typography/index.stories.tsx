@@ -124,13 +124,6 @@ export const bodyText: FC = () => {
           sm: Scales.SIZE12, xl: Scales.SIZE20
         </BodyText>
         <BodyText color="dark800">default</BodyText>
-        <BodyText
-          dangerouslySetInnerHTML={{
-            __html: `Play your favorite games on the #1 i-gaming platform <a style="color:rgb(46 122 255)" href='https://betfury.io/?r=615c16216b63cb48af0dd2b4&utm_source=biswap&utm_medium=block&utm_campaign=bs_igaming' target='_blank'>BetFury</a> using the BSW token.`,
-          }}
-          scale={{ xl: Scales.SIZE20 }}
-          color="dark800"
-        />
       </Box>
     </Flex>
   );

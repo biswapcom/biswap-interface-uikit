@@ -85,7 +85,8 @@ const getScalesAttributes = ({ scale, as }: BodyTextProps) => {
     as: as || BodyTextTags.P,
   };
 };
-
+console.log(getScalesAttributes({ scale: { xs: Scales.SIZE40, md: Scales.SIZE64, xxl: Scales.SIZE72 } }));
+console.log(breakpointsKeys[6], "breakpointsKeys");
 // @ts-ignore TODO check types
 export const BodyText = styled(Text).attrs(getScalesAttributes)<BodyTextProps>`
   font-weight: ${({ bold }) => (bold ? 600 : 400)};

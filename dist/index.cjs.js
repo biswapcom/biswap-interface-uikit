@@ -2753,6 +2753,7 @@ const breakpointMap = {
     xl: 1080,
     xll: 1200,
     xxl: 1400,
+    wide: 2000,
 };
 const breakpoints = Object.values(breakpointMap).map((breakpoint) => `${breakpoint}px`);
 const breakpointsKeys = Object.keys(breakpointMap);
@@ -2764,7 +2765,8 @@ const mediaQueries$1 = {
     xl: `@media screen and (min-width: ${breakpointMap.xl}px)`,
     xll: `@media screen and (min-width: ${breakpointMap.xll}px)`,
     xxl: `@media screen and (min-width: ${breakpointMap.xxl}px)`,
-    nav: `@media screen and (min-width: ${breakpointMap.lg}px)`,
+    wide: `@media screen and (min-width: ${breakpointMap.wide}px)`,
+    // nav: `@media screen and (min-width: ${breakpointMap.lg}px)`,
 };
 const shadows = {
     level1: "0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05)",
@@ -3504,6 +3506,8 @@ const getScalesAttributes = ({ scale, as }) => {
         as: as || exports.BodyTextTags.P,
     };
 };
+console.log(getScalesAttributes({ scale: { xs: exports.Scales.SIZE40, md: exports.Scales.SIZE64, xxl: exports.Scales.SIZE72 } }));
+console.log(breakpointsKeys[6], "breakpointsKeys");
 // @ts-ignore TODO check types
 const BodyText = styled__default["default"](Text).attrs(getScalesAttributes) `
   font-weight: ${({ bold }) => (bold ? 600 : 400)};

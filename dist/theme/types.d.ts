@@ -7,7 +7,7 @@ export type MediaQueries = {
     xl: string;
     xll: string;
     xxl: string;
-    nav: string;
+    wide: string;
 };
 export type Spacing = number[];
 export type Radii = {

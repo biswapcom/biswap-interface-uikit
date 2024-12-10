@@ -39,6 +39,7 @@ export interface ScalesObj {
     xl?: Scales;
     xll?: Scales;
     xxl?: Scales;
+    wide?: Scales;
 }
 export interface HeadTextProps {
     as?: HeadTextTags;
