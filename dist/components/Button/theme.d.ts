@@ -157,4 +157,18 @@ export declare const styleVariants: {
             color: string;
         };
     };
+    lightBlue: {
+        backgroundColor: string;
+        color: string;
+        boxShadow: string;
+        border: string;
+        ":hover:not(:disabled)": {
+            backgroundColor: string;
+            borderColor: string;
+        };
+        ":active:not(:disabled)": {
+            backgroundColor: string;
+            borderColor: string;
+        };
+    };
 };
