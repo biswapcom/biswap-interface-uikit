@@ -3908,7 +3908,7 @@ const getBreakpointChecks = (state) => {
         ...state,
         isMobile: state.isXs || state.isSm,
         isTablet: state.isMd || state.isLg,
-        isDesktop: state.isXl || state.isXll || state.isXxl,
+        isDesktop: state.isXl || state.isXll || state.isXxl || state.isWide,
     };
 };
 const MatchBreakpointsProvider = ({ children }) => {
