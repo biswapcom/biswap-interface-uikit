@@ -243,5 +243,8 @@ export * from "./Icons/Menu/Prediction";
 export { default as AnalyticsIcon } from "./Icons/Home/AnalyticsIcon";
 export { default as ChainLinkIcon } from "./Icons/Home/ChainLinkIcon";
 export { default as InfinityLoopIcon } from "./Icons/Home/InfinityLoopIcon";
+export { default as VoteIcon } from "./Icons/Vote/Vote";
+export { default as TradingIcon } from "./Icons/Trading/Trading";
+export { default as DocumentIcon } from "./Icons/Document/Document";
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";
