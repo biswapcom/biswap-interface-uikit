@@ -65,6 +65,7 @@ export declare const newColors: {
     blue: string;
     wineRed: string;
     black: string;
+    buttonLightBlue: string;
 };
 export declare const lightColors: Colors;
 export declare const darkColors: Colors;
