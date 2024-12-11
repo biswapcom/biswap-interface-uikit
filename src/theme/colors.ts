@@ -96,6 +96,7 @@ export const newColors = {
   blue: "#377EF7",
   wineRed: "#A8102B",
   black: "#030811",
+  buttonLightBlue: "rgba(55, 126, 247, 0.16)",
 };
 
 export const lightColors: Colors = {

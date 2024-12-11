@@ -47,6 +47,7 @@ export const ButtonDefault: FC = () => {
     SUCCESS: ButtonVariants.SUCCESS,
     WARNING: ButtonVariants.WARNING,
     BOOST: ButtonVariants.BOOST,
+    LIGHT_BLUE: ButtonVariants.LIGHT_BLUE,
   } as const;
 
   const darkBgBtn = {
