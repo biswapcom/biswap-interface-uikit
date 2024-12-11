@@ -94,6 +94,7 @@ export type Colors = {
     blue: string;
     wineRed: string;
     black: string;
+    buttonLightBlue: string;
 };
 export type ZIndices = {
     dropdown: number;
