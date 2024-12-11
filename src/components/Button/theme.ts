@@ -172,4 +172,19 @@ export const styleVariants = {
       color: "primaryPress",
     },
   },
+  [Variants.LIGHT_BLUE]: {
+    backgroundColor: "buttonLightBlue",
+    color: "blue",
+    boxShadow: "none",
+    border: "1px solid transparent",
+
+    ":hover:not(:disabled)": {
+      backgroundColor: "transparent",
+      borderColor: "buttonLightBlue",
+    },
+    ":active:not(:disabled)": {
+      backgroundColor: "transparent",
+      borderColor: "blue",
+    },
+  },
 };

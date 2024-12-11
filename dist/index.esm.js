@@ -2300,6 +2300,7 @@ var Variants$b;
     Variants["TERTIARY_OUT"] = "tertiaryOut";
     Variants["TEXT"] = "text";
     Variants["TEXT_DARK"] = "textDark";
+    Variants["LIGHT_BLUE"] = "lightBlue";
 })(Variants$b || (Variants$b = {}));
 
 const scaleVariants$3 = {
@@ -2459,6 +2460,20 @@ const styleVariants$3 = {
         },
         ":active:not(:disabled)": {
             color: "primaryPress",
+        },
+    },
+    [Variants$b.LIGHT_BLUE]: {
+        backgroundColor: "buttonLightBlue",
+        color: "blue",
+        boxShadow: "none",
+        border: "1px solid transparent",
+        ":hover:not(:disabled)": {
+            backgroundColor: "transparent",
+            borderColor: "buttonLightBlue",
+        },
+        ":active:not(:disabled)": {
+            backgroundColor: "transparent",
+            borderColor: "blue",
         },
     },
 };
@@ -2861,6 +2876,7 @@ const newColors = {
     blue: "#377EF7",
     wineRed: "#A8102B",
     black: "#030811",
+    buttonLightBlue: "rgba(55, 126, 247, 0.16)",
 };
 const lightColors = {
     ...baseColors,
@@ -3490,8 +3506,6 @@ const getScalesAttributes = ({ scale, as }) => {
         as: as || BodyTextTags.P,
     };
 };
-console.log(getScalesAttributes({ scale: { xs: Scales$7.SIZE40, md: Scales$7.SIZE64, xxl: Scales$7.SIZE72 } }));
-console.log(breakpointsKeys[6], "breakpointsKeys");
 // @ts-ignore TODO check types
 const BodyText = styled(Text).attrs(getScalesAttributes) `
   font-weight: ${({ bold }) => (bold ? 600 : 400)};

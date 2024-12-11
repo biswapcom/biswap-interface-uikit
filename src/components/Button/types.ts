@@ -24,6 +24,7 @@ export enum Variants {
   TERTIARY_OUT = "tertiaryOut",
   TEXT = "text",
   TEXT_DARK = "textDark",
+  LIGHT_BLUE = "lightBlue",
 }
 
 export interface BaseButtonProps extends LayoutProps, SpaceProps {
