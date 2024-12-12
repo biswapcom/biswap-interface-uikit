@@ -9067,16 +9067,16 @@ const StyledInnerButton = styled(Button) `
 const LogoSwitcher = ({ logoSubtitle }) => {
     const { isMobile, isMd } = useMatchBreakpoints();
     if (isMobile || isMd) {
-        return React.createElement(Icon$p, { width: "32px" });
+        return React.createElement(Icon$p, { width: "32px", height: "32px" });
     }
     else if (logoSubtitle) {
         return (React.createElement(Flex, null,
-            React.createElement(Icon$p, { width: "32px" }),
+            React.createElement(Icon$p, { width: "32px", height: "32px" }),
             React.createElement(Box, { ml: "8px" },
-                React.createElement(Icon$q, { width: "78px" }),
+                React.createElement(Icon$q, { width: "78px", height: "32px" }),
                 React.createElement(BodyText, { mt: "-6px", textAlign: "left", scale: Scales$7.SIZE12 }, logoSubtitle))));
     }
-    return React.createElement(Icon$r, { width: "145px" });
+    return React.createElement(Icon$r, { width: "146px", height: "32px" });
 };
 const Logo = ({ href, logoSubtitle }) => {
     const { linkComponent } = useContext(MenuContext);
@@ -9152,7 +9152,7 @@ const TopAction = styled(Flex) `
 `;
 const Title = styled.h4 `
   font-size: 16px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.pastelBlue};
 `;
 const ActionIcon = styled(Box) `
   position: relative;
@@ -9169,7 +9169,7 @@ const ActionIcon = styled(Box) `
     content: "";
     width: 14px;
     height: 2px;
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.pastelBlue};
     position: absolute;
     left: 50%;
     top: 50%;
@@ -9205,12 +9205,12 @@ const NavList = styled(Box) `
 `;
 const NavItem = styled(Box) `
   margin-bottom: 8px;
-  color: ${({ theme }) => theme.colors.gray900};
-  font-size: 12px;
-  line-height: 18px;
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 20px;
+  line-height: 28px;
 `;
 const CustomLink = styled(Box) `
-  color: ${({ theme }) => theme.colors.pastelBlue};
+  color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
   transition: opacity 0.3s ease;
 
@@ -9372,6 +9372,7 @@ const StyledNav = styled.nav `
 
   ${({ theme }) => theme.mediaQueries.sm} {
     background-color: ${({ theme, menuBg }) => (menuBg ? theme.colors.black : "transparent")};
+    border-bottom: 1px solid ${({ theme, menuBg }) => (menuBg ? theme.colors.backgroundDark : "transparent")};
   }
 `;
 const FixedContainer = styled.div.attrs({

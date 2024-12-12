@@ -9083,16 +9083,16 @@ const StyledInnerButton = styled__default["default"](Button) `
 const LogoSwitcher = ({ logoSubtitle }) => {
     const { isMobile, isMd } = useMatchBreakpoints();
     if (isMobile || isMd) {
-        return React__default["default"].createElement(Icon$p, { width: "32px" });
+        return React__default["default"].createElement(Icon$p, { width: "32px", height: "32px" });
     }
     else if (logoSubtitle) {
         return (React__default["default"].createElement(Flex, null,
-            React__default["default"].createElement(Icon$p, { width: "32px" }),
+            React__default["default"].createElement(Icon$p, { width: "32px", height: "32px" }),
             React__default["default"].createElement(Box, { ml: "8px" },
-                React__default["default"].createElement(Icon$q, { width: "78px" }),
+                React__default["default"].createElement(Icon$q, { width: "78px", height: "32px" }),
                 React__default["default"].createElement(BodyText, { mt: "-6px", textAlign: "left", scale: exports.Scales.SIZE12 }, logoSubtitle))));
     }
-    return React__default["default"].createElement(Icon$r, { width: "145px" });
+    return React__default["default"].createElement(Icon$r, { width: "146px", height: "32px" });
 };
 const Logo = ({ href, logoSubtitle }) => {
     const { linkComponent } = React.useContext(MenuContext);
@@ -9168,7 +9168,7 @@ const TopAction = styled__default["default"](Flex) `
 `;
 const Title = styled__default["default"].h4 `
   font-size: 16px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.pastelBlue};
 `;
 const ActionIcon = styled__default["default"](Box) `
   position: relative;
@@ -9185,7 +9185,7 @@ const ActionIcon = styled__default["default"](Box) `
     content: "";
     width: 14px;
     height: 2px;
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.pastelBlue};
     position: absolute;
     left: 50%;
     top: 50%;
@@ -9221,12 +9221,12 @@ const NavList = styled__default["default"](Box) `
 `;
 const NavItem = styled__default["default"](Box) `
   margin-bottom: 8px;
-  color: ${({ theme }) => theme.colors.gray900};
-  font-size: 12px;
-  line-height: 18px;
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 20px;
+  line-height: 28px;
 `;
 const CustomLink = styled__default["default"](Box) `
-  color: ${({ theme }) => theme.colors.pastelBlue};
+  color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
   transition: opacity 0.3s ease;
 
@@ -9388,6 +9388,7 @@ const StyledNav = styled__default["default"].nav `
 
   ${({ theme }) => theme.mediaQueries.sm} {
     background-color: ${({ theme, menuBg }) => (menuBg ? theme.colors.black : "transparent")};
+    border-bottom: 1px solid ${({ theme, menuBg }) => (menuBg ? theme.colors.backgroundDark : "transparent")};
   }
 `;
 const FixedContainer = styled__default["default"].div.attrs({
