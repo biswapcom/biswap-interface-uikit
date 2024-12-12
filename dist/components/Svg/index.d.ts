@@ -246,5 +246,7 @@ export { default as InfinityLoopIcon } from "./Icons/Home/InfinityLoopIcon";
 export { default as VoteIcon } from "./Icons/Vote/Vote";
 export { default as TradingIcon } from "./Icons/Trading/Trading";
 export { default as DocumentIcon } from "./Icons/Document/Document";
+export { default as BridgeOpacityIcon } from "./Icons/Bridge/BridgeOpacity";
+export { default as BridgeSolidIcon } from "./Icons/Bridge/BridgeSolid";
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";
