@@ -35,7 +35,7 @@ const TopAction = styled(Flex)`
 
 const Title = styled.h4`
   font-size: 16px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.pastelBlue};
 `;
 
 const ActionIcon = styled(Box)<{ isOpen: boolean }>`
@@ -53,7 +53,7 @@ const ActionIcon = styled(Box)<{ isOpen: boolean }>`
     content: "";
     width: 14px;
     height: 2px;
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.pastelBlue};
     position: absolute;
     left: 50%;
     top: 50%;
@@ -93,13 +93,13 @@ const NavList = styled(Box)<{ isOpen: boolean; innerHeight: number }>`
 
 const NavItem = styled(Box)`
   margin-bottom: 8px;
-  color: ${({ theme }) => theme.colors.gray900};
-  font-size: 12px;
-  line-height: 18px;
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 20px;
+  line-height: 28px;
 `;
 
 const CustomLink = styled(Box)`
-  color: ${({ theme }) => theme.colors.pastelBlue};
+  color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
   transition: opacity 0.3s ease;
 

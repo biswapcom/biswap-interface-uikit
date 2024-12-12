@@ -31,13 +31,13 @@ const LogoSwitcher: FC<{ logoSubtitle?: string }> = ({ logoSubtitle }) => {
   const { isMobile, isMd } = useMatchBreakpoints();
 
   if (isMobile || isMd) {
-    return <BswIcon width="32px" />;
+    return <BswIcon width="32px" height="32px" />;
   } else if (logoSubtitle) {
     return (
       <Flex>
-        <BswIcon width="32px" />
+        <BswIcon width="32px" height="32px" />
         <Box ml="8px">
-          <ProjectNameIcon width="78px" />
+          <ProjectNameIcon width="78px" height="32px" />
           <BodyText mt="-6px" textAlign="left" scale={Scales.SIZE12}>
             {logoSubtitle}
           </BodyText>
@@ -46,7 +46,7 @@ const LogoSwitcher: FC<{ logoSubtitle?: string }> = ({ logoSubtitle }) => {
     );
   }
 
-  return <LogoWithTextIcon width="145px" />;
+  return <LogoWithTextIcon width="146px" height="32px" />;
 };
 
 const Logo: FC<Props> = ({ href, logoSubtitle }) => {
