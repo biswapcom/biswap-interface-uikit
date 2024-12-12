@@ -423,5 +423,9 @@ export { default as TradingIcon } from "./Icons/Trading/Trading";
 // Document
 export { default as DocumentIcon } from "./Icons/Document/Document";
 
+// Bridge
+export { default as BridgeOpacityIcon } from "./Icons/Bridge/BridgeOpacity";
+export { default as BridgeSolidIcon } from "./Icons/Bridge/BridgeSolid";
+
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";
