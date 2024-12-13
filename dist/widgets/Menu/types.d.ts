@@ -30,6 +30,7 @@ export interface NavProps extends BSWPriceProps, FooterAboutLinks, FooterInfoPag
     buyBswLabel?: string;
     mobileLangSelector: ElementType;
     showFooter?: boolean;
+    navigateToHome?: () => void;
 }
 export interface ConnectMetaProps {
     registerToken: () => void;

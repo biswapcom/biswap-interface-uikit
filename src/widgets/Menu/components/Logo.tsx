@@ -16,6 +16,7 @@ import { MenuContext } from "../context";
 interface Props {
   href: string;
   logoSubtitle?: string;
+  navigateToHome?: () => void
 }
 
 const StyledInnerButton = styled(Button)`
@@ -49,7 +50,7 @@ const LogoSwitcher: FC<{ logoSubtitle?: string }> = ({ logoSubtitle }) => {
   return <LogoWithTextIcon width="146px" height="32px" />;
 };
 
-const Logo: FC<Props> = ({ href, logoSubtitle }) => {
+const Logo: FC<Props> = ({ href, logoSubtitle, navigateToHome }) => {
   const { linkComponent } = useContext(MenuContext);
 
   const isAbsoluteUrl = href.startsWith("http");
@@ -59,13 +60,13 @@ const Logo: FC<Props> = ({ href, logoSubtitle }) => {
       {isAbsoluteUrl ? (
         <StyledInnerButton
           variant={ButtonVariants.LIGHT}
-          onClick={() => window.open(href, "_self")}
+          onClick={navigateToHome}
           aria-label="Biswap home page"
         >
           <LogoSwitcher logoSubtitle={logoSubtitle} />
         </StyledInnerButton>
       ) : (
-        <StyledInnerButton variant="light" as={linkComponent} href={href} aria-label="Biswap home page">
+        <StyledInnerButton onClick={navigateToHome} variant="light" as={linkComponent}  aria-label="Biswap home page">
           <LogoSwitcher logoSubtitle={logoSubtitle} />
         </StyledInnerButton>
       )}

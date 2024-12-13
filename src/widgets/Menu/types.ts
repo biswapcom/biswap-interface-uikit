@@ -40,6 +40,7 @@ export interface NavProps
   buyBswLabel?: string;
   mobileLangSelector: ElementType;
   showFooter?: boolean;
+  navigateToHome?: () => void
 }
 export interface ConnectMetaProps {
   registerToken: () => void;

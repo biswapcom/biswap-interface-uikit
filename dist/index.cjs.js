@@ -9094,11 +9094,11 @@ const LogoSwitcher = ({ logoSubtitle }) => {
     }
     return React__default["default"].createElement(Icon$r, { width: "146px", height: "32px" });
 };
-const Logo = ({ href, logoSubtitle }) => {
+const Logo = ({ href, logoSubtitle, navigateToHome }) => {
     const { linkComponent } = React.useContext(MenuContext);
     const isAbsoluteUrl = href.startsWith("http");
-    return (React__default["default"].createElement(Flex, null, isAbsoluteUrl ? (React__default["default"].createElement(StyledInnerButton, { variant: exports.ButtonVariants.LIGHT, onClick: () => window.open(href, "_self"), "aria-label": "Biswap home page" },
-        React__default["default"].createElement(LogoSwitcher, { logoSubtitle: logoSubtitle }))) : (React__default["default"].createElement(StyledInnerButton, { variant: "light", as: linkComponent, href: href, "aria-label": "Biswap home page" },
+    return (React__default["default"].createElement(Flex, null, isAbsoluteUrl ? (React__default["default"].createElement(StyledInnerButton, { variant: exports.ButtonVariants.LIGHT, onClick: navigateToHome, "aria-label": "Biswap home page" },
+        React__default["default"].createElement(LogoSwitcher, { logoSubtitle: logoSubtitle }))) : (React__default["default"].createElement(StyledInnerButton, { onClick: navigateToHome, variant: "light", as: linkComponent, "aria-label": "Biswap home page" },
         React__default["default"].createElement(LogoSwitcher, { logoSubtitle: logoSubtitle })))));
 };
 
@@ -9424,7 +9424,7 @@ const Inner = styled__default["default"].div `
   transform: translate3d(0, 0, 0);
   max-width: 100%;
 `;
-const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, infoLinks, productLinks, socialLinks, withEvent, customLogoSubtitle, marketplaceLink, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", mobileLangSelector, showFooter = true, }) => {
+const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, infoLinks, productLinks, socialLinks, withEvent, customLogoSubtitle, marketplaceLink, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", mobileLangSelector, showFooter = true, navigateToHome }) => {
     const [showMenu, setShowMenu] = React.useState(true);
     const [menuBg, setMenuBg] = React.useState(false);
     const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
@@ -9474,7 +9474,7 @@ const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activ
                 banner && React__default["default"].createElement(TopBannerContainer, { height: transferBannerHeight }, banner(setTransferHeight)),
                 React__default["default"].createElement(StyledNav, { menuBg: menuBg, isMobileMenuOpened: isMobileMenuOpened },
                     React__default["default"].createElement(Flex, { alignItems: "center", justifyContent: "center" },
-                        React__default["default"].createElement(Logo, { logoSubtitle: customLogoSubtitle, href: homeLink?.href ?? "/" }),
+                        React__default["default"].createElement(Logo, { navigateToHome: navigateToHome, logoSubtitle: customLogoSubtitle, href: homeLink?.href ?? "/" }),
                         React__default["default"].createElement(MenuItems, { items: links, activeItem: activeItem, activeSubItem: activeSubItem, isMobileMenuOpened: isMobileMenuOpened, mobileMenuCallback: setIsMobileMenuOpened, baseAwsUrl: baseAwsUrl, mobileLangSelector: mobileLangSelector, ml: isMobile ? "12px" : "26px" })),
                     React__default["default"].createElement(Flex, { alignItems: "center", height: "100%" },
                         React__default["default"].createElement(RightSide, { isMobileMenuOpen: isMobileMenuOpened })))),

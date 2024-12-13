@@ -123,6 +123,7 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
   buyBswLabel = "Buy BSW",
   mobileLangSelector,
   showFooter = true,
+                                                 navigateToHome
 }) => {
   const [showMenu, setShowMenu] = useState<boolean>(true);
   const [menuBg, setMenuBg] = useState<boolean>(false);
@@ -187,7 +188,7 @@ const Menu: FC<PropsWithChildren<NavProps>> = ({
           {banner && <TopBannerContainer height={transferBannerHeight}>{banner(setTransferHeight)}</TopBannerContainer>}
           <StyledNav menuBg={menuBg} isMobileMenuOpened={isMobileMenuOpened}>
             <Flex alignItems="center" justifyContent="center">
-              <Logo logoSubtitle={customLogoSubtitle} href={homeLink?.href ?? "/"} />
+              <Logo navigateToHome={navigateToHome} logoSubtitle={customLogoSubtitle} href={homeLink?.href ?? "/"} />
               <MenuItems
                 items={links}
                 activeItem={activeItem}
