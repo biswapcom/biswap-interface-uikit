@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 
 // components
@@ -11,7 +11,7 @@ import { BodyText, Scales } from "../../../components/Typography";
 import { useMatchBreakpoints } from "../../../contexts";
 
 // context
-import { MenuContext } from "../context";
+//import { MenuContext } from "../context";
 
 interface Props {
   href: string;
@@ -51,7 +51,7 @@ const LogoSwitcher: FC<{ logoSubtitle?: string }> = ({ logoSubtitle }) => {
 };
 
 const Logo: FC<Props> = ({ href, logoSubtitle, navigateToHome }) => {
-  const { linkComponent } = useContext(MenuContext);
+ // const { linkComponent } = useContext(MenuContext);
 
   const isAbsoluteUrl = href.startsWith("http");
 
@@ -66,7 +66,7 @@ const Logo: FC<Props> = ({ href, logoSubtitle, navigateToHome }) => {
           <LogoSwitcher logoSubtitle={logoSubtitle} />
         </StyledInnerButton>
       ) : (
-        <StyledInnerButton onClick={navigateToHome} variant="light" as={linkComponent}  aria-label="Biswap home page">
+        <StyledInnerButton onClick={navigateToHome} variant="light"  aria-label="Biswap home page">
           <LogoSwitcher logoSubtitle={logoSubtitle} />
         </StyledInnerButton>
       )}

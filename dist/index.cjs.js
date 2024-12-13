@@ -9095,10 +9095,10 @@ const LogoSwitcher = ({ logoSubtitle }) => {
     return React__default["default"].createElement(Icon$r, { width: "146px", height: "32px" });
 };
 const Logo = ({ href, logoSubtitle, navigateToHome }) => {
-    const { linkComponent } = React.useContext(MenuContext);
+    // const { linkComponent } = useContext(MenuContext);
     const isAbsoluteUrl = href.startsWith("http");
     return (React__default["default"].createElement(Flex, null, isAbsoluteUrl ? (React__default["default"].createElement(StyledInnerButton, { variant: exports.ButtonVariants.LIGHT, onClick: navigateToHome, "aria-label": "Biswap home page" },
-        React__default["default"].createElement(LogoSwitcher, { logoSubtitle: logoSubtitle }))) : (React__default["default"].createElement(StyledInnerButton, { onClick: navigateToHome, variant: "light", as: linkComponent, "aria-label": "Biswap home page" },
+        React__default["default"].createElement(LogoSwitcher, { logoSubtitle: logoSubtitle }))) : (React__default["default"].createElement(StyledInnerButton, { onClick: navigateToHome, variant: "light", "aria-label": "Biswap home page" },
         React__default["default"].createElement(LogoSwitcher, { logoSubtitle: logoSubtitle })))));
 };
 
