@@ -9092,7 +9092,7 @@ const BSWPrice = ({ BSWPriceLabel, BSWPriceValue }) => {
         React.createElement(Box, { ml: "8px" },
             React.createElement(BodyText, { color: "gray900", as: BodyTextTags.P, scale: Scales$7.SIZE16, bold: true }, BSWPriceLabel),
             React.createElement(BodyText, { color: "gray100", as: BodyTextTags.P, scale: Scales$7.SIZE24, bold: true },
-                "$ ",
+                "$",
                 BSWPriceValue))));
 };
 
