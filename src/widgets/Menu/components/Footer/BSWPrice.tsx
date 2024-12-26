@@ -18,7 +18,7 @@ const BSWPrice: FC<BSWPriceProps> = ({ BSWPriceLabel, BSWPriceValue }) => {
           {BSWPriceLabel}
         </BodyText>
         <BodyText color="gray100" as={BodyTextTags.P} scale={Scales.SIZE24} bold>
-          {BSWPriceValue}
+          $ {BSWPriceValue}
         </BodyText>
       </Box>
     </Flex>
