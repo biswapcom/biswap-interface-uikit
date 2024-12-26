@@ -9091,7 +9091,9 @@ const BSWPrice = ({ BSWPriceLabel, BSWPriceValue }) => {
         React.createElement(Icon$p, { width: "40px" }),
         React.createElement(Box, { ml: "8px" },
             React.createElement(BodyText, { color: "gray900", as: BodyTextTags.P, scale: Scales$7.SIZE16, bold: true }, BSWPriceLabel),
-            React.createElement(BodyText, { color: "gray100", as: BodyTextTags.P, scale: Scales$7.SIZE24, bold: true }, BSWPriceValue))));
+            React.createElement(BodyText, { color: "gray100", as: BodyTextTags.P, scale: Scales$7.SIZE24, bold: true },
+                "$",
+                BSWPriceValue))));
 };
 
 const BuyBSW = ({ buyBswHandler, buyBswLabel }) => {
