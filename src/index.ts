@@ -49,6 +49,7 @@ export * from "./util";
 // Widgets
 export * from "./widgets/Modal";
 export * from "./widgets/Menu";
+export * from "./widgets/MenuSol";
 export * from "./widgets/Toast";
 
 // Theme
