@@ -1,6 +1,6 @@
 import { DropdownMenuItems } from "../../components/DropdownMenu/types";
 import { MenuItemsType } from "../../components/MenuItems/types";
-import { LinkStatus } from "./types";
+import { LinkStatus } from "../Menu/types";
 export declare const status: {
     LIVE: LinkStatus;
     SOON: LinkStatus;

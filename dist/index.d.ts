@@ -40,5 +40,6 @@ export * from "./contexts";
 export * from "./util";
 export * from "./widgets/Modal";
 export * from "./widgets/Menu";
+export * from "./widgets/MenuSol";
 export * from "./widgets/Toast";
 export * from "./theme";

@@ -1,24 +1,18 @@
 import React from "react";
 export declare const Config: {
-  title: string;
-  leftData: (
-    | {
+    title: string;
+    leftData: ({
         name: string;
         description: string;
-      }
-    | {
+    } | {
         name: string;
         description: React.JSX.Element;
-      }
-  )[];
-  rightData: (
-    | {
+    })[];
+    rightData: ({
         name: string;
         description: string;
-      }
-    | {
+    } | {
         name: string;
         description: React.JSX.Element;
-      }
-  )[];
+    })[];
 };
