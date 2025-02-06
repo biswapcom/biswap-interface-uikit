@@ -2601,7 +2601,7 @@ const StyledButton = styled.button `
   ${getFlat}
 `;
 
-const PULSE_SUCCESS$1 = keyframes `
+const PULSE_SUCCESS$2 = keyframes `
   0% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(29, 200, 124, 0.7);
@@ -2617,7 +2617,7 @@ const PULSE_SUCCESS$1 = keyframes `
     box-shadow: 0 0 0 0 rgba(29, 200, 124, 0);
   }
 `;
-const PULSE_WARNING$1 = keyframes `
+const PULSE_WARNING$2 = keyframes `
   0% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(255, 219, 28, 0.7);
@@ -2633,7 +2633,7 @@ const PULSE_WARNING$1 = keyframes `
     box-shadow: 0 0 0 0 rgba(255, 219, 28, 0);
   }
 `;
-const PULSE_PRIMARY$1 = keyframes `
+const PULSE_PRIMARY$2 = keyframes `
   0% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(18, 99, 241, 0.7);
@@ -2649,7 +2649,7 @@ const PULSE_PRIMARY$1 = keyframes `
     box-shadow: 0 0 0 0 rgba(18, 99, 241, 0);
   }
 `;
-const PULSE_SECONDARY$1 = keyframes `
+const PULSE_SECONDARY$2 = keyframes `
   0% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(249, 59, 93, 0.7);
@@ -2665,11 +2665,11 @@ const PULSE_SECONDARY$1 = keyframes `
     box-shadow: 0 0 0 0 rgba(249, 59, 93, 0);
   }
 `;
-const PULSES$1 = {
-    PRIMARY: PULSE_PRIMARY$1,
-    SECONDARY: PULSE_SECONDARY$1,
-    WARNING: PULSE_WARNING$1,
-    SUCCESS: PULSE_SUCCESS$1,
+const PULSES$2 = {
+    PRIMARY: PULSE_PRIMARY$2,
+    SECONDARY: PULSE_SECONDARY$2,
+    WARNING: PULSE_WARNING$2,
+    SUCCESS: PULSE_SUCCESS$2,
 };
 const Bubble = styled.span `
   position: absolute;
@@ -2691,7 +2691,7 @@ const Bubble = styled.span `
     height: 10px;
     border-radius: 50%;
     z-index: 1;
-    animation: ${({ color }) => (color ? PULSES$1[color.toUpperCase()] : PULSE_SUCCESS$1)} 2s infinite;
+    animation: ${({ color }) => (color ? PULSES$2[color.toUpperCase()] : PULSE_SUCCESS$2)} 2s infinite;
   }
 `;
 const Button = (props) => {
@@ -4223,7 +4223,7 @@ const markerScales = {
     },
 };
 
-const PULSE_SUCCESS = keyframes `
+const PULSE_SUCCESS$1 = keyframes `
   0% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(29, 200, 124, 0.7);
@@ -4239,7 +4239,7 @@ const PULSE_SUCCESS = keyframes `
     box-shadow: 0 0 0 0 rgba(29, 200, 124, 0);
   }
 `;
-const PULSE_WARNING = keyframes `
+const PULSE_WARNING$1 = keyframes `
   0% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(255, 219, 28, 0.7);
@@ -4255,7 +4255,7 @@ const PULSE_WARNING = keyframes `
     box-shadow: 0 0 0 0 rgba(255, 219, 28, 0);
   }
 `;
-const PULSE_PRIMARY = keyframes `
+const PULSE_PRIMARY$1 = keyframes `
   0% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(18, 99, 241, 0.7);
@@ -4271,7 +4271,7 @@ const PULSE_PRIMARY = keyframes `
     box-shadow: 0 0 0 0 rgba(18, 99, 241, 0);
   }
 `;
-const PULSE_SECONDARY = keyframes `
+const PULSE_SECONDARY$1 = keyframes `
   0% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(249, 59, 93, 0.7);
@@ -4287,13 +4287,13 @@ const PULSE_SECONDARY = keyframes `
     box-shadow: 0 0 0 0 rgba(249, 59, 93, 0);
   }
 `;
-const PULSES = {
-    PRIMARY: PULSE_PRIMARY,
-    SECONDARY: PULSE_SECONDARY,
-    WARNING: PULSE_WARNING,
-    SUCCESS: PULSE_SUCCESS,
+const PULSES$1 = {
+    PRIMARY: PULSE_PRIMARY$1,
+    SECONDARY: PULSE_SECONDARY$1,
+    WARNING: PULSE_WARNING$1,
+    SUCCESS: PULSE_SUCCESS$1,
 };
-const Marker = styled(Box) `
+const Marker$1 = styled(Box) `
   position: absolute;
   top: ${({ top }) => top ?? 0};
   right: ${({ right }) => right ?? "-4px"};
@@ -4313,7 +4313,7 @@ const Marker = styled(Box) `
     height: 10px;
     border-radius: 50%;
     z-index: 1;
-    animation: ${({ color }) => (color ? PULSES[color.toUpperCase()] : PULSE_SUCCESS)} 2s infinite;
+    animation: ${({ color }) => (color ? PULSES$1[color.toUpperCase()] : PULSE_SUCCESS$1)} 2s infinite;
   }
 `;
 
@@ -4386,7 +4386,7 @@ const ButtonMenuItem = ({ isActive = false, variant = Variants$a.DARK, propertie
     return (React.createElement(Box, { ref: targetRef, position: "relative", width: "100%" },
         properties?.tooltipText && !properties.dontShowTooltip && tooltipVisible && tooltip,
         React.createElement(MenuItemButton, { onClick: omItemClickHandler, isActive: isActive, ref: ref, as: as, variant: variant, hoverKey: getHoverKey(variant), colorKey: getColorKey(variant), scale: scale, ...props }),
-        properties?.markerColor && React.createElement(Marker, { color: properties?.markerColor || "success", ...markerScales[scale] })));
+        properties?.markerColor && React.createElement(Marker$1, { color: properties?.markerColor || "success", ...markerScales[scale] })));
 };
 
 var CheckboxScales;
@@ -5838,7 +5838,7 @@ const PercentBanner = styled(Flex) `
       
     ${({ bannerPosition, theme }) => `border-${bannerPosition === "top" ? "top" : "bottom"}: 6px solid ${theme.colors.tooltip}`};
 `;
-const Divider$1 = styled.span `
+const Divider$2 = styled.span `
   width: 2px;
   height: 10px;
   margin: 0 4px 0 4px;
@@ -5927,7 +5927,7 @@ const Slider = ({ value, onValueChanged, checkPoints = INIT_CHECKPOINTS, isRobiB
             React.createElement(BunnySlider, null,
                 React.createElement(PercentWrap, null, infoVisible && (React.createElement(PercentBanner, { className: "percent-info-banner", bannerPosition: bannerPosition, left: percent?.value },
                     React.createElement(PercentText, null, value),
-                    React.createElement(Divider$1, null),
+                    React.createElement(Divider$2, null),
                     React.createElement(PercentText, null, 100 - value)))),
                 React.createElement(BarBackground$1, null),
                 React.createElement(BarProgress$1, { progress: progressPercentage }),
@@ -6148,7 +6148,7 @@ const MenuContext = createContext({
     linkComponent: "a",
 });
 
-const StyledMenuItemContainer = styled(Box) `
+const StyledMenuItemContainer$1 = styled(Box) `
   position: relative;
 
   ${({ $isActive, $variant }) => $isActive &&
@@ -6164,7 +6164,7 @@ const StyledMenuItemContainer = styled(Box) `
       }
     `};
 `;
-const CommonLinkStyles = ({ $isActive, $statusColor, $variant, $highlightTitle }) => css `
+const CommonLinkStyles$1 = ({ $isActive, $statusColor, $variant, $highlightTitle }) => css `
   position: relative;
   display: flex;
   align-items: center;
@@ -6211,11 +6211,11 @@ const CommonLinkStyles = ({ $isActive, $statusColor, $variant, $highlightTitle }
     ${$variant === "default" && "border-radius: 16px;"};
   }
 `;
-const StyledMenuItem = styled.a `
-  ${CommonLinkStyles};
+const StyledMenuItem$1 = styled.a `
+  ${CommonLinkStyles$1};
 `;
 
-const MenuItem = ({ children, href, isActive = false, variant = "default", statusColor, highlightTitle, ...props }) => {
+const MenuItem$1 = ({ children, href, isActive = false, variant = "default", statusColor, highlightTitle, ...props }) => {
     const { linkComponent } = useContext(MenuContext);
     const itemLinkProps = href
         ? {
@@ -6225,15 +6225,15 @@ const MenuItem = ({ children, href, isActive = false, variant = "default", statu
         : {
             as: "div",
         };
-    return (React.createElement(StyledMenuItemContainer, { "$isActive": isActive, "$variant": variant },
-        React.createElement(StyledMenuItem, { ...itemLinkProps, "$isActive": isActive, "$variant": variant, "$statusColor": statusColor, "$highlightTitle": highlightTitle, ...props }, children)));
+    return (React.createElement(StyledMenuItemContainer$1, { "$isActive": isActive, "$variant": variant },
+        React.createElement(StyledMenuItem$1, { ...itemLinkProps, "$isActive": isActive, "$variant": variant, "$statusColor": statusColor, "$highlightTitle": highlightTitle, ...props }, children)));
 };
 
-const Divider = styled(Box) `
+const Divider$1 = styled(Box) `
   border: 1px solid ${({ theme }) => theme.colors.white};
   opacity: 0.16;
 `;
-const MenuItemDivider = () => React.createElement(Divider, { width: 0, height: 20 });
+const MenuItemDivider$1 = () => React.createElement(Divider$1, { width: 0, height: 20 });
 
 const StyledSubMenuItems = styled(Flex) `
   ${({ theme }) => theme.mediaQueries.sm} {
@@ -6253,7 +6253,7 @@ const StyledSubMenuItems = styled(Flex) `
 
 const SubMenuItems = ({ items = [], activeItem, isMobileOnly = false, ...props }) => {
     return (React.createElement(StyledSubMenuItems, { justifyContent: [isMobileOnly ? "flex-end" : "start", null, "center"], ...props, pl: ["12px", null, "0px"], "$isMobileOnly": isMobileOnly }, items.map(({ label, href, iconName, itemProps }) => label && (React.createElement(Box, { key: label, mr: "20px" },
-        React.createElement(MenuItem, { href: href, isActive: href === activeItem, variant: "subMenu", ...itemProps },
+        React.createElement(MenuItem$1, { href: href, isActive: href === activeItem, variant: "subMenu", ...itemProps },
             iconName && (React.createElement(IconComponent$1, { color: href === activeItem ? "secondary" : "pastelBlue", iconName: iconName, mr: "4px" })),
             label))))));
 };
@@ -7772,6 +7772,1709 @@ const useModal = (modal, closeOnOverlayClick = true, updateOnPropsChange = false
     return [onPresentCallback, onDismiss];
 };
 
+var DropdownMenuItemType$1;
+(function (DropdownMenuItemType) {
+    DropdownMenuItemType[DropdownMenuItemType["INTERNAL_LINK"] = 0] = "INTERNAL_LINK";
+    DropdownMenuItemType[DropdownMenuItemType["EXTERNAL_LINK"] = 1] = "EXTERNAL_LINK";
+    DropdownMenuItemType[DropdownMenuItemType["BUTTON"] = 2] = "BUTTON";
+    DropdownMenuItemType[DropdownMenuItemType["DIVIDER"] = 3] = "DIVIDER";
+    DropdownMenuItemType[DropdownMenuItemType["BANNER"] = 4] = "BANNER";
+    DropdownMenuItemType[DropdownMenuItemType["CONTAINER"] = 5] = "CONTAINER";
+})(DropdownMenuItemType$1 || (DropdownMenuItemType$1 = {}));
+
+const getTextColor$1 = ({ $isActive, disabled, theme, }) => {
+    if (disabled)
+        return theme.colors.gray700;
+    if ($isActive)
+        return theme.colors.primary;
+    return theme.colors.backgroundDark;
+};
+const InnerLinksBlockContainer$1 = styled(Box) `
+  padding-top: 16px;
+  padding-left: ${({ padded }) => padded && "58px"};
+`;
+const CommonDropdownMenuInnerLinkItem$1 = () => css `
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    .inner-chevron {
+      margin-right: 4px;
+      transition: margin-right 150ms linear;
+    }
+  }
+`;
+const DropdownMenuInnerLinkItem$1 = styled(Box) `
+  ${CommonDropdownMenuInnerLinkItem$1}
+`;
+const DropdownMenuInnerOuterLinkItem$1 = styled.a `
+  ${CommonDropdownMenuInnerLinkItem$1}
+`;
+const CommonLinkStyle$1 = ({ disabled, $isActive, $hasIcon, label, }) => {
+    const { isMobile } = useMatchBreakpoints();
+    return css `
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 40px;
+    border: 0;
+    outline: 0;
+    line-height: 20px;
+    color: ${({ theme }) => getTextColor$1({ theme, disabled, $isActive })};
+    font-size: 14px;
+    font-weight: 600;
+    cursor: ${disabled ? "not-allowed" : "pointer"};
+
+    .arrow-icon {
+      ${!(isMobile && (label === "Marketplace" || label === "GameFi")) &&
+        `
+        visibility: hidden;
+        opacity: 0;
+      `}
+    }
+
+    &:hover:not(:disabled) {
+      color: ${({ theme }) => !$hasIcon && theme.colors.primary};
+
+      svg {
+        opacity: 0.85;
+      }
+
+      .arrow-icon {
+        visibility: visible;
+        transition:
+          visibility 250ms linear,
+          opacity 150ms linear;
+        opacity: 1;
+      }
+    }
+
+    &:active:not(:disabled) {
+      opacity: 0.85;
+      transform: translateY(1px);
+    }
+  `;
+};
+const DropdownMenuItem$1 = styled.button `
+  ${CommonLinkStyle$1}
+`;
+const DropdownInternalMenuItem$1 = styled(Link$1) `
+  ${CommonLinkStyle$1}
+`;
+const StyledDropdownMenuItemContainer$1 = styled(Box) `
+  position: relative;
+  margin-bottom: 24px;
+  pointer-events: ${({ disabled }) => (disabled ? "none" : "initial")};
+
+  &:last-child {
+    margin-bottom: ${({ isOpenMenuItem }) => (isOpenMenuItem ? "16px" : "32px")};
+
+    ${({ theme }) => theme.mediaQueries.sm} {
+      margin-bottom: 24px;
+    }
+  }
+
+  &:first-child > ${DropdownMenuItem$1} {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  &:last-child > ${DropdownMenuItem$1} {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+`;
+const DropdownMenuDivider$1 = styled.hr `
+  margin: 0;
+  border-color: ${({ theme }) => theme.colors.gray200};
+  border-style: solid;
+  border-width: 1px 0 0;
+  ${({ color }) => `
+    color: ${color};
+    background-color: ${color};
+    border-color: ${color};
+`}
+`;
+const StyledDropdownMenu$1 = styled(Grid) `
+  grid-template-columns: 1fr;
+  width: 352px;
+  padding: 24px 24px 0;
+  border: 1px solid ${({ theme }) => theme.colors.white};
+  border-radius: 16px;
+  box-shadow:
+    0 20px 36px -8px rgba(0, 26, 67, 0.24),
+    0 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: ${({ theme }) => theme.colors.white};
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  transition:
+    opacity 250ms linear,
+    visibility 350ms linear;
+
+  ${({ $isOpen }) => !$isOpen &&
+    `
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+  `}
+
+  ${({ $isExtended }) => $isExtended &&
+    `
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 24px;
+    width: 680px;
+  `}
+`;
+styled(Text) `
+  margin-left: 8px;
+  padding: 0 8px;
+  border: 2px solid ${({ theme, color }) => theme.colors[color]};
+  border-radius: ${({ theme }) => theme.radii.default};
+  box-shadow: none;
+  color: ${({ theme, color }) => theme.colors[color]};
+`;
+const BannerPlacementItem$1 = styled(Box) `
+  margin: 0 -14px -18px -14px;
+`;
+const BorderMobileMenuItem$1 = styled(Box) `
+  padding: 0 12px;
+  border-left: ${({ theme, isHighlighted }) => `4px solid ${isHighlighted ? theme.colors.warningPress : "transparent"}`};
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    border-left: none;
+  }
+`;
+
+const LabelText$1 = styled(Text) `
+  max-width: 80px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+`;
+const InnerLinksBlock$1 = ({ links, leftIcon, setIsOpen, linkComponent, lastItem }) => {
+    const { isMobile, isTablet } = useMatchBreakpoints();
+    const renderLinks = () => links.map(({ label = "", href = "/", icon = "ChevronRight", linkType = DropdownMenuItemType$1.INTERNAL_LINK, mobileTarget, target, fill = "primary", badgeTitle, badgeType, }, index) => {
+        const getLinkContent = () => (React.createElement(React.Fragment, null,
+            icon && React.createElement(IconComponent$1, { className: "inner-chevron", width: 16, iconName: icon, color: fill }),
+            React.createElement(LabelText$1, { bold: true, fontSize: "12px", color: fill }, label),
+            badgeTitle && (React.createElement(Badge$1, { ml: "4px", badgeType: badgeType ?? BadgeTypes.SUCCESS }, badgeTitle))));
+        return (React.createElement(Fragment, { key: `${index}#${label}` },
+            linkType === DropdownMenuItemType$1.INTERNAL_LINK && (React.createElement(DropdownMenuInnerLinkItem$1, { key: index + label, as: linkComponent, to: href, onClick: () => {
+                    setIsOpen(false);
+                } }, getLinkContent())),
+            linkType === DropdownMenuItemType$1.EXTERNAL_LINK && (React.createElement(DropdownMenuInnerOuterLinkItem$1, { key: index + label, href: href, target: isMobile ? mobileTarget || "_self" : target || "_blank", onClick: () => {
+                    setIsOpen(false);
+                } }, getLinkContent()))));
+    });
+    return (React.createElement(InnerLinksBlockContainer$1, { padded: !!leftIcon && !isTablet },
+        React.createElement(Grid, { gridTemplateColumns: "1fr 1fr", gridGap: 16, paddingBottom: !lastItem ? 16 : 0 }, renderLinks()),
+        !lastItem && React.createElement(DropdownMenuDivider$1, null)));
+};
+
+const DropdownMenuItemContainer$1 = ({ isActive = false, leftIcon, getMenuItemContent, links = [], setIsOpen, linkComponent, href = "/", bannerRenderer, type, target, mobileTarget, isOpenItem, lastItem, ...itemProps }) => {
+    const { isMobile, isDesktop } = useMatchBreakpoints();
+    const hasInnerLinks = links.length > 0;
+    return (React.createElement(StyledDropdownMenuItemContainer$1, { isOpenMenuItem: isOpenItem, ...itemProps },
+        type === DropdownMenuItemType$1.BUTTON && (React.createElement(DropdownMenuItem$1, { "$isActive": isActive, "$hasIcon": !!leftIcon, type: "button", ...itemProps }, getMenuItemContent(""))),
+        type === DropdownMenuItemType$1.CONTAINER && (React.createElement(React.Fragment, null,
+            hasInnerLinks ? (React.createElement(DropdownMenuItem$1, { "$isActive": isActive, "$hasIcon": true, as: linkComponent, href: links[0]?.href, onClick: () => {
+                    setIsOpen(false);
+                }, ...itemProps }, getMenuItemContent(""))) : (React.createElement(DropdownMenuItem$1, { "$isActive": isActive, "$hasIcon": true, as: "div", ...itemProps }, getMenuItemContent(""))),
+            hasInnerLinks && (React.createElement(InnerLinksBlock$1, { links: links, leftIcon: leftIcon, setIsOpen: setIsOpen, linkComponent: linkComponent, lastItem: lastItem })))),
+        type === DropdownMenuItemType$1.INTERNAL_LINK && (React.createElement(DropdownInternalMenuItem$1, { label: itemProps.label, "$isActive": isActive, "$hasIcon": !!leftIcon, as: linkComponent, to: href, onClick: () => {
+                setIsOpen(false);
+            }, ...itemProps }, getMenuItemContent("ArrowRight"))),
+        type === DropdownMenuItemType$1.EXTERNAL_LINK && (React.createElement(DropdownMenuItem$1, { label: itemProps.label, "$isActive": isActive, "$hasIcon": !!leftIcon, as: "a", href: href, target: isMobile ? mobileTarget || "_self" : target || "_blank", onClick: () => {
+                setIsOpen(false);
+            }, ...itemProps }, getMenuItemContent("ArrowUpForward"))),
+        type === DropdownMenuItemType$1.DIVIDER && React.createElement(DropdownMenuDivider$1, null),
+        type === DropdownMenuItemType$1.BANNER && isDesktop && bannerRenderer && (React.createElement(BannerPlacementItem$1, null, bannerRenderer(href, target)))));
+};
+
+const getBG$1 = ({ theme, leftIcon }) => {
+    switch (leftIcon) {
+        case "Market":
+            return "linear-gradient(136.03deg, #1263F1 -7.36%, #F63D5E 131.43%)";
+        case "GameFi":
+            return "radial-gradient(170.13% 152.5% at 50% -32.5%, #FF1C5E 4.9%, #00000D 58.29%, #1EBB95 100%)";
+        default:
+            return theme.colors.primary;
+    }
+};
+const IconComponentWrap$1 = styled(Flex) `
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  align-self: flex-start;
+  background: ${getBG$1};
+  opacity: ${({ disabled }) => (disabled ? 0.32 : 1)};
+`;
+const MenuItemContent$1 = ({ leftIcon, label, description, rightIcon, fill = "primary", badgeTitle, badgeType, disabled, }) => {
+    const { isMobile } = useMatchBreakpoints();
+    return (React.createElement(React.Fragment, null,
+        leftIcon && (React.createElement(IconComponentWrap$1, { disabled: disabled },
+            React.createElement(IconComponent$1, { width: 24, iconName: leftIcon, color: "white" }))),
+        React.createElement(Flex, { alignSelf: isMobile ? "stretch" : "", flexDirection: "column", flex: 1, paddingLeft: leftIcon && "16px" },
+            React.createElement(Flex, { alignItems: "center" },
+                label,
+                badgeTitle && (React.createElement(Badge$1, { ml: "4px", badgeType: badgeType ?? BadgeTypes.SUCCESS }, badgeTitle))),
+            description && (React.createElement(Text, { fontSize: "12px", color: "gray900", lineHeight: "16px" }, description))),
+        rightIcon && !disabled && React.createElement(IconComponent$1, { className: "arrow-icon", iconName: rightIcon, color: fill })));
+};
+
+const DropdownMenu$1 = ({ children, activeItem = "", items = [], isExtended = false, ...props }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [targetRef, setTargetRef] = useState(null);
+    const [tooltipRef, setTooltipRef] = useState(null);
+    const { linkComponent } = useContext(MenuContext);
+    const hasItems = items.length > 0;
+    const hasMoreThanItems = items.length > 1;
+    const { styles, attributes, update } = usePopper(targetRef, tooltipRef, {
+        strategy: "fixed",
+        placement: "bottom-start",
+        modifiers: [{ name: "offset", options: { offset: [0, -14] } }],
+    });
+    useEffect(() => {
+        const showDropdownMenu = async () => {
+            update && (await update());
+            setIsOpen(true);
+        };
+        const hideDropdownMenu = (evt) => {
+            const target = evt.target;
+            return target && !tooltipRef?.contains(target) && setIsOpen(false);
+        };
+        targetRef?.addEventListener("mouseenter", showDropdownMenu, {
+            passive: true,
+        });
+        targetRef?.addEventListener("mouseleave", hideDropdownMenu, {
+            passive: true,
+        });
+        return () => {
+            targetRef?.removeEventListener("mouseenter", showDropdownMenu);
+            targetRef?.removeEventListener("mouseleave", hideDropdownMenu);
+        };
+    }, [targetRef, tooltipRef, setIsOpen, update]);
+    return (React.createElement(Box, { ref: setTargetRef, ...props },
+        React.createElement(Box, null, children),
+        hasItems && (React.createElement(StyledDropdownMenu$1, { style: styles.popper, ref: setTooltipRef, ...attributes.popper, "$isOpen": isOpen, "$isExtended": isExtended && hasMoreThanItems }, items.map(({ type = DropdownMenuItemType$1.INTERNAL_LINK, label, rightIconFill, description, href = "/", status, leftIcon = "", rightIcon = "", links = [], bannerRenderer, target, mobileTarget, badgeType, badgeTitle, ...itemProps }, itemIndex) => {
+            const getMenuItemContent = (icon = rightIcon) => (React.createElement(MenuItemContent$1, { label: label, fill: rightIconFill, leftIcon: leftIcon, rightIcon: icon, description: description, status: status, badgeType: badgeType, badgeTitle: badgeTitle, ...itemProps }));
+            const isActive = href === activeItem;
+            const lastItem = itemIndex === items?.length - 1 || items[itemIndex + 1]?.type === DropdownMenuItemType$1.BANNER;
+            return (React.createElement(DropdownMenuItemContainer$1, { key: itemIndex, isActive: isActive, leftIcon: leftIcon, getMenuItemContent: getMenuItemContent, links: links, setIsOpen: setIsOpen, linkComponent: linkComponent, href: href, bannerRenderer: bannerRenderer, type: type, target: target, mobileTarget: mobileTarget, lastItem: lastItem, ...itemProps }));
+        })))));
+};
+
+const AccordionBody = styled(Flex) `
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s;
+
+  ${({ opened }) => opened &&
+    css `
+      max-height: 900px;
+    `}
+`;
+const AccordionTitle = styled(Flex) `
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+`;
+const AccordionComponent = styled(Box) `
+  width: 100%;
+`;
+const Accordion = ({ label, clickable = true, heading, children, index, href, linkComponent, setIsOpenMenu, isOpenItem, currentOpen, setCurrentOpen, }) => {
+    const [isOpened, setIsOpened] = useState(false);
+    const { isMobile } = useMatchBreakpoints();
+    useEffect(() => {
+        if (!clickable || isOpenItem) {
+            setCurrentOpen(label);
+        }
+    }, [label, clickable]);
+    useEffect(() => {
+        setIsOpened(clickable ? currentOpen === label : true);
+    }, [currentOpen, clickable]);
+    const onTitleClick = () => {
+        if (!href && clickable) {
+            setCurrentOpen(!isOpened ? label : undefined);
+        }
+        else {
+            setIsOpenMenu(false);
+        }
+    };
+    return (React.createElement(AccordionComponent, { key: `acc-key-${label}` },
+        isMobile && index !== 1 && React.createElement(DropdownMenuDivider$1, { color: "btnTertiary" }),
+        React.createElement(AccordionTitle, { as: href ? linkComponent : "div", href: href, onClick: onTitleClick }, heading(isOpened)),
+        React.createElement(AccordionBody, { opened: isOpened }, children),
+        isMobile && !index && (React.createElement(Box, { m: "0 -24px 0" },
+            React.createElement(DropdownMenuDivider$1, { color: "rgba(18, 99, 241, 0.16)" })))));
+};
+
+var ItemTypes$1;
+(function (ItemTypes) {
+    ItemTypes["DIVIDER"] = "DIVIDER";
+})(ItemTypes$1 || (ItemTypes$1 = {}));
+
+const status$1 = {
+    LIVE: {
+        text: "LIVE",
+        color: "secondary",
+    },
+    SOON: {
+        text: "SOON",
+        color: "warning",
+    },
+    NEW: {
+        text: "NEW",
+        color: "success",
+    },
+};
+const links$1 = [
+    {
+        label: "Home",
+        href: "/",
+        hidden: true,
+    },
+    {
+        label: "Trade",
+        showNavBadge: true,
+        colorNavBadge: "warning",
+        items: [
+            {
+                label: "Swap",
+                href: "/swap",
+                leftIcon: "ExchangeOpacity",
+                description: "Item description",
+                badgeType: BadgeTypes.SUCCESS,
+                badgeTitle: "New",
+            },
+            {
+                label: "Expert Trade",
+                leftIcon: "ExpertModeOpacity",
+                rightIconFill: "primary",
+                description: "Item description",
+                href: "/liquidity",
+                disabled: true,
+                badgeType: BadgeTypes.CORE,
+                badgeTitle: "Modification",
+            },
+            {
+                label: "Liquidity",
+                href: "/pool",
+                leftIcon: "LiquidityOpacity",
+                description: "Item description",
+            },
+        ],
+    },
+    {
+        label: "Earn",
+        showNavBadge: true,
+        colorNavBadge: "primary",
+        items: [
+            {
+                label: "Farms",
+                href: "/pool",
+                leftIcon: "FarmsOpacity",
+                description: "Item description",
+            },
+            {
+                label: "Farms",
+                href: "/pool",
+                leftIcon: "InvestPoolOpacity",
+                description: "Item description",
+            },
+            {
+                badgeType: BadgeTypes.SUCCESS,
+                badgeTitle: "New",
+                label: "LaunchPools",
+                href: "/pool",
+                leftIcon: "PoolsOpacity",
+                description: "Item description description very long long long",
+                type: DropdownMenuItemType$1.CONTAINER,
+                links: [
+                    {
+                        label: "Stake BSW",
+                        href: "https://google.com",
+                        linkType: DropdownMenuItemType$1.EXTERNAL_LINK,
+                    },
+                    {
+                        label: "Stake tokens",
+                        href: "/polar",
+                        linkType: DropdownMenuItemType$1.INTERNAL_LINK,
+                    },
+                ],
+            },
+            {
+                label: "Referral Program",
+                href: "/pool",
+                leftIcon: "ReferralOpacity",
+                description: "Item description",
+            },
+            {
+                label: "IDO",
+                href: "/pool",
+                leftIcon: "IdoOpacity",
+                description: "Item description",
+            },
+        ],
+    },
+    {
+        label: "Win",
+        highlightTitle: true,
+        showNavBadge: true,
+        colorNavBadge: "secondary",
+        items: [
+            {
+                label: "Lottery",
+                href: "/pool",
+                leftIcon: "LotteryOpacity",
+                description: "Item description",
+                target: "_blank",
+                mobileTarget: "_self",
+            },
+            {
+                label: "Competitions",
+                href: "/pool",
+                leftIcon: "GobletOpacity",
+                description: "Item description",
+                type: DropdownMenuItemType$1.CONTAINER,
+                links: [
+                    {
+                        label: "NFT Staking",
+                        href: `/nft`,
+                    },
+                    {
+                        label: "NFT Boost",
+                        href: `/nft/boost`,
+                    },
+                ],
+            },
+            {
+                label: "NFT Launchpad",
+                href: `/launchpad`,
+                leftIcon: "LaunchpadOpacity",
+                description: "Buy new unique NFTs",
+            },
+        ],
+    },
+    {
+        label: "NFT",
+        showNavBadge: true,
+        items: [
+            {
+                label: "NFT Earn",
+                leftIcon: "NFTEarnOpacity",
+                description: "Stake NFT & Get multiple tokens",
+                type: DropdownMenuItemType$1.CONTAINER,
+                links: [
+                    {
+                        label: "Staking",
+                        href: `/nft`,
+                        badgeTitle: "Ended",
+                        badgeType: BadgeTypes.ERROR,
+                    },
+                    {
+                        label: "NFT Boost",
+                        href: `/nft/boost`,
+                    },
+                    {
+                        label: "Upgrade Level",
+                        href: `/nft/upgrade`,
+                    },
+                    {
+                        label: "NFT Launchpad",
+                        href: "/pool",
+                        target: "_blank",
+                        mobileTarget: "_self",
+                    },
+                ],
+            },
+            {
+                href: "/",
+                target: "_blank",
+                mobileTarget: "_self",
+                type: DropdownMenuItemType$1.BANNER,
+            },
+        ],
+    },
+    {
+        label: "Info",
+        isExtended: true,
+        items: [
+            {
+                label: "Analytics",
+                leftIcon: "AnalyticsOpacity",
+                href: "https://google.com",
+                description: "Item description",
+            },
+            {
+                label: "Voting",
+                leftIcon: "VotingOpacity",
+                href: "/pool",
+                description: "Item description",
+            },
+            {
+                label: "About BSW",
+                leftIcon: "AboutBSWOpacity",
+                href: "/pool",
+                description: "Item description",
+            },
+            {
+                label: "Team",
+                leftIcon: "TeamOpacity",
+                href: "/pool",
+                description: "Item description",
+            },
+            {
+                label: "$10M Program",
+                leftIcon: "Program10mOpacity",
+                href: "/pool",
+                description: "Item description",
+                type: DropdownMenuItemType$1.EXTERNAL_LINK,
+            },
+            {
+                label: "News",
+                leftIcon: "NewsOpacity",
+                href: "/pool",
+                description: "Item description",
+                type: DropdownMenuItemType$1.EXTERNAL_LINK,
+            },
+            {
+                label: "Docs",
+                leftIcon: "DocsOpacity",
+                href: "/pool",
+                description: "Item description",
+                type: DropdownMenuItemType$1.EXTERNAL_LINK,
+            },
+            {
+                label: "Audit",
+                leftIcon: "AuditProtectionOpacity",
+                href: "/pool",
+                description: "Item description",
+                type: DropdownMenuItemType$1.EXTERNAL_LINK,
+            },
+        ],
+    },
+    {
+        type: ItemTypes$1.DIVIDER,
+        showItemsOnMobile: true,
+        href: "",
+    },
+    {
+        label: "Buy crypto",
+        href: "/",
+        isMobileNav: true,
+        showItemsOnMobile: true,
+    },
+];
+const socials = [
+    {
+        label: "Telegram",
+        icon: "TelegramIcon",
+        items: {
+            channel: {
+                icon: "LogoIcon",
+                label: "Channel",
+                href: "https://t.me/biswap_news",
+            },
+            chats: [
+                {
+                    icon: "USAIcon",
+                    label: "English",
+                    href: "https://t.me/biswap",
+                },
+                {
+                    icon: "IDIcon",
+                    label: "Bahasa",
+                    href: "https://t.me/biswap_idn",
+                },
+                {
+                    icon: "RUIcon",
+                    label: "Русский",
+                    href: "https://t.me/biswap_rus",
+                },
+                {
+                    icon: "VNIcon",
+                    label: "Tiếng Việt",
+                    href: "https://t.me/biswap_vnm",
+                },
+                {
+                    icon: "FRIcon",
+                    label: "La France",
+                    href: "https://t.me/biswap_france",
+                },
+                {
+                    icon: "PTIcon",
+                    label: "Portugal",
+                    href: "https://t.me/biswap_prt",
+                },
+                {
+                    icon: "DEIcon",
+                    label: "Germany",
+                    href: "https://t.me/biswap_germany",
+                },
+                {
+                    icon: "CNIcon",
+                    label: "Сhina",
+                    href: "https://t.me/biswap_china",
+                },
+                {
+                    icon: "TRIcon",
+                    label: "Turkey",
+                    href: "https://t.me/biswap_turkey",
+                },
+                {
+                    icon: "ESIcon",
+                    label: "Espanol",
+                    href: "https://t.me/biswap_espanol",
+                },
+                {
+                    icon: "INIcon",
+                    label: "India",
+                    href: "https://t.me/biswap_india",
+                },
+            ],
+        },
+    },
+    {
+        label: "Instagram",
+        icon: "InstagramIcon",
+        href: "https://www.instagram.com/_biswap_dex",
+    },
+    {
+        label: "Facebook",
+        icon: "FacebookIcon",
+        href: "https://www.facebook.com/profile.php?id=100082146264626",
+    },
+    {
+        label: "Twitter",
+        icon: "TwitterIcon",
+        href: "https://twitter.com/Biswap_DEX",
+    },
+    {
+        label: "Medium",
+        icon: "MediumIcon",
+        href: "https://biswap-dex.medium.com/",
+    },
+    {
+        label: "Youtube",
+        icon: "YoutubeIcon",
+        href: "https://www.youtube.com/channel/UCHartwkRUURf2Q7MlKOV84w",
+    },
+    {
+        label: "TikTok",
+        icon: "TikTokIcon",
+        href: "https://www.tiktok.com/@biswap_dex?_t=8ZvBURxahPR&_r=1",
+    },
+    {
+        label: "CoinMarketCap",
+        icon: "CoinMarketCapIcon",
+        href: "https://coinmarketcap.com/community/profile/Biswap_DEX/",
+    },
+    {
+        label: "DeBank",
+        icon: "DeBankIcon",
+        href: "https://debank.com/official-account/112793",
+    },
+];
+[
+    {
+        label: "Wallet",
+        onClick: noop,
+        type: DropdownMenuItemType$1.BUTTON,
+    },
+    {
+        label: "Transactions",
+        type: DropdownMenuItemType$1.BUTTON,
+    },
+    {
+        type: DropdownMenuItemType$1.DIVIDER,
+    },
+    {
+        type: DropdownMenuItemType$1.BUTTON,
+        disabled: true,
+        label: "Dashboard",
+    },
+    {
+        type: DropdownMenuItemType$1.BUTTON,
+        disabled: true,
+        label: "Portfolio",
+    },
+    {
+        label: "Profile",
+        href: "/profile",
+    },
+    {
+        type: DropdownMenuItemType$1.EXTERNAL_LINK,
+        href: "https://biswap.org",
+        label: "Link",
+    },
+    {
+        type: DropdownMenuItemType$1.DIVIDER,
+    },
+    {
+        type: DropdownMenuItemType$1.BUTTON,
+        onClick: noop,
+        label: "Disconnect",
+    },
+];
+const MENU_HEIGHT$1 = 72;
+const MOBILE_EVENT_BUTTON_HEIGHT$1 = 40;
+const TRANSFER_BLOCK_CLOSED_HEIGHT$1 = 40;
+const TRANSFER_BLOCK_OPENED_HEIGHT$1 = 156;
+
+const Icons = IconModule;
+const Wrapper$5 = styled.div `
+  ${({ menuVariant }) => !menuVariant && "max-width: 136px;"}
+`;
+const SocialWrap$1 = styled(Flex) `
+  flex-wrap: wrap;
+  gap: 32px 24px;
+  justify-content: center;
+
+  ${({ menuVariant }) => menuVariant &&
+    `
+      width:274px;
+      row-gap: 25px;
+      column-gap: 26px;
+      justify-content: center;
+      margin: 0 auto;
+      `};
+`;
+const SocialItem = styled.div `
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.65;
+  }
+`;
+const DropDownWrap = styled.div `
+  position: relative;
+
+  &:hover {
+    .drop-down-inner {
+      display: block;
+    }
+  }
+`;
+const DropDownInnerWrap = styled.div `
+  display: none;
+  position: absolute;
+  padding-top: 0;
+  padding-bottom: 8px;
+  bottom: -5px;
+  left: -24px;
+  transform: translateX(-50%);
+  z-index: 50;
+  min-width: 96px;
+
+  &:hover {
+    display: block;
+  }
+`;
+const DropDown = styled.div `
+  position: relative;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: ${({ theme }) => theme.colors.tooltip};
+  bottom: 32px;
+  left: 100%;
+  transform: translateX(-40%);
+
+  &:before {
+    display: block;
+    content: "";
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    bottom: -4px;
+    left: 28px;
+    transform: translateX(-50%) rotate(45deg);
+    background-color: ${({ theme }) => theme.colors.tooltip};
+  }
+`;
+const DropDownLink = styled.a `
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 12px;
+  line-height: 18px;
+  color: ${({ theme }) => theme.colors.pastelBlue};
+  user-select: none;
+  transition: all 0.4s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.white};
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+`;
+const DropDownLabel = styled.span `
+  display: block;
+  font-size: 12px;
+  line-height: 18px;
+  color: ${({ theme }) => theme.colors.pastelBlue};
+  margin-bottom: 8px;
+`;
+const FlagWrap = styled.div `
+  border-radius: 50%;
+  margin-right: 8px;
+  overflow: hidden;
+  width: 14px;
+  height: 14px;
+`;
+const Community = ({ iconSize = "20px", menuVariant, isFooter = false, socialLinks, baseAwsUrl, }) => {
+    return (React.createElement(Wrapper$5, { menuVariant: menuVariant || isFooter },
+        React.createElement(SocialWrap$1, { menuVariant: menuVariant }, socials.map((social) => {
+            const Icon = Icons[social.icon];
+            const iconProps = {
+                width: iconSize,
+                color: isFooter ? "gray100" : "gray600",
+                style: { cursor: "pointer" },
+            };
+            if (social.items) {
+                return (React.createElement(DropDownWrap, { key: social.label },
+                    React.createElement(SocialItem, { className: "hovered-item" },
+                        React.createElement(Icon, { ...iconProps })),
+                    React.createElement(DropDownInnerWrap, { className: "drop-down-inner" },
+                        React.createElement(DropDown, null,
+                            React.createElement(DropDownLink, { key: social.items.channel.label, href: social.items.channel.href, target: "_blank", "aria-label": social.label },
+                                React.createElement(FlagWrap, null,
+                                    React.createElement(Box, { width: "14px", height: "14px" },
+                                        React.createElement("img", { src: `${baseAwsUrl}/coins/bsw.svg`, alt: "" }))),
+                                social.items.channel.label),
+                            React.createElement(DropDownLabel, null, "Chats:"),
+                            social.items.chats.map((item) => (React.createElement(DropDownLink, { key: item.label, href: item.href, target: "_blank", "aria-label": social.label },
+                                React.createElement(FlagWrap, null,
+                                    React.createElement(Image$1, { src: `${baseAwsUrl}/icons/Flags/${item.icon}.svg`, width: 14, height: 14, alt: "" })),
+                                item.label)))))));
+            }
+            return (React.createElement(SocialItem, { key: social.label },
+                React.createElement(Link, { external: true, href: social.href, "aria-label": social.label },
+                    React.createElement(Icon, { ...iconProps }))));
+        }))));
+};
+
+const MobileCommunityWrapper$1 = styled(Flex) `
+  flex: 1;
+  flex-direction: column;
+  margin-top: 32px;
+`;
+const StyledMobileMenu$1 = styled(Flex) `
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: stretch;
+  width: 100vw;
+  height: calc(100vh - 72px);
+  background-color: ${({ theme }) => theme.colors.white};
+  overflow: auto;
+  visibility: visible;
+  opacity: 1;
+  transition:
+    opacity 250ms linear,
+    visibility 350ms linear;
+  transform: translate3d(0, 72px, 0) !important;
+
+  ${({ $isOpen }) => !$isOpen &&
+    `
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+  `}
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: none;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &::-webkit-slider-thumb {
+    display: none;
+  }
+`;
+const MobileMenu$1 = ({ items, mobileMenuCallback, children, activeItem, baseAwsUrl, mobileLangSelector, ...props }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [targetRef, setTargetRef] = useState(null);
+    const [tooltipRef, setTooltipRef] = useState(null);
+    const [currentOpen, setCurrentOpen] = useState();
+    const { linkComponent } = useContext(MenuContext);
+    const { isMobile, isTablet } = useMatchBreakpoints();
+    const hasItems = items.length > 0;
+    const { styles, attributes, update } = usePopper(targetRef, tooltipRef, {
+        strategy: "fixed",
+        placement: "bottom",
+    });
+    useEffect(() => {
+        const hideDropdownMenu = (evt) => {
+            const target = evt.target;
+            target && !tooltipRef?.contains(target) && setIsOpen(false);
+        };
+        targetRef?.addEventListener("mouseleave", hideDropdownMenu, {
+            passive: true,
+        });
+        return () => {
+            targetRef?.removeEventListener("mouseleave", hideDropdownMenu);
+        };
+    }, [targetRef, tooltipRef, setIsOpen, update]);
+    useEffect(() => {
+        document.body.style.overflow = isOpen ? "hidden" : "auto";
+        mobileMenuCallback?.(isOpen);
+    }, [isOpen, mobileMenuCallback]);
+    const onPointerDownHandler = async () => {
+        setIsOpen((s) => !s);
+        update && (await update());
+    };
+    const LanguageSelector = mobileLangSelector ?? Fragment;
+    return (React.createElement(Box, { ref: setTargetRef, ...props },
+        React.createElement(Box, { onPointerDown: onPointerDownHandler }, children),
+        hasItems && (React.createElement(StyledMobileMenu$1, { style: styles.popper, ref: setTooltipRef, ...attributes.popper, "$isOpen": isOpen },
+            React.createElement(Box, null,
+                React.createElement(LanguageSelector, null),
+                items
+                    .filter((item) => item.label && !item.type)
+                    .map(({ label, items: innerItems = [], showItemsOnMobile, hidden, href }, index) => {
+                    if (hidden)
+                        return null;
+                    const isMarker = items[index].showNavBadge;
+                    const isMarkerColor = items[index].colorNavBadge;
+                    const isOpenAccordion = label === "Biswap Products";
+                    const isHighlighted = items[index].highlightTitle;
+                    const visualize = !showItemsOnMobile || (showItemsOnMobile && isMobile && !hidden);
+                    return (React.createElement(BorderMobileMenuItem$1, { key: `${label}#${index}`, isHighlighted: isHighlighted },
+                        React.createElement(Accordion, { index: index, label: label, href: href, linkComponent: linkComponent, setIsOpenMenu: setIsOpen, currentOpen: currentOpen, setCurrentOpen: setCurrentOpen, clickable: !isTablet && innerItems.length > 0, isOpenItem: isOpenAccordion, heading: (opened) => {
+                                return (((!showItemsOnMobile && !hidden) || (href && !isTablet)) && (React.createElement(React.Fragment, null,
+                                    React.createElement(Box, { m: "16px 0", position: "relative" },
+                                        isMarker && React.createElement(Marker$1, { color: isMarkerColor }),
+                                        React.createElement(HeadText, { scale: isTablet ? Scales$7.SIZE20 : Scales$7.SIZE16, color: isMobile && opened && !href
+                                                ? "primary"
+                                                : isHighlighted && isTablet
+                                                    ? "warningPress"
+                                                    : "backgroundDark" }, label)),
+                                    !isTablet && (React.createElement(IconComponent$1, { width: !href ? "24px" : "20px", iconName: href ? "ArrowRight" : opened ? "ChevronUp" : "ChevronDown", color: opened ? "primary" : "dark800" })))));
+                            } }, innerItems.length > 0 && (React.createElement(Grid, { gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)", gridColumnGap: 16, mt: isOpenAccordion ? 16 : 0 }, innerItems
+                            .filter((element) => element.type !== DropdownMenuItemType$1.BANNER)
+                            .map(({ type = DropdownMenuItemType$1.INTERNAL_LINK, rightIconFill, description, status, leftIcon = "", rightIcon = "", links = [], badgeTitle, badgeType, bannerRenderer, ...itemProps }, itemIndex, arr) => {
+                            const getMenuItemContent = (icon = rightIcon) => (React.createElement(MenuItemContent$1, { fill: rightIconFill, leftIcon: leftIcon, rightIcon: icon, description: description, status: status, badgeTitle: badgeTitle, badgeType: badgeType, ...itemProps }));
+                            const isActive = (itemProps.href ?? "/") === activeItem;
+                            const lastItem = itemIndex === arr?.length - 1;
+                            return (visualize && (React.createElement(DropdownMenuItemContainer$1, { key: itemIndex, isActive: isActive, leftIcon: leftIcon, getMenuItemContent: getMenuItemContent, links: links, setIsOpen: setIsOpen, linkComponent: linkComponent, bannerRenderer: bannerRenderer, type: type, isOpenItem: isOpenAccordion, lastItem: lastItem, ...itemProps })));
+                        })))),
+                        isTablet && !showItemsOnMobile && React.createElement(DropdownMenuDivider$1, null)));
+                }),
+                !isTablet && isMobile && (React.createElement(Box, { m: "0 16px" },
+                    React.createElement(DropdownMenuDivider$1, { color: "btnTertiary" })))),
+            isMobile && (React.createElement(MobileCommunityWrapper$1, null,
+                React.createElement(Community, { menuVariant: true, iconSize: "24px", baseAwsUrl: baseAwsUrl })))))));
+};
+
+const translateY$1 = "6px";
+const menuAnimationConfig$1 = {
+    boxAnimationBackwards: keyframes `
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-180deg);
+    }
+    75% {
+      transform: rotate(-180deg);
+    }
+    100% {
+      transform: rotate(-180deg);
+    }
+  `,
+    boxAnimationForward: keyframes `
+    0% {
+      transform: rotate(-180deg);
+    }
+    25% {
+      transform: rotate(-180deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    75% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  `,
+    firstLineAnimationForward: keyframes `
+    0% {
+      transform: translateY(0px);
+    }
+    25% {
+      transform: translateY(${translateY$1});
+    }
+    50% {
+      transform: translateY(${translateY$1});
+    }
+    75% {
+      transform: translateY(${translateY$1}) rotate(45deg);
+    }
+    100% {
+      transform: translateY(${translateY$1}) rotate(45deg);
+    }
+  `,
+    firstLineAnimationBackwards: keyframes `
+    0% {
+      transform: translateY(${translateY$1}) rotate(45deg);
+    }
+    25% {
+      transform: translateY(${translateY$1}) rotate(45deg);
+    }
+    50% {
+      transform: translateY(${translateY$1});
+    }
+    75% {
+      transform: translateY(${translateY$1});
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  `,
+    secondLineAnimationForward: keyframes `
+    0% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  `,
+    secondLineAnimationBackwards: keyframes `
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  `,
+    thirdLineAnimationForward: keyframes `
+    0% {
+      transform: translateY(0px);
+    }
+    25% {
+      transform: translateY(-${translateY$1});
+    }
+    50% {
+      transform: translateY(-${translateY$1});
+    }
+    75% {
+      transform: translateY(-${translateY$1}) rotate(-45deg);
+    }
+    100% {
+      transform: translateY(-${translateY$1}) rotate(-45deg);
+    }
+  `,
+    thirdLineAnimationBackwards: keyframes `
+    0% {
+      transform: translateY(-${translateY$1}) rotate(-45deg);
+    }
+    25% {
+      transform: translateY(-${translateY$1}) rotate(-45deg);
+    }
+    50% {
+      transform: translateY(-${translateY$1});
+    }
+    75% {
+      transform: translateY(-${translateY$1});
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  `,
+};
+
+const StyledBurger$1 = styled.button `
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 22px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  z-index: 10;
+
+  ${({ open, isLoaded }) => {
+    if (open) {
+        return css `
+        animation: ${menuAnimationConfig$1.boxAnimationForward} 0.5s ease-in 0s normal;
+        animation-fill-mode: forwards;
+      `;
+    }
+    else if (isLoaded) {
+        return css `
+        animation: ${menuAnimationConfig$1.boxAnimationBackwards} 0.5s ease-out 0s normal;
+      `;
+    }
+}}
+
+  span {
+    position: relative;
+    width: 22px;
+    height: 2px;
+    border-radius: 10px;
+    background: ${({ open, isTablet, theme }) => open ? (isTablet ? theme.colors.white : theme.colors.dark800) : theme.colors.white};
+    transition: all 0.5s linear;
+    transform-origin: center;
+
+    ${({ open, isLoaded }) => {
+    if (open) {
+        return css `
+          :first-child {
+            animation: ${menuAnimationConfig$1.firstLineAnimationForward} 0.3s ease-in-out 0s normal;
+            animation-fill-mode: forwards;
+          }
+
+          :nth-child(2) {
+            animation: ${menuAnimationConfig$1.secondLineAnimationForward} 0.3s linear 0s normal;
+            animation-fill-mode: forwards;
+          }
+
+          :nth-child(3) {
+            animation: ${menuAnimationConfig$1.thirdLineAnimationForward} 0.3s ease-in-out 0s normal;
+            animation-fill-mode: forwards;
+          }
+        `;
+    }
+    else if (isLoaded) {
+        return css `
+          :first-child {
+            animation: ${menuAnimationConfig$1.firstLineAnimationBackwards} 0.3s ease-in-out 0s normal;
+            animation-fill-mode: forwards;
+          }
+          
+          :nth-child(2) {
+            animation: ${menuAnimationConfig$1.secondLineAnimationBackwards} 0.3s linear 0s normal;
+            animation-fill-mode: forwards;
+          }
+      
+          :nth-child(3) {
+            animation: ${menuAnimationConfig$1.thirdLineAnimationBackwards} 0.3s ease-in-out 0s normal; 
+            animation-fill-mode: forwards;
+          `;
+    }
+}}
+  }
+`;
+
+const Burger$1 = ({ open }) => {
+    const [isLoaded, setIsLoaded] = useState(false);
+    const { isTablet } = useMatchBreakpoints();
+    useEffect(() => {
+        open && setIsLoaded(true);
+    }, [open]);
+    return (React.createElement(StyledBurger$1, { "aria-label": "Toggle menu", isLoaded: isLoaded, "aria-expanded": open, open: open, isTablet: isTablet },
+        React.createElement("span", null),
+        React.createElement("span", null),
+        React.createElement("span", null)));
+};
+
+const MobileDropdownMenu$1 = ({ items, activeItem, isMobileMenuOpened = false, mobileMenuCallback, baseAwsUrl, mobileLangSelector, }) => {
+    const [configItems, setConfigItems] = useState(items);
+    const { isMobile } = useMatchBreakpoints();
+    useEffect(() => {
+        if (isMobile) {
+            setConfigItems(items.map((item) => {
+                if (item.isExtended) {
+                    item.items = item?.items
+                        ?.filter((_, index) => index % 2 === 0)
+                        .concat(item.items.filter((_, index) => index % 2 === 1));
+                }
+                return item;
+            }));
+        }
+        else {
+            setConfigItems(items);
+        }
+    }, [isMobile, items]);
+    return (React.createElement(MobileMenu$1, { items: configItems, mobileMenuCallback: mobileMenuCallback, isMobileNav: true, activeItem: activeItem, baseAwsUrl: baseAwsUrl, mobileLangSelector: mobileLangSelector },
+        React.createElement(MenuItem$1, null,
+            React.createElement(Burger$1, { open: isMobileMenuOpened }))));
+};
+
+const MenuItems$1 = ({ items = [], activeItem, activeSubItem, isMobileMenuOpened = false, mobileMenuCallback, baseAwsUrl, mobileLangSelector, ...props }) => {
+    const { isDesktop, isTablet } = useMatchBreakpoints();
+    return (React.createElement(Flex, { ...props, alignItems: "center" },
+        !isDesktop && (React.createElement(MobileDropdownMenu$1, { items: items, activeItem: activeItem, isMobileMenuOpened: isMobileMenuOpened, mobileMenuCallback: mobileMenuCallback, baseAwsUrl: baseAwsUrl, mobileLangSelector: mobileLangSelector })),
+        items.map(({ label, items: menuItems = [], href, icon = "", isExtended, showItemsOnMobile, type, hidden, highlightTitle, }, index) => {
+            const isMarker = items[index]?.showNavBadge;
+            const isMarkerColor = items[index]?.colorNavBadge;
+            const isHighlighted = items[index].highlightTitle;
+            const statusColor = menuItems?.find((menuItem) => menuItem.status !== undefined)?.status?.color;
+            const isActive = activeItem === href;
+            const linkProps = isTouchDevice() && menuItems && menuItems.length > 0 ? {} : { href };
+            const visualize = (isDesktop || (isTablet && showItemsOnMobile)) && !hidden;
+            return (visualize && (React.createElement(Fragment, { key: `${label}#${href}` },
+                React.createElement(DropdownMenu$1, { key: `${label}#${href}#${icon}`, items: menuItems, py: 1, activeItem: activeSubItem, isExtended: isExtended },
+                    React.createElement(MenuItem$1, { ...linkProps, isActive: isActive, statusColor: statusColor, highlightTitle: highlightTitle },
+                        type === ItemTypes$1.DIVIDER && React.createElement(MenuItemDivider$1, null),
+                        icon && React.createElement(IconComponent$1, { mr: "8px", iconName: icon, color: "white" }),
+                        label && (React.createElement(Box, { ml: !href ? "8px" : 0, position: "relative" },
+                            isMarker && React.createElement(Marker$1, { color: isMarkerColor }),
+                            React.createElement(BodyText, { color: isHighlighted ? "warningPress" : "white", scale: Scales$7.SIZE14, bold: true }, label))))))));
+        })));
+};
+
+const StyledInnerButton = styled(Button) `
+  display: flex;
+  align-items: center;
+  height: auto;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+`;
+const LogoSwitcher = ({ logoSubtitle }) => {
+    const { isMobile, isMd } = useMatchBreakpoints();
+    if (isMobile || isMd) {
+        return React.createElement(Icon$p, { width: "32px", height: "32px" });
+    }
+    else if (logoSubtitle) {
+        return (React.createElement(Flex, null,
+            React.createElement(Icon$p, { width: "32px", height: "32px" }),
+            React.createElement(Box, { ml: "8px" },
+                React.createElement(Icon$q, { width: "78px", height: "32px" }),
+                React.createElement(BodyText, { mt: "-6px", textAlign: "left", scale: Scales$7.SIZE12 }, logoSubtitle))));
+    }
+    return React.createElement(Icon$r, { width: "146px", height: "32px" });
+};
+const Logo = ({ href, logoSubtitle }) => {
+    const { linkComponent } = useContext(MenuContext);
+    const isAbsoluteUrl = href.startsWith("http");
+    return (React.createElement(Flex, null, isAbsoluteUrl ? (React.createElement(StyledInnerButton, { variant: Variants$b.LIGHT, onClick: () => window.open(href, "_self"), "aria-label": "Biswap home page" },
+        React.createElement(LogoSwitcher, { logoSubtitle: logoSubtitle }))) : (React.createElement(StyledInnerButton, { variant: "light", as: linkComponent, href: href, "aria-label": "Biswap home page" },
+        React.createElement(LogoSwitcher, { logoSubtitle: logoSubtitle })))));
+};
+
+const BSWPrice = ({ BSWPriceLabel, BSWPriceValue }) => {
+    return (React.createElement(Flex, null,
+        React.createElement(Icon$p, { width: "40px" }),
+        React.createElement(Box, { ml: "8px" },
+            React.createElement(BodyText, { color: "gray900", as: BodyTextTags.P, scale: Scales$7.SIZE16, bold: true }, BSWPriceLabel),
+            React.createElement(BodyText, { color: "gray100", as: BodyTextTags.P, scale: Scales$7.SIZE24, bold: true },
+                "$",
+                BSWPriceValue))));
+};
+
+const BuyBSW = ({ buyBswHandler, buyBswLabel }) => {
+    return (React.createElement(Button, { onClick: buyBswHandler, variant: Variants$b.DANGER, scale: Scales$9.MD }, buyBswLabel));
+};
+
+const Wrapper$4 = styled(Flex) `
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 16px;
+  padding: 20px 16px;
+  background: ${({ theme }) => theme.colors.dark600};
+  margin-bottom: 32px;
+
+  @media screen and (min-width: 750px) {
+    flex-direction: column;
+    margin-bottom: 0;
+    padding: 20px 24px;
+
+    & > div {
+      margin-bottom: 24px;
+    }
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    flex-direction: row;
+    padding: 24px;
+
+    & > div {
+      margin-bottom: 0;
+    }
+  }
+`;
+const FooterInfo = ({ BSWPriceLabel, BSWPriceValue, buyBswHandler, buyBswLabel }) => {
+    return (React.createElement(Wrapper$4, null,
+        React.createElement(BSWPrice, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue }),
+        React.createElement(BuyBSW, { buyBswHandler: buyBswHandler, buyBswLabel: buyBswLabel })));
+};
+
+const Wrapper$3 = styled.div `
+  width: 100%;
+  margin-bottom: 28px;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    width: auto;
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    margin-bottom: 32px;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: auto;
+    margin-bottom: 65px;
+  }
+`;
+const TopAction = styled(Flex) `
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+`;
+const Title = styled.h4 `
+  font-size: 16px;
+  color: ${({ theme }) => theme.colors.pastelBlue};
+`;
+const ActionIcon = styled(Box) `
+  position: relative;
+  width: 14px;
+  height: 14px;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    display: none;
+  }
+
+  &:before,
+  &:after {
+    display: block;
+    content: "";
+    width: 14px;
+    height: 2px;
+    background-color: ${({ theme }) => theme.colors.pastelBlue};
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transition: transform 0.3s ease;
+  }
+
+  &:before {
+    transform: ${({ isOpen }) => isOpen ? "translate(-50%, -50%) rotate(180deg)" : "translate(-50%, -50%) rotate(90deg)"};
+  }
+
+  &:after {
+    transform: ${({ isOpen }) => isOpen ? "translate(-50%, -50%) rotate(180deg)" : "translate(-50%, -50%) rotate(0deg)"};
+  }
+`;
+const NavList = styled(Box) `
+  height: ${({ isOpen, innerHeight }) => (isOpen ? `${innerHeight * 26 + 16}px` : "0")};
+  padding-bottom: ${({ isOpen }) => (isOpen ? "16px" : "0")};
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    height 0.3s ease;
+  transform: ${({ isOpen }) => (isOpen ? "scaleY(1)" : "scaleY(0)")};
+  transform-origin: top;
+  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+  overflow: hidden;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    height: auto;
+    padding-bottom: 0;
+    opacity: 1;
+    transform: scaleY(1);
+  }
+`;
+const NavItem = styled(Box) `
+  margin-bottom: 8px;
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 20px;
+  line-height: 28px;
+`;
+const CustomLink = styled(Box) `
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.65;
+  }
+`;
+const CommonFooterLinksComponent = ({ footerLinks }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const { linkComponent } = useContext(MenuContext);
+    const { title, links } = footerLinks;
+    const arrLength = links?.length ?? 0;
+    return (React.createElement(Wrapper$3, null,
+        React.createElement(TopAction, { onClick: () => setIsOpen(!isOpen) },
+            React.createElement(Title, null, title),
+            React.createElement(ActionIcon, { isOpen: isOpen })),
+        React.createElement(NavList, { isOpen: isOpen, innerHeight: arrLength }, links?.map(({ href, target = null, label, type = DropdownMenuItemType$1.INTERNAL_LINK }, index) => (React.createElement(NavItem, { key: index.toString() },
+            type === DropdownMenuItemType$1.INTERNAL_LINK && (React.createElement(CustomLink, { as: linkComponent, to: href }, label)),
+            type === DropdownMenuItemType$1.EXTERNAL_LINK && (React.createElement(CustomLink, { as: "a", href: href, target: target ? target : "_self" }, label))))))));
+};
+
+const About = ({ footerLinks }) => {
+    return (React.createElement(React.Fragment, null,
+        React.createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
+};
+
+const Info = ({ footerLinks }) => {
+    return (React.createElement(React.Fragment, null,
+        React.createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
+};
+
+const Product = ({ footerLinks }) => {
+    return (React.createElement(React.Fragment, null,
+        React.createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
+};
+
+const CERTIK_URL = "https://www.certik.org/projects/biswap";
+const AuditedWrap = styled(Flex) `
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  margin-top: 32px;
+
+  @media screen and (min-width: 750px) {
+    flex-direction: column;
+    margin-top: 0;
+  }
+`;
+const LinkWrap = styled.a `
+  height: fit-content;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+const Audit = ({ marketplaceLink, baseAwsUrl }) => {
+    useMatchBreakpoints();
+    return (React.createElement(AuditedWrap, null,
+        React.createElement(Flex, null,
+            React.createElement(Icon$p, { width: "32px" }),
+            React.createElement(Icon$q, { ml: "8px", width: "110px" })),
+        React.createElement(LinkWrap, { href: CERTIK_URL, target: "_blank" },
+            React.createElement(Image$1, { width: 124, height: 35, src: `${baseAwsUrl}/icons/CertikAudited.svg`, alt: "Certik" }))));
+};
+
+const Wrapper$2 = styled.footer `
+  background: ${({ theme }) => theme.colors.dark900};
+  padding: 40px 0 12px;
+  transition: padding-left 0.2s;
+  z-index: 10;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding: 56px 0 8px;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    padding: 56px 0 0;
+  }
+`;
+const FooterTop = styled(Grid) `
+  grid-template-columns: 1fr;
+  grid-column-gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    padding: 0 16px 48px;
+  }
+  @media screen and (min-width: 750px) {
+    grid-template-columns: 200px 1fr 150px;
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding: 0 24px 48px;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    grid-template-columns: 310px 1fr 150px;
+  }
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    padding: 0 64px 48px;
+  }
+`;
+const SocialWrap = styled.div `
+  width: 260px;
+  margin: 0 auto;
+`;
+const FooterBottom = styled(Flex) `
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 16px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding: 0 24px;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+  }
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    padding: 0 64px;
+  }
+`;
+const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, infoLinks, productLinks, buyBswHandler, socialLinks, marketplaceLink, baseAwsUrl, buyBswLabel, }) => {
+    return (React.createElement(Wrapper$2, null,
+        React.createElement(FooterTop, null,
+            React.createElement(FooterInfo, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, buyBswHandler: buyBswHandler, buyBswLabel: buyBswLabel }),
+            React.createElement(SocialWrap, null,
+                React.createElement(Community, { isFooter: true, socialLinks: socialLinks, iconSize: "24px", baseAwsUrl: baseAwsUrl })),
+            React.createElement(Audit, { marketplaceLink: marketplaceLink, baseAwsUrl: baseAwsUrl })),
+        React.createElement(FooterBottom, null,
+            React.createElement(Product, { footerLinks: productLinks }),
+            React.createElement(Info, { footerLinks: infoLinks }),
+            React.createElement(About, { footerLinks: aboutLinks }))));
+};
+
+const Wrapper$1 = styled.div `
+  position: relative;
+  width: 100%;
+`;
+const getBackground$1 = ({ theme, menuBg, isMobileMenuOpened, }) => {
+    if (isMobileMenuOpened)
+        return theme.colors.white;
+    if (menuBg && !isMobileMenuOpened)
+        return theme.colors.black;
+    return "transparent";
+};
+const StyledNav$1 = styled.nav `
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: ${MENU_HEIGHT$1}px;
+  background-color: ${getBackground$1};
+  transform: translate3d(0, 0, 0);
+  padding-left: 16px;
+  padding-right: 16px;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    background-color: ${({ theme, menuBg }) => (menuBg ? theme.colors.black : "transparent")};
+    border-bottom: 1px solid ${({ theme, menuBg }) => (menuBg ? theme.colors.backgroundDark : "transparent")};
+  }
+`;
+const FixedContainer$1 = styled.div.attrs({
+    id: "menu-container",
+}) `
+  position: fixed;
+  top: ${({ showMenu, height }) => (showMenu ? 0 : `-${height}px`)};
+  left: 0;
+  height: ${({ height }) => `${height}px`};
+  max-height: ${({ height }) => `${height}px`};
+  width: 100%;
+  z-index: 20;
+
+  transition:
+    top 0.3s ease-in-out,
+    max-height 0.3s ease-in-out;
+`;
+const TopBannerContainer$1 = styled.div `
+  height: ${({ height }) => `${height}px`};
+  min-height: ${({ height }) => `${height}px`};
+  max-height: ${({ height }) => `${height}px`};
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+`;
+const BodyWrapper$1 = styled(Flex) `
+  position: relative;
+`;
+const Inner$1 = styled.div `
+  flex-grow: 1;
+  transition:
+    margin-top 0.2s,
+    margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate3d(0, 0, 0);
+  max-width: 100%;
+`;
+const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, infoLinks, productLinks, socialLinks, withEvent, customLogoSubtitle, marketplaceLink, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", mobileLangSelector, showFooter = true, }) => {
+    const [showMenu, setShowMenu] = useState(true);
+    const [menuBg, setMenuBg] = useState(false);
+    const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
+    const [transferBannerHeight, setTransferBannerHeight] = useState(TRANSFER_BLOCK_CLOSED_HEIGHT$1);
+    const { isMobile } = useMatchBreakpoints();
+    const refPrevOffset = useRef(typeof window === "undefined" ? 0 : window.pageYOffset);
+    const TopMenuWithBannerHeight = banner ? MENU_HEIGHT$1 + transferBannerHeight : MENU_HEIGHT$1;
+    const totalTopMenuHeight = withEvent && isMobile ? TopMenuWithBannerHeight + MOBILE_EVENT_BUTTON_HEIGHT$1 : TopMenuWithBannerHeight;
+    const RightSide = rightSide ?? Fragment;
+    const setTransferHeight = (expanded) => setTransferBannerHeight(expanded ? TRANSFER_BLOCK_CLOSED_HEIGHT$1 : TRANSFER_BLOCK_OPENED_HEIGHT$1);
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentOffset = window.pageYOffset;
+            const isBottomOfPage = window.document.body.clientHeight === currentOffset + window.innerHeight;
+            const isTopOfPage = currentOffset === 0;
+            // Always show the menu when user reach the top
+            if (isTopOfPage) {
+                setShowMenu(true);
+                setMenuBg(false);
+            }
+            // Avoid triggering anything at the bottom because of layout shift
+            else if (!isBottomOfPage) {
+                if (currentOffset < refPrevOffset.current || currentOffset <= totalTopMenuHeight) {
+                    // Has scroll up
+                    setShowMenu(true);
+                    setMenuBg(true);
+                }
+                else {
+                    // Has scroll down
+                    setShowMenu(false);
+                    setMenuBg(true);
+                }
+            }
+            refPrevOffset.current = currentOffset;
+        };
+        const throttledHandleScroll = throttle(handleScroll, 200);
+        window.addEventListener("scroll", throttledHandleScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", throttledHandleScroll);
+        };
+    }, [totalTopMenuHeight]);
+    // Find the home link if provided
+    const homeLink = links.find((link) => link.label === "Home");
+    return (React.createElement(MenuContext.Provider, { value: { linkComponent } },
+        React.createElement(Wrapper$1, null,
+            React.createElement(FixedContainer$1, { showMenu: showMenu, height: isMobileMenuOpened ? 0 : totalTopMenuHeight },
+                banner && React.createElement(TopBannerContainer$1, { height: transferBannerHeight }, banner(setTransferHeight)),
+                React.createElement(StyledNav$1, { menuBg: menuBg, isMobileMenuOpened: isMobileMenuOpened },
+                    React.createElement(Flex, { alignItems: "center", justifyContent: "center" },
+                        React.createElement(Logo, { logoSubtitle: customLogoSubtitle, href: homeLink?.href ?? "/" }),
+                        React.createElement(MenuItems$1, { items: links, activeItem: activeItem, activeSubItem: activeSubItem, isMobileMenuOpened: isMobileMenuOpened, mobileMenuCallback: setIsMobileMenuOpened, baseAwsUrl: baseAwsUrl, mobileLangSelector: mobileLangSelector, ml: isMobile ? "12px" : "26px" })),
+                    React.createElement(Flex, { alignItems: "center", height: "100%" },
+                        React.createElement(RightSide, { isMobileMenuOpen: isMobileMenuOpened })))),
+            React.createElement(BodyWrapper$1, null,
+                React.createElement(Inner$1, { isPushed: false, showMenu: showMenu },
+                    React.createElement(React.Fragment, null,
+                        children,
+                        showFooter && (React.createElement(Footer, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, registerToken: registerToken, buyBswHandler: buyBswHandler, aboutLinks: aboutLinks, infoLinks: infoLinks, productLinks: productLinks, socialLinks: socialLinks, marketplaceLink: marketplaceLink, baseAwsUrl: baseAwsUrl, buyBswLabel: buyBswLabel }))))))));
+};
+
+const MenuSolContext = createContext({
+    linkComponent: "a",
+});
+
 var DropdownMenuItemType;
 (function (DropdownMenuItemType) {
     DropdownMenuItemType[DropdownMenuItemType["INTERNAL_LINK"] = 0] = "INTERNAL_LINK";
@@ -8032,7 +9735,7 @@ const DropdownMenu = ({ children, activeItem = "", items = [], isExtended = fals
     const [isOpen, setIsOpen] = useState(false);
     const [targetRef, setTargetRef] = useState(null);
     const [tooltipRef, setTooltipRef] = useState(null);
-    const { linkComponent } = useContext(MenuContext);
+    const { linkComponent } = useContext(MenuSolContext);
     const hasItems = items.length > 0;
     const hasMoreThanItems = items.length > 1;
     const { styles, attributes, update } = usePopper(targetRef, tooltipRef, {
@@ -8070,599 +9773,99 @@ const DropdownMenu = ({ children, activeItem = "", items = [], isExtended = fals
         })))));
 };
 
-const AccordionBody = styled(Flex) `
-  flex-direction: column;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.45s;
+const PULSE_SUCCESS = keyframes `
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(29, 200, 124, 0.7);
+  }
 
-  ${({ opened }) => opened &&
-    css `
-      max-height: 900px;
-    `}
-`;
-const AccordionTitle = styled(Flex) `
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-`;
-const AccordionComponent = styled(Box) `
-  width: 100%;
-`;
-const Accordion = ({ label, clickable = true, heading, children, index, href, linkComponent, setIsOpenMenu, isOpenItem, currentOpen, setCurrentOpen, }) => {
-    const [isOpened, setIsOpened] = useState(false);
-    const { isMobile } = useMatchBreakpoints();
-    useEffect(() => {
-        if (!clickable || isOpenItem) {
-            setCurrentOpen(label);
-        }
-    }, [label, clickable]);
-    useEffect(() => {
-        setIsOpened(clickable ? currentOpen === label : true);
-    }, [currentOpen, clickable]);
-    const onTitleClick = () => {
-        if (!href && clickable) {
-            setCurrentOpen(!isOpened ? label : undefined);
-        }
-        else {
-            setIsOpenMenu(false);
-        }
-    };
-    return (React.createElement(AccordionComponent, { key: `acc-key-${label}` },
-        isMobile && index !== 1 && React.createElement(DropdownMenuDivider, { color: "btnTertiary" }),
-        React.createElement(AccordionTitle, { as: href ? linkComponent : "div", href: href, onClick: onTitleClick }, heading(isOpened)),
-        React.createElement(AccordionBody, { opened: isOpened }, children),
-        isMobile && !index && (React.createElement(Box, { m: "0 -24px 0" },
-            React.createElement(DropdownMenuDivider, { color: "rgba(18, 99, 241, 0.16)" })))));
-};
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(29, 200, 124, 0);
+  }
 
-var ItemTypes;
-(function (ItemTypes) {
-    ItemTypes["DIVIDER"] = "DIVIDER";
-})(ItemTypes || (ItemTypes = {}));
-
-const status$1 = {
-    LIVE: {
-        text: "LIVE",
-        color: "secondary",
-    },
-    SOON: {
-        text: "SOON",
-        color: "warning",
-    },
-    NEW: {
-        text: "NEW",
-        color: "success",
-    },
-};
-const links$1 = [
-    {
-        label: "Home",
-        href: "/",
-        hidden: true,
-    },
-    {
-        label: "Trade",
-        showNavBadge: true,
-        colorNavBadge: "warning",
-        items: [
-            {
-                label: "Swap",
-                href: "/swap",
-                leftIcon: "ExchangeOpacity",
-                description: "Item description",
-                badgeType: BadgeTypes.SUCCESS,
-                badgeTitle: "New",
-            },
-            {
-                label: "Expert Trade",
-                leftIcon: "ExpertModeOpacity",
-                rightIconFill: "primary",
-                description: "Item description",
-                href: "/liquidity",
-                disabled: true,
-                badgeType: BadgeTypes.CORE,
-                badgeTitle: "Modification",
-            },
-            {
-                label: "Liquidity",
-                href: "/pool",
-                leftIcon: "LiquidityOpacity",
-                description: "Item description",
-            },
-        ],
-    },
-    {
-        label: "Earn",
-        showNavBadge: true,
-        colorNavBadge: "primary",
-        items: [
-            {
-                label: "Farms",
-                href: "/pool",
-                leftIcon: "FarmsOpacity",
-                description: "Item description",
-            },
-            {
-                label: "Farms",
-                href: "/pool",
-                leftIcon: "InvestPoolOpacity",
-                description: "Item description",
-            },
-            {
-                badgeType: BadgeTypes.SUCCESS,
-                badgeTitle: "New",
-                label: "LaunchPools",
-                href: "/pool",
-                leftIcon: "PoolsOpacity",
-                description: "Item description description very long long long",
-                type: DropdownMenuItemType.CONTAINER,
-                links: [
-                    {
-                        label: "Stake BSW",
-                        href: "https://google.com",
-                        linkType: DropdownMenuItemType.EXTERNAL_LINK,
-                    },
-                    {
-                        label: "Stake tokens",
-                        href: "/polar",
-                        linkType: DropdownMenuItemType.INTERNAL_LINK,
-                    },
-                ],
-            },
-            {
-                label: "Referral Program",
-                href: "/pool",
-                leftIcon: "ReferralOpacity",
-                description: "Item description",
-            },
-            {
-                label: "IDO",
-                href: "/pool",
-                leftIcon: "IdoOpacity",
-                description: "Item description",
-            },
-        ],
-    },
-    {
-        label: "Win",
-        highlightTitle: true,
-        showNavBadge: true,
-        colorNavBadge: "secondary",
-        items: [
-            {
-                label: "Lottery",
-                href: "/pool",
-                leftIcon: "LotteryOpacity",
-                description: "Item description",
-                target: "_blank",
-                mobileTarget: "_self",
-            },
-            {
-                label: "Competitions",
-                href: "/pool",
-                leftIcon: "GobletOpacity",
-                description: "Item description",
-                type: DropdownMenuItemType.CONTAINER,
-                links: [
-                    {
-                        label: "NFT Staking",
-                        href: `/nft`,
-                    },
-                    {
-                        label: "NFT Boost",
-                        href: `/nft/boost`,
-                    },
-                ],
-            },
-            {
-                label: "NFT Launchpad",
-                href: `/launchpad`,
-                leftIcon: "LaunchpadOpacity",
-                description: "Buy new unique NFTs",
-            },
-        ],
-    },
-    {
-        label: "NFT",
-        showNavBadge: true,
-        items: [
-            {
-                label: "NFT Earn",
-                leftIcon: "NFTEarnOpacity",
-                description: "Stake NFT & Get multiple tokens",
-                type: DropdownMenuItemType.CONTAINER,
-                links: [
-                    {
-                        label: "Staking",
-                        href: `/nft`,
-                        badgeTitle: "Ended",
-                        badgeType: BadgeTypes.ERROR,
-                    },
-                    {
-                        label: "NFT Boost",
-                        href: `/nft/boost`,
-                    },
-                    {
-                        label: "Upgrade Level",
-                        href: `/nft/upgrade`,
-                    },
-                    {
-                        label: "NFT Launchpad",
-                        href: "/pool",
-                        target: "_blank",
-                        mobileTarget: "_self",
-                    },
-                ],
-            },
-            {
-                href: "/",
-                target: "_blank",
-                mobileTarget: "_self",
-                type: DropdownMenuItemType.BANNER,
-            },
-        ],
-    },
-    {
-        label: "Info",
-        isExtended: true,
-        items: [
-            {
-                label: "Analytics",
-                leftIcon: "AnalyticsOpacity",
-                href: "https://google.com",
-                description: "Item description",
-            },
-            {
-                label: "Voting",
-                leftIcon: "VotingOpacity",
-                href: "/pool",
-                description: "Item description",
-            },
-            {
-                label: "About BSW",
-                leftIcon: "AboutBSWOpacity",
-                href: "/pool",
-                description: "Item description",
-            },
-            {
-                label: "Team",
-                leftIcon: "TeamOpacity",
-                href: "/pool",
-                description: "Item description",
-            },
-            {
-                label: "$10M Program",
-                leftIcon: "Program10mOpacity",
-                href: "/pool",
-                description: "Item description",
-                type: DropdownMenuItemType.EXTERNAL_LINK,
-            },
-            {
-                label: "News",
-                leftIcon: "NewsOpacity",
-                href: "/pool",
-                description: "Item description",
-                type: DropdownMenuItemType.EXTERNAL_LINK,
-            },
-            {
-                label: "Docs",
-                leftIcon: "DocsOpacity",
-                href: "/pool",
-                description: "Item description",
-                type: DropdownMenuItemType.EXTERNAL_LINK,
-            },
-            {
-                label: "Audit",
-                leftIcon: "AuditProtectionOpacity",
-                href: "/pool",
-                description: "Item description",
-                type: DropdownMenuItemType.EXTERNAL_LINK,
-            },
-        ],
-    },
-    {
-        type: ItemTypes.DIVIDER,
-        showItemsOnMobile: true,
-        href: "",
-    },
-    {
-        label: "Buy crypto",
-        href: "/",
-        isMobileNav: true,
-        showItemsOnMobile: true,
-    },
-];
-const socials = [
-    {
-        label: "Telegram",
-        icon: "TelegramIcon",
-        items: {
-            channel: {
-                icon: "LogoIcon",
-                label: "Channel",
-                href: "https://t.me/biswap_news",
-            },
-            chats: [
-                {
-                    icon: "USAIcon",
-                    label: "English",
-                    href: "https://t.me/biswap",
-                },
-                {
-                    icon: "IDIcon",
-                    label: "Bahasa",
-                    href: "https://t.me/biswap_idn",
-                },
-                {
-                    icon: "RUIcon",
-                    label: "Русский",
-                    href: "https://t.me/biswap_rus",
-                },
-                {
-                    icon: "VNIcon",
-                    label: "Tiếng Việt",
-                    href: "https://t.me/biswap_vnm",
-                },
-                {
-                    icon: "FRIcon",
-                    label: "La France",
-                    href: "https://t.me/biswap_france",
-                },
-                {
-                    icon: "PTIcon",
-                    label: "Portugal",
-                    href: "https://t.me/biswap_prt",
-                },
-                {
-                    icon: "DEIcon",
-                    label: "Germany",
-                    href: "https://t.me/biswap_germany",
-                },
-                {
-                    icon: "CNIcon",
-                    label: "Сhina",
-                    href: "https://t.me/biswap_china",
-                },
-                {
-                    icon: "TRIcon",
-                    label: "Turkey",
-                    href: "https://t.me/biswap_turkey",
-                },
-                {
-                    icon: "ESIcon",
-                    label: "Espanol",
-                    href: "https://t.me/biswap_espanol",
-                },
-                {
-                    icon: "INIcon",
-                    label: "India",
-                    href: "https://t.me/biswap_india",
-                },
-            ],
-        },
-    },
-    {
-        label: "Instagram",
-        icon: "InstagramIcon",
-        href: "https://www.instagram.com/_biswap_dex",
-    },
-    {
-        label: "Facebook",
-        icon: "FacebookIcon",
-        href: "https://www.facebook.com/profile.php?id=100082146264626",
-    },
-    {
-        label: "Twitter",
-        icon: "TwitterIcon",
-        href: "https://twitter.com/Biswap_DEX",
-    },
-    {
-        label: "Medium",
-        icon: "MediumIcon",
-        href: "https://biswap-dex.medium.com/",
-    },
-    {
-        label: "Youtube",
-        icon: "YoutubeIcon",
-        href: "https://www.youtube.com/channel/UCHartwkRUURf2Q7MlKOV84w",
-    },
-    {
-        label: "TikTok",
-        icon: "TikTokIcon",
-        href: "https://www.tiktok.com/@biswap_dex?_t=8ZvBURxahPR&_r=1",
-    },
-    {
-        label: "CoinMarketCap",
-        icon: "CoinMarketCapIcon",
-        href: "https://coinmarketcap.com/community/profile/Biswap_DEX/",
-    },
-    {
-        label: "DeBank",
-        icon: "DeBankIcon",
-        href: "https://debank.com/official-account/112793",
-    },
-];
-[
-    {
-        label: "Wallet",
-        onClick: noop,
-        type: DropdownMenuItemType.BUTTON,
-    },
-    {
-        label: "Transactions",
-        type: DropdownMenuItemType.BUTTON,
-    },
-    {
-        type: DropdownMenuItemType.DIVIDER,
-    },
-    {
-        type: DropdownMenuItemType.BUTTON,
-        disabled: true,
-        label: "Dashboard",
-    },
-    {
-        type: DropdownMenuItemType.BUTTON,
-        disabled: true,
-        label: "Portfolio",
-    },
-    {
-        label: "Profile",
-        href: "/profile",
-    },
-    {
-        type: DropdownMenuItemType.EXTERNAL_LINK,
-        href: "https://biswap.org",
-        label: "Link",
-    },
-    {
-        type: DropdownMenuItemType.DIVIDER,
-    },
-    {
-        type: DropdownMenuItemType.BUTTON,
-        onClick: noop,
-        label: "Disconnect",
-    },
-];
-const MENU_HEIGHT$1 = 72;
-const MOBILE_EVENT_BUTTON_HEIGHT$1 = 40;
-const TRANSFER_BLOCK_CLOSED_HEIGHT$1 = 40;
-const TRANSFER_BLOCK_OPENED_HEIGHT$1 = 156;
-
-const Icons = IconModule;
-const Wrapper$5 = styled.div `
-  ${({ menuVariant }) => !menuVariant && "max-width: 136px;"}
-`;
-const SocialWrap$1 = styled(Flex) `
-  flex-wrap: wrap;
-  gap: 32px 24px;
-  justify-content: center;
-
-  ${({ menuVariant }) => menuVariant &&
-    `
-      width:274px;
-      row-gap: 25px;
-      column-gap: 26px;
-      justify-content: center;
-      margin: 0 auto;
-      `};
-`;
-const SocialItem = styled.div `
-  transition: opacity 0.3s ease;
-
-  &:hover {
-    opacity: 0.65;
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(29, 200, 124, 0);
   }
 `;
-const DropDownWrap = styled.div `
-  position: relative;
+const PULSE_WARNING = keyframes `
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 219, 28, 0.7);
+  }
 
-  &:hover {
-    .drop-down-inner {
-      display: block;
-    }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(255, 219, 28, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 219, 28, 0);
   }
 `;
-const DropDownInnerWrap = styled.div `
-  display: none;
+const PULSE_PRIMARY = keyframes `
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(18, 99, 241, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(18, 99, 241, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(18, 99, 241, 0);
+  }
+`;
+const PULSE_SECONDARY = keyframes `
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(249, 59, 93, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(249, 59, 93, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(249, 59, 93, 0);
+  }
+`;
+const PULSES = {
+    PRIMARY: PULSE_PRIMARY,
+    SECONDARY: PULSE_SECONDARY,
+    WARNING: PULSE_WARNING,
+    SUCCESS: PULSE_SUCCESS,
+};
+const Marker = styled(Box) `
   position: absolute;
-  padding-top: 0;
-  padding-bottom: 8px;
-  bottom: -5px;
-  left: -24px;
-  transform: translateX(-50%);
-  z-index: 50;
-  min-width: 96px;
-
-  &:hover {
-    display: block;
-  }
-`;
-const DropDown = styled.div `
-  position: relative;
-  border-radius: 8px;
-  padding: 8px;
-  background-color: ${({ theme }) => theme.colors.tooltip};
-  bottom: 32px;
-  left: 100%;
-  transform: translateX(-40%);
+  top: ${({ top }) => top ?? 0};
+  right: ${({ right }) => right ?? "-4px"};
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: ${({ theme, color }) => (!color ? theme.colors.success : theme.colors[color])};
+  transform: translateX(100%);
 
   &:before {
-    display: block;
     content: "";
-    width: 8px;
-    height: 8px;
     position: absolute;
-    bottom: -4px;
-    left: 28px;
-    transform: translateX(-50%) rotate(45deg);
-    background-color: ${({ theme }) => theme.colors.tooltip};
+    top: -2px;
+    left: -2px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    z-index: 1;
+    animation: ${({ color }) => (color ? PULSES[color.toUpperCase()] : PULSE_SUCCESS)} 2s infinite;
   }
 `;
-const DropDownLink = styled.a `
-  display: flex;
-  align-items: center;
-  width: 100%;
-  font-size: 12px;
-  line-height: 18px;
-  color: ${({ theme }) => theme.colors.pastelBlue};
-  user-select: none;
-  transition: all 0.4s ease;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.white};
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 8px;
-  }
-`;
-const DropDownLabel = styled.span `
-  display: block;
-  font-size: 12px;
-  line-height: 18px;
-  color: ${({ theme }) => theme.colors.pastelBlue};
-  margin-bottom: 8px;
-`;
-const FlagWrap = styled.div `
-  border-radius: 50%;
-  margin-right: 8px;
-  overflow: hidden;
-  width: 14px;
-  height: 14px;
-`;
-const Community = ({ iconSize = "20px", menuVariant, isFooter = false, socialLinks, baseAwsUrl, }) => {
-    return (React.createElement(Wrapper$5, { menuVariant: menuVariant || isFooter },
-        React.createElement(SocialWrap$1, { menuVariant: menuVariant }, socials.map((social) => {
-            const Icon = Icons[social.icon];
-            const iconProps = {
-                width: iconSize,
-                color: isFooter ? "gray100" : "gray600",
-                style: { cursor: "pointer" },
-            };
-            if (social.items) {
-                return (React.createElement(DropDownWrap, { key: social.label },
-                    React.createElement(SocialItem, { className: "hovered-item" },
-                        React.createElement(Icon, { ...iconProps })),
-                    React.createElement(DropDownInnerWrap, { className: "drop-down-inner" },
-                        React.createElement(DropDown, null,
-                            React.createElement(DropDownLink, { key: social.items.channel.label, href: social.items.channel.href, target: "_blank", "aria-label": social.label },
-                                React.createElement(FlagWrap, null,
-                                    React.createElement(Box, { width: "14px", height: "14px" },
-                                        React.createElement("img", { src: `${baseAwsUrl}/coins/bsw.svg`, alt: "" }))),
-                                social.items.channel.label),
-                            React.createElement(DropDownLabel, null, "Chats:"),
-                            social.items.chats.map((item) => (React.createElement(DropDownLink, { key: item.label, href: item.href, target: "_blank", "aria-label": social.label },
-                                React.createElement(FlagWrap, null,
-                                    React.createElement(Image$1, { src: `${baseAwsUrl}/icons/Flags/${item.icon}.svg`, width: 14, height: 14, alt: "" })),
-                                item.label)))))));
-            }
-            return (React.createElement(SocialItem, { key: social.label },
-                React.createElement(Link, { external: true, href: social.href, "aria-label": social.label },
-                    React.createElement(Icon, { ...iconProps }))));
-        }))));
-};
 
 const MobileCommunityWrapper = styled(Flex) `
   flex: 1;
@@ -8707,12 +9910,12 @@ const StyledMobileMenu = styled(Flex) `
     display: none;
   }
 `;
-const MobileMenu = ({ items, mobileMenuCallback, children, activeItem, baseAwsUrl, mobileLangSelector, ...props }) => {
+const MobileMenu = ({ items, mobileMenuCallback, children, activeItem, baseAwsUrl, ...props }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [targetRef, setTargetRef] = useState(null);
     const [tooltipRef, setTooltipRef] = useState(null);
     const [currentOpen, setCurrentOpen] = useState();
-    const { linkComponent } = useContext(MenuContext);
+    const { linkComponent } = useContext(MenuSolContext);
     const { isMobile, isTablet } = useMatchBreakpoints();
     const hasItems = items.length > 0;
     const { styles, attributes, update } = usePopper(targetRef, tooltipRef, {
@@ -8739,12 +9942,10 @@ const MobileMenu = ({ items, mobileMenuCallback, children, activeItem, baseAwsUr
         setIsOpen((s) => !s);
         update && (await update());
     };
-    const LanguageSelector = mobileLangSelector ?? Fragment;
     return (React.createElement(Box, { ref: setTargetRef, ...props },
         React.createElement(Box, { onPointerDown: onPointerDownHandler }, children),
         hasItems && (React.createElement(StyledMobileMenu, { style: styles.popper, ref: setTooltipRef, ...attributes.popper, "$isOpen": isOpen },
             React.createElement(Box, null,
-                React.createElement(LanguageSelector, null),
                 items
                     .filter((item) => item.label && !item.type)
                     .map(({ label, items: innerItems = [], showItemsOnMobile, hidden, href }, index) => {
@@ -8781,6 +9982,93 @@ const MobileMenu = ({ items, mobileMenuCallback, children, activeItem, baseAwsUr
             isMobile && (React.createElement(MobileCommunityWrapper, null,
                 React.createElement(Community, { menuVariant: true, iconSize: "24px", baseAwsUrl: baseAwsUrl })))))));
 };
+
+const StyledMenuItemContainer = styled(Box) `
+  position: relative;
+
+  ${({ $isActive, $variant }) => $isActive &&
+    $variant === "subMenu" &&
+    `
+      &:after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        height: 4px;
+        width: 100%;
+        border-radius: 2px 2px 0 0;
+      }
+    `};
+`;
+const CommonLinkStyles = ({ $isActive, $statusColor, $variant, $highlightTitle }) => css `
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => ($isActive ? theme.colors.secondary : theme.colors.white)};
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.4s ease;
+
+  ${$statusColor &&
+    `
+    &:after {
+      content: "";
+      height: 8px;
+      width: 8px;
+      margin-left: 12px;
+      border-radius: 100%;
+    }
+  `}
+
+  ${$variant === "default"
+    ? css `
+        height: 72px;
+        padding: 0 8px;
+
+        ${({ theme }) => theme.mediaQueries.lg} {
+          padding: 0 12px;
+        }
+      `
+    : css `
+        height: 42px;
+        padding: 4px 4px 0 4px;
+      `}
+
+  &:hover {
+    div {
+      color: ${({ theme }) => ($highlightTitle ? theme.colors.warningHover : theme.colors.pastelBlue)};
+    }
+
+    svg {
+      fill: ${({ theme }) => theme.colors.pastelBlue};
+    }
+
+    ${$variant === "default" && "border-radius: 16px;"};
+  }
+`;
+const StyledMenuItem = styled.a `
+  ${CommonLinkStyles};
+`;
+
+const MenuItem = ({ children, href, isActive = false, variant = "default", statusColor, highlightTitle, ...props }) => {
+    const { linkComponent } = useContext(MenuSolContext);
+    const itemLinkProps = href
+        ? {
+            as: linkComponent,
+            href,
+        }
+        : {
+            as: "div",
+        };
+    return (React.createElement(StyledMenuItemContainer, { "$isActive": isActive, "$variant": variant },
+        React.createElement(StyledMenuItem, { ...itemLinkProps, "$isActive": isActive, "$variant": variant, "$statusColor": statusColor, "$highlightTitle": highlightTitle, ...props }, children)));
+};
+
+const Divider = styled(Box) `
+  border: 1px solid ${({ theme }) => theme.colors.white};
+  opacity: 0.16;
+`;
+const MenuItemDivider = () => React.createElement(Divider, { width: 0, height: 20 });
 
 const translateY = "6px";
 const menuAnimationConfig = {
@@ -9010,7 +10298,7 @@ const Burger = ({ open }) => {
         React.createElement("span", null)));
 };
 
-const MobileDropdownMenu = ({ items, activeItem, isMobileMenuOpened = false, mobileMenuCallback, baseAwsUrl, mobileLangSelector, }) => {
+const MobileDropdownMenu = ({ items, activeItem, isMobileMenuOpened = false, mobileMenuCallback, baseAwsUrl, }) => {
     const [configItems, setConfigItems] = useState(items);
     const { isMobile } = useMatchBreakpoints();
     useEffect(() => {
@@ -9028,15 +10316,20 @@ const MobileDropdownMenu = ({ items, activeItem, isMobileMenuOpened = false, mob
             setConfigItems(items);
         }
     }, [isMobile, items]);
-    return (React.createElement(MobileMenu, { items: configItems, mobileMenuCallback: mobileMenuCallback, isMobileNav: true, activeItem: activeItem, baseAwsUrl: baseAwsUrl, mobileLangSelector: mobileLangSelector },
+    return (React.createElement(MobileMenu, { items: configItems, mobileMenuCallback: mobileMenuCallback, isMobileNav: true, activeItem: activeItem, baseAwsUrl: baseAwsUrl },
         React.createElement(MenuItem, null,
             React.createElement(Burger, { open: isMobileMenuOpened }))));
 };
 
-const MenuItems = ({ items = [], activeItem, activeSubItem, isMobileMenuOpened = false, mobileMenuCallback, baseAwsUrl, mobileLangSelector, ...props }) => {
+var ItemTypes;
+(function (ItemTypes) {
+    ItemTypes["DIVIDER"] = "DIVIDER";
+})(ItemTypes || (ItemTypes = {}));
+
+const MenuItems = ({ items = [], activeItem, activeSubItem, isMobileMenuOpened = false, mobileMenuCallback, baseAwsUrl, ...props }) => {
     const { isDesktop, isTablet } = useMatchBreakpoints();
     return (React.createElement(Flex, { ...props, alignItems: "center" },
-        !isDesktop && (React.createElement(MobileDropdownMenu, { items: items, activeItem: activeItem, isMobileMenuOpened: isMobileMenuOpened, mobileMenuCallback: mobileMenuCallback, baseAwsUrl: baseAwsUrl, mobileLangSelector: mobileLangSelector })),
+        !isDesktop && (React.createElement(MobileDropdownMenu, { items: items, activeItem: activeItem, isMobileMenuOpened: isMobileMenuOpened, mobileMenuCallback: mobileMenuCallback, baseAwsUrl: baseAwsUrl })),
         items.map(({ label, items: menuItems = [], href, icon = "", isExtended, showItemsOnMobile, type, hidden, highlightTitle, }, index) => {
             const isMarker = items[index]?.showNavBadge;
             const isMarkerColor = items[index]?.colorNavBadge;
@@ -9054,421 +10347,6 @@ const MenuItems = ({ items = [], activeItem, activeSubItem, isMobileMenuOpened =
                             isMarker && React.createElement(Marker, { color: isMarkerColor }),
                             React.createElement(BodyText, { color: isHighlighted ? "warningPress" : "white", scale: Scales$7.SIZE14, bold: true }, label))))))));
         })));
-};
-
-const StyledInnerButton = styled(Button) `
-  display: flex;
-  align-items: center;
-  height: auto;
-  padding: 0;
-  border: none;
-  background-color: transparent;
-`;
-const LogoSwitcher = ({ logoSubtitle }) => {
-    const { isMobile, isMd } = useMatchBreakpoints();
-    if (isMobile || isMd) {
-        return React.createElement(Icon$p, { width: "32px", height: "32px" });
-    }
-    else if (logoSubtitle) {
-        return (React.createElement(Flex, null,
-            React.createElement(Icon$p, { width: "32px", height: "32px" }),
-            React.createElement(Box, { ml: "8px" },
-                React.createElement(Icon$q, { width: "78px", height: "32px" }),
-                React.createElement(BodyText, { mt: "-6px", textAlign: "left", scale: Scales$7.SIZE12 }, logoSubtitle))));
-    }
-    return React.createElement(Icon$r, { width: "146px", height: "32px" });
-};
-const Logo = ({ href, logoSubtitle }) => {
-    const { linkComponent } = useContext(MenuContext);
-    const isAbsoluteUrl = href.startsWith("http");
-    return (React.createElement(Flex, null, isAbsoluteUrl ? (React.createElement(StyledInnerButton, { variant: Variants$b.LIGHT, onClick: () => window.open(href, "_self"), "aria-label": "Biswap home page" },
-        React.createElement(LogoSwitcher, { logoSubtitle: logoSubtitle }))) : (React.createElement(StyledInnerButton, { variant: "light", as: linkComponent, href: href, "aria-label": "Biswap home page" },
-        React.createElement(LogoSwitcher, { logoSubtitle: logoSubtitle })))));
-};
-
-const BSWPrice = ({ BSWPriceLabel, BSWPriceValue }) => {
-    return (React.createElement(Flex, null,
-        React.createElement(Icon$p, { width: "40px" }),
-        React.createElement(Box, { ml: "8px" },
-            React.createElement(BodyText, { color: "gray900", as: BodyTextTags.P, scale: Scales$7.SIZE16, bold: true }, BSWPriceLabel),
-            React.createElement(BodyText, { color: "gray100", as: BodyTextTags.P, scale: Scales$7.SIZE24, bold: true },
-                "$",
-                BSWPriceValue))));
-};
-
-const BuyBSW = ({ buyBswHandler, buyBswLabel }) => {
-    return (React.createElement(Button, { onClick: buyBswHandler, variant: Variants$b.DANGER, scale: Scales$9.MD }, buyBswLabel));
-};
-
-const Wrapper$4 = styled(Flex) `
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 16px;
-  padding: 20px 16px;
-  background: ${({ theme }) => theme.colors.dark600};
-  margin-bottom: 32px;
-
-  @media screen and (min-width: 750px) {
-    flex-direction: column;
-    margin-bottom: 0;
-    padding: 20px 24px;
-
-    & > div {
-      margin-bottom: 24px;
-    }
-  }
-  ${({ theme }) => theme.mediaQueries.lg} {
-    flex-direction: row;
-    padding: 24px;
-
-    & > div {
-      margin-bottom: 0;
-    }
-  }
-`;
-const FooterInfo = ({ BSWPriceLabel, BSWPriceValue, buyBswHandler, buyBswLabel }) => {
-    return (React.createElement(Wrapper$4, null,
-        React.createElement(BSWPrice, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue }),
-        React.createElement(BuyBSW, { buyBswHandler: buyBswHandler, buyBswLabel: buyBswLabel })));
-};
-
-const Wrapper$3 = styled.div `
-  width: 100%;
-  margin-bottom: 28px;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    width: auto;
-  }
-  ${({ theme }) => theme.mediaQueries.md} {
-    margin-bottom: 32px;
-  }
-  ${({ theme }) => theme.mediaQueries.lg} {
-    width: auto;
-    margin-bottom: 65px;
-  }
-`;
-const TopAction = styled(Flex) `
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-`;
-const Title = styled.h4 `
-  font-size: 16px;
-  color: ${({ theme }) => theme.colors.pastelBlue};
-`;
-const ActionIcon = styled(Box) `
-  position: relative;
-  width: 14px;
-  height: 14px;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    display: none;
-  }
-
-  &:before,
-  &:after {
-    display: block;
-    content: "";
-    width: 14px;
-    height: 2px;
-    background-color: ${({ theme }) => theme.colors.pastelBlue};
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transition: transform 0.3s ease;
-  }
-
-  &:before {
-    transform: ${({ isOpen }) => isOpen ? "translate(-50%, -50%) rotate(180deg)" : "translate(-50%, -50%) rotate(90deg)"};
-  }
-
-  &:after {
-    transform: ${({ isOpen }) => isOpen ? "translate(-50%, -50%) rotate(180deg)" : "translate(-50%, -50%) rotate(0deg)"};
-  }
-`;
-const NavList = styled(Box) `
-  height: ${({ isOpen, innerHeight }) => (isOpen ? `${innerHeight * 26 + 16}px` : "0")};
-  padding-bottom: ${({ isOpen }) => (isOpen ? "16px" : "0")};
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease,
-    height 0.3s ease;
-  transform: ${({ isOpen }) => (isOpen ? "scaleY(1)" : "scaleY(0)")};
-  transform-origin: top;
-  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
-  overflow: hidden;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    height: auto;
-    padding-bottom: 0;
-    opacity: 1;
-    transform: scaleY(1);
-  }
-`;
-const NavItem = styled(Box) `
-  margin-bottom: 8px;
-  color: ${({ theme }) => theme.colors.white};
-  font-size: 20px;
-  line-height: 28px;
-`;
-const CustomLink = styled(Box) `
-  color: ${({ theme }) => theme.colors.white};
-  font-weight: 600;
-  transition: opacity 0.3s ease;
-
-  &:hover {
-    opacity: 0.65;
-  }
-`;
-const CommonFooterLinksComponent = ({ footerLinks }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const { linkComponent } = useContext(MenuContext);
-    const { title, links } = footerLinks;
-    const arrLength = links?.length ?? 0;
-    return (React.createElement(Wrapper$3, null,
-        React.createElement(TopAction, { onClick: () => setIsOpen(!isOpen) },
-            React.createElement(Title, null, title),
-            React.createElement(ActionIcon, { isOpen: isOpen })),
-        React.createElement(NavList, { isOpen: isOpen, innerHeight: arrLength }, links?.map(({ href, target = null, label, type = DropdownMenuItemType.INTERNAL_LINK }, index) => (React.createElement(NavItem, { key: index.toString() },
-            type === DropdownMenuItemType.INTERNAL_LINK && (React.createElement(CustomLink, { as: linkComponent, to: href }, label)),
-            type === DropdownMenuItemType.EXTERNAL_LINK && (React.createElement(CustomLink, { as: "a", href: href, target: target ? target : "_self" }, label))))))));
-};
-
-const About = ({ footerLinks }) => {
-    return (React.createElement(React.Fragment, null,
-        React.createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
-};
-
-const Info = ({ footerLinks }) => {
-    return (React.createElement(React.Fragment, null,
-        React.createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
-};
-
-const Product = ({ footerLinks }) => {
-    return (React.createElement(React.Fragment, null,
-        React.createElement(CommonFooterLinksComponent, { footerLinks: footerLinks })));
-};
-
-const CERTIK_URL = "https://www.certik.org/projects/biswap";
-const AuditedWrap = styled(Flex) `
-  justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
-  margin-top: 32px;
-
-  @media screen and (min-width: 750px) {
-    flex-direction: column;
-    margin-top: 0;
-  }
-`;
-const LinkWrap = styled.a `
-  height: fit-content;
-  transition: opacity 0.3s ease;
-
-  &:hover {
-    opacity: 0.7;
-  }
-`;
-const Audit = ({ marketplaceLink, baseAwsUrl }) => {
-    useMatchBreakpoints();
-    return (React.createElement(AuditedWrap, null,
-        React.createElement(Flex, null,
-            React.createElement(Icon$p, { width: "32px" }),
-            React.createElement(Icon$q, { ml: "8px", width: "110px" })),
-        React.createElement(LinkWrap, { href: CERTIK_URL, target: "_blank" },
-            React.createElement(Image$1, { width: 124, height: 35, src: `${baseAwsUrl}/icons/CertikAudited.svg`, alt: "Certik" }))));
-};
-
-const Wrapper$2 = styled.footer `
-  background: ${({ theme }) => theme.colors.dark900};
-  padding: 40px 0 12px;
-  transition: padding-left 0.2s;
-  z-index: 10;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding: 56px 0 8px;
-  }
-  ${({ theme }) => theme.mediaQueries.lg} {
-    padding: 56px 0 0;
-  }
-`;
-const FooterTop = styled(Grid) `
-  grid-template-columns: 1fr;
-  grid-column-gap: 24px;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 16px 48px;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    padding: 0 16px 48px;
-  }
-  @media screen and (min-width: 750px) {
-    grid-template-columns: 200px 1fr 150px;
-  }
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding: 0 24px 48px;
-  }
-  ${({ theme }) => theme.mediaQueries.lg} {
-    grid-template-columns: 310px 1fr 150px;
-  }
-  ${({ theme }) => theme.mediaQueries.xxl} {
-    padding: 0 64px 48px;
-  }
-`;
-const SocialWrap = styled.div `
-  width: 260px;
-  margin: 0 auto;
-`;
-const FooterBottom = styled(Flex) `
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 16px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding: 0 24px;
-  }
-  ${({ theme }) => theme.mediaQueries.lg} {
-  }
-  ${({ theme }) => theme.mediaQueries.xxl} {
-    padding: 0 64px;
-  }
-`;
-const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, infoLinks, productLinks, buyBswHandler, socialLinks, marketplaceLink, baseAwsUrl, buyBswLabel, }) => {
-    return (React.createElement(Wrapper$2, null,
-        React.createElement(FooterTop, null,
-            React.createElement(FooterInfo, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, buyBswHandler: buyBswHandler, buyBswLabel: buyBswLabel }),
-            React.createElement(SocialWrap, null,
-                React.createElement(Community, { isFooter: true, socialLinks: socialLinks, iconSize: "24px", baseAwsUrl: baseAwsUrl })),
-            React.createElement(Audit, { marketplaceLink: marketplaceLink, baseAwsUrl: baseAwsUrl })),
-        React.createElement(FooterBottom, null,
-            React.createElement(Product, { footerLinks: productLinks }),
-            React.createElement(Info, { footerLinks: infoLinks }),
-            React.createElement(About, { footerLinks: aboutLinks }))));
-};
-
-const Wrapper$1 = styled.div `
-  position: relative;
-  width: 100%;
-`;
-const getBackground$1 = ({ theme, menuBg, isMobileMenuOpened, }) => {
-    if (isMobileMenuOpened)
-        return theme.colors.white;
-    if (menuBg && !isMobileMenuOpened)
-        return theme.colors.black;
-    return "transparent";
-};
-const StyledNav$1 = styled.nav `
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: ${MENU_HEIGHT$1}px;
-  background-color: ${getBackground$1};
-  transform: translate3d(0, 0, 0);
-  padding-left: 16px;
-  padding-right: 16px;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    background-color: ${({ theme, menuBg }) => (menuBg ? theme.colors.black : "transparent")};
-    border-bottom: 1px solid ${({ theme, menuBg }) => (menuBg ? theme.colors.backgroundDark : "transparent")};
-  }
-`;
-const FixedContainer$1 = styled.div.attrs({
-    id: "menu-container",
-}) `
-  position: fixed;
-  top: ${({ showMenu, height }) => (showMenu ? 0 : `-${height}px`)};
-  left: 0;
-  height: ${({ height }) => `${height}px`};
-  max-height: ${({ height }) => `${height}px`};
-  width: 100%;
-  z-index: 20;
-
-  transition:
-    top 0.3s ease-in-out,
-    max-height 0.3s ease-in-out;
-`;
-const TopBannerContainer$1 = styled.div `
-  height: ${({ height }) => `${height}px`};
-  min-height: ${({ height }) => `${height}px`};
-  max-height: ${({ height }) => `${height}px`};
-  width: 100%;
-  transition: all 0.3s ease-in-out;
-`;
-const BodyWrapper$1 = styled(Flex) `
-  position: relative;
-`;
-const Inner$1 = styled.div `
-  flex-grow: 1;
-  transition:
-    margin-top 0.2s,
-    margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translate3d(0, 0, 0);
-  max-width: 100%;
-`;
-const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, infoLinks, productLinks, socialLinks, withEvent, customLogoSubtitle, marketplaceLink, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", mobileLangSelector, showFooter = true, }) => {
-    const [showMenu, setShowMenu] = useState(true);
-    const [menuBg, setMenuBg] = useState(false);
-    const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
-    const [transferBannerHeight, setTransferBannerHeight] = useState(TRANSFER_BLOCK_CLOSED_HEIGHT$1);
-    const { isMobile } = useMatchBreakpoints();
-    const refPrevOffset = useRef(typeof window === "undefined" ? 0 : window.pageYOffset);
-    const TopMenuWithBannerHeight = banner ? MENU_HEIGHT$1 + transferBannerHeight : MENU_HEIGHT$1;
-    const totalTopMenuHeight = withEvent && isMobile ? TopMenuWithBannerHeight + MOBILE_EVENT_BUTTON_HEIGHT$1 : TopMenuWithBannerHeight;
-    const RightSide = rightSide ?? Fragment;
-    const setTransferHeight = (expanded) => setTransferBannerHeight(expanded ? TRANSFER_BLOCK_CLOSED_HEIGHT$1 : TRANSFER_BLOCK_OPENED_HEIGHT$1);
-    useEffect(() => {
-        const handleScroll = () => {
-            const currentOffset = window.pageYOffset;
-            const isBottomOfPage = window.document.body.clientHeight === currentOffset + window.innerHeight;
-            const isTopOfPage = currentOffset === 0;
-            // Always show the menu when user reach the top
-            if (isTopOfPage) {
-                setShowMenu(true);
-                setMenuBg(false);
-            }
-            // Avoid triggering anything at the bottom because of layout shift
-            else if (!isBottomOfPage) {
-                if (currentOffset < refPrevOffset.current || currentOffset <= totalTopMenuHeight) {
-                    // Has scroll up
-                    setShowMenu(true);
-                    setMenuBg(true);
-                }
-                else {
-                    // Has scroll down
-                    setShowMenu(false);
-                    setMenuBg(true);
-                }
-            }
-            refPrevOffset.current = currentOffset;
-        };
-        const throttledHandleScroll = throttle(handleScroll, 200);
-        window.addEventListener("scroll", throttledHandleScroll, { passive: true });
-        return () => {
-            window.removeEventListener("scroll", throttledHandleScroll);
-        };
-    }, [totalTopMenuHeight]);
-    // Find the home link if provided
-    const homeLink = links.find((link) => link.label === "Home");
-    return (React.createElement(MenuContext.Provider, { value: { linkComponent } },
-        React.createElement(Wrapper$1, null,
-            React.createElement(FixedContainer$1, { showMenu: showMenu, height: isMobileMenuOpened ? 0 : totalTopMenuHeight },
-                banner && React.createElement(TopBannerContainer$1, { height: transferBannerHeight }, banner(setTransferHeight)),
-                React.createElement(StyledNav$1, { menuBg: menuBg, isMobileMenuOpened: isMobileMenuOpened },
-                    React.createElement(Flex, { alignItems: "center", justifyContent: "center" },
-                        React.createElement(Logo, { logoSubtitle: customLogoSubtitle, href: homeLink?.href ?? "/" }),
-                        React.createElement(MenuItems, { items: links, activeItem: activeItem, activeSubItem: activeSubItem, isMobileMenuOpened: isMobileMenuOpened, mobileMenuCallback: setIsMobileMenuOpened, baseAwsUrl: baseAwsUrl, mobileLangSelector: mobileLangSelector, ml: isMobile ? "12px" : "26px" })),
-                    React.createElement(Flex, { alignItems: "center", height: "100%" },
-                        React.createElement(RightSide, { isMobileMenuOpen: isMobileMenuOpened })))),
-            React.createElement(BodyWrapper$1, null,
-                React.createElement(Inner$1, { isPushed: false, showMenu: showMenu },
-                    React.createElement(React.Fragment, null,
-                        children,
-                        showFooter && (React.createElement(Footer, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, registerToken: registerToken, buyBswHandler: buyBswHandler, aboutLinks: aboutLinks, infoLinks: infoLinks, productLinks: productLinks, socialLinks: socialLinks, marketplaceLink: marketplaceLink, baseAwsUrl: baseAwsUrl, buyBswLabel: buyBswLabel }))))))));
 };
 
 const status = {
@@ -9523,7 +10401,7 @@ const links = [
         ],
     },
     {
-        type: ItemTypes.DIVIDER,
+        type: ItemTypes$1.DIVIDER,
         showItemsOnMobile: true,
         href: "",
     },
@@ -9538,22 +10416,22 @@ const links = [
     {
         label: "Wallet",
         onClick: noop,
-        type: DropdownMenuItemType.BUTTON,
+        type: DropdownMenuItemType$1.BUTTON,
     },
     {
         label: "Transactions",
-        type: DropdownMenuItemType.BUTTON,
+        type: DropdownMenuItemType$1.BUTTON,
     },
     {
-        type: DropdownMenuItemType.DIVIDER,
+        type: DropdownMenuItemType$1.DIVIDER,
     },
     {
-        type: DropdownMenuItemType.BUTTON,
+        type: DropdownMenuItemType$1.BUTTON,
         disabled: true,
         label: "Dashboard",
     },
     {
-        type: DropdownMenuItemType.BUTTON,
+        type: DropdownMenuItemType$1.BUTTON,
         disabled: true,
         label: "Portfolio",
     },
@@ -9562,15 +10440,15 @@ const links = [
         href: "/profile",
     },
     {
-        type: DropdownMenuItemType.EXTERNAL_LINK,
+        type: DropdownMenuItemType$1.EXTERNAL_LINK,
         href: "https://biswap.org",
         label: "Link",
     },
     {
-        type: DropdownMenuItemType.DIVIDER,
+        type: DropdownMenuItemType$1.DIVIDER,
     },
     {
-        type: DropdownMenuItemType.BUTTON,
+        type: DropdownMenuItemType$1.BUTTON,
         onClick: noop,
         label: "Disconnect",
     },
@@ -9640,7 +10518,7 @@ const Inner = styled.div `
   transform: translate3d(0, 0, 0);
   max-width: 100%;
 `;
-const MenuSol = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, infoLinks, productLinks, socialLinks, withEvent, customLogoSubtitle, marketplaceLink, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", mobileLangSelector, showFooter = true, }) => {
+const MenuSol = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, infoLinks, productLinks, socialLinks, withEvent, customLogoSubtitle, marketplaceLink, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", showFooter = true, }) => {
     const [showMenu, setShowMenu] = useState(true);
     const [menuBg, setMenuBg] = useState(false);
     const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
@@ -9691,7 +10569,7 @@ const MenuSol = ({ linkComponent = "a", banner, links, rightSide, activeItem, ac
                 React.createElement(StyledNav, { menuBg: menuBg, isMobileMenuOpened: isMobileMenuOpened },
                     React.createElement(Flex, { alignItems: "center", justifyContent: "center" },
                         React.createElement(Logo, { logoSubtitle: customLogoSubtitle, href: homeLink?.href ?? "/" }),
-                        React.createElement(MenuItems, { items: links, activeItem: activeItem, activeSubItem: activeSubItem, isMobileMenuOpened: isMobileMenuOpened, mobileMenuCallback: setIsMobileMenuOpened, baseAwsUrl: baseAwsUrl, mobileLangSelector: mobileLangSelector, ml: isMobile ? "12px" : "26px" })),
+                        React.createElement(MenuItems, { items: links, activeItem: activeItem, activeSubItem: activeSubItem, isMobileMenuOpened: isMobileMenuOpened, mobileMenuCallback: setIsMobileMenuOpened, baseAwsUrl: baseAwsUrl, ml: isMobile ? "12px" : "26px" })),
                     React.createElement(Flex, { alignItems: "center", height: "100%" },
                         React.createElement(RightSide, { isMobileMenuOpen: isMobileMenuOpened })))),
             React.createElement(BodyWrapper, null,
@@ -9962,4 +10840,4 @@ const ColoredToasts = ({ toasts, onRemove, ttl = 5000 }) => {
         React.createElement(TransitionGroup, null, toasts.map((toast) => (React.createElement(ColoredToastItem, { key: toast.id, toast: toast, ttl: ttl, style: { bottom: "50px" } }))))));
 };
 
-export { Icon$15 as AboutBSWOpacityIcon, Icon$16 as AboutBSWSolidIcon, Alert, ColoredVariants as AlertColoredVariants, Variants$c as AlertVariants, Icon$7 as AnalyticsIcon, Icon$1b as AnalyticsOpacityIcon, Icon$1c as AnalyticsSolidIcon, Icon$3E as ArrowDownIcon, Icon$t as ArrowFiguredIcon, Icon$3F as ArrowLeftIcon, Icon$3H as ArrowRightIcon, Icon$3B as ArrowSkipLeftIcon, Icon$3C as ArrowSkipRightIcon, Icon$3D as ArrowUpForwardIcon, Icon$3G as ArrowUpIcon, Icon$2l as AuctionIcon, Icon$2j as AuctionOpacityIcon, Icon$2k as AuctionSolidIcon, Icon$U as AuditProtectionOpacityIcon, Icon$T as AuditProtectionSolidIcon, Icon$R as AuditSearchOpacityIcon, Icon$S as AuditSearchSolidIcon, Icon$1O as AutoRenewAnimateIcon, Icon$1R as AutoRenewIcon, Icon$1P as AutoRenewOpacityAnimateIcon, Icon$1S as AutoRenewOpacityIcon, Icon$1Q as AutoRenewSolidAnimateIcon, Icon$1T as AutoRenewSolidIcon, Icon$u as AvalancheIcon, Icon$w as BSCIcon, Badge$1 as Badge, Badge as BadgeButton, BadgeButtonTypes, BadgeTypes, GridLayout$1 as BaseLayout, BaseMenu, Icon$2K as BellOpacityIcon, Icon$2L as BellSolidIcon, Icon$29 as BlockIcon, Icon$28 as BlockOpacityIcon, Icon$27 as BlockSolidIcon, Icon$P as BlogOpacityIcon, Icon$Q as BlogSolidIcon, BodyText, BodyTextTags, Icon$2r as BookIcon, Icon$2p as BookOpacityIcon, Icon$2q as BookSolidIcon, Box, Breadcrumbs, Icon$1 as BridgeOpacityIcon, Icon as BridgeSolidIcon, Icon$3U as BscBlackRoundIcon, Icon$p as BswIcon, Icon$1E as BurgerCloseIcon, Icon$1F as BurgerIcon, Button, ButtonMenu, ButtonMenuItem, Scales$8 as ButtonMenuScales, Variants$a as ButtonMenuVariants, Scales$9 as ButtonScales, Variants$b as ButtonVariants, Icon$3a as CalculateIcon, Icon$3c as CalculateOpacityIcon, Icon$3b as CalculateSolidIcon, Icon$39 as CalendarIcon, Icon$2U as CardViewIcon, GridLayout as CardsLayout, CarouselButtonsTypes, CarouselHeader, CarouselNumbersBlock, Icon$6 as ChainLinkIcon, Icon$17 as CharityOpacityIcon, Icon$18 as CharitySolidIcon, Icon$2Q as CheckCircleIcon, Icon$2R as CheckIcon, Icon$2O as CheckOpacityIcon, Icon$2P as CheckSolidIcon, Checkbox, CheckboxScales, Icon$3S as ChevronDownCircleOpacityIcon, Icon$3T as ChevronDownCircleSolidIcon, Icon$3R as ChevronDownIcon, Icon$3y as ChevronDownTripleIcon, Icon$3M as ChevronLeftCircleOpacityIcon, Icon$3N as ChevronLeftCircleSolidIcon, Icon$3L as ChevronLeftIcon, Icon$3P as ChevronRightCircleOpacityIcon, Icon$3Q as ChevronRightCircleSolidIcon, Icon$3O as ChevronRightIcon, Icon$3x as ChevronRightTripleIcon, Icon$3t as ChevronSlimRightIcon, Icon$3I as ChevronUpCircleOpacityIcon, Icon$3J as ChevronUpCircleSolidIcon, Icon$3A as ChevronUpDoubleIcon, Icon$3K as ChevronUpIcon, Icon$3z as ChevronUpTripleIcon, ClickableElementContainer, Icon$3h as CloseCircleIcon, Icon$3g as CloseCircleOpacityIcon, Icon$3f as CloseCircleSolidIcon, Icon$3i as CloseIcon, Icon$z as CoinMarketCapIcon, ColoredToasts, Icon$n as ConflictIcon, Container$3 as Container, ContainerCarousel, Icon$2A as CopyIcon, Icon$2y as CopyOpacityIcon, Icon$2z as CopySolidIcon, Icon$c as CrossChainOpacityIcon, Icon$3v as CrownIcon, Icon$x as DeBankIcon, DirectionButton, Icon$f as DiscountOpacityIcon, Icon$g as DiscountSolidIcon, Icon$V as DocsOpacityIcon, Icon$W as DocsSolidIcon, Icon$2 as DocumentIcon, Dot$1 as Dot, Icon$3X as DownloadIcon, Icon$m as DropIcon, Dropdown, DropdownButton, Positions as DropdownButtonPositions, Scales$6 as DropdownButtonScales, Variants$9 as DropdownButtonVariants, DropdownMenuItemType, DropdownPosition, DropdownScales, DropdownVariants, Icon$1Z as EditIcon, Icon$1Y as EditOpacityIcon, Icon$1X as EditSolidIcon, Icon$1x as ExchangeOpacityIcon, Icon$1y as ExchangeSolidIcon, ExpandableButton, ExpandableIcon, ExpandableLabel, Icon$1v as ExpertModeOpacityIcon, Icon$1w as ExpertModeSolidIcon, Icon$2S as EyeCloseIcon, Icon$2T as EyeOpenIcon, Icon$B as FacebookIcon, Faqs, Variants as FaqsVariants, Icon$1r as FarmsOpacityIcon, Icon$1s as FarmsSolidIcon, Icon$2X as FavoriteEmptyIcon, Icon$2W as FavoriteSolidIcon, Icon$2o as FileIcon, Icon$2m as FileOpacityIcon, Icon$2n as FileSolidIcon, Icon$2u as FilterIcon, Icon$2s as FilterOpacityIcon, Icon$2t as FilterSolidIcon, Icon$35 as FireIcon, Icon$33 as FireOpacityIcon, Icon$34 as FireSolidIcon, Icon$1d as FixedStakingOpacityIcon, Icon$1e as FixedStakingSolidIcon, Icon$2c as FlagIcon, Icon$2b as FlagOpacityIcon, Icon$2a as FlagSolidIcon, Flex, Icon$1V as GasIcon, Icon$i as GiftIcon, Icon$1l as GobletOpacityIcon, Icon$1m as GobletSolidIcon, Grid, HeadText, HeadTextTags, Heading, Scales$5 as HeadingScales, Tags as HeadingTags, Icon$36 as HelpIcon, Icon$38 as HelpOpacityIcon, Icon$37 as HelpSolidIcon, HeroWrapper, Icon$1I as HistoryIcon, Icon$3V as HourglassIcon, IconButton, IconComponent, Icon$1n as IdoOpacityIcon, Icon$1o as IdoSolidIcon, Image, Variants$1 as ImageVariants, Icon$5 as InfinityLoopIcon, Icon$32 as InfoIcon, Icon$30 as InfoOpacityIcon, Icon$31 as InfoSolidIcon, InlineMenu, InlineMenuContainer, Input$1 as Input, InputGroup, Scales$4 as InputScales, Variants$8 as InputVariants, Icon$I as InstagramIcon, Icon$M as InvestPoolOpacityIcon, ItemTypes, Icon$j as LanguageIcon, Icon$1h as LaunchpadOpacityIcon, Icon$1i as LaunchpadSolidIcon, Icon$o as LightningIcon, Icon$N as LimitOrderOpacityIcon, Icon$O as LimitOrderSolidIcon, Link, LinkExternal, Scales$3 as LinkScales, Variants$7 as LinkVariants, Icon$1z as LiquidityOpacityIcon, Icon$1A as LiquiditySolidIcon, Icon$L as LiquidityStakingOpacityIcon, Icon$K as LiquidityStakingSolidIcon, Icon$J as LiquidityStakingSolidOpacityIcon, Icon$1K as ListOpacityIcon, Icon$1J as ListSolidIcon, Icon$2V as ListViewIcon, Icon$l as LockIcon, Icon$r as LogoWithTextIcon, Icon$1j as LotteryOpacityIcon, Icon$1k as LotterySolidIcon, MatchBreakpointsProvider, Icon$1W as MedalIcon, Icon$H as MediumIcon, Menu, MenuSol, Icon$3n as MinusCircleOpacityIcon, Icon$3o as MinusCircleSolidIcon, Icon$3p as MinusIcon, Modal, ModalBackButton, ModalBody$1 as ModalBody, ModalCloseButton, ModalContainer, ModalProvider, ModalV2, ModalV2Context, ModalWithBackground, ModalWrapper, Icon$1_ as More2Icon, Icon$22 as MoreHorizontalIcon, Icon$20 as MoreHorizontalOpacityIcon, Icon$1$ as MoreHorizontalOutlineIcon, Icon$21 as MoreHorizontalSolidIcon, Icon$26 as MoreVerticalIcon, Icon$24 as MoreVerticalOpacityIcon, Icon$23 as MoreVerticalOutlineIcon, Icon$25 as MoreVerticalSolidIcon, Icon$3W as MouseIcon, Icon$_ as MultiPoolOpacityIcon, Icon$Z as MultiPoolSolidIcon, Icon$1f as NFTEarnOpacityIcon, Icon$1g as NFTEarnSolidIcon, Icon$X as NewsOpacityIcon, Icon$Y as NewsSolidIcon, NotificationDot, Icon$2D as OptionsOpacityIcon, Icon$2E as OptionsSolidIcon, Overlay, Pagination, Variants$2 as PaginationVariants, PercentSlider, Icon$b as PerpetualOpacityIcon, Icon$a as PerpetualSolidIcon, Icon$1U as PlayIcon, Icon$3q as PlusCircleOpacityIcon, Icon$3r as PlusCircleSolidIcon, Icon$3s as PlusIcon, Icon$v as PolygonIcon, Icon$1t as PoolsOpacityIcon, Icon$1u as PoolsSolidIcon, Icon$8 as PredictionOpacityIcon, Icon$9 as PredictionSolidIcon, Icon$1G as ProductsOpacityIcon, Icon$1H as ProductsSolidIcon, Icon$11 as Program10mOpacityIcon, Icon$12 as Program10mSolidIcon, Icon$q as ProjectNameIcon, Icon$y as QuoraIcon, Radio, Scales$2 as RadioScales, Variants$6 as RadioVariants, Icon$G as RedditIcon, Icon$1p as ReferralOpacityIcon, Icon$1q as ReferralSolidIcon, Icon$1N as RefreshIcon, Icon$1M as RefreshOpacityIcon, Icon$1L as RefreshSolidIcon, ResetCSS, Icon$h as RouteIcon, Scales$7 as Scales, Icon$2I as SearchOpacityIcon, Icon$2J as SearchSolidIcon, Icon$2x as ShareIcon, Icon$2v as ShareOpacityIcon, Icon$2w as ShareSolidIcon, Skeleton, Animations as SkeletonAnimation, SkeletonMode, Variants$5 as SkeletonVariants, Slider, SocialShareButton, SocialShareButtonCircle, Socials, Icon$$ as SpaceAgentOpacityIcon, Icon$10 as SpaceAgentSolidIcon, Icon$e as SquidRouterIcon, Icon$2H as StarIcon, Icon$2G as StarOpacityIcon, Icon$2F as StarSolidIcon, SubMenu, SubMenuContainer, SubMenuItem, SubMenuItems, Svg, Icon$3w as SwapDoubleArrowIcon, Icon$2$ as SwapHorizontalOpacityIcon, Icon$2_ as SwapHorizontalSolidIcon, Icon$2Z as SwapVerticalOpacityIcon, Icon$2Y as SwapVerticalSolidIcon, Scales$1 as TabBarScales, Variants$4 as TabBarVariants, TabMenu, TabBarItem as TabMenuItem, TableCardSkeleton, Icon$13 as TeamOpacityIcon, Icon$14 as TeamSolidIcon, Icon$F as TelegramIcon, Terms, Icon$2f as TestIcon, Icon$2e as TestOpacityIcon, Icon$2d as TestSolidIcon, Text, Icon$s as Ticket2Icon, Icon$A as TikTokIcon, Icon$2i as TimerIcon, Icon$2g as TimerOpacityIcon, Icon$2h as TimerSolidIcon, ToastContainer, Toggle, Scales as ToggleScales, Variants$3 as ToggleVariants, TooltipHelper, TooltipText, Icon$3 as TradingIcon, Icon$E as TwitchIcon, Icon$D as TwitterIcon, Icon$k as UnlockIcon, Icon$3u as UpwardArrowIcon, Icon$1B as UsdLineIcon, Icon$1D as UsdOpacityIcon, Icon$1C as UsdSolidIcon, Icon$2M as UserOpacityIcon, Icon$2N as UserSolidIcon, VariantRotate, Icon$2B as VerifiedOpacityIcon, Icon$2C as VerifiedSolidIcon, Icon$4 as VoteIcon, Icon$19 as VotingOpacityIcon, Icon$1a as VotingSolidIcon, Icon$3d as WalletOpacityIcon, Icon$3e as WalletSolidIcon, Icon$3j as WarningCycleIcon, Icon$3k as WarningIcon, Icon$3m as WarningOpacityIcon, Icon$3l as WarningSolidIcon, Icon$d as WormholeIcon, Icon$C as YoutubeIcon, bodyTextScaleMap, darkTheme as dark, darkColors, formatSpacingAmount, getExternalLinkProps, getPortalRoot, getResponsiveAttrs, getRgba, getThemeValue, headTextScaleMap, isTouchDevice, lightTheme as light, lightColors, links$1 as menuConfig, links as menuConfigSol, status$1 as menuStatus, status as menuStatusSol, useCarousel, useIsomorphicEffect, useMatchBreakpoints, useModal, useModalV2, useOnClickOutside, useTooltip };
+export { Icon$15 as AboutBSWOpacityIcon, Icon$16 as AboutBSWSolidIcon, Alert, ColoredVariants as AlertColoredVariants, Variants$c as AlertVariants, Icon$7 as AnalyticsIcon, Icon$1b as AnalyticsOpacityIcon, Icon$1c as AnalyticsSolidIcon, Icon$3E as ArrowDownIcon, Icon$t as ArrowFiguredIcon, Icon$3F as ArrowLeftIcon, Icon$3H as ArrowRightIcon, Icon$3B as ArrowSkipLeftIcon, Icon$3C as ArrowSkipRightIcon, Icon$3D as ArrowUpForwardIcon, Icon$3G as ArrowUpIcon, Icon$2l as AuctionIcon, Icon$2j as AuctionOpacityIcon, Icon$2k as AuctionSolidIcon, Icon$U as AuditProtectionOpacityIcon, Icon$T as AuditProtectionSolidIcon, Icon$R as AuditSearchOpacityIcon, Icon$S as AuditSearchSolidIcon, Icon$1O as AutoRenewAnimateIcon, Icon$1R as AutoRenewIcon, Icon$1P as AutoRenewOpacityAnimateIcon, Icon$1S as AutoRenewOpacityIcon, Icon$1Q as AutoRenewSolidAnimateIcon, Icon$1T as AutoRenewSolidIcon, Icon$u as AvalancheIcon, Icon$w as BSCIcon, Badge$1 as Badge, Badge as BadgeButton, BadgeButtonTypes, BadgeTypes, GridLayout$1 as BaseLayout, BaseMenu, Icon$2K as BellOpacityIcon, Icon$2L as BellSolidIcon, Icon$29 as BlockIcon, Icon$28 as BlockOpacityIcon, Icon$27 as BlockSolidIcon, Icon$P as BlogOpacityIcon, Icon$Q as BlogSolidIcon, BodyText, BodyTextTags, Icon$2r as BookIcon, Icon$2p as BookOpacityIcon, Icon$2q as BookSolidIcon, Box, Breadcrumbs, Icon$1 as BridgeOpacityIcon, Icon as BridgeSolidIcon, Icon$3U as BscBlackRoundIcon, Icon$p as BswIcon, Icon$1E as BurgerCloseIcon, Icon$1F as BurgerIcon, Button, ButtonMenu, ButtonMenuItem, Scales$8 as ButtonMenuScales, Variants$a as ButtonMenuVariants, Scales$9 as ButtonScales, Variants$b as ButtonVariants, Icon$3a as CalculateIcon, Icon$3c as CalculateOpacityIcon, Icon$3b as CalculateSolidIcon, Icon$39 as CalendarIcon, Icon$2U as CardViewIcon, GridLayout as CardsLayout, CarouselButtonsTypes, CarouselHeader, CarouselNumbersBlock, Icon$6 as ChainLinkIcon, Icon$17 as CharityOpacityIcon, Icon$18 as CharitySolidIcon, Icon$2Q as CheckCircleIcon, Icon$2R as CheckIcon, Icon$2O as CheckOpacityIcon, Icon$2P as CheckSolidIcon, Checkbox, CheckboxScales, Icon$3S as ChevronDownCircleOpacityIcon, Icon$3T as ChevronDownCircleSolidIcon, Icon$3R as ChevronDownIcon, Icon$3y as ChevronDownTripleIcon, Icon$3M as ChevronLeftCircleOpacityIcon, Icon$3N as ChevronLeftCircleSolidIcon, Icon$3L as ChevronLeftIcon, Icon$3P as ChevronRightCircleOpacityIcon, Icon$3Q as ChevronRightCircleSolidIcon, Icon$3O as ChevronRightIcon, Icon$3x as ChevronRightTripleIcon, Icon$3t as ChevronSlimRightIcon, Icon$3I as ChevronUpCircleOpacityIcon, Icon$3J as ChevronUpCircleSolidIcon, Icon$3A as ChevronUpDoubleIcon, Icon$3K as ChevronUpIcon, Icon$3z as ChevronUpTripleIcon, ClickableElementContainer, Icon$3h as CloseCircleIcon, Icon$3g as CloseCircleOpacityIcon, Icon$3f as CloseCircleSolidIcon, Icon$3i as CloseIcon, Icon$z as CoinMarketCapIcon, ColoredToasts, Icon$n as ConflictIcon, Container$3 as Container, ContainerCarousel, Icon$2A as CopyIcon, Icon$2y as CopyOpacityIcon, Icon$2z as CopySolidIcon, Icon$c as CrossChainOpacityIcon, Icon$3v as CrownIcon, Icon$x as DeBankIcon, DirectionButton, Icon$f as DiscountOpacityIcon, Icon$g as DiscountSolidIcon, Icon$V as DocsOpacityIcon, Icon$W as DocsSolidIcon, Icon$2 as DocumentIcon, Dot$1 as Dot, Icon$3X as DownloadIcon, Icon$m as DropIcon, Dropdown, DropdownButton, Positions as DropdownButtonPositions, Scales$6 as DropdownButtonScales, Variants$9 as DropdownButtonVariants, DropdownMenuItemType$1 as DropdownMenuItemType, DropdownPosition, DropdownScales, DropdownVariants, Icon$1Z as EditIcon, Icon$1Y as EditOpacityIcon, Icon$1X as EditSolidIcon, Icon$1x as ExchangeOpacityIcon, Icon$1y as ExchangeSolidIcon, ExpandableButton, ExpandableIcon, ExpandableLabel, Icon$1v as ExpertModeOpacityIcon, Icon$1w as ExpertModeSolidIcon, Icon$2S as EyeCloseIcon, Icon$2T as EyeOpenIcon, Icon$B as FacebookIcon, Faqs, Variants as FaqsVariants, Icon$1r as FarmsOpacityIcon, Icon$1s as FarmsSolidIcon, Icon$2X as FavoriteEmptyIcon, Icon$2W as FavoriteSolidIcon, Icon$2o as FileIcon, Icon$2m as FileOpacityIcon, Icon$2n as FileSolidIcon, Icon$2u as FilterIcon, Icon$2s as FilterOpacityIcon, Icon$2t as FilterSolidIcon, Icon$35 as FireIcon, Icon$33 as FireOpacityIcon, Icon$34 as FireSolidIcon, Icon$1d as FixedStakingOpacityIcon, Icon$1e as FixedStakingSolidIcon, Icon$2c as FlagIcon, Icon$2b as FlagOpacityIcon, Icon$2a as FlagSolidIcon, Flex, Icon$1V as GasIcon, Icon$i as GiftIcon, Icon$1l as GobletOpacityIcon, Icon$1m as GobletSolidIcon, Grid, HeadText, HeadTextTags, Heading, Scales$5 as HeadingScales, Tags as HeadingTags, Icon$36 as HelpIcon, Icon$38 as HelpOpacityIcon, Icon$37 as HelpSolidIcon, HeroWrapper, Icon$1I as HistoryIcon, Icon$3V as HourglassIcon, IconButton, IconComponent, Icon$1n as IdoOpacityIcon, Icon$1o as IdoSolidIcon, Image, Variants$1 as ImageVariants, Icon$5 as InfinityLoopIcon, Icon$32 as InfoIcon, Icon$30 as InfoOpacityIcon, Icon$31 as InfoSolidIcon, InlineMenu, InlineMenuContainer, Input$1 as Input, InputGroup, Scales$4 as InputScales, Variants$8 as InputVariants, Icon$I as InstagramIcon, Icon$M as InvestPoolOpacityIcon, ItemTypes$1 as ItemTypes, Icon$j as LanguageIcon, Icon$1h as LaunchpadOpacityIcon, Icon$1i as LaunchpadSolidIcon, Icon$o as LightningIcon, Icon$N as LimitOrderOpacityIcon, Icon$O as LimitOrderSolidIcon, Link, LinkExternal, Scales$3 as LinkScales, Variants$7 as LinkVariants, Icon$1z as LiquidityOpacityIcon, Icon$1A as LiquiditySolidIcon, Icon$L as LiquidityStakingOpacityIcon, Icon$K as LiquidityStakingSolidIcon, Icon$J as LiquidityStakingSolidOpacityIcon, Icon$1K as ListOpacityIcon, Icon$1J as ListSolidIcon, Icon$2V as ListViewIcon, Icon$l as LockIcon, Icon$r as LogoWithTextIcon, Icon$1j as LotteryOpacityIcon, Icon$1k as LotterySolidIcon, MatchBreakpointsProvider, Icon$1W as MedalIcon, Icon$H as MediumIcon, Menu, MenuSol, Icon$3n as MinusCircleOpacityIcon, Icon$3o as MinusCircleSolidIcon, Icon$3p as MinusIcon, Modal, ModalBackButton, ModalBody$1 as ModalBody, ModalCloseButton, ModalContainer, ModalProvider, ModalV2, ModalV2Context, ModalWithBackground, ModalWrapper, Icon$1_ as More2Icon, Icon$22 as MoreHorizontalIcon, Icon$20 as MoreHorizontalOpacityIcon, Icon$1$ as MoreHorizontalOutlineIcon, Icon$21 as MoreHorizontalSolidIcon, Icon$26 as MoreVerticalIcon, Icon$24 as MoreVerticalOpacityIcon, Icon$23 as MoreVerticalOutlineIcon, Icon$25 as MoreVerticalSolidIcon, Icon$3W as MouseIcon, Icon$_ as MultiPoolOpacityIcon, Icon$Z as MultiPoolSolidIcon, Icon$1f as NFTEarnOpacityIcon, Icon$1g as NFTEarnSolidIcon, Icon$X as NewsOpacityIcon, Icon$Y as NewsSolidIcon, NotificationDot, Icon$2D as OptionsOpacityIcon, Icon$2E as OptionsSolidIcon, Overlay, Pagination, Variants$2 as PaginationVariants, PercentSlider, Icon$b as PerpetualOpacityIcon, Icon$a as PerpetualSolidIcon, Icon$1U as PlayIcon, Icon$3q as PlusCircleOpacityIcon, Icon$3r as PlusCircleSolidIcon, Icon$3s as PlusIcon, Icon$v as PolygonIcon, Icon$1t as PoolsOpacityIcon, Icon$1u as PoolsSolidIcon, Icon$8 as PredictionOpacityIcon, Icon$9 as PredictionSolidIcon, Icon$1G as ProductsOpacityIcon, Icon$1H as ProductsSolidIcon, Icon$11 as Program10mOpacityIcon, Icon$12 as Program10mSolidIcon, Icon$q as ProjectNameIcon, Icon$y as QuoraIcon, Radio, Scales$2 as RadioScales, Variants$6 as RadioVariants, Icon$G as RedditIcon, Icon$1p as ReferralOpacityIcon, Icon$1q as ReferralSolidIcon, Icon$1N as RefreshIcon, Icon$1M as RefreshOpacityIcon, Icon$1L as RefreshSolidIcon, ResetCSS, Icon$h as RouteIcon, Scales$7 as Scales, Icon$2I as SearchOpacityIcon, Icon$2J as SearchSolidIcon, Icon$2x as ShareIcon, Icon$2v as ShareOpacityIcon, Icon$2w as ShareSolidIcon, Skeleton, Animations as SkeletonAnimation, SkeletonMode, Variants$5 as SkeletonVariants, Slider, SocialShareButton, SocialShareButtonCircle, Socials, Icon$$ as SpaceAgentOpacityIcon, Icon$10 as SpaceAgentSolidIcon, Icon$e as SquidRouterIcon, Icon$2H as StarIcon, Icon$2G as StarOpacityIcon, Icon$2F as StarSolidIcon, SubMenu, SubMenuContainer, SubMenuItem, SubMenuItems, Svg, Icon$3w as SwapDoubleArrowIcon, Icon$2$ as SwapHorizontalOpacityIcon, Icon$2_ as SwapHorizontalSolidIcon, Icon$2Z as SwapVerticalOpacityIcon, Icon$2Y as SwapVerticalSolidIcon, Scales$1 as TabBarScales, Variants$4 as TabBarVariants, TabMenu, TabBarItem as TabMenuItem, TableCardSkeleton, Icon$13 as TeamOpacityIcon, Icon$14 as TeamSolidIcon, Icon$F as TelegramIcon, Terms, Icon$2f as TestIcon, Icon$2e as TestOpacityIcon, Icon$2d as TestSolidIcon, Text, Icon$s as Ticket2Icon, Icon$A as TikTokIcon, Icon$2i as TimerIcon, Icon$2g as TimerOpacityIcon, Icon$2h as TimerSolidIcon, ToastContainer, Toggle, Scales as ToggleScales, Variants$3 as ToggleVariants, TooltipHelper, TooltipText, Icon$3 as TradingIcon, Icon$E as TwitchIcon, Icon$D as TwitterIcon, Icon$k as UnlockIcon, Icon$3u as UpwardArrowIcon, Icon$1B as UsdLineIcon, Icon$1D as UsdOpacityIcon, Icon$1C as UsdSolidIcon, Icon$2M as UserOpacityIcon, Icon$2N as UserSolidIcon, VariantRotate, Icon$2B as VerifiedOpacityIcon, Icon$2C as VerifiedSolidIcon, Icon$4 as VoteIcon, Icon$19 as VotingOpacityIcon, Icon$1a as VotingSolidIcon, Icon$3d as WalletOpacityIcon, Icon$3e as WalletSolidIcon, Icon$3j as WarningCycleIcon, Icon$3k as WarningIcon, Icon$3m as WarningOpacityIcon, Icon$3l as WarningSolidIcon, Icon$d as WormholeIcon, Icon$C as YoutubeIcon, bodyTextScaleMap, darkTheme as dark, darkColors, formatSpacingAmount, getExternalLinkProps, getPortalRoot, getResponsiveAttrs, getRgba, getThemeValue, headTextScaleMap, isTouchDevice, lightTheme as light, lightColors, links$1 as menuConfig, links as menuConfigSol, status$1 as menuStatus, status as menuStatusSol, useCarousel, useIsomorphicEffect, useMatchBreakpoints, useModal, useModalV2, useOnClickOutside, useTooltip };

@@ -4,7 +4,7 @@ import styled, { DefaultTheme } from "styled-components";
 
 // components
 import { Flex } from "../../components/Box";
-import { MenuItems } from "../../components/MenuItems";
+import { MenuItems } from "./components/MenuItems";
 import Logo from "../Menu/components/Logo";
 import Footer from "../Menu/components/Footer/Footer";
 
@@ -23,7 +23,7 @@ import {
 } from "./config";
 
 // types
-import { NavProps } from "../Menu";
+import { NavProps } from "./types";
 
 const Wrapper = styled.div`
   position: relative;
@@ -121,7 +121,6 @@ const MenuSol: FC<PropsWithChildren<NavProps>> = ({
   marketplaceLink,
   baseAwsUrl = "https://static.biswap.org/bs",
   buyBswLabel = "Buy BSW",
-  mobileLangSelector,
   showFooter = true,
 }) => {
   const [showMenu, setShowMenu] = useState<boolean>(true);
@@ -195,7 +194,6 @@ const MenuSol: FC<PropsWithChildren<NavProps>> = ({
                 isMobileMenuOpened={isMobileMenuOpened}
                 mobileMenuCallback={setIsMobileMenuOpened}
                 baseAwsUrl={baseAwsUrl}
-                mobileLangSelector={mobileLangSelector}
                 ml={isMobile ? "12px" : "26px"}
               />
             </Flex>
