@@ -32,7 +32,7 @@ const LinkWrap = styled.a`
   }
 `;
 
-const Audit: FC<{ marketplaceLink?: string; baseAwsUrl: string }> = ({ marketplaceLink, baseAwsUrl }) => {
+const Audit: FC<{ baseAwsUrl: string }> = ({ baseAwsUrl }) => {
   const { isMobile } = useMatchBreakpoints();
 
   return (

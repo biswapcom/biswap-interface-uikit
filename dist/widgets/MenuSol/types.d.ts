@@ -27,7 +27,6 @@ export interface NavProps extends BSWPriceProps, FooterAboutLinks, FooterInfoPag
     customLogoSubtitle?: string;
     baseAwsUrl?: string;
     buyBswLabel?: string;
-    mobileLangSelector: ElementType;
     showFooter?: boolean;
 }
 export interface ConnectMetaProps {

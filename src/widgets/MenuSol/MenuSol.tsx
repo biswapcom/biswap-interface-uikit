@@ -118,7 +118,6 @@ const MenuSol: FC<PropsWithChildren<NavProps>> = ({
   socialLinks,
   withEvent,
   customLogoSubtitle,
-  marketplaceLink,
   baseAwsUrl = "https://static.biswap.org/bs",
   buyBswLabel = "Buy BSW",
   showFooter = true,
@@ -216,7 +215,6 @@ const MenuSol: FC<PropsWithChildren<NavProps>> = ({
                   infoLinks={infoLinks}
                   productLinks={productLinks}
                   socialLinks={socialLinks}
-                  marketplaceLink={marketplaceLink}
                   baseAwsUrl={baseAwsUrl}
                   buyBswLabel={buyBswLabel}
                 />

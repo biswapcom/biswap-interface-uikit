@@ -9285,7 +9285,7 @@ const LinkWrap = styled__default["default"].a `
     opacity: 0.7;
   }
 `;
-const Audit = ({ marketplaceLink, baseAwsUrl }) => {
+const Audit = ({ baseAwsUrl }) => {
     useMatchBreakpoints();
     return (React__default["default"].createElement(AuditedWrap, null,
         React__default["default"].createElement(Flex, null,
@@ -9353,13 +9353,13 @@ const FooterBottom = styled__default["default"](Flex) `
     padding: 0 64px;
   }
 `;
-const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, infoLinks, productLinks, buyBswHandler, socialLinks, marketplaceLink, baseAwsUrl, buyBswLabel, }) => {
+const Footer = ({ BSWPriceLabel, BSWPriceValue, aboutLinks, infoLinks, productLinks, buyBswHandler, socialLinks, baseAwsUrl, buyBswLabel, }) => {
     return (React__default["default"].createElement(Wrapper$2, null,
         React__default["default"].createElement(FooterTop, null,
             React__default["default"].createElement(FooterInfo, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, buyBswHandler: buyBswHandler, buyBswLabel: buyBswLabel }),
             React__default["default"].createElement(SocialWrap, null,
                 React__default["default"].createElement(Community, { isFooter: true, socialLinks: socialLinks, iconSize: "24px", baseAwsUrl: baseAwsUrl })),
-            React__default["default"].createElement(Audit, { marketplaceLink: marketplaceLink, baseAwsUrl: baseAwsUrl })),
+            React__default["default"].createElement(Audit, { baseAwsUrl: baseAwsUrl })),
         React__default["default"].createElement(FooterBottom, null,
             React__default["default"].createElement(Product, { footerLinks: productLinks }),
             React__default["default"].createElement(Info, { footerLinks: infoLinks }),
@@ -9426,7 +9426,7 @@ const Inner$1 = styled__default["default"].div `
   transform: translate3d(0, 0, 0);
   max-width: 100%;
 `;
-const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, infoLinks, productLinks, socialLinks, withEvent, customLogoSubtitle, marketplaceLink, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", mobileLangSelector, showFooter = true, }) => {
+const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, infoLinks, productLinks, socialLinks, withEvent, customLogoSubtitle, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", mobileLangSelector, showFooter = true, }) => {
     const [showMenu, setShowMenu] = React.useState(true);
     const [menuBg, setMenuBg] = React.useState(false);
     const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
@@ -9484,7 +9484,7 @@ const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activ
                 React__default["default"].createElement(Inner$1, { isPushed: false, showMenu: showMenu },
                     React__default["default"].createElement(React__default["default"].Fragment, null,
                         children,
-                        showFooter && (React__default["default"].createElement(Footer, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, registerToken: registerToken, buyBswHandler: buyBswHandler, aboutLinks: aboutLinks, infoLinks: infoLinks, productLinks: productLinks, socialLinks: socialLinks, marketplaceLink: marketplaceLink, baseAwsUrl: baseAwsUrl, buyBswLabel: buyBswLabel }))))))));
+                        showFooter && (React__default["default"].createElement(Footer, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, registerToken: registerToken, buyBswHandler: buyBswHandler, aboutLinks: aboutLinks, infoLinks: infoLinks, productLinks: productLinks, socialLinks: socialLinks, baseAwsUrl: baseAwsUrl, buyBswLabel: buyBswLabel }))))))));
 };
 
 const MenuSolContext = React.createContext({
@@ -10534,7 +10534,7 @@ const Inner = styled__default["default"].div `
   transform: translate3d(0, 0, 0);
   max-width: 100%;
 `;
-const MenuSol = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, infoLinks, productLinks, socialLinks, withEvent, customLogoSubtitle, marketplaceLink, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", showFooter = true, }) => {
+const MenuSol = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, infoLinks, productLinks, socialLinks, withEvent, customLogoSubtitle, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", showFooter = true, }) => {
     const [showMenu, setShowMenu] = React.useState(true);
     const [menuBg, setMenuBg] = React.useState(false);
     const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
@@ -10592,7 +10592,7 @@ const MenuSol = ({ linkComponent = "a", banner, links, rightSide, activeItem, ac
                 React__default["default"].createElement(Inner, { isPushed: false, showMenu: showMenu },
                     React__default["default"].createElement(React__default["default"].Fragment, null,
                         children,
-                        showFooter && (React__default["default"].createElement(Footer, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, registerToken: registerToken, buyBswHandler: buyBswHandler, aboutLinks: aboutLinks, infoLinks: infoLinks, productLinks: productLinks, socialLinks: socialLinks, marketplaceLink: marketplaceLink, baseAwsUrl: baseAwsUrl, buyBswLabel: buyBswLabel }))))))));
+                        showFooter && (React__default["default"].createElement(Footer, { BSWPriceLabel: BSWPriceLabel, BSWPriceValue: BSWPriceValue, registerToken: registerToken, buyBswHandler: buyBswHandler, aboutLinks: aboutLinks, infoLinks: infoLinks, productLinks: productLinks, socialLinks: socialLinks, baseAwsUrl: baseAwsUrl, buyBswLabel: buyBswLabel }))))))));
 };
 
 const ToastAction = ({ tweeterDescription, url, withGift }) => {
