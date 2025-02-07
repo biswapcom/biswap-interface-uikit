@@ -10495,6 +10495,7 @@ const StyledNav = styled__default["default"].nav `
   transform: translate3d(0, 0, 0);
   padding-left: 16px;
   padding-right: 16px;
+    margin: 0 auto;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     background-color: ${({ theme, menuBg }) => (menuBg ? theme.colors.black : "transparent")};
