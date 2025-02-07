@@ -47,22 +47,25 @@ const getBackground = ({
 };
 
 const StyledNav = styled.nav<{ menuBg: boolean; isMobileMenuOpened: boolean }>`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1440px;
   height: ${MENU_HEIGHT}px;
   background-color: ${getBackground};
   transform: translate3d(0, 0, 0);
   padding-left: 16px;
   padding-right: 16px;
-  margin: 0 auto;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     background-color: ${({ theme, menuBg }) => (menuBg ? theme.colors.black : "transparent")};
-    //  TODO for tests
-    // border-bottom: 1px solid ${({ theme, menuBg }) => (menuBg ? theme.colors.backgroundDark : "transparent")};
+    border-bottom: 1px solid ${({ theme, menuBg }) => (menuBg ? theme.colors.backgroundDark : "transparent")};
   }
+`;
+
+const ContainerMenu = styled(Flex)`
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+
   ${({ theme }) => theme.mediaQueries.md} {
     padding-left: 24px;
     padding-right: 24px;
@@ -87,14 +90,6 @@ const FixedContainer = styled.div.attrs({
   transition:
     top 0.3s ease-in-out,
     max-height 0.3s ease-in-out;
-`;
-
-const TopBannerContainer = styled.div<{ height: number }>`
-  height: ${({ height }) => `${height}px`};
-  min-height: ${({ height }) => `${height}px`};
-  max-height: ${({ height }) => `${height}px`};
-  width: 100%;
-  transition: all 0.3s ease-in-out;
 `;
 
 const BodyWrapper = styled(Flex)`
@@ -141,7 +136,7 @@ const MenuSol: FC<PropsWithChildren<NavProps>> = ({
 
   const refPrevOffset = useRef(typeof window === "undefined" ? 0 : window.pageYOffset);
 
-  const TopMenuWithBannerHeight = banner ? MENU_HEIGHT + transferBannerHeight : MENU_HEIGHT;
+  const TopMenuWithBannerHeight = MENU_HEIGHT;
 
   const totalTopMenuHeight =
     withEvent && isMobile ? TopMenuWithBannerHeight + MOBILE_EVENT_BUTTON_HEIGHT : TopMenuWithBannerHeight;
@@ -191,24 +186,25 @@ const MenuSol: FC<PropsWithChildren<NavProps>> = ({
   return (
     <MenuContext.Provider value={{ linkComponent }}>
       <Wrapper>
-        <FixedContainer showMenu={showMenu} height={isMobileMenuOpened ? 0 : totalTopMenuHeight}>
-          {banner && <TopBannerContainer height={transferBannerHeight}>{banner(setTransferHeight)}</TopBannerContainer>}
+        <FixedContainer showMenu={showMenu} height={isMobileMenuOpened ? 0 : MENU_HEIGHT}>
           <StyledNav menuBg={menuBg} isMobileMenuOpened={isMobileMenuOpened}>
-            <Flex alignItems="center" justifyContent="center">
-              <Logo logoSubtitle={customLogoSubtitle} href={homeLink?.href ?? "/"} />
-              <MenuItems
-                items={links}
-                activeItem={activeItem}
-                activeSubItem={activeSubItem}
-                isMobileMenuOpened={isMobileMenuOpened}
-                mobileMenuCallback={setIsMobileMenuOpened}
-                baseAwsUrl={baseAwsUrl}
-                ml={isMobile ? "12px" : "26px"}
-              />
-            </Flex>
-            <Flex alignItems="center" height="100%">
-              <RightSide isMobileMenuOpen={isMobileMenuOpened} />
-            </Flex>
+            <ContainerMenu>
+              <Flex alignItems="center" justifyContent="center">
+                <Logo logoSubtitle={customLogoSubtitle} href={homeLink?.href ?? "/"} />
+                <MenuItems
+                  items={links}
+                  activeItem={activeItem}
+                  activeSubItem={activeSubItem}
+                  isMobileMenuOpened={isMobileMenuOpened}
+                  mobileMenuCallback={setIsMobileMenuOpened}
+                  baseAwsUrl={baseAwsUrl}
+                  ml={isMobile ? "12px" : "26px"}
+                />
+              </Flex>
+              <Flex alignItems="center" height="100%">
+                <RightSide isMobileMenuOpen={isMobileMenuOpened} />
+              </Flex>
+            </ContainerMenu>
           </StyledNav>
         </FixedContainer>
         <BodyWrapper>

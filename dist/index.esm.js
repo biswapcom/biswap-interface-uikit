@@ -8528,7 +8528,7 @@ const socials = [
 const MENU_HEIGHT$1 = 72;
 const MOBILE_EVENT_BUTTON_HEIGHT$1 = 40;
 const TRANSFER_BLOCK_CLOSED_HEIGHT$1 = 40;
-const TRANSFER_BLOCK_OPENED_HEIGHT$1 = 156;
+const TRANSFER_BLOCK_OPENED_HEIGHT = 156;
 
 const Icons = IconModule;
 const Wrapper$5 = styled.div `
@@ -9392,7 +9392,7 @@ const FixedContainer$1 = styled.div.attrs({
     top 0.3s ease-in-out,
     max-height 0.3s ease-in-out;
 `;
-const TopBannerContainer$1 = styled.div `
+const TopBannerContainer = styled.div `
   height: ${({ height }) => `${height}px`};
   min-height: ${({ height }) => `${height}px`};
   max-height: ${({ height }) => `${height}px`};
@@ -9420,7 +9420,7 @@ const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activ
     const TopMenuWithBannerHeight = banner ? MENU_HEIGHT$1 + transferBannerHeight : MENU_HEIGHT$1;
     const totalTopMenuHeight = withEvent && isMobile ? TopMenuWithBannerHeight + MOBILE_EVENT_BUTTON_HEIGHT$1 : TopMenuWithBannerHeight;
     const RightSide = rightSide ?? Fragment;
-    const setTransferHeight = (expanded) => setTransferBannerHeight(expanded ? TRANSFER_BLOCK_CLOSED_HEIGHT$1 : TRANSFER_BLOCK_OPENED_HEIGHT$1);
+    const setTransferHeight = (expanded) => setTransferBannerHeight(expanded ? TRANSFER_BLOCK_CLOSED_HEIGHT$1 : TRANSFER_BLOCK_OPENED_HEIGHT);
     useEffect(() => {
         const handleScroll = () => {
             const currentOffset = window.pageYOffset;
@@ -9457,7 +9457,7 @@ const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activ
     return (React.createElement(MenuContext.Provider, { value: { linkComponent } },
         React.createElement(Wrapper$1, null,
             React.createElement(FixedContainer$1, { showMenu: showMenu, height: isMobileMenuOpened ? 0 : totalTopMenuHeight },
-                banner && React.createElement(TopBannerContainer$1, { height: transferBannerHeight }, banner(setTransferHeight)),
+                banner && React.createElement(TopBannerContainer, { height: transferBannerHeight }, banner(setTransferHeight)),
                 React.createElement(StyledNav$1, { menuBg: menuBg, isMobileMenuOpened: isMobileMenuOpened },
                     React.createElement(Flex, { alignItems: "center", justifyContent: "center" },
                         React.createElement(Logo, { logoSubtitle: customLogoSubtitle, href: homeLink?.href ?? "/" }),
@@ -10456,7 +10456,6 @@ const links = [
 const MENU_HEIGHT = 72;
 const MOBILE_EVENT_BUTTON_HEIGHT = 40;
 const TRANSFER_BLOCK_CLOSED_HEIGHT = 40;
-const TRANSFER_BLOCK_OPENED_HEIGHT = 156;
 
 const Wrapper = styled.div `
   position: relative;
@@ -10470,22 +10469,24 @@ const getBackground = ({ theme, menuBg, isMobileMenuOpened, }) => {
     return "transparent";
 };
 const StyledNav = styled.nav `
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1440px;
   height: ${MENU_HEIGHT}px;
   background-color: ${getBackground};
   transform: translate3d(0, 0, 0);
   padding-left: 16px;
   padding-right: 16px;
-  margin: 0 auto;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     background-color: ${({ theme, menuBg }) => (menuBg ? theme.colors.black : "transparent")};
-    //  TODO for tests
-    // border-bottom: 1px solid ${({ theme, menuBg }) => (menuBg ? theme.colors.backgroundDark : "transparent")};
+    border-bottom: 1px solid ${({ theme, menuBg }) => (menuBg ? theme.colors.backgroundDark : "transparent")};
   }
+`;
+const ContainerMenu = styled(Flex) `
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+
   ${({ theme }) => theme.mediaQueries.md} {
     padding-left: 24px;
     padding-right: 24px;
@@ -10510,13 +10511,6 @@ const FixedContainer = styled.div.attrs({
     top 0.3s ease-in-out,
     max-height 0.3s ease-in-out;
 `;
-const TopBannerContainer = styled.div `
-  height: ${({ height }) => `${height}px`};
-  min-height: ${({ height }) => `${height}px`};
-  max-height: ${({ height }) => `${height}px`};
-  width: 100%;
-  transition: all 0.3s ease-in-out;
-`;
 const BodyWrapper = styled(Flex) `
   position: relative;
 `;
@@ -10532,13 +10526,12 @@ const MenuSol = ({ linkComponent = "a", banner, links, rightSide, activeItem, ac
     const [showMenu, setShowMenu] = useState(true);
     const [menuBg, setMenuBg] = useState(false);
     const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
-    const [transferBannerHeight, setTransferBannerHeight] = useState(TRANSFER_BLOCK_CLOSED_HEIGHT);
+    useState(TRANSFER_BLOCK_CLOSED_HEIGHT);
     const { isMobile } = useMatchBreakpoints();
     const refPrevOffset = useRef(typeof window === "undefined" ? 0 : window.pageYOffset);
-    const TopMenuWithBannerHeight = banner ? MENU_HEIGHT + transferBannerHeight : MENU_HEIGHT;
+    const TopMenuWithBannerHeight = MENU_HEIGHT;
     const totalTopMenuHeight = withEvent && isMobile ? TopMenuWithBannerHeight + MOBILE_EVENT_BUTTON_HEIGHT : TopMenuWithBannerHeight;
     const RightSide = rightSide ?? Fragment;
-    const setTransferHeight = (expanded) => setTransferBannerHeight(expanded ? TRANSFER_BLOCK_CLOSED_HEIGHT : TRANSFER_BLOCK_OPENED_HEIGHT);
     useEffect(() => {
         const handleScroll = () => {
             const currentOffset = window.pageYOffset;
@@ -10574,14 +10567,14 @@ const MenuSol = ({ linkComponent = "a", banner, links, rightSide, activeItem, ac
     const homeLink = links.find((link) => link.label === "Home");
     return (React.createElement(MenuContext.Provider, { value: { linkComponent } },
         React.createElement(Wrapper, null,
-            React.createElement(FixedContainer, { showMenu: showMenu, height: isMobileMenuOpened ? 0 : totalTopMenuHeight },
-                banner && React.createElement(TopBannerContainer, { height: transferBannerHeight }, banner(setTransferHeight)),
+            React.createElement(FixedContainer, { showMenu: showMenu, height: isMobileMenuOpened ? 0 : MENU_HEIGHT },
                 React.createElement(StyledNav, { menuBg: menuBg, isMobileMenuOpened: isMobileMenuOpened },
-                    React.createElement(Flex, { alignItems: "center", justifyContent: "center" },
-                        React.createElement(Logo, { logoSubtitle: customLogoSubtitle, href: homeLink?.href ?? "/" }),
-                        React.createElement(MenuItems, { items: links, activeItem: activeItem, activeSubItem: activeSubItem, isMobileMenuOpened: isMobileMenuOpened, mobileMenuCallback: setIsMobileMenuOpened, baseAwsUrl: baseAwsUrl, ml: isMobile ? "12px" : "26px" })),
-                    React.createElement(Flex, { alignItems: "center", height: "100%" },
-                        React.createElement(RightSide, { isMobileMenuOpen: isMobileMenuOpened })))),
+                    React.createElement(ContainerMenu, null,
+                        React.createElement(Flex, { alignItems: "center", justifyContent: "center" },
+                            React.createElement(Logo, { logoSubtitle: customLogoSubtitle, href: homeLink?.href ?? "/" }),
+                            React.createElement(MenuItems, { items: links, activeItem: activeItem, activeSubItem: activeSubItem, isMobileMenuOpened: isMobileMenuOpened, mobileMenuCallback: setIsMobileMenuOpened, baseAwsUrl: baseAwsUrl, ml: isMobile ? "12px" : "26px" })),
+                        React.createElement(Flex, { alignItems: "center", height: "100%" },
+                            React.createElement(RightSide, { isMobileMenuOpen: isMobileMenuOpened }))))),
             React.createElement(BodyWrapper, null,
                 React.createElement(Inner, { isPushed: false, showMenu: showMenu },
                     React.createElement(React.Fragment, null,

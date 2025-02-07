@@ -380,8 +380,6 @@ export const userMenulinks: DropdownMenuItems[] = [
 ];
 
 export const MENU_HEIGHT = 72;
-export const TOP_BANNER_HEIGHT = 70;
-export const TOP_BANNER_HEIGHT_MOBILE = 84;
 export const MOBILE_EVENT_BUTTON_HEIGHT = 40;
 export const TRANSFER_BLOCK_CLOSED_HEIGHT = 40;
 export const TRANSFER_BLOCK_OPENED_HEIGHT = 156;
