@@ -8,7 +8,6 @@ export declare const baseColors: {
     backgroundDark: string;
     backgroundLight: string;
     white: string;
-    pastelBlue: string;
     tooltip: string;
 };
 export declare const brandColors: {
@@ -63,8 +62,40 @@ export declare const badgeSpecialColors: {
 };
 export declare const newColors: {
     blue: string;
+    crayola: string;
+    newCar: string;
+    radicalRed: string;
+    rustyRed: string;
     wineRed: string;
+    green: string;
+    goGreen: string;
+    jonquil: string;
+    deepLemon: string;
+    electricIndigo: string;
+    frenchViolet: string;
+    pastelBlue: string;
+    darkBlue: string;
+    superBlack: string;
     black: string;
+    basic1: string;
+    basic2: string;
+    basic3: string;
+    basic4: string;
+    basic5: string;
+    basic6: string;
+    basic7: string;
+    basic8: string;
+    basic9: string;
+    basic10: string;
+    basic11: string;
+    basic12: string;
+    basic13: string;
+    basic14: string;
+    basic15: string;
+    basic16: string;
+    basic17: string;
+    basic18: string;
+    ghost: string;
     buttonLightBlue: string;
 };
 export declare const lightColors: Colors;

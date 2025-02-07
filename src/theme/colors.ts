@@ -1,11 +1,6 @@
 import { Colors } from "./types";
 
 export const baseColors = {
-  // failure: "#F93B5D",
-  // primaryBright: "#53DEE9",
-  // primaryDark: "#0098A1",
-  // dark: "#102648",
-
   //BS
   primary: "#1263F1",
   secondary: "#F93B5D",
@@ -15,7 +10,6 @@ export const baseColors = {
   backgroundDark: "#07162D",
   backgroundLight: "#F9FAFD",
   white: "#FFFFFF",
-  pastelBlue: "#749BD8",
   tooltip: "#040C1A",
 };
 
@@ -94,8 +88,43 @@ export const badgeSpecialColors = {
 
 export const newColors = {
   blue: "#377EF7",
+  crayola: "#2A75F3",
+  newCar: "#1056D0",
+  radicalRed: "#F93B5D",
+  rustyRed: "#E12446",
   wineRed: "#A8102B",
+  green: "#1DC872",
+  goGreen: "#08B66D",
+  jonquil: "#FFDB1C",
+  deepLemon: "#FFCD1C",
+  electricIndigo: "#7412F1",
+  frenchViolet: "#6205D9",
+  // divider
+  pastelBlue: "#749BD8",
+  darkBlue: "#0E3382",
+  superBlack: "#000000",
   black: "#030811",
+  basic1: "#040C1A",
+  basic2: "#021127",
+  basic3: "#07162D",
+  basic4: "#071C3C",
+  basic5: "#102648",
+  basic6: "#1C3254",
+  basic7: "#2A436A",
+  basic8: "#3F5880",
+  basic9: "#546F99",
+  basic10: "#637FA9",
+  basic11: "#708DB7",
+  basic12: "#83A0C9",
+  basic13: "#9AB2D3",
+  basic14: "#B5C6DE",
+  basic15: "#C8D4E6",
+  basic16: "#DFE7F2",
+  basic17: "#E7EEF6",
+  basic18: "#F2F6FC",
+  ghost: "#F9FAFD",
+
+  // unique
   buttonLightBlue: "rgba(55, 126, 247, 0.16)",
 };
 
