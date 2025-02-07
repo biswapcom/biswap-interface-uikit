@@ -50,7 +50,7 @@ const StyledNav = styled.nav<{ menuBg: boolean; isMobileMenuOpened: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  max-width: 1440px;
   height: ${MENU_HEIGHT}px;
   background-color: ${getBackground};
   transform: translate3d(0, 0, 0);
@@ -60,6 +60,14 @@ const StyledNav = styled.nav<{ menuBg: boolean; isMobileMenuOpened: boolean }>`
   ${({ theme }) => theme.mediaQueries.sm} {
     background-color: ${({ theme, menuBg }) => (menuBg ? theme.colors.black : "transparent")};
     border-bottom: 1px solid ${({ theme, menuBg }) => (menuBg ? theme.colors.backgroundDark : "transparent")};
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    padding-left: 64px;
+    padding-right: 64px;
   }
 `;
 

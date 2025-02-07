@@ -5,25 +5,15 @@ import styled, { css } from "styled-components";
 
 // components
 import { Box, Flex } from "../../components/Box";
-import { Button, IconButton, ExpandableButton, ButtonScales, ButtonVariants } from "../../components/Button";
+import { Button, IconButton, ButtonScales, ButtonVariants } from "../../components/Button";
 import { DownloadIcon, OptionsSolidIcon } from "../../components/Svg";
 import { Text } from "../../components/Text";
 import { BodyText, HeadText, Scales as TextScales, HeadTextTags } from "../../components/Typography";
 import { Modal, ModalProps, useModal } from "../Modal";
-import { Dropdown } from "../../components/Dropdown";
 import MenuSol from "./MenuSol";
 
 // config
-import {
-  aboutLinks,
-  BSWPriceLabel,
-  BSWPriceValue,
-  infoLinks,
-  links,
-  productLinks,
-  serviceLinks,
-  socialLinks,
-} from "./config";
+import { aboutLinks, BSWPriceLabel, BSWPriceValue, infoLinks, links, productLinks, socialLinks } from "./config";
 
 // types
 import { NavProps } from "../Menu";
