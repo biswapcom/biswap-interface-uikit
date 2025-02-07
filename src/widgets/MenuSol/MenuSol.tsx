@@ -60,7 +60,8 @@ const StyledNav = styled.nav<{ menuBg: boolean; isMobileMenuOpened: boolean }>`
 
   ${({ theme }) => theme.mediaQueries.sm} {
     background-color: ${({ theme, menuBg }) => (menuBg ? theme.colors.black : "transparent")};
-    border-bottom: 1px solid ${({ theme, menuBg }) => (menuBg ? theme.colors.backgroundDark : "transparent")};
+    //  TODO for tests
+    // border-bottom: 1px solid ${({ theme, menuBg }) => (menuBg ? theme.colors.backgroundDark : "transparent")};
   }
   ${({ theme }) => theme.mediaQueries.md} {
     padding-left: 24px;

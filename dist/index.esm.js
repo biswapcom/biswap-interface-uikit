@@ -10479,11 +10479,12 @@ const StyledNav = styled.nav `
   transform: translate3d(0, 0, 0);
   padding-left: 16px;
   padding-right: 16px;
-    margin: 0 auto;
+  margin: 0 auto;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     background-color: ${({ theme, menuBg }) => (menuBg ? theme.colors.black : "transparent")};
-    border-bottom: 1px solid ${({ theme, menuBg }) => (menuBg ? theme.colors.backgroundDark : "transparent")};
+    //  TODO for tests
+    // border-bottom: 1px solid ${({ theme, menuBg }) => (menuBg ? theme.colors.backgroundDark : "transparent")};
   }
   ${({ theme }) => theme.mediaQueries.md} {
     padding-left: 24px;
