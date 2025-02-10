@@ -11,6 +11,7 @@ export const baseColors = {
   backgroundLight: "#F9FAFD",
   white: "#FFFFFF",
   tooltip: "#040C1A",
+  pastelBlue: "#749BD8",
 };
 
 export const brandColors = {

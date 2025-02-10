@@ -9,6 +9,7 @@ export declare const baseColors: {
     backgroundLight: string;
     white: string;
     tooltip: string;
+    pastelBlue: string;
 };
 export declare const brandColors: {
     binance: string;

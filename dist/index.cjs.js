@@ -2871,6 +2871,7 @@ const baseColors = {
     backgroundLight: "#F9FAFD",
     white: "#FFFFFF",
     tooltip: "#040C1A",
+    pastelBlue: "#749BD8",
 };
 const brandColors = {
     binance: "#F0B90B",
