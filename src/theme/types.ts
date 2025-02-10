@@ -55,7 +55,6 @@ export type Colors = {
   //Base colors
   primary: string;
   secondary: string;
-  success: string;
   warning: string;
   boost: string;
   backgroundDark: string;
@@ -119,42 +118,30 @@ export type Colors = {
 
   //newColors
   blue: string;
-  crayola: string;
-  newCar: string;
-  radicalRed: string;
-  rustyRed: string;
   wineRed: string;
-  green: string;
-  goGreen: string;
-  jonquil: string;
-  deepLemon: string;
-  electricIndigo: string;
-  frenchViolet: string;
-  //
-  pastelBlue: string;
-  darkBlue: string;
-  superBlack: string;
   black: string;
-  basic1: string;
-  basic2: string;
-  basic3: string;
-  basic4: string;
-  basic5: string;
-  basic6: string;
-  basic7: string;
-  basic8: string;
-  basic9: string;
-  basic10: string;
-  basic11: string;
-  basic12: string;
-  basic13: string;
-  basic14: string;
-  basic15: string;
-  basic16: string;
-  basic17: string;
-  basic18: string;
-  ghost: string;
   buttonLightBlue: string;
+  //newTheme
+  background: string;
+  fill1: string;
+  fill2: string;
+  fill3: string;
+  fill4: string;
+  fill5: string;
+  fill6: string;
+  skyBlue: string;
+  violet: string;
+  yellow: string;
+  yellowBtn: string;
+  red: string;
+  success: string;
+  text1: string;
+  text2: string;
+  text3: string;
+  text5: string;
+  divider1: string;
+  divider2: string;
+  divider3: string;
 };
 
 export type ZIndices = {
