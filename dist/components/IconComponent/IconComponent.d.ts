@@ -1,8 +1,6 @@
 import { FC } from "react";
 import { SvgProps } from "../Svg";
-declare const IconComponent: FC<
-  {
+declare const IconComponent: FC<{
     iconName: string;
-  } & SvgProps
->;
+} & SvgProps>;
 export default IconComponent;

@@ -1,12 +1,7 @@
 import type { MarkerType } from "../../../../theme";
-declare const Marker: import("styled-components").StyledComponent<
-  "div",
-  import("styled-components").DefaultTheme,
-  import("../../../../components/Box").BoxProps & {
+declare const Marker: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, import("../../../../components/Box").BoxProps & {
     color?: keyof MarkerType;
     top?: string;
     right?: string;
-  },
-  never
->;
+}, never>;
 export default Marker;
