@@ -448,6 +448,7 @@ export { default as CheckRoundRIcon } from "./Icons/New/CheckRoundR";
 export { default as AttentionRoundRIcon } from "./Icons/New/AttentionRoundR";
 export { default as InfoRoundRIcon } from "./Icons/New/InfoRoundR";
 export { default as HelpRoundRIcon } from "./Icons/New/HelpRoundR";
+export { default as AddLiquidityRIcon } from "./Icons/New/AddLiquidityR";
 
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";
