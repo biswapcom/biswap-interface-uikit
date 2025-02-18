@@ -7124,12 +7124,12 @@ exports.BadgeTypes = void 0;
     BadgeTypes["BOOST"] = "boost";
     BadgeTypes["WARNING_OPACITY"] = "warningOpacity";
 })(exports.BadgeTypes || (exports.BadgeTypes = {}));
-var BadgeScales;
+exports.BadgeScales = void 0;
 (function (BadgeScales) {
     BadgeScales["LG"] = "lg";
     BadgeScales["MD"] = "md";
     BadgeScales["SM"] = "sm";
-})(BadgeScales || (BadgeScales = {}));
+})(exports.BadgeScales || (exports.BadgeScales = {}));
 
 const BadgeTypesContainer = {
     [exports.BadgeTypes.SUCCESS]: {
@@ -7184,19 +7184,19 @@ const BadgeTypesContainer = {
     },
 };
 const BadgeScalesContainer = {
-    [BadgeScales.LG]: {
+    [exports.BadgeScales.LG]: {
         height: "36px",
         padding: "0 12px",
         fontSize: "18px",
         borderRadius: "24px",
     },
-    [BadgeScales.MD]: {
+    [exports.BadgeScales.MD]: {
         height: "28px",
         padding: "0 8px",
         fontSize: "14px",
         borderRadius: "24px",
     },
-    [BadgeScales.SM]: {
+    [exports.BadgeScales.SM]: {
         height: "20px",
         padding: "0 8px",
         fontSize: "10px",
@@ -7224,7 +7224,7 @@ const Wrapper$a = styled__default["default"](Box) `
 })}
 `;
 const Badge$1 = ({ children, badgeType, scale, fontWeight, isIcon, ...props }) => {
-    const selectedScale = scale ?? BadgeScales.SM;
+    const selectedScale = scale ?? exports.BadgeScales.SM;
     return (React__default["default"].createElement(Wrapper$a, { badgeType: badgeType, scale: selectedScale, isIcon: isIcon, fontWeight: fontWeight, ...props }, children));
 };
 
