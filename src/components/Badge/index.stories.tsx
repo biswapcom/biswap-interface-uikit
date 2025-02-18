@@ -9,7 +9,7 @@ import { GobletOpacityIcon } from "../Svg";
 import { Box, Flex } from "../Box";
 
 // types
-import { BadgeTypes } from "./types";
+import { BadgeTypes, BadgeScales } from "./types";
 
 export default {
   title: "Components/Badge",
@@ -32,7 +32,9 @@ export const Default: FC = () => {
         Badges
       </Text>
       <BadgeWrapper>
-        <Badge badgeType={BadgeTypes.LIGHT}>light</Badge>
+        <Badge badgeType={BadgeTypes.LIGHT} scale={BadgeScales.LG}>
+          light
+        </Badge>
         <Badge badgeType={BadgeTypes.ACTIVE}>active</Badge>
         <Badge badgeType={BadgeTypes.SUCCESS}>success</Badge>
         <Badge badgeType={BadgeTypes.ERROR}>error</Badge>

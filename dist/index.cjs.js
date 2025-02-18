@@ -6966,6 +6966,12 @@ exports.BadgeTypes = void 0;
     BadgeTypes["BOOST"] = "boost";
     BadgeTypes["WARNING_OPACITY"] = "warningOpacity";
 })(exports.BadgeTypes || (exports.BadgeTypes = {}));
+var BadgeScales;
+(function (BadgeScales) {
+    BadgeScales["LG"] = "lg";
+    BadgeScales["MD"] = "md";
+    BadgeScales["SM"] = "sm";
+})(BadgeScales || (BadgeScales = {}));
 
 const BadgeTypesContainer = {
     [exports.BadgeTypes.SUCCESS]: {
@@ -7019,15 +7025,33 @@ const BadgeTypesContainer = {
         border: "0",
     },
 };
+const BadgeScalesContainer = {
+    [BadgeScales.LG]: {
+        height: "36px",
+        padding: "0 12px",
+        fontSize: "18px",
+        borderRadius: "24px",
+    },
+    [BadgeScales.MD]: {
+        height: "28px",
+        padding: "0 8px",
+        fontSize: "14px",
+        borderRadius: "24px",
+    },
+    [BadgeScales.SM]: {
+        height: "20px",
+        padding: "0 8px",
+        fontSize: "10px",
+        borderRadius: "16px",
+    },
+};
 
 const Wrapper$a = styled__default["default"](Box) `
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  height: 20px;
-  padding: ${({ isIcon }) => isIcon === "left" ? "4px 8px 4px 4px" : isIcon === "right" ? "4px 4px 4px 8px" : "4px 8px"};
-  border-radius: 16px;
-  font-size: ${({ fontSize }) => fontSize || "10px"};
+  //height: 20px;
+  //border-radius: 16px;
   font-weight: 600;
 
   ${styledSystem.space}
@@ -7036,9 +7060,14 @@ const Wrapper$a = styled__default["default"](Box) `
     prop: "badgeType",
     variants: BadgeTypesContainer,
 })}
+  ${styledSystem.variant({
+    prop: "scale",
+    variants: BadgeScalesContainer,
+})}
 `;
-const Badge$1 = ({ children, badgeType, fontSize, fontWeight, isIcon, ...props }) => {
-    return (React__default["default"].createElement(Wrapper$a, { badgeType: badgeType, isIcon: isIcon, fontSize: fontSize, fontWeight: fontWeight, ...props }, children));
+const Badge$1 = ({ children, badgeType, scale, fontWeight, isIcon, ...props }) => {
+    const selectedScale = scale ?? BadgeScales.SM;
+    return (React__default["default"].createElement(Wrapper$a, { badgeType: badgeType, scale: selectedScale, isIcon: isIcon, fontWeight: fontWeight, ...props }, children));
 };
 
 exports.BadgeButtonTypes = void 0;

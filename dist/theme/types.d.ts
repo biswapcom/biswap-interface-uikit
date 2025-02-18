@@ -50,6 +50,7 @@ export type Colors = {
     white: string;
     tooltip: string;
     pastelBlue: string;
+    success: string;
     primaryHover: string;
     primaryPress: string;
     secondaryHover: string;

@@ -62,6 +62,7 @@ export type Colors = {
   white: string;
   tooltip: string;
   pastelBlue: string;
+  success: string;
 
   //BS Additional colors
   primaryHover: string;
