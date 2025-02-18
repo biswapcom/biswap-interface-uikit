@@ -68,6 +68,7 @@ export declare const scaleVariants: {
 };
 export declare const scaleVariantsIconOnly: {
     xlr: {
+        maxWidth: string;
         padding: string;
         svg: {
             width: string;
@@ -77,6 +78,7 @@ export declare const scaleVariantsIconOnly: {
         };
     };
     lgr: {
+        maxWidth: string;
         padding: string;
         svg: {
             width: string;
@@ -86,6 +88,7 @@ export declare const scaleVariantsIconOnly: {
         };
     };
     mdr: {
+        maxWidth: string;
         padding: string;
         svg: {
             width: string;
@@ -95,6 +98,7 @@ export declare const scaleVariantsIconOnly: {
         };
     };
     smr: {
+        maxWidth: string;
         padding: string;
         svg: {
             width: string;
@@ -104,6 +108,7 @@ export declare const scaleVariantsIconOnly: {
         };
     };
     ssmr: {
+        maxWidth: string;
         padding: string;
         svg: {
             width: string;
@@ -113,6 +118,7 @@ export declare const scaleVariantsIconOnly: {
         };
     };
     xsr: {
+        maxWidth: string;
         padding: string;
         svg: {
             width: string;

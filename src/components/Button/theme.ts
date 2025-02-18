@@ -72,6 +72,7 @@ export const scaleVariants = {
 
 export const scaleVariantsIconOnly = {
   [Scales.XLR]: {
+    maxWidth: "56px",
     padding: "0 16px",
 
     svg: {
@@ -82,6 +83,7 @@ export const scaleVariantsIconOnly = {
     },
   },
   [Scales.LGR]: {
+    maxWidth: "48px",
     padding: "0 12px",
 
     svg: {
@@ -92,6 +94,7 @@ export const scaleVariantsIconOnly = {
     },
   },
   [Scales.MDR]: {
+    maxWidth: "40px",
     padding: "0 8px",
 
     svg: {
@@ -102,6 +105,7 @@ export const scaleVariantsIconOnly = {
     },
   },
   [Scales.SMR]: {
+    maxWidth: "36px",
     padding: "0 8px",
 
     svg: {
@@ -112,6 +116,7 @@ export const scaleVariantsIconOnly = {
     },
   },
   [Scales.SSMR]: {
+    maxWidth: "28px",
     padding: "0 6px",
 
     svg: {
@@ -122,6 +127,7 @@ export const scaleVariantsIconOnly = {
     },
   },
   [Scales.XSR]: {
+    maxWidth: "20px",
     padding: "0 4px",
 
     svg: {

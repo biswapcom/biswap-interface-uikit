@@ -3,7 +3,6 @@ export { default as MouseIcon } from "./Icons/Mouse";
 export { default as HourglassIcon } from "./Icons/Hourglass";
 export { default as BscBlackRoundIcon } from "./Icons/BscBlackRound";
 
-//new
 //ARROWS
 export { default as ChevronDownCircleSolidIcon } from "./Icons/Arrows/ChevronDownCircleSolid";
 export { default as ChevronDownCircleOpacityIcon } from "./Icons/Arrows/ChevronDownCircleOpacity";
@@ -426,6 +425,29 @@ export { default as DocumentIcon } from "./Icons/Document/Document";
 // Bridge
 export { default as BridgeOpacityIcon } from "./Icons/Bridge/BridgeOpacity";
 export { default as BridgeSolidIcon } from "./Icons/Bridge/BridgeSolid";
+
+// Redesign
+export { default as SettingsR } from "./Icons/New/SettingsR";
+export { default as WalletR } from "./Icons/New/WalletR";
+export { default as RecipientAddR } from "./Icons/New/RecipientAddR";
+export { default as RecipientRemoveR } from "./Icons/New/RecipientRemoveR";
+export { default as CloseR } from "./Icons/New/CloseR";
+export { default as PlusR } from "./Icons/New/PlusR";
+export { default as SearchR } from "./Icons/New/SearchR";
+export { default as SearchPlusR } from "./Icons/New/SearchPlusR";
+export { default as SearchMinusR } from "./Icons/New/SearchMinusR";
+export { default as ArrowUpR } from "./Icons/New/ArrowUpR";
+export { default as ArrowDownR } from "./Icons/New/ArrowDownR";
+export { default as ArrowLeftR } from "./Icons/New/ArrowLeftR";
+export { default as ArrowRightR } from "./Icons/New/ArrowRightR";
+export { default as ChevronRightR } from "./Icons/New/ChevronRightR";
+export { default as ChevronLeftR } from "./Icons/New/ChevronLeftR";
+export { default as SwapVerticalR } from "./Icons/New/SwapVerticalR";
+export { default as SwapHorizontalR } from "./Icons/New/SwapHorizontalR";
+export { default as CheckRoundR } from "./Icons/New/CheckRoundR";
+export { default as AttentionRoundR } from "./Icons/New/AttentionRoundR";
+export { default as InfoRoundR } from "./Icons/New/InfoRoundR";
+export { default as HelpRoundR } from "./Icons/New/HelpRoundR";
 
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";
