@@ -2207,27 +2207,27 @@ var IconModule = /*#__PURE__*/Object.freeze({
   DocumentIcon: Icon$n,
   BridgeOpacityIcon: Icon$m,
   BridgeSolidIcon: Icon$l,
-  SettingsR: Icon$k,
-  WalletR: Icon$j,
-  RecipientAddR: Icon$i,
-  RecipientRemoveR: Icon$h,
-  CloseR: Icon$g,
-  PlusR: Icon$f,
-  SearchR: Icon$e,
-  SearchPlusR: Icon$d,
-  SearchMinusR: Icon$c,
-  ArrowUpR: Icon$b,
-  ArrowDownR: Icon$a,
-  ArrowLeftR: Icon$9,
-  ArrowRightR: Icon$8,
-  ChevronRightR: Icon$7,
-  ChevronLeftR: Icon$6,
-  SwapVerticalR: Icon$5,
-  SwapHorizontalR: Icon$4,
-  CheckRoundR: Icon$3,
-  AttentionRoundR: Icon$2,
-  InfoRoundR: Icon$1,
-  HelpRoundR: Icon,
+  SettingsRIcon: Icon$k,
+  WalletRIcon: Icon$j,
+  RecipientAddRIcon: Icon$i,
+  RecipientRemoveRIcon: Icon$h,
+  CloseRIcon: Icon$g,
+  PlusRIcon: Icon$f,
+  SearchRIcon: Icon$e,
+  SearchPlusRIcon: Icon$d,
+  SearchMinusRIcon: Icon$c,
+  ArrowUpRIcon: Icon$b,
+  ArrowDownRIcon: Icon$a,
+  ArrowLeftRIcon: Icon$9,
+  ArrowRightRIcon: Icon$8,
+  ChevronRightRIcon: Icon$7,
+  ChevronLeftRIcon: Icon$6,
+  SwapVerticalRIcon: Icon$5,
+  SwapHorizontalRIcon: Icon$4,
+  CheckRoundRIcon: Icon$3,
+  AttentionRoundRIcon: Icon$2,
+  InfoRoundRIcon: Icon$1,
+  HelpRoundRIcon: Icon,
   Svg: Svg,
   PerpetualOpacityIcon: Icon$w,
   PerpetualSolidIcon: Icon$v,
@@ -11392,18 +11392,18 @@ exports.AnalyticsIcon = Icon$s;
 exports.AnalyticsOpacityIcon = Icon$1w;
 exports.AnalyticsSolidIcon = Icon$1x;
 exports.ArrowDownIcon = Icon$3Z;
-exports.ArrowDownR = Icon$a;
+exports.ArrowDownRIcon = Icon$a;
 exports.ArrowFiguredIcon = Icon$O;
 exports.ArrowLeftIcon = Icon$3_;
-exports.ArrowLeftR = Icon$9;
+exports.ArrowLeftRIcon = Icon$9;
 exports.ArrowRightIcon = Icon$40;
-exports.ArrowRightR = Icon$8;
+exports.ArrowRightRIcon = Icon$8;
 exports.ArrowSkipLeftIcon = Icon$3W;
 exports.ArrowSkipRightIcon = Icon$3X;
 exports.ArrowUpForwardIcon = Icon$3Y;
 exports.ArrowUpIcon = Icon$3$;
-exports.ArrowUpR = Icon$b;
-exports.AttentionRoundR = Icon$2;
+exports.ArrowUpRIcon = Icon$b;
+exports.AttentionRoundRIcon = Icon$2;
 exports.AuctionIcon = Icon$2G;
 exports.AuctionOpacityIcon = Icon$2E;
 exports.AuctionSolidIcon = Icon$2F;
@@ -11459,7 +11459,7 @@ exports.CharitySolidIcon = Icon$1t;
 exports.CheckCircleIcon = Icon$39;
 exports.CheckIcon = Icon$3a;
 exports.CheckOpacityIcon = Icon$37;
-exports.CheckRoundR = Icon$3;
+exports.CheckRoundRIcon = Icon$3;
 exports.CheckSolidIcon = Icon$38;
 exports.Checkbox = Checkbox;
 exports.ChevronDownCircleOpacityIcon = Icon$4b;
@@ -11469,11 +11469,11 @@ exports.ChevronDownTripleIcon = Icon$3T;
 exports.ChevronLeftCircleOpacityIcon = Icon$45;
 exports.ChevronLeftCircleSolidIcon = Icon$46;
 exports.ChevronLeftIcon = Icon$44;
-exports.ChevronLeftR = Icon$6;
+exports.ChevronLeftRIcon = Icon$6;
 exports.ChevronRightCircleOpacityIcon = Icon$48;
 exports.ChevronRightCircleSolidIcon = Icon$49;
 exports.ChevronRightIcon = Icon$47;
-exports.ChevronRightR = Icon$7;
+exports.ChevronRightRIcon = Icon$7;
 exports.ChevronRightTripleIcon = Icon$3S;
 exports.ChevronSlimRightIcon = Icon$3O;
 exports.ChevronUpCircleOpacityIcon = Icon$41;
@@ -11486,7 +11486,7 @@ exports.CloseCircleIcon = Icon$3C;
 exports.CloseCircleOpacityIcon = Icon$3B;
 exports.CloseCircleSolidIcon = Icon$3A;
 exports.CloseIcon = Icon$3D;
-exports.CloseR = Icon$g;
+exports.CloseRIcon = Icon$g;
 exports.CoinMarketCapIcon = Icon$U;
 exports.ColoredToasts = ColoredToasts;
 exports.ConflictIcon = Icon$I;
@@ -11551,7 +11551,7 @@ exports.HeadText = HeadText;
 exports.Heading = Heading;
 exports.HelpIcon = Icon$3r;
 exports.HelpOpacityIcon = Icon$3t;
-exports.HelpRoundR = Icon;
+exports.HelpRoundRIcon = Icon;
 exports.HelpSolidIcon = Icon$3s;
 exports.HeroWrapper = HeroWrapper;
 exports.HistoryIcon = Icon$21;
@@ -11564,7 +11564,7 @@ exports.Image = Image;
 exports.InfinityLoopIcon = Icon$q;
 exports.InfoIcon = Icon$3n;
 exports.InfoOpacityIcon = Icon$3l;
-exports.InfoRoundR = Icon$1;
+exports.InfoRoundRIcon = Icon$1;
 exports.InfoSolidIcon = Icon$3m;
 exports.InlineMenu = InlineMenu;
 exports.InlineMenuContainer = InlineMenuContainer;
@@ -11638,7 +11638,7 @@ exports.PlayIcon = Icon$2d;
 exports.PlusCircleOpacityIcon = Icon$3L;
 exports.PlusCircleSolidIcon = Icon$3M;
 exports.PlusIcon = Icon$3N;
-exports.PlusR = Icon$f;
+exports.PlusRIcon = Icon$f;
 exports.PolygonIcon = Icon$Q;
 exports.PoolsOpacityIcon = Icon$1O;
 exports.PoolsSolidIcon = Icon$1P;
@@ -11651,8 +11651,8 @@ exports.Program10mSolidIcon = Icon$1n;
 exports.ProjectNameIcon = Icon$L;
 exports.QuoraIcon = Icon$T;
 exports.Radio = Radio;
-exports.RecipientAddR = Icon$i;
-exports.RecipientRemoveR = Icon$h;
+exports.RecipientAddRIcon = Icon$i;
+exports.RecipientRemoveRIcon = Icon$h;
 exports.RedditIcon = Icon$$;
 exports.ReferralOpacityIcon = Icon$1K;
 exports.ReferralSolidIcon = Icon$1L;
@@ -11661,12 +11661,12 @@ exports.RefreshOpacityIcon = Icon$25;
 exports.RefreshSolidIcon = Icon$24;
 exports.ResetCSS = ResetCSS;
 exports.RouteIcon = Icon$C;
-exports.SearchMinusR = Icon$c;
+exports.SearchMinusRIcon = Icon$c;
 exports.SearchOpacityIcon = Icon$31;
-exports.SearchPlusR = Icon$d;
-exports.SearchR = Icon$e;
+exports.SearchPlusRIcon = Icon$d;
+exports.SearchRIcon = Icon$e;
 exports.SearchSolidIcon = Icon$32;
-exports.SettingsR = Icon$k;
+exports.SettingsRIcon = Icon$k;
 exports.ShareIcon = Icon$2S;
 exports.ShareOpacityIcon = Icon$2Q;
 exports.ShareSolidIcon = Icon$2R;
@@ -11687,10 +11687,10 @@ exports.SubMenuItems = SubMenuItems;
 exports.Svg = Svg;
 exports.SwapDoubleArrowIcon = Icon$3R;
 exports.SwapHorizontalOpacityIcon = Icon$3k;
-exports.SwapHorizontalR = Icon$4;
+exports.SwapHorizontalRIcon = Icon$4;
 exports.SwapHorizontalSolidIcon = Icon$3j;
 exports.SwapVerticalOpacityIcon = Icon$3i;
-exports.SwapVerticalR = Icon$5;
+exports.SwapVerticalRIcon = Icon$5;
 exports.SwapVerticalSolidIcon = Icon$3h;
 exports.TabMenu = TabMenu;
 exports.TabMenuItem = TabBarItem;
@@ -11728,7 +11728,7 @@ exports.VoteIcon = Icon$p;
 exports.VotingOpacityIcon = Icon$1u;
 exports.VotingSolidIcon = Icon$1v;
 exports.WalletOpacityIcon = Icon$3y;
-exports.WalletR = Icon$j;
+exports.WalletRIcon = Icon$j;
 exports.WalletSolidIcon = Icon$3z;
 exports.WarningCycleIcon = Icon$3E;
 exports.WarningIcon = Icon$3F;
