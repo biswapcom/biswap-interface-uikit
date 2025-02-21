@@ -47,7 +47,7 @@ export const scaleVariants = {
   [Scales.MDR]: {
     height: "40px",
     fontSize: "16px",
-    padding: "0 34px",
+    padding: "0 24px",
     borderRadius: "8px",
   },
   [Scales.SMR]: {
