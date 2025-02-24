@@ -358,6 +358,25 @@ export declare const styleVariants: {
             color: string;
         };
     };
+    transparentWhite: {
+        backgroundColor: string;
+        color: string;
+        border: string;
+        ":hover:not(:disabled)": {
+            opacity: number;
+            backgroundColor: string;
+            borderColor: string;
+        };
+        ":active:not(:disabled)": {
+            backgroundColor: string;
+            borderColor: string;
+            color: string;
+        };
+        ":disabled": {
+            backgroundColor: string;
+            color: string;
+        };
+    };
     textOutlineBlue: {
         backgroundColor: string;
         border: string;

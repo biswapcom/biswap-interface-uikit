@@ -2530,6 +2530,7 @@ exports.ButtonVariants = void 0;
     Variants["RED"] = "red";
     Variants["YELLOW"] = "yellow";
     Variants["TRANSPARENT_BLUE"] = "transparentBlue";
+    Variants["TRANSPARENT_WHITE"] = "transparentWhite";
     Variants["TEXT_OUTLINE_BLUE"] = "textOutlineBlue";
     Variants["TEXT_OUTLINE_WHITE"] = "textOutlineWhite";
     Variants["TEXT_BLUE"] = "textBlue";
@@ -2883,6 +2884,25 @@ const styleVariants$3 = {
     [exports.ButtonVariants.TRANSPARENT_BLUE]: {
         backgroundColor: "rgba(55, 126, 247, 0.16)",
         color: "skyBlue",
+        border: "1px solid transparent",
+        ":hover:not(:disabled)": {
+            opacity: 0.8,
+            backgroundColor: "transparent",
+            borderColor: "darkBlue",
+        },
+        ":active:not(:disabled)": {
+            backgroundColor: "transparent",
+            borderColor: "skyBlue",
+            color: "text1",
+        },
+        ":disabled": {
+            backgroundColor: "fill5",
+            color: "text2",
+        },
+    },
+    [exports.ButtonVariants.TRANSPARENT_WHITE]: {
+        backgroundColor: "rgba(55, 126, 247, 0.16)",
+        color: "text1",
         border: "1px solid transparent",
         ":hover:not(:disabled)": {
             opacity: 0.8,

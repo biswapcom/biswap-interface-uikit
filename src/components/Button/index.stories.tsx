@@ -54,6 +54,7 @@ export const ButtonDefault: FC = () => {
     RED: ButtonVariants.RED,
     YELLOW: ButtonVariants.YELLOW,
     TRANSPARENT_BLUE: ButtonVariants.TRANSPARENT_BLUE,
+    TRANSPARENT_WHITE: ButtonVariants.TRANSPARENT_WHITE,
     TEXT_OUTLINE_BLUE: ButtonVariants.TEXT_OUTLINE_BLUE,
     TEXT_OUTLINE_WHITE: ButtonVariants.TEXT_OUTLINE_WHITE,
     TEXT_BLUE: ButtonVariants.TEXT_BLUE,

@@ -33,6 +33,7 @@ export declare enum Variants {
     RED = "red",
     YELLOW = "yellow",
     TRANSPARENT_BLUE = "transparentBlue",
+    TRANSPARENT_WHITE = "transparentWhite",
     TEXT_OUTLINE_BLUE = "textOutlineBlue",
     TEXT_OUTLINE_WHITE = "textOutlineWhite",
     TEXT_BLUE = "textBlue",
