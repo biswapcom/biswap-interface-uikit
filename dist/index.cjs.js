@@ -6075,7 +6075,7 @@ const StyledLink = styled__default["default"](Text) `
   display: flex;
   align-items: center;
   width: fit-content;
-  font-weight: 400;
+  font-weight: ${({ bold }) => bold ? "600" : "400"};;
   opacity: ${({ disabled }) => (disabled ? "0.32" : "1")};
   transition: color 0.4s ease-in-out;
 
@@ -6094,7 +6094,7 @@ const StyledLink = styled__default["default"](Text) `
 `;
 const Link = ({ external, ...props }) => {
     const internalProps = external ? getExternalLinkProps() : {};
-    return React__default["default"].createElement(StyledLink, { as: "a", bold: true, ...internalProps, ...props });
+    return React__default["default"].createElement(StyledLink, { as: "a", ...internalProps, ...props });
 };
 
 const LinkExternal = ({ children, ...props }) => {

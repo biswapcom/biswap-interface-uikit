@@ -14,4 +14,5 @@ export interface LinkProps extends TextProps, AnchorHTMLAttributes<HTMLAnchorEle
     variant?: Variants;
     scale?: Scales;
     disabled?: boolean;
+    bold?: boolean;
 }
