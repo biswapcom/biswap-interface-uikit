@@ -72,6 +72,7 @@ export declare const crossThemeColors: {
     darkYellow: string;
     darkRed: string;
     darkGreen: string;
+    darkBlue: string;
 };
 export declare const lightColors: Colors;
 export declare const darkColors: Colors;

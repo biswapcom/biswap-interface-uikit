@@ -137,6 +137,7 @@ export type Colors = {
   fill10: string;
   fill11: string;
   skyBlue: string;
+  darkBlue: string;
   newCar: string;
   violet: string;
   darkViolet: string;

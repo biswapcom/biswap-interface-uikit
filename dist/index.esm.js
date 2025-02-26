@@ -3394,6 +3394,7 @@ const crossThemeColors = {
     darkYellow: "#FFBB1C",
     darkRed: "#A8102B",
     darkGreen: "#07A462",
+    darkBlue: "#0E3382"
 };
 const lightColors = {
     ...baseColors,
