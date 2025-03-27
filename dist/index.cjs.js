@@ -3226,6 +3226,12 @@ exports.ButtonMenuScales = void 0;
     Scales["MD"] = "md";
     Scales["SM"] = "sm";
     Scales["XS"] = "xs";
+    Scales["XLR"] = "xlr";
+    Scales["LGR"] = "lgr";
+    Scales["MDR"] = "mdr";
+    Scales["SMR"] = "smr";
+    Scales["SSMR"] = "ssmr";
+    Scales["XSR"] = "xsr";
 })(exports.ButtonMenuScales || (exports.ButtonMenuScales = {}));
 exports.ButtonMenuVariants = void 0;
 (function (Variants) {
@@ -4699,6 +4705,43 @@ const scaleVariants$2 = {
         padding: "0 8px",
         fontSize: "12px",
         borderRadius: "6px",
+    },
+    // redesign
+    [exports.ButtonMenuScales.XLR]: {
+        height: "56px",
+        fontSize: "20px",
+        padding: "0 32px",
+        borderRadius: "14px",
+    },
+    [exports.ButtonMenuScales.LGR]: {
+        height: "48px",
+        fontSize: "18px",
+        padding: "0 32px",
+        borderRadius: "10px",
+    },
+    [exports.ButtonMenuScales.MDR]: {
+        height: "40px",
+        fontSize: "16px",
+        padding: "0 24px",
+        borderRadius: "8px",
+    },
+    [exports.ButtonMenuScales.SMR]: {
+        height: "36px",
+        fontSize: "16px",
+        padding: "0 20px",
+        borderRadius: "6px",
+    },
+    [exports.ButtonMenuScales.SSMR]: {
+        height: "28px",
+        fontSize: "14px",
+        padding: "0 16px",
+        borderRadius: "6px",
+    },
+    [exports.ButtonMenuScales.XSR]: {
+        height: "20px",
+        fontSize: "14px",
+        padding: "0 8px",
+        borderRadius: "4px",
     },
 };
 const styleVariants$2 = {
