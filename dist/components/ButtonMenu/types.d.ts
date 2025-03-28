@@ -6,7 +6,13 @@ export declare enum Scales {
     LG = "lg",
     MD = "md",
     SM = "sm",
-    XS = "xs"
+    XS = "xs",
+    XLR = "xlr",
+    LGR = "lgr",
+    MDR = "mdr",
+    SMR = "smr",
+    SSMR = "ssmr",
+    XSR = "xsr"
 }
 export declare enum Variants {
     DARK = "dark",

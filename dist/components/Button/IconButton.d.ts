@@ -1,4 +1,7 @@
 import { PolymorphicComponent } from "../../util";
 import { BaseButtonProps } from "./types";
-declare const IconButton: PolymorphicComponent<BaseButtonProps>;
+interface IconButtonProps extends BaseButtonProps {
+    $round?: boolean;
+}
+declare const IconButton: PolymorphicComponent<IconButtonProps>;
 export default IconButton;

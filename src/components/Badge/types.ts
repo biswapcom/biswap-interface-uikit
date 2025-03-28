@@ -14,9 +14,16 @@ export enum BadgeTypes {
   WARNING_OPACITY = "warningOpacity",
 }
 
+export enum BadgeScales {
+  LG = "lg",
+  MD = "md",
+  SM = "sm",
+}
+
 export interface BadgeProps extends SpaceProps {
   badgeType: BadgeTypes;
-  fontSize?: string;
+  scale?: BadgeScales;
+  // fontSize?: string;
   fontWeight?: string;
   isIcon?: string;
   children: ReactNode;

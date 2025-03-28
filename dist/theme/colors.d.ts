@@ -8,7 +8,6 @@ export declare const baseColors: {
     backgroundDark: string;
     backgroundLight: string;
     white: string;
-    pastelBlue: string;
     tooltip: string;
 };
 export declare const brandColors: {
@@ -66,6 +65,14 @@ export declare const newColors: {
     wineRed: string;
     black: string;
     buttonLightBlue: string;
+};
+export declare const crossThemeColors: {
+    pastelBlue: string;
+    darkViolet: string;
+    darkYellow: string;
+    darkRed: string;
+    darkGreen: string;
+    darkBlue: string;
 };
 export declare const lightColors: Colors;
 export declare const darkColors: Colors;

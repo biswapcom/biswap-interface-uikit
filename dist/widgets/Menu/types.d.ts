@@ -25,7 +25,6 @@ export interface NavProps extends BSWPriceProps, FooterAboutLinks, FooterInfoPag
     children?: ReactNode;
     eventButtonLogo?: () => JSX.Element;
     customLogoSubtitle?: string;
-    marketplaceLink?: string;
     baseAwsUrl?: string;
     buyBswLabel?: string;
     mobileLangSelector: ElementType;

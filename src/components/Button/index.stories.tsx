@@ -48,6 +48,18 @@ export const ButtonDefault: FC = () => {
     WARNING: ButtonVariants.WARNING,
     BOOST: ButtonVariants.BOOST,
     LIGHT_BLUE: ButtonVariants.LIGHT_BLUE,
+    BLUE: ButtonVariants.BLUE,
+    VIOLET: ButtonVariants.VIOLET,
+    GREEN: ButtonVariants.GREEN,
+    RED: ButtonVariants.RED,
+    YELLOW: ButtonVariants.YELLOW,
+    TRANSPARENT_BLUE: ButtonVariants.TRANSPARENT_BLUE,
+    TRANSPARENT_WHITE: ButtonVariants.TRANSPARENT_WHITE,
+    TEXT_OUTLINE_BLUE: ButtonVariants.TEXT_OUTLINE_BLUE,
+    TEXT_OUTLINE_WHITE: ButtonVariants.TEXT_OUTLINE_WHITE,
+    TEXT_BLUE: ButtonVariants.TEXT_BLUE,
+    TEXT_PASTEL_BLUE: ButtonVariants.TEXT_PASTEL_BLUE,
+    TEXT_WHITE: ButtonVariants.TEXT_WHITE,
   } as const;
 
   const darkBgBtn = {
@@ -89,7 +101,7 @@ export const ButtonDefault: FC = () => {
         </BodyText>
         {Object.values(baseBtn).map((variant) => {
           return (
-            <Button key={variant} variant={variant} scale={Scales.LG} mr="8px">
+            <Button key={variant} variant={variant} scale={Scales.LG} mr="8px" mb="8px">
               {`${camelCase(variant)}`}
             </Button>
           );
@@ -102,7 +114,7 @@ export const ButtonDefault: FC = () => {
         </BodyText>
         {Object.values(baseBtn).map((variant) => {
           return (
-            <Button isLoading key={variant} variant={variant} scale={Scales.LG} mr="8px">
+            <Button isLoading key={variant} variant={variant} scale={Scales.LG} mr="8px" mb="8px">
               {`${camelCase(variant)}`}
             </Button>
           );
@@ -115,7 +127,7 @@ export const ButtonDefault: FC = () => {
         </BodyText>
         {Object.values(baseBtn).map((variant) => {
           return (
-            <Button key={variant} variant={variant} scale={Scales.LG} mr="8px" disabled>
+            <Button key={variant} variant={variant} scale={Scales.LG} mr="8px" mb="8px" disabled>
               {`${camelCase(variant)}`}
             </Button>
           );
@@ -263,18 +275,42 @@ export const Variants: FC = () => {
           </Button>
         </Row>
         <Row>
-          <IconButton>
-            <BswIcon />
+          <IconButton scale={Scales.XLR}>
+            <PlusIcon color="currentColor" />
           </IconButton>
-          <IconButton variant={ButtonVariants.PRIMARY}>
-            <PlusIcon />
+          <IconButton scale={Scales.LGR}>
+            <PlusIcon color="currentColor" />
+          </IconButton>
+          <IconButton scale={Scales.MDR}>
+            <PlusIcon color="currentColor" />
+          </IconButton>
+          <IconButton scale={Scales.SMR}>
+            <PlusIcon color="currentColor" />
+          </IconButton>
+          <IconButton scale={Scales.SSMR}>
+            <PlusIcon color="currentColor" />
+          </IconButton>
+          <IconButton scale={Scales.XSR}>
+            <PlusIcon color="currentColor" />
           </IconButton>
         </Row>
         <Row>
-          <IconButton scale={Scales.SM} variant={ButtonVariants.DANGER}>
-            <BswIcon />
+          <IconButton scale={Scales.XLR} round>
+            <PlusIcon color="currentColor" />
           </IconButton>
-          <IconButton scale={Scales.SM} variant={ButtonVariants.SUCCESS}>
+          <IconButton scale={Scales.LGR} round>
+            <PlusIcon color="currentColor" />
+          </IconButton>
+          <IconButton scale={Scales.MDR} round>
+            <PlusIcon color="currentColor" />
+          </IconButton>
+          <IconButton scale={Scales.SMR} round>
+            <PlusIcon color="currentColor" />
+          </IconButton>
+          <IconButton scale={Scales.SSMR} round>
+            <PlusIcon color="currentColor" />
+          </IconButton>
+          <IconButton scale={Scales.XSR} round>
             <PlusIcon color="currentColor" />
           </IconButton>
         </Row>

@@ -3,7 +3,6 @@ export { default as MouseIcon } from "./Icons/Mouse";
 export { default as HourglassIcon } from "./Icons/Hourglass";
 export { default as BscBlackRoundIcon } from "./Icons/BscBlackRound";
 
-//new
 //ARROWS
 export { default as ChevronDownCircleSolidIcon } from "./Icons/Arrows/ChevronDownCircleSolid";
 export { default as ChevronDownCircleOpacityIcon } from "./Icons/Arrows/ChevronDownCircleOpacity";
@@ -426,6 +425,30 @@ export { default as DocumentIcon } from "./Icons/Document/Document";
 // Bridge
 export { default as BridgeOpacityIcon } from "./Icons/Bridge/BridgeOpacity";
 export { default as BridgeSolidIcon } from "./Icons/Bridge/BridgeSolid";
+
+// Redesign
+export { default as SettingsRIcon } from "./Icons/New/SettingsR";
+export { default as WalletRIcon } from "./Icons/New/WalletR";
+export { default as RecipientAddRIcon } from "./Icons/New/RecipientAddR";
+export { default as RecipientRemoveRIcon } from "./Icons/New/RecipientRemoveR";
+export { default as CloseRIcon } from "./Icons/New/CloseR";
+export { default as PlusRIcon } from "./Icons/New/PlusR";
+export { default as SearchRIcon } from "./Icons/New/SearchR";
+export { default as SearchPlusRIcon } from "./Icons/New/SearchPlusR";
+export { default as SearchMinusRIcon } from "./Icons/New/SearchMinusR";
+export { default as ArrowUpRIcon } from "./Icons/New/ArrowUpR";
+export { default as ArrowDownRIcon } from "./Icons/New/ArrowDownR";
+export { default as ArrowLeftRIcon } from "./Icons/New/ArrowLeftR";
+export { default as ArrowRightRIcon } from "./Icons/New/ArrowRightR";
+export { default as ChevronRightRIcon } from "./Icons/New/ChevronRightR";
+export { default as ChevronLeftRIcon } from "./Icons/New/ChevronLeftR";
+export { default as SwapVerticalRIcon } from "./Icons/New/SwapVerticalR";
+export { default as SwapHorizontalRIcon } from "./Icons/New/SwapHorizontalR";
+export { default as CheckRoundRIcon } from "./Icons/New/CheckRoundR";
+export { default as AttentionRoundRIcon } from "./Icons/New/AttentionRoundR";
+export { default as InfoRoundRIcon } from "./Icons/New/InfoRoundR";
+export { default as HelpRoundRIcon } from "./Icons/New/HelpRoundR";
+export { default as AddLiquidityRIcon } from "./Icons/New/AddLiquidityR";
 
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";

@@ -29,6 +29,42 @@ export declare const scaleVariants: {
         fontSize: string;
         borderRadius: string;
     };
+    xlr: {
+        height: string;
+        fontSize: string;
+        padding: string;
+        borderRadius: string;
+    };
+    lgr: {
+        height: string;
+        fontSize: string;
+        padding: string;
+        borderRadius: string;
+    };
+    mdr: {
+        height: string;
+        fontSize: string;
+        padding: string;
+        borderRadius: string;
+    };
+    smr: {
+        height: string;
+        fontSize: string;
+        padding: string;
+        borderRadius: string;
+    };
+    ssmr: {
+        height: string;
+        fontSize: string;
+        padding: string;
+        borderRadius: string;
+    };
+    xsr: {
+        height: string;
+        fontSize: string;
+        padding: string;
+        borderRadius: string;
+    };
 };
 export declare const styleVariants: {
     dark: {

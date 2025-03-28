@@ -50,3 +50,23 @@ export declare const BadgeTypesContainer: {
         border: string;
     };
 };
+export declare const BadgeScalesContainer: {
+    lg: {
+        height: string;
+        padding: string;
+        fontSize: string;
+        borderRadius: string;
+    };
+    md: {
+        height: string;
+        padding: string;
+        fontSize: string;
+        borderRadius: string;
+    };
+    sm: {
+        height: string;
+        padding: string;
+        fontSize: string;
+        borderRadius: string;
+    };
+};

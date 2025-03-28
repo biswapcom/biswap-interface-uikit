@@ -10,6 +10,12 @@ export enum Scales {
   MD = "md",
   SM = "sm",
   XS = "xs",
+  XLR = "xlr",
+  LGR = "lgr",
+  MDR = "mdr",
+  SMR = "smr",
+  SSMR = "ssmr",
+  XSR = "xsr",
 }
 
 export enum Variants {
