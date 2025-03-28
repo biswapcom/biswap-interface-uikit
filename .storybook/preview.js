@@ -28,7 +28,7 @@ const preview = {
         light: light,
         dark: dark,
       },
-      defaultTheme: 'light',
+      defaultTheme: 'dark',
       Provider: ThemeProvider,
       GlobalStyles: ResetCSS,
     }),

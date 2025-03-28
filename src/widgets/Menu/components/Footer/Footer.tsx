@@ -99,7 +99,6 @@ const Footer: FC<Props> = ({
   productLinks,
   buyBswHandler,
   socialLinks,
-  marketplaceLink,
   baseAwsUrl,
   buyBswLabel,
 }) => {
@@ -115,7 +114,7 @@ const Footer: FC<Props> = ({
         <SocialWrap>
           <Community isFooter socialLinks={socialLinks} iconSize="24px" baseAwsUrl={baseAwsUrl} />
         </SocialWrap>
-        <Audit marketplaceLink={marketplaceLink} baseAwsUrl={baseAwsUrl} />
+        <Audit baseAwsUrl={baseAwsUrl} />
       </FooterTop>
       <FooterBottom>
         <Product footerLinks={productLinks} />

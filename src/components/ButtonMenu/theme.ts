@@ -31,6 +31,43 @@ export const scaleVariants = {
     fontSize: "12px",
     borderRadius: "6px",
   },
+  // redesign
+  [Scales.XLR]: {
+    height: "56px",
+    fontSize: "20px",
+    padding: "0 32px",
+    borderRadius: "14px",
+  },
+  [Scales.LGR]: {
+    height: "48px",
+    fontSize: "18px",
+    padding: "0 32px",
+    borderRadius: "10px",
+  },
+  [Scales.MDR]: {
+    height: "40px",
+    fontSize: "16px",
+    padding: "0 24px",
+    borderRadius: "8px",
+  },
+  [Scales.SMR]: {
+    height: "36px",
+    fontSize: "16px",
+    padding: "0 20px",
+    borderRadius: "6px",
+  },
+  [Scales.SSMR]: {
+    height: "28px",
+    fontSize: "14px",
+    padding: "0 16px",
+    borderRadius: "6px",
+  },
+  [Scales.XSR]: {
+    height: "20px",
+    fontSize: "14px",
+    padding: "0 8px",
+    borderRadius: "4px",
+  },
 };
 
 export const styleVariants = {

@@ -6,7 +6,13 @@ export declare enum Scales {
     LG = "lg",
     MD = "md",
     SM = "sm",
-    XS = "xs"
+    XS = "xs",
+    XLR = "xlr",
+    LGR = "lgr",
+    MDR = "mdr",
+    SMR = "smr",
+    SSMR = "ssmr",
+    XSR = "xsr"
 }
 export declare enum Variants {
     PRIMARY = "primary",
@@ -20,7 +26,19 @@ export declare enum Variants {
     TERTIARY_OUT = "tertiaryOut",
     TEXT = "text",
     TEXT_DARK = "textDark",
-    LIGHT_BLUE = "lightBlue"
+    LIGHT_BLUE = "lightBlue",
+    BLUE = "blue",
+    VIOLET = "violet",
+    GREEN = "green",
+    RED = "red",
+    YELLOW = "yellow",
+    TRANSPARENT_BLUE = "transparentBlue",
+    TRANSPARENT_WHITE = "transparentWhite",
+    TEXT_OUTLINE_BLUE = "textOutlineBlue",
+    TEXT_OUTLINE_WHITE = "textOutlineWhite",
+    TEXT_BLUE = "textBlue",
+    TEXT_PASTEL_BLUE = "textPastelBlue",
+    TEXT_WHITE = "textWhite"
 }
 export interface BaseButtonProps extends LayoutProps, SpaceProps {
     as?: "a" | "button" | ElementType;
@@ -37,5 +55,6 @@ export interface BaseButtonProps extends LayoutProps, SpaceProps {
     flat?: boolean;
     addBubble?: boolean;
     bubbleColor?: string;
+    round?: boolean;
 }
 export type ButtonProps<P extends ElementType = "button"> = PolymorphicComponentProps<P, BaseButtonProps>;

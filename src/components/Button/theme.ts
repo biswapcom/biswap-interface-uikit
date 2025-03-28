@@ -31,6 +31,112 @@ export const scaleVariants = {
     fontSize: "12px",
     borderRadius: "6px",
   },
+  // redesign
+  [Scales.XLR]: {
+    height: "56px",
+    fontSize: "20px",
+    padding: "0 32px",
+    borderRadius: "14px",
+  },
+  [Scales.LGR]: {
+    height: "48px",
+    fontSize: "18px",
+    padding: "0 32px",
+    borderRadius: "10px",
+  },
+  [Scales.MDR]: {
+    height: "40px",
+    fontSize: "16px",
+    padding: "0 24px",
+    borderRadius: "8px",
+  },
+  [Scales.SMR]: {
+    height: "36px",
+    fontSize: "16px",
+    padding: "0 20px",
+    borderRadius: "6px",
+  },
+  [Scales.SSMR]: {
+    height: "28px",
+    fontSize: "14px",
+    padding: "0 16px",
+    borderRadius: "6px",
+  },
+  [Scales.XSR]: {
+    height: "20px",
+    fontSize: "14px",
+    padding: "0 8px",
+    borderRadius: "4px",
+  },
+};
+
+export const scaleVariantsIconOnly = {
+  [Scales.XLR]: {
+    maxWidth: "56px",
+    padding: "0 16px",
+
+    svg: {
+      width: "24px",
+    },
+    img: {
+      width: "24px",
+    },
+  },
+  [Scales.LGR]: {
+    maxWidth: "48px",
+    padding: "0 12px",
+
+    svg: {
+      width: "24px",
+    },
+    img: {
+      width: "24px",
+    },
+  },
+  [Scales.MDR]: {
+    maxWidth: "40px",
+    padding: "0 8px",
+
+    svg: {
+      width: "24px",
+    },
+    img: {
+      width: "24px",
+    },
+  },
+  [Scales.SMR]: {
+    maxWidth: "36px",
+    padding: "0 8px",
+
+    svg: {
+      width: "20px",
+    },
+    img: {
+      width: "20px",
+    },
+  },
+  [Scales.SSMR]: {
+    maxWidth: "28px",
+    padding: "0 6px",
+
+    svg: {
+      width: "16px",
+    },
+    img: {
+      width: "16px",
+    },
+  },
+  [Scales.XSR]: {
+    maxWidth: "20px",
+    padding: "0 4px",
+
+    svg: {
+      width: "12px",
+    },
+    img: {
+      width: "12px",
+    },
+  },
 };
 
 export const styleVariants = {
@@ -185,6 +291,209 @@ export const styleVariants = {
     ":active:not(:disabled)": {
       backgroundColor: "transparent",
       borderColor: "blue",
+    },
+  },
+  //redesign
+  [Variants.BLUE]: {
+    backgroundColor: "skyBlue",
+    color: "text4",
+
+    ":hover:not(:disabled)": {
+      opacity: 0.8,
+    },
+    ":active:not(:disabled)": {
+      backgroundColor: "newCar",
+    },
+    ":disabled": {
+      backgroundColor: "fill5",
+      color: "text2",
+    },
+  },
+  [Variants.VIOLET]: {
+    backgroundColor: "violet",
+    color: "text4",
+
+    ":hover:not(:disabled)": {
+      opacity: 0.8,
+    },
+    ":active:not(:disabled)": {
+      backgroundColor: "darkViolet",
+    },
+    ":disabled": {
+      backgroundColor: "fill5",
+      color: "text2",
+    },
+  },
+  [Variants.GREEN]: {
+    backgroundColor: "green",
+    color: "text4",
+
+    ":hover:not(:disabled)": {
+      opacity: 0.8,
+    },
+    ":active:not(:disabled)": {
+      backgroundColor: "darkGreen",
+    },
+    ":disabled": {
+      backgroundColor: "fill5",
+      color: "text2",
+    },
+  },
+  [Variants.RED]: {
+    backgroundColor: "red",
+    color: "text4",
+
+    ":hover:not(:disabled)": {
+      opacity: 0.8,
+    },
+    ":active:not(:disabled)": {
+      backgroundColor: "darkRed",
+    },
+    ":disabled": {
+      backgroundColor: "fill5",
+      color: "text2",
+    },
+  },
+  [Variants.YELLOW]: {
+    backgroundColor: "yellowBtn",
+    color: "fill10",
+
+    ":hover:not(:disabled)": {
+      opacity: 0.8,
+    },
+    ":active:not(:disabled)": {
+      backgroundColor: "darkYellow",
+    },
+    ":disabled": {
+      backgroundColor: "fill5",
+      color: "text2",
+    },
+  },
+  [Variants.TRANSPARENT_BLUE]: {
+    backgroundColor: "rgba(55, 126, 247, 0.16)",
+    color: "skyBlue",
+    border: "1px solid transparent",
+
+    ":hover:not(:disabled)": {
+      opacity: 0.8,
+      backgroundColor: "transparent",
+      borderColor: "darkBlue",
+    },
+    ":active:not(:disabled)": {
+      backgroundColor: "transparent",
+      borderColor: "skyBlue",
+      color: "text1",
+    },
+    ":disabled": {
+      backgroundColor: "fill5",
+      color: "text2",
+    },
+  },
+  [Variants.TRANSPARENT_WHITE]: {
+    backgroundColor: "rgba(55, 126, 247, 0.16)",
+    color: "text1",
+    border: "1px solid transparent",
+
+    ":hover:not(:disabled)": {
+      opacity: 0.8,
+      backgroundColor: "transparent",
+      borderColor: "darkBlue",
+    },
+    ":active:not(:disabled)": {
+      backgroundColor: "transparent",
+      borderColor: "skyBlue",
+      color: "text1",
+    },
+    ":disabled": {
+      backgroundColor: "fill5",
+      color: "text2",
+    },
+  },
+  [Variants.TEXT_OUTLINE_BLUE]: {
+    backgroundColor: "transparent",
+    border: "1px solid",
+    borderColor: "darkBlue",
+    color: "skyBlue",
+
+    ":hover:not(:disabled)": {
+      opacity: 0.8,
+      backgroundColor: "rgba(55, 126, 247, 0.24)",
+      borderColor: "transparent",
+    },
+    ":active:not(:disabled)": {
+      backgroundColor: "transparent",
+      borderColor: "newCar",
+      color: "newCar",
+    },
+    ":disabled": {
+      borderColor: "fill5",
+      color: "text5",
+    },
+  },
+  [Variants.TEXT_OUTLINE_WHITE]: {
+    backgroundColor: "transparent",
+    border: "1px solid",
+    borderColor: "darkBlue",
+    color: "text1",
+
+    ":hover:not(:disabled)": {
+      opacity: 0.8,
+      backgroundColor: "rgba(55, 126, 247, 0.24)",
+      borderColor: "transparent",
+    },
+    ":active:not(:disabled)": {
+      backgroundColor: "transparent",
+      borderColor: "newCar",
+      color: "text1",
+    },
+    ":disabled": {
+      borderColor: "fill5",
+      color: "text5",
+    },
+  },
+  [Variants.TEXT_BLUE]: {
+    color: "skyBlue",
+    backgroundColor: "transparent",
+
+    ":hover:not(:disabled)": {
+      opacity: 0.8,
+    },
+    ":active:not(:disabled)": {
+      backgroundColor: "rgba(55, 126, 247, 0.16)",
+      color: "text1",
+    },
+    ":disabled": {
+      color: "text5",
+    },
+  },
+  [Variants.TEXT_PASTEL_BLUE]: {
+    color: "pastelBlue",
+    backgroundColor: "transparent",
+
+    ":hover:not(:disabled)": {
+      opacity: 0.8,
+    },
+    ":active:not(:disabled)": {
+      backgroundColor: "rgba(55, 126, 247, 0.16)",
+      color: "text3",
+    },
+    ":disabled": {
+      color: "text5",
+    },
+  },
+  [Variants.TEXT_WHITE]: {
+    color: "text1",
+    backgroundColor: "transparent",
+
+    ":hover:not(:disabled)": {
+      opacity: 0.8,
+    },
+    ":active:not(:disabled)": {
+      backgroundColor: "rgba(55, 126, 247, 0.16)",
+      color: "text2",
+    },
+    ":disabled": {
+      color: "text5",
     },
   },
 };

@@ -1,4 +1,4 @@
-import { BadgeTypes } from "./types";
+import { BadgeTypes, BadgeScales } from "./types";
 
 export const BadgeTypesContainer = {
   [BadgeTypes.SUCCESS]: {
@@ -50,5 +50,26 @@ export const BadgeTypesContainer = {
     backgroundColor: "gray200",
     color: "dark800",
     border: "0",
+  },
+};
+
+export const BadgeScalesContainer = {
+  [BadgeScales.LG]: {
+    height: "36px",
+    padding: "0 12px",
+    fontSize: "18px",
+    borderRadius: "24px",
+  },
+  [BadgeScales.MD]: {
+    height: "28px",
+    padding: "0 8px",
+    fontSize: "14px",
+    borderRadius: "24px",
+  },
+  [BadgeScales.SM]: {
+    height: "20px",
+    padding: "0 8px",
+    fontSize: "10px",
+    borderRadius: "16px",
   },
 };

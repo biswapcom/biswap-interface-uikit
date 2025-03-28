@@ -13,6 +13,7 @@ interface ThemedButtonProps extends BaseButtonProps {
 
 interface TransientButtonProps extends ThemedButtonProps {
   $isLoading?: boolean;
+  $round?: boolean;
 }
 
 const getDisabledStyles = ({ $isLoading }: TransientButtonProps) => {
@@ -42,6 +43,12 @@ const getDisabledStyles = ({ $isLoading }: TransientButtonProps) => {
 
 const getOpacity = ({ $isLoading = false }: TransientButtonProps) => {
   return $isLoading ? ".5" : "1";
+};
+
+const getRounded = ({ $round = false }: TransientButtonProps) => {
+  if ($round) {
+    return `border-radius: 50%`;
+  }
 };
 
 const getFlat = ({ flatBottom = false, flatTop = false, flat = false }: BaseButtonProps) => {
