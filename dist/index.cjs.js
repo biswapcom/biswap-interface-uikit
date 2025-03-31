@@ -6023,6 +6023,7 @@ const LeftIconImage = styled__default["default"](Box) `
 `;
 const RightIconComponent = styled__default["default"](StyledIconComponent) `
   right: ${({ scale }) => getIconPosition(scale)};
+  cursor: ${({ clickable }) => (clickable ? 'pointer' : 'default')};
 `;
 const TextDescription = styled__default["default"](Text) `
   ${styledSystem.variant({
@@ -6030,14 +6031,14 @@ const TextDescription = styled__default["default"](Text) `
     variants: styleTextVariants,
 })}
 `;
-const InputGroup = ({ scale = exports.InputScales.MD, startIcon, startImage, endIcon, children, variant, isError, isWarning, disabled, description, baseAwsUrl = "https://static.biswap.org/bs", ...props }) => {
+const InputGroup = ({ scale = exports.InputScales.MD, startIcon, startImage, endIcon, children, variant, isError, isWarning, disabled, description, baseAwsUrl = "https://static.biswap.org/bs", onRightIconClick, ...props }) => {
     return (React__default["default"].createElement(StyledInputWrapper, { width: "100%", position: "relative", disabled: disabled, ...props },
         React__default["default"].createElement(StyledInputGroup, { scale: scale, variant: variant, width: "100%", position: "relative", hasStartIcon: !!startIcon || !!startImage, hasEndIcon: !!endIcon },
             startIcon && React__default["default"].createElement(LeftIconComponent, { color: startIcon.color, iconName: startIcon.iconName, scale: scale }),
             startImage && (React__default["default"].createElement(LeftIconImage, { scale: scale },
                 React__default["default"].createElement(Image__default["default"], { width: getImageSize(scale), height: getImageSize(scale), src: `${baseAwsUrl}${startImage?.imageSrc}`, alt: "img" }))),
             React.cloneElement(children, { variant, scale, disabled }),
-            !isError && !isWarning && endIcon && (React__default["default"].createElement(RightIconComponent, { color: endIcon.color, iconName: endIcon.iconName, scale: scale })),
+            !isError && !isWarning && endIcon && (React__default["default"].createElement(RightIconComponent, { color: endIcon.color, iconName: endIcon.iconName, scale: scale, clickable: !!onRightIconClick, onClick: onRightIconClick })),
             isError && React__default["default"].createElement(RightIconComponent, { iconName: "CloseCircleSolid", color: "secondary", scale: scale }),
             isWarning && React__default["default"].createElement(RightIconComponent, { iconName: "WarningSolid", color: "warning", scale: scale })),
         description && (React__default["default"].createElement(TextDescription, { mt: "4px", fontSize: "12px", variant: variant }, description))));

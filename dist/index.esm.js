@@ -6007,6 +6007,7 @@ const LeftIconImage = styled(Box) `
 `;
 const RightIconComponent = styled(StyledIconComponent) `
   right: ${({ scale }) => getIconPosition(scale)};
+  cursor: ${({ clickable }) => (clickable ? 'pointer' : 'default')};
 `;
 const TextDescription = styled(Text) `
   ${variant({
@@ -6014,14 +6015,14 @@ const TextDescription = styled(Text) `
     variants: styleTextVariants,
 })}
 `;
-const InputGroup = ({ scale = Scales$4.MD, startIcon, startImage, endIcon, children, variant, isError, isWarning, disabled, description, baseAwsUrl = "https://static.biswap.org/bs", ...props }) => {
+const InputGroup = ({ scale = Scales$4.MD, startIcon, startImage, endIcon, children, variant, isError, isWarning, disabled, description, baseAwsUrl = "https://static.biswap.org/bs", onRightIconClick, ...props }) => {
     return (React.createElement(StyledInputWrapper, { width: "100%", position: "relative", disabled: disabled, ...props },
         React.createElement(StyledInputGroup, { scale: scale, variant: variant, width: "100%", position: "relative", hasStartIcon: !!startIcon || !!startImage, hasEndIcon: !!endIcon },
             startIcon && React.createElement(LeftIconComponent, { color: startIcon.color, iconName: startIcon.iconName, scale: scale }),
             startImage && (React.createElement(LeftIconImage, { scale: scale },
                 React.createElement(Image$1, { width: getImageSize(scale), height: getImageSize(scale), src: `${baseAwsUrl}${startImage?.imageSrc}`, alt: "img" }))),
             cloneElement(children, { variant, scale, disabled }),
-            !isError && !isWarning && endIcon && (React.createElement(RightIconComponent, { color: endIcon.color, iconName: endIcon.iconName, scale: scale })),
+            !isError && !isWarning && endIcon && (React.createElement(RightIconComponent, { color: endIcon.color, iconName: endIcon.iconName, scale: scale, clickable: !!onRightIconClick, onClick: onRightIconClick })),
             isError && React.createElement(RightIconComponent, { iconName: "CloseCircleSolid", color: "secondary", scale: scale }),
             isWarning && React.createElement(RightIconComponent, { iconName: "WarningSolid", color: "warning", scale: scale })),
         description && (React.createElement(TextDescription, { mt: "4px", fontSize: "12px", variant: variant }, description))));
