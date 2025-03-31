@@ -450,6 +450,7 @@ export { default as InfoRoundRIcon } from "./Icons/New/InfoRoundR";
 export { default as HelpRoundRIcon } from "./Icons/New/HelpRoundR";
 export { default as AddLiquidityRIcon } from "./Icons/New/AddLiquidityR";
 export { default as OptionRIcon } from "./Icons/New/OptionR";
+export { default as SolanaRIcon } from "./Icons/New/SolanaR";
 
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";
