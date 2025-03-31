@@ -123,8 +123,9 @@ const LeftIconImage = styled(Box)<{ scale: Scales }>`
   left: ${({ scale }) => `${getIconPosition(scale)}px`};
 `;
 
-const RightIconComponent = styled(StyledIconComponent)<{ scale: Scales }>`
+const RightIconComponent = styled(StyledIconComponent)<{ scale: Scales; clickable?: boolean }>`
   right: ${({ scale }) => getIconPosition(scale)};
+  cursor: ${({ clickable }) => (clickable ? 'pointer' : 'default')};
 `;
 
 const TextDescription = styled(Text)<{ variant?: Variants }>`
@@ -146,6 +147,7 @@ const InputGroup: FC<InputGroupProps> = ({
   disabled,
   description,
   baseAwsUrl = "https://static.biswap.org/bs",
+  onRightIconClick,
   ...props
 }) => {
   return (
@@ -171,10 +173,32 @@ const InputGroup: FC<InputGroupProps> = ({
         )}
         {cloneElement(children, { variant, scale, disabled })}
         {!isError && !isWarning && endIcon && (
-          <RightIconComponent color={endIcon.color} iconName={endIcon.iconName} scale={scale} />
+          <RightIconComponent
+            color={endIcon.color}
+            iconName={endIcon.iconName}
+            scale={scale}
+            clickable={!!onRightIconClick}
+            onClick={onRightIconClick}
+          />
         )}
-        {isError && <RightIconComponent iconName="CloseCircleSolid" color="secondary" scale={scale} />}
-        {isWarning && <RightIconComponent iconName="WarningSolid" color="warning" scale={scale} />}
+        {isError &&
+          <RightIconComponent
+            iconName="CloseCircleSolid"
+            color="secondary"
+            scale={scale}
+            clickable={!!onRightIconClick}
+            onClick={onRightIconClick}
+          />
+        }
+        {isWarning &&
+          <RightIconComponent
+            iconName="WarningSolid"
+            color="warning"
+            scale={scale}
+            clickable={!!onRightIconClick}
+            onClick={onRightIconClick}
+          />
+        }
       </StyledInputGroup>
       {description && (
         <TextDescription mt="4px" fontSize="12px" variant={variant}>
