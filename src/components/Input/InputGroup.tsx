@@ -181,24 +181,8 @@ const InputGroup: FC<InputGroupProps> = ({
             onClick={onRightIconClick}
           />
         )}
-        {isError &&
-          <RightIconComponent
-            iconName="CloseCircleSolid"
-            color="secondary"
-            scale={scale}
-            clickable={!!onRightIconClick}
-            onClick={onRightIconClick}
-          />
-        }
-        {isWarning &&
-          <RightIconComponent
-            iconName="WarningSolid"
-            color="warning"
-            scale={scale}
-            clickable={!!onRightIconClick}
-            onClick={onRightIconClick}
-          />
-        }
+        {isError && <RightIconComponent iconName="CloseCircleSolid" color="secondary" scale={scale} />}
+        {isWarning && <RightIconComponent iconName="WarningSolid" color="warning" scale={scale} />}
       </StyledInputGroup>
       {description && (
         <TextDescription mt="4px" fontSize="12px" variant={variant}>

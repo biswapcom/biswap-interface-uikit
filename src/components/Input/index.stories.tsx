@@ -1582,36 +1582,6 @@ export const Info: FC = () => {
           >
             <Input type="text" placeholder="Click the eye icon" />
           </InputGroup>
-          <InputGroup
-            endIcon={{
-              iconName: "CloseCircleSolid",
-              color: "gray",
-            }}
-            onRightIconClick={() => alert("Icon clicked!")}
-            mb="24px"
-            mr="16px"
-            variant={Variants.DARK_ERROR}
-            scale={Scales.LG}
-            maxWidth="300px"
-            isError
-          >
-            <Input type="text" value="Click the close icon" />
-          </InputGroup>
-          <InputGroup
-            endIcon={{
-              iconName: "WarningSolid",
-              color: "gray",
-            }}
-            onRightIconClick={() => alert("Icon clicked!")}
-            mb="24px"
-            mr="16px"
-            variant={Variants.DARK_WARNING}
-            scale={Scales.LG}
-            maxWidth="300px"
-            isWarning
-          >
-            <Input type="text" value="Click the warning icon" />
-          </InputGroup>
         </Row>
       </DarkBg>
     </>
