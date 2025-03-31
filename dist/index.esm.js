@@ -3469,8 +3469,8 @@ const darkColors = {
     text4: "#F9FAFD",
     text5: "#2A436A",
     divider1: "#102648",
-    divider2: "#102648",
-    divider3: "#102648",
+    divider2: "#2A436A",
+    divider3: "#546F99",
 };
 
 const light$5 = {
