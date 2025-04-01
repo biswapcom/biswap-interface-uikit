@@ -144,6 +144,7 @@ export { default as ShareOpacityIcon } from "./Icons/Share/ShareOpacity";
 export { default as FilterIcon } from "./Icons/Filter/Filter";
 export { default as FilterSolidIcon } from "./Icons/Filter/FilterSolid";
 export { default as FilterOpacityIcon } from "./Icons/Filter/FilterOpacity";
+export { default as FilterHorizontalIcon } from "./Icons/Filter/FilterHorizontal";
 
 //Book
 export { default as BookIcon } from "./Icons/Book/Book";
