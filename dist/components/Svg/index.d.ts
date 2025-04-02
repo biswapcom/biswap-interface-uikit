@@ -236,7 +236,7 @@ export { default as DropIcon } from "./Icons/Other/Drop";
 export { default as RobotIcon } from "./Icons/Other/Robot";
 export { default as LockIcon } from "./Icons/Lock/Lock";
 export { default as UnlockIcon } from "./Icons/Lock/Unlock";
-export { default as BSWLogo } from "./Icons/Logo/BSWLogo";
+export { default as BSWLogoIcon } from "./Icons/Logo/BSWLogo";
 export { default as LanguageIcon } from "./Icons/Language/Language";
 export { default as GiftIcon } from "./Icons/Gift/Gift";
 export { default as RouteIcon } from "./Icons/Route/Route";
