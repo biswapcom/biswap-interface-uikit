@@ -134,7 +134,7 @@ export { default as VerifiedOpacityIcon } from "./Icons/Verified/VerifiedOpacity
 export { default as CopyIcon } from "./Icons/Copy/Copy";
 export { default as CopySolidIcon } from "./Icons/Copy/CopySolid";
 export { default as CopyOpacityIcon } from "./Icons/Copy/CopyOpacity";
-
+export { default as NewCopyIcon } from "./Icons/Copy/NewCopy";
 //Share
 export { default as ShareIcon } from "./Icons/Share/Share";
 export { default as ShareSolidIcon } from "./Icons/Share/ShareSolid";
@@ -165,7 +165,7 @@ export { default as AuctionOpacityIcon } from "./Icons/Auction/AuctionOpacity";
 export { default as TimerIcon } from "./Icons/Timer/Timer";
 export { default as TimerSolidIcon } from "./Icons/Timer/TimerSolid";
 export { default as TimerOpacityIcon } from "./Icons/Timer/TimerOpacity";
-
+export { default as NewTimerIcon } from "./Icons/Timer/NewTimer";
 //Test
 export { default as TestIcon } from "./Icons/Test/Test";
 export { default as TestOpacityIcon } from "./Icons/Test/TestOpacity";
@@ -357,8 +357,10 @@ export { default as InstagramIcon } from "./Icons/Socials/Instagram";
 export { default as MediumIcon } from "./Icons/Socials/Medium";
 export { default as RedditIcon } from "./Icons/Socials/Reddit";
 export { default as TelegramIcon } from "./Icons/Socials/Telegram";
+export { default as ModernTelegramIcon } from "./Icons/Socials/ModernTelegram";
 export { default as TwitchIcon } from "./Icons/Socials/Twitch";
 export { default as TwitterIcon } from "./Icons/Socials/Twitter";
+export { default as XSearchIcon } from "./Icons/Socials/XSearch";
 export { default as YoutubeIcon } from "./Icons/Socials/Youtube";
 export { default as FacebookIcon } from "./Icons/Socials/Facebook";
 export { default as TikTokIcon } from "./Icons/Socials/TikTok";
@@ -380,10 +382,14 @@ export { default as BswIcon } from "./Icons/Other/Bsw";
 export { default as LightningIcon } from "./Icons/Other/Lightning";
 export { default as ConflictIcon } from "./Icons/Other/Conflict";
 export { default as DropIcon } from "./Icons/Other/Drop";
+export { default as RobotIcon } from "./Icons/Other/Robot";
 
 // Locks
 export { default as LockIcon } from "./Icons/Lock/Lock";
 export { default as UnlockIcon } from "./Icons/Lock/Unlock";
+
+// Logo
+export { default as BSWLogo } from "./Icons/Logo/BSWLogo";
 
 //Language
 export { default as LanguageIcon } from "./Icons/Language/Language";
