@@ -6475,7 +6475,7 @@ const PercentBanner = styled(Flex) `
       
     ${({ bannerPosition, theme }) => `border-${bannerPosition === "top" ? "top" : "bottom"}: 6px solid ${theme.colors.tooltip}`};
 `;
-const Divider$2 = styled.span `
+const Divider$1 = styled.span `
   width: 2px;
   height: 10px;
   margin: 0 4px 0 4px;
@@ -6564,7 +6564,7 @@ const Slider = ({ value, onValueChanged, checkPoints = INIT_CHECKPOINTS, isRobiB
             React.createElement(BunnySlider, null,
                 React.createElement(PercentWrap, null, infoVisible && (React.createElement(PercentBanner, { className: "percent-info-banner", bannerPosition: bannerPosition, left: percent?.value },
                     React.createElement(PercentText, null, value),
-                    React.createElement(Divider$2, null),
+                    React.createElement(Divider$1, null),
                     React.createElement(PercentText, null, 100 - value)))),
                 React.createElement(BarBackground$1, null),
                 React.createElement(BarProgress$1, { progress: progressPercentage }),
@@ -6785,7 +6785,7 @@ const MenuContext = createContext({
     linkComponent: "a",
 });
 
-const StyledMenuItemContainer$1 = styled(Box) `
+const StyledMenuItemContainer = styled(Box) `
   position: relative;
 
   ${({ $isActive, $variant }) => $isActive &&
@@ -6862,15 +6862,15 @@ const MenuItem$1 = ({ children, href, isActive = false, variant = "default", sta
         : {
             as: "div",
         };
-    return (React.createElement(StyledMenuItemContainer$1, { "$isActive": isActive, "$variant": variant },
+    return (React.createElement(StyledMenuItemContainer, { "$isActive": isActive, "$variant": variant },
         React.createElement(StyledMenuItem$1, { ...itemLinkProps, "$isActive": isActive, "$variant": variant, "$statusColor": statusColor, "$highlightTitle": highlightTitle, ...props }, children)));
 };
 
-const Divider$1 = styled(Box) `
+const Divider = styled(Box) `
   border: 1px solid ${({ theme }) => theme.colors.white};
   opacity: 0.16;
 `;
-const MenuItemDivider$1 = () => React.createElement(Divider$1, { width: 0, height: 20 });
+const MenuItemDivider = () => React.createElement(Divider, { width: 0, height: 20 });
 
 const StyledSubMenuItems = styled(Flex) `
   ${({ theme }) => theme.mediaQueries.sm} {
@@ -8694,7 +8694,7 @@ const MenuItemContent$1 = ({ leftIcon, label, description, rightIcon, fill = "pr
         rightIcon && !disabled && React.createElement(IconComponent$1, { className: "arrow-icon", iconName: rightIcon, color: fill })));
 };
 
-const DropdownMenu$1 = ({ children, activeItem = "", items = [], isExtended = false, ...props }) => {
+const DropdownMenu = ({ children, activeItem = "", items = [], isExtended = false, ...props }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [targetRef, setTargetRef] = useState(null);
     const [tooltipRef, setTooltipRef] = useState(null);
@@ -8783,10 +8783,10 @@ const Accordion = ({ label, clickable = true, heading, children, index, href, li
             React.createElement(DropdownMenuDivider$1, { color: "rgba(18, 99, 241, 0.16)" })))));
 };
 
-var ItemTypes$1;
+var ItemTypes;
 (function (ItemTypes) {
     ItemTypes["DIVIDER"] = "DIVIDER";
-})(ItemTypes$1 || (ItemTypes$1 = {}));
+})(ItemTypes || (ItemTypes = {}));
 
 const status$1 = {
     LIVE: {
@@ -9029,7 +9029,7 @@ const links$1 = [
         ],
     },
     {
-        type: ItemTypes$1.DIVIDER,
+        type: ItemTypes.DIVIDER,
         showItemsOnMobile: true,
         href: "",
     },
@@ -9712,9 +9712,9 @@ const MenuItems$1 = ({ items = [], activeItem, activeSubItem, isMobileMenuOpened
             const linkProps = isTouchDevice() && menuItems && menuItems.length > 0 ? {} : { href };
             const visualize = (isDesktop || (isTablet && showItemsOnMobile)) && !hidden;
             return (visualize && (React.createElement(Fragment, { key: `${label}#${href}` },
-                React.createElement(DropdownMenu$1, { key: `${label}#${href}#${icon}`, items: menuItems, py: 1, activeItem: activeSubItem, isExtended: isExtended },
+                React.createElement(DropdownMenu, { key: `${label}#${href}#${icon}`, items: menuItems, py: 1, activeItem: activeSubItem, isExtended: isExtended },
                     React.createElement(MenuItem$1, { ...linkProps, isActive: isActive, statusColor: statusColor, highlightTitle: highlightTitle },
-                        type === ItemTypes$1.DIVIDER && React.createElement(MenuItemDivider$1, null),
+                        type === ItemTypes.DIVIDER && React.createElement(MenuItemDivider, null),
                         icon && React.createElement(IconComponent$1, { mr: "8px", iconName: icon, color: "white" }),
                         label && (React.createElement(Box, { ml: !href ? "8px" : 0, position: "relative" },
                             isMarker && React.createElement(Marker$1, { color: isMarkerColor }),
@@ -10140,42 +10140,6 @@ const Menu = ({ linkComponent = "a", banner, links, rightSide, activeItem, activ
 const MenuSolContext = createContext({
     linkComponent: "a",
 });
-
-const DropdownMenu = ({ children, activeItem = "", items = [], isExtended = false, ...props }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [targetRef, setTargetRef] = useState(null);
-    const [tooltipRef, setTooltipRef] = useState(null);
-    useContext(MenuSolContext);
-    items.length > 0;
-    items.length > 1;
-    const { styles, attributes, update } = usePopper(targetRef, tooltipRef, {
-        strategy: "fixed",
-        placement: "bottom-start",
-        modifiers: [{ name: "offset", options: { offset: [0, -14] } }],
-    });
-    useEffect(() => {
-        const showDropdownMenu = async () => {
-            update && (await update());
-            setIsOpen(true);
-        };
-        const hideDropdownMenu = (evt) => {
-            const target = evt.target;
-            return target && !tooltipRef?.contains(target) && setIsOpen(false);
-        };
-        targetRef?.addEventListener("mouseenter", showDropdownMenu, {
-            passive: true,
-        });
-        targetRef?.addEventListener("mouseleave", hideDropdownMenu, {
-            passive: true,
-        });
-        return () => {
-            targetRef?.removeEventListener("mouseenter", showDropdownMenu);
-            targetRef?.removeEventListener("mouseleave", hideDropdownMenu);
-        };
-    }, [targetRef, tooltipRef, setIsOpen, update]);
-    return (React.createElement(Box, { ref: setTargetRef, ...props },
-        React.createElement(Box, null, children)));
-};
 
 var DropdownMenuItemType;
 (function (DropdownMenuItemType) {
@@ -10643,23 +10607,6 @@ const MobileMenu = ({ items, mobileMenuCallback, children, activeItem, baseAwsUr
                 React.createElement(Community, { menuVariant: true, iconSize: "24px", baseAwsUrl: baseAwsUrl })))))));
 };
 
-const StyledMenuItemContainer = styled(Box) `
-  position: relative;
-  color: saddlebrown;
-
-  ${({ $isActive, $variant }) => $isActive &&
-    $variant === "subMenu" &&
-    `
-      &:after{
-        content: "";
-        position: absolute;
-        bottom: 0;
-        height: 4px;
-        width: 100%;
-        border-radius: 2px 2px 0 0;
-      }
-    `};
-`;
 const CommonLinkStyles = ({ $isActive, $statusColor, $variant, $highlightTitle }) => css `
   position: relative;
   display: flex;
@@ -10712,15 +10659,13 @@ const MenuItem = ({ children, href, isActive = false, variant = "default", statu
         : {
             as: "div",
         };
-    return (React.createElement(StyledMenuItemContainer, { "$isActive": isActive, "$variant": variant },
-        React.createElement(StyledMenuItem, { ...itemLinkProps, "$isActive": isActive, "$variant": variant, "$statusColor": statusColor, "$highlightTitle": highlightTitle, ...props }, children)));
+    return (React.createElement(StyledMenuItem, { ...itemLinkProps, "$isActive": isActive, "$variant": variant, "$statusColor": statusColor, "$highlightTitle": highlightTitle, ...props }, children));
 };
 
-const Divider = styled(Box) `
+styled(Box) `
   border: 1px solid ${({ theme }) => theme.colors.white};
   opacity: 0.16;
 `;
-const MenuItemDivider = () => React.createElement(Divider, { width: 0, height: 20 });
 
 const translateY = "6px";
 const menuAnimationConfig = {
@@ -10973,31 +10918,17 @@ const MobileDropdownMenu = ({ items, activeItem, isMobileMenuOpened = false, mob
             React.createElement(Burger, { open: isMobileMenuOpened }))));
 };
 
-var ItemTypes;
-(function (ItemTypes) {
-    ItemTypes["DIVIDER"] = "DIVIDER";
-})(ItemTypes || (ItemTypes = {}));
-
 const MenuItems = ({ items = [], activeItem, activeSubItem, isMobileMenuOpened = false, mobileMenuCallback, baseAwsUrl, ...props }) => {
     const { isDesktop, isTablet } = useMatchBreakpoints();
     return (React.createElement(Flex, { ...props, alignItems: "center" },
         !isDesktop && (React.createElement(MobileDropdownMenu, { items: items, activeItem: activeItem, isMobileMenuOpened: isMobileMenuOpened, mobileMenuCallback: mobileMenuCallback, baseAwsUrl: baseAwsUrl })),
-        items.map(({ label, items: menuItems = [], href, icon = "", isExtended, showItemsOnMobile, type, hidden, highlightTitle, }, index) => {
-            const isMarker = items[index]?.showNavBadge;
-            const isMarkerColor = items[index]?.colorNavBadge;
-            const isHighlighted = items[index].highlightTitle;
+        items.map(({ label, items: menuItems = [], href, showItemsOnMobile, hidden, highlightTitle }, index) => {
             const statusColor = menuItems?.find((menuItem) => menuItem.status !== undefined)?.status?.color;
             const isActive = activeItem === href;
             const linkProps = isTouchDevice() && menuItems && menuItems.length > 0 ? {} : { href };
             const visualize = (isDesktop || (isTablet && showItemsOnMobile)) && !hidden;
             return (visualize && (React.createElement(Fragment, { key: `${label}#${href}` },
-                React.createElement(DropdownMenu, { key: `${label}#${href}#${icon}`, items: menuItems, py: 1, activeItem: activeSubItem, isExtended: isExtended },
-                    React.createElement(MenuItem, { ...linkProps, isActive: isActive, statusColor: statusColor, highlightTitle: highlightTitle },
-                        type === ItemTypes.DIVIDER && React.createElement(MenuItemDivider, null),
-                        icon && React.createElement(IconComponent$1, { mr: "8px", iconName: icon, color: "white" }),
-                        label && (React.createElement(Box, { ml: !href ? "8px" : 0, position: "relative" },
-                            isMarker && React.createElement(Marker, { color: isMarkerColor }),
-                            React.createElement(BodyText, { color: isHighlighted ? "warningPress" : "white", scale: Scales$7.SIZE14, bold: true }, label))))))));
+                React.createElement(MenuItem, { ...linkProps, isActive: isActive, statusColor: statusColor, highlightTitle: highlightTitle }, label))));
         })));
 };
 
@@ -11023,39 +10954,9 @@ const links = [
     },
     {
         label: "Trade",
+        href: "/",
         showNavBadge: true,
         colorNavBadge: "warning",
-        items: [
-            {
-                label: "Swap",
-                href: "/swap",
-                leftIcon: "ExchangeOpacity",
-                description: "Item description",
-                badgeType: BadgeTypes.SUCCESS,
-                badgeTitle: "New",
-            },
-            {
-                label: "Expert Trade",
-                leftIcon: "ExpertModeOpacity",
-                rightIconFill: "primary",
-                description: "Item description",
-                href: "/liquidity",
-                disabled: true,
-                badgeType: BadgeTypes.CORE,
-                badgeTitle: "Modification",
-            },
-            {
-                label: "Liquidity",
-                href: "/pool",
-                leftIcon: "LiquidityOpacity",
-                description: "Item description",
-            },
-        ],
-    },
-    {
-        type: ItemTypes$1.DIVIDER,
-        showItemsOnMobile: true,
-        href: "",
     },
     {
         label: "Buy crypto",
@@ -11495,4 +11396,4 @@ const ColoredToasts = ({ toasts, onRemove, ttl = 5000 }) => {
         React.createElement(TransitionGroup, null, toasts.map((toast) => (React.createElement(ColoredToastItem, { key: toast.id, toast: toast, ttl: ttl, style: { bottom: "50px" } }))))));
 };
 
-export { Icon$1w as AboutBSWOpacityIcon, Icon$1x as AboutBSWSolidIcon, Icon as AddLiquidityRIcon, Alert, ColoredVariants as AlertColoredVariants, Variants$c as AlertVariants, Icon$t as AnalyticsIcon, Icon$1C as AnalyticsOpacityIcon, Icon$1D as AnalyticsSolidIcon, Icon$47 as ArrowDownIcon, Icon$b as ArrowDownRIcon, Icon$S as ArrowFiguredIcon, Icon$48 as ArrowLeftIcon, Icon$a as ArrowLeftRIcon, Icon$4a as ArrowRightIcon, Icon$9 as ArrowRightRIcon, Icon$44 as ArrowSkipLeftIcon, Icon$45 as ArrowSkipRightIcon, Icon$46 as ArrowUpForwardIcon, Icon$49 as ArrowUpIcon, Icon$c as ArrowUpRIcon, Icon$3 as AttentionRoundRIcon, Icon$2N as AuctionIcon, Icon$2L as AuctionOpacityIcon, Icon$2M as AuctionSolidIcon, Icon$1j as AuditProtectionOpacityIcon, Icon$1i as AuditProtectionSolidIcon, Icon$1g as AuditSearchOpacityIcon, Icon$1h as AuditSearchSolidIcon, Icon$2d as AutoRenewAnimateIcon, Icon$2g as AutoRenewIcon, Icon$2e as AutoRenewOpacityAnimateIcon, Icon$2h as AutoRenewOpacityIcon, Icon$2f as AutoRenewSolidAnimateIcon, Icon$2i as AutoRenewSolidIcon, Icon$T as AvalancheIcon, Icon$V as BSCIcon, Icon$G as BSWLogoIcon, Badge$1 as Badge, Badge as BadgeButton, BadgeButtonTypes, BadgeScales, BadgeTypes, GridLayout$1 as BaseLayout, BaseMenu, Icon$3c as BellOpacityIcon, Icon$3d as BellSolidIcon, Icon$2A as BlockIcon, Icon$2z as BlockOpacityIcon, Icon$2y as BlockSolidIcon, Icon$1e as BlogOpacityIcon, Icon$1f as BlogSolidIcon, BodyText, BodyTextTags, Icon$2T as BookIcon, Icon$2R as BookOpacityIcon, Icon$2S as BookSolidIcon, Box, Breadcrumbs, Icon$n as BridgeOpacityIcon, Icon$m as BridgeSolidIcon, Icon$4n as BscBlackRoundIcon, Icon$O as BswIcon, Icon$23 as BurgerCloseIcon, Icon$24 as BurgerIcon, Button, ButtonMenu, ButtonMenuItem, Scales$8 as ButtonMenuScales, Variants$a as ButtonMenuVariants, Scales$9 as ButtonScales, Variants$b as ButtonVariants, Icon$3F as CalculateIcon, Icon$3H as CalculateOpacityIcon, Icon$3G as CalculateSolidIcon, Icon$3E as CalendarIcon, Icon$3n as CardViewIcon, GridLayout as CardsLayout, CarouselButtonsTypes, CarouselHeader, CarouselNumbersBlock, Icon$s as ChainLinkIcon, Icon$1y as CharityOpacityIcon, Icon$1z as CharitySolidIcon, Icon$3j as CheckCircleIcon, Icon$3k as CheckIcon, Icon$3h as CheckOpacityIcon, Icon$4 as CheckRoundRIcon, Icon$3i as CheckSolidIcon, Checkbox, CheckboxScales, Icon$4l as ChevronDownCircleOpacityIcon, Icon$4m as ChevronDownCircleSolidIcon, Icon$4k as ChevronDownIcon, Icon$41 as ChevronDownTripleIcon, Icon$4f as ChevronLeftCircleOpacityIcon, Icon$4g as ChevronLeftCircleSolidIcon, Icon$4e as ChevronLeftIcon, Icon$7 as ChevronLeftRIcon, Icon$4i as ChevronRightCircleOpacityIcon, Icon$4j as ChevronRightCircleSolidIcon, Icon$4h as ChevronRightIcon, Icon$8 as ChevronRightRIcon, Icon$40 as ChevronRightTripleIcon, Icon$3Y as ChevronSlimRightIcon, Icon$4b as ChevronUpCircleOpacityIcon, Icon$4c as ChevronUpCircleSolidIcon, Icon$43 as ChevronUpDoubleIcon, Icon$4d as ChevronUpIcon, Icon$42 as ChevronUpTripleIcon, ClickableElementContainer, Icon$3M as CloseCircleIcon, Icon$3L as CloseCircleOpacityIcon, Icon$3K as CloseCircleSolidIcon, Icon$3N as CloseIcon, Icon$h as CloseRIcon, Icon$Y as CoinMarketCapIcon, ColoredToasts, Icon$M as ConflictIcon, Container$3 as Container, ContainerCarousel, Icon$32 as CopyIcon, Icon$30 as CopyOpacityIcon, Icon$31 as CopySolidIcon, Icon$y as CrossChainOpacityIcon, Icon$3_ as CrownIcon, Icon$W as DeBankIcon, DirectionButton, Icon$B as DiscountOpacityIcon, Icon$C as DiscountSolidIcon, Icon$1k as DocsOpacityIcon, Icon$1l as DocsSolidIcon, Icon$o as DocumentIcon, Dot$1 as Dot, Icon$4q as DownloadIcon, Icon$L as DropIcon, Dropdown, DropdownButton, Positions as DropdownButtonPositions, Scales$6 as DropdownButtonScales, Variants$9 as DropdownButtonVariants, DropdownMenuItemType$1 as DropdownMenuItemType, DropdownPosition, DropdownScales, DropdownVariants, Icon$2o as EditIcon, Icon$2n as EditOpacityIcon, Icon$2m as EditSolidIcon, Icon$1Y as ExchangeOpacityIcon, Icon$1Z as ExchangeSolidIcon, ExpandableButton, ExpandableIcon, ExpandableLabel, Icon$1W as ExpertModeOpacityIcon, Icon$1X as ExpertModeSolidIcon, Icon$3l as EyeCloseIcon, Icon$3m as EyeOpenIcon, Icon$_ as FacebookIcon, Faqs, Variants as FaqsVariants, Icon$1S as FarmsOpacityIcon, Icon$1T as FarmsSolidIcon, Icon$3q as FavoriteEmptyIcon, Icon$3p as FavoriteSolidIcon, Icon$2Q as FileIcon, Icon$2O as FileOpacityIcon, Icon$2P as FileSolidIcon, Icon$2U as FilterHorizontalIcon, Icon$2X as FilterIcon, Icon$2V as FilterOpacityIcon, Icon$2W as FilterSolidIcon, Icon$3A as FireIcon, Icon$3y as FireOpacityIcon, Icon$3z as FireSolidIcon, Icon$1E as FixedStakingOpacityIcon, Icon$1F as FixedStakingSolidIcon, Icon$2D as FlagIcon, Icon$2C as FlagOpacityIcon, Icon$2B as FlagSolidIcon, Flex, Icon$2k as GasIcon, Icon$E as GiftIcon, Icon$1M as GobletOpacityIcon, Icon$1N as GobletSolidIcon, Grid, HeadText, HeadTextTags, Heading, Scales$5 as HeadingScales, Tags as HeadingTags, Icon$3B as HelpIcon, Icon$3D as HelpOpacityIcon, Icon$1 as HelpRoundRIcon, Icon$3C as HelpSolidIcon, HeroWrapper, Icon$27 as HistoryIcon, Icon$4o as HourglassIcon, IconButton, IconComponent, Icon$1O as IdoOpacityIcon, Icon$1P as IdoSolidIcon, Image, Variants$1 as ImageVariants, Icon$r as InfinityLoopIcon, Icon$3x as InfoIcon, Icon$3v as InfoOpacityIcon, Icon$2 as InfoRoundRIcon, Icon$3w as InfoSolidIcon, InlineMenu, InlineMenuContainer, Input$1 as Input, InputGroup, Scales$4 as InputScales, Variants$8 as InputVariants, Icon$17 as InstagramIcon, Icon$1b as InvestPoolOpacityIcon, ItemTypes$1 as ItemTypes, Icon$F as LanguageIcon, Icon$1I as LaunchpadOpacityIcon, Icon$1J as LaunchpadSolidIcon, Icon$N as LightningIcon, Icon$1c as LimitOrderOpacityIcon, Icon$1d as LimitOrderSolidIcon, Link, LinkExternal, Scales$3 as LinkScales, Variants$7 as LinkVariants, Icon$1_ as LiquidityOpacityIcon, Icon$1$ as LiquiditySolidIcon, Icon$1a as LiquidityStakingOpacityIcon, Icon$19 as LiquidityStakingSolidIcon, Icon$18 as LiquidityStakingSolidOpacityIcon, Icon$29 as ListOpacityIcon, Icon$28 as ListSolidIcon, Icon$3o as ListViewIcon, Icon$I as LockIcon, Icon$Q as LogoWithTextIcon, Icon$1K as LotteryOpacityIcon, Icon$1L as LotterySolidIcon, MatchBreakpointsProvider, Icon$2l as MedalIcon, Icon$16 as MediumIcon, Menu, MenuSol, Icon$3S as MinusCircleOpacityIcon, Icon$3T as MinusCircleSolidIcon, Icon$3U as MinusIcon, Modal, ModalBackButton, ModalBody$1 as ModalBody, ModalCloseButton, ModalContainer, ModalProvider, ModalV2, ModalV2Context, ModalWithBackground, ModalWrapper, Icon$13 as ModernTelegramIcon, Icon$2p as More2Icon, Icon$2t as MoreHorizontalIcon, Icon$2r as MoreHorizontalOpacityIcon, Icon$2q as MoreHorizontalOutlineIcon, Icon$2s as MoreHorizontalSolidIcon, Icon$2x as MoreVerticalIcon, Icon$2v as MoreVerticalOpacityIcon, Icon$2u as MoreVerticalOutlineIcon, Icon$2w as MoreVerticalSolidIcon, Icon$4p as MouseIcon, Icon$1p as MultiPoolOpacityIcon, Icon$1o as MultiPoolSolidIcon, Icon$1G as NFTEarnOpacityIcon, Icon$1H as NFTEarnSolidIcon, Icon$2$ as NewCopyIcon, Icon$2H as NewTimerIcon, Icon$1m as NewsOpacityIcon, Icon$1n as NewsSolidIcon, NotificationDot, Icon$35 as OptionsOpacityIcon, Icon$36 as OptionsSolidIcon, Overlay, Pagination, Variants$2 as PaginationVariants, PercentSlider, Icon$x as PerpetualOpacityIcon, Icon$w as PerpetualSolidIcon, Icon$2j as PlayIcon, Icon$3V as PlusCircleOpacityIcon, Icon$3W as PlusCircleSolidIcon, Icon$3X as PlusIcon, Icon$g as PlusRIcon, Icon$U as PolygonIcon, Icon$1U as PoolsOpacityIcon, Icon$1V as PoolsSolidIcon, Icon$u as PredictionOpacityIcon, Icon$v as PredictionSolidIcon, Icon$25 as ProductsOpacityIcon, Icon$26 as ProductsSolidIcon, Icon$1s as Program10mOpacityIcon, Icon$1t as Program10mSolidIcon, Icon$P as ProjectNameIcon, Icon$X as QuoraIcon, Radio, Scales$2 as RadioScales, Variants$6 as RadioVariants, Icon$j as RecipientAddRIcon, Icon$i as RecipientRemoveRIcon, Icon$15 as RedditIcon, Icon$1Q as ReferralOpacityIcon, Icon$1R as ReferralSolidIcon, Icon$2c as RefreshIcon, Icon$2b as RefreshOpacityIcon, Icon$2a as RefreshSolidIcon, ResetCSS, Icon$K as RobotIcon, Icon$D as RouteIcon, Scales$7 as Scales, Icon$d as SearchMinusRIcon, Icon$3a as SearchOpacityIcon, Icon$e as SearchPlusRIcon, Icon$f as SearchRIcon, Icon$3b as SearchSolidIcon, Icon$l as SettingsRIcon, Icon$2_ as ShareIcon, Icon$2Y as ShareOpacityIcon, Icon$2Z as ShareSolidIcon, Skeleton, Animations as SkeletonAnimation, SkeletonMode, Variants$5 as SkeletonVariants, Slider, SocialShareButton, SocialShareButtonCircle, Socials, Icon$1q as SpaceAgentOpacityIcon, Icon$1r as SpaceAgentSolidIcon, Icon$A as SquidRouterIcon, Icon$39 as StarIcon, Icon$38 as StarOpacityIcon, Icon$37 as StarSolidIcon, SubMenu, SubMenuContainer, SubMenuItem, SubMenuItems, Svg, Icon$3$ as SwapDoubleArrowIcon, Icon$3u as SwapHorizontalOpacityIcon, Icon$5 as SwapHorizontalRIcon, Icon$3t as SwapHorizontalSolidIcon, Icon$3s as SwapVerticalOpacityIcon, Icon$6 as SwapVerticalRIcon, Icon$3r as SwapVerticalSolidIcon, Scales$1 as TabBarScales, Variants$4 as TabBarVariants, TabMenu, TabBarItem as TabMenuItem, TableCardSkeleton, Icon$J as TargetIcon, Icon$1u as TeamOpacityIcon, Icon$1v as TeamSolidIcon, Icon$14 as TelegramIcon, Terms, Icon$2G as TestIcon, Icon$2F as TestOpacityIcon, Icon$2E as TestSolidIcon, Text, Icon$R as Ticket2Icon, Icon$Z as TikTokIcon, Icon$2K as TimerIcon, Icon$2I as TimerOpacityIcon, Icon$2J as TimerSolidIcon, ToastContainer, Toggle, Scales as ToggleScales, Variants$3 as ToggleVariants, TooltipHelper, TooltipText, Icon$p as TradingIcon, Icon$12 as TwitchIcon, Icon$11 as TwitterIcon, Icon$H as UnlockIcon, Icon$3Z as UpwardArrowIcon, Icon$20 as UsdLineIcon, Icon$22 as UsdOpacityIcon, Icon$21 as UsdSolidIcon, Icon$3f as UserOpacityIcon, Icon$3e as UserOutlineIcon, Icon$3g as UserSolidIcon, VariantRotate, Icon$33 as VerifiedOpacityIcon, Icon$34 as VerifiedSolidIcon, Icon$q as VoteIcon, Icon$1A as VotingOpacityIcon, Icon$1B as VotingSolidIcon, Icon$3I as WalletOpacityIcon, Icon$k as WalletRIcon, Icon$3J as WalletSolidIcon, Icon$3O as WarningCycleIcon, Icon$3P as WarningIcon, Icon$3R as WarningOpacityIcon, Icon$3Q as WarningSolidIcon, Icon$z as WormholeIcon, Icon$10 as XSearchIcon, Icon$$ as YoutubeIcon, bodyTextScaleMap, darkTheme as dark, darkColors, formatSpacingAmount, getExternalLinkProps, getPortalRoot, getResponsiveAttrs, getRgba, getThemeValue, headTextScaleMap, isTouchDevice, lightTheme as light, lightColors, links$1 as menuConfig, links as menuConfigSol, status$1 as menuStatus, status as menuStatusSol, useCarousel, useIsomorphicEffect, useMatchBreakpoints, useModal, useModalV2, useOnClickOutside, useTooltip };
+export { Icon$1w as AboutBSWOpacityIcon, Icon$1x as AboutBSWSolidIcon, Icon as AddLiquidityRIcon, Alert, ColoredVariants as AlertColoredVariants, Variants$c as AlertVariants, Icon$t as AnalyticsIcon, Icon$1C as AnalyticsOpacityIcon, Icon$1D as AnalyticsSolidIcon, Icon$47 as ArrowDownIcon, Icon$b as ArrowDownRIcon, Icon$S as ArrowFiguredIcon, Icon$48 as ArrowLeftIcon, Icon$a as ArrowLeftRIcon, Icon$4a as ArrowRightIcon, Icon$9 as ArrowRightRIcon, Icon$44 as ArrowSkipLeftIcon, Icon$45 as ArrowSkipRightIcon, Icon$46 as ArrowUpForwardIcon, Icon$49 as ArrowUpIcon, Icon$c as ArrowUpRIcon, Icon$3 as AttentionRoundRIcon, Icon$2N as AuctionIcon, Icon$2L as AuctionOpacityIcon, Icon$2M as AuctionSolidIcon, Icon$1j as AuditProtectionOpacityIcon, Icon$1i as AuditProtectionSolidIcon, Icon$1g as AuditSearchOpacityIcon, Icon$1h as AuditSearchSolidIcon, Icon$2d as AutoRenewAnimateIcon, Icon$2g as AutoRenewIcon, Icon$2e as AutoRenewOpacityAnimateIcon, Icon$2h as AutoRenewOpacityIcon, Icon$2f as AutoRenewSolidAnimateIcon, Icon$2i as AutoRenewSolidIcon, Icon$T as AvalancheIcon, Icon$V as BSCIcon, Icon$G as BSWLogoIcon, Badge$1 as Badge, Badge as BadgeButton, BadgeButtonTypes, BadgeScales, BadgeTypes, GridLayout$1 as BaseLayout, BaseMenu, Icon$3c as BellOpacityIcon, Icon$3d as BellSolidIcon, Icon$2A as BlockIcon, Icon$2z as BlockOpacityIcon, Icon$2y as BlockSolidIcon, Icon$1e as BlogOpacityIcon, Icon$1f as BlogSolidIcon, BodyText, BodyTextTags, Icon$2T as BookIcon, Icon$2R as BookOpacityIcon, Icon$2S as BookSolidIcon, Box, Breadcrumbs, Icon$n as BridgeOpacityIcon, Icon$m as BridgeSolidIcon, Icon$4n as BscBlackRoundIcon, Icon$O as BswIcon, Icon$23 as BurgerCloseIcon, Icon$24 as BurgerIcon, Button, ButtonMenu, ButtonMenuItem, Scales$8 as ButtonMenuScales, Variants$a as ButtonMenuVariants, Scales$9 as ButtonScales, Variants$b as ButtonVariants, Icon$3F as CalculateIcon, Icon$3H as CalculateOpacityIcon, Icon$3G as CalculateSolidIcon, Icon$3E as CalendarIcon, Icon$3n as CardViewIcon, GridLayout as CardsLayout, CarouselButtonsTypes, CarouselHeader, CarouselNumbersBlock, Icon$s as ChainLinkIcon, Icon$1y as CharityOpacityIcon, Icon$1z as CharitySolidIcon, Icon$3j as CheckCircleIcon, Icon$3k as CheckIcon, Icon$3h as CheckOpacityIcon, Icon$4 as CheckRoundRIcon, Icon$3i as CheckSolidIcon, Checkbox, CheckboxScales, Icon$4l as ChevronDownCircleOpacityIcon, Icon$4m as ChevronDownCircleSolidIcon, Icon$4k as ChevronDownIcon, Icon$41 as ChevronDownTripleIcon, Icon$4f as ChevronLeftCircleOpacityIcon, Icon$4g as ChevronLeftCircleSolidIcon, Icon$4e as ChevronLeftIcon, Icon$7 as ChevronLeftRIcon, Icon$4i as ChevronRightCircleOpacityIcon, Icon$4j as ChevronRightCircleSolidIcon, Icon$4h as ChevronRightIcon, Icon$8 as ChevronRightRIcon, Icon$40 as ChevronRightTripleIcon, Icon$3Y as ChevronSlimRightIcon, Icon$4b as ChevronUpCircleOpacityIcon, Icon$4c as ChevronUpCircleSolidIcon, Icon$43 as ChevronUpDoubleIcon, Icon$4d as ChevronUpIcon, Icon$42 as ChevronUpTripleIcon, ClickableElementContainer, Icon$3M as CloseCircleIcon, Icon$3L as CloseCircleOpacityIcon, Icon$3K as CloseCircleSolidIcon, Icon$3N as CloseIcon, Icon$h as CloseRIcon, Icon$Y as CoinMarketCapIcon, ColoredToasts, Icon$M as ConflictIcon, Container$3 as Container, ContainerCarousel, Icon$32 as CopyIcon, Icon$30 as CopyOpacityIcon, Icon$31 as CopySolidIcon, Icon$y as CrossChainOpacityIcon, Icon$3_ as CrownIcon, Icon$W as DeBankIcon, DirectionButton, Icon$B as DiscountOpacityIcon, Icon$C as DiscountSolidIcon, Icon$1k as DocsOpacityIcon, Icon$1l as DocsSolidIcon, Icon$o as DocumentIcon, Dot$1 as Dot, Icon$4q as DownloadIcon, Icon$L as DropIcon, Dropdown, DropdownButton, Positions as DropdownButtonPositions, Scales$6 as DropdownButtonScales, Variants$9 as DropdownButtonVariants, DropdownMenuItemType$1 as DropdownMenuItemType, DropdownPosition, DropdownScales, DropdownVariants, Icon$2o as EditIcon, Icon$2n as EditOpacityIcon, Icon$2m as EditSolidIcon, Icon$1Y as ExchangeOpacityIcon, Icon$1Z as ExchangeSolidIcon, ExpandableButton, ExpandableIcon, ExpandableLabel, Icon$1W as ExpertModeOpacityIcon, Icon$1X as ExpertModeSolidIcon, Icon$3l as EyeCloseIcon, Icon$3m as EyeOpenIcon, Icon$_ as FacebookIcon, Faqs, Variants as FaqsVariants, Icon$1S as FarmsOpacityIcon, Icon$1T as FarmsSolidIcon, Icon$3q as FavoriteEmptyIcon, Icon$3p as FavoriteSolidIcon, Icon$2Q as FileIcon, Icon$2O as FileOpacityIcon, Icon$2P as FileSolidIcon, Icon$2U as FilterHorizontalIcon, Icon$2X as FilterIcon, Icon$2V as FilterOpacityIcon, Icon$2W as FilterSolidIcon, Icon$3A as FireIcon, Icon$3y as FireOpacityIcon, Icon$3z as FireSolidIcon, Icon$1E as FixedStakingOpacityIcon, Icon$1F as FixedStakingSolidIcon, Icon$2D as FlagIcon, Icon$2C as FlagOpacityIcon, Icon$2B as FlagSolidIcon, Flex, Icon$2k as GasIcon, Icon$E as GiftIcon, Icon$1M as GobletOpacityIcon, Icon$1N as GobletSolidIcon, Grid, HeadText, HeadTextTags, Heading, Scales$5 as HeadingScales, Tags as HeadingTags, Icon$3B as HelpIcon, Icon$3D as HelpOpacityIcon, Icon$1 as HelpRoundRIcon, Icon$3C as HelpSolidIcon, HeroWrapper, Icon$27 as HistoryIcon, Icon$4o as HourglassIcon, IconButton, IconComponent, Icon$1O as IdoOpacityIcon, Icon$1P as IdoSolidIcon, Image, Variants$1 as ImageVariants, Icon$r as InfinityLoopIcon, Icon$3x as InfoIcon, Icon$3v as InfoOpacityIcon, Icon$2 as InfoRoundRIcon, Icon$3w as InfoSolidIcon, InlineMenu, InlineMenuContainer, Input$1 as Input, InputGroup, Scales$4 as InputScales, Variants$8 as InputVariants, Icon$17 as InstagramIcon, Icon$1b as InvestPoolOpacityIcon, ItemTypes, Icon$F as LanguageIcon, Icon$1I as LaunchpadOpacityIcon, Icon$1J as LaunchpadSolidIcon, Icon$N as LightningIcon, Icon$1c as LimitOrderOpacityIcon, Icon$1d as LimitOrderSolidIcon, Link, LinkExternal, Scales$3 as LinkScales, Variants$7 as LinkVariants, Icon$1_ as LiquidityOpacityIcon, Icon$1$ as LiquiditySolidIcon, Icon$1a as LiquidityStakingOpacityIcon, Icon$19 as LiquidityStakingSolidIcon, Icon$18 as LiquidityStakingSolidOpacityIcon, Icon$29 as ListOpacityIcon, Icon$28 as ListSolidIcon, Icon$3o as ListViewIcon, Icon$I as LockIcon, Icon$Q as LogoWithTextIcon, Icon$1K as LotteryOpacityIcon, Icon$1L as LotterySolidIcon, MatchBreakpointsProvider, Icon$2l as MedalIcon, Icon$16 as MediumIcon, Menu, MenuSol, Icon$3S as MinusCircleOpacityIcon, Icon$3T as MinusCircleSolidIcon, Icon$3U as MinusIcon, Modal, ModalBackButton, ModalBody$1 as ModalBody, ModalCloseButton, ModalContainer, ModalProvider, ModalV2, ModalV2Context, ModalWithBackground, ModalWrapper, Icon$13 as ModernTelegramIcon, Icon$2p as More2Icon, Icon$2t as MoreHorizontalIcon, Icon$2r as MoreHorizontalOpacityIcon, Icon$2q as MoreHorizontalOutlineIcon, Icon$2s as MoreHorizontalSolidIcon, Icon$2x as MoreVerticalIcon, Icon$2v as MoreVerticalOpacityIcon, Icon$2u as MoreVerticalOutlineIcon, Icon$2w as MoreVerticalSolidIcon, Icon$4p as MouseIcon, Icon$1p as MultiPoolOpacityIcon, Icon$1o as MultiPoolSolidIcon, Icon$1G as NFTEarnOpacityIcon, Icon$1H as NFTEarnSolidIcon, Icon$2$ as NewCopyIcon, Icon$2H as NewTimerIcon, Icon$1m as NewsOpacityIcon, Icon$1n as NewsSolidIcon, NotificationDot, Icon$35 as OptionsOpacityIcon, Icon$36 as OptionsSolidIcon, Overlay, Pagination, Variants$2 as PaginationVariants, PercentSlider, Icon$x as PerpetualOpacityIcon, Icon$w as PerpetualSolidIcon, Icon$2j as PlayIcon, Icon$3V as PlusCircleOpacityIcon, Icon$3W as PlusCircleSolidIcon, Icon$3X as PlusIcon, Icon$g as PlusRIcon, Icon$U as PolygonIcon, Icon$1U as PoolsOpacityIcon, Icon$1V as PoolsSolidIcon, Icon$u as PredictionOpacityIcon, Icon$v as PredictionSolidIcon, Icon$25 as ProductsOpacityIcon, Icon$26 as ProductsSolidIcon, Icon$1s as Program10mOpacityIcon, Icon$1t as Program10mSolidIcon, Icon$P as ProjectNameIcon, Icon$X as QuoraIcon, Radio, Scales$2 as RadioScales, Variants$6 as RadioVariants, Icon$j as RecipientAddRIcon, Icon$i as RecipientRemoveRIcon, Icon$15 as RedditIcon, Icon$1Q as ReferralOpacityIcon, Icon$1R as ReferralSolidIcon, Icon$2c as RefreshIcon, Icon$2b as RefreshOpacityIcon, Icon$2a as RefreshSolidIcon, ResetCSS, Icon$K as RobotIcon, Icon$D as RouteIcon, Scales$7 as Scales, Icon$d as SearchMinusRIcon, Icon$3a as SearchOpacityIcon, Icon$e as SearchPlusRIcon, Icon$f as SearchRIcon, Icon$3b as SearchSolidIcon, Icon$l as SettingsRIcon, Icon$2_ as ShareIcon, Icon$2Y as ShareOpacityIcon, Icon$2Z as ShareSolidIcon, Skeleton, Animations as SkeletonAnimation, SkeletonMode, Variants$5 as SkeletonVariants, Slider, SocialShareButton, SocialShareButtonCircle, Socials, Icon$1q as SpaceAgentOpacityIcon, Icon$1r as SpaceAgentSolidIcon, Icon$A as SquidRouterIcon, Icon$39 as StarIcon, Icon$38 as StarOpacityIcon, Icon$37 as StarSolidIcon, SubMenu, SubMenuContainer, SubMenuItem, SubMenuItems, Svg, Icon$3$ as SwapDoubleArrowIcon, Icon$3u as SwapHorizontalOpacityIcon, Icon$5 as SwapHorizontalRIcon, Icon$3t as SwapHorizontalSolidIcon, Icon$3s as SwapVerticalOpacityIcon, Icon$6 as SwapVerticalRIcon, Icon$3r as SwapVerticalSolidIcon, Scales$1 as TabBarScales, Variants$4 as TabBarVariants, TabMenu, TabBarItem as TabMenuItem, TableCardSkeleton, Icon$J as TargetIcon, Icon$1u as TeamOpacityIcon, Icon$1v as TeamSolidIcon, Icon$14 as TelegramIcon, Terms, Icon$2G as TestIcon, Icon$2F as TestOpacityIcon, Icon$2E as TestSolidIcon, Text, Icon$R as Ticket2Icon, Icon$Z as TikTokIcon, Icon$2K as TimerIcon, Icon$2I as TimerOpacityIcon, Icon$2J as TimerSolidIcon, ToastContainer, Toggle, Scales as ToggleScales, Variants$3 as ToggleVariants, TooltipHelper, TooltipText, Icon$p as TradingIcon, Icon$12 as TwitchIcon, Icon$11 as TwitterIcon, Icon$H as UnlockIcon, Icon$3Z as UpwardArrowIcon, Icon$20 as UsdLineIcon, Icon$22 as UsdOpacityIcon, Icon$21 as UsdSolidIcon, Icon$3f as UserOpacityIcon, Icon$3e as UserOutlineIcon, Icon$3g as UserSolidIcon, VariantRotate, Icon$33 as VerifiedOpacityIcon, Icon$34 as VerifiedSolidIcon, Icon$q as VoteIcon, Icon$1A as VotingOpacityIcon, Icon$1B as VotingSolidIcon, Icon$3I as WalletOpacityIcon, Icon$k as WalletRIcon, Icon$3J as WalletSolidIcon, Icon$3O as WarningCycleIcon, Icon$3P as WarningIcon, Icon$3R as WarningOpacityIcon, Icon$3Q as WarningSolidIcon, Icon$z as WormholeIcon, Icon$10 as XSearchIcon, Icon$$ as YoutubeIcon, bodyTextScaleMap, darkTheme as dark, darkColors, formatSpacingAmount, getExternalLinkProps, getPortalRoot, getResponsiveAttrs, getRgba, getThemeValue, headTextScaleMap, isTouchDevice, lightTheme as light, lightColors, links$1 as menuConfig, links as menuConfigSol, status$1 as menuStatus, status as menuStatusSol, useCarousel, useIsomorphicEffect, useMatchBreakpoints, useModal, useModalV2, useOnClickOutside, useTooltip };
