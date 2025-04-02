@@ -108,7 +108,7 @@ export { default as CheckOpacityIcon } from "./Icons/Check/CheckOpacity";
 //User
 export { default as UserSolidIcon } from "./Icons/User/UserSolid";
 export { default as UserOpacityIcon } from "./Icons/User/UserOpacity";
-
+export { default as UserOutlineIcon } from "./Icons/User/UserOutline";
 //Bell
 export { default as BellSolidIcon } from "./Icons/Bell/BellSolid";
 export { default as BellOpacityIcon } from "./Icons/Bell/BellOpacity";
@@ -383,6 +383,7 @@ export { default as LightningIcon } from "./Icons/Other/Lightning";
 export { default as ConflictIcon } from "./Icons/Other/Conflict";
 export { default as DropIcon } from "./Icons/Other/Drop";
 export { default as RobotIcon } from "./Icons/Other/Robot";
+export { default as TargetIcon } from "./Icons/Other/Target";
 
 // Locks
 export { default as LockIcon } from "./Icons/Lock/Lock";
