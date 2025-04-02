@@ -107,7 +107,6 @@ const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
 
 const MenuSol: FC<PropsWithChildren<NavProps>> = ({
   linkComponent = "a",
-  banner,
   links,
   rightSide,
   activeItem,

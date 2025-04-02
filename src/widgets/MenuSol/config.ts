@@ -29,39 +29,9 @@ export const links: MenuItemsType[] = [
   },
   {
     label: "Trade",
+    href: "/",
     showNavBadge: true,
     colorNavBadge: "warning",
-    items: [
-      {
-        label: "Swap",
-        href: "/swap",
-        leftIcon: "ExchangeOpacity",
-        description: "Item description",
-        badgeType: BadgeTypes.SUCCESS,
-        badgeTitle: "New",
-      },
-      {
-        label: "Expert Trade",
-        leftIcon: "ExpertModeOpacity",
-        rightIconFill: "primary",
-        description: "Item description",
-        href: "/liquidity",
-        disabled: true,
-        badgeType: BadgeTypes.CORE,
-        badgeTitle: "Modification",
-      },
-      {
-        label: "Liquidity",
-        href: "/pool",
-        leftIcon: "LiquidityOpacity",
-        description: "Item description",
-      },
-    ],
-  },
-  {
-    type: ItemTypes.DIVIDER,
-    showItemsOnMobile: true,
-    href: "",
   },
   {
     label: "Buy crypto",

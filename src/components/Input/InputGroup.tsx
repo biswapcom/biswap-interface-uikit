@@ -125,7 +125,7 @@ const LeftIconImage = styled(Box)<{ scale: Scales }>`
 
 const RightIconComponent = styled(StyledIconComponent)<{ scale: Scales; clickable?: boolean }>`
   right: ${({ scale }) => getIconPosition(scale)};
-  cursor: ${({ clickable }) => (clickable ? 'pointer' : 'default')};
+  cursor: ${({ clickable }) => (clickable ? "pointer" : "default")};
 `;
 
 const TextDescription = styled(Text)<{ variant?: Variants }>`
