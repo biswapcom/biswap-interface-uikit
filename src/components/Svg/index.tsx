@@ -389,7 +389,7 @@ export { default as LockIcon } from "./Icons/Lock/Lock";
 export { default as UnlockIcon } from "./Icons/Lock/Unlock";
 
 // Logo
-export { default as BSWLogo } from "./Icons/Logo/BSWLogo";
+export { default as BSWLogoIcon } from "./Icons/Logo/BSWLogo";
 
 //Language
 export { default as LanguageIcon } from "./Icons/Language/Language";

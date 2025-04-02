@@ -2251,7 +2251,7 @@ var IconModule = /*#__PURE__*/Object.freeze({
   RobotIcon: Icon$J,
   LockIcon: Icon$I,
   UnlockIcon: Icon$H,
-  BSWLogo: Icon$G,
+  BSWLogoIcon: Icon$G,
   LanguageIcon: Icon$F,
   GiftIcon: Icon$E,
   RouteIcon: Icon$D,
@@ -11547,7 +11547,7 @@ exports.AutoRenewSolidAnimateIcon = Icon$2e;
 exports.AutoRenewSolidIcon = Icon$2h;
 exports.AvalancheIcon = Icon$S;
 exports.BSCIcon = Icon$U;
-exports.BSWLogo = Icon$G;
+exports.BSWLogoIcon = Icon$G;
 exports.Badge = Badge$1;
 exports.BadgeButton = Badge;
 exports.BaseLayout = GridLayout$1;
