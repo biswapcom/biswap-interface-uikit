@@ -3466,7 +3466,7 @@ const crossThemeColors = {
     darkYellow: "#FFBB1C",
     darkRed: "#A8102B",
     darkGreen: "#07A462",
-    darkBlue: "#0E3382"
+    darkBlue: "#0E3382",
 };
 const lightColors = {
     ...baseColors,
@@ -6073,7 +6073,7 @@ const LeftIconImage = styled(Box) `
 `;
 const RightIconComponent = styled(StyledIconComponent) `
   right: ${({ scale }) => getIconPosition(scale)};
-  cursor: ${({ clickable }) => (clickable ? 'pointer' : 'default')};
+  cursor: ${({ clickable }) => (clickable ? "pointer" : "default")};
 `;
 const TextDescription = styled(Text) `
   ${variant({
@@ -6169,7 +6169,7 @@ const StyledLink = styled(Text) `
   display: flex;
   align-items: center;
   width: fit-content;
-  font-weight: ${({ bold }) => bold ? "600" : "400"};;
+  font-weight: ${({ bold }) => (bold ? "600" : "400")};
   opacity: ${({ disabled }) => (disabled ? "0.32" : "1")};
   transition: color 0.4s ease-in-out;
 
@@ -8564,7 +8564,7 @@ const DropdownMenuDivider$1 = styled.hr `
     border-color: ${color};
 `}
 `;
-const StyledDropdownMenu$1 = styled(Grid) `
+const StyledDropdownMenu = styled(Grid) `
   grid-template-columns: 1fr;
   width: 352px;
   padding: 24px 24px 0;
@@ -8728,7 +8728,7 @@ const DropdownMenu$1 = ({ children, activeItem = "", items = [], isExtended = fa
     }, [targetRef, tooltipRef, setIsOpen, update]);
     return (React.createElement(Box, { ref: setTargetRef, ...props },
         React.createElement(Box, null, children),
-        hasItems && (React.createElement(StyledDropdownMenu$1, { style: styles.popper, ref: setTooltipRef, ...attributes.popper, "$isOpen": isOpen, "$isExtended": isExtended && hasMoreThanItems }, items.map(({ type = DropdownMenuItemType$1.INTERNAL_LINK, label, rightIconFill, description, href = "/", status, leftIcon = "", rightIcon = "", links = [], bannerRenderer, target, mobileTarget, badgeType, badgeTitle, ...itemProps }, itemIndex) => {
+        hasItems && (React.createElement(StyledDropdownMenu, { style: styles.popper, ref: setTooltipRef, ...attributes.popper, "$isOpen": isOpen, "$isExtended": isExtended && hasMoreThanItems }, items.map(({ type = DropdownMenuItemType$1.INTERNAL_LINK, label, rightIconFill, description, href = "/", status, leftIcon = "", rightIcon = "", links = [], bannerRenderer, target, mobileTarget, badgeType, badgeTitle, ...itemProps }, itemIndex) => {
             const getMenuItemContent = (icon = rightIcon) => (React.createElement(MenuItemContent$1, { label: label, fill: rightIconFill, leftIcon: leftIcon, rightIcon: icon, description: description, status: status, badgeType: badgeType, badgeTitle: badgeTitle, ...itemProps }));
             const isActive = href === activeItem;
             const lastItem = itemIndex === items?.length - 1 || items[itemIndex + 1]?.type === DropdownMenuItemType$1.BANNER;
@@ -10141,6 +10141,42 @@ const MenuSolContext = createContext({
     linkComponent: "a",
 });
 
+const DropdownMenu = ({ children, activeItem = "", items = [], isExtended = false, ...props }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [targetRef, setTargetRef] = useState(null);
+    const [tooltipRef, setTooltipRef] = useState(null);
+    useContext(MenuSolContext);
+    items.length > 0;
+    items.length > 1;
+    const { styles, attributes, update } = usePopper(targetRef, tooltipRef, {
+        strategy: "fixed",
+        placement: "bottom-start",
+        modifiers: [{ name: "offset", options: { offset: [0, -14] } }],
+    });
+    useEffect(() => {
+        const showDropdownMenu = async () => {
+            update && (await update());
+            setIsOpen(true);
+        };
+        const hideDropdownMenu = (evt) => {
+            const target = evt.target;
+            return target && !tooltipRef?.contains(target) && setIsOpen(false);
+        };
+        targetRef?.addEventListener("mouseenter", showDropdownMenu, {
+            passive: true,
+        });
+        targetRef?.addEventListener("mouseleave", hideDropdownMenu, {
+            passive: true,
+        });
+        return () => {
+            targetRef?.removeEventListener("mouseenter", showDropdownMenu);
+            targetRef?.removeEventListener("mouseleave", hideDropdownMenu);
+        };
+    }, [targetRef, tooltipRef, setIsOpen, update]);
+    return (React.createElement(Box, { ref: setTargetRef, ...props },
+        React.createElement(Box, null, children)));
+};
+
 var DropdownMenuItemType;
 (function (DropdownMenuItemType) {
     DropdownMenuItemType[DropdownMenuItemType["INTERNAL_LINK"] = 0] = "INTERNAL_LINK";
@@ -10150,6 +10186,39 @@ var DropdownMenuItemType;
     DropdownMenuItemType[DropdownMenuItemType["BANNER"] = 4] = "BANNER";
     DropdownMenuItemType[DropdownMenuItemType["CONTAINER"] = 5] = "CONTAINER";
 })(DropdownMenuItemType || (DropdownMenuItemType = {}));
+
+const getBG = ({ theme, leftIcon }) => {
+    switch (leftIcon) {
+        case "Market":
+            return "linear-gradient(136.03deg, #1263F1 -7.36%, #F63D5E 131.43%)";
+        case "GameFi":
+            return "radial-gradient(170.13% 152.5% at 50% -32.5%, #FF1C5E 4.9%, #00000D 58.29%, #1EBB95 100%)";
+        default:
+            return theme.colors.primary;
+    }
+};
+const IconComponentWrap = styled(Flex) `
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  align-self: flex-start;
+  background: ${getBG};
+  opacity: ${({ disabled }) => (disabled ? 0.32 : 1)};
+`;
+const MenuItemContent = ({ leftIcon, label, description, rightIcon, fill = "primary", badgeTitle, badgeType, disabled, }) => {
+    const { isMobile } = useMatchBreakpoints();
+    return (React.createElement(React.Fragment, null,
+        leftIcon && (React.createElement(IconComponentWrap, { disabled: disabled },
+            React.createElement(IconComponent$1, { width: 24, iconName: leftIcon, color: "white" }))),
+        React.createElement(Flex, { alignSelf: isMobile ? "stretch" : "", flexDirection: "column", flex: 1, paddingLeft: leftIcon && "16px" },
+            React.createElement(Flex, { alignItems: "center" },
+                label,
+                badgeTitle && (React.createElement(Badge$1, { ml: "4px", badgeType: badgeType ?? BadgeTypes.SUCCESS }, badgeTitle))),
+            description && (React.createElement(Text, { fontSize: "12px", color: "gray900", lineHeight: "16px" }, description))),
+        rightIcon && !disabled && React.createElement(IconComponent$1, { className: "arrow-icon", iconName: rightIcon, color: fill })));
+};
 
 const getTextColor = ({ $isActive, disabled, theme, }) => {
     if (disabled)
@@ -10267,7 +10336,7 @@ const DropdownMenuDivider = styled.hr `
     border-color: ${color};
 `}
 `;
-const StyledDropdownMenu = styled(Grid) `
+styled(Grid) `
   grid-template-columns: 1fr;
   width: 352px;
   padding: 24px 24px 0;
@@ -10362,81 +10431,6 @@ const DropdownMenuItemContainer = ({ isActive = false, leftIcon, getMenuItemCont
             }, ...itemProps }, getMenuItemContent("ArrowUpForward"))),
         type === DropdownMenuItemType.DIVIDER && React.createElement(DropdownMenuDivider, null),
         type === DropdownMenuItemType.BANNER && isDesktop && bannerRenderer && (React.createElement(BannerPlacementItem, null, bannerRenderer(href, target)))));
-};
-
-const getBG = ({ theme, leftIcon }) => {
-    switch (leftIcon) {
-        case "Market":
-            return "linear-gradient(136.03deg, #1263F1 -7.36%, #F63D5E 131.43%)";
-        case "GameFi":
-            return "radial-gradient(170.13% 152.5% at 50% -32.5%, #FF1C5E 4.9%, #00000D 58.29%, #1EBB95 100%)";
-        default:
-            return theme.colors.primary;
-    }
-};
-const IconComponentWrap = styled(Flex) `
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  align-self: flex-start;
-  background: ${getBG};
-  opacity: ${({ disabled }) => (disabled ? 0.32 : 1)};
-`;
-const MenuItemContent = ({ leftIcon, label, description, rightIcon, fill = "primary", badgeTitle, badgeType, disabled, }) => {
-    const { isMobile } = useMatchBreakpoints();
-    return (React.createElement(React.Fragment, null,
-        leftIcon && (React.createElement(IconComponentWrap, { disabled: disabled },
-            React.createElement(IconComponent$1, { width: 24, iconName: leftIcon, color: "white" }))),
-        React.createElement(Flex, { alignSelf: isMobile ? "stretch" : "", flexDirection: "column", flex: 1, paddingLeft: leftIcon && "16px" },
-            React.createElement(Flex, { alignItems: "center" },
-                label,
-                badgeTitle && (React.createElement(Badge$1, { ml: "4px", badgeType: badgeType ?? BadgeTypes.SUCCESS }, badgeTitle))),
-            description && (React.createElement(Text, { fontSize: "12px", color: "gray900", lineHeight: "16px" }, description))),
-        rightIcon && !disabled && React.createElement(IconComponent$1, { className: "arrow-icon", iconName: rightIcon, color: fill })));
-};
-
-const DropdownMenu = ({ children, activeItem = "", items = [], isExtended = false, ...props }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [targetRef, setTargetRef] = useState(null);
-    const [tooltipRef, setTooltipRef] = useState(null);
-    const { linkComponent } = useContext(MenuSolContext);
-    const hasItems = items.length > 0;
-    const hasMoreThanItems = items.length > 1;
-    const { styles, attributes, update } = usePopper(targetRef, tooltipRef, {
-        strategy: "fixed",
-        placement: "bottom-start",
-        modifiers: [{ name: "offset", options: { offset: [0, -14] } }],
-    });
-    useEffect(() => {
-        const showDropdownMenu = async () => {
-            update && (await update());
-            setIsOpen(true);
-        };
-        const hideDropdownMenu = (evt) => {
-            const target = evt.target;
-            return target && !tooltipRef?.contains(target) && setIsOpen(false);
-        };
-        targetRef?.addEventListener("mouseenter", showDropdownMenu, {
-            passive: true,
-        });
-        targetRef?.addEventListener("mouseleave", hideDropdownMenu, {
-            passive: true,
-        });
-        return () => {
-            targetRef?.removeEventListener("mouseenter", showDropdownMenu);
-            targetRef?.removeEventListener("mouseleave", hideDropdownMenu);
-        };
-    }, [targetRef, tooltipRef, setIsOpen, update]);
-    return (React.createElement(Box, { ref: setTargetRef, ...props },
-        React.createElement(Box, null, children),
-        hasItems && (React.createElement(StyledDropdownMenu, { style: styles.popper, ref: setTooltipRef, ...attributes.popper, "$isOpen": isOpen, "$isExtended": isExtended && hasMoreThanItems }, items.map(({ type = DropdownMenuItemType.INTERNAL_LINK, label, rightIconFill, description, href = "/", status, leftIcon = "", rightIcon = "", links = [], bannerRenderer, target, mobileTarget, badgeType, badgeTitle, ...itemProps }, itemIndex) => {
-            const getMenuItemContent = (icon = rightIcon) => (React.createElement(MenuItemContent, { label: label, fill: rightIconFill, leftIcon: leftIcon, rightIcon: icon, description: description, status: status, badgeType: badgeType, badgeTitle: badgeTitle, ...itemProps }));
-            const isActive = href === activeItem;
-            const lastItem = itemIndex === items?.length - 1 || items[itemIndex + 1]?.type === DropdownMenuItemType.BANNER;
-            return (React.createElement(DropdownMenuItemContainer, { key: itemIndex, isActive: isActive, leftIcon: leftIcon, getMenuItemContent: getMenuItemContent, links: links, setIsOpen: setIsOpen, linkComponent: linkComponent, href: href, bannerRenderer: bannerRenderer, type: type, target: target, mobileTarget: mobileTarget, lastItem: lastItem, ...itemProps }));
-        })))));
 };
 
 const PULSE_SUCCESS = keyframes `
@@ -10651,6 +10645,7 @@ const MobileMenu = ({ items, mobileMenuCallback, children, activeItem, baseAwsUr
 
 const StyledMenuItemContainer = styled(Box) `
   position: relative;
+  color: saddlebrown;
 
   ${({ $isActive, $variant }) => $isActive &&
     $variant === "subMenu" &&
@@ -10675,17 +10670,6 @@ const CommonLinkStyles = ({ $isActive, $statusColor, $variant, $highlightTitle }
   cursor: pointer;
   transition: color 0.4s ease;
 
-  ${$statusColor &&
-    `
-    &:after {
-      content: "";
-      height: 8px;
-      width: 8px;
-      margin-left: 12px;
-      border-radius: 100%;
-    }
-  `}
-
   ${$variant === "default"
     ? css `
         height: 72px;
@@ -10701,6 +10685,8 @@ const CommonLinkStyles = ({ $isActive, $statusColor, $variant, $highlightTitle }
       `}
 
   &:hover {
+    color: ${({ theme }) => theme.colors.pastelBlue};
+
     div {
       color: ${({ theme }) => ($highlightTitle ? theme.colors.warningHover : theme.colors.pastelBlue)};
     }
@@ -11188,7 +11174,7 @@ const Inner = styled.div `
   transform: translate3d(0, 0, 0);
   max-width: 100%;
 `;
-const MenuSol = ({ linkComponent = "a", banner, links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, infoLinks, productLinks, socialLinks, withEvent, customLogoSubtitle, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", showFooter = true, }) => {
+const MenuSol = ({ linkComponent = "a", links, rightSide, activeItem, activeSubItem, children, BSWPriceLabel, BSWPriceValue, registerToken, buyBswHandler, aboutLinks, infoLinks, productLinks, socialLinks, withEvent, customLogoSubtitle, baseAwsUrl = "https://static.biswap.org/bs", buyBswLabel = "Buy BSW", showFooter = true, }) => {
     const [showMenu, setShowMenu] = useState(true);
     const [menuBg, setMenuBg] = useState(false);
     const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
