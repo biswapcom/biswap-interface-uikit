@@ -11259,7 +11259,7 @@ const Toast = ({ removeButtonPosition = 60, clearAll, toast, style, handleMouseE
 };
 
 const ZINDEX = 1000;
-const BOTTOM_POSITION = 120; // Initial position from the bottom
+const BOTTOM_POSITION = 90; // Initial position from the bottom
 const StyledToastContainer$1 = styled(Box) `
   .enter,
   .appear {
