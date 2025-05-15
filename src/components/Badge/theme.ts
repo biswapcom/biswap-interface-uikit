@@ -51,6 +51,11 @@ export const BadgeTypesContainer = {
     color: "dark800",
     border: "0",
   },
+  [BadgeTypes.CORE_OPACITY]: {
+    backgroundColor: "badgeCoreOpacity",
+    color: "text3",
+    border: "0",
+  },
 };
 
 export const BadgeScalesContainer = {

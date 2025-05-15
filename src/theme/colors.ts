@@ -92,6 +92,7 @@ export const newColors = {
   black: "#030811",
   // unique
   buttonLightBlue: "rgba(55, 126, 247, 0.16)",
+  badgeCoreOpacity: "rgba(112, 141, 183, 0.16)",
 };
 
 export const crossThemeColors = {
@@ -100,7 +101,7 @@ export const crossThemeColors = {
   darkYellow: "#FFBB1C",
   darkRed: "#A8102B",
   darkGreen: "#07A462",
-  darkBlue: "#0E3382"
+  darkBlue: "#0E3382",
 };
 
 export const lightColors: Colors = {

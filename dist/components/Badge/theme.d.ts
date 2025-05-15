@@ -49,6 +49,11 @@ export declare const BadgeTypesContainer: {
         color: string;
         border: string;
     };
+    badgeCoreOpacity: {
+        backgroundColor: string;
+        color: string;
+        border: string;
+    };
 };
 export declare const BadgeScalesContainer: {
     lg: {

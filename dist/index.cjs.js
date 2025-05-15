@@ -3409,6 +3409,7 @@ const newColors = {
     black: "#030811",
     // unique
     buttonLightBlue: "rgba(55, 126, 247, 0.16)",
+    badgeCoreOpacity: "rgba(112, 141, 183, 0.16)",
 };
 const crossThemeColors = {
     pastelBlue: "#749BD8",
@@ -3416,7 +3417,7 @@ const crossThemeColors = {
     darkYellow: "#FFBB1C",
     darkRed: "#A8102B",
     darkGreen: "#07A462",
-    darkBlue: "#0E3382"
+    darkBlue: "#0E3382",
 };
 const lightColors = {
     ...baseColors,
@@ -7187,6 +7188,7 @@ exports.BadgeTypes = void 0;
     BadgeTypes["LIGHT"] = "light";
     BadgeTypes["BOOST"] = "boost";
     BadgeTypes["WARNING_OPACITY"] = "warningOpacity";
+    BadgeTypes["CORE_OPACITY"] = "badgeCoreOpacity";
 })(exports.BadgeTypes || (exports.BadgeTypes = {}));
 exports.BadgeScales = void 0;
 (function (BadgeScales) {
@@ -7244,6 +7246,11 @@ const BadgeTypesContainer = {
     [exports.BadgeTypes.LIGHT]: {
         backgroundColor: "gray200",
         color: "dark800",
+        border: "0",
+    },
+    [exports.BadgeTypes.CORE_OPACITY]: {
+        backgroundColor: "badgeCoreOpacity",
+        color: "text3",
         border: "0",
     },
 };
