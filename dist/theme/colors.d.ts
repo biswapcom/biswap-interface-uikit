@@ -65,7 +65,7 @@ export declare const newColors: {
     wineRed: string;
     black: string;
     buttonLightBlue: string;
-    badgeCoreOpacity: string;
+    badgeLightOpacity: string;
 };
 export declare const crossThemeColors: {
     pastelBlue: string;

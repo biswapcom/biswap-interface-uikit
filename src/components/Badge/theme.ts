@@ -51,8 +51,8 @@ export const BadgeTypesContainer = {
     color: "dark800",
     border: "0",
   },
-  [BadgeTypes.CORE_OPACITY]: {
-    backgroundColor: "badgeCoreOpacity",
+  [BadgeTypes.LIGHT_OPACITY]: {
+    backgroundColor: "badgeLightOpacity",
     color: "text3",
     border: "0",
   },

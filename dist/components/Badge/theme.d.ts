@@ -49,7 +49,7 @@ export declare const BadgeTypesContainer: {
         color: string;
         border: string;
     };
-    badgeCoreOpacity: {
+    badgeLightOpacity: {
         backgroundColor: string;
         color: string;
         border: string;

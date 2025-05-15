@@ -92,7 +92,7 @@ export const newColors = {
   black: "#030811",
   // unique
   buttonLightBlue: "rgba(55, 126, 247, 0.16)",
-  badgeCoreOpacity: "rgba(112, 141, 183, 0.16)",
+  badgeLightOpacity: "rgba(112, 141, 183, 0.16)",
 };
 
 export const crossThemeColors = {
