@@ -1565,6 +1565,24 @@ export const Info: FC = () => {
             <Input type="text" value="isError" />
           </InputGroup>
         </Row>
+
+        <Heading mb="16px">Input group with clickable right icon</Heading>
+        <Row>
+          <InputGroup
+            endIcon={{
+              iconName: "EyeOpen",
+              color: "gray",
+            }}
+            onRightIconClick={() => alert("Icon clicked!")}
+            mb="24px"
+            mr="16px"
+            variant={Variants.DARK}
+            scale={Scales.LG}
+            maxWidth="300px"
+          >
+            <Input type="text" placeholder="Click the eye icon" />
+          </InputGroup>
+        </Row>
       </DarkBg>
     </>
   );

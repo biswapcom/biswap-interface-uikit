@@ -100,7 +100,7 @@ export const crossThemeColors = {
   darkYellow: "#FFBB1C",
   darkRed: "#A8102B",
   darkGreen: "#07A462",
-  darkBlue: "#0E3382"
+  darkBlue: "#0E3382",
 };
 
 export const lightColors: Colors = {
@@ -171,6 +171,6 @@ export const darkColors: Colors = {
   text4: "#F9FAFD",
   text5: "#2A436A",
   divider1: "#102648",
-  divider2: "#102648",
-  divider3: "#102648",
+  divider2: "#2A436A",
+  divider3: "#546F99",
 };
