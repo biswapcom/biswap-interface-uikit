@@ -279,5 +279,8 @@ export { default as AttentionRoundRIcon } from "./Icons/New/AttentionRoundR";
 export { default as InfoRoundRIcon } from "./Icons/New/InfoRoundR";
 export { default as HelpRoundRIcon } from "./Icons/New/HelpRoundR";
 export { default as AddLiquidityRIcon } from "./Icons/New/AddLiquidityR";
+export { default as Robi1Icon } from "./Icons/Robi/Robi1";
+export { default as Robi2Icon } from "./Icons/Robi/Robi2";
+export { default as Robi3Icon } from "./Icons/Robi/Robi3";
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";
