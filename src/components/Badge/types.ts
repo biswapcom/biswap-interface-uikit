@@ -12,6 +12,7 @@ export enum BadgeTypes {
   LIGHT = "light",
   BOOST = "boost",
   WARNING_OPACITY = "warningOpacity",
+  LIGHT_OPACITY = "badgeLightOpacity",
 }
 
 export enum BadgeScales {

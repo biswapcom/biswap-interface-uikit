@@ -3501,6 +3501,7 @@ const newColors = {
     black: "#030811",
     // unique
     buttonLightBlue: "rgba(55, 126, 247, 0.16)",
+    badgeLightOpacity: "rgba(112, 141, 183, 0.16)",
 };
 const crossThemeColors = {
     pastelBlue: "#749BD8",
@@ -7280,6 +7281,7 @@ var BadgeTypes;
     BadgeTypes["LIGHT"] = "light";
     BadgeTypes["BOOST"] = "boost";
     BadgeTypes["WARNING_OPACITY"] = "warningOpacity";
+    BadgeTypes["LIGHT_OPACITY"] = "badgeLightOpacity";
 })(BadgeTypes || (BadgeTypes = {}));
 var BadgeScales;
 (function (BadgeScales) {
@@ -7337,6 +7339,11 @@ const BadgeTypesContainer = {
     [BadgeTypes.LIGHT]: {
         backgroundColor: "gray200",
         color: "dark800",
+        border: "0",
+    },
+    [BadgeTypes.LIGHT_OPACITY]: {
+        backgroundColor: "badgeLightOpacity",
+        color: "text3",
         border: "0",
     },
 };
@@ -11255,7 +11262,7 @@ const Toast = ({ removeButtonPosition = 60, clearAll, toast, style, handleMouseE
 };
 
 const ZINDEX = 1000;
-const BOTTOM_POSITION = 120; // Initial position from the bottom
+const BOTTOM_POSITION = 90; // Initial position from the bottom
 const StyledToastContainer$1 = styled(Box) `
   .enter,
   .appear {
