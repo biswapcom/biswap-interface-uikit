@@ -399,7 +399,9 @@ export { default as DiscountOpacityIcon } from "./Icons/Discount/DiscountOpacity
 
 // CrossChain
 export { default as SquidRouterIcon } from "./Icons/CrossChain/SquidRouter";
+export { default as SquidRouterWhiteIcon } from "./Icons/CrossChain/SquidRouterWhite";
 export { default as WormholeIcon } from "./Icons/CrossChain/Wormhole";
+export { default as WormholeWhiteIcon } from "./Icons/CrossChain/WormholeWhite";
 export { default as CrossChainOpacityIcon } from "./Icons/Menu/CrossChain/CrossChainOpacity";
 
 // perpetual
