@@ -407,7 +407,9 @@ export { default as DiscountOpacityIcon } from "./Icons/Discount/DiscountOpacity
 
 // CrossChain
 export { default as SquidRouterIcon } from "./Icons/CrossChain/SquidRouter";
+export { default as SquidRouterWhiteIcon } from "./Icons/CrossChain/SquidRouterWhite";
 export { default as WormholeIcon } from "./Icons/CrossChain/Wormhole";
+export { default as WormholeWhiteIcon } from "./Icons/CrossChain/WormholeWhite";
 export { default as CrossChainOpacityIcon } from "./Icons/Menu/CrossChain/CrossChainOpacity";
 
 // perpetual
@@ -454,6 +456,8 @@ export { default as SwapVerticalRIcon } from "./Icons/New/SwapVerticalR";
 export { default as SwapHorizontalRIcon } from "./Icons/New/SwapHorizontalR";
 export { default as CheckRoundRIcon } from "./Icons/New/CheckRoundR";
 export { default as AttentionRoundRIcon } from "./Icons/New/AttentionRoundR";
+export { default as AttentionCircleRIcon } from "./Icons/New/AttentionCircleR";
+export { default as WarningCircleRIcon } from "./Icons/New/WarningCircleR";
 export { default as InfoRoundRIcon } from "./Icons/New/InfoRoundR";
 export { default as HelpRoundRIcon } from "./Icons/New/HelpRoundR";
 export { default as AddLiquidityRIcon } from "./Icons/New/AddLiquidityR";
