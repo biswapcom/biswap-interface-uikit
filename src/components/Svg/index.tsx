@@ -449,6 +449,7 @@ export { default as SwapHorizontalRIcon } from "./Icons/New/SwapHorizontalR";
 export { default as CheckRoundRIcon } from "./Icons/New/CheckRoundR";
 export { default as AttentionRoundRIcon } from "./Icons/New/AttentionRoundR";
 export { default as AttentionCircleRIcon } from "./Icons/New/AttentionCircleR";
+export { default as WarningCircleRIcon } from "./Icons/New/WarningCircleR";
 export { default as InfoRoundRIcon } from "./Icons/New/InfoRoundR";
 export { default as HelpRoundRIcon } from "./Icons/New/HelpRoundR";
 export { default as AddLiquidityRIcon } from "./Icons/New/AddLiquidityR";
