@@ -2343,8 +2343,8 @@ var IconModule = /*#__PURE__*/Object.freeze({
   InfoRoundRIcon: Icon$4,
   HelpRoundRIcon: Icon$3,
   AddLiquidityRIcon: Icon$2,
-  CoinsOfferSolidIron: Icon$1,
-  CoinsOfferOpacityIron: Icon,
+  CoinsOfferSolidIcon: Icon$1,
+  CoinsOfferOpacityIcon: Icon,
   Svg: Svg,
   PerpetualOpacityIcon: Icon$B,
   PerpetualSolidIcon: Icon$A,
@@ -11634,8 +11634,8 @@ exports.CloseCircleSolidIcon = Icon$3H;
 exports.CloseIcon = Icon$3K;
 exports.CloseRIcon = Icon$l;
 exports.CoinMarketCapIcon = Icon$$;
-exports.CoinsOfferOpacityIron = Icon;
-exports.CoinsOfferSolidIron = Icon$1;
+exports.CoinsOfferOpacityIcon = Icon;
+exports.CoinsOfferSolidIcon = Icon$1;
 exports.ColoredToasts = ColoredToasts;
 exports.ConflictIcon = Icon$P;
 exports.Container = Container$3;

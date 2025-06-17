@@ -456,8 +456,8 @@ export { default as HelpRoundRIcon } from "./Icons/New/HelpRoundR";
 export { default as AddLiquidityRIcon } from "./Icons/New/AddLiquidityR";
 
 // CoinsOffer
-export { default as CoinsOfferSolidIron } from "./Icons/CoinsOffer/CoinsOfferSolid";
-export { default as CoinsOfferOpacityIron } from "./Icons/CoinsOffer/CoinsOfferOpacity";
+export { default as CoinsOfferSolidIcon } from "./Icons/CoinsOffer/CoinsOfferSolid";
+export { default as CoinsOfferOpacityIcon } from "./Icons/CoinsOffer/CoinsOfferOpacity";
 
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";
