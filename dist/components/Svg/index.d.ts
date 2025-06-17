@@ -275,5 +275,7 @@ export { default as WarningCircleRIcon } from "./Icons/New/WarningCircleR";
 export { default as InfoRoundRIcon } from "./Icons/New/InfoRoundR";
 export { default as HelpRoundRIcon } from "./Icons/New/HelpRoundR";
 export { default as AddLiquidityRIcon } from "./Icons/New/AddLiquidityR";
+export { default as LiquiditySolidIron } from "./Icons/Liquidity/LiquiditySolid";
+export { default as LiquidityOpacityIron } from "./Icons/Liquidity/LiquidityOpacity";
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";
