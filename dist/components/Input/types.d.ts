@@ -31,6 +31,7 @@ export interface InputGroupProps extends SpaceProps, InputProps {
     children: JSX.Element;
     description?: string;
     baseAwsUrl?: string;
+    onRightIconClick?: () => void;
 }
 interface IconProps {
     iconName: string;

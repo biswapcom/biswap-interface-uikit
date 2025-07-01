@@ -18,7 +18,7 @@ const StyledLink = styled(Text)<LinkProps>`
   display: flex;
   align-items: center;
   width: fit-content;
-  font-weight: ${({ bold }) => bold ? "600" : "400"};;
+  font-weight: ${({ bold }) => (bold ? "600" : "400")};
   opacity: ${({ disabled }) => (disabled ? "0.32" : "1")};
   transition: color 0.4s ease-in-out;
 

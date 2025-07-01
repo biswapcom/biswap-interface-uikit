@@ -4,7 +4,7 @@ import React, { FC, useContext } from "react";
 import { MenuSolContext } from "../../context";
 
 // styles
-import StyledMenuItem, { StyledMenuItemContainer } from "./styles";
+import StyledMenuItem from "./styles";
 
 // types
 import type { MenuItemProps } from "./types";
@@ -29,18 +29,16 @@ const MenuItem: FC<MenuItemProps> = ({
       };
 
   return (
-    <StyledMenuItemContainer $isActive={isActive} $variant={variant}>
-      <StyledMenuItem
-        {...itemLinkProps}
-        $isActive={isActive}
-        $variant={variant}
-        $statusColor={statusColor}
-        $highlightTitle={highlightTitle}
-        {...props}
-      >
-        {children}
-      </StyledMenuItem>
-    </StyledMenuItemContainer>
+    <StyledMenuItem
+      {...itemLinkProps}
+      $isActive={isActive}
+      $variant={variant}
+      $statusColor={statusColor}
+      $highlightTitle={highlightTitle}
+      {...props}
+    >
+      {children}
+    </StyledMenuItem>
   );
 };
 

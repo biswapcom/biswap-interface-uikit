@@ -1,12 +1,9 @@
 import React, { FC, Fragment } from "react";
 
 // components
-import { Box, Flex } from "../../../../components/Box";
-import { DropdownMenu } from "../DropdownMenu";
+import { Flex } from "../../../../components/Box";
 import MobileDropdownMenu from "../DropdownMenu/MobileMenu/MobileDropdownMenu";
-import { MenuItem, MenuItemDivider, MenuItemMarker } from "../MenuItem";
-import IconComponent from "../../../../components/Svg/IconComponent";
-import { BodyText, Scales } from "../../../../components/Typography";
+import { MenuItem } from "../MenuItem";
 
 // utils
 import { isTouchDevice } from "../../../../util";
@@ -39,63 +36,22 @@ const MenuItems: FC<MenuItemsProps> = ({
           baseAwsUrl={baseAwsUrl}
         />
       )}
-      {items.map(
-        (
-          {
-            label,
-            items: menuItems = [],
-            href,
-            icon = "",
-            isExtended,
-            showItemsOnMobile,
-            type,
-            hidden,
-            highlightTitle,
-          },
-          index
-        ) => {
-          const isMarker = items[index]?.showNavBadge;
-          const isMarkerColor = items[index]?.colorNavBadge;
-          const isHighlighted = items[index].highlightTitle;
-          const statusColor = menuItems?.find((menuItem) => menuItem.status !== undefined)?.status?.color;
-          const isActive = activeItem === href;
-          const linkProps = isTouchDevice() && menuItems && menuItems.length > 0 ? {} : { href };
-          const visualize = (isDesktop || (isTablet && showItemsOnMobile)) && !hidden;
+      {items.map(({ label, items: menuItems = [], href, showItemsOnMobile, hidden, highlightTitle }, index) => {
+        const statusColor = menuItems?.find((menuItem) => menuItem.status !== undefined)?.status?.color;
+        const isActive = activeItem === href;
+        const linkProps = isTouchDevice() && menuItems && menuItems.length > 0 ? {} : { href };
+        const visualize = (isDesktop || (isTablet && showItemsOnMobile)) && !hidden;
 
-          return (
-            visualize && (
-              <Fragment key={`${label}#${href}`}>
-                <DropdownMenu
-                  key={`${label}#${href}#${icon}`}
-                  items={menuItems}
-                  py={1}
-                  activeItem={activeSubItem}
-                  isExtended={isExtended}
-                >
-                  <MenuItem
-                    {...linkProps}
-                    isActive={isActive}
-                    statusColor={statusColor}
-                    highlightTitle={highlightTitle}
-                  >
-                    {type === ItemTypes.DIVIDER && <MenuItemDivider />}
-                    {icon && <IconComponent mr="8px" iconName={icon} color="white" />}
-                    {label && (
-                      <Box ml={!href ? "8px" : 0} position="relative">
-                        {/*@ts-ignore*/}
-                        {isMarker && <MenuItemMarker color={isMarkerColor} />}
-                        <BodyText color={isHighlighted ? "warningPress" : "white"} scale={Scales.SIZE14} bold>
-                          {label}
-                        </BodyText>
-                      </Box>
-                    )}
-                  </MenuItem>
-                </DropdownMenu>
-              </Fragment>
-            )
-          );
-        }
-      )}
+        return (
+          visualize && (
+            <Fragment key={`${label}#${href}`}>
+              <MenuItem {...linkProps} isActive={isActive} statusColor={statusColor} highlightTitle={highlightTitle}>
+                {label}
+              </MenuItem>
+            </Fragment>
+          )
+        );
+      })}
     </Flex>
   );
 };

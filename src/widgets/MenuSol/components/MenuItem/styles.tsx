@@ -3,27 +3,6 @@ import styled, { css } from "styled-components";
 // types
 import type { StyledMenuItemProps } from "./types";
 
-// components
-import { Box } from "../../../../components/Box";
-
-export const StyledMenuItemContainer = styled(Box)<StyledMenuItemProps>`
-  position: relative;
-
-  ${({ $isActive, $variant }) =>
-    $isActive &&
-    $variant === "subMenu" &&
-    `
-      &:after{
-        content: "";
-        position: absolute;
-        bottom: 0;
-        height: 4px;
-        width: 100%;
-        border-radius: 2px 2px 0 0;
-      }
-    `};
-`;
-
 const CommonLinkStyles = ({ $isActive, $statusColor, $variant, $highlightTitle }: StyledMenuItemProps) => css`
   position: relative;
   display: flex;
@@ -33,17 +12,6 @@ const CommonLinkStyles = ({ $isActive, $statusColor, $variant, $highlightTitle }
   font-weight: 600;
   cursor: pointer;
   transition: color 0.4s ease;
-
-  ${$statusColor &&
-  `
-    &:after {
-      content: "";
-      height: 8px;
-      width: 8px;
-      margin-left: 12px;
-      border-radius: 100%;
-    }
-  `}
 
   ${$variant === "default"
     ? css`
@@ -60,6 +28,8 @@ const CommonLinkStyles = ({ $isActive, $statusColor, $variant, $highlightTitle }
       `}
 
   &:hover {
+    color: ${({ theme }) => theme.colors.pastelBlue};
+
     div {
       color: ${({ theme }) => ($highlightTitle ? theme.colors.warningHover : theme.colors.pastelBlue)};
     }
