@@ -120,8 +120,10 @@ export { default as SearchOpacityIcon } from "./Icons/Search/SearchOpacity";
 
 //Star
 export { default as StarIcon } from "./Icons/Star/Star";
+export { default as StarRoundIcon } from "./Icons/Star/StarRound";
 export { default as StarOpacityIcon } from "./Icons/Star/StarOpacity";
 export { default as StarSolidIcon } from "./Icons/Star/StarSolid";
+export { default as StarRoundSolidIcon } from "./Icons/Star/StarRoundSolid";
 
 //Options
 export { default as OptionsSolidIcon } from "./Icons/Options/OptionsSolid";
