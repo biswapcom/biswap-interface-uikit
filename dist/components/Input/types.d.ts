@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { SpaceProps } from "styled-system";
 export declare enum Scales {
     SM = "sm",
