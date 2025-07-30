@@ -288,6 +288,7 @@ export { default as HelpRoundRIcon } from "./Icons/New/HelpRoundR";
 export { default as AddLiquidityRIcon } from "./Icons/New/AddLiquidityR";
 export { default as DefaultTokenRIcon } from "./Icons/New/DefaultTokenR";
 export { default as AttentionSolidRRIcon } from "./Icons/New/AttentionSolidR";
+export { default as YourPositionHereRIcon } from "./Icons/New/YourPositionHereR";
 export { default as Robi1Icon } from "./Icons/Robi/Robi1";
 export { default as Robi2Icon } from "./Icons/Robi/Robi2";
 export { default as Robi3Icon } from "./Icons/Robi/Robi3";
