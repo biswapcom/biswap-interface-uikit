@@ -111,7 +111,7 @@ const PercentSlider: FC<PercentSliderProps> = ({
                 setActiveShortcutIndex(index);
               }}
             >
-              {percent}%
+              {percent === 100 ? "MAX" : `${percent}%`}
             </Button>
           ))}
         </Grid>
