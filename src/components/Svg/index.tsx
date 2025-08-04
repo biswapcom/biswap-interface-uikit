@@ -28,6 +28,7 @@ export { default as ChevronUpTripleIcon } from "./Icons/Arrows/ChevronUpTriple";
 export { default as ChevronDownTripleIcon } from "./Icons/Arrows/ChevronDownTriple";
 export { default as ChevronRightTripleIcon } from "./Icons/Arrows/ChevronRightTriple";
 export { default as SwapDoubleArrowIcon } from "./Icons/Arrows/SwapDoubleArrow";
+export { default as SwapDoubleCircleArrowIcon } from "./Icons/Arrows/SwapDoubleCircleArrow";
 export { default as CrownIcon } from "./Icons/Arrows/CrownIcon";
 export { default as UpwardArrowIcon } from "./Icons/Arrows/UpwardArrowIcon";
 export { default as ChevronSlimRightIcon } from "./Icons/Arrows/ChevronSlimRight";
@@ -119,8 +120,10 @@ export { default as SearchOpacityIcon } from "./Icons/Search/SearchOpacity";
 
 //Star
 export { default as StarIcon } from "./Icons/Star/Star";
+export { default as StarRoundIcon } from "./Icons/Star/StarRound";
 export { default as StarOpacityIcon } from "./Icons/Star/StarOpacity";
 export { default as StarSolidIcon } from "./Icons/Star/StarSolid";
+export { default as StarRoundSolidIcon } from "./Icons/Star/StarRoundSolid";
 
 //Options
 export { default as OptionsSolidIcon } from "./Icons/Options/OptionsSolid";
@@ -407,7 +410,9 @@ export { default as DiscountOpacityIcon } from "./Icons/Discount/DiscountOpacity
 
 // CrossChain
 export { default as SquidRouterIcon } from "./Icons/CrossChain/SquidRouter";
+export { default as SquidRouterWhiteIcon } from "./Icons/CrossChain/SquidRouterWhite";
 export { default as WormholeIcon } from "./Icons/CrossChain/Wormhole";
+export { default as WormholeWhiteIcon } from "./Icons/CrossChain/WormholeWhite";
 export { default as CrossChainOpacityIcon } from "./Icons/Menu/CrossChain/CrossChainOpacity";
 
 // perpetual
@@ -454,13 +459,22 @@ export { default as SwapVerticalRIcon } from "./Icons/New/SwapVerticalR";
 export { default as SwapHorizontalRIcon } from "./Icons/New/SwapHorizontalR";
 export { default as CheckRoundRIcon } from "./Icons/New/CheckRoundR";
 export { default as AttentionRoundRIcon } from "./Icons/New/AttentionRoundR";
+export { default as AttentionCircleRIcon } from "./Icons/New/AttentionCircleR";
+export { default as WarningCircleRIcon } from "./Icons/New/WarningCircleR";
 export { default as InfoRoundRIcon } from "./Icons/New/InfoRoundR";
 export { default as HelpRoundRIcon } from "./Icons/New/HelpRoundR";
 export { default as AddLiquidityRIcon } from "./Icons/New/AddLiquidityR";
+export { default as DefaultTokenRIcon } from "./Icons/New/DefaultTokenR";
+export { default as AttentionSolidRRIcon } from "./Icons/New/AttentionSolidR";
+export { default as YourPositionHereRIcon } from "./Icons/New/YourPositionHereR";
 // robi
 export { default as Robi1Icon } from "./Icons/Robi/Robi1";
 export { default as Robi2Icon } from "./Icons/Robi/Robi2";
 export { default as Robi3Icon } from "./Icons/Robi/Robi3";
+
+// CoinsOffer
+export { default as CoinsOfferSolidIcon } from "./Icons/CoinsOffer/CoinsOfferSolid";
+export { default as CoinsOfferOpacityIcon } from "./Icons/CoinsOffer/CoinsOfferOpacity";
 
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";

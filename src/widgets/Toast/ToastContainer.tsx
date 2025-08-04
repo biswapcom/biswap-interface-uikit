@@ -10,7 +10,7 @@ import { Box } from "../../components/Box";
 import { ToastContainerProps } from "./types";
 
 const ZINDEX = 1000;
-const BOTTOM_POSITION = 120; // Initial position from the bottom
+const BOTTOM_POSITION = 90; // Initial position from the bottom
 
 const StyledToastContainer = styled(Box)`
   .enter,
