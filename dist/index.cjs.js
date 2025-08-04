@@ -7834,9 +7834,7 @@ const PercentSlider = ({ name = "slider", min = 0, max = 100, value, onValueChan
                 onValueChanged(percent);
                 setDisplayPercent(percent.toString());
                 setActiveShortcutIndex(index);
-            } },
-            percent,
-            "%")))))));
+            } }, percent === 100 ? "MAX" : `${percent}%`)))))));
 };
 
 exports.PaginationVariants = void 0;
