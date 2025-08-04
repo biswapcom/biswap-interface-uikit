@@ -7728,7 +7728,7 @@ const BarBackground = styled(Box) `
   top: 10px;
   width: calc(100% - 8px);
   border-radius: 20px;
-  background-color: ${({ theme, disabled, darkMode }) => theme.colors[disabled ? "gray900" : darkMode ? "dark400" : "gray300"]};
+  background-color: ${({ theme, disabled, darkMode }) => theme.colors[disabled ? "gray900" : darkMode ? "dark400" : "divider2"]};
 `;
 const BarProgress = styled(Box) `
   position: absolute;
