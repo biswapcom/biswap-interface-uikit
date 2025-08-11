@@ -2600,7 +2600,7 @@ const IconLabel = styled(Flex) `
   align-items: center;
   padding: 12px;
   border: none;
-  border-radius: ${({ variant }) => (variant === Variants$c.EXTENSIONS_CONFLICT ? "50px" : "8px")};
+  border-radius: 50px;
   background-color: ${getThemeColor};
 `;
 const StyledAlert = styled(Flex) `

@@ -63,7 +63,7 @@ const IconLabel = styled(Flex)<{ variant: Variants }>`
   align-items: center;
   padding: 12px;
   border: none;
-  border-radius: ${({ variant }) => (variant === Variants.EXTENSIONS_CONFLICT ? "50px" : "8px")};
+  border-radius: 50px;
   background-color: ${getThemeColor};
 `;
 
