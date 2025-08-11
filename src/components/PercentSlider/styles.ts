@@ -55,7 +55,7 @@ export const BarBackground = styled(Box)<{
   width: calc(100% - 8px);
   border-radius: 20px;
   background-color: ${({ theme, disabled, darkMode }) =>
-    theme.colors[disabled ? "gray900" : darkMode ? "dark400" : "gray300"]};
+    theme.colors[disabled ? "gray900" : darkMode ? "dark400" : "divider2"]};
 `;
 
 export const BarProgress = styled(Box)`
