@@ -2535,7 +2535,7 @@ const ProgressCircle = ({ filled = 0, notFilled = 100, onClick }) => {
                 React.createElement("linearGradient", { id: "diag-color", x1: "4.653", y1: "13.461", x2: "13.086", y2: "0.7", gradientUnits: "userSpaceOnUse" },
                     React.createElement("stop", { stopColor: "rgba(196, 196, 196, 0.3)" }))),
             React.createElement(Content, null,
-                React.createElement(Icon$3Y, { width: "20px", color: "currentColor" })))));
+                React.createElement(Icon$3Y, { width: "20px", color: "fill6" })))));
 };
 
 var Variants$c;
@@ -2570,16 +2570,16 @@ const getThemeColor = ({ variant = Variants$c.INFO }) => {
 const getIcon = (variant = Variants$c.INFO) => {
     switch (variant) {
         case Variants$c.DANGER:
-            return Icon$3V;
+            return Icon$3X;
         case Variants$c.WARNING:
-            return Icon$3$;
+            return Icon$8;
         case Variants$c.SUCCESS:
-            return Icon$3t;
+            return Icon$b;
         case Variants$c.EXTENSIONS_CONFLICT:
             return Icon$V;
         case Variants$c.INFO:
         default:
-            return Icon$3H;
+            return Icon$3I;
     }
 };
 const getIconColor = (variant = Variants$c.INFO) => {
@@ -2605,11 +2605,9 @@ const IconLabel = styled(Flex) `
 `;
 const StyledAlert = styled(Flex) `
   padding: 12px 60px 12px 12px;
+  border: 1px solid ${({ theme }) => theme.colors.divider1};
   border-radius: 16px;
-  box-shadow:
-    0 20px 36px -8px rgba(14, 14, 44, 0.1),
-    0 1px 1px rgba(0, 0, 0, 0.05);
-  background-color: ${({ theme }) => theme.alert.background};
+  background-color: #132f5d;
 `;
 const StyledBox = styled(Box) `
   position: absolute;
@@ -2618,11 +2616,11 @@ const StyledBox = styled(Box) `
 const Wrapper$g = styled(Flex) `
   flex-direction: column;
   border-radius: ${({ theme }) => theme.radii.default};
-  background-color: ${({ theme }) => theme.colors.gray200};
+  background-color: #132f5d;
   overflow: hidden;
 `;
 const TitleWrapper = styled(Box) `
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: #132f5d;
 `;
 const Alert = ({ title, children, variant, onClick, progress }) => {
     const Icon = getIcon(variant);
@@ -2630,12 +2628,12 @@ const Alert = ({ title, children, variant, onClick, progress }) => {
     if (variant === Variants$c.EXTENSIONS_CONFLICT) {
         return (React.createElement(Wrapper$g, null,
             React.createElement(TitleWrapper, { py: "8px", pl: "20px", pr: "66px" },
-                React.createElement(Text, { fontSize: "16px", color: "dark800", bold: true }, title)),
+                React.createElement(Text, { fontSize: "16px", color: "text1", bold: true }, title)),
             React.createElement(Flex, { p: "16px" },
                 React.createElement(Box, { mr: "12px" },
                     React.createElement(IconLabel, { variant: variant },
                         React.createElement(Icon, { width: "48px", color: IconColor }))),
-                typeof children === "string" ? React.createElement(Text, { as: "p" }, children) : children),
+                typeof children === "string" ? (React.createElement(Text, { as: "p", color: "text1" }, children)) : (children)),
             React.createElement(StyledBox, null,
                 React.createElement(ProgressCircle, { onClick: onClick, filled: progress, notFilled: progress ? 100 - progress : 0 }))));
     }
@@ -2645,8 +2643,8 @@ const Alert = ({ title, children, variant, onClick, progress }) => {
                 React.createElement(Icon, { width: "24px", color: IconColor }))),
         React.createElement(Flex, null,
             React.createElement(Box, { ml: "10px" },
-                React.createElement(Text, { fontSize: "16px", color: "dark", bold: true }, title),
-                typeof children === "string" ? React.createElement(Text, { as: "p" }, children) : children),
+                React.createElement(Text, { fontSize: "16px", color: "text1", bold: true }, title),
+                typeof children === "string" ? (React.createElement(Text, { as: "p", color: "text1" }, children)) : (children)),
             React.createElement(StyledBox, null,
                 React.createElement(ProgressCircle, { onClick: onClick, filled: progress, notFilled: progress ? 100 - progress : 0 })))));
 };
@@ -11287,9 +11285,8 @@ const ClearAllButton = styled(Button) `
   right: 0;
   margin: 0;
   padding: 0;
-  border: ${({ theme }) => `1px solid ${theme.colors.dark800}`};
-  border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 40px;
+  background-color: ${({ theme }) => theme.colors.skyBlue};
   transform: translateY(50%);
 `;
 const StyledToast$1 = styled(Box) `
@@ -11297,13 +11294,9 @@ const StyledToast$1 = styled(Box) `
   left: 50%;
   width: 100%;
   max-width: calc(100% - 12px);
-  border-radius: 16px;
+  border-radius: 24px;
   transform: translate(-50%, 0);
   transition: all 250ms ease-in;
-  box-shadow:
-    0 -4px 11px rgba(0, 0, 0, 0.1),
-    0 20px 36px -8px rgba(14, 14, 44, 0.32),
-    0 1px 1px rgba(0, 0, 0, 0.16);
 
   ${({ theme }) => theme.mediaQueries.sm} {
     left: auto;
@@ -11326,7 +11319,7 @@ const Toast = ({ removeButtonPosition = 60, clearAll, toast, style, handleMouseE
     return (React.createElement(CSSTransition, { timeout: 250, style: style, ...props },
         React.createElement(StyledToast$1, { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave },
             clearAll && (React.createElement(ClearAllButton, { scale: Scales$9.SM, variant: Variants$b.TEXT, top: removeButtonPosition, onClick: clearAll },
-                React.createElement(Text, { p: "0 8px", fontSize: "12px", color: "dark" }, clearAllLabel))),
+                React.createElement(Text, { p: "0 8px", fontSize: "14px", fontWeight: 600, color: "text4" }, clearAllLabel))),
             React.createElement(Alert, { progress: progress, title: title, variant: alertTypeMap[type], onClick: handleRemove },
                 React.createElement(Box, null,
                     scanLink && (React.createElement(LinkWrapper, null,
