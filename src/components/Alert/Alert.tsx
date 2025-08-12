@@ -2,14 +2,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 // components
-import {
-  CheckSolidIcon,
-  WarningSolidIcon,
-  CloseCircleSolidIcon,
-  InfoSolidIcon,
-  type SvgProps,
-  ConflictIcon,
-} from "../Svg";
+import { type SvgProps, ConflictIcon, CloseCircleIcon, WarningCircleRIcon, CheckRoundRIcon, InfoIcon } from "../Svg";
 import { Text } from "../Text";
 import { Flex, Box } from "../Box";
 
@@ -38,16 +31,16 @@ const getThemeColor = ({ variant = Variants.INFO }: { variant: Variants }): stri
 const getIcon = (variant: Variants = Variants.INFO): FC<SvgProps> => {
   switch (variant) {
     case Variants.DANGER:
-      return CloseCircleSolidIcon;
+      return CloseCircleIcon;
     case Variants.WARNING:
-      return WarningSolidIcon;
+      return WarningCircleRIcon;
     case Variants.SUCCESS:
-      return CheckSolidIcon;
+      return CheckRoundRIcon;
     case Variants.EXTENSIONS_CONFLICT:
       return ConflictIcon;
     case Variants.INFO:
     default:
-      return InfoSolidIcon;
+      return InfoIcon;
   }
 };
 
@@ -70,17 +63,15 @@ const IconLabel = styled(Flex)<{ variant: Variants }>`
   align-items: center;
   padding: 12px;
   border: none;
-  border-radius: ${({ variant }) => (variant === Variants.EXTENSIONS_CONFLICT ? "50px" : "8px")};
+  border-radius: 50px;
   background-color: ${getThemeColor};
 `;
 
 const StyledAlert = styled(Flex)`
   padding: 12px 60px 12px 12px;
+  border: 1px solid ${({ theme }) => theme.colors.divider1};
   border-radius: 16px;
-  box-shadow:
-    0 20px 36px -8px rgba(14, 14, 44, 0.1),
-    0 1px 1px rgba(0, 0, 0, 0.05);
-  background-color: ${({ theme }) => theme.alert.background};
+  background-color: #132f5d;
 `;
 
 const StyledBox = styled(Box)`
@@ -91,12 +82,12 @@ const StyledBox = styled(Box)`
 const Wrapper = styled(Flex)`
   flex-direction: column;
   border-radius: ${({ theme }) => theme.radii.default};
-  background-color: ${({ theme }) => theme.colors.gray200};
+  background-color: #132f5d;
   overflow: hidden;
 `;
 
 const TitleWrapper = styled(Box)`
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: #132f5d;
 `;
 
 const Alert: FC<AlertProps> = ({ title, children, variant, onClick, progress }) => {
@@ -107,7 +98,7 @@ const Alert: FC<AlertProps> = ({ title, children, variant, onClick, progress }) 
     return (
       <Wrapper>
         <TitleWrapper py="8px" pl="20px" pr="66px">
-          <Text fontSize="16px" color="dark800" bold>
+          <Text fontSize="16px" color="text1" bold>
             {title}
           </Text>
         </TitleWrapper>
@@ -117,7 +108,13 @@ const Alert: FC<AlertProps> = ({ title, children, variant, onClick, progress }) 
               <Icon width="48px" color={IconColor} />
             </IconLabel>
           </Box>
-          {typeof children === "string" ? <Text as="p">{children}</Text> : children}
+          {typeof children === "string" ? (
+            <Text as="p" color="text1">
+              {children}
+            </Text>
+          ) : (
+            children
+          )}
         </Flex>
         <StyledBox>
           <ProgressCircle onClick={onClick} filled={progress} notFilled={progress ? 100 - progress : 0} />
@@ -135,10 +132,16 @@ const Alert: FC<AlertProps> = ({ title, children, variant, onClick, progress }) 
       </Box>
       <Flex>
         <Box ml="10px">
-          <Text fontSize="16px" color="dark" bold>
+          <Text fontSize="16px" color="text1" bold>
             {title}
           </Text>
-          {typeof children === "string" ? <Text as="p">{children}</Text> : children}
+          {typeof children === "string" ? (
+            <Text as="p" color="text1">
+              {children}
+            </Text>
+          ) : (
+            children
+          )}
         </Box>
         <StyledBox>
           <ProgressCircle onClick={onClick} filled={progress} notFilled={progress ? 100 - progress : 0} />

@@ -29,9 +29,8 @@ const ClearAllButton = styled(Button)<{ top: number }>`
   right: 0;
   margin: 0;
   padding: 0;
-  border: ${({ theme }) => `1px solid ${theme.colors.dark800}`};
-  border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 40px;
+  background-color: ${({ theme }) => theme.colors.skyBlue};
   transform: translateY(50%);
 `;
 
@@ -40,13 +39,9 @@ const StyledToast = styled(Box)`
   left: 50%;
   width: 100%;
   max-width: calc(100% - 12px);
-  border-radius: 16px;
+  border-radius: 24px;
   transform: translate(-50%, 0);
   transition: all 250ms ease-in;
-  box-shadow:
-    0 -4px 11px rgba(0, 0, 0, 0.1),
-    0 20px 36px -8px rgba(14, 14, 44, 0.32),
-    0 1px 1px rgba(0, 0, 0, 0.16);
 
   ${({ theme }) => theme.mediaQueries.sm} {
     left: auto;
@@ -93,7 +88,7 @@ const Toast: FC<ToastProps> = ({
             top={removeButtonPosition}
             onClick={clearAll}
           >
-            <Text p="0 8px" fontSize="12px" color="dark">
+            <Text p="0 8px" fontSize="14px" fontWeight={600} color="text4">
               {clearAllLabel}
             </Text>
           </ClearAllButton>

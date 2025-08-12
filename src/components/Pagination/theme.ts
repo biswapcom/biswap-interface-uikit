@@ -2,7 +2,7 @@ import { Variants } from "./types";
 
 export const PaginationVariants = {
   [Variants.LIGHT]: {
-    color: "primary",
+    color: "skyBlue",
   },
   [Variants.DARK]: {
     color: "white",
@@ -12,7 +12,7 @@ export const PaginationVariants = {
 export const VariantsArrows = {
   [Variants.LIGHT]: {
     border: "1px solid rgba(18, 99, 241, 0.16)",
-    color: "primary",
+    color: "skyBlue",
 
     "&:hover": {
       backgroundColor: "rgba(18, 99, 241, 0.16)",

@@ -2605,7 +2605,7 @@ const ProgressCircle = ({ filled = 0, notFilled = 100, onClick }) => {
                 React__default["default"].createElement("linearGradient", { id: "diag-color", x1: "4.653", y1: "13.461", x2: "13.086", y2: "0.7", gradientUnits: "userSpaceOnUse" },
                     React__default["default"].createElement("stop", { stopColor: "rgba(196, 196, 196, 0.3)" }))),
             React__default["default"].createElement(Content, null,
-                React__default["default"].createElement(Icon$3$, { width: "20px", color: "currentColor" })))));
+                React__default["default"].createElement(Icon$3$, { width: "20px", color: "fill6" })))));
 };
 
 exports.AlertVariants = void 0;
@@ -2640,16 +2640,16 @@ const getThemeColor = ({ variant = exports.AlertVariants.INFO }) => {
 const getIcon = (variant = exports.AlertVariants.INFO) => {
     switch (variant) {
         case exports.AlertVariants.DANGER:
-            return Icon$3Y;
+            return Icon$3_;
         case exports.AlertVariants.WARNING:
-            return Icon$42;
+            return Icon$b;
         case exports.AlertVariants.SUCCESS:
-            return Icon$3w;
+            return Icon$e;
         case exports.AlertVariants.EXTENSIONS_CONFLICT:
             return Icon$Y;
         case exports.AlertVariants.INFO:
         default:
-            return Icon$3K;
+            return Icon$3L;
     }
 };
 const getIconColor = (variant = exports.AlertVariants.INFO) => {
@@ -2670,16 +2670,14 @@ const IconLabel = styled__default["default"](Flex) `
   align-items: center;
   padding: 12px;
   border: none;
-  border-radius: ${({ variant }) => (variant === exports.AlertVariants.EXTENSIONS_CONFLICT ? "50px" : "8px")};
+  border-radius: 50px;
   background-color: ${getThemeColor};
 `;
 const StyledAlert = styled__default["default"](Flex) `
   padding: 12px 60px 12px 12px;
+  border: 1px solid ${({ theme }) => theme.colors.divider1};
   border-radius: 16px;
-  box-shadow:
-    0 20px 36px -8px rgba(14, 14, 44, 0.1),
-    0 1px 1px rgba(0, 0, 0, 0.05);
-  background-color: ${({ theme }) => theme.alert.background};
+  background-color: #132f5d;
 `;
 const StyledBox = styled__default["default"](Box) `
   position: absolute;
@@ -2688,11 +2686,11 @@ const StyledBox = styled__default["default"](Box) `
 const Wrapper$g = styled__default["default"](Flex) `
   flex-direction: column;
   border-radius: ${({ theme }) => theme.radii.default};
-  background-color: ${({ theme }) => theme.colors.gray200};
+  background-color: #132f5d;
   overflow: hidden;
 `;
 const TitleWrapper = styled__default["default"](Box) `
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: #132f5d;
 `;
 const Alert = ({ title, children, variant, onClick, progress }) => {
     const Icon = getIcon(variant);
@@ -2700,12 +2698,12 @@ const Alert = ({ title, children, variant, onClick, progress }) => {
     if (variant === exports.AlertVariants.EXTENSIONS_CONFLICT) {
         return (React__default["default"].createElement(Wrapper$g, null,
             React__default["default"].createElement(TitleWrapper, { py: "8px", pl: "20px", pr: "66px" },
-                React__default["default"].createElement(Text, { fontSize: "16px", color: "dark800", bold: true }, title)),
+                React__default["default"].createElement(Text, { fontSize: "16px", color: "text1", bold: true }, title)),
             React__default["default"].createElement(Flex, { p: "16px" },
                 React__default["default"].createElement(Box, { mr: "12px" },
                     React__default["default"].createElement(IconLabel, { variant: variant },
                         React__default["default"].createElement(Icon, { width: "48px", color: IconColor }))),
-                typeof children === "string" ? React__default["default"].createElement(Text, { as: "p" }, children) : children),
+                typeof children === "string" ? (React__default["default"].createElement(Text, { as: "p", color: "text1" }, children)) : (children)),
             React__default["default"].createElement(StyledBox, null,
                 React__default["default"].createElement(ProgressCircle, { onClick: onClick, filled: progress, notFilled: progress ? 100 - progress : 0 }))));
     }
@@ -2715,8 +2713,8 @@ const Alert = ({ title, children, variant, onClick, progress }) => {
                 React__default["default"].createElement(Icon, { width: "24px", color: IconColor }))),
         React__default["default"].createElement(Flex, null,
             React__default["default"].createElement(Box, { ml: "10px" },
-                React__default["default"].createElement(Text, { fontSize: "16px", color: "dark", bold: true }, title),
-                typeof children === "string" ? React__default["default"].createElement(Text, { as: "p" }, children) : children),
+                React__default["default"].createElement(Text, { fontSize: "16px", color: "text1", bold: true }, title),
+                typeof children === "string" ? (React__default["default"].createElement(Text, { as: "p", color: "text1" }, children)) : (children)),
             React__default["default"].createElement(StyledBox, null,
                 React__default["default"].createElement(ProgressCircle, { onClick: onClick, filled: progress, notFilled: progress ? 100 - progress : 0 })))));
 };
@@ -7845,7 +7843,7 @@ exports.PaginationVariants = void 0;
 
 const PaginationVariants = {
     [exports.PaginationVariants.LIGHT]: {
-        color: "primary",
+        color: "skyBlue",
     },
     [exports.PaginationVariants.DARK]: {
         color: "white",
@@ -7854,7 +7852,7 @@ const PaginationVariants = {
 const VariantsArrows = {
     [exports.PaginationVariants.LIGHT]: {
         border: "1px solid rgba(18, 99, 241, 0.16)",
-        color: "primary",
+        color: "skyBlue",
         "&:hover": {
             backgroundColor: "rgba(18, 99, 241, 0.16)",
             borderColor: "transparent",
@@ -7907,10 +7905,10 @@ const PaginationWrap = styled__default["default"](Flex) `
 
       &.active {
         color: ${({ theme }) => theme.colors.white};
-        background: ${({ theme }) => theme.colors.primary};
+        background: ${({ theme }) => theme.colors.skyBlue};
 
         &:hover {
-          background: lighten(${({ theme }) => theme.colors.primary}, 5%);
+          background: ${({ theme }) => getRgba(theme.colors.skyBlue, theme, 0.8)};
         }
       }
 
@@ -7973,7 +7971,7 @@ const Pagination = ({ variant, isLight, pageCount, handlePageClick, marginPagesD
         paginate__dark: !isLight,
     });
     return (React__default["default"].createElement(PaginationWrap, { className: paginationClass, variant: variant },
-        React__default["default"].createElement(ReactPaginate__default["default"], { previousLabel: React__default["default"].createElement(Icon$4t, { color: variant === exports.PaginationVariants.LIGHT ? "primary" : "white" }), nextLabel: React__default["default"].createElement(Icon$4w, { color: variant === exports.PaginationVariants.LIGHT ? "primary" : "white" }), forcePage: forcePage, breakLabel: "...", breakClassName: "break-me", pageCount: pageCount, marginPagesDisplayed: marginPagesDisplayed, pageRangeDisplayed: pageRangeDisplayed, onPageChange: handlePageClick, containerClassName: "pagination", activeClassName: "active" })));
+        React__default["default"].createElement(ReactPaginate__default["default"], { previousLabel: React__default["default"].createElement(Icon$4t, { color: variant === exports.PaginationVariants.LIGHT ? "skyBlue" : "white" }), nextLabel: React__default["default"].createElement(Icon$4w, { color: variant === exports.PaginationVariants.LIGHT ? "skyBlue" : "white" }), forcePage: forcePage, breakLabel: "...", breakClassName: "break-me", pageCount: pageCount, marginPagesDisplayed: marginPagesDisplayed, pageRangeDisplayed: pageRangeDisplayed, onPageChange: handlePageClick, containerClassName: "pagination", activeClassName: "active" })));
 };
 
 const StyledWrapper = styled__default["default"](Box) `
@@ -11355,9 +11353,8 @@ const ClearAllButton = styled__default["default"](Button) `
   right: 0;
   margin: 0;
   padding: 0;
-  border: ${({ theme }) => `1px solid ${theme.colors.dark800}`};
-  border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 40px;
+  background-color: ${({ theme }) => theme.colors.skyBlue};
   transform: translateY(50%);
 `;
 const StyledToast$1 = styled__default["default"](Box) `
@@ -11365,13 +11362,9 @@ const StyledToast$1 = styled__default["default"](Box) `
   left: 50%;
   width: 100%;
   max-width: calc(100% - 12px);
-  border-radius: 16px;
+  border-radius: 24px;
   transform: translate(-50%, 0);
   transition: all 250ms ease-in;
-  box-shadow:
-    0 -4px 11px rgba(0, 0, 0, 0.1),
-    0 20px 36px -8px rgba(14, 14, 44, 0.32),
-    0 1px 1px rgba(0, 0, 0, 0.16);
 
   ${({ theme }) => theme.mediaQueries.sm} {
     left: auto;
@@ -11394,7 +11387,7 @@ const Toast = ({ removeButtonPosition = 60, clearAll, toast, style, handleMouseE
     return (React__default["default"].createElement(reactTransitionGroup.CSSTransition, { timeout: 250, style: style, ...props },
         React__default["default"].createElement(StyledToast$1, { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave },
             clearAll && (React__default["default"].createElement(ClearAllButton, { scale: exports.ButtonScales.SM, variant: exports.ButtonVariants.TEXT, top: removeButtonPosition, onClick: clearAll },
-                React__default["default"].createElement(Text, { p: "0 8px", fontSize: "12px", color: "dark" }, clearAllLabel))),
+                React__default["default"].createElement(Text, { p: "0 8px", fontSize: "14px", fontWeight: 600, color: "text4" }, clearAllLabel))),
             React__default["default"].createElement(Alert, { progress: progress, title: title, variant: alertTypeMap[type], onClick: handleRemove },
                 React__default["default"].createElement(Box, null,
                     scanLink && (React__default["default"].createElement(LinkWrapper, null,

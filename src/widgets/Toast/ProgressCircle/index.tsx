@@ -69,7 +69,7 @@ const ProgressCircle: FC<IProps> = ({ filled = 0, notFilled = 100, onClick }) =>
           </linearGradient>
         </defs>
         <Content>
-          <CloseIcon width="20px" color="currentColor" />
+          <CloseIcon width="20px" color="fill6" />
         </Content>
       </SvgDiag>
     </StyledButton>

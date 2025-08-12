@@ -13,6 +13,7 @@ import { PaginationVariants, VariantsArrows } from "./theme";
 // components
 import { ChevronLeftIcon, ChevronRightIcon } from "../Svg";
 import { Flex } from "../Box";
+import { getRgba } from "../../util";
 
 const PaginationWrap = styled(Flex)<{ variant: Variants }>`
   justify-content: center;
@@ -51,10 +52,10 @@ const PaginationWrap = styled(Flex)<{ variant: Variants }>`
 
       &.active {
         color: ${({ theme }) => theme.colors.white};
-        background: ${({ theme }) => theme.colors.primary};
+        background: ${({ theme }) => theme.colors.skyBlue};
 
         &:hover {
-          background: lighten(${({ theme }) => theme.colors.primary}, 5%);
+          background: ${({ theme }) => getRgba(theme.colors.skyBlue, theme, 0.8)};
         }
       }
 
@@ -129,8 +130,8 @@ const Pagination: FC<PaginationProps> = ({
   return (
     <PaginationWrap className={paginationClass} variant={variant}>
       <ReactPaginate
-        previousLabel={<ChevronLeftIcon color={variant === Variants.LIGHT ? "primary" : "white"} />}
-        nextLabel={<ChevronRightIcon color={variant === Variants.LIGHT ? "primary" : "white"} />}
+        previousLabel={<ChevronLeftIcon color={variant === Variants.LIGHT ? "skyBlue" : "white"} />}
+        nextLabel={<ChevronRightIcon color={variant === Variants.LIGHT ? "skyBlue" : "white"} />}
         forcePage={forcePage}
         breakLabel="..."
         breakClassName="break-me"
