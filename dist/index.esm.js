@@ -7827,7 +7827,7 @@ var Variants$2;
 
 const PaginationVariants = {
     [Variants$2.LIGHT]: {
-        color: "primary",
+        color: "skyBlue",
     },
     [Variants$2.DARK]: {
         color: "white",
@@ -7836,7 +7836,7 @@ const PaginationVariants = {
 const VariantsArrows = {
     [Variants$2.LIGHT]: {
         border: "1px solid rgba(18, 99, 241, 0.16)",
-        color: "primary",
+        color: "skyBlue",
         "&:hover": {
             backgroundColor: "rgba(18, 99, 241, 0.16)",
             borderColor: "transparent",
@@ -7889,10 +7889,10 @@ const PaginationWrap = styled(Flex) `
 
       &.active {
         color: ${({ theme }) => theme.colors.white};
-        background: ${({ theme }) => theme.colors.primary};
+        background: ${({ theme }) => theme.colors.skyBlue};
 
         &:hover {
-          background: lighten(${({ theme }) => theme.colors.primary}, 5%);
+          background: ${({ theme }) => getRgba(theme.colors.skyBlue, theme, 0.8)};
         }
       }
 
@@ -7955,7 +7955,7 @@ const Pagination = ({ variant, isLight, pageCount, handlePageClick, marginPagesD
         paginate__dark: !isLight,
     });
     return (React.createElement(PaginationWrap, { className: paginationClass, variant: variant },
-        React.createElement(ReactPaginate, { previousLabel: React.createElement(Icon$4t, { color: variant === Variants$2.LIGHT ? "primary" : "white" }), nextLabel: React.createElement(Icon$4w, { color: variant === Variants$2.LIGHT ? "primary" : "white" }), forcePage: forcePage, breakLabel: "...", breakClassName: "break-me", pageCount: pageCount, marginPagesDisplayed: marginPagesDisplayed, pageRangeDisplayed: pageRangeDisplayed, onPageChange: handlePageClick, containerClassName: "pagination", activeClassName: "active" })));
+        React.createElement(ReactPaginate, { previousLabel: React.createElement(Icon$4t, { color: variant === Variants$2.LIGHT ? "skyBlue" : "white" }), nextLabel: React.createElement(Icon$4w, { color: variant === Variants$2.LIGHT ? "skyBlue" : "white" }), forcePage: forcePage, breakLabel: "...", breakClassName: "break-me", pageCount: pageCount, marginPagesDisplayed: marginPagesDisplayed, pageRangeDisplayed: pageRangeDisplayed, onPageChange: handlePageClick, containerClassName: "pagination", activeClassName: "active" })));
 };
 
 const StyledWrapper = styled(Box) `
